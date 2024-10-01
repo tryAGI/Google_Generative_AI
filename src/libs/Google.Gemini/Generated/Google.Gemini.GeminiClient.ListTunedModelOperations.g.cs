@@ -54,7 +54,15 @@ namespace Google.Gemini
 
             var __pathBuilder = new PathBuilder(
                 path: $"/tunedModels/{tunedModelId}/operations",
-                baseUri: _httpClient.BaseAddress); 
+                baseUri: _httpClient.BaseAddress);
+            foreach (var _authorization in _authorizations)
+            {
+                if (_authorization.Type == "ApiKey" &&
+                    _authorization.Location == "Query")
+                {
+                    __pathBuilder = __pathBuilder.AddRequiredParameter(_authorization.Name, _authorization.Value);
+                }
+            } 
             __pathBuilder 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("filter", filter) 
