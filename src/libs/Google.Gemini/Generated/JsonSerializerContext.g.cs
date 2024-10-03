@@ -13,14 +13,14 @@ namespace Google.Gemini
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[] 
         { 
+            typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter),
+            typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeNullableJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.CandidateFinishReasonJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.CandidateFinishReasonNullableJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetyRatingCategoryJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetyRatingCategoryNullableJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetyRatingProbabilityJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetyRatingProbabilityNullableJsonConverter),
-            typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter),
-            typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeNullableJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetySettingCategoryJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetySettingCategoryNullableJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.SafetySettingThresholdJsonConverter),

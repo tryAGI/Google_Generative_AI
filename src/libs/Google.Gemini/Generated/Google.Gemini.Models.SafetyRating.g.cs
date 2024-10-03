@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class SafetyRating
     {
         /// <summary>
+        /// Was this content blocked because of this rating?
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
+        public bool? Blocked { get; set; }
+
+        /// <summary>
         /// Required. The category for this rating.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("category")]
@@ -21,12 +27,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("probability")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SafetyRatingProbabilityJsonConverter))]
         public global::Google.Gemini.SafetyRatingProbability? Probability { get; set; }
-
-        /// <summary>
-        /// Was this content blocked because of this rating?
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
-        public bool? Blocked { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

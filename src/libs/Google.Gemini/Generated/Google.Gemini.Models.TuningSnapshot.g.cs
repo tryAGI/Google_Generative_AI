@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class TuningSnapshot
     {
         /// <summary>
-        /// Output only. The tuning step.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
-        public int? Step { get; set; }
-
-        /// <summary>
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </summary>
@@ -35,6 +28,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("meanLoss")]
         public float? MeanLoss { get; set; }
+
+        /// <summary>
+        /// Output only. The tuning step.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
+        public int? Step { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

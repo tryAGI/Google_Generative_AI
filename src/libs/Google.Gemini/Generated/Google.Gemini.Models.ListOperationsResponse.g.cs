@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ListOperationsResponse
     {
         /// <summary>
-        /// A list of operations that matches the specified filter in the request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("operations")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Operation>? Operations { get; set; }
-
-        /// <summary>
         /// The standard List next-page token.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("nextPageToken")]
         public string? NextPageToken { get; set; }
+
+        /// <summary>
+        /// A list of operations that matches the specified filter in the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("operations")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Operation>? Operations { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

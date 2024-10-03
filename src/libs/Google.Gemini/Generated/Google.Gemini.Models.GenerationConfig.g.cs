@@ -9,16 +9,28 @@ namespace Google.Gemini
     public sealed partial class GenerationConfig
     {
         /// <summary>
-        /// Optional. Controls the randomness of the output. Note: The default value varies by model, see the `Model.temperature` attribute of the `Model` returned from the `getModel` function. Values can range from [0.0, infinity).
+        /// Optional. Number of generated responses to return. Currently, this value can only be set to 1. If unset, this will default to 1.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
-        public float? Temperature { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("candidateCount")]
+        public int? CandidateCount { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of tokens to include in a candidate. Note: The default value varies by model, see the `Model.output_token_limit` attribute of the `Model` returned from the `getModel` function.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxOutputTokens")]
+        public int? MaxOutputTokens { get; set; }
 
         /// <summary>
         /// Optional. The set of character sequences (up to 5) that will stop output generation. If specified, the API will stop at the first appearance of a stop sequence. The stop sequence will not be included as part of the response.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stopSequences")]
         public global::System.Collections.Generic.IList<string>? StopSequences { get; set; }
+
+        /// <summary>
+        /// Optional. Controls the randomness of the output. Note: The default value varies by model, see the `Model.temperature` attribute of the `Model` returned from the `getModel` function. Values can range from [0.0, infinity).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        public float? Temperature { get; set; }
 
         /// <summary>
         /// Optional. The maximum number of tokens to consider when sampling. The model uses combined Top-k and nucleus sampling. Top-k sampling considers the set of `top_k` most probable tokens. Note: The default value varies by model, see the `Model.top_k` attribute of the `Model` returned from the `getModel` function.
@@ -31,18 +43,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("topP")]
         public float? TopP { get; set; }
-
-        /// <summary>
-        /// Optional. Number of generated responses to return. Currently, this value can only be set to 1. If unset, this will default to 1.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("candidateCount")]
-        public int? CandidateCount { get; set; }
-
-        /// <summary>
-        /// Optional. The maximum number of tokens to include in a candidate. Note: The default value varies by model, see the `Model.output_token_limit` attribute of the `Model` returned from the `getModel` function.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maxOutputTokens")]
-        public int? MaxOutputTokens { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

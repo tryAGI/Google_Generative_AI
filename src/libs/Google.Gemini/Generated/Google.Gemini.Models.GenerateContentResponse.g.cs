@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class GenerateContentResponse
     {
         /// <summary>
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
-        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
-
-        /// <summary>
         /// Candidate responses from the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
+
+        /// <summary>
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
+        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

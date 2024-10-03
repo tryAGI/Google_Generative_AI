@@ -9,16 +9,10 @@ namespace Google.Gemini
     public sealed partial class CreateTunedModelMetadata
     {
         /// <summary>
-        /// The total number of tuning steps.
+        /// The completed percentage for the tuning operation.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("totalSteps")]
-        public int? TotalSteps { get; set; }
-
-        /// <summary>
-        /// Name of the tuned model associated with the tuning operation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tunedModel")]
-        public string? TunedModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("completedPercent")]
+        public float? CompletedPercent { get; set; }
 
         /// <summary>
         /// The number of steps completed.
@@ -33,10 +27,16 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Snapshots { get; set; }
 
         /// <summary>
-        /// The completed percentage for the tuning operation.
+        /// The total number of tuning steps.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("completedPercent")]
-        public float? CompletedPercent { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("totalSteps")]
+        public int? TotalSteps { get; set; }
+
+        /// <summary>
+        /// Name of the tuned model associated with the tuning operation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tunedModel")]
+        public string? TunedModel { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
