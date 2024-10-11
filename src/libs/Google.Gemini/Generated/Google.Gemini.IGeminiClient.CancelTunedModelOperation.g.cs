@@ -12,10 +12,10 @@ namespace Google.Gemini
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Google.Gemini.Empty> CancelTunedModelOperationAsync(
+        global::System.Threading.Tasks.Task<object> CancelTunedModelOperationAsync(
             string tunedModelId,
             string operationId,
-            global::Google.Gemini.CancelOperationRequest request,
+            object request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Google.Gemini
         /// <param name="operationId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Google.Gemini.Empty> CancelTunedModelOperationAsync(
+        global::System.Threading.Tasks.Task<object> CancelTunedModelOperationAsync(
             string tunedModelId,
             string operationId,
             global::System.Threading.CancellationToken cancellationToken = default);
