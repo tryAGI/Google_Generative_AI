@@ -18,7 +18,7 @@ namespace Google.Gemini
         /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.StatusDetail>? Details { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, object>>? Details { get; set; }
 
         /// <summary>
         /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.

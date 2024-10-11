@@ -226,18 +226,10 @@ namespace Google.Gemini
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.StatusDetail>? Type52 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, object>>? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.StatusDetail? Type53 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Google.Gemini.OperationMetadata? Type54 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Google.Gemini.OperationResponse? Type55 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, object>? Type53 { get; set; }
     }
 }
