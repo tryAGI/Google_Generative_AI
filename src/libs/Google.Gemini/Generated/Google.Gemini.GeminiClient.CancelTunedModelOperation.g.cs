@@ -33,7 +33,7 @@ namespace Google.Gemini
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<object> CancelTunedModelOperationAsync(
+        public async global::System.Threading.Tasks.Task<string> CancelTunedModelOperationAsync(
             string tunedModelId,
             string operationId,
             object request,
@@ -113,9 +113,7 @@ namespace Google.Gemini
                 throw new global::System.InvalidOperationException(__content, ex);
             }
 
-            return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(object), JsonSerializerContext) as object ??
-                throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+            return __content;
         }
 
         /// <summary>
@@ -125,7 +123,7 @@ namespace Google.Gemini
         /// <param name="operationId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<object> CancelTunedModelOperationAsync(
+        public async global::System.Threading.Tasks.Task<string> CancelTunedModelOperationAsync(
             string tunedModelId,
             string operationId,
             global::System.Threading.CancellationToken cancellationToken = default)
