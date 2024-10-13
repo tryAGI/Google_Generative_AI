@@ -94,7 +94,7 @@ namespace Google.Gemini
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Google.Gemini.Model), JsonSerializerContext) as global::Google.Gemini.Model ??
+                global::Google.Gemini.Model.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
