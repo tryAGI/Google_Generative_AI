@@ -14,8 +14,8 @@ namespace Google.Gemini
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorizations.Clear();
-            _authorizations.Add(new global::Google.Gemini.EndPointAuthorization
+            Authorizations.Clear();
+            Authorizations.Add(new global::Google.Gemini.EndPointAuthorization
             {
                 Type = "ApiKey",
                 Location = "Query",
