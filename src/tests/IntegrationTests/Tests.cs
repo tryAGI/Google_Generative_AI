@@ -10,7 +10,7 @@ public partial class Tests
             Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY") ??
             throw new AssertInconclusiveException("GOOGLE_GEMINI_API_KEY environment variable is not found.");
 
-        var client = new GeminiClient();
+        var client = new GeminiClient(apiKey);
         
         return client;
     }

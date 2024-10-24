@@ -13,7 +13,7 @@ namespace Google.Gemini
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://generativelanguage.googleapis.com/v1";
+        public const string DefaultBaseUrl = "https://generativelanguage.googleapis.com/v1beta";
 
         private bool _disposeHttpClient = true;
 

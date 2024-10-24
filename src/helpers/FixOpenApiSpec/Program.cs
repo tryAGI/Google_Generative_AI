@@ -38,6 +38,12 @@ openApiDocument.SecurityRequirements.Add(new OpenApiSecurityRequirement
     }] = new List<string>()
 });
 
+openApiDocument.Servers.Clear();
+openApiDocument.Servers.Add(new OpenApiServer
+{
+    Url = "https://generativelanguage.googleapis.com/v1beta"
+});
+
 //openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
 
 yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
