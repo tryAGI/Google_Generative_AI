@@ -1,8 +1,8 @@
 # Google.Gemini
 
-[![Nuget package](https://img.shields.io/nuget/vpre/Google.Gemini)](https://www.nuget.org/packages/Google.Gemini/)
-[![dotnet](https://github.com/tryAGI/Google.Gemini/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/tryAGI/Google.Gemini/actions/workflows/dotnet.yml)
-[![License: MIT](https://img.shields.io/github/license/tryAGI/Google.Gemini)](https://github.com/tryAGI/Google.Gemini/blob/main/LICENSE.txt)
+[![Nuget package](https://img.shields.io/nuget/vpre/Google_Gemini)](https://www.nuget.org/packages/Google_Gemini/)
+[![dotnet](https://github.com/tryAGI/Google_Generative_AI/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/tryAGI/Google_Generative_AI/actions/workflows/dotnet.yml)
+[![License: MIT](https://img.shields.io/github/license/tryAGI/Google_Generative_AI)](https://github.com/tryAGI/Google_Generative_AI/blob/main/LICENSE.txt)
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
 ## Features 🔥
@@ -21,8 +21,8 @@ using var client = new GeminiClient(apiKey);
 
 ## Support
 
-Priority place for bugs: https://github.com/tryAGI/Google.Gemini/issues  
-Priority place for ideas and general questions: https://github.com/tryAGI/Google.Gemini/discussions  
+Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues  
+Priority place for ideas and general questions: https://github.com/tryAGI/Google_Generative_AI/discussions  
 Discord: https://discord.gg/Ca2xhfBf3v  
 
 ## Acknowledgments
