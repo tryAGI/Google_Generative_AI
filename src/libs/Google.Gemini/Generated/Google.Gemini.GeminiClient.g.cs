@@ -26,6 +26,11 @@ namespace Google.Gemini
         /// <inheritdoc/>
         public global::System.Collections.Generic.List<global::Google.Gemini.EndPointAuthorization> Authorizations { get; }
 
+        /// <inheritdoc/>
+        public bool ReadResponseAsString { get; set; }
+#if DEBUG
+            = true;
+#endif
         /// <summary>
         /// 
         /// </summary>

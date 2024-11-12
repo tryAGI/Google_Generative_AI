@@ -11,7 +11,7 @@ namespace Google.Gemini
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Google.Gemini.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.ListOperationsResponse> ListOperationsAsync(
             string? pageToken = default,
             int? pageSize = default,
