@@ -9,7 +9,7 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Google.Gemini.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.Model> GetModelAsync(
             string modelId,
             global::System.Threading.CancellationToken cancellationToken = default);

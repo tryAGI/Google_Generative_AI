@@ -10,7 +10,7 @@ namespace Google.Gemini
         /// <param name="tunedModelId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Google.Gemini.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentResponse> GenerateContentTunedModelAsync(
             string tunedModelId,
             global::Google.Gemini.GenerateContentRequest request,
