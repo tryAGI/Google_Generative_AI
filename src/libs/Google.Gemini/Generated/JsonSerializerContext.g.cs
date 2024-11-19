@@ -27,6 +27,7 @@ namespace Google.Gemini
             typeof(global::Google.Gemini.JsonConverters.SafetySettingThresholdNullableJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.PromptFeedbackBlockReasonJsonConverter),
             typeof(global::Google.Gemini.JsonConverters.PromptFeedbackBlockReasonNullableJsonConverter),
+            typeof(global::Google.Gemini.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.JsonSerializerContextTypes))]
