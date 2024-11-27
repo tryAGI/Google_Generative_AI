@@ -5,10 +5,7 @@ namespace Google.Gemini
 {
     public sealed partial class GeminiClient
     {
-        /// <summary>
-        /// Authorize using ApiKey authentication.
-        /// </summary>
-        /// <param name="apiKey"></param>
+        /// <inheritdoc/>
         public void AuthorizeUsingApiKeyInQuery(
             string apiKey)
         {
