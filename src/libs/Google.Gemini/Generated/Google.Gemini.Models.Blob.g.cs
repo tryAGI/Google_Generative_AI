@@ -12,7 +12,7 @@ namespace Google.Gemini
         /// Raw bytes for media formats.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        public byte[]? Data { get; set; }
+        public string? Data { get; set; }
 
         /// <summary>
         /// The IANA standard MIME type of the source data. Accepted types include: "image/png", "image/jpeg", "image/heic", "image/heif", "image/webp".
@@ -37,7 +37,7 @@ namespace Google.Gemini
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Blob(
-            byte[]? data,
+            string? data,
             string? mimeType)
         {
             this.Data = data;

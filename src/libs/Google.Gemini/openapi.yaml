@@ -323,7 +323,6 @@ components:
         data:
           type: string
           description: Raw bytes for media formats.
-          format: byte
         mimeType:
           type: string
           description: 'The IANA standard MIME type of the source data. Accepted types include: "image/png", "image/jpeg", "image/heic", "image/heif", "image/webp".'
