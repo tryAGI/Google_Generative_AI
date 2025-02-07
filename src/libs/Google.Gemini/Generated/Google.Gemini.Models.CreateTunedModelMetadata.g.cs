@@ -62,7 +62,9 @@ namespace Google.Gemini
         /// <param name="tunedModel">
         /// Name of the tuned model associated with the tuning operation.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateTunedModelMetadata(
             float? completedPercent,
             int? completedSteps,

@@ -53,7 +53,9 @@ namespace Google.Gemini
         /// <param name="uri">
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CitationSource(
             int? endIndex,
             string? license,

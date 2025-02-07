@@ -36,7 +36,9 @@ namespace Google.Gemini
         /// <param name="safetyRatings">
         /// Ratings for safety of the prompt. There is at most one rating per category.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PromptFeedback(
             global::Google.Gemini.PromptFeedbackBlockReason? blockReason,
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? safetyRatings)

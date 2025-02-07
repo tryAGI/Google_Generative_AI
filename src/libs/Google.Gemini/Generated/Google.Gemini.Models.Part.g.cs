@@ -35,7 +35,9 @@ namespace Google.Gemini
         /// <param name="text">
         /// Inline text.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Part(
             global::Google.Gemini.Blob? inlineData,
             string? text)

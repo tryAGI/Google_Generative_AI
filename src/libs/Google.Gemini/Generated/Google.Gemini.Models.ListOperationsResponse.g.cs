@@ -35,7 +35,9 @@ namespace Google.Gemini
         /// <param name="operations">
         /// A list of operations that matches the specified filter in the request.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListOperationsResponse(
             string? nextPageToken,
             global::System.Collections.Generic.IList<global::Google.Gemini.Operation>? operations)

@@ -26,7 +26,9 @@ namespace Google.Gemini
         /// <param name="embedding">
         /// A list of floats representing an embedding.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public EmbedContentResponse(
             global::Google.Gemini.ContentEmbedding? embedding)
         {
