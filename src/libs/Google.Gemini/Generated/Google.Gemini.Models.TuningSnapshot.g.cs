@@ -61,7 +61,9 @@ namespace Google.Gemini
         /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TuningSnapshot(
             string? computeTime,
             int? epoch,

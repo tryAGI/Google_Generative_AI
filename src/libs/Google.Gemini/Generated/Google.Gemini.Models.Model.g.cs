@@ -116,7 +116,9 @@ namespace Google.Gemini
         /// <param name="version">
         /// Required. The version number of the model. This represents the major version
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Model(
             string? baseModelId,
             string? description,

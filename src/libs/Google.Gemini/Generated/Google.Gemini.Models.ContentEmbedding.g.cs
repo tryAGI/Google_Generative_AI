@@ -26,7 +26,9 @@ namespace Google.Gemini
         /// <param name="values">
         /// The embedding values.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ContentEmbedding(
             global::System.Collections.Generic.IList<float>? values)
         {

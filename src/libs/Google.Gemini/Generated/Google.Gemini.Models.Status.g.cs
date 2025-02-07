@@ -44,7 +44,9 @@ namespace Google.Gemini
         /// <param name="message">
         /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Status(
             int? code,
             global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, object>>? details,

@@ -78,7 +78,9 @@ namespace Google.Gemini
         /// Output only. Token count for this candidate.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Candidate(
             global::Google.Gemini.CitationMetadata? citationMetadata,
             global::Google.Gemini.Content? content,

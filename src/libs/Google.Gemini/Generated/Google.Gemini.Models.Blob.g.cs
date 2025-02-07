@@ -35,7 +35,9 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// The IANA standard MIME type of the source data. Accepted types include: "image/png", "image/jpeg", "image/heic", "image/heif", "image/webp".
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Blob(
             string? data,
             string? mimeType)

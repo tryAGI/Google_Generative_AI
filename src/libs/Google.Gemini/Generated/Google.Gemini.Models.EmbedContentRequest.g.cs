@@ -63,7 +63,9 @@ namespace Google.Gemini
         /// <param name="title">
         /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public EmbedContentRequest(
             global::Google.Gemini.Content? content,
             string? model,

@@ -35,7 +35,9 @@ namespace Google.Gemini
         /// <param name="role">
         /// Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn conversations, otherwise can be left blank or unset.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Content(
             global::System.Collections.Generic.IList<global::Google.Gemini.Part>? parts,
             string? role)
