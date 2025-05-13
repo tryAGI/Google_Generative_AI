@@ -28,6 +28,10 @@ namespace Google.Gemini.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Google.Gemini.SafetySettingThreshold)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Google.Gemini.SafetySettingThreshold);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
