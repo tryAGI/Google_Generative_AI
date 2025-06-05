@@ -46,7 +46,7 @@ namespace Google.Gemini
                 modelId: ref modelId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/models/{modelId}:batchEmbedContents",
                 baseUri: HttpClient.BaseAddress);
             foreach (var __authorization in Authorizations)

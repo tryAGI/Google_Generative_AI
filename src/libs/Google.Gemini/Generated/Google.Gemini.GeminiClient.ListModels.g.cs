@@ -42,7 +42,7 @@ namespace Google.Gemini
                 pageToken: ref pageToken,
                 pageSize: ref pageSize);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: "/models",
                 baseUri: HttpClient.BaseAddress);
             foreach (var __authorization in Authorizations)

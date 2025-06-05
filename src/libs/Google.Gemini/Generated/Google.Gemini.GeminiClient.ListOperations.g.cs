@@ -47,7 +47,7 @@ namespace Google.Gemini
                 pageSize: ref pageSize,
                 filter: ref filter);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: "/operations",
                 baseUri: HttpClient.BaseAddress);
             foreach (var __authorization in Authorizations)

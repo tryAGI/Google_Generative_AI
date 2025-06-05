@@ -42,7 +42,7 @@ namespace Google.Gemini
                 tunedModelId: ref tunedModelId,
                 operationId: ref operationId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelId}/operations/{operationId}",
                 baseUri: HttpClient.BaseAddress);
             foreach (var __authorization in Authorizations)

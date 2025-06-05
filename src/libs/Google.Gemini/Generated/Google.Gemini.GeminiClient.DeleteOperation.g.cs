@@ -37,7 +37,7 @@ namespace Google.Gemini
                 httpClient: HttpClient,
                 operationId: ref operationId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/operations/{operationId}",
                 baseUri: HttpClient.BaseAddress);
             foreach (var __authorization in Authorizations)
