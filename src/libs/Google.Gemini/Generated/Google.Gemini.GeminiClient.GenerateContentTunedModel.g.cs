@@ -44,7 +44,7 @@ namespace Google.Gemini
                 tunedModelId: ref tunedModelId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelId}:generateContent",
                 baseUri: HttpClient.BaseAddress);
             foreach (var __authorization in Authorizations)
