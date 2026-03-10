@@ -10,10 +10,10 @@ C# SDK for the [Google Gemini](https://ai.google.dev/) generative AI API, auto-g
 
 ```bash
 # Build the solution
-dotnet build Google.Gemini.sln
+dotnet build Google.Gemini.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build Google.Gemini.sln -c Release
+dotnet build Google.Gemini.slnx -c Release
 
 # Run integration tests (requires GOOGLE_GEMINI_API_KEY or API_KEY env var)
 dotnet test src/tests/IntegrationTests/Google.Gemini.IntegrationTests.csproj
