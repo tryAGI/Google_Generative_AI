@@ -12,27 +12,27 @@ namespace Google.Gemini
         /// <summary>
         /// 
         /// </summary>
-        FINISHREASONUNSPECIFIED,
+        FinishReasonUnspecified,
         /// <summary>
         /// 
         /// </summary>
-        STOP,
+        Stop,
         /// <summary>
         /// 
         /// </summary>
-        MAXTOKENS,
+        MaxTokens,
         /// <summary>
         /// 
         /// </summary>
-        SAFETY,
+        Safety,
         /// <summary>
         /// 
         /// </summary>
-        RECITATION,
+        Recitation,
         /// <summary>
         /// 
         /// </summary>
-        OTHER,
+        Other,
     }
 
     /// <summary>
@@ -47,12 +47,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                CandidateFinishReason.FINISHREASONUNSPECIFIED => "FINISH_REASON_UNSPECIFIED",
-                CandidateFinishReason.STOP => "STOP",
-                CandidateFinishReason.MAXTOKENS => "MAX_TOKENS",
-                CandidateFinishReason.SAFETY => "SAFETY",
-                CandidateFinishReason.RECITATION => "RECITATION",
-                CandidateFinishReason.OTHER => "OTHER",
+                CandidateFinishReason.FinishReasonUnspecified => "FINISH_REASON_UNSPECIFIED",
+                CandidateFinishReason.Stop => "STOP",
+                CandidateFinishReason.MaxTokens => "MAX_TOKENS",
+                CandidateFinishReason.Safety => "SAFETY",
+                CandidateFinishReason.Recitation => "RECITATION",
+                CandidateFinishReason.Other => "OTHER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -63,12 +63,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "FINISH_REASON_UNSPECIFIED" => CandidateFinishReason.FINISHREASONUNSPECIFIED,
-                "STOP" => CandidateFinishReason.STOP,
-                "MAX_TOKENS" => CandidateFinishReason.MAXTOKENS,
-                "SAFETY" => CandidateFinishReason.SAFETY,
-                "RECITATION" => CandidateFinishReason.RECITATION,
-                "OTHER" => CandidateFinishReason.OTHER,
+                "FINISH_REASON_UNSPECIFIED" => CandidateFinishReason.FinishReasonUnspecified,
+                "STOP" => CandidateFinishReason.Stop,
+                "MAX_TOKENS" => CandidateFinishReason.MaxTokens,
+                "SAFETY" => CandidateFinishReason.Safety,
+                "RECITATION" => CandidateFinishReason.Recitation,
+                "OTHER" => CandidateFinishReason.Other,
                 _ => null,
             };
         }

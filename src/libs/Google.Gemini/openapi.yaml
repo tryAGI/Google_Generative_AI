@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: '3.2.0'
 info:
   title: Generative Language API
   description: 'The Gemini API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information. including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.'
@@ -626,7 +626,6 @@ components:
         metadata:
           type: object
           additionalProperties:
-            type: any
             description: Properties of the object. Contains field @type with type URL.
           description: 'Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.'
         name:
@@ -635,7 +634,6 @@ components:
         response:
           type: object
           additionalProperties:
-            type: any
             description: Properties of the object. Contains field @type with type URL.
           description: 'The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.'
       description: This resource represents a long-running operation that is the result of a network API call.
@@ -735,7 +733,6 @@ components:
           items:
             type: object
             additionalProperties:
-              type: any
               description: Properties of the object. Contains field @type with type URL.
           description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         message:

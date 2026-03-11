@@ -1,62 +1,30 @@
-using AutoSDK.Helpers;
+using AutoSDK.Extensions;
+using AutoSDK.Models;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Readers;
 
 var path = args[0];
 var yamlOrJson = await File.ReadAllTextAsync(path);
 
-if (OpenApi31Support.IsOpenApi31(yamlOrJson))
-{
-    yamlOrJson = OpenApi31Support.ConvertToOpenApi30(yamlOrJson);
-}
+var openApiDocument = yamlOrJson.GetOpenApiDocument(Settings.Default);
 
-var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);
-
-openApiDocument.Paths["/models/{modelId}:countTokens"]!.Operations[OperationType.Post]!.Parameters![0]!.Required = true;
-openApiDocument.Paths["/models/{modelId}:batchEmbedContents"]!.Operations[OperationType.Post]!.Parameters![0]!.Required = true;
-openApiDocument.Paths["/models/{modelId}:embedContent"]!.Operations[OperationType.Post]!.Parameters![0]!.Required = true;
-openApiDocument.Paths["/models/{modelId}:generateContent"]!.Operations[OperationType.Post]!.Parameters![0]!.Required = true;
-
-// Uses `key` in the query string
-openApiDocument.Components.SecuritySchemes.Add("ApiKey", new OpenApiSecurityScheme
+foreach (var pathKey in new[]
 {
-    Type = SecuritySchemeType.ApiKey,
-    In = ParameterLocation.Query,
-    Name = "key",
-});
-openApiDocument.SecurityRequirements.Add(new OpenApiSecurityRequirement
+    "/models/{modelId}:countTokens",
+    "/models/{modelId}:batchEmbedContents",
+    "/models/{modelId}:embedContent",
+    "/models/{modelId}:generateContent",
+})
 {
-    [new OpenApiSecurityScheme
+    foreach (var (_, operation) in openApiDocument.Paths![pathKey]!.Operations)
     {
-        Reference = new OpenApiReference
+        if (operation.Parameters is { Count: > 0 })
         {
-            Id = "ApiKey",
-            Type = ReferenceType.SecurityScheme
+            var param = (OpenApiParameter)operation.Parameters[0]!;
+            param.Required = true;
         }
-    }] = new List<string>()
-});
-
-openApiDocument.Servers.Clear();
-openApiDocument.Servers.Add(new OpenApiServer
-{
-    Url = "https://generativelanguage.googleapis.com/v1beta"
-});
-
-//openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
-
-yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
-_ = new OpenApiStringReader().Read(yamlOrJson, out diagnostics);
-
-if (diagnostics.Errors.Count > 0)
-{
-    foreach (var error in diagnostics.Errors)
-    {
-        Console.WriteLine(error.Message);
     }
-    // Return Exit code 1
-    Environment.Exit(1);
 }
+
+yamlOrJson = await openApiDocument.SerializeAsYamlAsync(OpenApiSpecVersion.OpenApi3_2);
 
 await File.WriteAllTextAsync(path, yamlOrJson);

@@ -15,6 +15,7 @@ namespace Google.Gemini
         global::System.Threading.Tasks.Task<string> CancelTunedModelOperationAsync(
             string tunedModelId,
             string operationId,
+
             object request,
             global::System.Threading.CancellationToken cancellationToken = default);
 

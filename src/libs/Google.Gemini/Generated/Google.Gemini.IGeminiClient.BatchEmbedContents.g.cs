@@ -14,8 +14,9 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.BatchEmbedContentsResponse> BatchEmbedContentsAsync(
-            string modelId,
+
             global::Google.Gemini.BatchEmbedContentsRequest request,
+            string modelId = "embedding-001",
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.BatchEmbedContentsResponse> BatchEmbedContentsAsync(
-            string modelId,
+            string modelId = "embedding-001",
             global::System.Collections.Generic.IList<global::Google.Gemini.EmbedContentRequest>? requests = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

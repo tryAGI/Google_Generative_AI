@@ -11,4 +11,6 @@ autosdk generate openapi.yaml \
   --clientClassName GeminiClient \
   --targetFramework net8.0 \
   --output Generated \
-  --exclude-deprecated-operations
+  --exclude-deprecated-operations \
+  --base-url https://generativelanguage.googleapis.com/v1beta \
+  --security-scheme ApiKey:Query:key

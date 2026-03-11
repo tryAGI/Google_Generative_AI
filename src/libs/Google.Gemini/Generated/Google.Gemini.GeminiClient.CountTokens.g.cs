@@ -33,8 +33,9 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CountTokensResponse> CountTokensAsync(
-            string modelId,
+
             global::Google.Gemini.CountTokensRequest request,
+            string modelId = "gemini-pro",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -177,7 +178,7 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CountTokensResponse> CountTokensAsync(
-            string modelId,
+            string modelId = "gemini-pro",
             global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

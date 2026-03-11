@@ -33,8 +33,9 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentResponse> EmbedContentAsync(
-            string modelId,
+
             global::Google.Gemini.EmbedContentRequest request,
+            string modelId = "embedding-001",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -189,7 +190,7 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentResponse> EmbedContentAsync(
-            string modelId,
+            string modelId = "embedding-001",
             global::Google.Gemini.Content? content = default,
             string? model = default,
             int? outputDimensionality = default,

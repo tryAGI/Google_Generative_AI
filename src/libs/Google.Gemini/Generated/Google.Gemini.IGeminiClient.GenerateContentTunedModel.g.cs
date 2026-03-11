@@ -13,6 +13,7 @@ namespace Google.Gemini
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentResponse> GenerateContentTunedModelAsync(
             string tunedModelId,
+
             global::Google.Gemini.GenerateContentRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
