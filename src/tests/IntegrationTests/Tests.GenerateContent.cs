@@ -6,9 +6,12 @@ public partial class Tests
     public async Task GenerateContent()
     {
         using var client = GetAuthenticatedClient();
+        var modelId = GetGenerateContentModelId();
+
+        Console.WriteLine($"Using model: {modelId}");
 
         GenerateContentResponse response = await client.GenerateContentAsync(
-            modelId: "gemini-1.5-flash-latest",
+            modelId: modelId,
             contents: [
                 new Content
                 {
