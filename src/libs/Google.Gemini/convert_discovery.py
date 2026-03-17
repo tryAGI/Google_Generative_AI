@@ -150,11 +150,15 @@ def extract_methods(resources, version_prefix, paths=None):
             if "response" in method:
                 ref = method["response"].get("$ref")
                 if ref:
+                    schema = {"$ref": convert_ref(ref)}
                     resp["200"]["content"] = {
-                        "application/json": {
-                            "schema": {"$ref": convert_ref(ref)}
-                        }
+                        "application/json": {"schema": schema}
                     }
+                    # Add SSE streaming for methods with "stream" in the name
+                    if "stream" in method_name.lower():
+                        resp["200"]["content"]["text/event-stream"] = {
+                            "schema": schema
+                        }
             operation["responses"] = resp
 
             paths.setdefault(path, {})[http_method] = operation

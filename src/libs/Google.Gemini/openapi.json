@@ -359,6 +359,11 @@
                 "schema": {
                   "$ref": "#/components/schemas/GenerateContentResponse"
                 }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateContentResponse"
+                }
               }
             }
           }
@@ -1112,6 +1117,11 @@
                 "schema": {
                   "$ref": "#/components/schemas/GenerateContentResponse"
                 }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateContentResponse"
+                }
               }
             }
           }
@@ -1649,7 +1659,7 @@
         "operationId": "tunedModels.permissions.get",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1657,7 +1667,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -1685,7 +1695,7 @@
         "operationId": "tunedModels.permissions.patch",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1693,7 +1703,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -1739,7 +1749,7 @@
         "operationId": "tunedModels.permissions.delete",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1747,7 +1757,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -1840,6 +1850,11 @@
             "description": "Successful response",
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateContentResponse"
+                }
+              },
+              "text/event-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/GenerateContentResponse"
                 }
