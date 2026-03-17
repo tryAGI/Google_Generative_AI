@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareModelsOperationsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string modelsId,
-            ref string operationsId);
+            ref string operationsId,
+            ref string modelsId);
         partial void PrepareModelsOperationsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string modelsId,
-            string operationsId);
+            string operationsId,
+            string modelsId);
         partial void ProcessModelsOperationsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
         /// </summary>
-        /// <param name="modelsId"></param>
         /// <param name="operationsId"></param>
+        /// <param name="modelsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> ModelsOperationsGetAsync(
-            string modelsId,
             string operationsId,
+            string modelsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareModelsOperationsGetArguments(
                 httpClient: HttpClient,
-                modelsId: ref modelsId,
-                operationsId: ref operationsId);
+                operationsId: ref operationsId,
+                modelsId: ref modelsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/models/{modelsId}/operations/{operationsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareModelsOperationsGetRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                modelsId: modelsId,
-                operationsId: operationsId);
+                operationsId: operationsId,
+                modelsId: modelsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
