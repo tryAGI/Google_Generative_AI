@@ -2464,7 +2464,7 @@
         "operationId": "fileSearchStores.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2472,7 +2472,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2502,7 +2502,7 @@
         "operationId": "fileSearchStores.upload.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2510,7 +2510,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2540,7 +2540,7 @@
         "operationId": "fileSearchStores.documents.get",
         "parameters": [
           {
-            "name": "documentsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2548,7 +2548,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "documentsId",
             "in": "path",
             "required": true,
             "description": "Required. The name of the `Document` to retrieve. Example: `fileSearchStores/my-file-search-store-123/documents/the-doc-abc`",
@@ -2576,7 +2576,7 @@
         "operationId": "fileSearchStores.documents.delete",
         "parameters": [
           {
-            "name": "documentsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2584,7 +2584,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "documentsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the `Document` to delete. Example: `fileSearchStores/my-file-search-store-123/documents/the-doc-abc`",
