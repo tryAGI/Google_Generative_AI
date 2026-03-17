@@ -42,7 +42,7 @@ public partial class Tests
                 continue;
             }
 
-            foreach (var rawLine in File.ReadLines(dotEnvPath))
+            foreach (var rawLine in System.IO.File.ReadLines(dotEnvPath))
             {
                 var line = rawLine.Trim();
                 if (line.Length == 0 || line.StartsWith('#'))
@@ -87,7 +87,7 @@ public partial class Tests
         while (directory is not null)
         {
             var candidate = Path.Combine(directory.FullName, fileName);
-            if (File.Exists(candidate))
+            if (System.IO.File.Exists(candidate))
             {
                 return candidate;
             }

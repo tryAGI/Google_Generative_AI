@@ -28,6 +28,10 @@ namespace Google.Gemini
         /// 
         /// </summary>
         BlockNone,
+        /// <summary>
+        /// 
+        /// </summary>
+        Off,
     }
 
     /// <summary>
@@ -47,6 +51,7 @@ namespace Google.Gemini
                 SafetySettingThreshold.BlockMediumAndAbove => "BLOCK_MEDIUM_AND_ABOVE",
                 SafetySettingThreshold.BlockOnlyHigh => "BLOCK_ONLY_HIGH",
                 SafetySettingThreshold.BlockNone => "BLOCK_NONE",
+                SafetySettingThreshold.Off => "OFF",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,6 +67,7 @@ namespace Google.Gemini
                 "BLOCK_MEDIUM_AND_ABOVE" => SafetySettingThreshold.BlockMediumAndAbove,
                 "BLOCK_ONLY_HIGH" => SafetySettingThreshold.BlockOnlyHigh,
                 "BLOCK_NONE" => SafetySettingThreshold.BlockNone,
+                "OFF" => SafetySettingThreshold.Off,
                 _ => null,
             };
         }

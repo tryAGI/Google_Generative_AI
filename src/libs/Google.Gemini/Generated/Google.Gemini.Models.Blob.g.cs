@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class Blob
     {
         /// <summary>
-        /// Raw bytes for media formats.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        public string? Data { get; set; }
-
-        /// <summary>
-        /// The IANA standard MIME type of the source data. Accepted types include: "image/png", "image/jpeg", "image/heic", "image/heif", "image/webp".
+        /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
         public string? MimeType { get; set; }
+
+        /// <summary>
+        /// Raw bytes for media formats.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public byte[]? Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Blob" /> class.
         /// </summary>
+        /// <param name="mimeType">
+        /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats).
+        /// </param>
         /// <param name="data">
         /// Raw bytes for media formats.
-        /// </param>
-        /// <param name="mimeType">
-        /// The IANA standard MIME type of the source data. Accepted types include: "image/png", "image/jpeg", "image/heic", "image/heif", "image/webp".
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Blob(
-            string? data,
-            string? mimeType)
+            string? mimeType,
+            byte[]? data)
         {
-            this.Data = data;
             this.MimeType = mimeType;
+            this.Data = data;
         }
 
         /// <summary>

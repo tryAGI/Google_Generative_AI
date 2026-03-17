@@ -4,7 +4,7 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// Optional. Optional task type for which the embeddings will be used. Can only be set for `models/embedding-001` or newer models.
+    /// Optional. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
     /// </summary>
     public enum EmbedContentRequestTaskType
     {
@@ -40,6 +40,10 @@ namespace Google.Gemini
         /// 
         /// </summary>
         FactVerification,
+        /// <summary>
+        /// 
+        /// </summary>
+        CodeRetrievalQuery,
     }
 
     /// <summary>
@@ -62,6 +66,7 @@ namespace Google.Gemini
                 EmbedContentRequestTaskType.Clustering => "CLUSTERING",
                 EmbedContentRequestTaskType.QuestionAnswering => "QUESTION_ANSWERING",
                 EmbedContentRequestTaskType.FactVerification => "FACT_VERIFICATION",
+                EmbedContentRequestTaskType.CodeRetrievalQuery => "CODE_RETRIEVAL_QUERY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -80,6 +85,7 @@ namespace Google.Gemini
                 "CLUSTERING" => EmbedContentRequestTaskType.Clustering,
                 "QUESTION_ANSWERING" => EmbedContentRequestTaskType.QuestionAnswering,
                 "FACT_VERIFICATION" => EmbedContentRequestTaskType.FactVerification,
+                "CODE_RETRIEVAL_QUERY" => EmbedContentRequestTaskType.CodeRetrievalQuery,
                 _ => null,
             };
         }

@@ -52,6 +52,10 @@ namespace Google.Gemini
         /// 
         /// </summary>
         HarmCategoryDangerousContent,
+        /// <summary>
+        /// 
+        /// </summary>
+        HarmCategoryCivicIntegrity,
     }
 
     /// <summary>
@@ -77,6 +81,7 @@ namespace Google.Gemini
                 SafetyRatingCategory.HarmCategoryHateSpeech => "HARM_CATEGORY_HATE_SPEECH",
                 SafetyRatingCategory.HarmCategorySexuallyExplicit => "HARM_CATEGORY_SEXUALLY_EXPLICIT",
                 SafetyRatingCategory.HarmCategoryDangerousContent => "HARM_CATEGORY_DANGEROUS_CONTENT",
+                SafetyRatingCategory.HarmCategoryCivicIntegrity => "HARM_CATEGORY_CIVIC_INTEGRITY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -98,6 +103,7 @@ namespace Google.Gemini
                 "HARM_CATEGORY_HATE_SPEECH" => SafetyRatingCategory.HarmCategoryHateSpeech,
                 "HARM_CATEGORY_SEXUALLY_EXPLICIT" => SafetyRatingCategory.HarmCategorySexuallyExplicit,
                 "HARM_CATEGORY_DANGEROUS_CONTENT" => SafetyRatingCategory.HarmCategoryDangerousContent,
+                "HARM_CATEGORY_CIVIC_INTEGRITY" => SafetyRatingCategory.HarmCategoryCivicIntegrity,
                 _ => null,
             };
         }

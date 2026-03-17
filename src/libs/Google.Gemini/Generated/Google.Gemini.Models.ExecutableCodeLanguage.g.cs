@@ -1,0 +1,51 @@
+
+#nullable enable
+
+namespace Google.Gemini
+{
+    /// <summary>
+    /// Required. Programming language of the `code`.
+    /// </summary>
+    public enum ExecutableCodeLanguage
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        LanguageUnspecified,
+        /// <summary>
+        /// 
+        /// </summary>
+        Python,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class ExecutableCodeLanguageExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this ExecutableCodeLanguage value)
+        {
+            return value switch
+            {
+                ExecutableCodeLanguage.LanguageUnspecified => "LANGUAGE_UNSPECIFIED",
+                ExecutableCodeLanguage.Python => "PYTHON",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static ExecutableCodeLanguage? ToEnum(string value)
+        {
+            return value switch
+            {
+                "LANGUAGE_UNSPECIFIED" => ExecutableCodeLanguage.LanguageUnspecified,
+                "PYTHON" => ExecutableCodeLanguage.Python,
+                _ => null,
+            };
+        }
+    }
+}

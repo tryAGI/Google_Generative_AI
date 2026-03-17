@@ -4,7 +4,7 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// Optional. If set, the prompt was blocked and no candidates are returned. Rephrase your prompt.
+    /// Optional. If set, the prompt was blocked and no candidates are returned. Rephrase the prompt.
     /// </summary>
     public enum PromptFeedbackBlockReason
     {
@@ -20,6 +20,18 @@ namespace Google.Gemini
         /// 
         /// </summary>
         Other,
+        /// <summary>
+        /// 
+        /// </summary>
+        Blocklist,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProhibitedContent,
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageSafety,
     }
 
     /// <summary>
@@ -37,6 +49,9 @@ namespace Google.Gemini
                 PromptFeedbackBlockReason.BlockReasonUnspecified => "BLOCK_REASON_UNSPECIFIED",
                 PromptFeedbackBlockReason.Safety => "SAFETY",
                 PromptFeedbackBlockReason.Other => "OTHER",
+                PromptFeedbackBlockReason.Blocklist => "BLOCKLIST",
+                PromptFeedbackBlockReason.ProhibitedContent => "PROHIBITED_CONTENT",
+                PromptFeedbackBlockReason.ImageSafety => "IMAGE_SAFETY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,6 +65,9 @@ namespace Google.Gemini
                 "BLOCK_REASON_UNSPECIFIED" => PromptFeedbackBlockReason.BlockReasonUnspecified,
                 "SAFETY" => PromptFeedbackBlockReason.Safety,
                 "OTHER" => PromptFeedbackBlockReason.Other,
+                "BLOCKLIST" => PromptFeedbackBlockReason.Blocklist,
+                "PROHIBITED_CONTENT" => PromptFeedbackBlockReason.ProhibitedContent,
+                "IMAGE_SAFETY" => PromptFeedbackBlockReason.ImageSafety,
                 _ => null,
             };
         }

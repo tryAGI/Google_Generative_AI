@@ -9,7 +9,7 @@ namespace Google.Gemini
     public sealed partial class PromptFeedback
     {
         /// <summary>
-        /// Optional. If set, the prompt was blocked and no candidates are returned. Rephrase your prompt.
+        /// Optional. If set, the prompt was blocked and no candidates are returned. Rephrase the prompt.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blockReason")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.PromptFeedbackBlockReasonJsonConverter))]
@@ -31,7 +31,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="PromptFeedback" /> class.
         /// </summary>
         /// <param name="blockReason">
-        /// Optional. If set, the prompt was blocked and no candidates are returned. Rephrase your prompt.
+        /// Optional. If set, the prompt was blocked and no candidates are returned. Rephrase the prompt.
         /// </param>
         /// <param name="safetyRatings">
         /// Ratings for safety of the prompt. There is at most one rating per category.

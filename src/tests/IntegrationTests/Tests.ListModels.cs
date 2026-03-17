@@ -7,7 +7,7 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        ListModelsResponse response = await client.ListModelsAsync();
+        ListModelsResponse response = await client.ModelsListAsync();
         
         foreach (var model in response.Models ?? [])
         {

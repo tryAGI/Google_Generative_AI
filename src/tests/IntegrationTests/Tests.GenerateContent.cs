@@ -10,8 +10,8 @@ public partial class Tests
 
         Console.WriteLine($"Using model: {modelId}");
 
-        GenerateContentResponse response = await client.GenerateContentAsync(
-            modelId: modelId,
+        GenerateContentResponse response = await client.ModelsGenerateContentAsync(
+            modelsId: modelId,
             contents: [
                 new Content
                 {

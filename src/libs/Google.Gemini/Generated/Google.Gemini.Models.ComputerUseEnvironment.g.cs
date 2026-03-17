@@ -1,0 +1,51 @@
+
+#nullable enable
+
+namespace Google.Gemini
+{
+    /// <summary>
+    /// Required. The environment being operated.
+    /// </summary>
+    public enum ComputerUseEnvironment
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        EnvironmentUnspecified,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnvironmentBrowser,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class ComputerUseEnvironmentExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this ComputerUseEnvironment value)
+        {
+            return value switch
+            {
+                ComputerUseEnvironment.EnvironmentUnspecified => "ENVIRONMENT_UNSPECIFIED",
+                ComputerUseEnvironment.EnvironmentBrowser => "ENVIRONMENT_BROWSER",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static ComputerUseEnvironment? ToEnum(string value)
+        {
+            return value switch
+            {
+                "ENVIRONMENT_UNSPECIFIED" => ComputerUseEnvironment.EnvironmentUnspecified,
+                "ENVIRONMENT_BROWSER" => ComputerUseEnvironment.EnvironmentBrowser,
+                _ => null,
+            };
+        }
+    }
+}
