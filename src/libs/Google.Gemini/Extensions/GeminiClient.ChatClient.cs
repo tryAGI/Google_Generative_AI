@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Meai = Microsoft.Extensions.AI;
 
 namespace Google.Gemini;
@@ -403,27 +404,30 @@ public partial class GeminiClient : Meai.IChatClient
 
     private static object? ToResponseObject(Meai.FunctionResultContent functionResult)
     {
+        // The Response property is typed as object? and serialized via source-generated STJ.
+        // JsonElement boxed as object? may not serialize correctly, so use JsonObject (JsonNode)
+        // which always serializes as a proper JSON object.
         if (functionResult.Result is JsonElement jsonElement)
         {
-            return jsonElement;
+            return JsonNode.Parse(jsonElement.GetRawText());
         }
 
         if (functionResult.Result is string text)
         {
-            return JsonSerializer.SerializeToElement(new Dictionary<string, object> { ["result"] = text });
+            return new JsonObject { ["result"] = text };
         }
 
         if (functionResult.Result is not null)
         {
-            return JsonSerializer.SerializeToElement(functionResult.Result);
+            return JsonNode.Parse(JsonSerializer.Serialize(functionResult.Result));
         }
 
         if (functionResult.Exception is not null)
         {
-            return JsonSerializer.SerializeToElement(new Dictionary<string, object> { ["error"] = functionResult.Exception.Message });
+            return new JsonObject { ["error"] = functionResult.Exception.Message };
         }
 
-        return JsonSerializer.SerializeToElement(new Dictionary<string, object> { ["result"] = string.Empty });
+        return new JsonObject { ["result"] = string.Empty };
     }
 
     private static int? ToInt32(long? value)
