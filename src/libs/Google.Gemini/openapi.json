@@ -1659,7 +1659,7 @@
         "operationId": "tunedModels.permissions.get",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1667,7 +1667,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -1695,7 +1695,7 @@
         "operationId": "tunedModels.permissions.patch",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1703,7 +1703,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -1749,7 +1749,7 @@
         "operationId": "tunedModels.permissions.delete",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1757,7 +1757,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2259,7 +2259,7 @@
         "operationId": "generatedFiles.operations.get",
         "parameters": [
           {
-            "name": "generatedFilesId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2267,7 +2267,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "generatedFilesId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2919,7 +2919,7 @@
         "operationId": "corpora.permissions.get",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2927,7 +2927,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2955,7 +2955,7 @@
         "operationId": "corpora.permissions.patch",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2963,7 +2963,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -3009,7 +3009,7 @@
         "operationId": "corpora.permissions.delete",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3017,7 +3017,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -4198,13 +4198,15 @@
                 "Default value.",
                 "Indicates the model should return text.",
                 "Indicates the model should return images.",
-                "Indicates the model should return audio."
+                "Indicates the model should return audio.",
+                "Indicates the model should return video."
               ],
               "enum": [
                 "MODALITY_UNSPECIFIED",
                 "TEXT",
                 "IMAGE",
-                "AUDIO"
+                "AUDIO",
+                "VIDEO"
               ]
             }
           },
