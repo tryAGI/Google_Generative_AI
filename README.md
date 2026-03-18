@@ -11,6 +11,7 @@
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
+- Microsoft.Extensions.AI `IChatClient` and `IEmbeddingGenerator` support
 
 ### Usage
 ```csharp
