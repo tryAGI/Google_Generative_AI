@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareTunedModelsOperationsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string tunedModelsId,
-            ref string operationsId);
+            ref string operationsId,
+            ref string tunedModelsId);
         partial void PrepareTunedModelsOperationsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string tunedModelsId,
-            string operationsId);
+            string operationsId,
+            string tunedModelsId);
         partial void ProcessTunedModelsOperationsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
         /// </summary>
-        /// <param name="tunedModelsId"></param>
         /// <param name="operationsId"></param>
+        /// <param name="tunedModelsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> TunedModelsOperationsGetAsync(
-            string tunedModelsId,
             string operationsId,
+            string tunedModelsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareTunedModelsOperationsGetArguments(
                 httpClient: HttpClient,
-                tunedModelsId: ref tunedModelsId,
-                operationsId: ref operationsId);
+                operationsId: ref operationsId,
+                tunedModelsId: ref tunedModelsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelsId}/operations/{operationsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareTunedModelsOperationsGetRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                tunedModelsId: tunedModelsId,
-                operationsId: operationsId);
+                operationsId: operationsId,
+                tunedModelsId: tunedModelsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
