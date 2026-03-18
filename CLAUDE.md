@@ -29,7 +29,6 @@ cd src/libs/Google.Gemini && ./generate.sh
 The SDK code is **entirely auto-generated** -- do not manually edit files in `src/libs/Google.Gemini/Generated/`.
 
 1. `src/libs/Google.Gemini/openapi.yaml` -- the Google Gemini OpenAPI spec (fetched from a curated spec in the `langchain_dart` repo)
-2. `src/helpers/FixOpenApiSpec/` -- converts OpenAPI 3.1 to 3.0 format for compatibility
 3. `src/libs/Google.Gemini/generate.sh` -- orchestrates: download spec, fix spec, run AutoSDK CLI, output to `Generated/`
 4. CI auto-updates the spec and creates PRs if changes are detected
 
@@ -39,8 +38,6 @@ The SDK code is **entirely auto-generated** -- do not manually edit files in `sr
 |---------|---------|
 | `src/libs/Google.Gemini/` | Main SDK library (`GeminiClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real Google Gemini API |
-| `src/helpers/FixOpenApiSpec/` | OpenAPI spec fixer tool |
-| `src/helpers/GenerateDocs/` | Documentation generator from integration tests |
 
 ### Build Configuration
 
