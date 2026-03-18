@@ -10,7 +10,7 @@ public static class GeminiClientImageExtensions
     /// </summary>
     /// <param name="client">The Gemini client.</param>
     /// <param name="prompt">The text prompt describing the desired image.</param>
-    /// <param name="modelId">The model to use. Defaults to "gemini-2.0-flash-exp-image-generation".</param>
+    /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash-image".</param>
     /// <param name="imageSize">Image size: "512", "1K", "2K", "4K". Defaults to "1K".</param>
     /// <param name="aspectRatio">Optional aspect ratio (e.g., "16:9", "1:1", "9:16").</param>
     /// <param name="includeTextResponse">If true, requests both TEXT and IMAGE modalities.</param>
@@ -19,7 +19,7 @@ public static class GeminiClientImageExtensions
     public static async Task<ImageResult> GenerateImageAsync(
         this GeminiClient client,
         string prompt,
-        string modelId = "gemini-2.0-flash-exp-image-generation",
+        string modelId = "gemini-2.5-flash-image",
         string imageSize = "1K",
         string? aspectRatio = null,
         bool includeTextResponse = false,
@@ -74,7 +74,7 @@ public static class GeminiClientImageExtensions
     /// <param name="prompt">The text prompt describing the desired edit.</param>
     /// <param name="imageData">The source image bytes.</param>
     /// <param name="mimeType">MIME type of the source image. Defaults to "image/png".</param>
-    /// <param name="modelId">The model to use. Defaults to "gemini-2.0-flash-exp-image-generation".</param>
+    /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash-image".</param>
     /// <param name="imageSize">Image size: "512", "1K", "2K", "4K". Defaults to "1K".</param>
     /// <param name="aspectRatio">Optional aspect ratio.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
@@ -84,7 +84,7 @@ public static class GeminiClientImageExtensions
         string prompt,
         byte[] imageData,
         string mimeType = "image/png",
-        string modelId = "gemini-2.0-flash-exp-image-generation",
+        string modelId = "gemini-2.5-flash-image",
         string imageSize = "1K",
         string? aspectRatio = null,
         CancellationToken cancellationToken = default)
@@ -141,7 +141,7 @@ public static class GeminiClientImageExtensions
     /// <param name="client">The Gemini client.</param>
     /// <param name="prompt">The text prompt describing the desired image.</param>
     /// <param name="referenceImages">Reference images as (bytes, mimeType) tuples.</param>
-    /// <param name="modelId">The model to use. Defaults to "gemini-2.0-flash-exp-image-generation".</param>
+    /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash-image".</param>
     /// <param name="imageSize">Image size: "512", "1K", "2K", "4K". Defaults to "1K".</param>
     /// <param name="aspectRatio">Optional aspect ratio.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
@@ -150,7 +150,7 @@ public static class GeminiClientImageExtensions
         this GeminiClient client,
         string prompt,
         IEnumerable<(byte[] Data, string MimeType)> referenceImages,
-        string modelId = "gemini-2.0-flash-exp-image-generation",
+        string modelId = "gemini-2.5-flash-image",
         string imageSize = "1K",
         string? aspectRatio = null,
         CancellationToken cancellationToken = default)

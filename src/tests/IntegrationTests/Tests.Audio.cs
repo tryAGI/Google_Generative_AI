@@ -8,7 +8,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         var result = await client.SpeakAsync(
-            text: "Hello, this is a test of text to speech.",
+            text: "Say cheerfully: Hello, this is a test of text to speech. Have a wonderful day!",
             voiceName: "Puck");
 
         result.HasAudio.Should().BeTrue();
@@ -22,7 +22,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         var result = await client.SpeakAsync(
-            text: "Testing with a different voice.",
+            text: "Say calmly: Testing with a different voice. This should sound professional.",
             voiceName: "Kore");
 
         result.HasAudio.Should().BeTrue();
@@ -36,7 +36,7 @@ public partial class Tests
 
         // First generate audio to transcribe
         var audio = await client.SpeakAsync(
-            text: "The quick brown fox jumps over the lazy dog.");
+            text: "Read aloud: The quick brown fox jumps over the lazy dog.");
 
         audio.HasAudio.Should().BeTrue("need audio to transcribe");
 
