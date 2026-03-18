@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareCorporaPermissionsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string corporaId,
-            ref string permissionsId);
+            ref string permissionsId,
+            ref string corporaId);
         partial void PrepareCorporaPermissionsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string corporaId,
-            string permissionsId);
+            string permissionsId,
+            string corporaId);
         partial void ProcessCorporaPermissionsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Gets information about a specific Permission.
         /// </summary>
-        /// <param name="corporaId"></param>
         /// <param name="permissionsId"></param>
+        /// <param name="corporaId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Permission> CorporaPermissionsGetAsync(
-            string corporaId,
             string permissionsId,
+            string corporaId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareCorporaPermissionsGetArguments(
                 httpClient: HttpClient,
-                corporaId: ref corporaId,
-                permissionsId: ref permissionsId);
+                permissionsId: ref permissionsId,
+                corporaId: ref corporaId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/corpora/{corporaId}/permissions/{permissionsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareCorporaPermissionsGetRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                corporaId: corporaId,
-                permissionsId: permissionsId);
+                permissionsId: permissionsId,
+                corporaId: corporaId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
