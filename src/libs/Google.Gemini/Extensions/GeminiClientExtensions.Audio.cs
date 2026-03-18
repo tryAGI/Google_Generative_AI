@@ -44,6 +44,7 @@ public static class GeminiClientAudioExtensions
             [
                 new Content
                 {
+                    Role = "user",
                     Parts = [new Part { Text = text }],
                 },
             ],

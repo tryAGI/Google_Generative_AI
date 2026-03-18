@@ -410,20 +410,20 @@ public partial class GeminiClient : Meai.IChatClient
 
         if (functionResult.Result is string text)
         {
-            return new Dictionary<string, object> { ["result"] = text };
+            return JsonSerializer.SerializeToElement(new Dictionary<string, object> { ["result"] = text });
         }
 
         if (functionResult.Result is not null)
         {
-            return functionResult.Result;
+            return JsonSerializer.SerializeToElement(functionResult.Result);
         }
 
         if (functionResult.Exception is not null)
         {
-            return new Dictionary<string, object> { ["error"] = functionResult.Exception.Message };
+            return JsonSerializer.SerializeToElement(new Dictionary<string, object> { ["error"] = functionResult.Exception.Message });
         }
 
-        return new Dictionary<string, object> { ["result"] = string.Empty };
+        return JsonSerializer.SerializeToElement(new Dictionary<string, object> { ["result"] = string.Empty });
     }
 
     private static int? ToInt32(long? value)
