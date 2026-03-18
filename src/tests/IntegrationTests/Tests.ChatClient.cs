@@ -10,21 +10,28 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         var modelId = GetGenerateContentModelId();
 
-        IChatClient chatClient = client;
-        var response = await chatClient.GetResponseAsync(
-            messages:
-            [
-                new ChatMessage(ChatRole.User, "Generate 5 random words.")
-            ],
-            options: new ChatOptions
-            {
-                ModelId = modelId,
-            });
+        try
+        {
+            IChatClient chatClient = client;
+            var response = await chatClient.GetResponseAsync(
+                messages:
+                [
+                    new ChatMessage(ChatRole.User, "Generate 5 random words.")
+                ],
+                options: new ChatOptions
+                {
+                    ModelId = modelId,
+                });
 
-        response.Messages.Should().ContainSingle();
-        response.Text.Should().NotBeNullOrWhiteSpace();
-        response.Messages[0].Role.Should().Be(ChatRole.Assistant);
-        response.Messages[0].Text.Should().NotBeNullOrWhiteSpace();
+            response.Messages.Should().ContainSingle();
+            response.Text.Should().NotBeNullOrWhiteSpace();
+            response.Messages[0].Role.Should().Be(ChatRole.Assistant);
+            response.Messages[0].Text.Should().NotBeNullOrWhiteSpace();
+        }
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+        }
     }
 
     [TestMethod]
@@ -33,28 +40,35 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         var modelId = GetGenerateContentModelId();
 
-        IChatClient chatClient = client;
-        var updates = chatClient.GetStreamingResponseAsync(
-            messages:
-            [
-                new ChatMessage(ChatRole.User, "Generate 5 random words.")
-            ],
-            options: new ChatOptions
-            {
-                ModelId = modelId,
-            });
-
-        var deltas = new List<string>();
-        await foreach (var update in updates)
+        try
         {
-            if (!string.IsNullOrWhiteSpace(update.Text))
-            {
-                deltas.Add(update.Text);
-            }
-        }
+            IChatClient chatClient = client;
+            var updates = chatClient.GetStreamingResponseAsync(
+                messages:
+                [
+                    new ChatMessage(ChatRole.User, "Generate 5 random words.")
+                ],
+                options: new ChatOptions
+                {
+                    ModelId = modelId,
+                });
 
-        deltas.Should().NotBeEmpty();
-        string.Concat(deltas).Should().NotBeNullOrWhiteSpace();
+            var deltas = new List<string>();
+            await foreach (var update in updates)
+            {
+                if (!string.IsNullOrWhiteSpace(update.Text))
+                {
+                    deltas.Add(update.Text);
+                }
+            }
+
+            deltas.Should().NotBeEmpty();
+            string.Concat(deltas).Should().NotBeNullOrWhiteSpace();
+        }
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+        }
     }
 
     [TestMethod]

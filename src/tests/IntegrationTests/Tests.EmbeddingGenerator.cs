@@ -17,16 +17,23 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         var modelId = GetEmbeddingModelId();
 
-        IEmbeddingGenerator<string, Embedding<float>> generator = client;
-        var result = await generator.GenerateAsync(
-            values: ["Hello, world!"],
-            options: new EmbeddingGenerationOptions
-            {
-                ModelId = modelId,
-            });
+        try
+        {
+            IEmbeddingGenerator<string, Embedding<float>> generator = client;
+            var result = await generator.GenerateAsync(
+                values: ["Hello, world!"],
+                options: new EmbeddingGenerationOptions
+                {
+                    ModelId = modelId,
+                });
 
-        result.Should().ContainSingle();
-        result[0].Vector.Length.Should().BeGreaterThan(0);
+            result.Should().ContainSingle();
+            result[0].Vector.Length.Should().BeGreaterThan(0);
+        }
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+        }
     }
 
     [TestMethod]
@@ -35,17 +42,24 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         var modelId = GetEmbeddingModelId();
 
-        IEmbeddingGenerator<string, Embedding<float>> generator = client;
-        var result = await generator.GenerateAsync(
-            values: ["Hello, world!", "Goodbye, world!"],
-            options: new EmbeddingGenerationOptions
-            {
-                ModelId = modelId,
-            });
+        try
+        {
+            IEmbeddingGenerator<string, Embedding<float>> generator = client;
+            var result = await generator.GenerateAsync(
+                values: ["Hello, world!", "Goodbye, world!"],
+                options: new EmbeddingGenerationOptions
+                {
+                    ModelId = modelId,
+                });
 
-        result.Should().HaveCount(2);
-        result[0].Vector.Length.Should().BeGreaterThan(0);
-        result[1].Vector.Length.Should().BeGreaterThan(0);
-        result[0].Vector.Length.Should().Be(result[1].Vector.Length);
+            result.Should().HaveCount(2);
+            result[0].Vector.Length.Should().BeGreaterThan(0);
+            result[1].Vector.Length.Should().BeGreaterThan(0);
+            result[0].Vector.Length.Should().Be(result[1].Vector.Length);
+        }
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+        }
     }
 }

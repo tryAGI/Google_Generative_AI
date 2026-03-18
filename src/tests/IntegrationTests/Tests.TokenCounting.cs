@@ -8,17 +8,24 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         var modelId = GetGenerateContentModelId();
 
-        var response = await client.ModelsCountTokensAsync(
-            modelsId: modelId,
-            contents:
-            [
-                new Content
-                {
-                    Parts = [new Part { Text = "Hello, world! This is a test of token counting." }],
-                },
-            ]);
+        try
+        {
+            var response = await client.ModelsCountTokensAsync(
+                modelsId: modelId,
+                contents:
+                [
+                    new Content
+                    {
+                        Parts = [new Part { Text = "Hello, world! This is a test of token counting." }],
+                    },
+                ]);
 
-        response.TotalTokens.Should().BeGreaterThan(0);
+            response.TotalTokens.Should().BeGreaterThan(0);
+        }
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+        }
     }
 
     [TestMethod]
@@ -27,27 +34,34 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         var modelId = GetGenerateContentModelId();
 
-        var response = await client.ModelsCountTokensAsync(
-            modelsId: modelId,
-            contents:
-            [
-                new Content
-                {
-                    Role = "user",
-                    Parts = [new Part { Text = "What is the meaning of life?" }],
-                },
-                new Content
-                {
-                    Role = "model",
-                    Parts = [new Part { Text = "The meaning of life is a philosophical question." }],
-                },
-                new Content
-                {
-                    Role = "user",
-                    Parts = [new Part { Text = "Can you elaborate?" }],
-                },
-            ]);
+        try
+        {
+            var response = await client.ModelsCountTokensAsync(
+                modelsId: modelId,
+                contents:
+                [
+                    new Content
+                    {
+                        Role = "user",
+                        Parts = [new Part { Text = "What is the meaning of life?" }],
+                    },
+                    new Content
+                    {
+                        Role = "model",
+                        Parts = [new Part { Text = "The meaning of life is a philosophical question." }],
+                    },
+                    new Content
+                    {
+                        Role = "user",
+                        Parts = [new Part { Text = "Can you elaborate?" }],
+                    },
+                ]);
 
-        response.TotalTokens.Should().BeGreaterThan(0);
+            response.TotalTokens.Should().BeGreaterThan(0);
+        }
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+        }
     }
 }
