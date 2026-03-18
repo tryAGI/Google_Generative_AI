@@ -92,15 +92,29 @@ public partial class GeminiClient : Meai.IChatClient
             };
         }
 
+        // Build a callId→name lookup from FunctionCallContent items so we can
+        // populate the required FunctionResponse.Name for FunctionResultContent items.
+        var functionNamesByCallId = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var message in messages)
+        {
+            foreach (var content in message.Contents)
+            {
+                if (content is Meai.FunctionCallContent fc && fc.CallId is not null && fc.Name is not null)
+                {
+                    functionNamesByCallId[fc.CallId] = fc.Name;
+                }
+            }
+        }
+
         foreach (var message in messages)
         {
             if (message.Role == Meai.ChatRole.System)
             {
-                systemInstruction = ToGeminiContent(message);
+                systemInstruction = ToGeminiContent(message, functionNamesByCallId);
                 continue;
             }
 
-            contents.Add(ToGeminiContent(message));
+            contents.Add(ToGeminiContent(message, functionNamesByCallId));
         }
 
         var request = options?.RawRepresentationFactory?.Invoke(this) as GenerateContentRequest;
@@ -128,7 +142,7 @@ public partial class GeminiClient : Meai.IChatClient
         return (modelId, request);
     }
 
-    private static Content ToGeminiContent(Meai.ChatMessage message)
+    private static Content ToGeminiContent(Meai.ChatMessage message, Dictionary<string, string>? functionNamesByCallId = null)
     {
         var role = message.Role == Meai.ChatRole.Assistant ? "model" : "user";
         var parts = new List<Part>();
@@ -156,11 +170,16 @@ public partial class GeminiClient : Meai.IChatClient
                     break;
 
                 case Meai.FunctionResultContent functionResult:
+                    var functionName = functionResult.CallId is not null &&
+                                      functionNamesByCallId?.TryGetValue(functionResult.CallId, out var name) == true
+                        ? name
+                        : string.Empty;
                     parts.Add(new Part
                     {
                         FunctionResponse = new FunctionResponse
                         {
                             Id = functionResult.CallId,
+                            Name = functionName,
                             Response = ToResponseObject(functionResult),
                         },
                     });
