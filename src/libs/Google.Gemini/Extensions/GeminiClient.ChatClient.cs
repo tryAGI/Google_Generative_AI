@@ -1,6 +1,5 @@
 using System.Runtime.CompilerServices;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using Meai = Microsoft.Extensions.AI;
 
 namespace Google.Gemini;
@@ -402,32 +401,42 @@ public partial class GeminiClient : Meai.IChatClient
         return null;
     }
 
-    private static object? ToResponseObject(Meai.FunctionResultContent functionResult)
+    private static Dictionary<string, string>? ToResponseObject(Meai.FunctionResultContent functionResult)
     {
         // The Response property is typed as object? and serialized via source-generated STJ.
-        // JsonElement boxed as object? may not serialize correctly, so use JsonObject (JsonNode)
-        // which always serializes as a proper JSON object.
+        // Only types registered in the SourceGenerationContext can be serialized polymorphically.
+        // Dictionary<string, string> and Dictionary<string, object> are both registered.
         if (functionResult.Result is JsonElement jsonElement)
         {
-            return JsonNode.Parse(jsonElement.GetRawText());
+            if (jsonElement.ValueKind == JsonValueKind.Object)
+            {
+                var dict = new Dictionary<string, string>(StringComparer.Ordinal);
+                foreach (var property in jsonElement.EnumerateObject())
+                {
+                    dict[property.Name] = property.Value.ToString();
+                }
+                return dict;
+            }
+
+            return new Dictionary<string, string> { ["result"] = jsonElement.ToString() };
         }
 
         if (functionResult.Result is string text)
         {
-            return new JsonObject { ["result"] = text };
+            return new Dictionary<string, string> { ["result"] = text };
         }
 
         if (functionResult.Result is not null)
         {
-            return JsonNode.Parse(JsonSerializer.Serialize(functionResult.Result));
+            return new Dictionary<string, string> { ["result"] = functionResult.Result.ToString() ?? string.Empty };
         }
 
         if (functionResult.Exception is not null)
         {
-            return new JsonObject { ["error"] = functionResult.Exception.Message };
+            return new Dictionary<string, string> { ["error"] = functionResult.Exception.Message };
         }
 
-        return new JsonObject { ["result"] = string.Empty };
+        return new Dictionary<string, string> { ["result"] = string.Empty };
     }
 
     private static int? ToInt32(long? value)
