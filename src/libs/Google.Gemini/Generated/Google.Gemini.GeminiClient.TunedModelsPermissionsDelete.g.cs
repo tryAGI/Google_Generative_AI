@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareTunedModelsPermissionsDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string tunedModelsId,
-            ref string permissionsId);
+            ref string permissionsId,
+            ref string tunedModelsId);
         partial void PrepareTunedModelsPermissionsDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string tunedModelsId,
-            string permissionsId);
+            string permissionsId,
+            string tunedModelsId);
         partial void ProcessTunedModelsPermissionsDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Deletes the permission.
         /// </summary>
-        /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
+        /// <param name="tunedModelsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> TunedModelsPermissionsDeleteAsync(
-            string tunedModelsId,
             string permissionsId,
+            string tunedModelsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareTunedModelsPermissionsDeleteArguments(
                 httpClient: HttpClient,
-                tunedModelsId: ref tunedModelsId,
-                permissionsId: ref permissionsId);
+                permissionsId: ref permissionsId,
+                tunedModelsId: ref tunedModelsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelsId}/permissions/{permissionsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareTunedModelsPermissionsDeleteRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                tunedModelsId: tunedModelsId,
-                permissionsId: permissionsId);
+                permissionsId: permissionsId,
+                tunedModelsId: tunedModelsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
