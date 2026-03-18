@@ -4198,13 +4198,15 @@
                 "Default value.",
                 "Indicates the model should return text.",
                 "Indicates the model should return images.",
-                "Indicates the model should return audio."
+                "Indicates the model should return audio.",
+                "Indicates the model should return video."
               ],
               "enum": [
                 "MODALITY_UNSPECIFIED",
                 "TEXT",
                 "IMAGE",
-                "AUDIO"
+                "AUDIO",
+                "VIDEO"
               ]
             }
           },
