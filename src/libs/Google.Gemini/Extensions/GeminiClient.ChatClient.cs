@@ -6,6 +6,7 @@ namespace Google.Gemini;
 
 public partial class GeminiClient : Meai.IChatClient
 {
+    private const string ThoughtSignatureKey = "gemini.thoughtSignature";
     private Meai.ChatClientMetadata? _chatMetadata;
 
     object? Meai.IChatClient.GetService(Type serviceType, object? serviceKey)
@@ -156,7 +157,7 @@ public partial class GeminiClient : Meai.IChatClient
                     break;
 
                 case Meai.FunctionCallContent functionCall:
-                    parts.Add(new Part
+                    var fcPart = new Part
                     {
                         FunctionCall = new FunctionCall
                         {
@@ -166,7 +167,13 @@ public partial class GeminiClient : Meai.IChatClient
                                 ? JsonSerializer.SerializeToElement(args)
                                 : null,
                         },
-                    });
+                    };
+                    if (functionCall.AdditionalProperties?.TryGetValue(ThoughtSignatureKey, out var sigObj) == true &&
+                        sigObj is byte[] thoughtSig)
+                    {
+                        fcPart.ThoughtSignature = thoughtSig;
+                    }
+                    parts.Add(fcPart);
                     break;
 
                 case Meai.FunctionResultContent functionResult:
@@ -360,13 +367,20 @@ public partial class GeminiClient : Meai.IChatClient
 
             if (part.FunctionCall is { } functionCall)
             {
-                contents.Add(new Meai.FunctionCallContent(
+                var fcc = new Meai.FunctionCallContent(
                     callId: functionCall.Id ?? functionCall.Name ?? string.Empty,
                     name: functionCall.Name ?? string.Empty,
                     arguments: ToArgumentsDictionary(functionCall.Args))
                 {
                     RawRepresentation = functionCall,
-                });
+                };
+
+                if (part.ThoughtSignature is { Length: > 0 } sig)
+                {
+                    (fcc.AdditionalProperties ??= [])[ThoughtSignatureKey] = sig;
+                }
+
+                contents.Add(fcc);
             }
         }
     }
