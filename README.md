@@ -19,6 +19,26 @@ using Google.Gemini;
 using var client = new GeminiClient(apiKey);
 ```
 
+### Microsoft.Extensions.AI
+
+The SDK implements [`IChatClient`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.ichatclient) and [`IEmbeddingGenerator`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2):
+```csharp
+using Google.Gemini;
+using Microsoft.Extensions.AI;
+
+// IChatClient
+IChatClient chatClient = new GeminiClient(apiKey);
+var response = await chatClient.GetResponseAsync(
+    [new ChatMessage(ChatRole.User, "Hello!")],
+    new ChatOptions { ModelId = "gemini-2.0-flash" });
+
+// IEmbeddingGenerator
+IEmbeddingGenerator<string, Embedding<float>> generator = new GeminiClient(apiKey);
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions { ModelId = "text-embedding-004" });
+```
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues  
