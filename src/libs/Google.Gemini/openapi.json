@@ -1013,7 +1013,7 @@
         "operationId": "models.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "modelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1021,7 +1021,7 @@
             }
           },
           {
-            "name": "modelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -1537,7 +1537,7 @@
         "operationId": "tunedModels.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1545,7 +1545,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -1659,7 +1659,7 @@
         "operationId": "tunedModels.permissions.get",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1667,7 +1667,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -1695,7 +1695,7 @@
         "operationId": "tunedModels.permissions.patch",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1703,7 +1703,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -1749,7 +1749,7 @@
         "operationId": "tunedModels.permissions.delete",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1757,7 +1757,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2259,7 +2259,7 @@
         "operationId": "generatedFiles.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "generatedFilesId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2267,7 +2267,7 @@
             }
           },
           {
-            "name": "generatedFilesId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2464,7 +2464,7 @@
         "operationId": "fileSearchStores.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2472,7 +2472,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2502,7 +2502,7 @@
         "operationId": "fileSearchStores.upload.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2510,7 +2510,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2797,7 +2797,7 @@
         "operationId": "corpora.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2805,7 +2805,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
