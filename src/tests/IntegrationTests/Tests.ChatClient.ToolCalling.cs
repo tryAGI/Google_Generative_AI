@@ -80,16 +80,26 @@ public partial class Tests
 
             functionCall.Should().NotBeNull("the model should request a tool call");
 
+            // Verify thought signature is preserved on function call content
+            // (Gemini API requires it to be echoed back in subsequent turns)
+            if (functionCall!.AdditionalProperties?.TryGetValue("gemini.thoughtSignature", out var sig) == true)
+            {
+                sig.Should().BeOfType<byte[]>();
+                ((byte[])sig!).Should().NotBeEmpty("thought signature should be non-empty when present");
+            }
+
             // Add assistant message with function call and tool result
             messages.AddRange(response.Messages);
             var toolResult = await getWeatherTool.InvokeAsync(
-                functionCall!.Arguments is { } args ? new AIFunctionArguments(args) : null);
+                functionCall.Arguments is { } args ? new AIFunctionArguments(args) : null);
             messages.Add(new ChatMessage(ChatRole.Tool,
             [
                 new FunctionResultContent(functionCall.CallId, toolResult),
             ]));
 
             // Second turn: model should produce a final text response
+            // (this verifies the thought signature round-trip works — the API
+            // rejects requests with missing thought signatures)
             var finalResponse = await chatClient.GetResponseAsync(
                 messages,
                 new ChatOptions

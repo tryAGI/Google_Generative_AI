@@ -6,6 +6,13 @@ namespace Google.Gemini;
 
 public partial class GeminiClient : Meai.IChatClient
 {
+    /// <summary>
+    /// Key used in <see cref="Meai.FunctionCallContent.AdditionalProperties"/> to store the
+    /// Gemini thought signature (<c>Part.thoughtSignature</c>). The Gemini API requires this
+    /// opaque byte[] to be echoed back on function-call parts in subsequent turns so the model
+    /// can correlate its reasoning with tool results. See
+    /// https://ai.google.dev/gemini-api/docs/thought-signatures for details.
+    /// </summary>
     private const string ThoughtSignatureKey = "gemini.thoughtSignature";
     private Meai.ChatClientMetadata? _chatMetadata;
 
