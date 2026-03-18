@@ -97,4 +97,6 @@ public partial class Tests
 
         return null;
     }
+
+    private static GeminiClient CreateTestClient() => new(apiKey: "test-key");
 }

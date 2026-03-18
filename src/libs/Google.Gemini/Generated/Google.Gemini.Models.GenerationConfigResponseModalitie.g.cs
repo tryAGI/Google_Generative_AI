@@ -24,6 +24,10 @@ namespace Google.Gemini
         /// 
         /// </summary>
         Audio,
+        /// <summary>
+        /// 
+        /// </summary>
+        Video,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace Google.Gemini
                 GenerationConfigResponseModalitie.Text => "TEXT",
                 GenerationConfigResponseModalitie.Image => "IMAGE",
                 GenerationConfigResponseModalitie.Audio => "AUDIO",
+                GenerationConfigResponseModalitie.Video => "VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace Google.Gemini
                 "TEXT" => GenerationConfigResponseModalitie.Text,
                 "IMAGE" => GenerationConfigResponseModalitie.Image,
                 "AUDIO" => GenerationConfigResponseModalitie.Audio,
+                "VIDEO" => GenerationConfigResponseModalitie.Video,
                 _ => null,
             };
         }
