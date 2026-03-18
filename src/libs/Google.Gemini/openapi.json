@@ -1537,7 +1537,7 @@
         "operationId": "tunedModels.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1545,7 +1545,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -4198,15 +4198,13 @@
                 "Default value.",
                 "Indicates the model should return text.",
                 "Indicates the model should return images.",
-                "Indicates the model should return audio.",
-                "Indicates the model should return video."
+                "Indicates the model should return audio."
               ],
               "enum": [
                 "MODALITY_UNSPECIFIED",
                 "TEXT",
                 "IMAGE",
-                "AUDIO",
-                "VIDEO"
+                "AUDIO"
               ]
             }
           },
