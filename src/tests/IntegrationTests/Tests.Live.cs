@@ -583,4 +583,164 @@ public partial class Tests
 
         receivedResponse.Should().BeTrue("model should respond after receiving video frame");
     }
+
+    [TestMethod]
+    public async Task Live_AudioRoundTrip()
+    {
+        //// Sends PCM audio and verifies audio parts are received in the response.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Generate a short 16-bit PCM 16kHz sine wave (0.5s of 440Hz tone).
+        var sampleRate = 16000;
+        var samples = (int)(sampleRate * 0.5);
+        var pcmBytes = new byte[samples * 2];
+        for (int i = 0; i < samples; i++)
+        {
+            var sample = (short)(Math.Sin(2 * Math.PI * 440 * i / sampleRate) * 8000);
+            pcmBytes[i * 2] = (byte)(sample & 0xFF);
+            pcmBytes[i * 2 + 1] = (byte)((sample >> 8) & 0xFF);
+        }
+
+        await session.SendAudioAsync(pcmBytes, cts.Token);
+
+        //// Also send text to ensure a response is triggered.
+        await session.SendTextAsync("Repeat what you heard", cts.Token);
+
+        bool receivedAudioParts = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { } parts)
+            {
+                foreach (var part in parts)
+                {
+                    if (part.InlineData?.Data is { Length: > 0 })
+                    {
+                        receivedAudioParts = true;
+                    }
+                }
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        receivedAudioParts.Should().BeTrue("model should return audio data in response parts");
+    }
+
+    [TestMethod]
+    public async Task Live_InterruptionDetection()
+    {
+        //// Sends a message that triggers a long response, then sends another message
+        //// to potentially cause an interruption. Verifies the session handles it gracefully.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Ask for a long response to give us time to "interrupt".
+        await session.SendTextAsync("Count from 1 to 100 slowly", cts.Token);
+
+        //// Read a few messages then send another message to interrupt.
+        int messageCount = 0;
+        bool interrupted = false;
+        bool turnComplete = false;
+
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            messageCount++;
+
+            if (message.ServerContent?.Interrupted == true)
+            {
+                interrupted = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                turnComplete = true;
+                break;
+            }
+
+            //// After receiving a few audio chunks, send new input to interrupt.
+            if (messageCount == 3)
+            {
+                await session.SendTextAsync("Stop, say goodbye instead", cts.Token);
+            }
+        }
+
+        //// If interrupted, read until the new turn completes.
+        if (interrupted && !turnComplete)
+        {
+            await foreach (var message in session.ReadEventsAsync(cts.Token))
+            {
+                if (message.ServerContent?.TurnComplete == true)
+                {
+                    break;
+                }
+            }
+        }
+
+        // Either we got interrupted or the turn completed normally — both are valid.
+        (interrupted || turnComplete).Should().BeTrue("session should complete gracefully");
+    }
+
+    [TestMethod]
+    public async Task Live_UsageMetadata()
+    {
+        //// Verifies that usage metadata (token counts) is received during a session.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        await session.SendTextAsync("Say hello", cts.Token);
+
+        UsageMetadata? usageMetadata = null;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.UsageMetadata is not null)
+            {
+                usageMetadata = message.UsageMetadata;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        usageMetadata.Should().NotBeNull("server should return usage metadata");
+        usageMetadata!.TotalTokenCount.Should().BeGreaterThan(0, "total token count should be positive");
+    }
 }

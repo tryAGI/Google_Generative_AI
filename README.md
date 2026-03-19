@@ -236,6 +236,47 @@ var config = new LiveSetupConfig
 };
 ```
 
+**Interruption handling** (user speaks during model response):
+```csharp
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.ServerContent?.Interrupted == true)
+    {
+        // Model response was cut short — user started speaking
+        Console.WriteLine("Model interrupted by user input");
+    }
+
+    if (message.ServerContent?.ModelTurn?.Parts is { } parts)
+    {
+        foreach (var part in parts)
+        {
+            // Process audio/text parts (may be partial if interrupted)
+            if (part.InlineData?.Data is { } audioData)
+                PlayAudio(audioData);
+        }
+    }
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
+**Usage metadata** (track token consumption):
+```csharp
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.UsageMetadata is { } usage)
+    {
+        Console.WriteLine($"Prompt tokens: {usage.PromptTokenCount}");
+        Console.WriteLine($"Response tokens: {usage.CandidatesTokenCount}");
+        Console.WriteLine($"Total tokens: {usage.TotalTokenCount}");
+    }
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
 **GoAway handling** (graceful session migration):
 ```csharp
 await foreach (var message in session.ReadEventsAsync())
@@ -245,6 +286,45 @@ await foreach (var message in session.ReadEventsAsync())
         // Server is closing soon — reconnect using session resumption
         Console.WriteLine($"Server closing in {goAway.TimeLeft}, reconnecting...");
         break; // dispose session and reconnect with resumption handle
+    }
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
+**Audio round-trip** (send and receive audio):
+```csharp
+var config = new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+};
+
+await using var session = await client.ConnectLiveAsync(config);
+
+// Send PCM audio (16-bit, 16kHz, little-endian, mono)
+await session.SendAudioAsync(pcmBytes);
+
+// Signal end of user turn
+await session.SendClientContentAsync(turns: [], turnComplete: true);
+
+// Receive audio response
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.ServerContent?.ModelTurn?.Parts is { } parts)
+    {
+        foreach (var part in parts)
+        {
+            if (part.InlineData?.Data is { } audioData)
+            {
+                // audioData is base64-decoded PCM audio (24kHz)
+                PlayAudio(audioData);
+            }
+        }
     }
 
     if (message.ServerContent?.TurnComplete == true)
