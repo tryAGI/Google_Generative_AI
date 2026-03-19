@@ -11,6 +11,15 @@ public partial class Tests
             : "models/gemini-2.5-flash-native-audio-latest";
     }
 
+    private static LiveSetupConfig CreateLiveConfig() => new()
+    {
+        Model = GetLiveModelId(),
+        GenerationConfig = new GenerationConfig
+        {
+            ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+        },
+    };
+
     [TestMethod]
     public async Task Live_TextExchange()
     {
@@ -18,16 +27,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-        };
-
-        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+        await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
         //// Send a simple text message.
         await session.SendTextAsync("Say hello", cts.Token);
@@ -57,41 +57,34 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
+        var config = CreateLiveConfig();
+        config.Tools =
+        [
+            new Tool
             {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            Tools =
-            [
-                new Tool
-                {
-                    FunctionDeclarations =
-                    [
-                        new FunctionDeclaration
+                FunctionDeclarations =
+                [
+                    new FunctionDeclaration
+                    {
+                        Name = "get_weather",
+                        Description = "Get the current weather for a location",
+                        Parameters = new Schema
                         {
-                            Name = "get_weather",
-                            Description = "Get the current weather for a location",
-                            Parameters = new Schema
+                            Type = SchemaType.Object,
+                            Properties = new Dictionary<string, Schema>
                             {
-                                Type = SchemaType.Object,
-                                Properties = new Dictionary<string, Schema>
+                                ["location"] = new Schema
                                 {
-                                    ["location"] = new Schema
-                                    {
-                                        Type = SchemaType.String,
-                                        Description = "The city name",
-                                    },
+                                    Type = SchemaType.String,
+                                    Description = "The city name",
                                 },
-                                Required = ["location"],
                             },
+                            Required = ["location"],
                         },
-                    ],
-                },
-            ],
-        };
+                    },
+                ],
+            },
+        ];
 
         await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
 
@@ -155,15 +148,8 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            SessionResumption = new LiveSessionResumptionConfig(),
-        };
+        var config = CreateLiveConfig();
+        config.SessionResumption = new LiveSessionResumptionConfig();
 
         //// First session: send a message and collect the resumption handle.
         //// The handle arrives asynchronously — keep reading after turnComplete.
@@ -196,17 +182,10 @@ public partial class Tests
         }
 
         //// Second session: reconnect using ReconnectLiveAsync.
-        var config2 = new LiveSetupConfig
+        var config2 = CreateLiveConfig();
+        config2.SessionResumption = new LiveSessionResumptionConfig
         {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            SessionResumption = new LiveSessionResumptionConfig
-            {
-                Handle = resumptionHandle,
-            },
+            Handle = resumptionHandle,
         };
 
         await using var session2 = await client.ConnectLiveAsync(config2, cancellationToken: cts.Token);
@@ -237,15 +216,8 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            OutputAudioTranscription = new LiveOutputAudioTranscription(),
-        };
+        var config = CreateLiveConfig();
+        config.OutputAudioTranscription = new LiveOutputAudioTranscription();
 
         await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
 
@@ -285,15 +257,8 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            InputAudioTranscription = new LiveInputAudioTranscription(),
-        };
+        var config = CreateLiveConfig();
+        config.InputAudioTranscription = new LiveInputAudioTranscription();
 
         await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
 
@@ -324,19 +289,12 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
+        var config = CreateLiveConfig();
+        config.ContextWindowCompression = new LiveContextWindowCompression
         {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
+            SlidingWindow = new LiveSlidingWindow
             {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            ContextWindowCompression = new LiveContextWindowCompression
-            {
-                SlidingWindow = new LiveSlidingWindow
-                {
-                    TargetTokens = 1024,
-                },
+                TargetTokens = 1024,
             },
         };
 
@@ -369,17 +327,10 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
+        var config = CreateLiveConfig();
+        config.SystemInstruction = new Content
         {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            SystemInstruction = new Content
-            {
-                Parts = [new Part { Text = "You are a helpful assistant. Always be concise." }],
-            },
+            Parts = [new Part { Text = "You are a helpful assistant. Always be concise." }],
         };
 
         await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
@@ -411,21 +362,14 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
+        var config = CreateLiveConfig();
+        config.GenerationConfig!.SpeechConfig = new SpeechConfig
         {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
+            VoiceConfig = new VoiceConfig
             {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-                SpeechConfig = new SpeechConfig
+                PrebuiltVoiceConfig = new PrebuiltVoiceConfig
                 {
-                    VoiceConfig = new VoiceConfig
-                    {
-                        PrebuiltVoiceConfig = new PrebuiltVoiceConfig
-                        {
-                            VoiceName = "Kore",
-                        },
-                    },
+                    VoiceName = "Kore",
                 },
             },
         };
@@ -459,16 +403,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-        };
-
-        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+        await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
         //// Send conversation history with multiple turns.
         await session.SendClientContentAsync(
@@ -518,16 +453,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-        };
-
-        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+        await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
         //// Create a minimal 1x1 white JPEG image.
         byte[] minimalJpeg =
@@ -591,16 +517,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-        };
-
-        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+        await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
         //// Generate a short 16-bit PCM 16kHz sine wave (0.5s of 440Hz tone).
         var sampleRate = 16000;
@@ -649,16 +566,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-        };
-
-        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+        await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
         //// Ask for a long response to give us time to "interrupt".
         await session.SendTextAsync("Count from 1 to 100 slowly", cts.Token);
@@ -713,16 +621,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
-            {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-        };
-
-        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+        await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
         await session.SendTextAsync("Say hello", cts.Token);
 
@@ -752,41 +651,34 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
-        var config = new LiveSetupConfig
-        {
-            Model = GetLiveModelId(),
-            GenerationConfig = new GenerationConfig
+        var config = CreateLiveConfig();
+        config.Tools =
+        [
+            new Tool
             {
-                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-            },
-            Tools =
-            [
-                new Tool
-                {
-                    FunctionDeclarations =
-                    [
-                        new FunctionDeclaration
+                FunctionDeclarations =
+                [
+                    new FunctionDeclaration
+                    {
+                        Name = "slow_lookup",
+                        Description = "Performs a slow database lookup",
+                        Parameters = new Schema
                         {
-                            Name = "slow_lookup",
-                            Description = "Performs a slow database lookup",
-                            Parameters = new Schema
+                            Type = SchemaType.Object,
+                            Properties = new Dictionary<string, Schema>
                             {
-                                Type = SchemaType.Object,
-                                Properties = new Dictionary<string, Schema>
+                                ["query"] = new Schema
                                 {
-                                    ["query"] = new Schema
-                                    {
-                                        Type = SchemaType.String,
-                                        Description = "The search query",
-                                    },
+                                    Type = SchemaType.String,
+                                    Description = "The search query",
                                 },
-                                Required = ["query"],
                             },
+                            Required = ["query"],
                         },
-                    ],
-                },
-            ],
-        };
+                    },
+                ],
+            },
+        ];
 
         await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
 

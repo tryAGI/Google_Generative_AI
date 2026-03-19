@@ -37,7 +37,9 @@ The SDK code is **entirely auto-generated** -- do not manually edit files in `sr
 | Project | Purpose |
 |---------|---------|
 | `src/libs/Google.Gemini/` | Main SDK library (`GeminiClient`) |
+| `src/libs/Google.Gemini/Live/` | Hand-written Live API (WebSocket) types and session |
 | `src/tests/IntegrationTests/` | Integration tests against real Google Gemini API |
+| `samples/LiveVoiceAssistant/` | Console app sample for Live API |
 
 ### Build Configuration
 
@@ -51,10 +53,36 @@ The SDK code is **entirely auto-generated** -- do not manually edit files in `sr
 
 ### Key Conventions
 
-- No hand-written extension files -- the SDK is purely generated code
 - The client class is named `GeminiClient`
 - The namespace is `Google.Gemini`
 - Note the NuGet package ID uses underscores (`Google_Gemini`) while the namespace uses dots (`Google.Gemini`)
+
+### Hand-Written Extensions
+
+While the HTTP API client is purely auto-generated, the following hand-written files extend the SDK:
+
+**Live API (WebSocket real-time streaming):**
+- `src/libs/Google.Gemini/Live/` — Message types for the bidirectional WebSocket protocol
+  - `LiveSetupConfig.cs` — Session setup configuration
+  - `LiveClientMessage.cs` — Client → server message union
+  - `LiveServerMessage.cs` — Server → client message union + JSON parsing
+  - `LiveServerContent.cs` — Model turn, transcriptions, interruption
+  - `LiveToolCall.cs` — Tool call + cancellation wrappers
+  - `LiveRealtimeInput.cs` — Audio/text/video input chunks
+  - `LiveGoAway.cs` — Graceful disconnect notification
+  - `LiveSessionResumption.cs` — Session resumption handle types
+  - `LiveJsonContext.cs` — Source-generated JSON context for AOT (reserved)
+  - `GeminiLiveSession.cs` — WebSocket session class (`IAsyncDisposable`)
+- `src/libs/Google.Gemini/Extensions/GeminiClientExtensions.Live.cs` — `ConnectLiveAsync` factory method
+
+**MEAI integration:**
+- `src/libs/Google.Gemini/Extensions/` — `IChatClient` and `IEmbeddingGenerator` implementations
+
+**Important:** The Live API sends JSON as **Binary** WebSocket frames (not Text). Only `native-audio` models (e.g., `models/gemini-2.5-flash-native-audio-latest`) support `bidiGenerateContent` and require `AUDIO` response modality.
+
+### Samples
+
+- `samples/LiveVoiceAssistant/` — Console app demonstrating the Live API (text-in/audio-out with transcription)
 
 ### CI/CD
 
