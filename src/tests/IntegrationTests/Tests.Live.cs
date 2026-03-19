@@ -742,4 +742,38 @@ public partial class Tests
         gotResponse.Should().BeTrue("model should respond after receiving tool response");
         _ = gotCancellation; // tracked for diagnostics
     }
+
+    [TestMethod]
+    public async Task Live_ResilientSession()
+    {
+        //// Connects using ResilientLiveSession and verifies basic text exchange works.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = CreateLiveConfig();
+
+        await using var session = await client.ConnectResilientLiveAsync(
+            config,
+            cancellationToken: cts.Token);
+
+        //// Send a text message through the resilient session.
+        await session.SendTextAsync("Say hello", cts.Token);
+
+        bool receivedResponse = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+            {
+                receivedResponse = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        receivedResponse.Should().BeTrue("resilient session should return a response");
+        session.ReconnectCount.Should().Be(0, "no GoAway expected in a short session");
+    }
 }

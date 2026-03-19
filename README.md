@@ -242,6 +242,60 @@ foreach (var frame in videoFrames)
 }
 ```
 
+**Auto-reconnect on GoAway** (resilient sessions):
+```csharp
+// ResilientLiveSession automatically reconnects when the server sends GoAway
+await using var session = await client.ConnectResilientLiveAsync(new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+});
+
+session.GoAwayReceived += (sender, goAway) =>
+    Console.WriteLine($"Server closing in {goAway.TimeLeft}, reconnecting...");
+session.Reconnected += (sender, _) =>
+    Console.WriteLine("Reconnected successfully!");
+
+await session.SendTextAsync("Hello!");
+
+// Events keep flowing transparently across reconnections
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
+**Input audio transcription** (get text for audio you send):
+```csharp
+var config = new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+    InputAudioTranscription = new LiveInputAudioTranscription(),
+};
+
+await using var session = await client.ConnectLiveAsync(config);
+await session.SendAudioAsync(pcmBytes);
+await session.SendClientContentAsync(turns: [], turnComplete: true);
+
+await foreach (var message in session.ReadEventsAsync())
+{
+    // Text transcription of the audio you sent
+    if (message.ServerContent?.InputTranscription?.Text is { } text)
+        Console.Write($"[You said: {text}]");
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
 <details>
 <summary><b>Advanced features</b> (compression, interruption, usage, GoAway, audio round-trip)</summary>
 
