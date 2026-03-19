@@ -161,6 +161,12 @@ await foreach (var message in session.ReadEventsAsync())
         }]);
     }
 
+    // Tool calls cancelled due to user interruption
+    if (message.ToolCallCancellation is { } cancellation)
+    {
+        Console.WriteLine($"Tool calls cancelled: {string.Join(", ", cancellation.Ids!)}");
+    }
+
     if (message.ServerContent?.TurnComplete == true)
         break;
 }
@@ -216,6 +222,28 @@ await foreach (var message in session.ReadEventsAsync())
         break;
 }
 ```
+
+**Send audio/video:**
+```csharp
+// Send PCM audio (16-bit, 16kHz, little-endian, mono)
+await session.SendAudioAsync(pcmBytes);
+
+// Send audio with custom MIME type
+await session.SendAudioAsync(audioBytes, "audio/pcm;rate=24000");
+
+// Send video frame
+await session.SendVideoAsync(jpegBytes, "image/jpeg");
+
+// Stream video frames in a loop
+foreach (var frame in videoFrames)
+{
+    await session.SendVideoAsync(frame, "image/jpeg");
+    await Task.Delay(100); // ~10 fps
+}
+```
+
+<details>
+<summary><b>Advanced features</b> (compression, interruption, usage, GoAway, audio round-trip)</summary>
 
 **Context window compression** (for longer sessions):
 ```csharp
@@ -332,24 +360,7 @@ await foreach (var message in session.ReadEventsAsync())
 }
 ```
 
-**Send audio/video:**
-```csharp
-// Send PCM audio (16-bit, 16kHz, little-endian, mono)
-await session.SendAudioAsync(pcmBytes);
-
-// Send audio with custom MIME type
-await session.SendAudioAsync(audioBytes, "audio/pcm;rate=24000");
-
-// Send video frame
-await session.SendVideoAsync(jpegBytes, "image/jpeg");
-
-// Stream video frames in a loop
-foreach (var frame in videoFrames)
-{
-    await session.SendVideoAsync(frame, "image/jpeg");
-    await Task.Delay(100); // ~10 fps
-}
-```
+</details>
 
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
@@ -369,9 +380,9 @@ This SDK targets the **v1beta** API, which is the full-featured version used by 
 
 ## Support
 
-Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues  
-Priority place for ideas and general questions: https://github.com/tryAGI/Google_Generative_AI/discussions  
-Discord: https://discord.gg/Ca2xhfBf3v  
+Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues
+Priority place for ideas and general questions: https://github.com/tryAGI/Google_Generative_AI/discussions
+Discord: https://discord.gg/Ca2xhfBf3v
 
 ## Acknowledgments
 

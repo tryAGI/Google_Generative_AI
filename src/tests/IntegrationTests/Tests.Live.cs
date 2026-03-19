@@ -743,4 +743,111 @@ public partial class Tests
         usageMetadata.Should().NotBeNull("server should return usage metadata");
         usageMetadata!.TotalTokenCount.Should().BeGreaterThan(0, "total token count should be positive");
     }
+
+    [TestMethod]
+    public async Task Live_ToolCallCancellation()
+    {
+        //// Declares a tool, triggers a tool call, then sends a tool response
+        //// and monitors for ToolCallCancellation events during the session.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+            Tools =
+            [
+                new Tool
+                {
+                    FunctionDeclarations =
+                    [
+                        new FunctionDeclaration
+                        {
+                            Name = "slow_lookup",
+                            Description = "Performs a slow database lookup",
+                            Parameters = new Schema
+                            {
+                                Type = SchemaType.Object,
+                                Properties = new Dictionary<string, Schema>
+                                {
+                                    ["query"] = new Schema
+                                    {
+                                        Type = SchemaType.String,
+                                        Description = "The search query",
+                                    },
+                                },
+                                Required = ["query"],
+                            },
+                        },
+                    ],
+                },
+            ],
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Trigger a tool call.
+        await session.SendTextAsync("Use the slow_lookup tool to search for cats", cts.Token);
+
+        LiveToolCall? toolCall = null;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ToolCall is not null)
+            {
+                toolCall = message.ToolCall;
+                break;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        if (toolCall == null)
+        {
+            Assert.Inconclusive("Model did not trigger a tool call.");
+        }
+
+        //// Send the tool response to unblock the model.
+        await session.SendToolResponseAsync(
+        [
+            new FunctionResponse
+            {
+                Name = "slow_lookup",
+                Id = toolCall!.FunctionCalls![0].Id,
+                Response = new { results = "Found 3 cats" },
+            },
+        ], cts.Token);
+
+        //// Read events — monitor for ToolCallCancellation (rare, but possible).
+        bool gotCancellation = false;
+        bool gotResponse = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ToolCallCancellation is not null)
+            {
+                gotCancellation = true;
+            }
+
+            if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+            {
+                gotResponse = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        // The session should produce a response after the tool response.
+        // ToolCallCancellation would only occur if user audio interrupted mid-call.
+        gotResponse.Should().BeTrue("model should respond after receiving tool response");
+        _ = gotCancellation; // tracked for diagnostics
+    }
 }

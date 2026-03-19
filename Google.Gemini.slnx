@@ -20,4 +20,7 @@
   <Folder Name="/tests/">
     <Project Path="src/tests/IntegrationTests/Google.Gemini.IntegrationTests.csproj" />
   </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/LiveVoiceAssistant/LiveVoiceAssistant.csproj" />
+  </Folder>
 </Solution>
