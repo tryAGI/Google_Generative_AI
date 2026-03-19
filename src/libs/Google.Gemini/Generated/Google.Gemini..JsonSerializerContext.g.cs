@@ -101,18 +101,6 @@ namespace Google.Gemini
 
             typeof(global::Google.Gemini.JsonConverters.ModelStatusModelStageNullableJsonConverter),
 
-            typeof(global::Google.Gemini.JsonConverters.ConditionOperationJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.ConditionOperationNullableJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.GenerateAnswerRequestAnswerStyleJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.GenerateAnswerRequestAnswerStyleNullableJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.InputFeedbackBlockReasonJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.InputFeedbackBlockReasonNullableJsonConverter),
-
             typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter),
 
             typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeNullableJsonConverter),
@@ -124,10 +112,6 @@ namespace Google.Gemini
             typeof(global::Google.Gemini.JsonConverters.EmbedContentBatchStateJsonConverter),
 
             typeof(global::Google.Gemini.JsonConverters.EmbedContentBatchStateNullableJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.ContentFilterReasonJsonConverter),
-
-            typeof(global::Google.Gemini.JsonConverters.ContentFilterReasonNullableJsonConverter),
 
             typeof(global::Google.Gemini.JsonConverters.FileStateJsonConverter),
 
@@ -293,20 +277,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ModalityTokenCountModality))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ModelStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ModelStatusModelStage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateAnswerRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GroundingPassages))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.GroundingPassage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GroundingPassage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.SemanticRetrieverConfig))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.MetadataFilter>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.MetadataFilter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Condition>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Condition))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ConditionOperation))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateAnswerRequestAnswerStyle))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateAnswerResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.InputFeedback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.InputFeedbackBlockReason))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.EmbedContentRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.EmbedContentRequestTaskType))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.EmbedContentResponse))]
@@ -345,18 +315,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.CachedContent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CachedContent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CachedContentUsageMetadata))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateMessageRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.MessagePrompt))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Example>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Example))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Message))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Message>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateMessageResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.ContentFilter>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ContentFilter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ContentFilterReason))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CountMessageTokensRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CountMessageTokensResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CreateFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.File))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.VideoFileMetadata))]
@@ -393,9 +351,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ListPermissionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Permission>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.TransferOwnershipRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.PredictRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.PredictResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.PredictLongRunningRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.FileSearchStore))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Corpus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ListFileSearchStoresResponse))]
@@ -414,22 +369,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.WhiteSpaceConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.UploadToFileSearchStoreRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CustomLongRunningOperation))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateTextRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.TextPrompt))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateTextResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.TextCompletion>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.TextCompletion))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.SafetyFeedback>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.SafetyFeedback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.EmbedTextRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.EmbedTextResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Embedding))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.BatchEmbedTextRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.EmbedTextRequest>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.BatchEmbedTextResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Embedding>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CountTextTokensRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.CountTextTokensResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Operation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
@@ -457,9 +396,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.LogprobsResultCandidate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.UrlMetadata>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.ModalityTokenCount>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.GroundingPassage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.MetadataFilter>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Condition>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.EmbedContentRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.ContentEmbedding>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.InlinedRequest>))]
@@ -467,9 +403,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.InlinedEmbedContentRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.InlinedEmbedContentResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.CachedContent>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Example>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Message>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.ContentFilter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.File>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.GeneratedFile>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Model>))]
@@ -481,10 +414,6 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Corpus>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.CustomMetadata>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Document>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.TextCompletion>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.SafetyFeedback>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.EmbedTextRequest>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.Embedding>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

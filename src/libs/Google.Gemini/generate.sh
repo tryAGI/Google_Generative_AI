@@ -7,11 +7,11 @@ rm discovery.json
 
 # Post-process the OpenAPI spec:
 # 1. Ensure VIDEO modality is present in responseModalities enum
-# 2. Remove deprecated legacy PaLM endpoints (generateText, generateMessage,
-#    embedText, batchEmbedText, countTextTokens, countMessageTokens,
-#    generateAnswer, predict, predictLongRunning)
+# 2. Remove deprecated legacy PaLM endpoints
+# 3. Prune orphaned schemas no longer referenced by any endpoint
 python3 -c "
-import json, sys
+import json, re
+
 with open('openapi.json', 'r') as f:
     spec = json.load(f)
 
@@ -45,9 +45,30 @@ for path in paths_to_remove:
     del spec['paths'][path]
     changed = True
 if paths_to_remove:
-    print(f'Removed {len(paths_to_remove)} legacy PaLM endpoints: {paths_to_remove}')
+    print(f'Removed {len(paths_to_remove)} legacy PaLM endpoints')
 else:
     print('No legacy PaLM endpoints found')
+
+# --- Prune orphaned schemas ---
+def find_refs(name, schemas, visited):
+    if name in visited or name not in schemas:
+        return
+    visited.add(name)
+    for ref in re.findall(r'#/components/schemas/(\w+)', json.dumps(schemas[name])):
+        find_refs(ref, schemas, visited)
+
+all_schemas = spec.get('components', {}).get('schemas', {})
+used = set()
+for ref in re.findall(r'#/components/schemas/(\w+)', json.dumps(spec.get('paths', {}))):
+    find_refs(ref, all_schemas, used)
+orphaned = sorted(set(all_schemas.keys()) - used)
+for name in orphaned:
+    del all_schemas[name]
+    changed = True
+if orphaned:
+    print(f'Pruned {len(orphaned)} orphaned schemas: {orphaned}')
+else:
+    print('No orphaned schemas found')
 
 if changed:
     with open('openapi.json', 'w') as f:
