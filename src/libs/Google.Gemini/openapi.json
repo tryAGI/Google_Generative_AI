@@ -287,45 +287,6 @@
         }
       }
     },
-    "/models/{modelsId}:generateAnswer": {
-      "post": {
-        "description": "Generates a grounded answer from the model given an input `GenerateAnswerRequest`.",
-        "operationId": "models.generateAnswer",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the `Model` to use for generating the grounded response. Format: `model=models/{model}`.",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GenerateAnswerRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenerateAnswerResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/models/{modelsId}:streamGenerateContent": {
       "post": {
         "description": "Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.",
@@ -565,84 +526,6 @@
         }
       }
     },
-    "/models/{modelsId}:generateMessage": {
-      "post": {
-        "description": "Generates a response from the model given an input `MessagePrompt`.",
-        "operationId": "models.generateMessage",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the model to use. Format: `name=models/{model}`.",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GenerateMessageRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenerateMessageResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:countMessageTokens": {
-      "post": {
-        "description": "Runs a model's tokenizer on a string and returns the token count.",
-        "operationId": "models.countMessageTokens",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CountMessageTokensRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CountMessageTokensResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/models/{modelsId}": {
       "get": {
         "description": "Gets information about a specific `Model` such as its version number, token limits, [parameters](https://ai.google.dev/gemini-api/docs/models/generative-models#model-parameters) and other metadata. Refer to the [Gemini models guide](https://ai.google.dev/gemini-api/docs/models/gemini) for detailed model information.",
@@ -703,240 +586,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ListModelsResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:predict": {
-      "post": {
-        "description": "Performs a prediction request.",
-        "operationId": "models.predict",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the model for prediction. Format: `name=models/{model}`.",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PredictRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PredictResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:predictLongRunning": {
-      "post": {
-        "description": "Same as Predict but returns an LRO.",
-        "operationId": "models.predictLongRunning",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the model for prediction. Format: `name=models/{model}`.",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PredictLongRunningRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:generateText": {
-      "post": {
-        "description": "Generates a response from the model given an input message.",
-        "operationId": "models.generateText",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the `Model` or `TunedModel` to use for generating the completion. Examples: models/text-bison-001 tunedModels/sentence-translator-u3b7m",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GenerateTextRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenerateTextResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:embedText": {
-      "post": {
-        "description": "Generates an embedding from the model given an input message.",
-        "operationId": "models.embedText",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The model name to use with the format model=models/{model}.",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EmbedTextRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EmbedTextResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:batchEmbedText": {
-      "post": {
-        "description": "Generates multiple embeddings from the model given input text in a synchronous call.",
-        "operationId": "models.batchEmbedText",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the `Model` to use for generating the embedding. Examples: models/embedding-gecko-001",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/BatchEmbedTextRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchEmbedTextResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{modelsId}:countTextTokens": {
-      "post": {
-        "description": "Runs a model's tokenizer on a text and returns the token count.",
-        "operationId": "models.countTextTokens",
-        "parameters": [
-          {
-            "name": "modelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`",
-            "schema": {
-              "type": "string",
-              "pattern": "^models/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CountTextTokensRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CountTextTokensResponse"
                 }
               }
             }
@@ -1013,7 +662,7 @@
         "operationId": "models.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "modelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1021,7 +670,7 @@
             }
           },
           {
-            "name": "modelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -1429,45 +1078,6 @@
         }
       }
     },
-    "/tunedModels/{tunedModelsId}:generateText": {
-      "post": {
-        "description": "Generates a response from the model given an input message.",
-        "operationId": "tunedModels.generateText",
-        "parameters": [
-          {
-            "name": "tunedModelsId",
-            "in": "path",
-            "required": true,
-            "description": "Required. The name of the `Model` or `TunedModel` to use for generating the completion. Examples: models/text-bison-001 tunedModels/sentence-translator-u3b7m",
-            "schema": {
-              "type": "string",
-              "pattern": "^tunedModels/[^/]+$"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GenerateTextRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenerateTextResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/tunedModels/{tunedModelsId}/operations": {
       "get": {
         "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
@@ -1537,7 +1147,7 @@
         "operationId": "tunedModels.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1545,7 +1155,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -1659,7 +1269,7 @@
         "operationId": "tunedModels.permissions.get",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1667,7 +1277,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -1695,7 +1305,7 @@
         "operationId": "tunedModels.permissions.patch",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1703,7 +1313,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -1749,7 +1359,7 @@
         "operationId": "tunedModels.permissions.delete",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1757,7 +1367,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2259,7 +1869,7 @@
         "operationId": "generatedFiles.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "generatedFilesId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2267,7 +1877,7 @@
             }
           },
           {
-            "name": "generatedFilesId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2540,7 +2150,7 @@
         "operationId": "fileSearchStores.documents.get",
         "parameters": [
           {
-            "name": "documentsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2548,7 +2158,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "documentsId",
             "in": "path",
             "required": true,
             "description": "Required. The name of the `Document` to retrieve. Example: `fileSearchStores/my-file-search-store-123/documents/the-doc-abc`",
@@ -2576,7 +2186,7 @@
         "operationId": "fileSearchStores.documents.delete",
         "parameters": [
           {
-            "name": "documentsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2584,7 +2194,7 @@
             }
           },
           {
-            "name": "fileSearchStoresId",
+            "name": "documentsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the `Document` to delete. Example: `fileSearchStores/my-file-search-store-123/documents/the-doc-abc`",
@@ -2797,7 +2407,7 @@
         "operationId": "corpora.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2805,7 +2415,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2919,7 +2529,7 @@
         "operationId": "corpora.permissions.get",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2927,7 +2537,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2955,7 +2565,7 @@
         "operationId": "corpora.permissions.patch",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2963,7 +2573,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -3009,7 +2619,7 @@
         "operationId": "corpora.permissions.delete",
         "parameters": [
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3017,7 +2627,7 @@
             }
           },
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",

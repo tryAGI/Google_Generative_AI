@@ -137,6 +137,50 @@ var embeddings = await generator.GenerateAsync(
     });
 ```
 
+### Task Types
+
+Specify a task type via `AdditionalProperties` to optimize embeddings for your use case:
+
+```csharp
+var embeddings = await generator.GenerateAsync(
+    ["How do I reset my password?"],
+    new EmbeddingGenerationOptions
+    {
+        ModelId = "gemini-embedding-2",
+        AdditionalProperties = new AdditionalPropertiesDictionary
+        {
+            ["TaskType"] = "RETRIEVAL_QUERY",
+        },
+    });
+```
+
+For document ingestion, use `RETRIEVAL_DOCUMENT` with an optional `Title`:
+
+```csharp
+var embeddings = await generator.GenerateAsync(
+    ["To reset your password, go to Settings > Security > Change Password..."],
+    new EmbeddingGenerationOptions
+    {
+        ModelId = "gemini-embedding-2",
+        AdditionalProperties = new AdditionalPropertiesDictionary
+        {
+            ["TaskType"] = "RETRIEVAL_DOCUMENT",
+            ["Title"] = "Password Reset Guide",
+        },
+    });
+```
+
+| Task Type | Use Case |
+|-----------|----------|
+| `RETRIEVAL_QUERY` | Search queries — embed the question |
+| `RETRIEVAL_DOCUMENT` | Documents to be searched — embed the content |
+| `SEMANTIC_SIMILARITY` | Measuring text similarity |
+| `CLASSIFICATION` | Text classification |
+| `CLUSTERING` | Grouping similar texts |
+| `QUESTION_ANSWERING` | Question answering |
+| `FACT_VERIFICATION` | Fact checking |
+| `CODE_RETRIEVAL_QUERY` | Code search queries |
+
 ### Available Embedding Models
 
 | Model | Dimensions | Description |

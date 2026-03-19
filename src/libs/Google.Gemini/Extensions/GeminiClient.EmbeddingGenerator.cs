@@ -26,6 +26,26 @@ public partial class GeminiClient : Meai.IEmbeddingGenerator<string, Meai.Embedd
 
         var modelId = options?.ModelId ?? "gemini-embedding-2";
 
+        EmbedContentRequestTaskType? taskType = null;
+        string? title = null;
+        if (options?.AdditionalProperties is { Count: > 0 } additionalProps)
+        {
+            if (additionalProps.TryGetValue("TaskType", out var taskTypeVal))
+            {
+                taskType = taskTypeVal switch
+                {
+                    EmbedContentRequestTaskType enumVal => enumVal,
+                    string str => EmbedContentRequestTaskTypeExtensions.ToEnum(str),
+                    _ => null,
+                };
+            }
+
+            if (additionalProps.TryGetValue("Title", out var titleVal) && titleVal is string titleStr)
+            {
+                title = titleStr;
+            }
+        }
+
         var requests = values
             .Select(text => new EmbedContentRequest
             {
@@ -35,6 +55,8 @@ public partial class GeminiClient : Meai.IEmbeddingGenerator<string, Meai.Embedd
                     Parts = [new Part { Text = text }],
                 },
                 OutputDimensionality = options?.Dimensions,
+                TaskType = taskType,
+                Title = title,
             })
             .ToList();
 

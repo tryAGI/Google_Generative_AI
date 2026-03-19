@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareCorporaPermissionsDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string permissionsId,
-            ref string corporaId);
+            ref string corporaId,
+            ref string permissionsId);
         partial void PrepareCorporaPermissionsDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string permissionsId,
-            string corporaId);
+            string corporaId,
+            string permissionsId);
         partial void ProcessCorporaPermissionsDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Deletes the permission.
         /// </summary>
-        /// <param name="permissionsId"></param>
         /// <param name="corporaId"></param>
+        /// <param name="permissionsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> CorporaPermissionsDeleteAsync(
-            string permissionsId,
             string corporaId,
+            string permissionsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareCorporaPermissionsDeleteArguments(
                 httpClient: HttpClient,
-                permissionsId: ref permissionsId,
-                corporaId: ref corporaId);
+                corporaId: ref corporaId,
+                permissionsId: ref permissionsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/corpora/{corporaId}/permissions/{permissionsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareCorporaPermissionsDeleteRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                permissionsId: permissionsId,
-                corporaId: corporaId);
+                corporaId: corporaId,
+                permissionsId: permissionsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
