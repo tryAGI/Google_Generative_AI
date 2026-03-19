@@ -24,7 +24,7 @@ public partial class Tests
     {
         LoadDotEnv();
 
-        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_MODEL_ID") ?? "gemini-flash-latest";
+        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-flash-latest";
     }
 
     private static void LoadDotEnv()
