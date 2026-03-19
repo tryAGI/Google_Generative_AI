@@ -8,7 +8,7 @@ public partial class Tests
     {
         LoadDotEnv();
 
-        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_EMBEDDING_MODEL_ID") ?? "gemini-embedding-001";
+        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_EMBEDDING_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-embedding-001";
     }
 
     [TestMethod]
