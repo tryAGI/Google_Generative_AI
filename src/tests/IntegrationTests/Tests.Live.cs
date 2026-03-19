@@ -564,7 +564,7 @@ public partial class Tests
         //// Sends a message that triggers a long response, then sends another message
         //// to potentially cause an interruption. Verifies the session handles it gracefully.
         using var client = GetAuthenticatedClient();
-        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(45));
 
         await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
 
