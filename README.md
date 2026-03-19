@@ -70,6 +70,53 @@ await foreach (var message in session.ReadEventsAsync())
 }
 ```
 
+**Voice selection and speech config:**
+```csharp
+await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+        SpeechConfig = new SpeechConfig
+        {
+            VoiceConfig = new VoiceConfig
+            {
+                PrebuiltVoiceConfig = new PrebuiltVoiceConfig
+                {
+                    VoiceName = "Kore", // Aoede, Charon, Fenrir, Kore, Puck, etc.
+                },
+            },
+        },
+    },
+});
+```
+
+**Multi-turn conversation:**
+```csharp
+// Send conversation history before triggering a response
+await session.SendClientContentAsync(
+    turns:
+    [
+        new Content
+        {
+            Role = "user",
+            Parts = [new Part { Text = "My name is Alice" }],
+        },
+        new Content
+        {
+            Role = "model",
+            Parts = [new Part { Text = "Nice to meet you, Alice!" }],
+        },
+        new Content
+        {
+            Role = "user",
+            Parts = [new Part { Text = "What's my name?" }],
+        },
+    ],
+    turnComplete: true);
+```
+
 **System instruction** (customize model behavior):
 ```csharp
 await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
@@ -210,8 +257,18 @@ await foreach (var message in session.ReadEventsAsync())
 // Send PCM audio (16-bit, 16kHz, little-endian, mono)
 await session.SendAudioAsync(pcmBytes);
 
+// Send audio with custom MIME type
+await session.SendAudioAsync(audioBytes, "audio/pcm;rate=24000");
+
 // Send video frame
 await session.SendVideoAsync(jpegBytes, "image/jpeg");
+
+// Stream video frames in a loop
+foreach (var frame in videoFrames)
+{
+    await session.SendVideoAsync(frame, "image/jpeg");
+    await Task.Delay(100); // ~10 fps
+}
 ```
 
 <!-- EXAMPLES:START -->
