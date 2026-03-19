@@ -229,4 +229,50 @@ public partial class Tests
 
         receivedResponse.Should().BeTrue("resumed session should produce a response");
     }
+
+    [TestMethod]
+    public async Task Live_OutputTranscription()
+    {
+        //// Enables output audio transcription to receive text alongside audio.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+            OutputAudioTranscription = new LiveOutputAudioTranscription(),
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Send a text message and collect transcription events.
+        await session.SendTextAsync("Say the word hello", cts.Token);
+
+        bool receivedTranscription = false;
+        bool receivedAudio = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+            {
+                receivedAudio = true;
+            }
+
+            if (message.ServerContent?.OutputTranscription?.Text is { Length: > 0 })
+            {
+                receivedTranscription = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        receivedAudio.Should().BeTrue("model should return audio");
+        receivedTranscription.Should().BeTrue("output transcription should be received");
+    }
 }

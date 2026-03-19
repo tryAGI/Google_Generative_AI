@@ -128,6 +128,32 @@ var config2 = new LiveSetupConfig
 await using var session2 = await client.ConnectLiveAsync(config2);
 ```
 
+**Output transcription** (get text alongside audio responses):
+```csharp
+var config = new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+    OutputAudioTranscription = new LiveOutputAudioTranscription(),
+};
+
+await using var session = await client.ConnectLiveAsync(config);
+await session.SendTextAsync("Tell me a joke");
+
+await foreach (var message in session.ReadEventsAsync())
+{
+    // Text transcription of the audio response
+    if (message.ServerContent?.OutputTranscription?.Text is { } text)
+        Console.Write(text);
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
 **Send audio/video:**
 ```csharp
 // Send PCM audio (16-bit, 16kHz, little-endian, mono)
