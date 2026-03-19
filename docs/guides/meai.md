@@ -114,7 +114,7 @@ var embeddings = await generator.GenerateAsync(
     ["Hello, world!", "How are you?"],
     new EmbeddingGenerationOptions
     {
-        ModelId = "text-embedding-004",
+        ModelId = "gemini-embedding-001",
     });
 
 foreach (var embedding in embeddings)

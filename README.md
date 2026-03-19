@@ -37,7 +37,7 @@ var response = await chatClient.GetResponseAsync(
 IEmbeddingGenerator<string, Embedding<float>> generator = new GeminiClient(apiKey);
 var embeddings = await generator.GenerateAsync(
     ["Hello, world!"],
-    new EmbeddingGenerationOptions { ModelId = "text-embedding-004" });
+    new EmbeddingGenerationOptions { ModelId = "gemini-embedding-001" });
 ```
 
 <!-- EXAMPLES:START -->
