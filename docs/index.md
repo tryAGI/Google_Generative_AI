@@ -12,6 +12,7 @@
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
 - Microsoft.Extensions.AI `IChatClient` and `IEmbeddingGenerator` support
+- [Live API](guides/live-api.md) for real-time bidirectional voice/video over WebSocket
 
 ### Usage
 ```csharp

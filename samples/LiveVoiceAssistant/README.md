@@ -5,10 +5,9 @@ A console app demonstrating the Gemini Live API for real-time voice interactions
 ## Features
 
 - Text input with audio response (with transcription)
-- Session resumption for reconnection
+- Automatic reconnection on server GoAway via `ResilientLiveSession`
 - Context window compression for longer sessions
 - Interruption handling, tool call monitoring, usage tracking
-- GoAway (graceful disconnect) detection
 
 ## Setup
 
@@ -27,5 +26,5 @@ A console app demonstrating the Gemini Live API for real-time voice interactions
 ## Notes
 
 - Uses `gemini-2.5-flash-native-audio-latest` model with audio response modality
-- Audio chunks are counted but not played — integrate an audio library for playback
-- Session resumption handle is printed on exit for manual reconnection
+- Audio chunks are counted but not played — see the `LiveAudioPlayback` sample for WAV output
+- Session resumption is handled automatically by `ResilientLiveSession`
