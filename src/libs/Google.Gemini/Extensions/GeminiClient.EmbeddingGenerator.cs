@@ -24,7 +24,7 @@ public partial class GeminiClient : Meai.IEmbeddingGenerator<string, Meai.Embedd
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var modelId = options?.ModelId ?? "gemini-embedding-2";
+        var modelId = options?.ModelId ?? "gemini-embedding-001";
 
         EmbedContentRequestTaskType? taskType = null;
         string? title = null;

@@ -37,7 +37,7 @@ var response = await chatClient.GetResponseAsync(
 IEmbeddingGenerator<string, Embedding<float>> generator = new GeminiClient(apiKey);
 var embeddings = await generator.GenerateAsync(
     ["Hello, world!"],
-    new EmbeddingGenerationOptions { ModelId = "gemini-embedding-2" });
+    new EmbeddingGenerationOptions { ModelId = "gemini-embedding-001" });
 ```
 
 <!-- EXAMPLES:START -->
@@ -45,7 +45,12 @@ var embeddings = await generator.GenerateAsync(
 
 ### Embedding Models
 
-The SDK defaults to `gemini-embedding-2` — Google's latest embedding model with best-in-class retrieval performance, Matryoshka dimensions support, and Code retrieval task type. See [Google's embedding guide](https://ai.google.dev/gemini-api/docs/embeddings) for details.
+| Model | Dimensions | Description |
+|-------|-----------|-------------|
+| `gemini-embedding-001` | 768 (default) | Stable text embedding model |
+| `gemini-embedding-2-preview` | 3072 (default) | Latest multimodal model — text, images, video, audio, PDFs. Matryoshka dimensions support |
+
+The SDK defaults to `gemini-embedding-001`. For best retrieval quality, use `gemini-embedding-2-preview` (note: embedding spaces are incompatible between the two models). See [Google's embedding guide](https://ai.google.dev/gemini-api/docs/embeddings) for details.
 
 ### API Version
 

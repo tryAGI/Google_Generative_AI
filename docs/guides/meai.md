@@ -114,7 +114,7 @@ var embeddings = await generator.GenerateAsync(
     ["Hello, world!", "How are you?"],
     new EmbeddingGenerationOptions
     {
-        ModelId = "gemini-embedding-2",
+        ModelId = "gemini-embedding-2-preview",
     });
 
 foreach (var embedding in embeddings)
@@ -125,14 +125,14 @@ foreach (var embedding in embeddings)
 
 ### Custom Dimensions
 
-`gemini-embedding-2` supports Matryoshka dimensionality reduction — you can request smaller vectors for faster search with minimal quality loss:
+`gemini-embedding-2-preview` supports Matryoshka dimensionality reduction — you can request smaller vectors for faster search with minimal quality loss:
 
 ```csharp
 var embeddings = await generator.GenerateAsync(
     ["Hello, world!"],
     new EmbeddingGenerationOptions
     {
-        ModelId = "gemini-embedding-2",
+        ModelId = "gemini-embedding-2-preview",
         Dimensions = 256, // default is 3072; supports 256, 512, 768, 1024, etc.
     });
 ```
@@ -146,7 +146,7 @@ var embeddings = await generator.GenerateAsync(
     ["How do I reset my password?"],
     new EmbeddingGenerationOptions
     {
-        ModelId = "gemini-embedding-2",
+        ModelId = "gemini-embedding-2-preview",
         AdditionalProperties = new AdditionalPropertiesDictionary
         {
             ["TaskType"] = "RETRIEVAL_QUERY",
@@ -161,7 +161,7 @@ var embeddings = await generator.GenerateAsync(
     ["To reset your password, go to Settings > Security > Change Password..."],
     new EmbeddingGenerationOptions
     {
-        ModelId = "gemini-embedding-2",
+        ModelId = "gemini-embedding-2-preview",
         AdditionalProperties = new AdditionalPropertiesDictionary
         {
             ["TaskType"] = "RETRIEVAL_DOCUMENT",
@@ -185,7 +185,7 @@ var embeddings = await generator.GenerateAsync(
 
 | Model | Dimensions | Description |
 |-------|-----------|-------------|
-| `gemini-embedding-2` | 3072 (default) | Latest model, best retrieval quality, Matryoshka dimensions support |
+| `gemini-embedding-2-preview` | 3072 (default) | Latest model, best retrieval quality, Matryoshka dimensions support |
 | `gemini-embedding-001` | 768 | Previous generation model |
 
 !!! note "API Version"
