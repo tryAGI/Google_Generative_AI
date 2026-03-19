@@ -41,6 +41,33 @@ var embeddings = await generator.GenerateAsync(
     new EmbeddingGenerationOptions { ModelId = "text-embedding-004" });
 ```
 
+### Live API (Real-time Voice/Video)
+
+Connect to the [Gemini Live API](guides/live-api.md) for real-time bidirectional voice and video over WebSocket:
+```csharp
+using Google.Gemini;
+
+using var client = new GeminiClient(apiKey);
+
+await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+});
+
+await session.SendTextAsync("Hello!");
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
+See the [Live API guide](guides/live-api.md) for voice selection, tool calling, session resumption, auto-reconnect, and more.
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues  
