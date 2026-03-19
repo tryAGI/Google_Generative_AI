@@ -24,8 +24,6 @@ var config = new LiveSetupConfig
     },
     // Get text transcriptions of audio responses
     OutputAudioTranscription = new LiveOutputAudioTranscription(),
-    // Enable session resumption for reconnection
-    SessionResumption = new LiveSessionResumptionConfig(),
     // Compress context for longer sessions
     ContextWindowCompression = new LiveContextWindowCompression
     {
@@ -38,7 +36,17 @@ var config = new LiveSetupConfig
 };
 
 Console.WriteLine("Connecting to Gemini Live API...");
-await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+// Use ResilientLiveSession for automatic reconnection on GoAway
+await using var session = await client.ConnectResilientLiveAsync(
+    config,
+    cancellationToken: cts.Token);
+
+session.GoAwayReceived += (_, goAway) =>
+    Console.WriteLine($"\n  [Server closing in {goAway.TimeLeft}, reconnecting...]");
+session.Reconnected += (_, _) =>
+    Console.WriteLine("  [Reconnected successfully]");
+
 Console.WriteLine("Connected! Type messages and press Enter. Ctrl+C to quit.\n");
 
 // Main conversation loop
@@ -98,13 +106,6 @@ while (!cts.Token.IsCancellationRequested)
             Console.Write($"\n  [Tokens: {usage.TotalTokenCount}]");
         }
 
-        // Server requesting disconnect
-        if (message.GoAway is { } goAway)
-        {
-            Console.Write($"\n  [Server closing in {goAway.TimeLeft}]");
-            break;
-        }
-
         if (message.ServerContent?.TurnComplete == true)
             break;
     }
@@ -115,6 +116,11 @@ while (!cts.Token.IsCancellationRequested)
     }
 
     Console.WriteLine();
+
+    if (session.ReconnectCount > 0)
+    {
+        Console.WriteLine($"  [Reconnections: {session.ReconnectCount}]");
+    }
 }
 
 Console.WriteLine("\nSession ended.");

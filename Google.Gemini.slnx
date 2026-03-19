@@ -22,5 +22,6 @@
   </Folder>
   <Folder Name="/samples/">
     <Project Path="samples/LiveVoiceAssistant/LiveVoiceAssistant.csproj" />
+    <Project Path="samples/LiveAudioPlayback/LiveAudioPlayback.csproj" />
   </Folder>
 </Solution>
