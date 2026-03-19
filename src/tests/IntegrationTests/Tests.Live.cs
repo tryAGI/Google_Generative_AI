@@ -361,4 +361,46 @@ public partial class Tests
 
         receivedResponse.Should().BeTrue("model should respond with compression enabled");
     }
+
+    [TestMethod]
+    public async Task Live_SystemInstruction()
+    {
+        //// Connects with a system instruction to customize model behavior.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+            SystemInstruction = new Content
+            {
+                Parts = [new Part { Text = "You are a helpful assistant. Always be concise." }],
+            },
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Send a message — system instruction is accepted at setup time.
+        await session.SendTextAsync("Say hello", cts.Token);
+
+        bool receivedResponse = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+            {
+                receivedResponse = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        receivedResponse.Should().BeTrue("model should respond with system instruction");
+    }
 }

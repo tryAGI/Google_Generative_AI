@@ -70,6 +70,22 @@ await foreach (var message in session.ReadEventsAsync())
 }
 ```
 
+**System instruction** (customize model behavior):
+```csharp
+await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+    SystemInstruction = new Content
+    {
+        Parts = [new Part { Text = "You are a friendly pirate. Always respond in pirate speak." }],
+    },
+});
+```
+
 **Tool calling:**
 ```csharp
 var config = new LiveSetupConfig
@@ -171,6 +187,22 @@ var config = new LiveSetupConfig
         },
     },
 };
+```
+
+**GoAway handling** (graceful session migration):
+```csharp
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.GoAway is { } goAway)
+    {
+        // Server is closing soon — reconnect using session resumption
+        Console.WriteLine($"Server closing in {goAway.TimeLeft}, reconnecting...");
+        break; // dispose session and reconnect with resumption handle
+    }
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
 ```
 
 **Send audio/video:**

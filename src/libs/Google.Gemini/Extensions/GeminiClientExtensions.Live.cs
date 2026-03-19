@@ -74,6 +74,9 @@ public static class GeminiClientLiveExtensions
         var uri = new Uri($"{WssBaseUri}?key={Uri.EscapeDataString(apiKey)}");
 
         // Create and configure WebSocket
+        // CA2000: ownership of webSocket transfers to GeminiLiveSession on success;
+        // the catch block handles disposal on failure for both objects.
+#pragma warning disable CA2000
         var webSocket = new ClientWebSocket();
         GeminiLiveSession? session = null;
 
@@ -117,6 +120,7 @@ public static class GeminiClientLiveExtensions
 
             throw;
         }
+#pragma warning restore CA2000
     }
 
     /// <summary>
