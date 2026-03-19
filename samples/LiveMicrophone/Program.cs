@@ -59,6 +59,18 @@ if (recProcess == null)
 }
 
 Console.WriteLine($"Microphone: {recDescription}");
+
+// Start audio playback process (sox play, ffplay, or aplay)
+var (playProcess, playDescription) = StartAudioPlayback();
+if (playProcess != null)
+{
+    Console.WriteLine($"Speaker: {playDescription}");
+}
+else
+{
+    Console.WriteLine("Speaker: none (install sox or ffplay for real-time playback)");
+}
+
 Console.WriteLine("Speak into your microphone. Ctrl+C to quit.\n");
 
 // Stream microphone audio to Gemini in a background task
@@ -81,9 +93,6 @@ var micTask = Task.Run(async () =>
     catch (OperationCanceledException) { }
 }, cts.Token);
 
-// Collect audio response for WAV saving
-var turnNumber = 0;
-
 // Read events from the server
 try
 {
@@ -101,17 +110,14 @@ try
             Console.Write($"\r\x1b[KGemini: {outputText}");
         }
 
-        // Collect audio response and save as WAV
+        // Play audio response in real-time
         if (message.ServerContent?.ModelTurn?.Parts is { } parts)
         {
             foreach (var part in parts)
             {
                 if (part.InlineData?.Data is { Length: > 0 } audioData)
                 {
-                    // Save each turn's audio to a WAV file
-                    var currentTurn = Interlocked.Increment(ref turnNumber);
-                    var wavPath = Path.Combine(Directory.GetCurrentDirectory(), $"mic_response_{currentTurn:D3}.wav");
-                    WriteWavFile(wavPath, audioData, sampleRate: 24000, bitsPerSample: 16, channels: 1);
+                    PlayAudioChunk(playProcess, audioData);
                 }
             }
         }
@@ -137,9 +143,92 @@ catch (OperationCanceledException) { }
 // Cleanup
 try { recProcess.Kill(); } catch { }
 recProcess.Dispose();
+if (playProcess != null)
+{
+    try { playProcess.StandardInput.BaseStream.Close(); } catch { }
+    try { playProcess.Kill(); } catch { }
+    playProcess.Dispose();
+}
 await micTask;
 
 Console.WriteLine("\nSession ended.");
+
+/// <summary>
+/// Writes an audio chunk to the playback process stdin (real-time audio output).
+/// </summary>
+static void PlayAudioChunk(Process? playProcess, byte[] audioData)
+{
+    if (playProcess == null)
+        return;
+
+    try
+    {
+        playProcess.StandardInput.BaseStream.Write(audioData, 0, audioData.Length);
+        playProcess.StandardInput.BaseStream.Flush();
+    }
+    catch
+    {
+        // Playback process may have exited
+    }
+}
+
+/// <summary>
+/// Starts a platform-appropriate audio playback process accepting 16-bit PCM at 24kHz mono on stdin.
+/// </summary>
+static (Process? process, string description) StartAudioPlayback()
+{
+    // Try sox (play) — cross-platform, most common
+    var playPath = FindExecutable("play");
+    if (playPath != null)
+    {
+        var process = StartProcess(playPath, [
+            "-q",                    // quiet
+            "-r", "24000",           // 24kHz (Gemini output rate)
+            "-b", "16",              // 16-bit
+            "-c", "1",               // mono
+            "-e", "signed-integer",  // signed PCM
+            "-t", "raw",             // raw input
+            "-",                     // from stdin
+        ], redirectStdin: true);
+        return (process, "sox (play)");
+    }
+
+    // Try ffplay — cross-platform via ffmpeg
+    var ffplayPath = FindExecutable("ffplay");
+    if (ffplayPath != null)
+    {
+        var process = StartProcess(ffplayPath, [
+            "-nodisp",               // no video window
+            "-autoexit",
+            "-f", "s16le",           // 16-bit signed little-endian
+            "-ar", "24000",          // 24kHz
+            "-ac", "1",              // mono
+            "-loglevel", "error",
+            "-i", "pipe:0",          // from stdin
+        ], redirectStdin: true);
+        return (process, "ffplay");
+    }
+
+    // Try aplay — Linux ALSA
+    if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+    {
+        var aplayPath = FindExecutable("aplay");
+        if (aplayPath != null)
+        {
+            var process = StartProcess(aplayPath, [
+                "-q",                // quiet
+                "-f", "S16_LE",      // 16-bit signed little-endian
+                "-r", "24000",       // 24kHz
+                "-c", "1",           // mono
+                "-t", "raw",         // raw input
+                "--",
+            ], redirectStdin: true);
+            return (process, "aplay (ALSA)");
+        }
+    }
+
+    return (null, "none");
+}
 
 /// <summary>
 /// Starts a platform-appropriate microphone capture process outputting 16-bit PCM at 16kHz mono to stdout.
@@ -154,7 +243,7 @@ static (Process? process, string description) StartMicrophoneCapture()
             "-q",                    // quiet
             "-r", "16000",           // 16kHz
             "-b", "16",              // 16-bit
-            "-c", "1",               // mono
+            "-c", "1",              // mono
             "-e", "signed-integer",  // signed PCM
             "-t", "raw",             // raw output
             "-",                     // to stdout
@@ -218,18 +307,23 @@ static (Process? process, string description) StartMicrophoneCapture()
     return (null, "none");
 }
 
-static Process? StartProcess(string fileName, string[] args)
+static Process? StartProcess(string fileName, string[] args, bool redirectStdin = false)
 {
     var psi = new ProcessStartInfo
     {
         FileName = fileName,
-        RedirectStandardOutput = true,
+        RedirectStandardOutput = !redirectStdin, // capture output for mic, not for playback
+        RedirectStandardInput = redirectStdin,
         RedirectStandardError = true,
         UseShellExecute = false,
         CreateNoWindow = true,
     };
     foreach (var arg in args)
         psi.ArgumentList.Add(arg);
+
+    // For mic capture we need stdout; for playback we need stdin
+    if (!redirectStdin)
+        psi.RedirectStandardOutput = true;
 
     return Process.Start(psi);
 }
@@ -256,36 +350,4 @@ static string? FindExecutable(string name)
     {
         return null;
     }
-}
-
-/// <summary>
-/// Writes raw PCM audio data as a WAV file.
-/// </summary>
-static void WriteWavFile(string path, byte[] pcmData, int sampleRate, int bitsPerSample, int channels)
-{
-    var byteRate = sampleRate * channels * bitsPerSample / 8;
-    var blockAlign = channels * bitsPerSample / 8;
-
-    using var fs = System.IO.File.Create(path);
-    using var writer = new BinaryWriter(fs);
-
-    // RIFF header
-    writer.Write("RIFF"u8);
-    writer.Write(36 + pcmData.Length);
-    writer.Write("WAVE"u8);
-
-    // fmt sub-chunk
-    writer.Write("fmt "u8);
-    writer.Write(16);
-    writer.Write((short)1);
-    writer.Write((short)channels);
-    writer.Write(sampleRate);
-    writer.Write(byteRate);
-    writer.Write((short)blockAlign);
-    writer.Write((short)bitsPerSample);
-
-    // data sub-chunk
-    writer.Write("data"u8);
-    writer.Write(pcmData.Length);
-    writer.Write(pcmData);
 }

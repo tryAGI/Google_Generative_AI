@@ -1,24 +1,26 @@
 # LiveMicrophone
 
-A real-time voice conversation app that captures microphone audio, streams it to the Gemini Live API, and saves audio responses as WAV files.
+A real-time voice conversation app that captures microphone audio, streams it to the Gemini Live API, and plays back audio responses through your speakers.
 
 ## Features
 
-- Real-time microphone capture via `sox`, `arecord`, or `ffmpeg`
-- Bidirectional audio streaming (send mic audio, receive model audio)
+- Real-time microphone capture via `sox` (rec), `arecord`, or `ffmpeg`
+- Real-time audio playback via `sox` (play), `ffplay`, or `aplay`
+- Bidirectional audio streaming (mic in, speaker out)
 - Input transcription (what you said) and output transcription (what the model said)
-- Audio responses saved as WAV files for playback
 - Voice selection and auto-reconnect via `ResilientLiveSession`
 
 ## Prerequisites
 
-Install one of the supported audio capture tools:
+Install audio tools for capture and playback:
 
-| Tool | Platform | Install |
-|------|----------|---------|
-| `sox` (rec) | macOS, Linux, Windows | `brew install sox` / `apt install sox` |
-| `arecord` | Linux | `apt install alsa-utils` |
-| `ffmpeg` | All | `brew install ffmpeg` / `apt install ffmpeg` |
+| Tool | Platform | Install | Provides |
+|------|----------|---------|----------|
+| `sox` | macOS, Linux, Windows | `brew install sox` / `apt install sox` | `rec` (capture) + `play` (playback) |
+| `arecord`/`aplay` | Linux | `apt install alsa-utils` | Capture + playback |
+| `ffmpeg`/`ffplay` | All | `brew install ffmpeg` / `apt install ffmpeg` | Capture + playback |
+
+**Recommended:** Install `sox` — it provides both `rec` and `play` in one package.
 
 ## Setup
 
@@ -32,24 +34,11 @@ Install one of the supported audio capture tools:
    dotnet run --project samples/LiveMicrophone/LiveMicrophone.csproj
    ```
 
-3. Speak into your microphone. The model's transcribed responses appear in the console, and audio responses are saved as `mic_response_001.wav`, `mic_response_002.wav`, etc.
+3. Speak into your microphone. You'll hear the model's response through your speakers and see transcriptions in the console.
 
 4. Press `Ctrl+C` to quit.
-
-## Playback
-
-```bash
-# macOS
-afplay mic_response_001.wav
-
-# Linux
-aplay mic_response_001.wav
-
-# Windows
-start mic_response_001.wav
-```
 
 ## Audio Format
 
 - **Input:** 16-bit PCM, 16kHz, mono (captured from microphone)
-- **Output:** 16-bit PCM, 24kHz, mono (from Gemini Live API, saved as WAV)
+- **Output:** 16-bit PCM, 24kHz, mono (from Gemini Live API, played through speakers)

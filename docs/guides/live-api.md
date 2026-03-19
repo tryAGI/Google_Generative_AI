@@ -332,4 +332,5 @@ await foreach (var message in session.ReadEventsAsync())
 
 - **[LiveVoiceAssistant](https://github.com/tryAGI/Google_Generative_AI/tree/main/samples/LiveVoiceAssistant)** — Text-in/audio-out console app with transcription
 - **[LiveAudioPlayback](https://github.com/tryAGI/Google_Generative_AI/tree/main/samples/LiveAudioPlayback)** — Saves audio responses as playable WAV files
-- **[LiveMicrophone](https://github.com/tryAGI/Google_Generative_AI/tree/main/samples/LiveMicrophone)** — Real-time voice conversation with microphone capture
+- **[LiveMicrophone](https://github.com/tryAGI/Google_Generative_AI/tree/main/samples/LiveMicrophone)** — Real-time voice conversation with microphone capture and speaker playback
+- **[LiveToolAgent](https://github.com/tryAGI/Google_Generative_AI/tree/main/samples/LiveToolAgent)** — Voice agent with function calling (weather, time, calculator)

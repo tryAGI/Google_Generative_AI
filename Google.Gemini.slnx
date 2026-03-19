@@ -24,5 +24,6 @@
     <Project Path="samples/LiveVoiceAssistant/LiveVoiceAssistant.csproj" />
     <Project Path="samples/LiveAudioPlayback/LiveAudioPlayback.csproj" />
     <Project Path="samples/LiveMicrophone/LiveMicrophone.csproj" />
+    <Project Path="samples/LiveToolAgent/LiveToolAgent.csproj" />
   </Folder>
 </Solution>
