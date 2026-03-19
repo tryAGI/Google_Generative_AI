@@ -7,7 +7,7 @@ namespace Google.Gemini;
 public partial class GeminiClient : Meai.IChatClient
 {
     /// <summary>
-    /// Key used in <see cref="Meai.FunctionCallContent.AdditionalProperties"/> to store the
+    /// Key used in <see cref="Meai.FunctionCallContent"/>.<c>AdditionalProperties</c> to store the
     /// Gemini thought signature (<c>Part.thoughtSignature</c>). The Gemini API requires this
     /// opaque byte[] to be echoed back on function-call parts in subsequent turns so the model
     /// can correlate its reasoning with tool results. See
@@ -102,8 +102,9 @@ public partial class GeminiClient : Meai.IChatClient
 
         // Build a callId→name lookup from FunctionCallContent items so we can
         // populate the required FunctionResponse.Name for FunctionResultContent items.
+        var messagesList = messages as IList<Meai.ChatMessage> ?? messages.ToList();
         var functionNamesByCallId = new Dictionary<string, string>(StringComparer.Ordinal);
-        foreach (var message in messages)
+        foreach (var message in messagesList)
         {
             foreach (var content in message.Contents)
             {
@@ -114,7 +115,7 @@ public partial class GeminiClient : Meai.IChatClient
             }
         }
 
-        foreach (var message in messages)
+        foreach (var message in messagesList)
         {
             if (message.Role == Meai.ChatRole.System)
             {
