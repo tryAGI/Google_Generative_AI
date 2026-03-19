@@ -40,6 +40,103 @@ var embeddings = await generator.GenerateAsync(
     new EmbeddingGenerationOptions { ModelId = "gemini-embedding-001" });
 ```
 
+### Live API (Real-time Voice/Video)
+
+The SDK supports the [Gemini Live API](https://ai.google.dev/gemini-api/docs/live-api) for real-time bidirectional voice and video interactions over WebSocket:
+
+```csharp
+using Google.Gemini;
+
+using var client = new GeminiClient(apiKey);
+
+// Connect to the Live API
+await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+});
+
+// Send text and receive audio responses
+await session.SendTextAsync("Hello, how are you?");
+
+await foreach (var message in session.ReadEventsAsync())
+{
+    // Audio data in message.ServerContent.ModelTurn.Parts[].InlineData
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
+**Tool calling:**
+```csharp
+var config = new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+    Tools = [new Tool { FunctionDeclarations = [myFunction] }],
+};
+
+await using var session = await client.ConnectLiveAsync(config);
+await session.SendTextAsync("What's the weather in London?");
+
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.ToolCall is { } toolCall)
+    {
+        // Handle function call and send response
+        await session.SendToolResponseAsync([new FunctionResponse
+        {
+            Name = toolCall.FunctionCalls![0].Name,
+            Id = toolCall.FunctionCalls[0].Id,
+            Response = new { temperature = "15C" },
+        }]);
+    }
+
+    if (message.ServerContent?.TurnComplete == true)
+        break;
+}
+```
+
+**Session resumption** (reconnect without losing context):
+```csharp
+var config = new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+    SessionResumption = new LiveSessionResumptionConfig(),
+};
+
+await using var session1 = await client.ConnectLiveAsync(config);
+// ... interact ...
+var handle = session1.LastSessionResumptionHandle;
+
+// Later, reconnect with the handle
+var config2 = new LiveSetupConfig
+{
+    // ... same config ...
+    SessionResumption = new LiveSessionResumptionConfig { Handle = handle },
+};
+await using var session2 = await client.ConnectLiveAsync(config2);
+```
+
+**Send audio/video:**
+```csharp
+// Send PCM audio (16-bit, 16kHz, little-endian, mono)
+await session.SendAudioAsync(pcmBytes);
+
+// Send video frame
+await session.SendVideoAsync(jpegBytes, "image/jpeg");
+```
+
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
 
