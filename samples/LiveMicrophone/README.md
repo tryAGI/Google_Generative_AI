@@ -2,6 +2,8 @@
 
 A real-time voice conversation app that captures microphone audio, streams it to the Gemini Live API, and plays back audio responses through your speakers.
 
+Also supports a `--text` mode for environments without audio capture tools.
+
 ## Features
 
 - Real-time microphone capture via `sox` (rec), `arecord`, or `ffmpeg`
@@ -9,10 +11,11 @@ A real-time voice conversation app that captures microphone audio, streams it to
 - Bidirectional audio streaming (mic in, speaker out)
 - Input transcription (what you said) and output transcription (what the model said)
 - Voice selection and auto-reconnect via `ResilientLiveSession`
+- `--text` mode: keyboard input with text responses (no audio tools needed)
 
 ## Prerequisites
 
-Install audio tools for capture and playback:
+Audio tools are only needed for audio mode (the default). Text mode has no extra dependencies.
 
 | Tool | Platform | Install | Provides |
 |------|----------|---------|----------|
@@ -31,10 +34,14 @@ Install audio tools for capture and playback:
 
 2. Run the app:
    ```bash
+   # Audio mode (default) — real-time mic + speaker
    dotnet run --project samples/LiveMicrophone/LiveMicrophone.csproj
+
+   # Text mode — no audio tools needed, uses gemini-2.0-flash
+   dotnet run --project samples/LiveMicrophone/LiveMicrophone.csproj -- --text
    ```
 
-3. Speak into your microphone. You'll hear the model's response through your speakers and see transcriptions in the console.
+3. In audio mode, speak into your microphone. In text mode, type messages and press Enter.
 
 4. Press `Ctrl+C` to quit.
 

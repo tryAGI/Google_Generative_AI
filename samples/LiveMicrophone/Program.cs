@@ -7,6 +7,9 @@ var apiKey = Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
     ?? throw new InvalidOperationException(
         "Set the GOOGLE_GEMINI_API_KEY environment variable.");
 
+// --text flag switches to text-only mode (no audio capture/playback tools needed)
+var textMode = args.Contains("--text", StringComparer.OrdinalIgnoreCase);
+
 using var client = new GeminiClient(apiKey);
 using var cts = new CancellationTokenSource();
 
@@ -17,139 +20,189 @@ Console.CancelKeyPress += (_, e) =>
 };
 
 // Configure the Live API session
-var config = new LiveSetupConfig
-{
-    Model = "models/gemini-2.5-flash-native-audio-latest",
-    GenerationConfig = new GenerationConfig
+var config = textMode
+    ? new LiveSetupConfig
     {
-        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
-        SpeechConfig = new SpeechConfig
+        Model = "models/gemini-2.0-flash",
+        GenerationConfig = new GenerationConfig
         {
-            VoiceConfig = new VoiceConfig
+            ResponseModalities = [GenerationConfigResponseModalitie.Text],
+        },
+        SystemInstruction = new Content
+        {
+            Parts = [new Part { Text = "You are a helpful assistant. Keep responses concise — under 2 sentences." }],
+        },
+    }
+    : new LiveSetupConfig
+    {
+        Model = "models/gemini-2.5-flash-native-audio-latest",
+        GenerationConfig = new GenerationConfig
+        {
+            ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            SpeechConfig = new SpeechConfig
             {
-                PrebuiltVoiceConfig = new PrebuiltVoiceConfig
+                VoiceConfig = new VoiceConfig
                 {
-                    VoiceName = "Kore",
+                    PrebuiltVoiceConfig = new PrebuiltVoiceConfig
+                    {
+                        VoiceName = "Kore",
+                    },
                 },
             },
         },
-    },
-    OutputAudioTranscription = new LiveOutputAudioTranscription(),
-    InputAudioTranscription = new LiveInputAudioTranscription(),
-    SystemInstruction = new Content
-    {
-        Parts = [new Part { Text = "You are a helpful voice assistant. Keep responses concise — under 2 sentences." }],
-    },
-};
+        OutputAudioTranscription = new LiveOutputAudioTranscription(),
+        InputAudioTranscription = new LiveInputAudioTranscription(),
+        SystemInstruction = new Content
+        {
+            Parts = [new Part { Text = "You are a helpful voice assistant. Keep responses concise — under 2 sentences." }],
+        },
+    };
 
-Console.WriteLine("Connecting to Gemini Live API...");
+var modeLabel = textMode ? "text" : "audio";
+Console.WriteLine($"Connecting to Gemini Live API ({modeLabel} mode)...");
 await using var session = await client.ConnectResilientLiveAsync(config, cancellationToken: cts.Token);
 Console.WriteLine("Connected!");
 
-// Detect and start the platform microphone capture process
-var (recProcess, recDescription) = StartMicrophoneCapture();
-if (recProcess == null)
+if (textMode)
 {
-    Console.WriteLine("No supported audio capture tool found.");
-    Console.WriteLine("Install one of: sox (rec), arecord (Linux), or ffmpeg.");
-    Console.WriteLine("  macOS:  brew install sox");
-    Console.WriteLine("  Linux:  sudo apt install sox / alsa-utils");
-    Console.WriteLine("  Any:    brew/apt/choco install ffmpeg");
-    return;
-}
+    // Text mode: simple keyboard input loop
+    Console.WriteLine("Type messages and press Enter. Ctrl+C to quit.\n");
 
-Console.WriteLine($"Microphone: {recDescription}");
+    while (!cts.Token.IsCancellationRequested)
+    {
+        Console.Write("You: ");
+        var input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input))
+            continue;
 
-// Start audio playback process (sox play, ffplay, or aplay)
-var (playProcess, playDescription) = StartAudioPlayback();
-if (playProcess != null)
-{
-    Console.WriteLine($"Speaker: {playDescription}");
+        await session.SendTextAsync(input, cts.Token);
+
+        Console.Write("Gemini: ");
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { } parts)
+            {
+                foreach (var part in parts)
+                {
+                    if (part.Text is { } partText)
+                        Console.Write(partText);
+                }
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+                break;
+        }
+        Console.WriteLine("\n");
+    }
 }
 else
 {
-    Console.WriteLine("Speaker: none (install sox or ffplay for real-time playback)");
-}
+    // Audio mode: microphone capture + speaker playback
+    var (recProcess, recDescription) = StartMicrophoneCapture();
+    if (recProcess == null)
+    {
+        Console.WriteLine("No supported audio capture tool found.");
+        Console.WriteLine("Install one of: sox (rec), arecord (Linux), or ffmpeg.");
+        Console.WriteLine("  macOS:  brew install sox");
+        Console.WriteLine("  Linux:  sudo apt install sox / alsa-utils");
+        Console.WriteLine("  Any:    brew/apt/choco install ffmpeg");
+        Console.WriteLine("\nTip: Run with --text for text-only mode (no audio tools needed).");
+        return;
+    }
 
-Console.WriteLine("Speak into your microphone. Ctrl+C to quit.\n");
+    Console.WriteLine($"Microphone: {recDescription}");
 
-// Stream microphone audio to Gemini in a background task
-var micTask = Task.Run(async () =>
-{
-    var buffer = new byte[3200]; // 100ms of 16kHz 16-bit mono PCM
-    var stream = recProcess.StandardOutput.BaseStream;
+    // Start audio playback process (sox play, ffplay, or aplay)
+    var (playProcess, playDescription) = StartAudioPlayback();
+    if (playProcess != null)
+    {
+        Console.WriteLine($"Speaker: {playDescription}");
+    }
+    else
+    {
+        Console.WriteLine("Speaker: none (install sox or ffplay for real-time playback)");
+    }
 
+    Console.WriteLine("Speak into your microphone. Ctrl+C to quit.\n");
+
+    // Stream microphone audio to Gemini in a background task
+    var micTask = Task.Run(async () =>
+    {
+        var buffer = new byte[3200]; // 100ms of 16kHz 16-bit mono PCM
+        var stream = recProcess.StandardOutput.BaseStream;
+
+        try
+        {
+            while (!cts.Token.IsCancellationRequested)
+            {
+                var bytesRead = await stream.ReadAtLeastAsync(buffer, buffer.Length, throwOnEndOfStream: false, cts.Token);
+                if (bytesRead == 0)
+                    break;
+
+                await session.SendAudioAsync(buffer.AsMemory(0, bytesRead), cts.Token);
+            }
+        }
+        catch (OperationCanceledException) { }
+    }, cts.Token);
+
+    // Read events from the server
     try
     {
-        while (!cts.Token.IsCancellationRequested)
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
         {
-            var bytesRead = await stream.ReadAtLeastAsync(buffer, buffer.Length, throwOnEndOfStream: false, cts.Token);
-            if (bytesRead == 0)
-                break;
+            // Input transcription — what you said
+            if (message.ServerContent?.InputTranscription?.Text is { } inputText)
+            {
+                Console.Write($"\r\x1b[KYou: {inputText}");
+            }
 
-            await session.SendAudioAsync(buffer.AsMemory(0, bytesRead), cts.Token);
+            // Output transcription — what the model said
+            if (message.ServerContent?.OutputTranscription?.Text is { } outputText)
+            {
+                Console.Write($"\r\x1b[KGemini: {outputText}");
+            }
+
+            // Play audio response in real-time
+            if (message.ServerContent?.ModelTurn?.Parts is { } parts)
+            {
+                foreach (var part in parts)
+                {
+                    if (part.InlineData?.Data is { Length: > 0 } audioData)
+                    {
+                        PlayAudioChunk(playProcess, audioData);
+                    }
+                }
+            }
+
+            if (message.ServerContent?.Interrupted == true)
+            {
+                Console.Write(" [interrupted]");
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                Console.WriteLine();
+            }
+
+            if (message.UsageMetadata is { } usage)
+            {
+                Console.WriteLine($"  [Tokens: {usage.TotalTokenCount}]");
+            }
         }
     }
     catch (OperationCanceledException) { }
-}, cts.Token);
 
-// Read events from the server
-try
-{
-    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    // Cleanup
+    try { recProcess.Kill(); } catch { }
+    recProcess.Dispose();
+    if (playProcess != null)
     {
-        // Input transcription — what you said
-        if (message.ServerContent?.InputTranscription?.Text is { } inputText)
-        {
-            Console.Write($"\r\x1b[KYou: {inputText}");
-        }
-
-        // Output transcription — what the model said
-        if (message.ServerContent?.OutputTranscription?.Text is { } outputText)
-        {
-            Console.Write($"\r\x1b[KGemini: {outputText}");
-        }
-
-        // Play audio response in real-time
-        if (message.ServerContent?.ModelTurn?.Parts is { } parts)
-        {
-            foreach (var part in parts)
-            {
-                if (part.InlineData?.Data is { Length: > 0 } audioData)
-                {
-                    PlayAudioChunk(playProcess, audioData);
-                }
-            }
-        }
-
-        if (message.ServerContent?.Interrupted == true)
-        {
-            Console.Write(" [interrupted]");
-        }
-
-        if (message.ServerContent?.TurnComplete == true)
-        {
-            Console.WriteLine();
-        }
-
-        if (message.UsageMetadata is { } usage)
-        {
-            Console.WriteLine($"  [Tokens: {usage.TotalTokenCount}]");
-        }
+        try { playProcess.StandardInput.BaseStream.Close(); } catch { }
+        try { playProcess.Kill(); } catch { }
+        playProcess.Dispose();
     }
+    await micTask;
 }
-catch (OperationCanceledException) { }
-
-// Cleanup
-try { recProcess.Kill(); } catch { }
-recProcess.Dispose();
-if (playProcess != null)
-{
-    try { playProcess.StandardInput.BaseStream.Close(); } catch { }
-    try { playProcess.Kill(); } catch { }
-    playProcess.Dispose();
-}
-await micTask;
 
 Console.WriteLine("\nSession ended.");
 
@@ -312,7 +365,7 @@ static Process? StartProcess(string fileName, string[] args, bool redirectStdin 
     var psi = new ProcessStartInfo
     {
         FileName = fileName,
-        RedirectStandardOutput = !redirectStdin, // capture output for mic, not for playback
+        RedirectStandardOutput = !redirectStdin,
         RedirectStandardInput = redirectStdin,
         RedirectStandardError = true,
         UseShellExecute = false,
@@ -321,7 +374,6 @@ static Process? StartProcess(string fileName, string[] args, bool redirectStdin 
     foreach (var arg in args)
         psi.ArgumentList.Add(arg);
 
-    // For mic capture we need stdout; for playback we need stdin
     if (!redirectStdin)
         psi.RedirectStandardOutput = true;
 
