@@ -10,8 +10,8 @@ public partial class Tests
         LoadDotEnv();
 
         var apiKey =
-            Environment.GetEnvironmentVariable("API_KEY") ??
-            Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY") ??
+            Environment.GetEnvironmentVariable("API_KEY") is { Length: > 0 } apiKeyValue ? apiKeyValue :
+            Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY") is { Length: > 0 } geminiKeyValue ? geminiKeyValue :
             throw new AssertInconclusiveException(
                 "GOOGLE_GEMINI_API_KEY environment variable is not found. Set GOOGLE_GEMINI_API_KEY or API_KEY, or add a repo-root .env file.");
 
