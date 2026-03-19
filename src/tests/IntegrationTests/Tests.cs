@@ -27,6 +27,13 @@ public partial class Tests
         return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-flash-latest";
     }
 
+    private static string GetEmbeddingModelId()
+    {
+        LoadDotEnv();
+
+        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_EMBEDDING_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "text-embedding-004";
+    }
+
     private static void LoadDotEnv()
     {
         if (Interlocked.Exchange(ref _isDotEnvLoaded, 1) == 1)
