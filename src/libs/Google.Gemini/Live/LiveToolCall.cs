@@ -13,7 +13,9 @@ public sealed class LiveToolCall
     /// The function calls requested by the model.
     /// </summary>
     [JsonPropertyName("functionCalls")]
+#pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
     public IList<FunctionCall>? FunctionCalls { get; set; }
+#pragma warning restore CA2227
 }
 
 /// <summary>
@@ -25,5 +27,7 @@ public sealed class LiveToolCallCancellation
     /// The IDs of the function calls to cancel.
     /// </summary>
     [JsonPropertyName("ids")]
+#pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
     public IList<string>? Ids { get; set; }
+#pragma warning restore CA2227
 }

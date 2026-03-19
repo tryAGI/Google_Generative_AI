@@ -275,4 +275,90 @@ public partial class Tests
         receivedAudio.Should().BeTrue("model should return audio");
         receivedTranscription.Should().BeTrue("output transcription should be received");
     }
+
+    [TestMethod]
+    public async Task Live_InputTranscription()
+    {
+        //// Enables input audio transcription and verifies the config is accepted.
+        //// Input transcription generates text for audio sent via SendAudioAsync.
+        //// Here we use text input to verify the feature is accepted at setup time.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+            InputAudioTranscription = new LiveInputAudioTranscription(),
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Send text — input transcription config is accepted at setup time.
+        await session.SendTextAsync("Say hello", cts.Token);
+
+        bool receivedResponse = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+            {
+                receivedResponse = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        receivedResponse.Should().BeTrue("model should respond with input transcription enabled");
+    }
+
+    [TestMethod]
+    public async Task Live_ContextWindowCompression()
+    {
+        //// Enables context window compression with a sliding window.
+        using var client = GetAuthenticatedClient();
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+        var config = new LiveSetupConfig
+        {
+            Model = GetLiveModelId(),
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+            },
+            ContextWindowCompression = new LiveContextWindowCompression
+            {
+                SlidingWindow = new LiveSlidingWindow
+                {
+                    TargetTokens = 1024,
+                },
+            },
+        };
+
+        await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+        //// Send a message — compression config is accepted at setup time.
+        await session.SendTextAsync("Say hello", cts.Token);
+
+        bool receivedResponse = false;
+        await foreach (var message in session.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+            {
+                receivedResponse = true;
+            }
+
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                break;
+            }
+        }
+
+        receivedResponse.Should().BeTrue("model should respond with compression enabled");
+    }
 }

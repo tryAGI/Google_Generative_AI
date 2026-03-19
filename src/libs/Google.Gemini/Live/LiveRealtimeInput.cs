@@ -13,7 +13,9 @@ public sealed class LiveRealtimeInput
     /// Optional. Audio data chunk (16-bit PCM 16kHz little-endian, base64-encoded via Blob.Data).
     /// </summary>
     [JsonPropertyName("mediaChunks")]
+#pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
     public IList<Blob>? MediaChunks { get; set; }
+#pragma warning restore CA2227
 
     /// <summary>
     /// Optional. Text input.

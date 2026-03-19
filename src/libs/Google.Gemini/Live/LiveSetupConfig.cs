@@ -31,7 +31,9 @@ public sealed class LiveSetupConfig
     /// Optional. Tools available for this session (function declarations, Google Search, code execution).
     /// </summary>
     [JsonPropertyName("tools")]
+#pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
     public IList<Tool>? Tools { get; set; }
+#pragma warning restore CA2227
 
     /// <summary>
     /// Optional. Configuration for how to handle tool calls.

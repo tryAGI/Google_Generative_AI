@@ -154,6 +154,25 @@ await foreach (var message in session.ReadEventsAsync())
 }
 ```
 
+**Context window compression** (for longer sessions):
+```csharp
+var config = new LiveSetupConfig
+{
+    Model = "models/gemini-2.5-flash-native-audio-latest",
+    GenerationConfig = new GenerationConfig
+    {
+        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+    },
+    ContextWindowCompression = new LiveContextWindowCompression
+    {
+        SlidingWindow = new LiveSlidingWindow
+        {
+            TargetTokens = 1024, // tokens to retain after compression
+        },
+    },
+};
+```
+
 **Send audio/video:**
 ```csharp
 // Send PCM audio (16-bit, 16kHz, little-endian, mono)

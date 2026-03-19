@@ -44,7 +44,9 @@ public sealed class LiveClientContent
     /// Optional. Conversation turns to send.
     /// </summary>
     [JsonPropertyName("turns")]
+#pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
     public IList<Content>? Turns { get; set; }
+#pragma warning restore CA2227
 
     /// <summary>
     /// If true, indicates that the current turn is complete.
@@ -62,5 +64,7 @@ public sealed class LiveToolResponse
     /// The function responses to send.
     /// </summary>
     [JsonPropertyName("functionResponses")]
+#pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
     public IList<FunctionResponse>? FunctionResponses { get; set; }
+#pragma warning restore CA2227
 }
