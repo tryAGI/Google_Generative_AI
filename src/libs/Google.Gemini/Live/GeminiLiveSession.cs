@@ -39,8 +39,15 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     public string? LastSessionResumptionHandle { get; private set; }
 
     /// <summary>
-    /// Sends raw audio data (16-bit PCM, 16kHz, little-endian, mono).
+    /// Sends raw audio data as 16-bit PCM, 16kHz, little-endian, mono.
     /// </summary>
+    /// <remarks>
+    /// The audio is sent with MIME type <c>audio/pcm;rate=16000</c>.
+    /// For other sample rates or formats, use the overload that accepts a MIME type.
+    /// Audio input does not automatically trigger a model response — call
+    /// <see cref="SendClientContentAsync"/> with <c>turnComplete: true</c> to signal end of turn,
+    /// or rely on the server's voice activity detection (VAD).
+    /// </remarks>
     /// <param name="pcmData">The raw PCM audio bytes.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     public Task SendAudioAsync(
@@ -95,10 +102,15 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Sends a video frame (e.g., JPEG image data).
+    /// Sends a video frame (e.g., JPEG image data) as realtime input.
     /// </summary>
+    /// <remarks>
+    /// For streaming video, send frames at approximately 1-10 fps.
+    /// Supported formats include JPEG and PNG. The server processes frames
+    /// alongside any audio being streamed.
+    /// </remarks>
     /// <param name="imageData">The image bytes.</param>
-    /// <param name="mimeType">The image MIME type (e.g., "image/jpeg").</param>
+    /// <param name="mimeType">The image MIME type (e.g., <c>"image/jpeg"</c>).</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     public Task SendVideoAsync(
         ReadOnlyMemory<byte> imageData,
@@ -124,8 +136,13 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Sends text content as a complete turn.
+    /// Sends text content as a complete user turn, triggering a model response.
     /// </summary>
+    /// <remarks>
+    /// This is a convenience method that wraps the text in a <see cref="Content"/> with
+    /// <c>Role = "user"</c> and sets <c>TurnComplete = true</c>. For multi-turn
+    /// conversation history, use <see cref="SendClientContentAsync"/> instead.
+    /// </remarks>
     /// <param name="text">The text to send.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     public Task SendTextAsync(
@@ -152,10 +169,17 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Sends turn-based conversation content.
+    /// Sends turn-based conversation content with explicit turn management.
     /// </summary>
-    /// <param name="turns">The conversation turns.</param>
-    /// <param name="turnComplete">Whether the client turn is complete.</param>
+    /// <remarks>
+    /// Use this method to send multi-turn conversation history or to signal end of turn
+    /// after streaming audio. Each <see cref="Content"/> in <paramref name="turns"/>
+    /// should have a <c>Role</c> of either <c>"user"</c> or <c>"model"</c>.
+    /// Set <paramref name="turnComplete"/> to <see langword="true"/> to trigger a model response,
+    /// or <see langword="false"/> to indicate more input will follow.
+    /// </remarks>
+    /// <param name="turns">The conversation turns (user and model messages).</param>
+    /// <param name="turnComplete">Whether the client turn is complete and the model should respond.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     public Task SendClientContentAsync(
         IList<Content> turns,
@@ -175,9 +199,16 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Sends function/tool response results back to the model.
+    /// Sends function/tool response results back to the model after a <see cref="LiveToolCall"/>.
     /// </summary>
-    /// <param name="responses">The function responses.</param>
+    /// <remarks>
+    /// Call this method after receiving a <see cref="LiveServerMessage.ToolCall"/> event.
+    /// Each <see cref="FunctionResponse"/> must include the <c>Id</c> from the corresponding
+    /// <see cref="FunctionCall"/>. The model will resume generating its response after
+    /// receiving all tool results. If the user interrupts during a pending tool call,
+    /// the server may send a <see cref="LiveToolCallCancellation"/> instead.
+    /// </remarks>
+    /// <param name="responses">The function responses matching pending tool calls.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     public Task SendToolResponseAsync(
         IList<FunctionResponse> responses,
@@ -216,9 +247,14 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Receives a single server message.
-    /// Returns null if the connection is closed.
+    /// Receives a single server message, or <see langword="null"/> if the connection is closed.
     /// </summary>
+    /// <remarks>
+    /// Automatically tracks <see cref="LiveSessionResumptionUpdate.NewHandle"/> tokens
+    /// and stores them in <see cref="LastSessionResumptionHandle"/>.
+    /// For most use cases, prefer <see cref="ReadEventsAsync"/> which streams all events
+    /// as an <see cref="IAsyncEnumerable{T}"/>.
+    /// </remarks>
     /// <param name="cancellationToken">Cancellation token.</param>
     public async Task<LiveServerMessage?> ReceiveAsync(
         CancellationToken cancellationToken = default)
@@ -242,9 +278,23 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Streams all server events as an async enumerable.
-    /// Completes when the connection is closed or cancelled.
+    /// Streams all server events as an async enumerable until the connection closes or is cancelled.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The enumerable completes gracefully (without throwing) when the WebSocket connection
+    /// closes or when <paramref name="cancellationToken"/> is cancelled. WebSocket errors
+    /// also cause graceful completion rather than exceptions.
+    /// </para>
+    /// <para>
+    /// Callers typically <see langword="break"/> out of the loop when
+    /// <see cref="LiveServerContent.TurnComplete"/> is <see langword="true"/>, then call
+    /// this method again for the next turn. To handle server-initiated disconnects,
+    /// check for <see cref="LiveServerMessage.GoAway"/> and reconnect using
+    /// <see cref="GeminiClientLiveExtensions.ReconnectLiveAsync"/> or
+    /// <see cref="ResilientLiveSession"/>.
+    /// </para>
+    /// </remarks>
     /// <param name="cancellationToken">Cancellation token.</param>
     public async IAsyncEnumerable<LiveServerMessage> ReadEventsAsync(
         [EnumeratorCancellation] CancellationToken cancellationToken = default)

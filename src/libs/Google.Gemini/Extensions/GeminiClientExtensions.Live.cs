@@ -124,6 +124,45 @@ public static class GeminiClientLiveExtensions
     }
 
     /// <summary>
+    /// Connects to the Gemini Live API and returns a <see cref="ResilientLiveSession"/> that
+    /// automatically reconnects when the server sends a GoAway message.
+    /// </summary>
+    /// <remarks>
+    /// Session resumption is automatically enabled in the config. The resilient session
+    /// transparently handles GoAway messages during <see cref="ResilientLiveSession.ReadEventsAsync"/>
+    /// by disposing the current connection and establishing a new one with the resumption handle.
+    /// </remarks>
+    /// <param name="client">The authenticated Gemini client (must have an API key).</param>
+    /// <param name="config">The setup configuration for the session.</param>
+    /// <param name="maxReconnects">Maximum number of automatic reconnections (default: 5).</param>
+    /// <param name="connectTimeout">Connection timeout (default: 30 seconds).</param>
+    /// <param name="keepAliveInterval">WebSocket keep-alive interval (default: 20 seconds).</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A connected <see cref="ResilientLiveSession"/> with automatic GoAway handling.</returns>
+    public static async Task<ResilientLiveSession> ConnectResilientLiveAsync(
+        this GeminiClient client,
+        LiveSetupConfig config,
+        int maxReconnects = 5,
+        TimeSpan? connectTimeout = null,
+        TimeSpan? keepAliveInterval = null,
+        CancellationToken cancellationToken = default)
+    {
+        var session = await client.ConnectLiveAsync(
+            config,
+            connectTimeout,
+            keepAliveInterval,
+            cancellationToken).ConfigureAwait(false);
+
+        return new ResilientLiveSession(
+            session,
+            client,
+            config,
+            maxReconnects,
+            connectTimeout,
+            keepAliveInterval);
+    }
+
+    /// <summary>
     /// Reconnects to the Gemini Live API using the session resumption handle from a previous session.
     /// This automatically sets <see cref="LiveSessionResumptionConfig.Handle"/> from the previous session's
     /// <see cref="GeminiLiveSession.LastSessionResumptionHandle"/>.

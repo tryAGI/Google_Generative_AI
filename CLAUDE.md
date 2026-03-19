@@ -73,7 +73,8 @@ While the HTTP API client is purely auto-generated, the following hand-written f
   - `LiveSessionResumption.cs` — Session resumption handle types
   - `LiveJsonContext.cs` — Source-generated JSON context for AOT (reserved)
   - `GeminiLiveSession.cs` — WebSocket session class (`IAsyncDisposable`)
-- `src/libs/Google.Gemini/Extensions/GeminiClientExtensions.Live.cs` — `ConnectLiveAsync` factory method
+  - `ResilientLiveSession.cs` — Auto-reconnect wrapper that handles GoAway messages
+- `src/libs/Google.Gemini/Extensions/GeminiClientExtensions.Live.cs` — `ConnectLiveAsync` and `ConnectResilientLiveAsync` factory methods
 
 **MEAI integration:**
 - `src/libs/Google.Gemini/Extensions/` — `IChatClient` and `IEmbeddingGenerator` implementations
