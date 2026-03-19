@@ -1147,7 +1147,7 @@
         "operationId": "tunedModels.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1155,7 +1155,7 @@
             }
           },
           {
-            "name": "tunedModelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
