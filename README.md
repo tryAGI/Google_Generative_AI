@@ -40,6 +40,9 @@ var embeddings = await generator.GenerateAsync(
     new EmbeddingGenerationOptions { ModelId = "text-embedding-004" });
 ```
 
+<!-- EXAMPLES:START -->
+<!-- EXAMPLES:END -->
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues  
