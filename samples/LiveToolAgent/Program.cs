@@ -6,6 +6,9 @@ var apiKey = Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
     ?? throw new InvalidOperationException(
         "Set the GOOGLE_GEMINI_API_KEY environment variable.");
 
+// --text flag switches to text-only mode (no audio tools needed)
+var textMode = args.Contains("--text", StringComparer.OrdinalIgnoreCase);
+
 using var client = new GeminiClient(apiKey);
 using var cts = new CancellationTokenSource();
 
@@ -78,14 +81,19 @@ var tools = new Tool
 };
 
 // Configure the Live API session with tools
+// In text mode, use gemini-2.0-flash with Text modality (no audio needed).
+// In audio mode, use native-audio model with Audio modality + transcription.
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = textMode
+        ? "models/gemini-2.0-flash"
+        : "models/gemini-2.5-flash-native-audio-latest",
     GenerationConfig = new GenerationConfig
     {
-        ResponseModalities = [GenerationConfigResponseModalitie.Audio],
+        ResponseModalities = textMode
+            ? [GenerationConfigResponseModalitie.Text]
+            : [GenerationConfigResponseModalitie.Audio],
     },
-    OutputAudioTranscription = new LiveOutputAudioTranscription(),
     Tools = [tools],
     SystemInstruction = new Content
     {
@@ -103,10 +111,19 @@ var config = new LiveSetupConfig
     },
 };
 
-Console.WriteLine("Connecting to Gemini Live API...");
+// Add transcription in audio mode
+if (!textMode)
+{
+    config.OutputAudioTranscription = new LiveOutputAudioTranscription();
+}
+
+var modeLabel = textMode ? "text" : "audio";
+Console.WriteLine($"Connecting to Gemini Live API ({modeLabel} mode)...");
 await using var session = await client.ConnectResilientLiveAsync(config, cancellationToken: cts.Token);
 Console.WriteLine("Connected! This agent has tools: get_weather, get_time, calculate");
 Console.WriteLine("Try: \"What's the weather in Tokyo?\" or \"What time is it in London?\"");
+if (!textMode)
+    Console.WriteLine("Tip: Run with --text for text-only mode (no audio tools needed).");
 Console.WriteLine("Type messages and press Enter. Ctrl+C to quit.\n");
 
 // Main conversation loop
@@ -120,22 +137,34 @@ while (!cts.Token.IsCancellationRequested)
     await session.SendTextAsync(input, cts.Token);
 
     // Process response, handling tool calls in a loop
-    await ProcessResponseAsync(session, cts.Token);
+    await ProcessResponseAsync(session, textMode, cts.Token);
     Console.WriteLine();
 }
 
 Console.WriteLine("\nSession ended.");
 
-async Task ProcessResponseAsync(ResilientLiveSession liveSession, CancellationToken ct)
+async Task ProcessResponseAsync(ResilientLiveSession liveSession, bool isTextMode, CancellationToken ct)
 {
     Console.Write("Gemini: ");
 
     await foreach (var message in liveSession.ReadEventsAsync(ct))
     {
-        // Output transcription
-        if (message.ServerContent?.OutputTranscription?.Text is { } text)
+        // Text mode: model responds with text parts directly
+        if (isTextMode && message.ServerContent?.ModelTurn?.Parts is { } textParts)
         {
-            Console.Write(text);
+            foreach (var part in textParts)
+            {
+                if (part.Text is { } partText)
+                {
+                    Console.Write(partText);
+                }
+            }
+        }
+
+        // Audio mode: use output transcription for readable text
+        if (!isTextMode && message.ServerContent?.OutputTranscription?.Text is { } transcript)
+        {
+            Console.Write(transcript);
         }
 
         // Handle tool calls

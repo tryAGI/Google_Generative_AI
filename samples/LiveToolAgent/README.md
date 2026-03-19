@@ -19,7 +19,11 @@ A voice agent demo that uses the Gemini Live API with function calling to answer
 
 2. Run the app:
    ```bash
+   # Audio mode (default) — requires native-audio model
    dotnet run --project samples/LiveToolAgent/LiveToolAgent.csproj
+
+   # Text mode — no audio tools needed, uses gemini-2.0-flash
+   dotnet run --project samples/LiveToolAgent/LiveToolAgent.csproj -- --text
    ```
 
 3. Try these prompts:
