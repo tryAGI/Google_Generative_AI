@@ -37,11 +37,19 @@ var response = await chatClient.GetResponseAsync(
 IEmbeddingGenerator<string, Embedding<float>> generator = new GeminiClient(apiKey);
 var embeddings = await generator.GenerateAsync(
     ["Hello, world!"],
-    new EmbeddingGenerationOptions { ModelId = "gemini-embedding-001" });
+    new EmbeddingGenerationOptions { ModelId = "gemini-embedding-2" });
 ```
 
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
+
+### Embedding Models
+
+The SDK defaults to `gemini-embedding-2` — Google's latest embedding model with best-in-class retrieval performance, Matryoshka dimensions support, and Code retrieval task type. See [Google's embedding guide](https://ai.google.dev/gemini-api/docs/embeddings) for details.
+
+### API Version
+
+This SDK targets the **v1beta** API, which is the full-featured version used by Google's own SDKs (Python, JS, Go). The v1 (stable) API only exposes ~30 of the 70+ available endpoints and lacks critical features like tool calling, file upload, context caching, and grounding.
 
 ## Support
 

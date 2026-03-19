@@ -114,7 +114,7 @@ var embeddings = await generator.GenerateAsync(
     ["Hello, world!", "How are you?"],
     new EmbeddingGenerationOptions
     {
-        ModelId = "gemini-embedding-001",
+        ModelId = "gemini-embedding-2",
     });
 
 foreach (var embedding in embeddings)
@@ -122,3 +122,27 @@ foreach (var embedding in embeddings)
     Console.WriteLine($"Dimensions: {embedding.Vector.Length}");
 }
 ```
+
+### Custom Dimensions
+
+`gemini-embedding-2` supports Matryoshka dimensionality reduction — you can request smaller vectors for faster search with minimal quality loss:
+
+```csharp
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions
+    {
+        ModelId = "gemini-embedding-2",
+        Dimensions = 256, // default is 3072; supports 256, 512, 768, 1024, etc.
+    });
+```
+
+### Available Embedding Models
+
+| Model | Dimensions | Description |
+|-------|-----------|-------------|
+| `gemini-embedding-2` | 3072 (default) | Latest model, best retrieval quality, Matryoshka dimensions support |
+| `gemini-embedding-001` | 768 | Previous generation model |
+
+!!! note "API Version"
+    This SDK targets the **v1beta** API — the full-featured version used by Google's own SDKs. The v1 stable API lacks critical features like tool calling, file upload, context caching, and grounding.
