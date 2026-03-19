@@ -1,41 +1,15 @@
+/*
+order: 120
+title: Embedding Generator Batch Input
+slug: embedding-generator-batch-input
+*/
+
 using Microsoft.Extensions.AI;
 
 namespace Google.Gemini.IntegrationTests;
 
 public partial class Tests
 {
-    private static string GetEmbeddingModelId()
-    {
-        LoadDotEnv();
-
-        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_EMBEDDING_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-embedding-001";
-    }
-
-    [TestMethod]
-    public async Task EmbeddingGenerator_SingleInput()
-    {
-        using var client = GetAuthenticatedClient();
-        var modelId = GetEmbeddingModelId();
-
-        try
-        {
-            IEmbeddingGenerator<string, Embedding<float>> generator = client;
-            var result = await generator.GenerateAsync(
-                values: ["Hello, world!"],
-                options: new EmbeddingGenerationOptions
-                {
-                    ModelId = modelId,
-                });
-
-            result.Should().ContainSingle();
-            result[0].Vector.Length.Should().BeGreaterThan(0);
-        }
-        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
-        {
-            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
-        }
-    }
-
     [TestMethod]
     public async Task EmbeddingGenerator_BatchInput()
     {

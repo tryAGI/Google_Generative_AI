@@ -1,33 +1,13 @@
+/*
+order: 90
+title: Count Tokens Multiple Messages
+slug: count-tokens-multiple-messages
+*/
+
 namespace Google.Gemini.IntegrationTests;
 
 public partial class Tests
 {
-    [TestMethod]
-    public async Task CountTokens_SimpleText()
-    {
-        using var client = GetAuthenticatedClient();
-        var modelId = GetGenerateContentModelId();
-
-        try
-        {
-            var response = await client.ModelsCountTokensAsync(
-                modelsId: modelId,
-                contents:
-                [
-                    new Content
-                    {
-                        Parts = [new Part { Text = "Hello, world! This is a test of token counting." }],
-                    },
-                ]);
-
-            response.TotalTokens.Should().BeGreaterThan(0);
-        }
-        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
-        {
-            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
-        }
-    }
-
     [TestMethod]
     public async Task CountTokens_MultipleMessages()
     {

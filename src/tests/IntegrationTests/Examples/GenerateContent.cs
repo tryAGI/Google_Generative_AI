@@ -1,3 +1,9 @@
+/*
+order: 180
+title: Generate Content
+slug: generate-content
+*/
+
 namespace Google.Gemini.IntegrationTests;
 
 public partial class Tests

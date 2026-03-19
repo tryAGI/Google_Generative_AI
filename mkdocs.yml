@@ -5,8 +5,34 @@ nav:
   - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START
 - Examples:
-  - GenerateContent: samples/GenerateContent.md
-  - ListModels: samples/ListModels.md
+  - Chat Client Five Random Words Streaming: examples/chat-client-five-random-words-streaming.md
+  - Chat Client Five Random Words: examples/chat-client-five-random-words.md
+  - Chat Client Get Service Returns Chat Client Metadata: examples/chat-client-get-service-returns-chat-client-metadata.md
+  - Chat Client Get Service Returns Null For Unknown Key: examples/chat-client-get-service-returns-null-for-unknown-key.md
+  - Chat Client Get Service Returns Self: examples/chat-client-get-service-returns-self.md
+  - Chat Client Tool Calling Multi Turn: examples/chat-client-tool-calling-multi-turn.md
+  - Chat Client Tool Calling Single Turn: examples/chat-client-tool-calling-single-turn.md
+  - Chat Client Tool Calling Streaming: examples/chat-client-tool-calling-streaming.md
+  - Count Tokens Multiple Messages: examples/count-tokens-multiple-messages.md
+  - Count Tokens Simple Text: examples/count-tokens-simple-text.md
+  - Edit Image Simple Edit: examples/edit-image-simple-edit.md
+  - Embedding Generator Batch Input: examples/embedding-generator-batch-input.md
+  - Embedding Generator Get Service Returns Embedding Generator Metadata: examples/embedding-generator-get-service-returns-embedding-generator-metadata.md
+  - Embedding Generator Get Service Returns Null For Unknown Key: examples/embedding-generator-get-service-returns-null-for-unknown-key.md
+  - Embedding Generator Get Service Returns Self: examples/embedding-generator-get-service-returns-self.md
+  - Embedding Generator Single Input: examples/embedding-generator-single-input.md
+  - File Management: examples/file-management.md
+  - Generate Content: examples/generate-content.md
+  - Generate Image Simple Prompt: examples/generate-image-simple-prompt.md
+  - Generate Image With Aspect Ratio: examples/generate-image-with-aspect-ratio.md
+  - Generate Image With References Single Reference: examples/generate-image-with-references-single-reference.md
+  - Generate Video Simple Prompt: examples/generate-video-simple-prompt.md
+  - Generate Video From Image Simple Animation: examples/generate-video-from-image-simple-animation.md
+  - Interpolate Frames Two Images: examples/interpolate-frames-two-images.md
+  - List Models: examples/list-models.md
+  - Speak Different Voice: examples/speak-different-voice.md
+  - Speak Simple Text: examples/speak-simple-text.md
+  - Transcribe Generated Audio: examples/transcribe-generated-audio.md
 # EXAMPLES:END
         
 theme:

@@ -1,3 +1,9 @@
+/*
+order: 250
+title: List Models
+slug: list-models
+*/
+
 namespace Google.Gemini.IntegrationTests;
 
 public partial class Tests

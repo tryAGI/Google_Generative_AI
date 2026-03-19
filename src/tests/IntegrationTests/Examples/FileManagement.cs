@@ -1,3 +1,9 @@
+/*
+order: 170
+title: File Management
+slug: file-management
+*/
+
 namespace Google.Gemini.IntegrationTests;
 
 public partial class Tests

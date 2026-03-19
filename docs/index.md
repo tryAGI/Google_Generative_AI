@@ -11,12 +11,33 @@
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
+- Microsoft.Extensions.AI `IChatClient` and `IEmbeddingGenerator` support
 
 ### Usage
 ```csharp
 using Google.Gemini;
 
 using var client = new GeminiClient(apiKey);
+```
+
+### Microsoft.Extensions.AI
+
+The SDK implements [`IChatClient`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.ichatclient) and [`IEmbeddingGenerator`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2):
+```csharp
+using Google.Gemini;
+using Microsoft.Extensions.AI;
+
+// IChatClient
+IChatClient chatClient = new GeminiClient(apiKey);
+var response = await chatClient.GetResponseAsync(
+    [new ChatMessage(ChatRole.User, "Hello!")],
+    new ChatOptions { ModelId = "gemini-2.0-flash" });
+
+// IEmbeddingGenerator
+IEmbeddingGenerator<string, Embedding<float>> generator = new GeminiClient(apiKey);
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions { ModelId = "text-embedding-004" });
 ```
 
 ## Support
