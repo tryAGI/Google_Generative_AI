@@ -7,15 +7,15 @@ namespace Google.Gemini
     {
         partial void PrepareCorporaPermissionsPatchArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string permissionsId,
             ref string corporaId,
+            ref string permissionsId,
             ref string? updateMask,
             global::Google.Gemini.Permission request);
         partial void PrepareCorporaPermissionsPatchRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string permissionsId,
             string corporaId,
+            string permissionsId,
             string? updateMask,
             global::Google.Gemini.Permission request);
         partial void ProcessCorporaPermissionsPatchResponse(
@@ -30,15 +30,15 @@ namespace Google.Gemini
         /// <summary>
         /// Updates the permission.
         /// </summary>
-        /// <param name="permissionsId"></param>
         /// <param name="corporaId"></param>
+        /// <param name="permissionsId"></param>
         /// <param name="updateMask"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Permission> CorporaPermissionsPatchAsync(
-            string permissionsId,
             string corporaId,
+            string permissionsId,
 
             global::Google.Gemini.Permission request,
             string? updateMask = default,
@@ -50,8 +50,8 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareCorporaPermissionsPatchArguments(
                 httpClient: HttpClient,
-                permissionsId: ref permissionsId,
                 corporaId: ref corporaId,
+                permissionsId: ref permissionsId,
                 updateMask: ref updateMask,
                 request: request);
 
@@ -90,8 +90,8 @@ namespace Google.Gemini
             PrepareCorporaPermissionsPatchRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                permissionsId: permissionsId,
                 corporaId: corporaId,
+                permissionsId: permissionsId,
                 updateMask: updateMask,
                 request: request);
 
@@ -196,8 +196,8 @@ namespace Google.Gemini
         /// <summary>
         /// Updates the permission.
         /// </summary>
-        /// <param name="permissionsId"></param>
         /// <param name="corporaId"></param>
+        /// <param name="permissionsId"></param>
         /// <param name="updateMask"></param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
@@ -211,8 +211,8 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Permission> CorporaPermissionsPatchAsync(
-            string permissionsId,
             string corporaId,
+            string permissionsId,
             string? updateMask = default,
             global::Google.Gemini.PermissionGranteeType? granteeType = default,
             string? emailAddress = default,
@@ -227,8 +227,8 @@ namespace Google.Gemini
             };
 
             return await CorporaPermissionsPatchAsync(
-                permissionsId: permissionsId,
                 corporaId: corporaId,
+                permissionsId: permissionsId,
                 updateMask: updateMask,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
