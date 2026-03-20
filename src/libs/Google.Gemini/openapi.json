@@ -1869,7 +1869,7 @@
         "operationId": "generatedFiles.operations.get",
         "parameters": [
           {
-            "name": "generatedFilesId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1877,7 +1877,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "generatedFilesId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2074,7 +2074,7 @@
         "operationId": "fileSearchStores.operations.get",
         "parameters": [
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2082,7 +2082,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2112,7 +2112,7 @@
         "operationId": "fileSearchStores.upload.operations.get",
         "parameters": [
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2120,7 +2120,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
