@@ -22,6 +22,7 @@ nav:
   - Embedding Generator Get Service Returns Null For Unknown Key: examples/embedding-generator-get-service-returns-null-for-unknown-key.md
   - Embedding Generator Get Service Returns Self: examples/embedding-generator-get-service-returns-self.md
   - Embedding Generator Single Input: examples/embedding-generator-single-input.md
+  - Embedding Generator Task Type: examples/embedding-generator-task-type.md
   - File Management: examples/file-management.md
   - Generate Content: examples/generate-content.md
   - Generate Image Simple Prompt: examples/generate-image-simple-prompt.md
