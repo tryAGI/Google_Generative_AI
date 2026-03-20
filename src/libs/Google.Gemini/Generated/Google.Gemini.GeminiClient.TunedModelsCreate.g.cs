@@ -180,7 +180,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Creates a tuned model. Check intermediate tuning progress (if any) through the [google.longrunning.Operations] service. Access status and results through the Operations service. Example: GET /v1/tunedModels/az2mb0bpw6i/operations/000-111-222
         /// </summary>

@@ -177,7 +177,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Enqueues a batch of `GenerateContent` requests for batch processing.
         /// </summary>

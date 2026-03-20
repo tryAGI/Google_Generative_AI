@@ -177,7 +177,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Enqueues a batch of `EmbedContent` requests for batch processing. We have a `BatchEmbedContents` handler in `GenerativeService`, but it was synchronized. So we name this one to be `Async` to avoid confusion.
         /// </summary>

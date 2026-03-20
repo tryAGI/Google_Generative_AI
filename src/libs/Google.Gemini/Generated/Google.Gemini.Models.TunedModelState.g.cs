@@ -10,19 +10,19 @@ namespace Google.Gemini
     public enum TunedModelState
     {
         /// <summary>
-        /// 
+        /// The default value. This value is unused.
         /// </summary>
         StateUnspecified,
         /// <summary>
-        /// 
+        /// The model is being created.
         /// </summary>
         Creating,
         /// <summary>
-        /// 
+        /// The model is ready to be used.
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        /// The model failed to be created.
         /// </summary>
         Failed,
     }

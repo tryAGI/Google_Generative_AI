@@ -9,23 +9,23 @@ namespace Google.Gemini
     public enum ThinkingConfigThinkingLevel
     {
         /// <summary>
-        /// 
+        /// Default value.
         /// </summary>
         ThinkingLevelUnspecified,
         /// <summary>
-        /// 
+        /// Little to no thinking.
         /// </summary>
         Minimal,
         /// <summary>
-        /// 
+        /// Low thinking level.
         /// </summary>
         Low,
         /// <summary>
-        /// 
+        /// Medium thinking level.
         /// </summary>
         Medium,
         /// <summary>
-        /// 
+        /// High thinking level.
         /// </summary>
         High,
     }

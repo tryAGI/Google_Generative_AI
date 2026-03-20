@@ -171,7 +171,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Creates an empty `FileSearchStore`.
         /// </summary>

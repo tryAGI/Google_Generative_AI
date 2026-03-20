@@ -177,7 +177,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Imports a `File` from File Service to a `FileSearchStore`.
         /// </summary>

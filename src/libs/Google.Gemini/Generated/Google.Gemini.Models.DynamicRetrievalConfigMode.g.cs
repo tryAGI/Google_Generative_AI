@@ -9,11 +9,11 @@ namespace Google.Gemini
     public enum DynamicRetrievalConfigMode
     {
         /// <summary>
-        /// 
+        /// Always trigger retrieval.
         /// </summary>
         ModeUnspecified,
         /// <summary>
-        /// 
+        /// Run retrieval only when system decides it is necessary.
         /// </summary>
         ModeDynamic,
     }

@@ -177,7 +177,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.
         /// </summary>

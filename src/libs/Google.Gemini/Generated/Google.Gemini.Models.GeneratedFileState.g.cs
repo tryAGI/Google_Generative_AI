@@ -10,19 +10,19 @@ namespace Google.Gemini
     public enum GeneratedFileState
     {
         /// <summary>
-        /// 
+        /// The default value. This value is used if the state is omitted.
         /// </summary>
         StateUnspecified,
         /// <summary>
-        /// 
+        /// Being generated.
         /// </summary>
         Generating,
         /// <summary>
-        /// 
+        /// Generated and is ready for download.
         /// </summary>
         Generated,
         /// <summary>
-        /// 
+        /// Failed to generate the GeneratedFile.
         /// </summary>
         Failed,
     }

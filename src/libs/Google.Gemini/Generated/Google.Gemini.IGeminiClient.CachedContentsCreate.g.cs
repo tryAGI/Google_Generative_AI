@@ -14,7 +14,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.CachedContent request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Creates CachedContent resource.
         /// </summary>

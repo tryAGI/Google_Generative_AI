@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.BatchGenerateContentRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Enqueues a batch of `GenerateContent` requests for batch processing.
         /// </summary>

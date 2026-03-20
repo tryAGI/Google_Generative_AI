@@ -14,7 +14,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.RegisterFilesRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Registers a Google Cloud Storage files with FileService. The user is expected to provide Google Cloud Storage URIs and will receive a File resource for each URI in return. Note that the files are not copied, just registered with File API. If one file fails to register, the whole request fails.
         /// </summary>

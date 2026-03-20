@@ -192,7 +192,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Updates the permission.
         /// </summary>

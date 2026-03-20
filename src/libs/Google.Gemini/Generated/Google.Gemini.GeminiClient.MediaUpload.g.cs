@@ -171,7 +171,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Creates a `File`.
         /// </summary>

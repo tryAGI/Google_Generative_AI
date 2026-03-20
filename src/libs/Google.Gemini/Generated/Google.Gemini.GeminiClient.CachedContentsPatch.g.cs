@@ -186,7 +186,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Updates CachedContent resource (only expiration is updatable).
         /// </summary>

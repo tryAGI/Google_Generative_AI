@@ -14,7 +14,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.CreateFileRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Creates a `File`.
         /// </summary>

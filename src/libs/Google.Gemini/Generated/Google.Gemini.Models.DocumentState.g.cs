@@ -10,19 +10,19 @@ namespace Google.Gemini
     public enum DocumentState
     {
         /// <summary>
-        /// 
+        /// The default value. This value is used if the state is omitted.
         /// </summary>
         StateUnspecified,
         /// <summary>
-        /// 
+        /// Some `Chunks` of the `Document` are being processed (embedding and vector storage).
         /// </summary>
         StatePending,
         /// <summary>
-        /// 
+        /// All `Chunks` of the `Document` is processed and available for querying.
         /// </summary>
         StateActive,
         /// <summary>
-        /// 
+        /// Some `Chunks` of the `Document` failed processing.
         /// </summary>
         StateFailed,
     }

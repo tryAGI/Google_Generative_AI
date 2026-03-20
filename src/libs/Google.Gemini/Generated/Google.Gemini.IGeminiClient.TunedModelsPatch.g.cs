@@ -18,7 +18,6 @@ namespace Google.Gemini
             global::Google.Gemini.TunedModel request,
             string? updateMask = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Updates a tuned model.
         /// </summary>

@@ -18,7 +18,6 @@ namespace Google.Gemini
             global::Google.Gemini.EmbedContentBatch request,
             string? updateMask = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Updates a batch of EmbedContent requests for batch processing.
         /// </summary>

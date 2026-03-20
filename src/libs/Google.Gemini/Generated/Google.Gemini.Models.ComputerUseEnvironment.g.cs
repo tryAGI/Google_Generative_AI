@@ -9,11 +9,11 @@ namespace Google.Gemini
     public enum ComputerUseEnvironment
     {
         /// <summary>
-        /// 
+        /// Defaults to browser.
         /// </summary>
         EnvironmentUnspecified,
         /// <summary>
-        /// 
+        /// Operates in a web browser.
         /// </summary>
         EnvironmentBrowser,
     }

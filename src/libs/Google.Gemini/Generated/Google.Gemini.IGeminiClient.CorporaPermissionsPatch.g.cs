@@ -20,7 +20,6 @@ namespace Google.Gemini
             global::Google.Gemini.Permission request,
             string? updateMask = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Updates the permission.
         /// </summary>

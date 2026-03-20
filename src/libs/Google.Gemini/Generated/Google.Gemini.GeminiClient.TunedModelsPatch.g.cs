@@ -186,7 +186,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Updates a tuned model.
         /// </summary>

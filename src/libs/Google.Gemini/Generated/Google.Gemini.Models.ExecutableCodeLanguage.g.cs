@@ -9,11 +9,11 @@ namespace Google.Gemini
     public enum ExecutableCodeLanguage
     {
         /// <summary>
-        /// 
+        /// Unspecified language. This value should not be used.
         /// </summary>
         LanguageUnspecified,
         /// <summary>
-        /// 
+        /// Python &gt;= 3.10, with numpy and simpy available. Python is the default language.
         /// </summary>
         Python,
     }

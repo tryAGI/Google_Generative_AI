@@ -18,7 +18,6 @@ namespace Google.Gemini
             global::Google.Gemini.CachedContent request,
             string? updateMask = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Updates CachedContent resource (only expiration is updatable).
         /// </summary>
