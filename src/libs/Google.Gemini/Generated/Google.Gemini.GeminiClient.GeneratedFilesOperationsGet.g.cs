@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareGeneratedFilesOperationsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string operationsId,
-            ref string generatedFilesId);
+            ref string generatedFilesId,
+            ref string operationsId);
         partial void PrepareGeneratedFilesOperationsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string operationsId,
-            string generatedFilesId);
+            string generatedFilesId,
+            string operationsId);
         partial void ProcessGeneratedFilesOperationsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
         /// </summary>
-        /// <param name="operationsId"></param>
         /// <param name="generatedFilesId"></param>
+        /// <param name="operationsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> GeneratedFilesOperationsGetAsync(
-            string operationsId,
             string generatedFilesId,
+            string operationsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareGeneratedFilesOperationsGetArguments(
                 httpClient: HttpClient,
-                operationsId: ref operationsId,
-                generatedFilesId: ref generatedFilesId);
+                generatedFilesId: ref generatedFilesId,
+                operationsId: ref operationsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/generatedFiles/{generatedFilesId}/operations/{operationsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareGeneratedFilesOperationsGetRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                operationsId: operationsId,
-                generatedFilesId: generatedFilesId);
+                generatedFilesId: generatedFilesId,
+                operationsId: operationsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
