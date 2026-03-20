@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.ImportFileRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Imports a `File` from File Service to a `FileSearchStore`.
         /// </summary>

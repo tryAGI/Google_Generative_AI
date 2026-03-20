@@ -14,7 +14,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.FileSearchStore request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Creates an empty `FileSearchStore`.
         /// </summary>

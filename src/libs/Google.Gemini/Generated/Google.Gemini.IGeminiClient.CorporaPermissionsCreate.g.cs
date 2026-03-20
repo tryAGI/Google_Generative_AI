@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.Permission request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a permission to a specific resource.
         /// </summary>

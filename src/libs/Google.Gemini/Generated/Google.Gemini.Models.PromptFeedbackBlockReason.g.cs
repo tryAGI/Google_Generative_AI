@@ -9,27 +9,27 @@ namespace Google.Gemini
     public enum PromptFeedbackBlockReason
     {
         /// <summary>
-        /// 
+        /// Default value. This value is unused.
         /// </summary>
         BlockReasonUnspecified,
         /// <summary>
-        /// 
+        /// Prompt was blocked due to safety reasons. Inspect `safety_ratings` to understand which safety category blocked it.
         /// </summary>
         Safety,
         /// <summary>
-        /// 
+        /// Prompt was blocked due to unknown reasons.
         /// </summary>
         Other,
         /// <summary>
-        /// 
+        /// Prompt was blocked due to the terms which are included from the terminology blocklist.
         /// </summary>
         Blocklist,
         /// <summary>
-        /// 
+        /// Prompt was blocked due to prohibited content.
         /// </summary>
         ProhibitedContent,
         /// <summary>
-        /// 
+        /// Candidates blocked due to unsafe image generation content.
         /// </summary>
         ImageSafety,
     }

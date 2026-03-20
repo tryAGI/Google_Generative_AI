@@ -9,23 +9,23 @@ namespace Google.Gemini
     public enum GenerationConfigResponseModalitie
     {
         /// <summary>
-        /// 
+        /// Default value.
         /// </summary>
         ModalityUnspecified,
         /// <summary>
-        /// 
+        /// Indicates the model should return text.
         /// </summary>
         Text,
         /// <summary>
-        /// 
+        /// Indicates the model should return images.
         /// </summary>
         Image,
         /// <summary>
-        /// 
+        /// Indicates the model should return audio.
         /// </summary>
         Audio,
         /// <summary>
-        /// 
+        /// Indicates the model should return video.
         /// </summary>
         Video,
     }

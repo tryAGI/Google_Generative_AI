@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.TransferOwnershipRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Transfers ownership of the tuned model. This is the only way to change ownership of the tuned model. The current owner will be downgraded to writer role.
         /// </summary>

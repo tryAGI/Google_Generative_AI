@@ -662,7 +662,7 @@
         "operationId": "models.operations.get",
         "parameters": [
           {
-            "name": "modelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -670,7 +670,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "modelsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -1869,7 +1869,7 @@
         "operationId": "generatedFiles.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "generatedFilesId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1877,7 +1877,7 @@
             }
           },
           {
-            "name": "generatedFilesId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",

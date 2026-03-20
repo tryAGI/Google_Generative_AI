@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.EmbedContentRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Generates a text embedding vector from the input `Content` using the specified [Gemini Embedding model](https://ai.google.dev/gemini-api/docs/models/gemini#text-embedding).
         /// </summary>

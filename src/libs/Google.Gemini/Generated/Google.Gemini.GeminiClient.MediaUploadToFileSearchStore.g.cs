@@ -177,7 +177,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Uploads data to a FileSearchStore, preprocesses and chunks before storing it in a FileSearchStore Document.
         /// </summary>

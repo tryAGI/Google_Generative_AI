@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.BatchEmbedContentsRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Generates multiple embedding vectors from the input `Content` which consists of a batch of strings represented as `EmbedContentRequest` objects.
         /// </summary>

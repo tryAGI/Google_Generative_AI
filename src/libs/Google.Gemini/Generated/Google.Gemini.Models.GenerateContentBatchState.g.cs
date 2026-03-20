@@ -10,31 +10,31 @@ namespace Google.Gemini
     public enum GenerateContentBatchState
     {
         /// <summary>
-        /// 
+        /// The batch state is unspecified.
         /// </summary>
         BatchStateUnspecified,
         /// <summary>
-        /// 
+        /// The service is preparing to run the batch.
         /// </summary>
         BatchStatePending,
         /// <summary>
-        /// 
+        /// The batch is in progress.
         /// </summary>
         BatchStateRunning,
         /// <summary>
-        /// 
+        /// The batch completed successfully.
         /// </summary>
         BatchStateSucceeded,
         /// <summary>
-        /// 
+        /// The batch failed.
         /// </summary>
         BatchStateFailed,
         /// <summary>
-        /// 
+        /// The batch has been cancelled.
         /// </summary>
         BatchStateCancelled,
         /// <summary>
-        /// 
+        /// The batch has expired.
         /// </summary>
         BatchStateExpired,
     }

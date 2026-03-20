@@ -10,19 +10,19 @@ namespace Google.Gemini
     public enum FileState
     {
         /// <summary>
-        /// 
+        /// The default value. This value is used if the state is omitted.
         /// </summary>
         StateUnspecified,
         /// <summary>
-        /// 
+        /// File is being processed and cannot be used for inference yet.
         /// </summary>
         Processing,
         /// <summary>
-        /// 
+        /// File is processed and available for inference.
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        /// File failed processing.
         /// </summary>
         Failed,
     }

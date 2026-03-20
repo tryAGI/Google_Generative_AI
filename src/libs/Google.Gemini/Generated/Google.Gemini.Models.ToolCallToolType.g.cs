@@ -9,27 +9,27 @@ namespace Google.Gemini
     public enum ToolCallToolType
     {
         /// <summary>
-        /// 
+        /// Unspecified tool type.
         /// </summary>
         ToolTypeUnspecified,
         /// <summary>
-        /// 
+        /// Google search tool, maps to Tool.google_search.search_types.web_search.
         /// </summary>
         GoogleSearchWeb,
         /// <summary>
-        /// 
+        /// Image search tool, maps to Tool.google_search.search_types.image_search.
         /// </summary>
         GoogleSearchImage,
         /// <summary>
-        /// 
+        /// URL context tool, maps to Tool.url_context.
         /// </summary>
         UrlContext,
         /// <summary>
-        /// 
+        /// Google maps tool, maps to Tool.google_maps.
         /// </summary>
         GoogleMaps,
         /// <summary>
-        /// 
+        /// File search tool, maps to Tool.file_search.
         /// </summary>
         FileSearch,
     }

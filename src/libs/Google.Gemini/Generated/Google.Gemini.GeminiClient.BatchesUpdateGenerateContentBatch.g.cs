@@ -186,7 +186,6 @@ namespace Google.Gemini
                 }
             }
         }
-
         /// <summary>
         /// Updates a batch of GenerateContent requests for batch processing.
         /// </summary>

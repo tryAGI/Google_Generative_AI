@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.CountTokensRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Runs a model's tokenizer on input `Content` and returns the token count. Refer to the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens) to learn more about tokens.
         /// </summary>

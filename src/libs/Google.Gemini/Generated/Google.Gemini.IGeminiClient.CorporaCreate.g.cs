@@ -14,7 +14,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.Corpus request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Creates an empty `Corpus`.
         /// </summary>

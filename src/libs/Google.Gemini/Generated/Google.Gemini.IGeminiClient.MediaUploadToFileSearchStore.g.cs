@@ -16,7 +16,6 @@ namespace Google.Gemini
 
             global::Google.Gemini.UploadToFileSearchStoreRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Uploads data to a FileSearchStore, preprocesses and chunks before storing it in a FileSearchStore Document.
         /// </summary>
