@@ -662,7 +662,7 @@
         "operationId": "models.operations.get",
         "parameters": [
           {
-            "name": "operationsId",
+            "name": "modelsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -670,7 +670,7 @@
             }
           },
           {
-            "name": "modelsId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -1269,7 +1269,7 @@
         "operationId": "tunedModels.permissions.get",
         "parameters": [
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1277,7 +1277,7 @@
             }
           },
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -1305,7 +1305,7 @@
         "operationId": "tunedModels.permissions.patch",
         "parameters": [
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1313,7 +1313,7 @@
             }
           },
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -1359,7 +1359,7 @@
         "operationId": "tunedModels.permissions.delete",
         "parameters": [
           {
-            "name": "tunedModelsId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1367,7 +1367,7 @@
             }
           },
           {
-            "name": "permissionsId",
+            "name": "tunedModelsId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2074,7 +2074,7 @@
         "operationId": "fileSearchStores.operations.get",
         "parameters": [
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2082,7 +2082,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2112,7 +2112,7 @@
         "operationId": "fileSearchStores.upload.operations.get",
         "parameters": [
           {
-            "name": "fileSearchStoresId",
+            "name": "operationsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2120,7 +2120,7 @@
             }
           },
           {
-            "name": "operationsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "description": "The name of the operation resource.",
@@ -2150,7 +2150,7 @@
         "operationId": "fileSearchStores.documents.get",
         "parameters": [
           {
-            "name": "fileSearchStoresId",
+            "name": "documentsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2158,7 +2158,7 @@
             }
           },
           {
-            "name": "documentsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "description": "Required. The name of the `Document` to retrieve. Example: `fileSearchStores/my-file-search-store-123/documents/the-doc-abc`",
@@ -2186,7 +2186,7 @@
         "operationId": "fileSearchStores.documents.delete",
         "parameters": [
           {
-            "name": "fileSearchStoresId",
+            "name": "documentsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2194,7 +2194,7 @@
             }
           },
           {
-            "name": "documentsId",
+            "name": "fileSearchStoresId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the `Document` to delete. Example: `fileSearchStores/my-file-search-store-123/documents/the-doc-abc`",
@@ -2529,7 +2529,7 @@
         "operationId": "corpora.permissions.get",
         "parameters": [
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2537,7 +2537,7 @@
             }
           },
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
@@ -2565,7 +2565,7 @@
         "operationId": "corpora.permissions.patch",
         "parameters": [
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2573,7 +2573,7 @@
             }
           },
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "description": "Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.",
@@ -2619,7 +2619,7 @@
         "operationId": "corpora.permissions.delete",
         "parameters": [
           {
-            "name": "corporaId",
+            "name": "permissionsId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2627,7 +2627,7 @@
             }
           },
           {
-            "name": "permissionsId",
+            "name": "corporaId",
             "in": "path",
             "required": true,
             "description": "Required. The resource name of the permission. Formats: `tunedModels/{tuned_model}/permissions/{permission}` `corpora/{corpus}/permissions/{permission}`",
