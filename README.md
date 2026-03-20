@@ -418,8 +418,6 @@ await foreach (var message in session.ReadEventsAsync())
 
 <!-- EXAMPLES:START -->
 ### Chat Client Five Random Words Streaming
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -460,8 +458,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Five Random Words
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -486,8 +482,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Get Service Returns Chat Client Metadata
-
-
 ```csharp
 using var client = CreateTestClient();
 IChatClient chatClient = client;
@@ -496,8 +490,6 @@ var metadata = chatClient.GetService<ChatClientMetadata>();
 ```
 
 ### Chat Client Get Service Returns Null For Unknown Key
-
-
 ```csharp
 using var client = CreateTestClient();
 IChatClient chatClient = client;
@@ -506,8 +498,6 @@ var result = chatClient.GetService<ChatClientMetadata>(serviceKey: "unknown");
 ```
 
 ### Chat Client Get Service Returns Self
-
-
 ```csharp
 using var client = CreateTestClient();
 IChatClient chatClient = client;
@@ -516,8 +506,6 @@ var self = chatClient.GetService<GeminiClient>();
 ```
 
 ### Chat Client Tool Calling Multi Turn
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -582,8 +570,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Tool Calling Single Turn
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -619,8 +605,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Tool Calling Streaming
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -664,8 +648,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Count Tokens Multiple Messages
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -700,8 +682,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Count Tokens Simple Text
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -725,8 +705,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Edit Image Simple Edit
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -750,8 +728,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Embedding Generator Batch Input
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetEmbeddingModelId();
@@ -773,8 +749,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Embedding Generator Get Service Returns Embedding Generator Metadata
-
-
 ```csharp
 using var client = CreateTestClient();
 IEmbeddingGenerator<string, Embedding<float>> generator = client;
@@ -783,8 +757,6 @@ var metadata = generator.GetService<EmbeddingGeneratorMetadata>();
 ```
 
 ### Embedding Generator Get Service Returns Null For Unknown Key
-
-
 ```csharp
 using var client = CreateTestClient();
 IEmbeddingGenerator<string, Embedding<float>> generator = client;
@@ -793,8 +765,6 @@ var result = generator.GetService<EmbeddingGeneratorMetadata>(serviceKey: "unkno
 ```
 
 ### Embedding Generator Get Service Returns Self
-
-
 ```csharp
 using var client = CreateTestClient();
 IEmbeddingGenerator<string, Embedding<float>> generator = client;
@@ -803,8 +773,6 @@ var self = generator.GetService<GeminiClient>();
 ```
 
 ### Embedding Generator Single Input
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetEmbeddingModelId();
@@ -826,8 +794,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Embedding Generator Task Type
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetEmbeddingModelId();
@@ -868,8 +834,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### File Management
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -879,8 +843,6 @@ var response = await client.FilesListAsync();
 ```
 
 ### Generate Content
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -915,8 +877,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Image Simple Prompt
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -933,8 +893,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Image With Aspect Ratio
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -952,8 +910,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Image With References Single Reference
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -976,8 +932,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Video Simple Prompt
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -997,8 +951,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Generate Video From Image Simple Animation
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1023,8 +975,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Interpolate Frames Two Images
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1053,8 +1003,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### List Models
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1067,8 +1015,6 @@ foreach (var model in response.Models ?? [])
 ```
 
 ### Speak Different Voice
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1089,8 +1035,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Speak Simple Text
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1111,8 +1055,6 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Transcribe Generated Audio
-
-
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1161,7 +1103,3 @@ Discord: https://discord.gg/Ca2xhfBf3v
 ![JetBrains logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png)
 
 This project is supported by JetBrains through the [Open Source Support Program](https://jb.gg/OpenSourceSupport).
-
-![CodeRabbit logo](https://opengraph.githubassets.com/1c51002d7d0bbe0c4fd72ff8f2e58192702f73a7037102f77e4dbb98ac00ea8f/marketplace/coderabbitai)
-
-This project is supported by CodeRabbit through the [Open Source Support Program](https://github.com/marketplace/coderabbitai).
