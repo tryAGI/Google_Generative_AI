@@ -7,15 +7,15 @@ namespace Google.Gemini
         /// <summary>
         /// Updates the permission.
         /// </summary>
-        /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
+        /// <param name="tunedModelsId"></param>
         /// <param name="updateMask"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.Permission> TunedModelsPermissionsPatchAsync(
-            string tunedModelsId,
             string permissionsId,
+            string tunedModelsId,
 
             global::Google.Gemini.Permission request,
             string? updateMask = default,
@@ -23,8 +23,8 @@ namespace Google.Gemini
         /// <summary>
         /// Updates the permission.
         /// </summary>
-        /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
+        /// <param name="tunedModelsId"></param>
         /// <param name="updateMask"></param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
@@ -38,8 +38,8 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.Permission> TunedModelsPermissionsPatchAsync(
-            string tunedModelsId,
             string permissionsId,
+            string tunedModelsId,
             string? updateMask = default,
             global::Google.Gemini.PermissionGranteeType? granteeType = default,
             string? emailAddress = default,
