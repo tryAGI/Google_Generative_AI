@@ -72,7 +72,7 @@ namespace Google.Gemini
                 .AddOptionalParameter("filter", filter)
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("pageToken", pageToken)
-                .AddOptionalParameter("returnPartialSuccess", returnPartialSuccess?.ToString()) 
+                .AddOptionalParameter("returnPartialSuccess", returnPartialSuccess?.ToString().ToLowerInvariant()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(

@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareFileSearchStoresOperationsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string operationsId,
-            ref string fileSearchStoresId);
+            ref string fileSearchStoresId,
+            ref string operationsId);
         partial void PrepareFileSearchStoresOperationsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string operationsId,
-            string fileSearchStoresId);
+            string fileSearchStoresId,
+            string operationsId);
         partial void ProcessFileSearchStoresOperationsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
         /// </summary>
-        /// <param name="operationsId"></param>
         /// <param name="fileSearchStoresId"></param>
+        /// <param name="operationsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> FileSearchStoresOperationsGetAsync(
-            string operationsId,
             string fileSearchStoresId,
+            string operationsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareFileSearchStoresOperationsGetArguments(
                 httpClient: HttpClient,
-                operationsId: ref operationsId,
-                fileSearchStoresId: ref fileSearchStoresId);
+                fileSearchStoresId: ref fileSearchStoresId,
+                operationsId: ref operationsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/fileSearchStores/{fileSearchStoresId}/operations/{operationsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareFileSearchStoresOperationsGetRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                operationsId: operationsId,
-                fileSearchStoresId: fileSearchStoresId);
+                fileSearchStoresId: fileSearchStoresId,
+                operationsId: operationsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
