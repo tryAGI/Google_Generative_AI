@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareCorporaOperationsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string operationsId,
-            ref string corporaId);
+            ref string corporaId,
+            ref string operationsId);
         partial void PrepareCorporaOperationsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string operationsId,
-            string corporaId);
+            string corporaId,
+            string operationsId);
         partial void ProcessCorporaOperationsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,21 +26,21 @@ namespace Google.Gemini
         /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
         /// </summary>
-        /// <param name="operationsId"></param>
         /// <param name="corporaId"></param>
+        /// <param name="operationsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> CorporaOperationsGetAsync(
-            string operationsId,
             string corporaId,
+            string operationsId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareCorporaOperationsGetArguments(
                 httpClient: HttpClient,
-                operationsId: ref operationsId,
-                corporaId: ref corporaId);
+                corporaId: ref corporaId,
+                operationsId: ref operationsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/corpora/{corporaId}/operations/{operationsId}",
@@ -68,8 +68,8 @@ namespace Google.Gemini
             PrepareCorporaOperationsGetRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                operationsId: operationsId,
-                corporaId: corporaId);
+                corporaId: corporaId,
+                operationsId: operationsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
