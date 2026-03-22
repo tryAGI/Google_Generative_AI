@@ -88,7 +88,7 @@ def extract_methods(resources, version_prefix, paths=None):
             path_param_names = set(re.findall(r"\{(\w+)\}", path))
             # Track which path template params have been matched
             matched_path_params = set()
-            for param_name, param in (method.get("parameters") or {}).items():
+            for param_name, param in sorted((method.get("parameters") or {}).items()):
                 p = {"name": param_name, "in": param["location"]}
                 if param["location"] == "path":
                     if param_name in path_param_names:
@@ -98,7 +98,7 @@ def extract_methods(resources, version_prefix, paths=None):
                         # e.g., Discovery "model" → flatPath "{modelsId}"
                         unmatched = path_param_names - matched_path_params
                         if unmatched:
-                            mapped = unmatched.pop()
+                            mapped = min(unmatched)  # deterministic: alphabetically first
                             p["name"] = mapped
                             matched_path_params.add(mapped)
                         else:
@@ -121,7 +121,7 @@ def extract_methods(resources, version_prefix, paths=None):
 
             # Ensure all path template params have definitions
             defined = {p["name"] for p in params}
-            for pp in path_param_names:
+            for pp in sorted(path_param_names):
                 if pp not in defined:
                     params.insert(0, {
                         "name": pp,
