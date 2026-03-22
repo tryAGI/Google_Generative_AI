@@ -11,7 +11,7 @@
     </PackageReference>
     <PackageReference Include="MSTest" Version="4.1.0" />
     <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
-    <PackageReference Include="Microsoft.Extensions.AI" Version="10.4.0" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="10.4.1" />
   </ItemGroup>
 
   <ItemGroup Label="GlobalUsings">
