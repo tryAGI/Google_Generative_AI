@@ -9,21 +9,21 @@ namespace Google.Gemini
     public enum PermissionRole
     {
         /// <summary>
-        /// The default value. This value is unused.
-        /// </summary>
-        RoleUnspecified,
-        /// <summary>
         /// Owner can use, update, share and delete the resource.
         /// </summary>
         Owner,
         /// <summary>
-        /// Writer can use, update and share the resource.
-        /// </summary>
-        Writer,
-        /// <summary>
         /// Reader can use the resource.
         /// </summary>
         Reader,
+        /// <summary>
+        /// The default value. This value is unused.
+        /// </summary>
+        RoleUnspecified,
+        /// <summary>
+        /// Writer can use, update and share the resource.
+        /// </summary>
+        Writer,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                PermissionRole.RoleUnspecified => "ROLE_UNSPECIFIED",
                 PermissionRole.Owner => "OWNER",
-                PermissionRole.Writer => "WRITER",
                 PermissionRole.Reader => "READER",
+                PermissionRole.RoleUnspecified => "ROLE_UNSPECIFIED",
+                PermissionRole.Writer => "WRITER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "ROLE_UNSPECIFIED" => PermissionRole.RoleUnspecified,
                 "OWNER" => PermissionRole.Owner,
-                "WRITER" => PermissionRole.Writer,
                 "READER" => PermissionRole.Reader,
+                "ROLE_UNSPECIFIED" => PermissionRole.RoleUnspecified,
+                "WRITER" => PermissionRole.Writer,
                 _ => null,
             };
         }

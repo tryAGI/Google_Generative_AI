@@ -10,9 +10,17 @@ namespace Google.Gemini
     public enum GenerateContentBatchState
     {
         /// <summary>
-        /// The batch state is unspecified.
+        /// The batch has been cancelled.
         /// </summary>
-        BatchStateUnspecified,
+        BatchStateCancelled,
+        /// <summary>
+        /// The batch has expired.
+        /// </summary>
+        BatchStateExpired,
+        /// <summary>
+        /// The batch failed.
+        /// </summary>
+        BatchStateFailed,
         /// <summary>
         /// The service is preparing to run the batch.
         /// </summary>
@@ -26,17 +34,9 @@ namespace Google.Gemini
         /// </summary>
         BatchStateSucceeded,
         /// <summary>
-        /// The batch failed.
+        /// The batch state is unspecified.
         /// </summary>
-        BatchStateFailed,
-        /// <summary>
-        /// The batch has been cancelled.
-        /// </summary>
-        BatchStateCancelled,
-        /// <summary>
-        /// The batch has expired.
-        /// </summary>
-        BatchStateExpired,
+        BatchStateUnspecified,
     }
 
     /// <summary>
@@ -51,13 +51,13 @@ namespace Google.Gemini
         {
             return value switch
             {
-                GenerateContentBatchState.BatchStateUnspecified => "BATCH_STATE_UNSPECIFIED",
+                GenerateContentBatchState.BatchStateCancelled => "BATCH_STATE_CANCELLED",
+                GenerateContentBatchState.BatchStateExpired => "BATCH_STATE_EXPIRED",
+                GenerateContentBatchState.BatchStateFailed => "BATCH_STATE_FAILED",
                 GenerateContentBatchState.BatchStatePending => "BATCH_STATE_PENDING",
                 GenerateContentBatchState.BatchStateRunning => "BATCH_STATE_RUNNING",
                 GenerateContentBatchState.BatchStateSucceeded => "BATCH_STATE_SUCCEEDED",
-                GenerateContentBatchState.BatchStateFailed => "BATCH_STATE_FAILED",
-                GenerateContentBatchState.BatchStateCancelled => "BATCH_STATE_CANCELLED",
-                GenerateContentBatchState.BatchStateExpired => "BATCH_STATE_EXPIRED",
+                GenerateContentBatchState.BatchStateUnspecified => "BATCH_STATE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -68,13 +68,13 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "BATCH_STATE_UNSPECIFIED" => GenerateContentBatchState.BatchStateUnspecified,
+                "BATCH_STATE_CANCELLED" => GenerateContentBatchState.BatchStateCancelled,
+                "BATCH_STATE_EXPIRED" => GenerateContentBatchState.BatchStateExpired,
+                "BATCH_STATE_FAILED" => GenerateContentBatchState.BatchStateFailed,
                 "BATCH_STATE_PENDING" => GenerateContentBatchState.BatchStatePending,
                 "BATCH_STATE_RUNNING" => GenerateContentBatchState.BatchStateRunning,
                 "BATCH_STATE_SUCCEEDED" => GenerateContentBatchState.BatchStateSucceeded,
-                "BATCH_STATE_FAILED" => GenerateContentBatchState.BatchStateFailed,
-                "BATCH_STATE_CANCELLED" => GenerateContentBatchState.BatchStateCancelled,
-                "BATCH_STATE_EXPIRED" => GenerateContentBatchState.BatchStateExpired,
+                "BATCH_STATE_UNSPECIFIED" => GenerateContentBatchState.BatchStateUnspecified,
                 _ => null,
             };
         }

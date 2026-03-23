@@ -9,13 +9,9 @@ namespace Google.Gemini
     public enum ThinkingConfigThinkingLevel
     {
         /// <summary>
-        /// Default value.
+        /// High thinking level.
         /// </summary>
-        ThinkingLevelUnspecified,
-        /// <summary>
-        /// Little to no thinking.
-        /// </summary>
-        Minimal,
+        High,
         /// <summary>
         /// Low thinking level.
         /// </summary>
@@ -25,9 +21,13 @@ namespace Google.Gemini
         /// </summary>
         Medium,
         /// <summary>
-        /// High thinking level.
+        /// Little to no thinking.
         /// </summary>
-        High,
+        Minimal,
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        ThinkingLevelUnspecified,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Google.Gemini
         {
             return value switch
             {
-                ThinkingConfigThinkingLevel.ThinkingLevelUnspecified => "THINKING_LEVEL_UNSPECIFIED",
-                ThinkingConfigThinkingLevel.Minimal => "MINIMAL",
+                ThinkingConfigThinkingLevel.High => "HIGH",
                 ThinkingConfigThinkingLevel.Low => "LOW",
                 ThinkingConfigThinkingLevel.Medium => "MEDIUM",
-                ThinkingConfigThinkingLevel.High => "HIGH",
+                ThinkingConfigThinkingLevel.Minimal => "MINIMAL",
+                ThinkingConfigThinkingLevel.ThinkingLevelUnspecified => "THINKING_LEVEL_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "THINKING_LEVEL_UNSPECIFIED" => ThinkingConfigThinkingLevel.ThinkingLevelUnspecified,
-                "MINIMAL" => ThinkingConfigThinkingLevel.Minimal,
+                "HIGH" => ThinkingConfigThinkingLevel.High,
                 "LOW" => ThinkingConfigThinkingLevel.Low,
                 "MEDIUM" => ThinkingConfigThinkingLevel.Medium,
-                "HIGH" => ThinkingConfigThinkingLevel.High,
+                "MINIMAL" => ThinkingConfigThinkingLevel.Minimal,
+                "THINKING_LEVEL_UNSPECIFIED" => ThinkingConfigThinkingLevel.ThinkingLevelUnspecified,
                 _ => null,
             };
         }

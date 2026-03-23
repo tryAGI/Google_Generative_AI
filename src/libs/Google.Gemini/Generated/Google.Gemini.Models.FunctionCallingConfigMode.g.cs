@@ -9,17 +9,17 @@ namespace Google.Gemini
     public enum FunctionCallingConfigMode
     {
         /// <summary>
-        /// Unspecified function calling mode. This value should not be used.
+        /// Model is constrained to always predicting a function call only. If "allowed_function_names" are set, the predicted function call will be limited to any one of "allowed_function_names", else the predicted function call will be any one of the provided "function_declarations".
         /// </summary>
-        ModeUnspecified,
+        Any,
         /// <summary>
         /// Default model behavior, model decides to predict either a function call or a natural language response.
         /// </summary>
         Auto,
         /// <summary>
-        /// Model is constrained to always predicting a function call only. If "allowed_function_names" are set, the predicted function call will be limited to any one of "allowed_function_names", else the predicted function call will be any one of the provided "function_declarations".
+        /// Unspecified function calling mode. This value should not be used.
         /// </summary>
-        Any,
+        ModeUnspecified,
         /// <summary>
         /// Model will not predict any function call. Model behavior is same as when not passing any function declarations.
         /// </summary>
@@ -42,9 +42,9 @@ namespace Google.Gemini
         {
             return value switch
             {
-                FunctionCallingConfigMode.ModeUnspecified => "MODE_UNSPECIFIED",
-                FunctionCallingConfigMode.Auto => "AUTO",
                 FunctionCallingConfigMode.Any => "ANY",
+                FunctionCallingConfigMode.Auto => "AUTO",
+                FunctionCallingConfigMode.ModeUnspecified => "MODE_UNSPECIFIED",
                 FunctionCallingConfigMode.None => "NONE",
                 FunctionCallingConfigMode.Validated => "VALIDATED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -57,9 +57,9 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "MODE_UNSPECIFIED" => FunctionCallingConfigMode.ModeUnspecified,
-                "AUTO" => FunctionCallingConfigMode.Auto,
                 "ANY" => FunctionCallingConfigMode.Any,
+                "AUTO" => FunctionCallingConfigMode.Auto,
+                "MODE_UNSPECIFIED" => FunctionCallingConfigMode.ModeUnspecified,
                 "NONE" => FunctionCallingConfigMode.None,
                 "VALIDATED" => FunctionCallingConfigMode.Validated,
                 _ => null,

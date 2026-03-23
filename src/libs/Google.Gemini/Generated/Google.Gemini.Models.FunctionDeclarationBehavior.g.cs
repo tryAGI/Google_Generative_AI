@@ -9,10 +9,6 @@ namespace Google.Gemini
     public enum FunctionDeclarationBehavior
     {
         /// <summary>
-        /// This value is unused.
-        /// </summary>
-        Unspecified,
-        /// <summary>
         /// If set, the system will wait to receive the function response before continuing the conversation.
         /// </summary>
         Blocking,
@@ -20,6 +16,10 @@ namespace Google.Gemini
         /// If set, the system will not wait to receive the function response. Instead, it will attempt to handle function responses as they become available while maintaining the conversation between the user and the model.
         /// </summary>
         NonBlocking,
+        /// <summary>
+        /// This value is unused.
+        /// </summary>
+        Unspecified,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Google.Gemini
         {
             return value switch
             {
-                FunctionDeclarationBehavior.Unspecified => "UNSPECIFIED",
                 FunctionDeclarationBehavior.Blocking => "BLOCKING",
                 FunctionDeclarationBehavior.NonBlocking => "NON_BLOCKING",
+                FunctionDeclarationBehavior.Unspecified => "UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "UNSPECIFIED" => FunctionDeclarationBehavior.Unspecified,
                 "BLOCKING" => FunctionDeclarationBehavior.Blocking,
                 "NON_BLOCKING" => FunctionDeclarationBehavior.NonBlocking,
+                "UNSPECIFIED" => FunctionDeclarationBehavior.Unspecified,
                 _ => null,
             };
         }

@@ -9,33 +9,21 @@ namespace Google.Gemini
     public enum SafetySettingCategory
     {
         /// <summary>
-        /// Category is unspecified.
+        /// **Gemini** - Content that may be used to harm civic integrity. DEPRECATED: use enable_enhanced_civic_answers instead.
         /// </summary>
-        HarmCategoryUnspecified,
-        /// <summary>
-        /// **PaLM** - Negative or harmful comments targeting identity and/or protected attribute.
-        /// </summary>
-        HarmCategoryDerogatory,
-        /// <summary>
-        /// **PaLM** - Content that is rude, disrespectful, or profane.
-        /// </summary>
-        HarmCategoryToxicity,
-        /// <summary>
-        /// **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore.
-        /// </summary>
-        HarmCategoryViolence,
-        /// <summary>
-        /// **PaLM** - Contains references to sexual acts or other lewd content.
-        /// </summary>
-        HarmCategorySexual,
-        /// <summary>
-        /// **PaLM** - Promotes unchecked medical advice.
-        /// </summary>
-        HarmCategoryMedical,
+        HarmCategoryCivicIntegrity,
         /// <summary>
         /// **PaLM** - Dangerous content that promotes, facilitates, or encourages harmful acts.
         /// </summary>
         HarmCategoryDangerous,
+        /// <summary>
+        /// **Gemini** - Dangerous content.
+        /// </summary>
+        HarmCategoryDangerousContent,
+        /// <summary>
+        /// **PaLM** - Negative or harmful comments targeting identity and/or protected attribute.
+        /// </summary>
+        HarmCategoryDerogatory,
         /// <summary>
         /// **Gemini** - Harassment content.
         /// </summary>
@@ -45,17 +33,29 @@ namespace Google.Gemini
         /// </summary>
         HarmCategoryHateSpeech,
         /// <summary>
+        /// **PaLM** - Promotes unchecked medical advice.
+        /// </summary>
+        HarmCategoryMedical,
+        /// <summary>
+        /// **PaLM** - Contains references to sexual acts or other lewd content.
+        /// </summary>
+        HarmCategorySexual,
+        /// <summary>
         /// **Gemini** - Sexually explicit content.
         /// </summary>
         HarmCategorySexuallyExplicit,
         /// <summary>
-        /// **Gemini** - Dangerous content.
+        /// **PaLM** - Content that is rude, disrespectful, or profane.
         /// </summary>
-        HarmCategoryDangerousContent,
+        HarmCategoryToxicity,
         /// <summary>
-        /// **Gemini** - Content that may be used to harm civic integrity. DEPRECATED: use enable_enhanced_civic_answers instead.
+        /// Category is unspecified.
         /// </summary>
-        HarmCategoryCivicIntegrity,
+        HarmCategoryUnspecified,
+        /// <summary>
+        /// **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore.
+        /// </summary>
+        HarmCategoryViolence,
     }
 
     /// <summary>
@@ -70,18 +70,18 @@ namespace Google.Gemini
         {
             return value switch
             {
-                SafetySettingCategory.HarmCategoryUnspecified => "HARM_CATEGORY_UNSPECIFIED",
-                SafetySettingCategory.HarmCategoryDerogatory => "HARM_CATEGORY_DEROGATORY",
-                SafetySettingCategory.HarmCategoryToxicity => "HARM_CATEGORY_TOXICITY",
-                SafetySettingCategory.HarmCategoryViolence => "HARM_CATEGORY_VIOLENCE",
-                SafetySettingCategory.HarmCategorySexual => "HARM_CATEGORY_SEXUAL",
-                SafetySettingCategory.HarmCategoryMedical => "HARM_CATEGORY_MEDICAL",
+                SafetySettingCategory.HarmCategoryCivicIntegrity => "HARM_CATEGORY_CIVIC_INTEGRITY",
                 SafetySettingCategory.HarmCategoryDangerous => "HARM_CATEGORY_DANGEROUS",
+                SafetySettingCategory.HarmCategoryDangerousContent => "HARM_CATEGORY_DANGEROUS_CONTENT",
+                SafetySettingCategory.HarmCategoryDerogatory => "HARM_CATEGORY_DEROGATORY",
                 SafetySettingCategory.HarmCategoryHarassment => "HARM_CATEGORY_HARASSMENT",
                 SafetySettingCategory.HarmCategoryHateSpeech => "HARM_CATEGORY_HATE_SPEECH",
+                SafetySettingCategory.HarmCategoryMedical => "HARM_CATEGORY_MEDICAL",
+                SafetySettingCategory.HarmCategorySexual => "HARM_CATEGORY_SEXUAL",
                 SafetySettingCategory.HarmCategorySexuallyExplicit => "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                SafetySettingCategory.HarmCategoryDangerousContent => "HARM_CATEGORY_DANGEROUS_CONTENT",
-                SafetySettingCategory.HarmCategoryCivicIntegrity => "HARM_CATEGORY_CIVIC_INTEGRITY",
+                SafetySettingCategory.HarmCategoryToxicity => "HARM_CATEGORY_TOXICITY",
+                SafetySettingCategory.HarmCategoryUnspecified => "HARM_CATEGORY_UNSPECIFIED",
+                SafetySettingCategory.HarmCategoryViolence => "HARM_CATEGORY_VIOLENCE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -92,18 +92,18 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "HARM_CATEGORY_UNSPECIFIED" => SafetySettingCategory.HarmCategoryUnspecified,
-                "HARM_CATEGORY_DEROGATORY" => SafetySettingCategory.HarmCategoryDerogatory,
-                "HARM_CATEGORY_TOXICITY" => SafetySettingCategory.HarmCategoryToxicity,
-                "HARM_CATEGORY_VIOLENCE" => SafetySettingCategory.HarmCategoryViolence,
-                "HARM_CATEGORY_SEXUAL" => SafetySettingCategory.HarmCategorySexual,
-                "HARM_CATEGORY_MEDICAL" => SafetySettingCategory.HarmCategoryMedical,
+                "HARM_CATEGORY_CIVIC_INTEGRITY" => SafetySettingCategory.HarmCategoryCivicIntegrity,
                 "HARM_CATEGORY_DANGEROUS" => SafetySettingCategory.HarmCategoryDangerous,
+                "HARM_CATEGORY_DANGEROUS_CONTENT" => SafetySettingCategory.HarmCategoryDangerousContent,
+                "HARM_CATEGORY_DEROGATORY" => SafetySettingCategory.HarmCategoryDerogatory,
                 "HARM_CATEGORY_HARASSMENT" => SafetySettingCategory.HarmCategoryHarassment,
                 "HARM_CATEGORY_HATE_SPEECH" => SafetySettingCategory.HarmCategoryHateSpeech,
+                "HARM_CATEGORY_MEDICAL" => SafetySettingCategory.HarmCategoryMedical,
+                "HARM_CATEGORY_SEXUAL" => SafetySettingCategory.HarmCategorySexual,
                 "HARM_CATEGORY_SEXUALLY_EXPLICIT" => SafetySettingCategory.HarmCategorySexuallyExplicit,
-                "HARM_CATEGORY_DANGEROUS_CONTENT" => SafetySettingCategory.HarmCategoryDangerousContent,
-                "HARM_CATEGORY_CIVIC_INTEGRITY" => SafetySettingCategory.HarmCategoryCivicIntegrity,
+                "HARM_CATEGORY_TOXICITY" => SafetySettingCategory.HarmCategoryToxicity,
+                "HARM_CATEGORY_UNSPECIFIED" => SafetySettingCategory.HarmCategoryUnspecified,
+                "HARM_CATEGORY_VIOLENCE" => SafetySettingCategory.HarmCategoryViolence,
                 _ => null,
             };
         }

@@ -9,37 +9,37 @@ namespace Google.Gemini
     public enum SchemaType
     {
         /// <summary>
-        /// Not specified, should not be used.
+        /// Array type.
         /// </summary>
-        TypeUnspecified,
-        /// <summary>
-        /// String type.
-        /// </summary>
-        String,
-        /// <summary>
-        /// Number type.
-        /// </summary>
-        Number,
-        /// <summary>
-        /// Integer type.
-        /// </summary>
-        Integer,
+        Array,
         /// <summary>
         /// Boolean type.
         /// </summary>
         Boolean,
         /// <summary>
-        /// Array type.
+        /// Integer type.
         /// </summary>
-        Array,
+        Integer,
+        /// <summary>
+        /// Null type.
+        /// </summary>
+        Null,
+        /// <summary>
+        /// Number type.
+        /// </summary>
+        Number,
         /// <summary>
         /// Object type.
         /// </summary>
         Object,
         /// <summary>
-        /// Null type.
+        /// String type.
         /// </summary>
-        Null,
+        String,
+        /// <summary>
+        /// Not specified, should not be used.
+        /// </summary>
+        TypeUnspecified,
     }
 
     /// <summary>
@@ -54,14 +54,14 @@ namespace Google.Gemini
         {
             return value switch
             {
-                SchemaType.TypeUnspecified => "TYPE_UNSPECIFIED",
-                SchemaType.String => "STRING",
-                SchemaType.Number => "NUMBER",
-                SchemaType.Integer => "INTEGER",
-                SchemaType.Boolean => "BOOLEAN",
                 SchemaType.Array => "ARRAY",
-                SchemaType.Object => "OBJECT",
+                SchemaType.Boolean => "BOOLEAN",
+                SchemaType.Integer => "INTEGER",
                 SchemaType.Null => "NULL",
+                SchemaType.Number => "NUMBER",
+                SchemaType.Object => "OBJECT",
+                SchemaType.String => "STRING",
+                SchemaType.TypeUnspecified => "TYPE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -72,14 +72,14 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "TYPE_UNSPECIFIED" => SchemaType.TypeUnspecified,
-                "STRING" => SchemaType.String,
-                "NUMBER" => SchemaType.Number,
-                "INTEGER" => SchemaType.Integer,
-                "BOOLEAN" => SchemaType.Boolean,
                 "ARRAY" => SchemaType.Array,
-                "OBJECT" => SchemaType.Object,
+                "BOOLEAN" => SchemaType.Boolean,
+                "INTEGER" => SchemaType.Integer,
                 "NULL" => SchemaType.Null,
+                "NUMBER" => SchemaType.Number,
+                "OBJECT" => SchemaType.Object,
+                "STRING" => SchemaType.String,
+                "TYPE_UNSPECIFIED" => SchemaType.TypeUnspecified,
                 _ => null,
             };
         }

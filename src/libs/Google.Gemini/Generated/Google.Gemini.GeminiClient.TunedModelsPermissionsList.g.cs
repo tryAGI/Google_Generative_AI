@@ -7,15 +7,15 @@ namespace Google.Gemini
     {
         partial void PrepareTunedModelsPermissionsListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string tunedModelsId,
             ref int? pageSize,
-            ref string? pageToken);
+            ref string? pageToken,
+            ref string tunedModelsId);
         partial void PrepareTunedModelsPermissionsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string tunedModelsId,
             int? pageSize,
-            string? pageToken);
+            string? pageToken,
+            string tunedModelsId);
         partial void ProcessTunedModelsPermissionsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,9 +28,9 @@ namespace Google.Gemini
         /// <summary>
         /// Lists permissions for the specific resource.
         /// </summary>
-        /// <param name="tunedModelsId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
+        /// <param name="tunedModelsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.ListPermissionsResponse> TunedModelsPermissionsListAsync(
@@ -43,9 +43,9 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareTunedModelsPermissionsListArguments(
                 httpClient: HttpClient,
-                tunedModelsId: ref tunedModelsId,
                 pageSize: ref pageSize,
-                pageToken: ref pageToken);
+                pageToken: ref pageToken,
+                tunedModelsId: ref tunedModelsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelsId}/permissions",
@@ -77,9 +77,9 @@ namespace Google.Gemini
             PrepareTunedModelsPermissionsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                tunedModelsId: tunedModelsId,
                 pageSize: pageSize,
-                pageToken: pageToken);
+                pageToken: pageToken,
+                tunedModelsId: tunedModelsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

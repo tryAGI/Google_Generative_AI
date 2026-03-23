@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareCorporaDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string corporaId,
-            ref bool? force);
+            ref bool? force,
+            ref string corporaId);
         partial void PrepareCorporaDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string corporaId,
-            bool? force);
+            bool? force,
+            string corporaId);
         partial void ProcessCorporaDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,8 +26,8 @@ namespace Google.Gemini
         /// <summary>
         /// Deletes a `Corpus`.
         /// </summary>
-        /// <param name="corporaId"></param>
         /// <param name="force"></param>
+        /// <param name="corporaId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> CorporaDeleteAsync(
@@ -39,8 +39,8 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareCorporaDeleteArguments(
                 httpClient: HttpClient,
-                corporaId: ref corporaId,
-                force: ref force);
+                force: ref force,
+                corporaId: ref corporaId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/corpora/{corporaId}",
@@ -71,8 +71,8 @@ namespace Google.Gemini
             PrepareCorporaDeleteRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                corporaId: corporaId,
-                force: force);
+                force: force,
+                corporaId: corporaId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

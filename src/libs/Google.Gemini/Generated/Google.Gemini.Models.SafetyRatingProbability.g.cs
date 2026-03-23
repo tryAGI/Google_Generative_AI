@@ -13,9 +13,9 @@ namespace Google.Gemini
         /// </summary>
         HarmProbabilityUnspecified,
         /// <summary>
-        /// Content has a negligible chance of being unsafe.
+        /// Content has a high chance of being unsafe.
         /// </summary>
-        Negligible,
+        High,
         /// <summary>
         /// Content has a low chance of being unsafe.
         /// </summary>
@@ -25,9 +25,9 @@ namespace Google.Gemini
         /// </summary>
         Medium,
         /// <summary>
-        /// Content has a high chance of being unsafe.
+        /// Content has a negligible chance of being unsafe.
         /// </summary>
-        High,
+        Negligible,
     }
 
     /// <summary>
@@ -43,10 +43,10 @@ namespace Google.Gemini
             return value switch
             {
                 SafetyRatingProbability.HarmProbabilityUnspecified => "HARM_PROBABILITY_UNSPECIFIED",
-                SafetyRatingProbability.Negligible => "NEGLIGIBLE",
+                SafetyRatingProbability.High => "HIGH",
                 SafetyRatingProbability.Low => "LOW",
                 SafetyRatingProbability.Medium => "MEDIUM",
-                SafetyRatingProbability.High => "HIGH",
+                SafetyRatingProbability.Negligible => "NEGLIGIBLE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -58,10 +58,10 @@ namespace Google.Gemini
             return value switch
             {
                 "HARM_PROBABILITY_UNSPECIFIED" => SafetyRatingProbability.HarmProbabilityUnspecified,
-                "NEGLIGIBLE" => SafetyRatingProbability.Negligible,
+                "HIGH" => SafetyRatingProbability.High,
                 "LOW" => SafetyRatingProbability.Low,
                 "MEDIUM" => SafetyRatingProbability.Medium,
-                "HIGH" => SafetyRatingProbability.High,
+                "NEGLIGIBLE" => SafetyRatingProbability.Negligible,
                 _ => null,
             };
         }

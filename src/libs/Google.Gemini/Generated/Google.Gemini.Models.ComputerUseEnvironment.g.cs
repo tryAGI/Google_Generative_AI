@@ -9,13 +9,13 @@ namespace Google.Gemini
     public enum ComputerUseEnvironment
     {
         /// <summary>
-        /// Defaults to browser.
-        /// </summary>
-        EnvironmentUnspecified,
-        /// <summary>
         /// Operates in a web browser.
         /// </summary>
         EnvironmentBrowser,
+        /// <summary>
+        /// Defaults to browser.
+        /// </summary>
+        EnvironmentUnspecified,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Google.Gemini
         {
             return value switch
             {
-                ComputerUseEnvironment.EnvironmentUnspecified => "ENVIRONMENT_UNSPECIFIED",
                 ComputerUseEnvironment.EnvironmentBrowser => "ENVIRONMENT_BROWSER",
+                ComputerUseEnvironment.EnvironmentUnspecified => "ENVIRONMENT_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "ENVIRONMENT_UNSPECIFIED" => ComputerUseEnvironment.EnvironmentUnspecified,
                 "ENVIRONMENT_BROWSER" => ComputerUseEnvironment.EnvironmentBrowser,
+                "ENVIRONMENT_UNSPECIFIED" => ComputerUseEnvironment.EnvironmentUnspecified,
                 _ => null,
             };
         }

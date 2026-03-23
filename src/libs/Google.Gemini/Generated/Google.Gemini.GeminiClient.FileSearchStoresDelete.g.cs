@@ -7,13 +7,13 @@ namespace Google.Gemini
     {
         partial void PrepareFileSearchStoresDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string fileSearchStoresId,
-            ref bool? force);
+            ref bool? force,
+            ref string fileSearchStoresId);
         partial void PrepareFileSearchStoresDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string fileSearchStoresId,
-            bool? force);
+            bool? force,
+            string fileSearchStoresId);
         partial void ProcessFileSearchStoresDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,8 +26,8 @@ namespace Google.Gemini
         /// <summary>
         /// Deletes a `FileSearchStore`.
         /// </summary>
-        /// <param name="fileSearchStoresId"></param>
         /// <param name="force"></param>
+        /// <param name="fileSearchStoresId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> FileSearchStoresDeleteAsync(
@@ -39,8 +39,8 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareFileSearchStoresDeleteArguments(
                 httpClient: HttpClient,
-                fileSearchStoresId: ref fileSearchStoresId,
-                force: ref force);
+                force: ref force,
+                fileSearchStoresId: ref fileSearchStoresId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/fileSearchStores/{fileSearchStoresId}",
@@ -71,8 +71,8 @@ namespace Google.Gemini
             PrepareFileSearchStoresDeleteRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                fileSearchStoresId: fileSearchStoresId,
-                force: force);
+                force: force,
+                fileSearchStoresId: fileSearchStoresId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

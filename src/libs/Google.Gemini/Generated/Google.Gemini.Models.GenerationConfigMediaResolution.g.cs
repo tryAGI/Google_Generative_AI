@@ -9,9 +9,9 @@ namespace Google.Gemini
     public enum GenerationConfigMediaResolution
     {
         /// <summary>
-        /// Media resolution has not been set.
+        /// Media resolution set to high (zoomed reframing with 256 tokens).
         /// </summary>
-        MediaResolutionUnspecified,
+        MediaResolutionHigh,
         /// <summary>
         /// Media resolution set to low (64 tokens).
         /// </summary>
@@ -21,9 +21,9 @@ namespace Google.Gemini
         /// </summary>
         MediaResolutionMedium,
         /// <summary>
-        /// Media resolution set to high (zoomed reframing with 256 tokens).
+        /// Media resolution has not been set.
         /// </summary>
-        MediaResolutionHigh,
+        MediaResolutionUnspecified,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                GenerationConfigMediaResolution.MediaResolutionUnspecified => "MEDIA_RESOLUTION_UNSPECIFIED",
+                GenerationConfigMediaResolution.MediaResolutionHigh => "MEDIA_RESOLUTION_HIGH",
                 GenerationConfigMediaResolution.MediaResolutionLow => "MEDIA_RESOLUTION_LOW",
                 GenerationConfigMediaResolution.MediaResolutionMedium => "MEDIA_RESOLUTION_MEDIUM",
-                GenerationConfigMediaResolution.MediaResolutionHigh => "MEDIA_RESOLUTION_HIGH",
+                GenerationConfigMediaResolution.MediaResolutionUnspecified => "MEDIA_RESOLUTION_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "MEDIA_RESOLUTION_UNSPECIFIED" => GenerationConfigMediaResolution.MediaResolutionUnspecified,
+                "MEDIA_RESOLUTION_HIGH" => GenerationConfigMediaResolution.MediaResolutionHigh,
                 "MEDIA_RESOLUTION_LOW" => GenerationConfigMediaResolution.MediaResolutionLow,
                 "MEDIA_RESOLUTION_MEDIUM" => GenerationConfigMediaResolution.MediaResolutionMedium,
-                "MEDIA_RESOLUTION_HIGH" => GenerationConfigMediaResolution.MediaResolutionHigh,
+                "MEDIA_RESOLUTION_UNSPECIFIED" => GenerationConfigMediaResolution.MediaResolutionUnspecified,
                 _ => null,
             };
         }

@@ -7,16 +7,16 @@ namespace Google.Gemini
     {
         partial void PrepareModelsOperationsListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string modelsId,
             ref string? filter,
+            ref string modelsId,
             ref int? pageSize,
             ref string? pageToken,
             ref bool? returnPartialSuccess);
         partial void PrepareModelsOperationsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string modelsId,
             string? filter,
+            string modelsId,
             int? pageSize,
             string? pageToken,
             bool? returnPartialSuccess);
@@ -32,8 +32,8 @@ namespace Google.Gemini
         /// <summary>
         /// Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
         /// </summary>
-        /// <param name="modelsId"></param>
         /// <param name="filter"></param>
+        /// <param name="modelsId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="returnPartialSuccess"></param>
@@ -51,8 +51,8 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareModelsOperationsListArguments(
                 httpClient: HttpClient,
-                modelsId: ref modelsId,
                 filter: ref filter,
+                modelsId: ref modelsId,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
                 returnPartialSuccess: ref returnPartialSuccess);
@@ -89,8 +89,8 @@ namespace Google.Gemini
             PrepareModelsOperationsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                modelsId: modelsId,
                 filter: filter,
+                modelsId: modelsId,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 returnPartialSuccess: returnPartialSuccess);

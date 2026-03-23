@@ -7,15 +7,15 @@ namespace Google.Gemini
     {
         partial void PrepareFileSearchStoresDocumentsDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string documentsId,
             ref string fileSearchStoresId,
-            ref bool? force);
+            ref bool? force,
+            ref string documentsId);
         partial void PrepareFileSearchStoresDocumentsDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string documentsId,
             string fileSearchStoresId,
-            bool? force);
+            bool? force,
+            string documentsId);
         partial void ProcessFileSearchStoresDocumentsDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,14 +28,14 @@ namespace Google.Gemini
         /// <summary>
         /// Deletes a `Document`.
         /// </summary>
-        /// <param name="documentsId"></param>
         /// <param name="fileSearchStoresId"></param>
         /// <param name="force"></param>
+        /// <param name="documentsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> FileSearchStoresDocumentsDeleteAsync(
-            string documentsId,
             string fileSearchStoresId,
+            string documentsId,
             bool? force = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -43,9 +43,9 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareFileSearchStoresDocumentsDeleteArguments(
                 httpClient: HttpClient,
-                documentsId: ref documentsId,
                 fileSearchStoresId: ref fileSearchStoresId,
-                force: ref force);
+                force: ref force,
+                documentsId: ref documentsId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/fileSearchStores/{fileSearchStoresId}/documents/{documentsId}",
@@ -76,9 +76,9 @@ namespace Google.Gemini
             PrepareFileSearchStoresDocumentsDeleteRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                documentsId: documentsId,
                 fileSearchStoresId: fileSearchStoresId,
-                force: force);
+                force: force,
+                documentsId: documentsId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
