@@ -7,15 +7,15 @@ namespace Google.Gemini
     {
         partial void PrepareCorporaPermissionsListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string corporaId,
             ref int? pageSize,
-            ref string? pageToken);
+            ref string? pageToken,
+            ref string corporaId);
         partial void PrepareCorporaPermissionsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string corporaId,
             int? pageSize,
-            string? pageToken);
+            string? pageToken,
+            string corporaId);
         partial void ProcessCorporaPermissionsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,9 +28,9 @@ namespace Google.Gemini
         /// <summary>
         /// Lists permissions for the specific resource.
         /// </summary>
-        /// <param name="corporaId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
+        /// <param name="corporaId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.ListPermissionsResponse> CorporaPermissionsListAsync(
@@ -43,9 +43,9 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareCorporaPermissionsListArguments(
                 httpClient: HttpClient,
-                corporaId: ref corporaId,
                 pageSize: ref pageSize,
-                pageToken: ref pageToken);
+                pageToken: ref pageToken,
+                corporaId: ref corporaId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/corpora/{corporaId}/permissions",
@@ -77,9 +77,9 @@ namespace Google.Gemini
             PrepareCorporaPermissionsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                corporaId: corporaId,
                 pageSize: pageSize,
-                pageToken: pageToken);
+                pageToken: pageToken,
+                corporaId: corporaId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

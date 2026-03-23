@@ -9,21 +9,21 @@ namespace Google.Gemini
     public enum CodeExecutionResultOutcome
     {
         /// <summary>
-        /// Unspecified status. This value should not be used.
+        /// Code execution ran for too long, and was cancelled. There may or may not be a partial `output` present.
         /// </summary>
-        OutcomeUnspecified,
-        /// <summary>
-        /// Code execution completed successfully. `output` contains the stdout, if any.
-        /// </summary>
-        OutcomeOk,
+        OutcomeDeadlineExceeded,
         /// <summary>
         /// Code execution failed. `output` contains the stderr and stdout, if any.
         /// </summary>
         OutcomeFailed,
         /// <summary>
-        /// Code execution ran for too long, and was cancelled. There may or may not be a partial `output` present.
+        /// Code execution completed successfully. `output` contains the stdout, if any.
         /// </summary>
-        OutcomeDeadlineExceeded,
+        OutcomeOk,
+        /// <summary>
+        /// Unspecified status. This value should not be used.
+        /// </summary>
+        OutcomeUnspecified,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                CodeExecutionResultOutcome.OutcomeUnspecified => "OUTCOME_UNSPECIFIED",
-                CodeExecutionResultOutcome.OutcomeOk => "OUTCOME_OK",
-                CodeExecutionResultOutcome.OutcomeFailed => "OUTCOME_FAILED",
                 CodeExecutionResultOutcome.OutcomeDeadlineExceeded => "OUTCOME_DEADLINE_EXCEEDED",
+                CodeExecutionResultOutcome.OutcomeFailed => "OUTCOME_FAILED",
+                CodeExecutionResultOutcome.OutcomeOk => "OUTCOME_OK",
+                CodeExecutionResultOutcome.OutcomeUnspecified => "OUTCOME_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "OUTCOME_UNSPECIFIED" => CodeExecutionResultOutcome.OutcomeUnspecified,
-                "OUTCOME_OK" => CodeExecutionResultOutcome.OutcomeOk,
-                "OUTCOME_FAILED" => CodeExecutionResultOutcome.OutcomeFailed,
                 "OUTCOME_DEADLINE_EXCEEDED" => CodeExecutionResultOutcome.OutcomeDeadlineExceeded,
+                "OUTCOME_FAILED" => CodeExecutionResultOutcome.OutcomeFailed,
+                "OUTCOME_OK" => CodeExecutionResultOutcome.OutcomeOk,
+                "OUTCOME_UNSPECIFIED" => CodeExecutionResultOutcome.OutcomeUnspecified,
                 _ => null,
             };
         }

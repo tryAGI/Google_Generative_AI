@@ -7,16 +7,16 @@ namespace Google.Gemini
     {
         partial void PrepareTunedModelsOperationsListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string tunedModelsId,
             ref string? filter,
+            ref string tunedModelsId,
             ref int? pageSize,
             ref string? pageToken,
             ref bool? returnPartialSuccess);
         partial void PrepareTunedModelsOperationsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string tunedModelsId,
             string? filter,
+            string tunedModelsId,
             int? pageSize,
             string? pageToken,
             bool? returnPartialSuccess);
@@ -32,8 +32,8 @@ namespace Google.Gemini
         /// <summary>
         /// Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
         /// </summary>
-        /// <param name="tunedModelsId"></param>
         /// <param name="filter"></param>
+        /// <param name="tunedModelsId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="returnPartialSuccess"></param>
@@ -51,8 +51,8 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareTunedModelsOperationsListArguments(
                 httpClient: HttpClient,
-                tunedModelsId: ref tunedModelsId,
                 filter: ref filter,
+                tunedModelsId: ref tunedModelsId,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
                 returnPartialSuccess: ref returnPartialSuccess);
@@ -89,8 +89,8 @@ namespace Google.Gemini
             PrepareTunedModelsOperationsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                tunedModelsId: tunedModelsId,
                 filter: filter,
+                tunedModelsId: tunedModelsId,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 returnPartialSuccess: returnPartialSuccess);

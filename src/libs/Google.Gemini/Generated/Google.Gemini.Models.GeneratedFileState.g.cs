@@ -10,21 +10,21 @@ namespace Google.Gemini
     public enum GeneratedFileState
     {
         /// <summary>
-        /// The default value. This value is used if the state is omitted.
+        /// Failed to generate the GeneratedFile.
         /// </summary>
-        StateUnspecified,
-        /// <summary>
-        /// Being generated.
-        /// </summary>
-        Generating,
+        Failed,
         /// <summary>
         /// Generated and is ready for download.
         /// </summary>
         Generated,
         /// <summary>
-        /// Failed to generate the GeneratedFile.
+        /// Being generated.
         /// </summary>
-        Failed,
+        Generating,
+        /// <summary>
+        /// The default value. This value is used if the state is omitted.
+        /// </summary>
+        StateUnspecified,
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                GeneratedFileState.StateUnspecified => "STATE_UNSPECIFIED",
-                GeneratedFileState.Generating => "GENERATING",
-                GeneratedFileState.Generated => "GENERATED",
                 GeneratedFileState.Failed => "FAILED",
+                GeneratedFileState.Generated => "GENERATED",
+                GeneratedFileState.Generating => "GENERATING",
+                GeneratedFileState.StateUnspecified => "STATE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,10 +53,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "STATE_UNSPECIFIED" => GeneratedFileState.StateUnspecified,
-                "GENERATING" => GeneratedFileState.Generating,
-                "GENERATED" => GeneratedFileState.Generated,
                 "FAILED" => GeneratedFileState.Failed,
+                "GENERATED" => GeneratedFileState.Generated,
+                "GENERATING" => GeneratedFileState.Generating,
+                "STATE_UNSPECIFIED" => GeneratedFileState.StateUnspecified,
                 _ => null,
             };
         }

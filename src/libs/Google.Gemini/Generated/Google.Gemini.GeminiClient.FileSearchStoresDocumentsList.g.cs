@@ -7,15 +7,15 @@ namespace Google.Gemini
     {
         partial void PrepareFileSearchStoresDocumentsListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string fileSearchStoresId,
             ref int? pageSize,
-            ref string? pageToken);
+            ref string? pageToken,
+            ref string fileSearchStoresId);
         partial void PrepareFileSearchStoresDocumentsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string fileSearchStoresId,
             int? pageSize,
-            string? pageToken);
+            string? pageToken,
+            string fileSearchStoresId);
         partial void ProcessFileSearchStoresDocumentsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,9 +28,9 @@ namespace Google.Gemini
         /// <summary>
         /// Lists all `Document`s in a `Corpus`.
         /// </summary>
-        /// <param name="fileSearchStoresId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
+        /// <param name="fileSearchStoresId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.ListDocumentsResponse> FileSearchStoresDocumentsListAsync(
@@ -43,9 +43,9 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareFileSearchStoresDocumentsListArguments(
                 httpClient: HttpClient,
-                fileSearchStoresId: ref fileSearchStoresId,
                 pageSize: ref pageSize,
-                pageToken: ref pageToken);
+                pageToken: ref pageToken,
+                fileSearchStoresId: ref fileSearchStoresId);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/fileSearchStores/{fileSearchStoresId}/documents",
@@ -77,9 +77,9 @@ namespace Google.Gemini
             PrepareFileSearchStoresDocumentsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                fileSearchStoresId: fileSearchStoresId,
                 pageSize: pageSize,
-                pageToken: pageToken);
+                pageToken: pageToken,
+                fileSearchStoresId: fileSearchStoresId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

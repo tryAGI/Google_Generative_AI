@@ -9,29 +9,29 @@ namespace Google.Gemini
     public enum PromptFeedbackBlockReason
     {
         /// <summary>
+        /// Prompt was blocked due to the terms which are included from the terminology blocklist.
+        /// </summary>
+        Blocklist,
+        /// <summary>
         /// Default value. This value is unused.
         /// </summary>
         BlockReasonUnspecified,
         /// <summary>
-        /// Prompt was blocked due to safety reasons. Inspect `safety_ratings` to understand which safety category blocked it.
+        /// Candidates blocked due to unsafe image generation content.
         /// </summary>
-        Safety,
+        ImageSafety,
         /// <summary>
         /// Prompt was blocked due to unknown reasons.
         /// </summary>
         Other,
         /// <summary>
-        /// Prompt was blocked due to the terms which are included from the terminology blocklist.
-        /// </summary>
-        Blocklist,
-        /// <summary>
         /// Prompt was blocked due to prohibited content.
         /// </summary>
         ProhibitedContent,
         /// <summary>
-        /// Candidates blocked due to unsafe image generation content.
+        /// Prompt was blocked due to safety reasons. Inspect `safety_ratings` to understand which safety category blocked it.
         /// </summary>
-        ImageSafety,
+        Safety,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                PromptFeedbackBlockReason.BlockReasonUnspecified => "BLOCK_REASON_UNSPECIFIED",
-                PromptFeedbackBlockReason.Safety => "SAFETY",
-                PromptFeedbackBlockReason.Other => "OTHER",
                 PromptFeedbackBlockReason.Blocklist => "BLOCKLIST",
-                PromptFeedbackBlockReason.ProhibitedContent => "PROHIBITED_CONTENT",
+                PromptFeedbackBlockReason.BlockReasonUnspecified => "BLOCK_REASON_UNSPECIFIED",
                 PromptFeedbackBlockReason.ImageSafety => "IMAGE_SAFETY",
+                PromptFeedbackBlockReason.Other => "OTHER",
+                PromptFeedbackBlockReason.ProhibitedContent => "PROHIBITED_CONTENT",
+                PromptFeedbackBlockReason.Safety => "SAFETY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "BLOCK_REASON_UNSPECIFIED" => PromptFeedbackBlockReason.BlockReasonUnspecified,
-                "SAFETY" => PromptFeedbackBlockReason.Safety,
-                "OTHER" => PromptFeedbackBlockReason.Other,
                 "BLOCKLIST" => PromptFeedbackBlockReason.Blocklist,
-                "PROHIBITED_CONTENT" => PromptFeedbackBlockReason.ProhibitedContent,
+                "BLOCK_REASON_UNSPECIFIED" => PromptFeedbackBlockReason.BlockReasonUnspecified,
                 "IMAGE_SAFETY" => PromptFeedbackBlockReason.ImageSafety,
+                "OTHER" => PromptFeedbackBlockReason.Other,
+                "PROHIBITED_CONTENT" => PromptFeedbackBlockReason.ProhibitedContent,
+                "SAFETY" => PromptFeedbackBlockReason.Safety,
                 _ => null,
             };
         }

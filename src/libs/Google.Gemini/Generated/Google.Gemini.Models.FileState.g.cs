@@ -10,14 +10,6 @@ namespace Google.Gemini
     public enum FileState
     {
         /// <summary>
-        /// The default value. This value is used if the state is omitted.
-        /// </summary>
-        StateUnspecified,
-        /// <summary>
-        /// File is being processed and cannot be used for inference yet.
-        /// </summary>
-        Processing,
-        /// <summary>
         /// File is processed and available for inference.
         /// </summary>
         Active,
@@ -25,6 +17,14 @@ namespace Google.Gemini
         /// File failed processing.
         /// </summary>
         Failed,
+        /// <summary>
+        /// File is being processed and cannot be used for inference yet.
+        /// </summary>
+        Processing,
+        /// <summary>
+        /// The default value. This value is used if the state is omitted.
+        /// </summary>
+        StateUnspecified,
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                FileState.StateUnspecified => "STATE_UNSPECIFIED",
-                FileState.Processing => "PROCESSING",
                 FileState.Active => "ACTIVE",
                 FileState.Failed => "FAILED",
+                FileState.Processing => "PROCESSING",
+                FileState.StateUnspecified => "STATE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,10 +53,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "STATE_UNSPECIFIED" => FileState.StateUnspecified,
-                "PROCESSING" => FileState.Processing,
                 "ACTIVE" => FileState.Active,
                 "FAILED" => FileState.Failed,
+                "PROCESSING" => FileState.Processing,
+                "STATE_UNSPECIFIED" => FileState.StateUnspecified,
                 _ => null,
             };
         }

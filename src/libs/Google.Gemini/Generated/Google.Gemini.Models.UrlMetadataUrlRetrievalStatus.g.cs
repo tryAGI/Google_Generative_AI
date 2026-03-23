@@ -9,14 +9,6 @@ namespace Google.Gemini
     public enum UrlMetadataUrlRetrievalStatus
     {
         /// <summary>
-        /// Default value. This value is unused.
-        /// </summary>
-        UrlRetrievalStatusUnspecified,
-        /// <summary>
-        /// Url retrieval is successful.
-        /// </summary>
-        UrlRetrievalStatusSuccess,
-        /// <summary>
         /// Url retrieval is failed due to error.
         /// </summary>
         UrlRetrievalStatusError,
@@ -25,9 +17,17 @@ namespace Google.Gemini
         /// </summary>
         UrlRetrievalStatusPaywall,
         /// <summary>
+        /// Url retrieval is successful.
+        /// </summary>
+        UrlRetrievalStatusSuccess,
+        /// <summary>
         /// Url retrieval is failed because the content is unsafe.
         /// </summary>
         UrlRetrievalStatusUnsafe,
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        UrlRetrievalStatusUnspecified,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Google.Gemini
         {
             return value switch
             {
-                UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusUnspecified => "URL_RETRIEVAL_STATUS_UNSPECIFIED",
-                UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusSuccess => "URL_RETRIEVAL_STATUS_SUCCESS",
                 UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusError => "URL_RETRIEVAL_STATUS_ERROR",
                 UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusPaywall => "URL_RETRIEVAL_STATUS_PAYWALL",
+                UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusSuccess => "URL_RETRIEVAL_STATUS_SUCCESS",
                 UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusUnsafe => "URL_RETRIEVAL_STATUS_UNSAFE",
+                UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusUnspecified => "URL_RETRIEVAL_STATUS_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "URL_RETRIEVAL_STATUS_UNSPECIFIED" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusUnspecified,
-                "URL_RETRIEVAL_STATUS_SUCCESS" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusSuccess,
                 "URL_RETRIEVAL_STATUS_ERROR" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusError,
                 "URL_RETRIEVAL_STATUS_PAYWALL" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusPaywall,
+                "URL_RETRIEVAL_STATUS_SUCCESS" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusSuccess,
                 "URL_RETRIEVAL_STATUS_UNSAFE" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusUnsafe,
+                "URL_RETRIEVAL_STATUS_UNSPECIFIED" => UrlMetadataUrlRetrievalStatus.UrlRetrievalStatusUnspecified,
                 _ => null,
             };
         }

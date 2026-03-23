@@ -9,29 +9,29 @@ namespace Google.Gemini
     public enum ToolResponseToolType
     {
         /// <summary>
-        /// Unspecified tool type.
+        /// File search tool, maps to Tool.file_search.
         /// </summary>
-        ToolTypeUnspecified,
-        /// <summary>
-        /// Google search tool, maps to Tool.google_search.search_types.web_search.
-        /// </summary>
-        GoogleSearchWeb,
-        /// <summary>
-        /// Image search tool, maps to Tool.google_search.search_types.image_search.
-        /// </summary>
-        GoogleSearchImage,
-        /// <summary>
-        /// URL context tool, maps to Tool.url_context.
-        /// </summary>
-        UrlContext,
+        FileSearch,
         /// <summary>
         /// Google maps tool, maps to Tool.google_maps.
         /// </summary>
         GoogleMaps,
         /// <summary>
-        /// File search tool, maps to Tool.file_search.
+        /// Image search tool, maps to Tool.google_search.search_types.image_search.
         /// </summary>
-        FileSearch,
+        GoogleSearchImage,
+        /// <summary>
+        /// Google search tool, maps to Tool.google_search.search_types.web_search.
+        /// </summary>
+        GoogleSearchWeb,
+        /// <summary>
+        /// Unspecified tool type.
+        /// </summary>
+        ToolTypeUnspecified,
+        /// <summary>
+        /// URL context tool, maps to Tool.url_context.
+        /// </summary>
+        UrlContext,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                ToolResponseToolType.ToolTypeUnspecified => "TOOL_TYPE_UNSPECIFIED",
-                ToolResponseToolType.GoogleSearchWeb => "GOOGLE_SEARCH_WEB",
-                ToolResponseToolType.GoogleSearchImage => "GOOGLE_SEARCH_IMAGE",
-                ToolResponseToolType.UrlContext => "URL_CONTEXT",
-                ToolResponseToolType.GoogleMaps => "GOOGLE_MAPS",
                 ToolResponseToolType.FileSearch => "FILE_SEARCH",
+                ToolResponseToolType.GoogleMaps => "GOOGLE_MAPS",
+                ToolResponseToolType.GoogleSearchImage => "GOOGLE_SEARCH_IMAGE",
+                ToolResponseToolType.GoogleSearchWeb => "GOOGLE_SEARCH_WEB",
+                ToolResponseToolType.ToolTypeUnspecified => "TOOL_TYPE_UNSPECIFIED",
+                ToolResponseToolType.UrlContext => "URL_CONTEXT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "TOOL_TYPE_UNSPECIFIED" => ToolResponseToolType.ToolTypeUnspecified,
-                "GOOGLE_SEARCH_WEB" => ToolResponseToolType.GoogleSearchWeb,
-                "GOOGLE_SEARCH_IMAGE" => ToolResponseToolType.GoogleSearchImage,
-                "URL_CONTEXT" => ToolResponseToolType.UrlContext,
-                "GOOGLE_MAPS" => ToolResponseToolType.GoogleMaps,
                 "FILE_SEARCH" => ToolResponseToolType.FileSearch,
+                "GOOGLE_MAPS" => ToolResponseToolType.GoogleMaps,
+                "GOOGLE_SEARCH_IMAGE" => ToolResponseToolType.GoogleSearchImage,
+                "GOOGLE_SEARCH_WEB" => ToolResponseToolType.GoogleSearchWeb,
+                "TOOL_TYPE_UNSPECIFIED" => ToolResponseToolType.ToolTypeUnspecified,
+                "URL_CONTEXT" => ToolResponseToolType.UrlContext,
                 _ => null,
             };
         }

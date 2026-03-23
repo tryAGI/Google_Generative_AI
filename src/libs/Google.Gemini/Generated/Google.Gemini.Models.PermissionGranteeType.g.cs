@@ -9,21 +9,21 @@ namespace Google.Gemini
     public enum PermissionGranteeType
     {
         /// <summary>
+        /// Represents access to everyone. No extra information is required.
+        /// </summary>
+        Everyone,
+        /// <summary>
         /// The default value. This value is unused.
         /// </summary>
         GranteeTypeUnspecified,
-        /// <summary>
-        /// Represents a user. When set, you must provide email_address for the user.
-        /// </summary>
-        User,
         /// <summary>
         /// Represents a group. When set, you must provide email_address for the group.
         /// </summary>
         Group,
         /// <summary>
-        /// Represents access to everyone. No extra information is required.
+        /// Represents a user. When set, you must provide email_address for the user.
         /// </summary>
-        Everyone,
+        User,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                PermissionGranteeType.GranteeTypeUnspecified => "GRANTEE_TYPE_UNSPECIFIED",
-                PermissionGranteeType.User => "USER",
-                PermissionGranteeType.Group => "GROUP",
                 PermissionGranteeType.Everyone => "EVERYONE",
+                PermissionGranteeType.GranteeTypeUnspecified => "GRANTEE_TYPE_UNSPECIFIED",
+                PermissionGranteeType.Group => "GROUP",
+                PermissionGranteeType.User => "USER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "GRANTEE_TYPE_UNSPECIFIED" => PermissionGranteeType.GranteeTypeUnspecified,
-                "USER" => PermissionGranteeType.User,
-                "GROUP" => PermissionGranteeType.Group,
                 "EVERYONE" => PermissionGranteeType.Everyone,
+                "GRANTEE_TYPE_UNSPECIFIED" => PermissionGranteeType.GranteeTypeUnspecified,
+                "GROUP" => PermissionGranteeType.Group,
+                "USER" => PermissionGranteeType.User,
                 _ => null,
             };
         }

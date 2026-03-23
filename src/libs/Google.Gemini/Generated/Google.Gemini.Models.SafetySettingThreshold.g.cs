@@ -9,10 +9,6 @@ namespace Google.Gemini
     public enum SafetySettingThreshold
     {
         /// <summary>
-        /// Threshold is unspecified.
-        /// </summary>
-        HarmBlockThresholdUnspecified,
-        /// <summary>
         /// Content with NEGLIGIBLE will be allowed.
         /// </summary>
         BlockLowAndAbove,
@@ -21,13 +17,17 @@ namespace Google.Gemini
         /// </summary>
         BlockMediumAndAbove,
         /// <summary>
+        /// All content will be allowed.
+        /// </summary>
+        BlockNone,
+        /// <summary>
         /// Content with NEGLIGIBLE, LOW, and MEDIUM will be allowed.
         /// </summary>
         BlockOnlyHigh,
         /// <summary>
-        /// All content will be allowed.
+        /// Threshold is unspecified.
         /// </summary>
-        BlockNone,
+        HarmBlockThresholdUnspecified,
         /// <summary>
         /// Turn off the safety filter.
         /// </summary>
@@ -46,11 +46,11 @@ namespace Google.Gemini
         {
             return value switch
             {
-                SafetySettingThreshold.HarmBlockThresholdUnspecified => "HARM_BLOCK_THRESHOLD_UNSPECIFIED",
                 SafetySettingThreshold.BlockLowAndAbove => "BLOCK_LOW_AND_ABOVE",
                 SafetySettingThreshold.BlockMediumAndAbove => "BLOCK_MEDIUM_AND_ABOVE",
-                SafetySettingThreshold.BlockOnlyHigh => "BLOCK_ONLY_HIGH",
                 SafetySettingThreshold.BlockNone => "BLOCK_NONE",
+                SafetySettingThreshold.BlockOnlyHigh => "BLOCK_ONLY_HIGH",
+                SafetySettingThreshold.HarmBlockThresholdUnspecified => "HARM_BLOCK_THRESHOLD_UNSPECIFIED",
                 SafetySettingThreshold.Off => "OFF",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -62,11 +62,11 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "HARM_BLOCK_THRESHOLD_UNSPECIFIED" => SafetySettingThreshold.HarmBlockThresholdUnspecified,
                 "BLOCK_LOW_AND_ABOVE" => SafetySettingThreshold.BlockLowAndAbove,
                 "BLOCK_MEDIUM_AND_ABOVE" => SafetySettingThreshold.BlockMediumAndAbove,
-                "BLOCK_ONLY_HIGH" => SafetySettingThreshold.BlockOnlyHigh,
                 "BLOCK_NONE" => SafetySettingThreshold.BlockNone,
+                "BLOCK_ONLY_HIGH" => SafetySettingThreshold.BlockOnlyHigh,
+                "HARM_BLOCK_THRESHOLD_UNSPECIFIED" => SafetySettingThreshold.HarmBlockThresholdUnspecified,
                 "OFF" => SafetySettingThreshold.Off,
                 _ => null,
             };

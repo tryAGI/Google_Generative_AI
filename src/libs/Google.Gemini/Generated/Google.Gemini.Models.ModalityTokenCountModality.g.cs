@@ -9,6 +9,18 @@ namespace Google.Gemini
     public enum ModalityTokenCountModality
     {
         /// <summary>
+        /// Audio.
+        /// </summary>
+        Audio,
+        /// <summary>
+        /// Document, e.g. PDF.
+        /// </summary>
+        Document,
+        /// <summary>
+        /// Image.
+        /// </summary>
+        Image,
+        /// <summary>
         /// Unspecified modality.
         /// </summary>
         ModalityUnspecified,
@@ -17,21 +29,9 @@ namespace Google.Gemini
         /// </summary>
         Text,
         /// <summary>
-        /// Image.
-        /// </summary>
-        Image,
-        /// <summary>
         /// Video.
         /// </summary>
         Video,
-        /// <summary>
-        /// Audio.
-        /// </summary>
-        Audio,
-        /// <summary>
-        /// Document, e.g. PDF.
-        /// </summary>
-        Document,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                ModalityTokenCountModality.ModalityUnspecified => "MODALITY_UNSPECIFIED",
-                ModalityTokenCountModality.Text => "TEXT",
-                ModalityTokenCountModality.Image => "IMAGE",
-                ModalityTokenCountModality.Video => "VIDEO",
                 ModalityTokenCountModality.Audio => "AUDIO",
                 ModalityTokenCountModality.Document => "DOCUMENT",
+                ModalityTokenCountModality.Image => "IMAGE",
+                ModalityTokenCountModality.ModalityUnspecified => "MODALITY_UNSPECIFIED",
+                ModalityTokenCountModality.Text => "TEXT",
+                ModalityTokenCountModality.Video => "VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "MODALITY_UNSPECIFIED" => ModalityTokenCountModality.ModalityUnspecified,
-                "TEXT" => ModalityTokenCountModality.Text,
-                "IMAGE" => ModalityTokenCountModality.Image,
-                "VIDEO" => ModalityTokenCountModality.Video,
                 "AUDIO" => ModalityTokenCountModality.Audio,
                 "DOCUMENT" => ModalityTokenCountModality.Document,
+                "IMAGE" => ModalityTokenCountModality.Image,
+                "MODALITY_UNSPECIFIED" => ModalityTokenCountModality.ModalityUnspecified,
+                "TEXT" => ModalityTokenCountModality.Text,
+                "VIDEO" => ModalityTokenCountModality.Video,
                 _ => null,
             };
         }

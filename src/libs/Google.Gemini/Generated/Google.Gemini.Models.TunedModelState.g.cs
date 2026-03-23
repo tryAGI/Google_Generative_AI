@@ -10,21 +10,21 @@ namespace Google.Gemini
     public enum TunedModelState
     {
         /// <summary>
-        /// The default value. This value is unused.
+        /// The model is ready to be used.
         /// </summary>
-        StateUnspecified,
+        Active,
         /// <summary>
         /// The model is being created.
         /// </summary>
         Creating,
         /// <summary>
-        /// The model is ready to be used.
-        /// </summary>
-        Active,
-        /// <summary>
         /// The model failed to be created.
         /// </summary>
         Failed,
+        /// <summary>
+        /// The default value. This value is unused.
+        /// </summary>
+        StateUnspecified,
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                TunedModelState.StateUnspecified => "STATE_UNSPECIFIED",
-                TunedModelState.Creating => "CREATING",
                 TunedModelState.Active => "ACTIVE",
+                TunedModelState.Creating => "CREATING",
                 TunedModelState.Failed => "FAILED",
+                TunedModelState.StateUnspecified => "STATE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,10 +53,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "STATE_UNSPECIFIED" => TunedModelState.StateUnspecified,
-                "CREATING" => TunedModelState.Creating,
                 "ACTIVE" => TunedModelState.Active,
+                "CREATING" => TunedModelState.Creating,
                 "FAILED" => TunedModelState.Failed,
+                "STATE_UNSPECIFIED" => TunedModelState.StateUnspecified,
                 _ => null,
             };
         }

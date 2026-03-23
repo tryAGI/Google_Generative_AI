@@ -7,15 +7,15 @@ namespace Google.Gemini
     {
         partial void PrepareTunedModelsListArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? filter,
             ref int? pageSize,
-            ref string? pageToken,
-            ref string? filter);
+            ref string? pageToken);
         partial void PrepareTunedModelsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? filter,
             int? pageSize,
-            string? pageToken,
-            string? filter);
+            string? pageToken);
         partial void ProcessTunedModelsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,24 +28,24 @@ namespace Google.Gemini
         /// <summary>
         /// Lists created tuned models.
         /// </summary>
+        /// <param name="filter"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
-        /// <param name="filter"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.ListTunedModelsResponse> TunedModelsListAsync(
+            string? filter = default,
             int? pageSize = default,
             string? pageToken = default,
-            string? filter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareTunedModelsListArguments(
                 httpClient: HttpClient,
+                filter: ref filter,
                 pageSize: ref pageSize,
-                pageToken: ref pageToken,
-                filter: ref filter);
+                pageToken: ref pageToken);
 
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: "/tunedModels",
@@ -59,9 +59,9 @@ namespace Google.Gemini
                 }
             } 
             __pathBuilder
+                .AddOptionalParameter("filter", filter)
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
-                .AddOptionalParameter("pageToken", pageToken)
-                .AddOptionalParameter("filter", filter) 
+                .AddOptionalParameter("pageToken", pageToken) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -78,9 +78,9 @@ namespace Google.Gemini
             PrepareTunedModelsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                filter: filter,
                 pageSize: pageSize,
-                pageToken: pageToken,
-                filter: filter);
+                pageToken: pageToken);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

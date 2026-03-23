@@ -10,14 +10,6 @@ namespace Google.Gemini
     public enum DocumentState
     {
         /// <summary>
-        /// The default value. This value is used if the state is omitted.
-        /// </summary>
-        StateUnspecified,
-        /// <summary>
-        /// Some `Chunks` of the `Document` are being processed (embedding and vector storage).
-        /// </summary>
-        StatePending,
-        /// <summary>
         /// All `Chunks` of the `Document` is processed and available for querying.
         /// </summary>
         StateActive,
@@ -25,6 +17,14 @@ namespace Google.Gemini
         /// Some `Chunks` of the `Document` failed processing.
         /// </summary>
         StateFailed,
+        /// <summary>
+        /// Some `Chunks` of the `Document` are being processed (embedding and vector storage).
+        /// </summary>
+        StatePending,
+        /// <summary>
+        /// The default value. This value is used if the state is omitted.
+        /// </summary>
+        StateUnspecified,
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                DocumentState.StateUnspecified => "STATE_UNSPECIFIED",
-                DocumentState.StatePending => "STATE_PENDING",
                 DocumentState.StateActive => "STATE_ACTIVE",
                 DocumentState.StateFailed => "STATE_FAILED",
+                DocumentState.StatePending => "STATE_PENDING",
+                DocumentState.StateUnspecified => "STATE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,10 +53,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "STATE_UNSPECIFIED" => DocumentState.StateUnspecified,
-                "STATE_PENDING" => DocumentState.StatePending,
                 "STATE_ACTIVE" => DocumentState.StateActive,
                 "STATE_FAILED" => DocumentState.StateFailed,
+                "STATE_PENDING" => DocumentState.StatePending,
+                "STATE_UNSPECIFIED" => DocumentState.StateUnspecified,
                 _ => null,
             };
         }

@@ -9,6 +9,10 @@ namespace Google.Gemini
     public enum FunctionResponseScheduling
     {
         /// <summary>
+        /// Add the result to the conversation context, interrupt ongoing generation and prompt to generate output.
+        /// </summary>
+        Interrupt,
+        /// <summary>
         /// This value is unused.
         /// </summary>
         SchedulingUnspecified,
@@ -20,10 +24,6 @@ namespace Google.Gemini
         /// Add the result to the conversation context, and prompt to generate output without interrupting ongoing generation.
         /// </summary>
         WhenIdle,
-        /// <summary>
-        /// Add the result to the conversation context, interrupt ongoing generation and prompt to generate output.
-        /// </summary>
-        Interrupt,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Google.Gemini
         {
             return value switch
             {
+                FunctionResponseScheduling.Interrupt => "INTERRUPT",
                 FunctionResponseScheduling.SchedulingUnspecified => "SCHEDULING_UNSPECIFIED",
                 FunctionResponseScheduling.Silent => "SILENT",
                 FunctionResponseScheduling.WhenIdle => "WHEN_IDLE",
-                FunctionResponseScheduling.Interrupt => "INTERRUPT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Google.Gemini
         {
             return value switch
             {
+                "INTERRUPT" => FunctionResponseScheduling.Interrupt,
                 "SCHEDULING_UNSPECIFIED" => FunctionResponseScheduling.SchedulingUnspecified,
                 "SILENT" => FunctionResponseScheduling.Silent,
                 "WHEN_IDLE" => FunctionResponseScheduling.WhenIdle,
-                "INTERRUPT" => FunctionResponseScheduling.Interrupt,
                 _ => null,
             };
         }

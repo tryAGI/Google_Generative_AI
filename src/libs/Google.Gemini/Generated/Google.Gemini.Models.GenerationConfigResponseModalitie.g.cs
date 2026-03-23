@@ -9,6 +9,14 @@ namespace Google.Gemini
     public enum GenerationConfigResponseModalitie
     {
         /// <summary>
+        /// Indicates the model should return audio.
+        /// </summary>
+        Audio,
+        /// <summary>
+        /// Indicates the model should return images.
+        /// </summary>
+        Image,
+        /// <summary>
         /// Default value.
         /// </summary>
         ModalityUnspecified,
@@ -16,14 +24,6 @@ namespace Google.Gemini
         /// Indicates the model should return text.
         /// </summary>
         Text,
-        /// <summary>
-        /// Indicates the model should return images.
-        /// </summary>
-        Image,
-        /// <summary>
-        /// Indicates the model should return audio.
-        /// </summary>
-        Audio,
         /// <summary>
         /// Indicates the model should return video.
         /// </summary>
@@ -42,10 +42,10 @@ namespace Google.Gemini
         {
             return value switch
             {
+                GenerationConfigResponseModalitie.Audio => "AUDIO",
+                GenerationConfigResponseModalitie.Image => "IMAGE",
                 GenerationConfigResponseModalitie.ModalityUnspecified => "MODALITY_UNSPECIFIED",
                 GenerationConfigResponseModalitie.Text => "TEXT",
-                GenerationConfigResponseModalitie.Image => "IMAGE",
-                GenerationConfigResponseModalitie.Audio => "AUDIO",
                 GenerationConfigResponseModalitie.Video => "VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -57,10 +57,10 @@ namespace Google.Gemini
         {
             return value switch
             {
+                "AUDIO" => GenerationConfigResponseModalitie.Audio,
+                "IMAGE" => GenerationConfigResponseModalitie.Image,
                 "MODALITY_UNSPECIFIED" => GenerationConfigResponseModalitie.ModalityUnspecified,
                 "TEXT" => GenerationConfigResponseModalitie.Text,
-                "IMAGE" => GenerationConfigResponseModalitie.Image,
-                "AUDIO" => GenerationConfigResponseModalitie.Audio,
                 "VIDEO" => GenerationConfigResponseModalitie.Video,
                 _ => null,
             };

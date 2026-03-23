@@ -9,13 +9,13 @@ namespace Google.Gemini
     public enum DynamicRetrievalConfigMode
     {
         /// <summary>
-        /// Always trigger retrieval.
-        /// </summary>
-        ModeUnspecified,
-        /// <summary>
         /// Run retrieval only when system decides it is necessary.
         /// </summary>
         ModeDynamic,
+        /// <summary>
+        /// Always trigger retrieval.
+        /// </summary>
+        ModeUnspecified,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Google.Gemini
         {
             return value switch
             {
-                DynamicRetrievalConfigMode.ModeUnspecified => "MODE_UNSPECIFIED",
                 DynamicRetrievalConfigMode.ModeDynamic => "MODE_DYNAMIC",
+                DynamicRetrievalConfigMode.ModeUnspecified => "MODE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "MODE_UNSPECIFIED" => DynamicRetrievalConfigMode.ModeUnspecified,
                 "MODE_DYNAMIC" => DynamicRetrievalConfigMode.ModeDynamic,
+                "MODE_UNSPECIFIED" => DynamicRetrievalConfigMode.ModeUnspecified,
                 _ => null,
             };
         }
