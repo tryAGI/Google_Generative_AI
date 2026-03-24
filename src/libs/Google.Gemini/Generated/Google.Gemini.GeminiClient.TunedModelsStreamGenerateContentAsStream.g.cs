@@ -177,6 +177,9 @@ namespace Google.Gemini
         /// <param name="cachedContent">
         /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
+        /// <param name="serviceTier">
+        /// Optional. The service tier of the request.
+        /// </param>
         /// <param name="store">
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </param>
@@ -192,6 +195,7 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings = default,
             global::Google.Gemini.GenerationConfig? generationConfig = default,
             string? cachedContent = default,
+            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier = default,
             bool? store = default,
             [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -205,6 +209,7 @@ namespace Google.Gemini
                 SafetySettings = safetySettings,
                 GenerationConfig = generationConfig,
                 CachedContent = cachedContent,
+                ServiceTier = serviceTier,
                 Store = store,
             };
 
