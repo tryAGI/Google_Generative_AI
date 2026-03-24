@@ -57,6 +57,13 @@ namespace Google.Gemini
         public string? CachedContent { get; set; }
 
         /// <summary>
+        /// Optional. The service tier of the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("serviceTier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GenerateContentRequestServiceTierJsonConverter))]
+        public global::Google.Gemini.GenerateContentRequestServiceTier? ServiceTier { get; set; }
+
+        /// <summary>
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("store")]
@@ -95,6 +102,9 @@ namespace Google.Gemini
         /// <param name="cachedContent">
         /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
+        /// <param name="serviceTier">
+        /// Optional. The service tier of the request.
+        /// </param>
         /// <param name="store">
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </param>
@@ -110,6 +120,7 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings,
             global::Google.Gemini.GenerationConfig? generationConfig,
             string? cachedContent,
+            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier,
             bool? store)
         {
             this.Model = model;
@@ -120,6 +131,7 @@ namespace Google.Gemini
             this.SafetySettings = safetySettings;
             this.GenerationConfig = generationConfig;
             this.CachedContent = cachedContent;
+            this.ServiceTier = serviceTier;
             this.Store = store;
         }
 

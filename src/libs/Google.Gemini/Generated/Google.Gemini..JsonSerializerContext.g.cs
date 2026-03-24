@@ -13,6 +13,10 @@ namespace Google.Gemini
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Google.Gemini.JsonConverters.GenerateContentRequestServiceTierJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.GenerateContentRequestServiceTierNullableJsonConverter),
+
             typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter),
 
             typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingNullableJsonConverter),
@@ -163,6 +167,7 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.SafetySetting))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerationConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateContentRequestServiceTier))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Part>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Part))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Blob))]
