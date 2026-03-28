@@ -11,7 +11,7 @@ namespace Google.Gemini
         /// <param name="permissionsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
-        global::System.Threading.Tasks.Task<string> TunedModelsPermissionsDeleteAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.Empty> TunedModelsPermissionsDeleteAsync(
             string tunedModelsId,
             string permissionsId,
             global::System.Threading.CancellationToken cancellationToken = default);

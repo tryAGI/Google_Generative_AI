@@ -12,13 +12,13 @@ namespace Google.Gemini
         /// Standard web search for grounding and related configurations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webSearch")]
-        public object? WebSearch { get; set; }
+        public global::Google.Gemini.WebSearch? WebSearch { get; set; }
 
         /// <summary>
         /// Image search for grounding and related configurations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("imageSearch")]
-        public object? ImageSearch { get; set; }
+        public global::Google.Gemini.ImageSearch? ImageSearch { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,8 +39,8 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SearchTypes(
-            object? webSearch,
-            object? imageSearch)
+            global::Google.Gemini.WebSearch? webSearch,
+            global::Google.Gemini.ImageSearch? imageSearch)
         {
             this.WebSearch = webSearch;
             this.ImageSearch = imageSearch;

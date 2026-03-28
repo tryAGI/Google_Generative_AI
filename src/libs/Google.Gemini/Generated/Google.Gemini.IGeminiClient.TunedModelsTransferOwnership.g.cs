@@ -11,7 +11,7 @@ namespace Google.Gemini
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
-        global::System.Threading.Tasks.Task<string> TunedModelsTransferOwnershipAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.TransferOwnershipResponse> TunedModelsTransferOwnershipAsync(
             string tunedModelsId,
 
             global::Google.Gemini.TransferOwnershipRequest request,
@@ -25,7 +25,7 @@ namespace Google.Gemini
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<string> TunedModelsTransferOwnershipAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.TransferOwnershipResponse> TunedModelsTransferOwnershipAsync(
             string tunedModelsId,
             string? emailAddress = default,
             global::System.Threading.CancellationToken cancellationToken = default);
