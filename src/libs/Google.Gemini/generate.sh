@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
 curl --fail --silent --show-error -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
