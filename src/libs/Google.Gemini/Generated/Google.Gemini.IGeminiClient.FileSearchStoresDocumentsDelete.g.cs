@@ -12,7 +12,7 @@ namespace Google.Gemini
         /// <param name="documentsId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
-        global::System.Threading.Tasks.Task<string> FileSearchStoresDocumentsDeleteAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.Empty> FileSearchStoresDocumentsDeleteAsync(
             string fileSearchStoresId,
             string documentsId,
             bool? force = default,
