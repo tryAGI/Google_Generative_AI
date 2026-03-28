@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+# OpenAPI spec: Google Discovery API https://generativelanguage.googleapis.com/\$discovery/rest?version=v1beta (converted to OpenAPI via Python)
+
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
 curl --fail --silent --show-error -L -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
