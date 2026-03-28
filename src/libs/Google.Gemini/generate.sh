@@ -2,7 +2,7 @@
 set -euo pipefail
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl --fail --silent --show-error -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
+curl --fail --silent --show-error -L -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
 python3 convert_discovery.py discovery.json openapi.json
 rm discovery.json
 
