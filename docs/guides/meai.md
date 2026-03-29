@@ -3,7 +3,7 @@
 !!! tip "Cross-SDK comparison"
     See the [centralized MEAI documentation](https://tryagi.github.io/docs/meai/) for feature matrices and comparisons across all tryAGI SDKs.
 
-The `Google_Gemini` SDK implements both `IChatClient` and `IEmbeddingGenerator` interfaces from `Microsoft.Extensions.AI`, enabling you to use Google Gemini models through standardized .NET AI abstractions.
+The Google.Gemini SDK implements `IChatClient` and `IEmbeddingGenerator<string, Embedding<float>>` from [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai).
 
 ## Supported Interfaces
 
