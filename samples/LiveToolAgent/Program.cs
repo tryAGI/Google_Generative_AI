@@ -209,7 +209,9 @@ async Task ProcessResponseAsync(ResilientLiveSession liveSession, bool isTextMod
 
         if (message.UsageMetadata is { } usage)
         {
-            Console.Write($"\n  [Tokens: {usage.TotalTokenCount}]");
+            var tokens = usage.TotalTokenCount ?? usage.ResponseTokenCount;
+            if (tokens > 0)
+                Console.Write($"\n  [Tokens: {tokens}]");
         }
 
         if (message.ServerContent?.TurnComplete == true)

@@ -75,6 +75,20 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? ToolUsePromptTokensDetails { get; set; }
 
         /// <summary>
+        /// Output only. Number of tokens in the response. Used by Gemini 3.1+ Live API models instead of candidatesTokenCount.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("responseTokenCount")]
+        public int? ResponseTokenCount { get; set; }
+
+        /// <summary>
+        /// Output only. List of modalities returned in the response with per-modality token counts. Used by Gemini 3.1+ Live API models instead of candidatesTokensDetails.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("responseTokensDetails")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? ResponseTokensDetails { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -119,6 +133,14 @@ namespace Google.Gemini
         /// Output only. List of modalities that were processed for tool-use request inputs.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="responseTokenCount">
+        /// Output only. Number of tokens in the response. Used by Gemini 3.1+ Live API models instead of candidatesTokenCount.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="responseTokensDetails">
+        /// Output only. List of modalities returned in the response with per-modality token counts. Used by Gemini 3.1+ Live API models instead of candidatesTokensDetails.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -132,7 +154,9 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? promptTokensDetails,
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? cacheTokensDetails,
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? candidatesTokensDetails,
-            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? toolUsePromptTokensDetails)
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? toolUsePromptTokensDetails,
+            int? responseTokenCount,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? responseTokensDetails)
         {
             this.PromptTokenCount = promptTokenCount;
             this.CachedContentTokenCount = cachedContentTokenCount;
@@ -144,6 +168,8 @@ namespace Google.Gemini
             this.CacheTokensDetails = cacheTokensDetails;
             this.CandidatesTokensDetails = candidatesTokensDetails;
             this.ToolUsePromptTokensDetails = toolUsePromptTokensDetails;
+            this.ResponseTokenCount = responseTokenCount;
+            this.ResponseTokensDetails = responseTokensDetails;
         }
 
         /// <summary>

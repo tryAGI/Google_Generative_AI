@@ -4819,6 +4819,20 @@
             "items": {
               "$ref": "#/components/schemas/ModalityTokenCount"
             }
+          },
+          "responseTokenCount": {
+            "description": "Output only. Number of tokens in the response. Used by Gemini 3.1+ Live API models instead of candidatesTokenCount.",
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "responseTokensDetails": {
+            "description": "Output only. List of modalities returned in the response with per-modality token counts. Used by Gemini 3.1+ Live API models instead of candidatesTokensDetails.",
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/ModalityTokenCount"
+            }
           }
         }
       },

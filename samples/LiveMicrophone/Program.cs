@@ -186,7 +186,9 @@ else
 
             if (message.UsageMetadata is { } usage)
             {
-                Console.WriteLine($"  [Tokens: {usage.TotalTokenCount}]");
+                var tokens = usage.TotalTokenCount ?? usage.ResponseTokenCount;
+                if (tokens > 0)
+                    Console.WriteLine($"  [Tokens: {tokens}]");
             }
         }
     }
