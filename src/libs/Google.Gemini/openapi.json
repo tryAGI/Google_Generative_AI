@@ -2795,10 +2795,10 @@
               "Priority service tier."
             ],
             "enum": [
-              "unspecified",
-              "standard",
-              "flex",
-              "priority"
+              "SERVICE_TIER_UNSPECIFIED",
+              "SERVICE_TIER_STANDARD",
+              "SERVICE_TIER_FLEX",
+              "SERVICE_TIER_PRIORITY"
             ]
           },
           "store": {
@@ -6464,7 +6464,7 @@
         }
       },
       "ImportFileRequest": {
-        "description": "Request for `ImportFile` to import a File API file with a `FileSearchStore`. LINT.IfChange(ImportFileRequest)",
+        "description": "Request for `ImportFile` to import a File API file with a `FileSearchStore`.",
         "type": "object",
         "properties": {
           "fileName": {
