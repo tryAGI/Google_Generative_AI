@@ -13,7 +13,7 @@ using System.Text.Json.Serialization.Metadata;
 /// </summary>
 public static class GeminiClientLiveExtensions
 {
-    private const string DefaultLiveModel = "models/gemini-2.5-flash-native-audio-latest";
+    private const string DefaultLiveModel = "models/gemini-3.1-flash-live-preview";
     private const string WssBaseUri = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent";
 
     /// <summary>

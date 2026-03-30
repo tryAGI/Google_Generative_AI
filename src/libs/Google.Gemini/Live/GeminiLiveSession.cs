@@ -42,11 +42,9 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     /// Sends raw audio data as 16-bit PCM, 16kHz, little-endian, mono.
     /// </summary>
     /// <remarks>
-    /// The audio is sent with MIME type <c>audio/pcm;rate=16000</c>.
-    /// For other sample rates or formats, use the overload that accepts a MIME type.
-    /// Audio input does not automatically trigger a model response — call
-    /// <see cref="SendClientContentAsync"/> with <c>turnComplete: true</c> to signal end of turn,
-    /// or rely on the server's voice activity detection (VAD).
+    /// Uses <c>realtimeInput.audio</c> format compatible with all Live models
+    /// including gemini-3.1+. The server's voice activity detection (VAD)
+    /// determines when to trigger a response.
     /// </remarks>
     /// <param name="pcmData">The raw PCM audio bytes.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
@@ -54,22 +52,7 @@ public sealed class GeminiLiveSession : IAsyncDisposable
         ReadOnlyMemory<byte> pcmData,
         CancellationToken cancellationToken = default)
     {
-        var message = new LiveClientMessage
-        {
-            RealtimeInput = new LiveRealtimeInput
-            {
-                MediaChunks =
-                [
-                    new Blob
-                    {
-                        MimeType = "audio/pcm;rate=16000",
-                        Data = pcmData.ToArray(),
-                    },
-                ],
-            },
-        };
-
-        return SendMessageAsync(message, cancellationToken);
+        return SendAudioAsync(pcmData, "audio/pcm;rate=16000", cancellationToken);
     }
 
     /// <summary>
@@ -87,14 +70,11 @@ public sealed class GeminiLiveSession : IAsyncDisposable
         {
             RealtimeInput = new LiveRealtimeInput
             {
-                MediaChunks =
-                [
-                    new Blob
-                    {
-                        MimeType = mimeType,
-                        Data = audioData.ToArray(),
-                    },
-                ],
+                Audio = new Blob
+                {
+                    MimeType = mimeType,
+                    Data = audioData.ToArray(),
+                },
             },
         };
 
@@ -121,14 +101,11 @@ public sealed class GeminiLiveSession : IAsyncDisposable
         {
             RealtimeInput = new LiveRealtimeInput
             {
-                MediaChunks =
-                [
-                    new Blob
-                    {
-                        MimeType = mimeType,
-                        Data = imageData.ToArray(),
-                    },
-                ],
+                Video = new Blob
+                {
+                    MimeType = mimeType,
+                    Data = imageData.ToArray(),
+                },
             },
         };
 
@@ -136,12 +113,11 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     }
 
     /// <summary>
-    /// Sends text content as a complete user turn, triggering a model response.
+    /// Sends text as realtime input, triggering a model response.
     /// </summary>
     /// <remarks>
-    /// This is a convenience method that wraps the text in a <see cref="Content"/> with
-    /// <c>Role = "user"</c> and sets <c>TurnComplete = true</c>. For multi-turn
-    /// conversation history, use <see cref="SendClientContentAsync"/> instead.
+    /// Uses <c>realtimeInput.text</c> format compatible with all Live models
+    /// including gemini-3.1+ (which does not accept <c>clientContent</c>).
     /// </remarks>
     /// <param name="text">The text to send.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
@@ -151,17 +127,9 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     {
         var message = new LiveClientMessage
         {
-            ClientContent = new LiveClientContent
+            RealtimeInput = new LiveRealtimeInput
             {
-                Turns =
-                [
-                    new Content
-                    {
-                        Role = "user",
-                        Parts = [new Part { Text = text }],
-                    },
-                ],
-                TurnComplete = true,
+                Text = text,
             },
         };
 

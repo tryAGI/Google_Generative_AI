@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 public sealed class LiveRealtimeInput
 {
     /// <summary>
-    /// Optional. Audio data chunk (16-bit PCM 16kHz little-endian, base64-encoded via Blob.Data).
+    /// Optional. Audio data chunks (deprecated for gemini-3.1+ models — use <see cref="Audio"/> instead).
     /// </summary>
     [JsonPropertyName("mediaChunks")]
 #pragma warning disable CA2227 // Collection properties should be read only — needed for JSON deserialization
@@ -18,7 +18,22 @@ public sealed class LiveRealtimeInput
 #pragma warning restore CA2227
 
     /// <summary>
-    /// Optional. Text input.
+    /// Optional. Audio data as a single blob.
+    /// Preferred format for gemini-3.1+ models (replaces <see cref="MediaChunks"/>).
+    /// </summary>
+    [JsonPropertyName("audio")]
+    public Blob? Audio { get; set; }
+
+    /// <summary>
+    /// Optional. Video/image data as a single blob.
+    /// Preferred format for gemini-3.1+ models (replaces <see cref="MediaChunks"/> for video).
+    /// </summary>
+    [JsonPropertyName("video")]
+    public Blob? Video { get; set; }
+
+    /// <summary>
+    /// Optional. Text input streamed as realtime data.
+    /// Supported by all Live models. Required for gemini-3.1+ which does not accept clientContent.
     /// </summary>
     [JsonPropertyName("text")]
     public string? Text { get; set; }
