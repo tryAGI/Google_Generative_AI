@@ -4,7 +4,7 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// Request for `ImportFile` to import a File API file with a `FileSearchStore`. LINT.IfChange(ImportFileRequest)
+    /// Request for `ImportFile` to import a File API file with a `FileSearchStore`.
     /// </summary>
     public sealed partial class ImportFileRequest
     {
