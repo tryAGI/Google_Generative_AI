@@ -52,7 +52,7 @@ using var client = new GeminiClient(apiKey);
 // Connect to the Live API
 await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -74,7 +74,7 @@ await foreach (var message in session.ReadEventsAsync())
 ```csharp
 await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -94,34 +94,22 @@ await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
 
 **Multi-turn conversation:**
 ```csharp
-// Send conversation history before triggering a response
-await session.SendClientContentAsync(
-    turns:
-    [
-        new Content
-        {
-            Role = "user",
-            Parts = [new Part { Text = "My name is Alice" }],
-        },
-        new Content
-        {
-            Role = "model",
-            Parts = [new Part { Text = "Nice to meet you, Alice!" }],
-        },
-        new Content
-        {
-            Role = "user",
-            Parts = [new Part { Text = "What's my name?" }],
-        },
-    ],
-    turnComplete: true);
+// First turn
+await session.SendTextAsync("My name is Alice");
+await foreach (var msg in session.ReadEventsAsync())
+{
+    if (msg.ServerContent?.TurnComplete == true) break;
+}
+
+// Second turn — the model remembers context
+await session.SendTextAsync("What's my name?");
 ```
 
 **System instruction** (customize model behavior):
 ```csharp
 await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -137,7 +125,7 @@ await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -176,7 +164,7 @@ await foreach (var message in session.ReadEventsAsync())
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -201,7 +189,7 @@ await using var session2 = await client.ConnectLiveAsync(config2);
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -247,7 +235,7 @@ foreach (var frame in videoFrames)
 // ResilientLiveSession automatically reconnects when the server sends GoAway
 await using var session = await client.ConnectResilientLiveAsync(new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -273,7 +261,7 @@ await foreach (var message in session.ReadEventsAsync())
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -283,7 +271,6 @@ var config = new LiveSetupConfig
 
 await using var session = await client.ConnectLiveAsync(config);
 await session.SendAudioAsync(pcmBytes);
-await session.SendClientContentAsync(turns: [], turnComplete: true);
 
 await foreach (var message in session.ReadEventsAsync())
 {
@@ -303,7 +290,7 @@ await foreach (var message in session.ReadEventsAsync())
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -379,7 +366,7 @@ await foreach (var message in session.ReadEventsAsync())
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -390,9 +377,6 @@ await using var session = await client.ConnectLiveAsync(config);
 
 // Send PCM audio (16-bit, 16kHz, little-endian, mono)
 await session.SendAudioAsync(pcmBytes);
-
-// Signal end of user turn
-await session.SendClientContentAsync(turns: [], turnComplete: true);
 
 // Receive audio response
 await foreach (var message in session.ReadEventsAsync())

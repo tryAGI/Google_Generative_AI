@@ -13,7 +13,7 @@ The Live API enables:
 - **Auto-reconnect** via `ResilientLiveSession` for production use
 
 !!! info "Model requirements"
-    The Live API requires a `native-audio` model (e.g., `models/gemini-2.5-flash-native-audio-latest`) and `Audio` response modality. Text-only response modality is not supported with these models.
+    The Live API requires a Live-compatible model (e.g., `models/gemini-3.1-flash-live-preview`) and `Audio` response modality.
 
 ## Quick Start
 
@@ -24,7 +24,7 @@ using var client = new GeminiClient(apiKey);
 
 await using var session = await client.ConnectLiveAsync(new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -89,9 +89,6 @@ await session.SendAudioAsync(pcmBytes);
 
 // Send with custom MIME type
 await session.SendAudioAsync(audioBytes, "audio/pcm;rate=24000");
-
-// Signal end of turn (if VAD is not handling it)
-await session.SendClientContentAsync(turns: [], turnComplete: true);
 ```
 
 ### Video
@@ -110,27 +107,18 @@ foreach (var frame in videoFrames)
 
 ### Multi-turn Conversation
 
+Use sequential `SendTextAsync` calls (wait for `TurnComplete` between turns):
+
 ```csharp
-await session.SendClientContentAsync(
-    turns:
-    [
-        new Content
-        {
-            Role = "user",
-            Parts = [new Part { Text = "My name is Alice" }],
-        },
-        new Content
-        {
-            Role = "model",
-            Parts = [new Part { Text = "Nice to meet you, Alice!" }],
-        },
-        new Content
-        {
-            Role = "user",
-            Parts = [new Part { Text = "What's my name?" }],
-        },
-    ],
-    turnComplete: true);
+// First turn
+await session.SendTextAsync("My name is Alice");
+await foreach (var msg in session.ReadEventsAsync())
+{
+    if (msg.ServerContent?.TurnComplete == true) break;
+}
+
+// Second turn — the model remembers context
+await session.SendTextAsync("What's my name?");
 ```
 
 ## Receiving Events
@@ -173,9 +161,9 @@ await foreach (var message in session.ReadEventsAsync())
     if (message.ToolCallCancellation is { } cancellation)
         Console.Write($"Cancelled: {string.Join(", ", cancellation.Ids!)}");
 
-    // Token usage
+    // Token usage (3.1+ uses ResponseTokenCount instead of CandidatesTokenCount)
     if (message.UsageMetadata is { } usage)
-        Console.Write($"[Tokens: {usage.TotalTokenCount}]");
+        Console.Write($"[Tokens: {usage.TotalTokenCount ?? usage.ResponseTokenCount}]");
 
     // Server requesting disconnect (handled automatically by ResilientLiveSession)
     if (message.GoAway is { } goAway)
@@ -193,7 +181,7 @@ await foreach (var message in session.ReadEventsAsync())
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -287,7 +275,7 @@ await using var session2 = await client.ConnectLiveAsync(config2);
 ```csharp
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],

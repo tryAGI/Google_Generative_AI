@@ -87,7 +87,7 @@ var config = new LiveSetupConfig
 {
     Model = textMode
         ? "models/gemini-2.0-flash"
-        : "models/gemini-2.5-flash-native-audio-latest",
+        : "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = textMode

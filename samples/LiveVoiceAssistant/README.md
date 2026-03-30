@@ -25,6 +25,6 @@ A console app demonstrating the Gemini Live API for real-time voice interactions
 
 ## Notes
 
-- Uses `gemini-2.5-flash-native-audio-latest` model with audio response modality
+- Uses `gemini-3.1-flash-live-preview` model with audio response modality
 - Audio chunks are counted but not played — see the `LiveAudioPlayback` sample for WAV output
 - Session resumption is handled automatically by `ResilientLiveSession`

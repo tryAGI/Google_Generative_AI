@@ -118,6 +118,7 @@ public sealed class ResilientLiveSession : IAsyncDisposable
         => _session.SendVideoAsync(imageData, mimeType, cancellationToken);
 
     /// <inheritdoc cref="GeminiLiveSession.SendClientContentAsync"/>
+    [Obsolete("Gemini 3.1+ models reject clientContent. Use SendTextAsync for multi-turn conversations.")]
     public Task SendClientContentAsync(IList<Content> turns, bool turnComplete = true, CancellationToken cancellationToken = default)
         => _session.SendClientContentAsync(turns, turnComplete, cancellationToken);
 

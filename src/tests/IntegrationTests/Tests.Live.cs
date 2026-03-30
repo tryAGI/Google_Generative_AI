@@ -207,14 +207,13 @@ public partial class Tests
         }
 
         allUsageMetadata.Should().NotBeEmpty("server should return usage metadata");
-        // gemini-3.1+ sends responseTokenCount (not in generated type — lands in AdditionalProperties)
-        // instead of candidatesTokenCount. Check that at least one message has a positive token count.
+        // gemini-3.1+ sends responseTokenCount instead of candidatesTokenCount.
+        // Check that at least one message has a positive token count.
         var hasTokenCount = allUsageMetadata.Any(m =>
             m.TotalTokenCount > 0
             || m.PromptTokenCount > 0
             || m.CandidatesTokenCount > 0
-            || HasPositiveIntProperty(m.AdditionalProperties, "responseTokenCount")
-            || HasPositiveIntProperty(m.AdditionalProperties, "totalTokenCount"));
+            || m.ResponseTokenCount > 0);
         hasTokenCount.Should().BeTrue("at least one token count should be positive");
     }
 
@@ -352,21 +351,5 @@ public partial class Tests
         }
 
         receivedResponse.Should().BeTrue("model should respond after receiving video frame");
-    }
-
-    private static bool HasPositiveIntProperty(IDictionary<string, object>? dict, string key)
-    {
-        if (dict == null || !dict.TryGetValue(key, out var value))
-        {
-            return false;
-        }
-
-        return value switch
-        {
-            System.Text.Json.JsonElement je when je.ValueKind == System.Text.Json.JsonValueKind.Number => je.GetInt32() > 0,
-            int i => i > 0,
-            long l => l > 0,
-            _ => false,
-        };
     }
 }

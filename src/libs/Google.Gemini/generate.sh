@@ -53,6 +53,28 @@ if paths_to_remove:
 else:
     print('No legacy PaLM endpoints found')
 
+# --- Inject responseTokenCount into UsageMetadata ---
+# Gemini 3.1+ Live API sends responseTokenCount and responseTokensDetails
+# instead of candidatesTokenCount, but the Discovery spec doesn't include them yet.
+usage_meta = spec.get('components', {}).get('schemas', {}).get('UsageMetadata', {}).get('properties', {})
+if usage_meta and 'responseTokenCount' not in usage_meta:
+    usage_meta['responseTokenCount'] = {
+        'description': 'Output only. Number of tokens in the response. Used by Gemini 3.1+ Live API models instead of candidatesTokenCount.',
+        'type': 'integer',
+        'format': 'int32',
+        'readOnly': True,
+    }
+    usage_meta['responseTokensDetails'] = {
+        'description': 'Output only. List of modalities returned in the response with per-modality token counts. Used by Gemini 3.1+ Live API models instead of candidatesTokensDetails.',
+        'type': 'array',
+        'readOnly': True,
+        'items': {'\$ref': '#/components/schemas/ModalityTokenCount'},
+    }
+    changed = True
+    print('Injected responseTokenCount/responseTokensDetails into UsageMetadata')
+else:
+    print('responseTokenCount already present in UsageMetadata or schema not found')
+
 # --- Prune orphaned schemas ---
 def find_refs(name, schemas, visited):
     if name in visited or name not in schemas:

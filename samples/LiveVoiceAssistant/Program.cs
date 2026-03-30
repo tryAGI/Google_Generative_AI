@@ -17,7 +17,7 @@ Console.CancelKeyPress += (_, e) =>
 // Configure the Live API session
 var config = new LiveSetupConfig
 {
-    Model = "models/gemini-2.5-flash-native-audio-latest",
+    Model = "models/gemini-3.1-flash-live-preview",
     GenerationConfig = new GenerationConfig
     {
         ResponseModalities = [GenerationConfigResponseModalitie.Audio],
@@ -103,7 +103,9 @@ while (!cts.Token.IsCancellationRequested)
         // Track token usage
         if (message.UsageMetadata is { } usage)
         {
-            Console.Write($"\n  [Tokens: {usage.TotalTokenCount}]");
+            var tokens = usage.TotalTokenCount ?? usage.ResponseTokenCount;
+            if (tokens > 0)
+                Console.Write($"\n  [Tokens: {tokens}]");
         }
 
         if (message.ServerContent?.TurnComplete == true)

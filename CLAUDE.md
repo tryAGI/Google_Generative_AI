@@ -86,7 +86,7 @@ While the HTTP API client is purely auto-generated, the following hand-written f
 **MEAI integration:**
 - `src/libs/Google.Gemini/Extensions/` — `IChatClient` and `IEmbeddingGenerator` implementations
 
-**Important:** The Live API sends JSON as **Binary** WebSocket frames (not Text). Only `native-audio` models (e.g., `models/gemini-2.5-flash-native-audio-latest`) support `bidiGenerateContent` and require `AUDIO` response modality.
+**Important:** The Live API sends JSON as **Binary** WebSocket frames (not Text). Live-compatible models (e.g., `models/gemini-3.1-flash-live-preview`) support `bidiGenerateContent` and require `AUDIO` response modality. Gemini 3.1+ models use `realtimeInput.text/audio/video` instead of the deprecated `clientContent` and `mediaChunks` formats.
 
 ### Samples
 

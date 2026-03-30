@@ -140,15 +140,23 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     /// Sends turn-based conversation content with explicit turn management.
     /// </summary>
     /// <remarks>
-    /// Use this method to send multi-turn conversation history or to signal end of turn
-    /// after streaming audio. Each <see cref="Content"/> in <paramref name="turns"/>
-    /// should have a <c>Role</c> of either <c>"user"</c> or <c>"model"</c>.
+    /// <para>
+    /// <b>Deprecated for Gemini 3.1+ models.</b> The <c>clientContent</c> message format is rejected
+    /// by <c>gemini-3.1-flash-live-preview</c> and newer models. Use <see cref="SendTextAsync"/> for
+    /// sequential multi-turn conversations instead.
+    /// </para>
+    /// <para>
+    /// For older models (2.5 and earlier), this method sends multi-turn conversation history
+    /// or signals end of turn after streaming audio. Each <see cref="Content"/> in
+    /// <paramref name="turns"/> should have a <c>Role</c> of either <c>"user"</c> or <c>"model"</c>.
     /// Set <paramref name="turnComplete"/> to <see langword="true"/> to trigger a model response,
     /// or <see langword="false"/> to indicate more input will follow.
+    /// </para>
     /// </remarks>
     /// <param name="turns">The conversation turns (user and model messages).</param>
     /// <param name="turnComplete">Whether the client turn is complete and the model should respond.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
+    [Obsolete("Gemini 3.1+ models reject clientContent. Use SendTextAsync for multi-turn conversations.")]
     public Task SendClientContentAsync(
         IList<Content> turns,
         bool turnComplete = true,
