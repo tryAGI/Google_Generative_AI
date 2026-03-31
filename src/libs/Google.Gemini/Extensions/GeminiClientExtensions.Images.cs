@@ -14,6 +14,7 @@ public static class GeminiClientImageExtensions
     /// <param name="imageSize">Image size: "512", "1K", "2K", "4K". Defaults to "1K".</param>
     /// <param name="aspectRatio">Optional aspect ratio (e.g., "16:9", "1:1", "9:16").</param>
     /// <param name="includeTextResponse">If true, requests both TEXT and IMAGE modalities.</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated image result.</returns>
     public static async Task<ImageResult> GenerateImageAsync(
@@ -23,6 +24,7 @@ public static class GeminiClientImageExtensions
         string imageSize = "1K",
         string? aspectRatio = null,
         bool includeTextResponse = false,
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -56,6 +58,7 @@ public static class GeminiClientImageExtensions
                     ImageSize = imageSize,
                     AspectRatio = aspectRatio,
                 },
+                Seed = seed,
             },
         };
 
@@ -77,6 +80,7 @@ public static class GeminiClientImageExtensions
     /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash-image".</param>
     /// <param name="imageSize">Image size: "512", "1K", "2K", "4K". Defaults to "1K".</param>
     /// <param name="aspectRatio">Optional aspect ratio.</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The edited image result.</returns>
     public static async Task<ImageResult> EditImageAsync(
@@ -87,6 +91,7 @@ public static class GeminiClientImageExtensions
         string modelId = "gemini-2.5-flash-image",
         string imageSize = "1K",
         string? aspectRatio = null,
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -124,6 +129,7 @@ public static class GeminiClientImageExtensions
                     ImageSize = imageSize,
                     AspectRatio = aspectRatio,
                 },
+                Seed = seed,
             },
         };
 
@@ -144,6 +150,7 @@ public static class GeminiClientImageExtensions
     /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash-image".</param>
     /// <param name="imageSize">Image size: "512", "1K", "2K", "4K". Defaults to "1K".</param>
     /// <param name="aspectRatio">Optional aspect ratio.</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated image result.</returns>
     public static async Task<ImageResult> GenerateImageWithReferencesAsync(
@@ -153,6 +160,7 @@ public static class GeminiClientImageExtensions
         string modelId = "gemini-2.5-flash-image",
         string imageSize = "1K",
         string? aspectRatio = null,
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -190,6 +198,7 @@ public static class GeminiClientImageExtensions
                     ImageSize = imageSize,
                     AspectRatio = aspectRatio,
                 },
+                Seed = seed,
             },
         };
 

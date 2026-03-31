@@ -11,12 +11,14 @@ public static class GeminiClientVideoExtensions
     /// <param name="client">The Gemini client.</param>
     /// <param name="prompt">The text prompt describing the desired video.</param>
     /// <param name="modelId">The model to use. Defaults to "veo-2.0-generate-001".</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated video result.</returns>
     public static async Task<VideoResult> GenerateVideoAsync(
         this GeminiClient client,
         string prompt,
         string modelId = "veo-2.0-generate-001",
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -37,6 +39,7 @@ public static class GeminiClientVideoExtensions
                 [
                     GenerationConfigResponseModalitie.Video,
                 ],
+                Seed = seed,
             },
         };
 
@@ -56,6 +59,7 @@ public static class GeminiClientVideoExtensions
     /// <param name="imageData">The source image bytes.</param>
     /// <param name="mimeType">MIME type of the source image. Defaults to "image/png".</param>
     /// <param name="modelId">The model to use. Defaults to "veo-2.0-generate-001".</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated video result.</returns>
     public static async Task<VideoResult> GenerateVideoFromImageAsync(
@@ -64,6 +68,7 @@ public static class GeminiClientVideoExtensions
         byte[] imageData,
         string mimeType = "image/png",
         string modelId = "veo-2.0-generate-001",
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -96,6 +101,7 @@ public static class GeminiClientVideoExtensions
                 [
                     GenerationConfigResponseModalitie.Video,
                 ],
+                Seed = seed,
             },
         };
 
@@ -116,6 +122,7 @@ public static class GeminiClientVideoExtensions
     /// <param name="prompt">Optional text prompt to guide interpolation.</param>
     /// <param name="mimeType">MIME type of the frame images. Defaults to "image/png".</param>
     /// <param name="modelId">The model to use. Defaults to "veo-2.0-generate-001".</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated video result.</returns>
     public static async Task<VideoResult> InterpolateFramesAsync(
@@ -125,6 +132,7 @@ public static class GeminiClientVideoExtensions
         string? prompt = null,
         string mimeType = "image/png",
         string modelId = "veo-2.0-generate-001",
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -168,6 +176,7 @@ public static class GeminiClientVideoExtensions
                 [
                     GenerationConfigResponseModalitie.Video,
                 ],
+                Seed = seed,
             },
         };
 
