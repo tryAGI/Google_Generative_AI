@@ -2,6 +2,7 @@ site_name: Google.Gemini .NET Documentation
 nav:
 - Overview: index.md
 - Guides:
+  - Free Tier and Image Generation: guides/free-tier-and-image-generation.md
   - Live API (Real-time Voice/Video): guides/live-api.md
   - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START

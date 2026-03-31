@@ -400,6 +400,17 @@ await foreach (var message in session.ReadEventsAsync())
 
 </details>
 
+### Free Tier and Image Generation
+
+Gemini API access is model-specific. A Free Tier key can use many text and multimodal Gemini models, but native image output models are currently different.
+
+- `GenerateImageAsync`, `EditImageAsync`, and `GenerateImageWithReferencesAsync` default to `gemini-2.5-flash-image`.
+- Google's Gemini API pricing page currently lists `gemini-2.5-flash-image` and `imagen-*` models as Paid Tier only.
+- There is no SDK flag that enables free native image generation. To use the image helpers in this SDK, create your API key from a Paid Tier Google AI Studio project with billing enabled.
+- Google AI Studio itself can still be free to use, but using a paid API key for paid features is billed by Google.
+
+For setup details, see the `Free Tier and Image Generation` guide in the docs and Google's official docs for [pricing](https://ai.google.dev/gemini-api/docs/pricing), [billing](https://ai.google.dev/gemini-api/docs/billing), [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits), and [available regions](https://ai.google.dev/gemini-api/docs/available-regions).
+
 <!-- EXAMPLES:START -->
 ### Chat Client Five Random Words Streaming
 ```csharp
@@ -694,6 +705,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // This example uses native image output and therefore requires
+    // a Paid Tier Gemini API project and API key.
     // First generate an image to edit
     var original = await client.GenerateImageAsync(
         prompt: "A plain white background",
@@ -866,6 +879,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // Native image output models such as gemini-2.5-flash-image currently
+    // require a Paid Tier Gemini API project and API key.
     var result = await client.GenerateImageAsync(
         prompt: "A simple red circle on a white background",
         imageSize: "1K");
@@ -882,6 +897,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // Native image output models such as gemini-2.5-flash-image currently
+    // require a Paid Tier Gemini API project and API key.
     var result = await client.GenerateImageAsync(
         prompt: "A landscape with mountains",
         imageSize: "1K",
@@ -899,6 +916,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // This example uses native image output and therefore requires
+    // a Paid Tier Gemini API project and API key.
     // First generate a reference image
     var reference = await client.GenerateImageAsync(
         prompt: "A simple red square",
@@ -940,6 +959,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // This example first creates a source image, so it also requires
+    // a Paid Tier Gemini API project and API key.
     var image = await client.GenerateImageAsync(
         prompt: "A still landscape with mountains and a lake",
         imageSize: "1K");
@@ -964,6 +985,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // This example first creates source images, so it also requires
+    // a Paid Tier Gemini API project and API key.
     var startFrame = await client.GenerateImageAsync(
         prompt: "A red circle on a white background",
         imageSize: "1K");

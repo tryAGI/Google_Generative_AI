@@ -9,6 +9,8 @@ using var client = new GeminiClient(apiKey);
 
 try
 {
+    // This example uses native image output and therefore requires
+    // a Paid Tier Gemini API project and API key.
     // First generate an image to edit
     var original = await client.GenerateImageAsync(
         prompt: "A plain white background",

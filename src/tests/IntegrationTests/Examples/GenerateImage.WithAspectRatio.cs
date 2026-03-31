@@ -15,6 +15,8 @@ public partial class Tests
 
         try
         {
+            // Native image output models such as gemini-2.5-flash-image currently
+            // require a Paid Tier Gemini API project and API key.
             var result = await client.GenerateImageAsync(
                 prompt: "A landscape with mountains",
                 imageSize: "1K",
