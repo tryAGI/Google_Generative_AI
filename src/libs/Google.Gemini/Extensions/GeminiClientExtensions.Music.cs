@@ -14,6 +14,7 @@ public static class GeminiClientMusicExtensions
     /// <param name="prompt">The text prompt describing the desired music (genre, mood, instruments, tempo, lyrics, etc.).</param>
     /// <param name="modelId">The model to use. Defaults to "lyria-3-clip-preview" (~30s clips). Use "lyria-3-pro-preview" for longer output.</param>
     /// <param name="responseMimeType">Optional MIME type for the audio output (e.g., "audio/mp3", "audio/wav"). If null, the model chooses the default format.</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated music result.</returns>
     public static async Task<MusicResult> GenerateMusicAsync(
@@ -21,6 +22,7 @@ public static class GeminiClientMusicExtensions
         string prompt,
         string modelId = "lyria-3-clip-preview",
         string? responseMimeType = null,
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -43,6 +45,7 @@ public static class GeminiClientMusicExtensions
                     GenerationConfigResponseModalitie.Text,
                 ],
                 ResponseMimeType = responseMimeType,
+                Seed = seed,
             },
         };
 
@@ -63,6 +66,7 @@ public static class GeminiClientMusicExtensions
     /// <param name="images">Reference images as (bytes, mimeType) tuples that influence the music's mood/style.</param>
     /// <param name="modelId">The model to use. Defaults to "lyria-3-clip-preview".</param>
     /// <param name="responseMimeType">Optional MIME type for the audio output (e.g., "audio/mp3", "audio/wav"). If null, the model chooses the default format.</param>
+    /// <param name="seed">Optional seed for reproducible generation. If null, the model uses a random seed.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated music result.</returns>
     public static async Task<MusicResult> GenerateMusicFromImagesAsync(
@@ -71,6 +75,7 @@ public static class GeminiClientMusicExtensions
         IEnumerable<(byte[] Data, string MimeType)> images,
         string modelId = "lyria-3-clip-preview",
         string? responseMimeType = null,
+        int? seed = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -105,6 +110,7 @@ public static class GeminiClientMusicExtensions
                     GenerationConfigResponseModalitie.Text,
                 ],
                 ResponseMimeType = responseMimeType,
+                Seed = seed,
             },
         };
 
