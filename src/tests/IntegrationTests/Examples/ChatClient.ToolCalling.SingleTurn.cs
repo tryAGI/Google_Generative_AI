@@ -45,9 +45,9 @@ public partial class Tests
             functionCall!.Name.Should().Be("get_weather");
             functionCall.Arguments.Should().NotBeNull();
         }
-        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        catch (ApiException ex) when (IsTransientAvailabilityIssue(ex))
         {
-            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+            AssertTransientAvailability(ex);
         }
     }
 }

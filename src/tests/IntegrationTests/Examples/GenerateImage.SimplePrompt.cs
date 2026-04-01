@@ -23,9 +23,9 @@ public partial class Tests
             result.ImageData.Should().NotBeNullOrEmpty();
             result.MimeType.Should().NotBeNullOrWhiteSpace();
         }
-        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        catch (ApiException ex) when (IsTransientAvailabilityIssue(ex))
         {
-            Assert.Inconclusive("Rate limited: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
+            AssertTransientAvailability(ex);
         }
     }
 }

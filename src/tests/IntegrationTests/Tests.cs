@@ -105,5 +105,31 @@ public partial class Tests
         return null;
     }
 
+    private static bool IsTransientAvailabilityIssue(ApiException ex)
+    {
+        if (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+        {
+            return true;
+        }
+
+        if (ex.StatusCode is not System.Net.HttpStatusCode.ServiceUnavailable)
+        {
+            return false;
+        }
+
+        return ex.Message.Contains("experiencing high demand", StringComparison.OrdinalIgnoreCase) ||
+               ex.Message.Contains("\"status\": \"UNAVAILABLE\"", StringComparison.OrdinalIgnoreCase) ||
+               ex.Message.Contains("Please try again later", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static void AssertTransientAvailability(ApiException ex)
+    {
+        var label = ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests
+            ? "Rate limited"
+            : "Temporarily unavailable";
+
+        Assert.Inconclusive($"{label}: {ex.Message[..Math.Min(ex.Message.Length, 200)]}");
+    }
+
     private static GeminiClient CreateTestClient() => new(apiKey: "test-key");
 }
