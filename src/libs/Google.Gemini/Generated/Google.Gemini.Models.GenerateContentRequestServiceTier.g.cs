@@ -11,19 +11,19 @@ namespace Google.Gemini
         /// <summary>
         /// Flex service tier.
         /// </summary>
-        ServiceTierFlex,
+        Flex,
         /// <summary>
         /// Priority service tier.
         /// </summary>
-        ServiceTierPriority,
+        Priority,
         /// <summary>
         /// Standard service tier.
         /// </summary>
-        ServiceTierStandard,
+        Standard,
         /// <summary>
         /// Default service tier, which is standard.
         /// </summary>
-        ServiceTierUnspecified,
+        Unspecified,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                GenerateContentRequestServiceTier.ServiceTierFlex => "SERVICE_TIER_FLEX",
-                GenerateContentRequestServiceTier.ServiceTierPriority => "SERVICE_TIER_PRIORITY",
-                GenerateContentRequestServiceTier.ServiceTierStandard => "SERVICE_TIER_STANDARD",
-                GenerateContentRequestServiceTier.ServiceTierUnspecified => "SERVICE_TIER_UNSPECIFIED",
+                GenerateContentRequestServiceTier.Flex => "flex",
+                GenerateContentRequestServiceTier.Priority => "priority",
+                GenerateContentRequestServiceTier.Standard => "standard",
+                GenerateContentRequestServiceTier.Unspecified => "unspecified",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Google.Gemini
         {
             return value switch
             {
-                "SERVICE_TIER_FLEX" => GenerateContentRequestServiceTier.ServiceTierFlex,
-                "SERVICE_TIER_PRIORITY" => GenerateContentRequestServiceTier.ServiceTierPriority,
-                "SERVICE_TIER_STANDARD" => GenerateContentRequestServiceTier.ServiceTierStandard,
-                "SERVICE_TIER_UNSPECIFIED" => GenerateContentRequestServiceTier.ServiceTierUnspecified,
+                "flex" => GenerateContentRequestServiceTier.Flex,
+                "priority" => GenerateContentRequestServiceTier.Priority,
+                "standard" => GenerateContentRequestServiceTier.Standard,
+                "unspecified" => GenerateContentRequestServiceTier.Unspecified,
                 _ => null,
             };
         }
