@@ -194,9 +194,6 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
-        /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
         /// </param>
@@ -205,6 +202,9 @@ namespace Google.Gemini
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
+        /// </param>
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="priority">
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
@@ -215,20 +215,20 @@ namespace Google.Gemini
             string batchesId,
             string? updateMask = default,
             string? model = default,
-            string? displayName = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
             global::Google.Gemini.BatchStats? batchStats = default,
+            string? displayName = default,
             string? priority = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.GenerateContentBatch
             {
                 Model = model,
-                DisplayName = displayName,
                 InputConfig = inputConfig,
                 Output = output,
                 BatchStats = batchStats,
+                DisplayName = displayName,
                 Priority = priority,
             };
 
