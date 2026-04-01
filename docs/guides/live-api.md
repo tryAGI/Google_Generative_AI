@@ -308,6 +308,58 @@ await foreach (var message in session.ReadEventsAsync())
 }
 ```
 
+### Choosing `Parameters` vs `ParametersJsonSchema`
+
+Use `FunctionDeclaration.Parameters` when your tool schema is simple and fits naturally into the SDK's typed `Schema` model.
+
+Use `FunctionDeclaration.ParametersJsonSchema` when you want to pass raw JSON Schema directly, especially for cases like:
+
+- `additionalProperties: false`
+- exact `propertyOrdering`
+- nested schema metadata or an existing JSON Schema document you want to preserve as-is
+
+`Parameters` and `ParametersJsonSchema` are mutually exclusive. The SDK's `IChatClient` bridge already uses `ParametersJsonSchema` for this reason.
+
+```csharp
+using System.Text.Json;
+
+var weatherSchema = JsonDocument.Parse("""
+{
+  "type": "object",
+  "additionalProperties": false,
+  "propertyOrdering": ["location", "units", "preferences"],
+  "properties": {
+    "location": {
+      "type": "string",
+      "description": "The city name"
+    },
+    "units": {
+      "type": "string",
+      "enum": ["celsius", "fahrenheit"]
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrdering": ["includeHumidity"],
+      "properties": {
+        "includeHumidity": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "required": ["location"]
+}
+""").RootElement.Clone();
+
+var myFunction = new FunctionDeclaration
+{
+    Name = "get_weather",
+    Description = "Get the current weather for a location",
+    ParametersJsonSchema = weatherSchema,
+};
+```
+
 ## Session Limits
 
 | Scenario | Duration |

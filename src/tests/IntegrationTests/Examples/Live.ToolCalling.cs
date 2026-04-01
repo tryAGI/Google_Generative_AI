@@ -5,6 +5,7 @@ slug: live-tool-calling
 */
 
 using System.Net.WebSockets;
+using System.Text.Json;
 
 namespace Google.Gemini.IntegrationTests;
 
@@ -20,6 +21,40 @@ public partial class Tests
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
             //// Connects to the Live API with a tool and handles a function call.
+            //// Use ParametersJsonSchema when you need to send raw JSON Schema features
+            //// such as additionalProperties, exact property ordering, or nested metadata.
+            var weatherSchema = JsonDocument.Parse("""
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "propertyOrdering": ["location", "units", "preferences"],
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city name"
+                    },
+                    "units": {
+                      "type": "string",
+                      "enum": ["celsius", "fahrenheit"],
+                      "description": "Preferred temperature unit"
+                    },
+                    "preferences": {
+                      "type": "object",
+                      "description": "Optional weather display preferences",
+                      "additionalProperties": false,
+                      "propertyOrdering": ["includeHumidity"],
+                      "properties": {
+                        "includeHumidity": {
+                          "type": "boolean",
+                          "description": "Whether to include humidity in the response"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["location"]
+                }
+                """).RootElement.Clone();
+
             var config = CreateLiveConfig();
             config.Tools =
             [
@@ -31,19 +66,7 @@ public partial class Tests
                         {
                             Name = "get_weather",
                             Description = "Get the current weather for a location",
-                            Parameters = new Schema
-                            {
-                                Type = SchemaType.Object,
-                                Properties = new Dictionary<string, Schema>
-                                {
-                                    ["location"] = new Schema
-                                    {
-                                        Type = SchemaType.String,
-                                        Description = "The city name",
-                                    },
-                                },
-                                Required = ["location"],
-                            },
+                            ParametersJsonSchema = weatherSchema,
                         },
                     ],
                 },

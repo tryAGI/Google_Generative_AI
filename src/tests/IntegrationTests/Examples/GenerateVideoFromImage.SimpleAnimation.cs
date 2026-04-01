@@ -16,8 +16,6 @@ public partial class Tests
 
         try
         {
-            // This example first creates a source image, so it also requires
-            // a Paid Tier Gemini API project and API key.
             var image = await client.GenerateImageAsync(
                 prompt: "A still landscape with mountains and a lake",
                 imageSize: "1K");

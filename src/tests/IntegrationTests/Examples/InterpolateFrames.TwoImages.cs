@@ -16,8 +16,6 @@ public partial class Tests
 
         try
         {
-            // This example first creates source images, so it also requires
-            // a Paid Tier Gemini API project and API key.
             var startFrame = await client.GenerateImageAsync(
                 prompt: "A red circle on a white background",
                 imageSize: "1K");

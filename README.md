@@ -160,6 +160,8 @@ await foreach (var message in session.ReadEventsAsync())
 }
 ```
 
+Use `FunctionDeclaration.Parameters` for simple tool schemas. If you need raw JSON Schema features such as `additionalProperties: false`, exact `propertyOrdering`, or you already have a JSON Schema document to reuse, prefer `FunctionDeclaration.ParametersJsonSchema` instead. The detailed Live API example is in the [Live API guide](docs/guides/live-api.md#choosing-parameters-vs-parametersjsonschema).
+
 **Session resumption** (reconnect without losing context):
 ```csharp
 var config = new LiveSetupConfig
@@ -400,19 +402,22 @@ await foreach (var message in session.ReadEventsAsync())
 
 </details>
 
-### Free Tier and Image Generation
+### Gemini API Free Tier
 
-Gemini API access is model-specific. A Free Tier key can use many text and multimodal Gemini models, but native image output models are currently different.
+The Gemini API Free Tier is model-specific. In practice, that means this SDK can be used for many free workflows, but whether a call is free depends on the model you choose, not on the SDK method name.
 
-- `GenerateImageAsync`, `EditImageAsync`, and `GenerateImageWithReferencesAsync` default to `gemini-2.5-flash-image`.
-- Google's Gemini API pricing page currently lists `gemini-2.5-flash-image` and `imagen-*` models as Paid Tier only.
-- There is no SDK flag that enables free native image generation. To use the image helpers in this SDK, create your API key from a Paid Tier Google AI Studio project with billing enabled.
-- Google AI Studio itself can still be free to use, but using a paid API key for paid features is billed by Google.
+- Free Tier commonly covers text and chat generation on selected Gemini models.
+- It also covers many multimodal understanding scenarios, such as sending images, video, or audio to supported models and getting text back.
+- Embeddings are available on the Free Tier through models such as `gemini-embedding-001` and `gemini-embedding-2-preview`.
+- Some live and audio features are also available on the Free Tier for selected preview models.
+- Native image, video, and music generation are separate model families, so they should not be used as the definition of "what is free".
 
-For setup details, see the `Free Tier and Image Generation` guide in the docs and Google's official docs for [pricing](https://ai.google.dev/gemini-api/docs/pricing), [billing](https://ai.google.dev/gemini-api/docs/billing), [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits), and [available regions](https://ai.google.dev/gemini-api/docs/available-regions).
+For the current Free Tier model categories, publicly documented quotas, and official links, see the `Gemini API Free Tier` guide in the docs and Google's docs for [pricing](https://ai.google.dev/gemini-api/docs/pricing), [billing](https://ai.google.dev/gemini-api/docs/billing), [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits), and [available regions](https://ai.google.dev/gemini-api/docs/available-regions).
 
 <!-- EXAMPLES:START -->
 ### Chat Client Five Random Words Streaming
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -453,6 +458,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Five Random Words
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -477,6 +484,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Get Service Returns Chat Client Metadata
+
+
 ```csharp
 using var client = CreateTestClient();
 IChatClient chatClient = client;
@@ -485,6 +494,8 @@ var metadata = chatClient.GetService<ChatClientMetadata>();
 ```
 
 ### Chat Client Get Service Returns Null For Unknown Key
+
+
 ```csharp
 using var client = CreateTestClient();
 IChatClient chatClient = client;
@@ -493,6 +504,8 @@ var result = chatClient.GetService<ChatClientMetadata>(serviceKey: "unknown");
 ```
 
 ### Chat Client Get Service Returns Self
+
+
 ```csharp
 using var client = CreateTestClient();
 IChatClient chatClient = client;
@@ -501,6 +514,8 @@ var self = chatClient.GetService<GeminiClient>();
 ```
 
 ### Chat Client Tool Calling Multi Turn
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -565,6 +580,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Tool Calling Single Turn
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -600,6 +617,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Chat Client Tool Calling Streaming
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -643,6 +662,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Count Tokens Multiple Messages
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -677,6 +698,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Count Tokens Simple Text
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -700,13 +723,13 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Edit Image Simple Edit
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
 try
 {
-    // This example uses native image output and therefore requires
-    // a Paid Tier Gemini API project and API key.
     // First generate an image to edit
     var original = await client.GenerateImageAsync(
         prompt: "A plain white background",
@@ -725,6 +748,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Embedding Generator Batch Input
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetEmbeddingModelId();
@@ -746,6 +771,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Embedding Generator Get Service Returns Embedding Generator Metadata
+
+
 ```csharp
 using var client = CreateTestClient();
 IEmbeddingGenerator<string, Embedding<float>> generator = client;
@@ -754,6 +781,8 @@ var metadata = generator.GetService<EmbeddingGeneratorMetadata>();
 ```
 
 ### Embedding Generator Get Service Returns Null For Unknown Key
+
+
 ```csharp
 using var client = CreateTestClient();
 IEmbeddingGenerator<string, Embedding<float>> generator = client;
@@ -762,6 +791,8 @@ var result = generator.GetService<EmbeddingGeneratorMetadata>(serviceKey: "unkno
 ```
 
 ### Embedding Generator Get Service Returns Self
+
+
 ```csharp
 using var client = CreateTestClient();
 IEmbeddingGenerator<string, Embedding<float>> generator = client;
@@ -770,6 +801,8 @@ var self = generator.GetService<GeminiClient>();
 ```
 
 ### Embedding Generator Single Input
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetEmbeddingModelId();
@@ -791,6 +824,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Embedding Generator Task Type
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetEmbeddingModelId();
@@ -831,6 +866,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### File Management
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -840,6 +877,8 @@ var response = await client.FilesListAsync();
 ```
 
 ### Generate Content
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 var modelId = GetGenerateContentModelId();
@@ -874,13 +913,13 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Image Simple Prompt
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
 try
 {
-    // Native image output models such as gemini-2.5-flash-image currently
-    // require a Paid Tier Gemini API project and API key.
     var result = await client.GenerateImageAsync(
         prompt: "A simple red circle on a white background",
         imageSize: "1K");
@@ -892,13 +931,13 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Image With Aspect Ratio
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
 try
 {
-    // Native image output models such as gemini-2.5-flash-image currently
-    // require a Paid Tier Gemini API project and API key.
     var result = await client.GenerateImageAsync(
         prompt: "A landscape with mountains",
         imageSize: "1K",
@@ -911,13 +950,13 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Image With References Single Reference
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
 try
 {
-    // This example uses native image output and therefore requires
-    // a Paid Tier Gemini API project and API key.
     // First generate a reference image
     var reference = await client.GenerateImageAsync(
         prompt: "A simple red square",
@@ -935,6 +974,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 ```
 
 ### Generate Video Simple Prompt
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -954,13 +995,13 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Generate Video From Image Simple Animation
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
 try
 {
-    // This example first creates a source image, so it also requires
-    // a Paid Tier Gemini API project and API key.
     var image = await client.GenerateImageAsync(
         prompt: "A still landscape with mountains and a lake",
         imageSize: "1K");
@@ -980,13 +1021,13 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Interpolate Frames Two Images
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
 try
 {
-    // This example first creates source images, so it also requires
-    // a Paid Tier Gemini API project and API key.
     var startFrame = await client.GenerateImageAsync(
         prompt: "A red circle on a white background",
         imageSize: "1K");
@@ -1010,6 +1051,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### List Models
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1022,6 +1065,8 @@ foreach (var model in response.Models ?? [])
 ```
 
 ### Speak Different Voice
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1042,6 +1087,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Speak Simple Text
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1062,6 +1109,8 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequ
 ```
 
 ### Transcribe Generated Audio
+
+
 ```csharp
 using var client = new GeminiClient(apiKey);
 
@@ -1081,6 +1130,611 @@ catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooMany
 }
 catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequest &&
                               ex.Message.Contains("only be used for TTS"))
+{
+}
+```
+
+### Generate Music Simple Prompt
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    // Generate a short music clip from a text prompt using the Lyria 3 Clip model.
+    var result = await client.GenerateMusicAsync(
+        prompt: "A cheerful acoustic guitar melody with a light percussion beat, major key, 120 BPM");
+
+}
+catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+{
+}
+catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequest)
+{
+}
+```
+
+### Live Text Exchange
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Connects to the Gemini Live API, sends text, receives audio response.
+    await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
+
+    // Send a simple text message.
+    await session.SendTextAsync("Say hello", cts.Token);
+
+    // Read events until the model turn is complete.
+    bool receivedResponse = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Generate Music With Lyrics
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    // Generate music with vocals using structure tags and lyrics.
+    var result = await client.GenerateMusicAsync(
+        prompt: """
+            Pop ballad, female vocal, piano accompaniment, 90 BPM, C major
+
+            [Verse]
+            Walking through the morning light,
+            Everything feels warm and bright.
+
+            [Chorus]
+            This is where I want to be,
+            Under skies so wide and free.
+            """);
+
+}
+catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+{
+}
+catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequest)
+{
+}
+```
+
+### Generate Music Pro Model
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    // Generate a longer music piece using the Lyria 3 Pro model.
+    var result = await client.GenerateMusicAsync(
+        prompt: "Epic orchestral soundtrack with strings, brass, and timpani, building from soft to powerful, D minor, 100 BPM",
+        modelId: "lyria-3-pro-preview");
+
+}
+catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)
+{
+}
+catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequest)
+{
+}
+```
+
+### Live Audio Round Trip
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Sends PCM audio and verifies audio parts are received in the response.
+    await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
+
+    // Generate a short 16-bit PCM 16kHz sine wave (0.5s of 440Hz tone).
+    var sampleRate = 16000;
+    var samples = (int)(sampleRate * 0.5);
+    var pcmBytes = new byte[samples * 2];
+    for (int i = 0; i < samples; i++)
+    {
+        var sample = (short)(Math.Sin(2 * Math.PI * 440 * i / sampleRate) * 8000);
+        pcmBytes[i * 2] = (byte)(sample & 0xFF);
+        pcmBytes[i * 2 + 1] = (byte)((sample >> 8) & 0xFF);
+    }
+
+    await session.SendAudioAsync(pcmBytes, cts.Token);
+
+    // Also send text to ensure a response is triggered.
+    await session.SendTextAsync("Repeat what you heard", cts.Token);
+
+    bool receivedAudioParts = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { } parts)
+        {
+            foreach (var part in parts)
+            {
+                if (part.InlineData?.Data is { Length: > 0 })
+                {
+                    receivedAudioParts = true;
+                }
+            }
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live Output Transcription
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Enables output audio transcription to receive text alongside audio.
+    var config = CreateLiveConfig();
+    config.OutputAudioTranscription = new LiveOutputAudioTranscription();
+
+    await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+    // Send a text message and collect transcription events.
+    await session.SendTextAsync("Say the word hello", cts.Token);
+
+    bool receivedTranscription = false;
+    bool receivedAudio = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedAudio = true;
+        }
+
+        if (message.ServerContent?.OutputTranscription?.Text is { Length: > 0 })
+        {
+            receivedTranscription = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live Speech Config
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Connects with a speech config to select a specific voice.
+    var config = CreateLiveConfig();
+    config.GenerationConfig!.SpeechConfig = new SpeechConfig
+    {
+        VoiceConfig = new VoiceConfig
+        {
+            PrebuiltVoiceConfig = new PrebuiltVoiceConfig
+            {
+                VoiceName = "Kore",
+            },
+        },
+    };
+
+    await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+    // Send a message — voice selection is applied at setup time.
+    await session.SendTextAsync("Say hello", cts.Token);
+
+    bool receivedResponse = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live System Instruction
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Connects with a system instruction to customize model behavior.
+    var config = CreateLiveConfig();
+    config.SystemInstruction = new Content
+    {
+        Parts = [new Part { Text = "You are a helpful assistant. Always be concise." }],
+    };
+
+    await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+    // Send a message — system instruction is accepted at setup time.
+    await session.SendTextAsync("Say hello", cts.Token);
+
+    bool receivedResponse = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live Multi-Turn Conversation
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Demonstrates a multi-turn conversation using sequential text exchanges.
+    await using var session = await client.ConnectLiveAsync(CreateLiveConfig(), cancellationToken: cts.Token);
+
+    // First turn: tell the model a fact.
+    await session.SendTextAsync("My name is Alice", cts.Token);
+
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+    // Second turn: ask the model to recall the fact.
+    await session.SendTextAsync("What is my name?", cts.Token);
+
+    bool receivedResponse = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live Tool Calling
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Connects to the Live API with a tool and handles a function call.
+    // Use ParametersJsonSchema when you need to send raw JSON Schema features
+    // such as additionalProperties, exact property ordering, or nested metadata.
+    var weatherSchema = JsonDocument.Parse("""
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrdering": ["location", "units", "preferences"],
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city name"
+            },
+            "units": {
+              "type": "string",
+              "enum": ["celsius", "fahrenheit"],
+              "description": "Preferred temperature unit"
+            },
+            "preferences": {
+              "type": "object",
+              "description": "Optional weather display preferences",
+              "additionalProperties": false,
+              "propertyOrdering": ["includeHumidity"],
+              "properties": {
+                "includeHumidity": {
+                  "type": "boolean",
+                  "description": "Whether to include humidity in the response"
+                }
+              }
+            }
+          },
+          "required": ["location"]
+        }
+        """).RootElement.Clone();
+
+    var config = CreateLiveConfig();
+    config.Tools =
+    [
+        new Tool
+        {
+            FunctionDeclarations =
+            [
+                new FunctionDeclaration
+                {
+                    Name = "get_weather",
+                    Description = "Get the current weather for a location",
+                    ParametersJsonSchema = weatherSchema,
+                },
+            ],
+        },
+    ];
+
+    await using var session = await client.ConnectLiveAsync(config, cancellationToken: cts.Token);
+
+    // Ask about weather to trigger the tool call.
+    await session.SendTextAsync("What is the weather in London? Use the get_weather tool.", cts.Token);
+
+    // Read until we get a tool call or turn complete.
+    LiveToolCall? toolCall = null;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ToolCall is not null)
+        {
+            toolCall = message.ToolCall;
+            break;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+    // Send a tool response.
+    await session.SendToolResponseAsync(
+    [
+        new FunctionResponse
+        {
+            Name = "get_weather",
+            Id = toolCall.FunctionCalls[0].Id,
+            Response = new { temperature = "15C", condition = "cloudy" },
+        },
+    ], cts.Token);
+
+    // Read until turn is complete.
+    bool receivedResponse = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live Session Resumption
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
+    // Connects with session resumption enabled, exchanges a message,
+    // then reconnects using the resumption handle via ReconnectLiveAsync.
+    var config = CreateLiveConfig();
+    config.SessionResumption = new LiveSessionResumptionConfig();
+
+    // First session: send a message and collect the resumption handle.
+    // The handle arrives asynchronously — keep reading after turnComplete.
+    string? resumptionHandle;
+    await using (var session1 = await client.ConnectLiveAsync(config, cancellationToken: cts.Token))
+    {
+        await session1.SendTextAsync("Remember: the secret word is banana.", cts.Token);
+
+        bool turnDone = false;
+        await foreach (var message in session1.ReadEventsAsync(cts.Token))
+        {
+            if (message.ServerContent?.TurnComplete == true)
+            {
+                turnDone = true;
+            }
+
+            // Once turn is done AND we have a handle, stop
+            if (turnDone && session1.LastSessionResumptionHandle is { Length: > 0 })
+            {
+                break;
+            }
+        }
+
+        resumptionHandle = session1.LastSessionResumptionHandle;
+    }
+
+    if (string.IsNullOrEmpty(resumptionHandle))
+    {
+    }
+
+    // Second session: reconnect using ReconnectLiveAsync.
+    var config2 = CreateLiveConfig();
+    config2.SessionResumption = new LiveSessionResumptionConfig
+    {
+        Handle = resumptionHandle,
+    };
+
+    await using var session2 = await client.ConnectLiveAsync(config2, cancellationToken: cts.Token);
+
+    await session2.SendTextAsync("What was the secret word?", cts.Token);
+
+    bool receivedResponse = false;
+    await foreach (var message in session2.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
+{
+}
+```
+
+### Live Resilient Session
+
+
+```csharp
+using var client = new GeminiClient(apiKey);
+
+try
+{
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
+    // Connects using ResilientLiveSession and verifies basic text exchange works.
+    var config = CreateLiveConfig();
+
+    await using var session = await client.ConnectResilientLiveAsync(
+        config,
+        cancellationToken: cts.Token);
+
+    // Send a text message through the resilient session.
+    await session.SendTextAsync("Say hello", cts.Token);
+
+    bool receivedResponse = false;
+    await foreach (var message in session.ReadEventsAsync(cts.Token))
+    {
+        if (message.ServerContent?.ModelTurn?.Parts is { Count: > 0 })
+        {
+            receivedResponse = true;
+        }
+
+        if (message.ServerContent?.TurnComplete == true)
+        {
+            break;
+        }
+    }
+
+}
+catch (WebSocketException ex)
+{
+}
+catch (OperationCanceledException)
 {
 }
 ```

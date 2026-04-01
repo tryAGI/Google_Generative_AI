@@ -41,6 +41,18 @@ nav:
   - Speak Different Voice: examples/speak-different-voice.md
   - Speak Simple Text: examples/speak-simple-text.md
   - Transcribe Generated Audio: examples/transcribe-generated-audio.md
+  - Generate Music Simple Prompt: examples/generate-music-simple-prompt.md
+  - Live Text Exchange: examples/live-text-exchange.md
+  - Generate Music With Lyrics: examples/generate-music-with-lyrics.md
+  - Generate Music Pro Model: examples/generate-music-pro-model.md
+  - Live Audio Round Trip: examples/live-audio-round-trip.md
+  - Live Output Transcription: examples/live-output-transcription.md
+  - Live Speech Config: examples/live-speech-config.md
+  - Live System Instruction: examples/live-system-instruction.md
+  - Live Multi-Turn Conversation: examples/live-multi-turn-conversation.md
+  - Live Tool Calling: examples/live-tool-calling.md
+  - Live Session Resumption: examples/live-session-resumption.md
+  - Live Resilient Session: examples/live-resilient-session.md
 # EXAMPLES:END
 
 theme:
