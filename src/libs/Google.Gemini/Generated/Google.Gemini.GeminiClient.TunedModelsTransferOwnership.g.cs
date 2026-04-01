@@ -191,6 +191,7 @@ namespace Google.Gemini
             string? emailAddress = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Google.Gemini.TransferOwnershipRequest
             {
                 EmailAddress = emailAddress,

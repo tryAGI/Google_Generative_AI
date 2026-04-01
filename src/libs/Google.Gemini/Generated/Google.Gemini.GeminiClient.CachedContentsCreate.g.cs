@@ -215,6 +215,7 @@ namespace Google.Gemini
             global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Google.Gemini.CachedContent
             {
                 ExpireTime = expireTime,

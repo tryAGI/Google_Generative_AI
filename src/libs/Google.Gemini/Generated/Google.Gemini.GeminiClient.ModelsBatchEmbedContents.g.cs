@@ -191,6 +191,7 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.EmbedContentRequest>? requests = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Google.Gemini.BatchEmbedContentsRequest
             {
                 Requests = requests,
