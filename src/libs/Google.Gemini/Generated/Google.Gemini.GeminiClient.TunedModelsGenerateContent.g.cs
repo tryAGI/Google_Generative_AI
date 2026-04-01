@@ -227,7 +227,6 @@ namespace Google.Gemini
             bool? store = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Google.Gemini.GenerateContentRequest
             {
                 Model = model,

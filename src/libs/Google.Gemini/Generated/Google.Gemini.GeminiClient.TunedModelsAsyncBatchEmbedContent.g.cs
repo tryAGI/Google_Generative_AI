@@ -191,7 +191,6 @@ namespace Google.Gemini
             global::Google.Gemini.EmbedContentBatch? batch = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Google.Gemini.AsyncBatchEmbedContentRequest
             {
                 Batch = batch,
