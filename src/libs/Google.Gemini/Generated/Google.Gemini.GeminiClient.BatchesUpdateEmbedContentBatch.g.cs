@@ -222,7 +222,6 @@ namespace Google.Gemini
             string? priority = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Google.Gemini.EmbedContentBatch
             {
                 Model = model,

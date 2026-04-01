@@ -199,7 +199,6 @@ namespace Google.Gemini
             global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Google.Gemini.ImportFileRequest
             {
                 FileName = fileName,

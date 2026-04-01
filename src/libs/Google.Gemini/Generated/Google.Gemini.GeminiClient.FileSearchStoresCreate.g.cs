@@ -183,7 +183,6 @@ namespace Google.Gemini
             string? displayName = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Google.Gemini.FileSearchStore
             {
                 DisplayName = displayName,

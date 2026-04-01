@@ -195,7 +195,6 @@ namespace Google.Gemini
             global::Google.Gemini.GenerateContentRequest? generateContentRequest = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Google.Gemini.CountTokensRequest
             {
                 Contents = contents,
