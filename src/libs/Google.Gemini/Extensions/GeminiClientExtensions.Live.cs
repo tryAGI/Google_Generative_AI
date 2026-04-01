@@ -96,14 +96,8 @@ public static class GeminiClientLiveExtensions
             var setupMessage = new LiveClientMessage { Setup = config };
             await session.SendMessageAsync(setupMessage, cts.Token).ConfigureAwait(false);
 
-            // Wait for SetupComplete
-            var response = await session.ReceiveAsync(cts.Token).ConfigureAwait(false);
-
-            if (response?.SetupComplete == null)
-            {
-                throw new InvalidOperationException(
-                    "Expected SetupComplete from the server but received a different message.");
-            }
+            // Some servers emit session resumption or usage metadata before setup completes.
+            await WaitForSetupCompleteAsync(session.ReceiveAsync, cts.Token).ConfigureAwait(false);
 
             return session;
         }
@@ -198,5 +192,81 @@ public static class GeminiClientLiveExtensions
         config.SessionResumption.Handle = handle;
 
         return client.ConnectLiveAsync(config, connectTimeout, keepAliveInterval, cancellationToken);
+    }
+
+    private static async Task WaitForSetupCompleteAsync(
+        Func<CancellationToken, Task<LiveServerMessage?>> receiveAsync,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(receiveAsync);
+
+        while (true)
+        {
+            var response = await receiveAsync(cancellationToken).ConfigureAwait(false);
+            if (response is null)
+            {
+                throw new InvalidOperationException(
+                    "Live API connection closed before SetupComplete was received.");
+            }
+
+            if (response.SetupComplete is not null)
+            {
+                return;
+            }
+
+            var messageTypes = GetBootstrapMessageTypes(response);
+            if (messageTypes.Count > 0 &&
+                messageTypes.All(static messageType =>
+                    messageType is nameof(LiveServerMessage.SessionResumptionUpdate) or nameof(LiveServerMessage.UsageMetadata)))
+            {
+                continue;
+            }
+
+            var messageDescription = messageTypes.Count > 0
+                ? string.Join(", ", messageTypes)
+                : "EmptyMessage";
+
+            throw new InvalidOperationException(
+                $"Expected SetupComplete from the server but received unexpected bootstrap message: {messageDescription}.");
+        }
+    }
+
+    private static List<string> GetBootstrapMessageTypes(LiveServerMessage message)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+
+        List<string> messageTypes = [];
+
+        if (message.ServerContent is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.ServerContent));
+        }
+
+        if (message.ToolCall is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.ToolCall));
+        }
+
+        if (message.ToolCallCancellation is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.ToolCallCancellation));
+        }
+
+        if (message.GoAway is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.GoAway));
+        }
+
+        if (message.SessionResumptionUpdate is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.SessionResumptionUpdate));
+        }
+
+        if (message.UsageMetadata is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.UsageMetadata));
+        }
+
+        return messageTypes;
     }
 }
