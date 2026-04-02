@@ -2795,10 +2795,10 @@
               "Priority service tier."
             ],
             "enum": [
-              "SERVICE_TIER_UNSPECIFIED",
-              "SERVICE_TIER_STANDARD",
-              "SERVICE_TIER_FLEX",
-              "SERVICE_TIER_PRIORITY"
+              "unspecified",
+              "standard",
+              "flex",
+              "priority"
             ]
           },
           "store": {
