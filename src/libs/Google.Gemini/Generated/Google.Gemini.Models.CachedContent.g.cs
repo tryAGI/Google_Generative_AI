@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class CachedContent
     {
         /// <summary>
-        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("expireTime")]
-        public string? ExpireTime { get; set; }
-
-        /// <summary>
         /// Input only. New TTL for this resource, input only.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ttl")]
@@ -28,47 +22,10 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
-
-        /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
-        public global::Google.Gemini.Content? SystemInstruction { get; set; }
-
-        /// <summary>
-        /// Optional. Input only. Immutable. The content to cache.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
-
-        /// <summary>
-        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Tools { get; set; }
-
-        /// <summary>
         /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolConfig")]
         public global::Google.Gemini.ToolConfig? ToolConfig { get; set; }
-
-        /// <summary>
-        /// Output only. Creation time of the cache entry.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Output only. When the cache entry was last updated in UTC time.<br/>
@@ -78,10 +35,53 @@ namespace Google.Gemini
         public string? UpdateTime { get; set; }
 
         /// <summary>
+        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expireTime")]
+        public string? ExpireTime { get; set; }
+
+        /// <summary>
         /// Metadata on the usage of the cached content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
         public global::Google.Gemini.CachedContentUsageMetadata? UsageMetadata { get; set; }
+
+        /// <summary>
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
+        public global::Google.Gemini.Content? SystemInstruction { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Creation time of the cache entry.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Tools { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. The content to cache.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -92,9 +92,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CachedContent" /> class.
         /// </summary>
-        /// <param name="expireTime">
-        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
-        /// </param>
         /// <param name="ttl">
         /// Input only. New TTL for this resource, input only.
         /// </param>
@@ -102,64 +99,67 @@ namespace Google.Gemini
         /// Output only. Identifier. The resource name referring to the cached content. Format: `cachedContents/{id}`<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="displayName">
-        /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
-        /// </param>
-        /// <param name="model">
-        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-        /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
-        /// <param name="contents">
-        /// Optional. Input only. Immutable. The content to cache.
-        /// </param>
-        /// <param name="tools">
-        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
-        /// </param>
         /// <param name="toolConfig">
         /// The Tool configuration containing parameters for specifying `Tool` use in the request.
-        /// </param>
-        /// <param name="createTime">
-        /// Output only. Creation time of the cache entry.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="updateTime">
         /// Output only. When the cache entry was last updated in UTC time.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="expireTime">
+        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+        /// </param>
         /// <param name="usageMetadata">
         /// Metadata on the usage of the cached content.
+        /// </param>
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. Creation time of the cache entry.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="tools">
+        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
+        /// </param>
+        /// <param name="model">
+        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
+        /// </param>
+        /// <param name="contents">
+        /// Optional. Input only. Immutable. The content to cache.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CachedContent(
-            string? expireTime,
             string? ttl,
             string? name,
-            string? displayName,
-            string? model,
-            global::Google.Gemini.Content? systemInstruction,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
             global::Google.Gemini.ToolConfig? toolConfig,
-            string? createTime,
             string? updateTime,
-            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata)
+            string? expireTime,
+            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata,
+            global::Google.Gemini.Content? systemInstruction,
+            string? displayName,
+            string? createTime,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
+            string? model,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents)
         {
-            this.ExpireTime = expireTime;
             this.Ttl = ttl;
             this.Name = name;
-            this.DisplayName = displayName;
-            this.Model = model;
-            this.SystemInstruction = systemInstruction;
-            this.Contents = contents;
-            this.Tools = tools;
             this.ToolConfig = toolConfig;
-            this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.ExpireTime = expireTime;
             this.UsageMetadata = usageMetadata;
+            this.SystemInstruction = systemInstruction;
+            this.DisplayName = displayName;
+            this.CreateTime = createTime;
+            this.Tools = tools;
+            this.Model = model;
+            this.Contents = contents;
         }
 
         /// <summary>

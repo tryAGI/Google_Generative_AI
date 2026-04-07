@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class BatchEmbedContentsResponse
     {
         /// <summary>
+        /// Metadata on the usage of the embedding request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
+        public global::Google.Gemini.EmbeddingUsageMetadata? UsageMetadata { get; set; }
+
+        /// <summary>
         /// Output only. The embeddings for each request, in the same order as provided in the batch request.<br/>
         /// Included only in responses
         /// </summary>
@@ -24,6 +30,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchEmbedContentsResponse" /> class.
         /// </summary>
+        /// <param name="usageMetadata">
+        /// Metadata on the usage of the embedding request.
+        /// </param>
         /// <param name="embeddings">
         /// Output only. The embeddings for each request, in the same order as provided in the batch request.<br/>
         /// Included only in responses
@@ -32,8 +41,10 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BatchEmbedContentsResponse(
+            global::Google.Gemini.EmbeddingUsageMetadata? usageMetadata,
             global::System.Collections.Generic.IList<global::Google.Gemini.ContentEmbedding>? embeddings)
         {
+            this.UsageMetadata = usageMetadata;
             this.Embeddings = embeddings;
         }
 
