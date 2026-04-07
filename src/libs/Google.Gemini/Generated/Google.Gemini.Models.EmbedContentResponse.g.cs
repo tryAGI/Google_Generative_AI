@@ -15,6 +15,12 @@ namespace Google.Gemini
         public global::Google.Gemini.ContentEmbedding? Embedding { get; set; }
 
         /// <summary>
+        /// Metadata on the usage of the embedding request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
+        public global::Google.Gemini.EmbeddingUsageMetadata? UsageMetadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -26,13 +32,18 @@ namespace Google.Gemini
         /// <param name="embedding">
         /// A list of floats representing an embedding.
         /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the usage of the embedding request.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentResponse(
-            global::Google.Gemini.ContentEmbedding? embedding)
+            global::Google.Gemini.ContentEmbedding? embedding,
+            global::Google.Gemini.EmbeddingUsageMetadata? usageMetadata)
         {
             this.Embedding = embedding;
+            this.UsageMetadata = usageMetadata;
         }
 
         /// <summary>
