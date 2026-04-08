@@ -26,17 +26,17 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
         /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
-        /// </param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
         /// </param>
         /// <param name="priority">
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+        /// </param>
+        /// <param name="batchStats">
+        /// Stats about the batch.
+        /// </param>
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
         /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
@@ -47,10 +47,10 @@ namespace Google.Gemini
             string batchesId,
             string? updateMask = default,
             string? displayName = default,
-            global::Google.Gemini.EmbedContentBatchOutput? output = default,
-            global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig = default,
             string? priority = default,
+            global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
+            global::Google.Gemini.EmbedContentBatchOutput? output = default,
             string? model = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

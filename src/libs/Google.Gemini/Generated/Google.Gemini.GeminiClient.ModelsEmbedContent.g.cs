@@ -180,11 +180,11 @@ namespace Google.Gemini
         /// Generates a text embedding vector from the input `Content` using the specified [Gemini Embedding model](https://ai.google.dev/gemini-api/docs/models/gemini#text-embedding).
         /// </summary>
         /// <param name="modelsId"></param>
-        /// <param name="title">
-        /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
-        /// </param>
         /// <param name="model">
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
+        /// </param>
+        /// <param name="title">
+        /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </param>
         /// <param name="content">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
@@ -199,8 +199,8 @@ namespace Google.Gemini
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentResponse> ModelsEmbedContentAsync(
             string modelsId,
-            string? title = default,
             string? model = default,
+            string? title = default,
             global::Google.Gemini.Content? content = default,
             global::Google.Gemini.EmbedContentRequestTaskType? taskType = default,
             int? outputDimensionality = default,
@@ -208,8 +208,8 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.EmbedContentRequest
             {
-                Title = title,
                 Model = model,
+                Title = title,
                 Content = content,
                 TaskType = taskType,
                 OutputDimensionality = outputDimensionality,
