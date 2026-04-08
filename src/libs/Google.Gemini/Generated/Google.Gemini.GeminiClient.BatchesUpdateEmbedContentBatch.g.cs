@@ -190,14 +190,8 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
-        /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
-        /// </param>
-        /// <param name="priority">
-        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
@@ -208,27 +202,33 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
+        /// <param name="priority">
+        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+        /// </param>
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentBatch> BatchesUpdateEmbedContentBatchAsync(
             string batchesId,
             string? updateMask = default,
-            string? displayName = default,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig = default,
-            string? priority = default,
             global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
             global::Google.Gemini.EmbedContentBatchOutput? output = default,
             string? model = default,
+            string? priority = default,
+            string? displayName = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.EmbedContentBatch
             {
-                DisplayName = displayName,
                 InputConfig = inputConfig,
-                Priority = priority,
                 BatchStats = batchStats,
                 Output = output,
                 Model = model,
+                Priority = priority,
+                DisplayName = displayName,
             };
 
             return await BatchesUpdateEmbedContentBatchAsync(
