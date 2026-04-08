@@ -183,20 +183,11 @@ namespace Google.Gemini
         /// Creates a tuned model. Check intermediate tuning progress (if any) through the [google.longrunning.Operations] service. Access status and results through the Operations service. Example: GET /v1/tunedModels/az2mb0bpw6i/operations/000-111-222
         /// </summary>
         /// <param name="tunedModelId"></param>
-        /// <param name="tuningTask">
-        /// Tuning tasks that create tuned models.
-        /// </param>
-        /// <param name="baseModel">
-        /// Immutable. The name of the `Model` to tune. Example: `models/gemini-1.5-flash-001`
-        /// </param>
-        /// <param name="displayName">
-        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
-        /// </param>
-        /// <param name="tunedModelSource">
-        /// Tuned model as a source for training a new model.
-        /// </param>
         /// <param name="description">
         /// Optional. A short description of this model.
+        /// </param>
+        /// <param name="tuningTask">
+        /// Tuning tasks that create tuned models.
         /// </param>
         /// <param name="readerProjectNumbers">
         /// Optional. List of project numbers that have read access to the tuned model.
@@ -210,32 +201,41 @@ namespace Google.Gemini
         /// <param name="topK">
         /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
+        /// <param name="tunedModelSource">
+        /// Tuned model as a source for training a new model.
+        /// </param>
+        /// <param name="baseModel">
+        /// Immutable. The name of the `Model` to tune. Example: `models/gemini-1.5-flash-001`
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> TunedModelsCreateAsync(
             string? tunedModelId = default,
-            global::Google.Gemini.TuningTask? tuningTask = default,
-            string? baseModel = default,
-            string? displayName = default,
-            global::Google.Gemini.TunedModelSource? tunedModelSource = default,
             string? description = default,
+            global::Google.Gemini.TuningTask? tuningTask = default,
             global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
             float? temperature = default,
             float? topP = default,
             int? topK = default,
+            global::Google.Gemini.TunedModelSource? tunedModelSource = default,
+            string? baseModel = default,
+            string? displayName = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.TunedModel
             {
-                TuningTask = tuningTask,
-                BaseModel = baseModel,
-                DisplayName = displayName,
-                TunedModelSource = tunedModelSource,
                 Description = description,
+                TuningTask = tuningTask,
                 ReaderProjectNumbers = readerProjectNumbers,
                 Temperature = temperature,
                 TopP = topP,
                 TopK = topK,
+                TunedModelSource = tunedModelSource,
+                BaseModel = baseModel,
+                DisplayName = displayName,
             };
 
             return await TunedModelsCreateAsync(
