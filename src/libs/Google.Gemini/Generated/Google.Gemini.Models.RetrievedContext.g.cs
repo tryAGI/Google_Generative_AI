@@ -9,22 +9,10 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
-        /// Optional. User-provided metadata about the retrieved context.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
         /// Optional. Title of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
-
-        /// <summary>
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
-        public string? FileSearchStore { get; set; }
 
         /// <summary>
         /// Optional. URI reference of the semantic retrieval document.
@@ -33,10 +21,22 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
+        public string? FileSearchStore { get; set; }
+
+        /// <summary>
         /// Optional. Text of the chunk.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// Optional. User-provided metadata about the retrieved context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,36 +47,36 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
-        /// <param name="customMetadata">
-        /// Optional. User-provided metadata about the retrieved context.
-        /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
-        /// </param>
-        /// <param name="fileSearchStore">
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
+        /// <param name="fileSearchStore">
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
+        /// </param>
+        /// <param name="customMetadata">
+        /// Optional. User-provided metadata about the retrieved context.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? title,
-            string? fileSearchStore,
             string? uri,
-            string? text)
+            string? fileSearchStore,
+            string? text,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata)
         {
-            this.CustomMetadata = customMetadata;
             this.Title = title;
-            this.FileSearchStore = fileSearchStore;
             this.Uri = uri;
+            this.FileSearchStore = fileSearchStore;
             this.Text = text;
+            this.CustomMetadata = customMetadata;
         }
 
         /// <summary>
