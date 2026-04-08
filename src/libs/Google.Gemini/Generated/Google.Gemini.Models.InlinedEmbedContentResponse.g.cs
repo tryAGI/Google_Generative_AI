@@ -15,17 +15,17 @@ namespace Google.Gemini
         public global::Google.Gemini.Status? Error { get; set; }
 
         /// <summary>
+        /// The response to an `EmbedContentRequest`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public global::Google.Gemini.EmbedContentResponse? Response { get; set; }
+
+        /// <summary>
         /// Output only. The metadata associated with the request.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public object? Metadata { get; set; }
-
-        /// <summary>
-        /// The response to an `EmbedContentRequest`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public global::Google.Gemini.EmbedContentResponse? Response { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,24 +39,24 @@ namespace Google.Gemini
         /// <param name="error">
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </param>
+        /// <param name="response">
+        /// The response to an `EmbedContentRequest`.
+        /// </param>
         /// <param name="metadata">
         /// Output only. The metadata associated with the request.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="response">
-        /// The response to an `EmbedContentRequest`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public InlinedEmbedContentResponse(
             global::Google.Gemini.Status? error,
-            object? metadata,
-            global::Google.Gemini.EmbedContentResponse? response)
+            global::Google.Gemini.EmbedContentResponse? response,
+            object? metadata)
         {
             this.Error = error;
-            this.Metadata = metadata;
             this.Response = response;
+            this.Metadata = metadata;
         }
 
         /// <summary>
