@@ -9,6 +9,18 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
+        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::Google.Gemini.Status? Error { get; set; }
+
+        /// <summary>
         /// MIME type of the generatedFile.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
@@ -23,18 +35,6 @@ namespace Google.Gemini
         public global::Google.Gemini.GeneratedFileState? State { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Google.Gemini.Status? Error { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,6 +43,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
+        /// <param name="name">
+        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
+        /// </param>
+        /// <param name="error">
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </param>
         /// <param name="mimeType">
         /// MIME type of the generatedFile.
         /// </param>
@@ -50,25 +56,19 @@ namespace Google.Gemini
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="name">
-        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
-        /// </param>
-        /// <param name="error">
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
-            string? mimeType,
-            global::Google.Gemini.GeneratedFileState? state,
             string? name,
-            global::Google.Gemini.Status? error)
+            global::Google.Gemini.Status? error,
+            string? mimeType,
+            global::Google.Gemini.GeneratedFileState? state)
         {
-            this.MimeType = mimeType;
-            this.State = state;
             this.Name = name;
             this.Error = error;
+            this.MimeType = mimeType;
+            this.State = state;
         }
 
         /// <summary>

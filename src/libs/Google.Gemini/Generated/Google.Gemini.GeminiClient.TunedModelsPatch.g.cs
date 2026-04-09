@@ -196,8 +196,8 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
         /// </param>
-        /// <param name="tuningTask">
-        /// Tuning tasks that create tuned models.
+        /// <param name="topK">
+        /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
         /// <param name="tunedModelSource">
         /// Tuned model as a source for training a new model.
@@ -205,17 +205,17 @@ namespace Google.Gemini
         /// <param name="readerProjectNumbers">
         /// Optional. List of project numbers that have read access to the tuned model.
         /// </param>
-        /// <param name="topP">
-        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
-        /// <param name="topK">
-        /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
         /// <param name="baseModel">
         /// Immutable. The name of the `Model` to tune. Example: `models/gemini-1.5-flash-001`
         /// </param>
         /// <param name="description">
         /// Optional. A short description of this model.
+        /// </param>
+        /// <param name="topP">
+        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
+        /// </param>
+        /// <param name="tuningTask">
+        /// Tuning tasks that create tuned models.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -224,26 +224,26 @@ namespace Google.Gemini
             string? updateMask = default,
             float? temperature = default,
             string? displayName = default,
-            global::Google.Gemini.TuningTask? tuningTask = default,
+            int? topK = default,
             global::Google.Gemini.TunedModelSource? tunedModelSource = default,
             global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
-            float? topP = default,
-            int? topK = default,
             string? baseModel = default,
             string? description = default,
+            float? topP = default,
+            global::Google.Gemini.TuningTask? tuningTask = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.TunedModel
             {
                 Temperature = temperature,
                 DisplayName = displayName,
-                TuningTask = tuningTask,
+                TopK = topK,
                 TunedModelSource = tunedModelSource,
                 ReaderProjectNumbers = readerProjectNumbers,
-                TopP = topP,
-                TopK = topK,
                 BaseModel = baseModel,
                 Description = description,
+                TopP = topP,
+                TuningTask = tuningTask,
             };
 
             return await TunedModelsPatchAsync(
