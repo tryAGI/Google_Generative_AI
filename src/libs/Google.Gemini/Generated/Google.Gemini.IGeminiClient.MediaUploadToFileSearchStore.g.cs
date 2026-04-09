@@ -26,11 +26,11 @@ namespace Google.Gemini
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
-        /// <param name="mimeType">
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the created document.
+        /// </param>
+        /// <param name="mimeType">
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -38,8 +38,8 @@ namespace Google.Gemini
             string fileSearchStoresId,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
             global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
-            string? mimeType = default,
             string? displayName = default,
+            string? mimeType = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
