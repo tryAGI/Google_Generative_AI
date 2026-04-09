@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_ModelsEmbedContentSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_ModelsEmbedContentSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_ModelsEmbedContentSecurityRequirement0,
+            };
         partial void PrepareModelsEmbedContentArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelsId,
@@ -45,17 +64,23 @@ namespace Google.Gemini
                 modelsId: ref modelsId,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ModelsEmbedContentSecurityRequirements,
+                operationName: "ModelsEmbedContentAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/models/{modelsId}:embedContent",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -183,14 +208,14 @@ namespace Google.Gemini
         /// <param name="outputDimensionality">
         /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
         /// </param>
-        /// <param name="taskType">
-        /// Optional. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
-        /// </param>
         /// <param name="title">
         /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </param>
         /// <param name="content">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
+        /// <param name="taskType">
+        /// Optional. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
         /// </param>
         /// <param name="model">
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
@@ -200,18 +225,18 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentResponse> ModelsEmbedContentAsync(
             string modelsId,
             int? outputDimensionality = default,
-            global::Google.Gemini.EmbedContentRequestTaskType? taskType = default,
             string? title = default,
             global::Google.Gemini.Content? content = default,
+            global::Google.Gemini.EmbedContentRequestTaskType? taskType = default,
             string? model = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.EmbedContentRequest
             {
                 OutputDimensionality = outputDimensionality,
-                TaskType = taskType,
                 Title = title,
                 Content = content,
+                TaskType = taskType,
                 Model = model,
             };
 

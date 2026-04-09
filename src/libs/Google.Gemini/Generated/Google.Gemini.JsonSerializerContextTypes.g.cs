@@ -28,948 +28,948 @@ namespace Google.Gemini
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.AsyncBatchEmbedContentRequest? Type0 { get; set; }
+        public global::Google.Gemini.PlaceAnswerSources? Type0 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentBatch? Type1 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ReviewSnippet>? Type1 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CustomMetadata? Type2 { get; set; }
+        public global::Google.Gemini.ReviewSnippet? Type2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Type3 { get; set; }
+        public global::Google.Gemini.CountTokensResponse? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public float? Type4 { get; set; }
+        public int? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.StringList? Type5 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Blob? Type6 { get; set; }
+        public global::Google.Gemini.ModalityTokenCount? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type7 { get; set; }
+        public global::Google.Gemini.GenerateContentResponse? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.AttributionSourceId? Type8 { get; set; }
+        public string? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GroundingPassageId? Type9 { get; set; }
+        public global::Google.Gemini.PromptFeedback? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SemanticRetrieverChunk? Type10 { get; set; }
+        public global::Google.Gemini.ModelStatus? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SafetyRating? Type11 { get; set; }
+        public global::Google.Gemini.UsageMetadata? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type12 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SafetyRatingCategory? Type13 { get; set; }
+        public global::Google.Gemini.Candidate? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SafetyRatingProbability? Type14 { get; set; }
+        public global::Google.Gemini.SemanticRetrieverChunk? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Maps? Type15 { get; set; }
+        public global::Google.Gemini.SafetySetting? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.PlaceAnswerSources? Type16 { get; set; }
+        public global::Google.Gemini.SafetySettingCategory? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListGeneratedFilesResponse? Type17 { get; set; }
+        public global::Google.Gemini.SafetySettingThreshold? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GeneratedFile>? Type18 { get; set; }
+        public global::Google.Gemini.CachedContentUsageMetadata? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GeneratedFile? Type19 { get; set; }
+        public global::Google.Gemini.RetrievalConfig? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GroundingAttribution? Type20 { get; set; }
+        public global::Google.Gemini.LatLng? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Content? Type21 { get; set; }
+        public global::Google.Gemini.ComputerUse? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ReviewSnippet>? Type22 { get; set; }
+        public global::Google.Gemini.ComputerUseEnvironment? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ReviewSnippet? Type23 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Document? Type24 { get; set; }
+        public global::Google.Gemini.RegisterFilesResponse? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.DocumentState? Type25 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.File>? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? Type26 { get; set; }
+        public global::Google.Gemini.File? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TunedModel? Type27 { get; set; }
+        public global::Google.Gemini.CreateFileResponse? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type28 { get; set; }
+        public global::Google.Gemini.FunctionDeclaration? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TunedModelState? Type29 { get; set; }
+        public object? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TunedModelSource? Type30 { get; set; }
+        public global::Google.Gemini.FunctionDeclarationBehavior? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type31 { get; set; }
+        public global::Google.Gemini.Schema? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TuningTask? Type32 { get; set; }
+        public global::Google.Gemini.InlinedEmbedContentResponses? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FileSearch? Type33 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedEmbedContentResponse>? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListTunedModelsResponse? Type34 { get; set; }
+        public global::Google.Gemini.InlinedEmbedContentResponse? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.TunedModel>? Type35 { get; set; }
+        public global::Google.Gemini.InlinedResponse? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListModelsResponse? Type36 { get; set; }
+        public global::Google.Gemini.Status? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Model>? Type37 { get; set; }
+        public global::Google.Gemini.TransferOwnershipResponse? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Model? Type38 { get; set; }
+        public global::Google.Gemini.InputEmbedContentConfig? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.UploadToFileSearchStoreRequest? Type39 { get; set; }
+        public global::Google.Gemini.InlinedEmbedContentRequests? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ChunkingConfig? Type40 { get; set; }
+        public global::Google.Gemini.Corpus? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Part? Type41 { get; set; }
+        public global::Google.Gemini.ListCachedContentsResponse? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ToolResponse? Type42 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.CachedContent>? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type43 { get; set; }
+        public global::Google.Gemini.CachedContent? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CodeExecutionResult? Type44 { get; set; }
+        public global::Google.Gemini.ListGeneratedFilesResponse? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionCall? Type45 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GeneratedFile>? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.VideoMetadata? Type46 { get; set; }
+        public global::Google.Gemini.GeneratedFile? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionResponse? Type47 { get; set; }
+        public global::Google.Gemini.ListModelsResponse? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FileData? Type48 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Model>? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ToolCall? Type49 { get; set; }
+        public global::Google.Gemini.Model? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ExecutableCode? Type50 { get; set; }
+        public global::Google.Gemini.VideoFileMetadata? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CitationMetadata? Type51 { get; set; }
+        public byte[]? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.CitationSource>? Type52 { get; set; }
+        public global::Google.Gemini.FileState? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CitationSource? Type53 { get; set; }
+        public global::Google.Gemini.FileSource? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Status? Type54 { get; set; }
+        public global::Google.Gemini.Tool? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type55 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.MultiSpeakerVoiceConfig? Type56 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.SpeakerVoiceConfig>? Type57 { get; set; }
+        public global::Google.Gemini.McpServer? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SpeakerVoiceConfig? Type58 { get; set; }
+        public global::Google.Gemini.CodeExecution? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.BatchGenerateContentRequest? Type59 { get; set; }
+        public global::Google.Gemini.FileSearch? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerateContentBatch? Type60 { get; set; }
+        public global::Google.Gemini.GoogleMaps? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CodeExecution? Type61 { get; set; }
+        public global::Google.Gemini.GoogleSearchRetrieval? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CachedContentUsageMetadata? Type62 { get; set; }
+        public global::Google.Gemini.GoogleSearch? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CountTokensRequest? Type63 { get; set; }
+        public global::Google.Gemini.UrlContext? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Type64 { get; set; }
+        public global::Google.Gemini.TransferOwnershipRequest? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerateContentRequest? Type65 { get; set; }
+        public global::Google.Gemini.EmbeddingUsageMetadata? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedEmbedContentRequest? Type66 { get; set; }
+        public global::Google.Gemini.RegisterFilesRequest? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentRequest? Type67 { get; set; }
+        public global::Google.Gemini.BatchEmbedContentsResponse? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.LatLng? Type68 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ContentEmbedding>? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type69 { get; set; }
+        public global::Google.Gemini.ContentEmbedding? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GoogleMaps? Type70 { get; set; }
+        public global::Google.Gemini.ChunkingConfig? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport? Type71 { get; set; }
+        public global::Google.Gemini.WhiteSpaceConfig? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<int>? Type72 { get; set; }
+        public global::Google.Gemini.InlinedRequest? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? Type73 { get; set; }
+        public global::Google.Gemini.GenerateContentRequest? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<float>? Type74 { get; set; }
+        public double? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListCachedContentsResponse? Type75 { get; set; }
+        public global::Google.Gemini.TunedModel? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.CachedContent>? Type76 { get; set; }
+        public global::Google.Gemini.TunedModelSource? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CachedContent? Type77 { get; set; }
+        public global::Google.Gemini.TunedModelState? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ModalityTokenCount? Type78 { get; set; }
+        public global::Google.Gemini.TuningTask? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ModalityTokenCountModality? Type79 { get; set; }
+        public float? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Web? Type80 { get; set; }
+        public global::Google.Gemini.ImportFileRequest? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TransferOwnershipResponse? Type81 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Schema? Type82 { get; set; }
+        public global::Google.Gemini.CustomMetadata? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SchemaType? Type83 { get; set; }
+        public global::Google.Gemini.GroundingPassageId? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.Schema>? Type84 { get; set; }
+        public global::Google.Gemini.RetrievedContext? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Schema>? Type85 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.LogprobsResult? Type86 { get; set; }
+        public global::Google.Gemini.GroundingChunkCustomMetadata? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.TopCandidates>? Type87 { get; set; }
+        public global::Google.Gemini.EmbedContentResponse? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TopCandidates? Type88 { get; set; }
+        public global::Google.Gemini.FunctionResponsePart? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.LogprobsResultCandidate>? Type89 { get; set; }
+        public global::Google.Gemini.FunctionResponseBlob? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.LogprobsResultCandidate? Type90 { get; set; }
+        public global::Google.Gemini.Blob? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Type91 { get; set; }
+        public global::Google.Gemini.LogprobsResult? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Tool? Type92 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ToolConfig? Type93 { get; set; }
+        public global::Google.Gemini.GroundingAttribution? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.DynamicRetrievalConfig? Type94 { get; set; }
+        public global::Google.Gemini.GroundingMetadata? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.DynamicRetrievalConfigMode? Type95 { get; set; }
+        public global::Google.Gemini.CandidateFinishReason? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.RetrievedContext? Type96 { get; set; }
+        public global::Google.Gemini.CitationMetadata? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? Type97 { get; set; }
+        public global::Google.Gemini.Content? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GroundingChunkCustomMetadata? Type98 { get; set; }
+        public global::Google.Gemini.UrlContextMetadata? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.UrlMetadata? Type99 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.UrlMetadataUrlRetrievalStatus? Type100 { get; set; }
+        public global::Google.Gemini.SafetyRating? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CountTokensResponse? Type101 { get; set; }
+        public global::Google.Gemini.AttributionSourceId? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? Type102 { get; set; }
+        public global::Google.Gemini.EmbedContentBatchOutput? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CodeExecutionResultOutcome? Type103 { get; set; }
+        public global::Google.Gemini.DynamicRetrievalConfig? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.PrebuiltVoiceConfig? Type104 { get; set; }
+        public global::Google.Gemini.DynamicRetrievalConfigMode? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionDeclaration? Type105 { get; set; }
+        public bool? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionDeclarationBehavior? Type106 { get; set; }
+        public global::Google.Gemini.Operation? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GoogleSearchRetrieval? Type107 { get; set; }
+        public global::Google.Gemini.Empty? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerateContentBatchOutput? Type108 { get; set; }
+        public global::Google.Gemini.Permission? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedResponses? Type109 { get; set; }
+        public global::Google.Gemini.PermissionGranteeType? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListOperationsResponse? Type110 { get; set; }
+        public global::Google.Gemini.PermissionRole? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Operation>? Type111 { get; set; }
+        public global::Google.Gemini.ListDocumentsResponse? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Operation? Type112 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Document>? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedRequest? Type113 { get; set; }
+        public global::Google.Gemini.Document? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SearchTypes? Type114 { get; set; }
+        public global::Google.Gemini.GenerationConfig? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ImageSearch? Type115 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GenerationConfigResponseModalitie>? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.WebSearch? Type116 { get; set; }
+        public global::Google.Gemini.GenerationConfigResponseModalitie? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionResponseScheduling? Type117 { get; set; }
+        public global::Google.Gemini.GenerationConfigMediaResolution? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Type118 { get; set; }
+        public global::Google.Gemini.ImageConfig? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionResponsePart? Type119 { get; set; }
+        public global::Google.Gemini.SpeechConfig? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ModelStatus? Type120 { get; set; }
+        public global::Google.Gemini.ThinkingConfig? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ModelStatusModelStage? Type121 { get; set; }
+        public global::Google.Gemini.FunctionCall? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.WhiteSpaceConfig? Type122 { get; set; }
+        public global::Google.Gemini.InlinedEmbedContentRequest? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GroundingMetadata? Type123 { get; set; }
+        public global::Google.Gemini.EmbedContentRequest? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? Type124 { get; set; }
+        public global::Google.Gemini.TopCandidates? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.RetrievalMetadata? Type125 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.LogprobsResultCandidate>? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SearchEntryPoint? Type126 { get; set; }
+        public global::Google.Gemini.LogprobsResultCandidate? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? Type127 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.Schema>? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GroundingChunk? Type128 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Schema>? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.VoiceConfig? Type129 { get; set; }
+        public global::Google.Gemini.SchemaType? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerateContentResponse? Type130 { get; set; }
+        public global::System.Collections.Generic.IList<float>? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.PromptFeedback? Type131 { get; set; }
+        public global::System.Collections.Generic.IList<int>? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Type132 { get; set; }
+        public global::Google.Gemini.WebSearch? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Candidate? Type133 { get; set; }
+        public global::Google.Gemini.BatchStats? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.UsageMetadata? Type134 { get; set; }
+        public global::Google.Gemini.ModalityTokenCountModality? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? Type135 { get; set; }
+        public global::Google.Gemini.Part? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SafetySetting? Type136 { get; set; }
+        public global::Google.Gemini.FunctionResponse? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerationConfig? Type137 { get; set; }
+        public global::Google.Gemini.ExecutableCode? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerateContentRequestServiceTier? Type138 { get; set; }
+        public global::Google.Gemini.ToolResponse? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TransferOwnershipRequest? Type139 { get; set; }
+        public global::Google.Gemini.CodeExecutionResult? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GroundingChunkStringList? Type140 { get; set; }
+        public global::Google.Gemini.ToolCall? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedRequests? Type141 { get; set; }
+        public global::Google.Gemini.FileData? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedRequest>? Type142 { get; set; }
+        public global::Google.Gemini.VideoMetadata? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionResponseBlob? Type143 { get; set; }
+        public global::Google.Gemini.VoiceConfig? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedEmbedContentResponse? Type144 { get; set; }
+        public global::Google.Gemini.MultiSpeakerVoiceConfig? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentResponse? Type145 { get; set; }
+        public global::Google.Gemini.SearchEntryPoint? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.RetrievalConfig? Type146 { get; set; }
+        public global::Google.Gemini.UploadToFileSearchStoreRequest? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionCallingConfig? Type147 { get; set; }
+        public global::Google.Gemini.GroundingChunkStringList? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SafetySettingThreshold? Type148 { get; set; }
+        public global::Google.Gemini.SearchTypes? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SafetySettingCategory? Type149 { get; set; }
+        public global::Google.Gemini.Interval? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InputEmbedContentConfig? Type150 { get; set; }
+        public global::Google.Gemini.PrebuiltVoiceConfig? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedEmbedContentRequests? Type151 { get; set; }
+        public global::Google.Gemini.CreateFileRequest? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FunctionCallingConfigMode? Type152 { get; set; }
+        public global::Google.Gemini.TuningExamples? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InputConfig? Type153 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningExample>? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ComputerUse? Type154 { get; set; }
+        public global::Google.Gemini.TuningExample? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GoogleSearch? Type155 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.UrlContext? Type156 { get; set; }
+        public global::Google.Gemini.ToolConfig? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? Type157 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? Type158 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.McpServer? Type159 { get; set; }
+        public global::Google.Gemini.GenerateContentRequestServiceTier? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.RegisterFilesRequest? Type160 { get; set; }
+        public global::Google.Gemini.Hyperparameters? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Corpus? Type161 { get; set; }
+        public global::Google.Gemini.GenerateContentBatch? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ImportFileRequest? Type162 { get; set; }
+        public global::Google.Gemini.InputConfig? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Empty? Type163 { get; set; }
+        public global::Google.Gemini.GenerateContentBatchOutput? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ToolResponseToolType? Type164 { get; set; }
+        public global::Google.Gemini.GenerateContentBatchState? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Image? Type165 { get; set; }
+        public global::Google.Gemini.SpeakerVoiceConfig? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.File? Type166 { get; set; }
+        public global::Google.Gemini.GeneratedFileState? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FileState? Type167 { get; set; }
+        public global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.VideoFileMetadata? Type168 { get; set; }
+        public global::Google.Gemini.EmbedContentRequestTaskType? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FileSource? Type169 { get; set; }
+        public global::Google.Gemini.ListFilesResponse? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CreateFileResponse? Type170 { get; set; }
+        public global::Google.Gemini.ListFileSearchStoresResponse? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CreateFileRequest? Type171 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.FileSearchStore>? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListCorporaResponse? Type172 { get; set; }
+        public global::Google.Gemini.FileSearchStore? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Corpus>? Type173 { get; set; }
+        public global::Google.Gemini.ListPermissionsResponse? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.StreamableHttpTransport? Type174 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Permission>? Type174 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Dataset? Type175 { get; set; }
+        public global::Google.Gemini.BatchGenerateContentRequest? Type175 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TuningExamples? Type176 { get; set; }
+        public global::Google.Gemini.CustomLongRunningOperation? Type176 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ImageConfig? Type177 { get; set; }
+        public global::Google.Gemini.EmbedContentBatchStats? Type177 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.RegisterFilesResponse? Type178 { get; set; }
+        public global::Google.Gemini.UrlMetadata? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.File>? Type179 { get; set; }
+        public global::Google.Gemini.UrlMetadataUrlRetrievalStatus? Type179 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedEmbedContentRequest>? Type180 { get; set; }
+        public global::Google.Gemini.BatchEmbedContentsRequest? Type180 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.UrlContextMetadata? Type181 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.EmbedContentRequest>? Type181 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.UrlMetadata>? Type182 { get; set; }
+        public global::Google.Gemini.RetrievalMetadata? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? Type183 { get; set; }
+        public global::Google.Gemini.ImageSearch? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.PromptFeedbackBlockReason? Type184 { get; set; }
+        public global::Google.Gemini.InlinedResponses? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedResponse? Type185 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedResponse>? Type185 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedResponse>? Type186 { get; set; }
+        public global::Google.Gemini.ToolResponseToolType? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Interval? Type187 { get; set; }
+        public global::Google.Gemini.CitationSource? Type187 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ContentEmbedding? Type188 { get; set; }
+        public global::Google.Gemini.DocumentState? Type188 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TuningSnapshot? Type189 { get; set; }
+        public global::Google.Gemini.SafetyRatingCategory? Type189 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.FileSearchStore? Type190 { get; set; }
+        public global::Google.Gemini.SafetyRatingProbability? Type190 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListFileSearchStoresResponse? Type191 { get; set; }
+        public global::Google.Gemini.ExecutableCodeLanguage? Type191 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.FileSearchStore>? Type192 { get; set; }
+        public global::Google.Gemini.FunctionCallingConfig? Type192 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentBatchOutput? Type193 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? Type193 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.InlinedEmbedContentResponses? Type194 { get; set; }
+        public global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport? Type194 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedEmbedContentResponse>? Type195 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? Type195 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentRequestTaskType? Type196 { get; set; }
+        public global::Google.Gemini.GroundingChunk? Type196 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentBatchState? Type197 { get; set; }
+        public global::Google.Gemini.CodeExecutionResultOutcome? Type197 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbedContentBatchStats? Type198 { get; set; }
+        public global::Google.Gemini.StreamableHttpTransport? Type198 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.TuningExample? Type199 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type199 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ToolCallToolType? Type200 { get; set; }
+        public global::Google.Gemini.ListCorporaResponse? Type200 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.SpeechConfig? Type201 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Corpus>? Type201 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GenerationConfigResponseModalitie>? Type202 { get; set; }
+        public global::Google.Gemini.StringList? Type202 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerationConfigResponseModalitie? Type203 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type203 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerationConfigMediaResolution? Type204 { get; set; }
+        public global::Google.Gemini.ThinkingConfigThinkingLevel? Type204 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ThinkingConfig? Type205 { get; set; }
+        public global::Google.Gemini.CountTokensRequest? Type205 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningExample>? Type206 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Part>? Type206 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ComputerUseEnvironment? Type207 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.UrlMetadata>? Type207 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ThinkingConfigThinkingLevel? Type208 { get; set; }
+        public global::Google.Gemini.Dataset? Type208 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Type209 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.SpeakerVoiceConfig>? Type209 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Hyperparameters? Type210 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedEmbedContentRequest>? Type210 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GeneratedFileState? Type211 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.CitationSource>? Type211 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListPermissionsResponse? Type212 { get; set; }
+        public global::Google.Gemini.ModelStatusModelStage? Type212 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Permission>? Type213 { get; set; }
+        public global::Google.Gemini.ListTunedModelsResponse? Type213 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.Permission? Type214 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.TunedModel>? Type214 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Part>? Type215 { get; set; }
+        public global::Google.Gemini.ListOperationsResponse? Type215 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.EmbeddingUsageMetadata? Type216 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Operation>? Type216 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.PermissionRole? Type217 { get; set; }
+        public global::Google.Gemini.ToolCallToolType? Type217 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.PermissionGranteeType? Type218 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Type218 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ExecutableCodeLanguage? Type219 { get; set; }
+        public global::Google.Gemini.FunctionResponseScheduling? Type219 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type220 { get; set; }
+        public global::Google.Gemini.FunctionCallingConfigMode? Type220 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.BatchStats? Type221 { get; set; }
+        public global::Google.Gemini.Image? Type221 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListDocumentsResponse? Type222 { get; set; }
+        public global::Google.Gemini.Web? Type222 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Document>? Type223 { get; set; }
+        public global::Google.Gemini.Maps? Type223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.ListFilesResponse? Type224 { get; set; }
+        public global::Google.Gemini.InlinedRequests? Type224 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.BatchEmbedContentsResponse? Type225 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.InlinedRequest>? Type225 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ContentEmbedding>? Type226 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.TopCandidates>? Type226 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CandidateFinishReason? Type227 { get; set; }
+        public global::Google.Gemini.EmbedContentBatch? Type227 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? Type228 { get; set; }
+        public global::Google.Gemini.EmbedContentBatchState? Type228 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.GenerateContentBatchState? Type229 { get; set; }
+        public global::Google.Gemini.PromptFeedbackBlockReason? Type229 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.BatchEmbedContentsRequest? Type230 { get; set; }
+        public global::Google.Gemini.AsyncBatchEmbedContentRequest? Type230 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.EmbedContentRequest>? Type231 { get; set; }
+        public global::Google.Gemini.TuningSnapshot? Type231 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Google.Gemini.CustomLongRunningOperation? Type232 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Type232 { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.GeneratedFile>? ListType0 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.ReviewSnippet>? ListType0 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.ReviewSnippet>? ListType1 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.ModalityTokenCount>? ListType1 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.CustomMetadata>? ListType2 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Candidate>? ListType2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -977,166 +977,166 @@ namespace Google.Gemini
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.TunedModel>? ListType4 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.File>? ListType4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Model>? ListType5 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedEmbedContentResponse>? ListType5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.CitationSource>? ListType6 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.CachedContent>? ListType6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<object>? ListType7 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.GeneratedFile>? ListType7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.SpeakerVoiceConfig>? ListType8 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Model>? ListType8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Content>? ListType9 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.FunctionDeclaration>? ListType9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<int>? ListType10 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.McpServer>? ListType10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<float>? ListType11 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.ContentEmbedding>? ListType11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.CachedContent>? ListType12 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.CustomMetadata>? ListType12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Schema>? ListType13 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.GroundingChunkCustomMetadata>? ListType13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.TopCandidates>? ListType14 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.GroundingAttribution>? ListType14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.LogprobsResultCandidate>? ListType15 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.SafetyRating>? ListType15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Tool>? ListType16 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Document>? ListType16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.GroundingChunkCustomMetadata>? ListType17 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.GenerationConfigResponseModalitie>? ListType17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.ModalityTokenCount>? ListType18 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.LogprobsResultCandidate>? ListType18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Operation>? ListType19 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Schema>? ListType19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.FunctionResponsePart>? ListType20 { get; set; }
+        public global::System.Collections.Generic.List<float>? ListType20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? ListType21 { get; set; }
+        public global::System.Collections.Generic.List<int>? ListType21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.GroundingChunk>? ListType22 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.TuningExample>? ListType22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Candidate>? ListType23 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Content>? ListType23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.SafetySetting>? ListType24 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Tool>? ListType24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedRequest>? ListType25 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.SafetySetting>? ListType25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.FunctionDeclaration>? ListType26 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.FileSearchStore>? ListType26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.McpServer>? ListType27 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Permission>? ListType27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Corpus>? ListType28 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.EmbedContentRequest>? ListType28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.File>? ListType29 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedResponse>? ListType29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedEmbedContentRequest>? ListType30 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? ListType30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.UrlMetadata>? ListType31 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.GroundingChunk>? ListType31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.SafetyRating>? ListType32 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Corpus>? ListType32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedResponse>? ListType33 { get; set; }
+        public global::System.Collections.Generic.List<object>? ListType33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.FileSearchStore>? ListType34 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Part>? ListType34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedEmbedContentResponse>? ListType35 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.UrlMetadata>? ListType35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.GenerationConfigResponseModalitie>? ListType36 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.SpeakerVoiceConfig>? ListType36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.TuningExample>? ListType37 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedEmbedContentRequest>? ListType37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.TuningSnapshot>? ListType38 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.CitationSource>? ListType38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Permission>? ListType39 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.TunedModel>? ListType39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Part>? ListType40 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.Operation>? ListType40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.Document>? ListType41 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.FunctionResponsePart>? ListType41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.ContentEmbedding>? ListType42 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.InlinedRequest>? ListType42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.GroundingAttribution>? ListType43 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.TopCandidates>? ListType43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.EmbedContentRequest>? ListType44 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.TuningSnapshot>? ListType44 { get; set; }
     }
 }

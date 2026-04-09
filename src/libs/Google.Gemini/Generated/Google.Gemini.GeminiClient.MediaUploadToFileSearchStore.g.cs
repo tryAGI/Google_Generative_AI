@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_MediaUploadToFileSearchStoreSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_MediaUploadToFileSearchStoreSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_MediaUploadToFileSearchStoreSecurityRequirement0,
+            };
         partial void PrepareMediaUploadToFileSearchStoreArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string fileSearchStoresId,
@@ -45,17 +64,23 @@ namespace Google.Gemini
                 fileSearchStoresId: ref fileSearchStoresId,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_MediaUploadToFileSearchStoreSecurityRequirements,
+                operationName: "MediaUploadToFileSearchStoreAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/fileSearchStores/{fileSearchStoresId}:uploadToFileSearchStore",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -180,34 +205,34 @@ namespace Google.Gemini
         /// Uploads data to a FileSearchStore, preprocesses and chunks before storing it in a FileSearchStore Document.
         /// </summary>
         /// <param name="fileSearchStoresId"></param>
-        /// <param name="chunkingConfig">
-        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
-        /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
         /// </param>
-        /// <param name="displayName">
-        /// Optional. Display name of the created document.
+        /// <param name="chunkingConfig">
+        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
         /// <param name="mimeType">
         /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. Display name of the created document.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CustomLongRunningOperation> MediaUploadToFileSearchStoreAsync(
             string fileSearchStoresId,
-            global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
-            string? displayName = default,
+            global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             string? mimeType = default,
+            string? displayName = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.UploadToFileSearchStoreRequest
             {
-                ChunkingConfig = chunkingConfig,
                 CustomMetadata = customMetadata,
-                DisplayName = displayName,
+                ChunkingConfig = chunkingConfig,
                 MimeType = mimeType,
+                DisplayName = displayName,
             };
 
             return await MediaUploadToFileSearchStoreAsync(

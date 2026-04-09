@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_GeneratedFilesOperationsGetSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_GeneratedFilesOperationsGetSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_GeneratedFilesOperationsGetSecurityRequirement0,
+            };
         partial void PrepareGeneratedFilesOperationsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string operationsId,
@@ -42,17 +61,23 @@ namespace Google.Gemini
                 operationsId: ref operationsId,
                 generatedFilesId: ref generatedFilesId);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GeneratedFilesOperationsGetSecurityRequirements,
+                operationName: "GeneratedFilesOperationsGetAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/generatedFiles/{generatedFilesId}/operations/{operationsId}",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,

@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_CachedContentsCreateSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_CachedContentsCreateSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_CachedContentsCreateSecurityRequirement0,
+            };
         partial void PrepareCachedContentsCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Google.Gemini.CachedContent request);
@@ -40,17 +59,23 @@ namespace Google.Gemini
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CachedContentsCreateSecurityRequirements,
+                operationName: "CachedContentsCreateAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: "/cachedContents",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -173,23 +198,14 @@ namespace Google.Gemini
         /// <summary>
         /// Creates CachedContent resource.
         /// </summary>
+        /// <param name="contents">
+        /// Optional. Input only. Immutable. The content to cache.
+        /// </param>
         /// <param name="displayName">
         /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
         /// </param>
         /// <param name="model">
         /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-        /// </param>
-        /// <param name="expireTime">
-        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
-        /// </param>
-        /// <param name="tools">
-        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
-        /// </param>
-        /// <param name="toolConfig">
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
-        /// </param>
-        /// <param name="usageMetadata">
-        /// Metadata on the usage of the cached content.
         /// </param>
         /// <param name="systemInstruction">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
@@ -197,34 +213,43 @@ namespace Google.Gemini
         /// <param name="ttl">
         /// Input only. New TTL for this resource, input only.
         /// </param>
-        /// <param name="contents">
-        /// Optional. Input only. Immutable. The content to cache.
+        /// <param name="tools">
+        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
+        /// </param>
+        /// <param name="toolConfig">
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// </param>
+        /// <param name="expireTime">
+        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+        /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the usage of the cached content.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CachedContent> CachedContentsCreateAsync(
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             string? displayName = default,
             string? model = default,
-            string? expireTime = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
-            global::Google.Gemini.ToolConfig? toolConfig = default,
-            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
             global::Google.Gemini.Content? systemInstruction = default,
             string? ttl = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
+            global::Google.Gemini.ToolConfig? toolConfig = default,
+            string? expireTime = default,
+            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.CachedContent
             {
+                Contents = contents,
                 DisplayName = displayName,
                 Model = model,
-                ExpireTime = expireTime,
-                Tools = tools,
-                ToolConfig = toolConfig,
-                UsageMetadata = usageMetadata,
                 SystemInstruction = systemInstruction,
                 Ttl = ttl,
-                Contents = contents,
+                Tools = tools,
+                ToolConfig = toolConfig,
+                ExpireTime = expireTime,
+                UsageMetadata = usageMetadata,
             };
 
             return await CachedContentsCreateAsync(

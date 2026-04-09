@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_CachedContentsListSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_CachedContentsListSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_CachedContentsListSecurityRequirement0,
+            };
         partial void PrepareCachedContentsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int? pageSize,
@@ -42,10 +61,16 @@ namespace Google.Gemini
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CachedContentsListSecurityRequirements,
+                operationName: "CachedContentsListAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: "/cachedContents",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
@@ -56,7 +81,7 @@ namespace Google.Gemini
             __pathBuilder
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("pageToken", pageToken) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,

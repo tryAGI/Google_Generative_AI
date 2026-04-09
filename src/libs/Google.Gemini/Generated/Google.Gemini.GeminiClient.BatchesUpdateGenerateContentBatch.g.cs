@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_BatchesUpdateGenerateContentBatchSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_BatchesUpdateGenerateContentBatchSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_BatchesUpdateGenerateContentBatchSecurityRequirement0,
+            };
         partial void PrepareBatchesUpdateGenerateContentBatchArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string batchesId,
@@ -50,10 +69,16 @@ namespace Google.Gemini
                 updateMask: ref updateMask,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_BatchesUpdateGenerateContentBatchSecurityRequirements,
+                operationName: "BatchesUpdateGenerateContentBatchAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/batches/{batchesId}:updateGenerateContentBatch",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
@@ -63,7 +88,7 @@ namespace Google.Gemini
             } 
             __pathBuilder
                 .AddOptionalParameter("updateMask", updateMask) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: new global::System.Net.Http.HttpMethod("PATCH"),
@@ -193,20 +218,20 @@ namespace Google.Gemini
         /// <param name="priority">
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </param>
+        /// <param name="inputConfig">
+        /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// </param>
+        /// <param name="batchStats">
+        /// Stats about the batch.
+        /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
-        /// </param>
-        /// <param name="inputConfig">
-        /// Configures the input to the batch request.
-        /// </param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -214,21 +239,21 @@ namespace Google.Gemini
             string batchesId,
             string? updateMask = default,
             string? priority = default,
+            global::Google.Gemini.InputConfig? inputConfig = default,
+            global::Google.Gemini.GenerateContentBatchOutput? output = default,
+            global::Google.Gemini.BatchStats? batchStats = default,
             string? model = default,
             string? displayName = default,
-            global::Google.Gemini.InputConfig? inputConfig = default,
-            global::Google.Gemini.BatchStats? batchStats = default,
-            global::Google.Gemini.GenerateContentBatchOutput? output = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.GenerateContentBatch
             {
                 Priority = priority,
+                InputConfig = inputConfig,
+                Output = output,
+                BatchStats = batchStats,
                 Model = model,
                 DisplayName = displayName,
-                InputConfig = inputConfig,
-                BatchStats = batchStats,
-                Output = output,
             };
 
             return await BatchesUpdateGenerateContentBatchAsync(
