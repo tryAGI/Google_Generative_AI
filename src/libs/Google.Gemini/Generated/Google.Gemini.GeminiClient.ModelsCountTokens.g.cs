@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_ModelsCountTokensSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_ModelsCountTokensSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_ModelsCountTokensSecurityRequirement0,
+            };
         partial void PrepareModelsCountTokensArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelsId,
@@ -45,17 +64,23 @@ namespace Google.Gemini
                 modelsId: ref modelsId,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ModelsCountTokensSecurityRequirements,
+                operationName: "ModelsCountTokensAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/models/{modelsId}:countTokens",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -180,24 +205,24 @@ namespace Google.Gemini
         /// Runs a model's tokenizer on input `Content` and returns the token count. Refer to the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens) to learn more about tokens.
         /// </summary>
         /// <param name="modelsId"></param>
-        /// <param name="contents">
-        /// Optional. The input given to the model as a prompt. This field is ignored when `generate_content_request` is set.
-        /// </param>
         /// <param name="generateContentRequest">
         /// Request to generate a completion from the model.
+        /// </param>
+        /// <param name="contents">
+        /// Optional. The input given to the model as a prompt. This field is ignored when `generate_content_request` is set.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CountTokensResponse> ModelsCountTokensAsync(
             string modelsId,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             global::Google.Gemini.GenerateContentRequest? generateContentRequest = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.CountTokensRequest
             {
-                Contents = contents,
                 GenerateContentRequest = generateContentRequest,
+                Contents = contents,
             };
 
             return await ModelsCountTokensAsync(

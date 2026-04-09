@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_TunedModelsPermissionsPatchSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_TunedModelsPermissionsPatchSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_TunedModelsPermissionsPatchSecurityRequirement0,
+            };
         partial void PrepareTunedModelsPermissionsPatchArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string tunedModelsId,
@@ -55,10 +74,16 @@ namespace Google.Gemini
                 updateMask: ref updateMask,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_TunedModelsPermissionsPatchSecurityRequirements,
+                operationName: "TunedModelsPermissionsPatchAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelsId}/permissions/{permissionsId}",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
@@ -68,7 +93,7 @@ namespace Google.Gemini
             } 
             __pathBuilder
                 .AddOptionalParameter("updateMask", updateMask) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: new global::System.Net.Http.HttpMethod("PATCH"),
@@ -197,14 +222,14 @@ namespace Google.Gemini
         /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="role">
-        /// Required. The role granted by this permission.
-        /// </param>
         /// <param name="emailAddress">
         /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
+        /// </param>
+        /// <param name="role">
+        /// Required. The role granted by this permission.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -212,16 +237,16 @@ namespace Google.Gemini
             string tunedModelsId,
             string permissionsId,
             string? updateMask = default,
-            global::Google.Gemini.PermissionRole? role = default,
             string? emailAddress = default,
             global::Google.Gemini.PermissionGranteeType? granteeType = default,
+            global::Google.Gemini.PermissionRole? role = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.Permission
             {
-                Role = role,
                 EmailAddress = emailAddress,
                 GranteeType = granteeType,
+                Role = role,
             };
 
             return await TunedModelsPermissionsPatchAsync(

@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_FileSearchStoresImportFileSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_FileSearchStoresImportFileSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_FileSearchStoresImportFileSecurityRequirement0,
+            };
         partial void PrepareFileSearchStoresImportFileArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string fileSearchStoresId,
@@ -45,17 +64,23 @@ namespace Google.Gemini
                 fileSearchStoresId: ref fileSearchStoresId,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_FileSearchStoresImportFileSecurityRequirements,
+                operationName: "FileSearchStoresImportFileAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/fileSearchStores/{fileSearchStoresId}:importFile",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -180,29 +205,29 @@ namespace Google.Gemini
         /// Imports a `File` from File Service to a `FileSearchStore`.
         /// </summary>
         /// <param name="fileSearchStoresId"></param>
+        /// <param name="customMetadata">
+        /// Custom metadata to be associated with the file.
+        /// </param>
         /// <param name="fileName">
         /// Required. The name of the `File` to import. Example: `files/abc-123`
         /// </param>
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
-        /// <param name="customMetadata">
-        /// Custom metadata to be associated with the file.
-        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> FileSearchStoresImportFileAsync(
             string fileSearchStoresId,
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
             string? fileName = default,
             global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.ImportFileRequest
             {
+                CustomMetadata = customMetadata,
                 FileName = fileName,
                 ChunkingConfig = chunkingConfig,
-                CustomMetadata = customMetadata,
             };
 
             return await FileSearchStoresImportFileAsync(

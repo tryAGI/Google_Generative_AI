@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_BatchesListSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_BatchesListSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_BatchesListSecurityRequirement0,
+            };
         partial void PrepareBatchesListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? filter,
@@ -52,10 +71,16 @@ namespace Google.Gemini
                 pageToken: ref pageToken,
                 returnPartialSuccess: ref returnPartialSuccess);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_BatchesListSecurityRequirements,
+                operationName: "BatchesListAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: "/batches",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
@@ -68,7 +93,7 @@ namespace Google.Gemini
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("pageToken", pageToken)
                 .AddOptionalParameter("returnPartialSuccess", returnPartialSuccess?.ToString().ToLowerInvariant()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,

@@ -6,6 +6,7 @@ namespace Google.Gemini
     public sealed partial class GeminiClient
     {
         /// <inheritdoc cref="GeminiClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Google.Gemini.EndPointAuthorization}?, bool)"/>
+
         public GeminiClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

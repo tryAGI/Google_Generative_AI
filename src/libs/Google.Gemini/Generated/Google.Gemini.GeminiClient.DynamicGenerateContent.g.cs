@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_DynamicGenerateContentSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_DynamicGenerateContentSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_DynamicGenerateContentSecurityRequirement0,
+            };
         partial void PrepareDynamicGenerateContentArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string dynamicId,
@@ -45,17 +64,23 @@ namespace Google.Gemini
                 dynamicId: ref dynamicId,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_DynamicGenerateContentSecurityRequirements,
+                operationName: "DynamicGenerateContentAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/dynamic/{dynamicId}:generateContent",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
                 {
                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                 }
-            } 
+            }
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -180,32 +205,32 @@ namespace Google.Gemini
         /// Generates a model response given an input `GenerateContentRequest`. Refer to the [text generation guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed usage information. Input capabilities differ between models, including tuned models. Refer to the [model guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.
         /// </summary>
         /// <param name="dynamicId"></param>
-        /// <param name="tools">
-        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
-        /// </param>
-        /// <param name="store">
-        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
-        /// </param>
-        /// <param name="safetySettings">
-        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-        /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
-        /// </param>
-        /// <param name="toolConfig">
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// <param name="cachedContent">
+        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
         /// <param name="generationConfig">
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
         /// <param name="contents">
         /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
         /// </param>
-        /// <param name="cachedContent">
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// </param>
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
+        /// <param name="store">
+        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
+        /// </param>
+        /// <param name="toolConfig">
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// </param>
+        /// <param name="tools">
+        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
+        /// </param>
+        /// <param name="safetySettings">
+        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
         /// </param>
         /// <param name="serviceTier">
         /// Optional. The service tier of the request.
@@ -214,29 +239,29 @@ namespace Google.Gemini
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentResponse> DynamicGenerateContentAsync(
             string dynamicId,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
-            bool? store = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings = default,
-            string? model = default,
-            global::Google.Gemini.ToolConfig? toolConfig = default,
-            global::Google.Gemini.GenerationConfig? generationConfig = default,
-            global::Google.Gemini.Content? systemInstruction = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             string? cachedContent = default,
+            global::Google.Gemini.GenerationConfig? generationConfig = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
+            string? model = default,
+            global::Google.Gemini.Content? systemInstruction = default,
+            bool? store = default,
+            global::Google.Gemini.ToolConfig? toolConfig = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings = default,
             global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.GenerateContentRequest
             {
-                Tools = tools,
-                Store = store,
-                SafetySettings = safetySettings,
-                Model = model,
-                ToolConfig = toolConfig,
-                GenerationConfig = generationConfig,
-                SystemInstruction = systemInstruction,
-                Contents = contents,
                 CachedContent = cachedContent,
+                GenerationConfig = generationConfig,
+                Contents = contents,
+                Model = model,
+                SystemInstruction = systemInstruction,
+                Store = store,
+                ToolConfig = toolConfig,
+                Tools = tools,
+                SafetySettings = safetySettings,
                 ServiceTier = serviceTier,
             };
 

@@ -5,6 +5,25 @@ namespace Google.Gemini
 {
     public partial class GeminiClient
     {
+
+
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_TunedModelsPatchSecurityRequirement0 =
+            new global::Google.Gemini.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
+                {                    new global::Google.Gemini.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Query",
+                        Name = "key",
+                        FriendlyName = "ApiKeyInQuery",
+                    },
+                },
+            };
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_TunedModelsPatchSecurityRequirements =
+            new global::Google.Gemini.EndPointSecurityRequirement[]
+            {                s_TunedModelsPatchSecurityRequirement0,
+            };
         partial void PrepareTunedModelsPatchArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string tunedModelsId,
@@ -50,10 +69,16 @@ namespace Google.Gemini
                 updateMask: ref updateMask,
                 request: request);
 
+
+            var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_TunedModelsPatchSecurityRequirements,
+                operationName: "TunedModelsPatchAsync");
+
             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                 path: $"/tunedModels/{tunedModelsId}",
                 baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "ApiKey" &&
                     __authorization.Location == "Query")
@@ -63,7 +88,7 @@ namespace Google.Gemini
             } 
             __pathBuilder
                 .AddOptionalParameter("updateMask", updateMask) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: new global::System.Net.Http.HttpMethod("PATCH"),
@@ -190,20 +215,17 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="tunedModelsId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="temperature">
-        /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
-        /// <param name="displayName">
-        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
-        /// </param>
-        /// <param name="topK">
-        /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
         /// <param name="tunedModelSource">
         /// Tuned model as a source for training a new model.
         /// </param>
         /// <param name="readerProjectNumbers">
         /// Optional. List of project numbers that have read access to the tuned model.
+        /// </param>
+        /// <param name="tuningTask">
+        /// Tuning tasks that create tuned models.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
         /// </param>
         /// <param name="baseModel">
         /// Immutable. The name of the `Model` to tune. Example: `models/gemini-1.5-flash-001`
@@ -211,39 +233,42 @@ namespace Google.Gemini
         /// <param name="description">
         /// Optional. A short description of this model.
         /// </param>
+        /// <param name="temperature">
+        /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
+        /// </param>
+        /// <param name="topK">
+        /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
+        /// </param>
         /// <param name="topP">
         /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
-        /// <param name="tuningTask">
-        /// Tuning tasks that create tuned models.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.TunedModel> TunedModelsPatchAsync(
             string tunedModelsId,
             string? updateMask = default,
-            float? temperature = default,
-            string? displayName = default,
-            int? topK = default,
             global::Google.Gemini.TunedModelSource? tunedModelSource = default,
             global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
+            global::Google.Gemini.TuningTask? tuningTask = default,
+            string? displayName = default,
             string? baseModel = default,
             string? description = default,
+            float? temperature = default,
+            int? topK = default,
             float? topP = default,
-            global::Google.Gemini.TuningTask? tuningTask = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.TunedModel
             {
-                Temperature = temperature,
-                DisplayName = displayName,
-                TopK = topK,
                 TunedModelSource = tunedModelSource,
                 ReaderProjectNumbers = readerProjectNumbers,
+                TuningTask = tuningTask,
+                DisplayName = displayName,
                 BaseModel = baseModel,
                 Description = description,
+                Temperature = temperature,
+                TopK = topK,
                 TopP = topP,
-                TuningTask = tuningTask,
             };
 
             return await TunedModelsPatchAsync(
