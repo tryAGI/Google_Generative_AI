@@ -9,10 +9,34 @@ namespace Google.Gemini
     public sealed partial class Schema
     {
         /// <summary>
-        /// Optional. Maximum number of the elements for Type.ARRAY.
+        /// Optional. A brief description of the parameter. This could contain examples of use. Parameter description may be formatted as Markdown.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maxItems")]
-        public string? MaxItems { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("anyOf")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Schema>? AnyOf { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum number of the properties for Type.OBJECT.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("minProperties")]
+        public string? MinProperties { get; set; }
+
+        /// <summary>
+        /// Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("propertyOrdering")]
+        public global::System.Collections.Generic.IList<string>? PropertyOrdering { get; set; }
+
+        /// <summary>
+        /// Optional. Default value of the field. Per JSON Schema, this field is intended for documentation generators and doesn't affect validation. Thus it's included here and ignored so that developers who send schemas with a `default` field don't get unknown-field errors.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("default")]
+        public object? Default { get; set; }
 
         /// <summary>
         /// Optional. The title of the schema.
@@ -21,28 +45,16 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// Optional. A brief description of the parameter. This could contain examples of use. Parameter description may be formatted as Markdown.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
-        public double? Minimum { get; set; }
-
-        /// <summary>
-        /// Optional. Maximum number of the properties for Type.OBJECT.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maxProperties")]
-        public string? MaxProperties { get; set; }
-
-        /// <summary>
         /// Optional. Example of the object. Will only populated when the object is the root.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("example")]
         public object? Example { get; set; }
+
+        /// <summary>
+        /// Optional. Required properties of Type.OBJECT.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
+        public global::System.Collections.Generic.IList<string>? Required { get; set; }
 
         /// <summary>
         /// Optional. Indicates if the value may be null.
@@ -51,10 +63,16 @@ namespace Google.Gemini
         public bool? Nullable { get; set; }
 
         /// <summary>
-        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("items")]
-        public global::Google.Gemini.Schema? Items { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("minimum")]
+        public double? Minimum { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum length of the Type.STRING
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+        public string? MaxLength { get; set; }
 
         /// <summary>
         /// Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
@@ -63,10 +81,16 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? Enum { get; set; }
 
         /// <summary>
-        /// Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
+        /// Optional. Maximum number of the elements for Type.ARRAY.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("propertyOrdering")]
-        public global::System.Collections.Generic.IList<string>? PropertyOrdering { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxItems")]
+        public string? MaxItems { get; set; }
+
+        /// <summary>
+        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("items")]
+        public global::Google.Gemini.Schema? Items { get; set; }
 
         /// <summary>
         /// Optional. Minimum number of the elements for Type.ARRAY.
@@ -82,10 +106,28 @@ namespace Google.Gemini
         public global::Google.Gemini.SchemaType? Type { get; set; }
 
         /// <summary>
-        /// Optional. Required properties of Type.OBJECT.
+        /// Optional. Maximum number of the properties for Type.OBJECT.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("required")]
-        public global::System.Collections.Generic.IList<string>? Required { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxProperties")]
+        public string? MaxProperties { get; set; }
+
+        /// <summary>
+        /// Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("minLength")]
+        public string? MinLength { get; set; }
+
+        /// <summary>
+        /// Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("format")]
+        public string? Format { get; set; }
+
+        /// <summary>
+        /// Optional. Properties of Type.OBJECT.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.Schema>? Properties { get; set; }
 
         /// <summary>
         /// Optional. Pattern of the Type.STRING to restrict a string to a regular expression.
@@ -100,48 +142,6 @@ namespace Google.Gemini
         public double? Maximum { get; set; }
 
         /// <summary>
-        /// Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("minLength")]
-        public string? MinLength { get; set; }
-
-        /// <summary>
-        /// Optional. Properties of Type.OBJECT.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("properties")]
-        public global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.Schema>? Properties { get; set; }
-
-        /// <summary>
-        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("anyOf")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Schema>? AnyOf { get; set; }
-
-        /// <summary>
-        /// Optional. Default value of the field. Per JSON Schema, this field is intended for documentation generators and doesn't affect validation. Thus it's included here and ignored so that developers who send schemas with a `default` field don't get unknown-field errors.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("default")]
-        public object? Default { get; set; }
-
-        /// <summary>
-        /// Optional. Minimum number of the properties for Type.OBJECT.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("minProperties")]
-        public string? MinProperties { get; set; }
-
-        /// <summary>
-        /// Optional. Maximum length of the Type.STRING
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maxLength")]
-        public string? MaxLength { get; set; }
-
-        /// <summary>
-        /// Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("format")]
-        public string? Format { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -150,35 +150,47 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Schema" /> class.
         /// </summary>
-        /// <param name="maxItems">
-        /// Optional. Maximum number of the elements for Type.ARRAY.
+        /// <param name="description">
+        /// Optional. A brief description of the parameter. This could contain examples of use. Parameter description may be formatted as Markdown.
+        /// </param>
+        /// <param name="anyOf">
+        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
+        /// </param>
+        /// <param name="minProperties">
+        /// Optional. Minimum number of the properties for Type.OBJECT.
+        /// </param>
+        /// <param name="propertyOrdering">
+        /// Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
+        /// </param>
+        /// <param name="default">
+        /// Optional. Default value of the field. Per JSON Schema, this field is intended for documentation generators and doesn't affect validation. Thus it's included here and ignored so that developers who send schemas with a `default` field don't get unknown-field errors.
         /// </param>
         /// <param name="title">
         /// Optional. The title of the schema.
         /// </param>
-        /// <param name="description">
-        /// Optional. A brief description of the parameter. This could contain examples of use. Parameter description may be formatted as Markdown.
-        /// </param>
-        /// <param name="minimum">
-        /// Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
-        /// </param>
-        /// <param name="maxProperties">
-        /// Optional. Maximum number of the properties for Type.OBJECT.
-        /// </param>
         /// <param name="example">
         /// Optional. Example of the object. Will only populated when the object is the root.
+        /// </param>
+        /// <param name="required">
+        /// Optional. Required properties of Type.OBJECT.
         /// </param>
         /// <param name="nullable">
         /// Optional. Indicates if the value may be null.
         /// </param>
-        /// <param name="items">
-        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// <param name="minimum">
+        /// Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
+        /// </param>
+        /// <param name="maxLength">
+        /// Optional. Maximum length of the Type.STRING
         /// </param>
         /// <param name="enum">
         /// Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         /// </param>
-        /// <param name="propertyOrdering">
-        /// Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
+        /// <param name="maxItems">
+        /// Optional. Maximum number of the elements for Type.ARRAY.
+        /// </param>
+        /// <param name="items">
+        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </param>
         /// <param name="minItems">
         /// Optional. Minimum number of the elements for Type.ARRAY.
@@ -186,8 +198,17 @@ namespace Google.Gemini
         /// <param name="type">
         /// Required. Data type.
         /// </param>
-        /// <param name="required">
-        /// Optional. Required properties of Type.OBJECT.
+        /// <param name="maxProperties">
+        /// Optional. Maximum number of the properties for Type.OBJECT.
+        /// </param>
+        /// <param name="minLength">
+        /// Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
+        /// </param>
+        /// <param name="format">
+        /// Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
+        /// </param>
+        /// <param name="properties">
+        /// Optional. Properties of Type.OBJECT.
         /// </param>
         /// <param name="pattern">
         /// Optional. Pattern of the Type.STRING to restrict a string to a regular expression.
@@ -195,76 +216,55 @@ namespace Google.Gemini
         /// <param name="maximum">
         /// Optional. Maximum value of the Type.INTEGER and Type.NUMBER
         /// </param>
-        /// <param name="minLength">
-        /// Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
-        /// </param>
-        /// <param name="properties">
-        /// Optional. Properties of Type.OBJECT.
-        /// </param>
-        /// <param name="anyOf">
-        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
-        /// </param>
-        /// <param name="default">
-        /// Optional. Default value of the field. Per JSON Schema, this field is intended for documentation generators and doesn't affect validation. Thus it's included here and ignored so that developers who send schemas with a `default` field don't get unknown-field errors.
-        /// </param>
-        /// <param name="minProperties">
-        /// Optional. Minimum number of the properties for Type.OBJECT.
-        /// </param>
-        /// <param name="maxLength">
-        /// Optional. Maximum length of the Type.STRING
-        /// </param>
-        /// <param name="format">
-        /// Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Schema(
-            string? maxItems,
-            string? title,
             string? description,
-            double? minimum,
-            string? maxProperties,
-            object? example,
-            bool? nullable,
-            global::Google.Gemini.Schema? items,
-            global::System.Collections.Generic.IList<string>? @enum,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Schema>? anyOf,
+            string? minProperties,
             global::System.Collections.Generic.IList<string>? propertyOrdering,
+            object? @default,
+            string? title,
+            object? example,
+            global::System.Collections.Generic.IList<string>? required,
+            bool? nullable,
+            double? minimum,
+            string? maxLength,
+            global::System.Collections.Generic.IList<string>? @enum,
+            string? maxItems,
+            global::Google.Gemini.Schema? items,
             string? minItems,
             global::Google.Gemini.SchemaType? type,
-            global::System.Collections.Generic.IList<string>? required,
-            string? pattern,
-            double? maximum,
+            string? maxProperties,
             string? minLength,
+            string? format,
             global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.Schema>? properties,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Schema>? anyOf,
-            object? @default,
-            string? minProperties,
-            string? maxLength,
-            string? format)
+            string? pattern,
+            double? maximum)
         {
-            this.MaxItems = maxItems;
-            this.Title = title;
             this.Description = description;
-            this.Minimum = minimum;
-            this.MaxProperties = maxProperties;
-            this.Example = example;
-            this.Nullable = nullable;
-            this.Items = items;
-            this.Enum = @enum;
+            this.AnyOf = anyOf;
+            this.MinProperties = minProperties;
             this.PropertyOrdering = propertyOrdering;
+            this.Default = @default;
+            this.Title = title;
+            this.Example = example;
+            this.Required = required;
+            this.Nullable = nullable;
+            this.Minimum = minimum;
+            this.MaxLength = maxLength;
+            this.Enum = @enum;
+            this.MaxItems = maxItems;
+            this.Items = items;
             this.MinItems = minItems;
             this.Type = type;
-            this.Required = required;
+            this.MaxProperties = maxProperties;
+            this.MinLength = minLength;
+            this.Format = format;
+            this.Properties = properties;
             this.Pattern = pattern;
             this.Maximum = maximum;
-            this.MinLength = minLength;
-            this.Properties = properties;
-            this.AnyOf = anyOf;
-            this.Default = @default;
-            this.MinProperties = minProperties;
-            this.MaxLength = maxLength;
-            this.Format = format;
         }
 
         /// <summary>
