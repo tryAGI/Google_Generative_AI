@@ -15,10 +15,10 @@ namespace Google.Gemini
         public global::Google.Gemini.StringList? StringListValue { get; set; }
 
         /// <summary>
-        /// The numeric value of the metadata to store.
+        /// Required. The key of the metadata to store.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
-        public float? NumericValue { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// The string value of the metadata to store.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public string? StringValue { get; set; }
 
         /// <summary>
-        /// Required. The key of the metadata to store.
+        /// The numeric value of the metadata to store.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
+        public float? NumericValue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,28 +44,28 @@ namespace Google.Gemini
         /// <param name="stringListValue">
         /// User provided string values assigned to a single metadata key.
         /// </param>
-        /// <param name="numericValue">
-        /// The numeric value of the metadata to store.
+        /// <param name="key">
+        /// Required. The key of the metadata to store.
         /// </param>
         /// <param name="stringValue">
         /// The string value of the metadata to store.
         /// </param>
-        /// <param name="key">
-        /// Required. The key of the metadata to store.
+        /// <param name="numericValue">
+        /// The numeric value of the metadata to store.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CustomMetadata(
             global::Google.Gemini.StringList? stringListValue,
-            float? numericValue,
+            string? key,
             string? stringValue,
-            string? key)
+            float? numericValue)
         {
             this.StringListValue = stringListValue;
-            this.NumericValue = numericValue;
-            this.StringValue = stringValue;
             this.Key = key;
+            this.StringValue = stringValue;
+            this.NumericValue = numericValue;
         }
 
         /// <summary>
