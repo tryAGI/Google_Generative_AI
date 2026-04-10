@@ -390,11 +390,11 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Optional. Display name of the created document.
         /// </param>
-        /// <param name="mimeType">
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
+        /// </param>
+        /// <param name="mimeType">
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </param>
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
@@ -405,8 +405,8 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CustomLongRunningOperation> MediaUploadToFileSearchStoreAsync(
             string fileSearchStoresId,
             string? displayName = default,
-            string? mimeType = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
+            string? mimeType = default,
             global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -414,8 +414,8 @@ namespace Google.Gemini
             var __request = new global::Google.Gemini.UploadToFileSearchStoreRequest
             {
                 DisplayName = displayName,
-                MimeType = mimeType,
                 CustomMetadata = customMetadata,
+                MimeType = mimeType,
                 ChunkingConfig = chunkingConfig,
             };
 
