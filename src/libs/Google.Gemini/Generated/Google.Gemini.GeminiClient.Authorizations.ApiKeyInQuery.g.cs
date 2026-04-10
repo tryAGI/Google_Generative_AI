@@ -26,6 +26,7 @@ namespace Google.Gemini
             Authorizations.Add(new global::Google.Gemini.EndPointAuthorization
             {
                 Type = "ApiKey",
+                SchemeId = "ApikeyKey",
                 Location = "Query",
                 Name = "key",
                 Value = apiKey,
