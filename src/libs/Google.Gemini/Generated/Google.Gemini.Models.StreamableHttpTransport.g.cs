@@ -21,16 +21,16 @@ namespace Google.Gemini
         public string? Url { get; set; }
 
         /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
-
-        /// <summary>
         /// Whether to close the client session when the transport closes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
         public bool? TerminateOnClose { get; set; }
+
+        /// <summary>
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Timeout for SSE read operations.
@@ -53,11 +53,11 @@ namespace Google.Gemini
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </param>
         /// <param name="terminateOnClose">
         /// Whether to close the client session when the transport closes.
+        /// </param>
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
@@ -68,14 +68,14 @@ namespace Google.Gemini
         public StreamableHttpTransport(
             string? timeout,
             string? url,
-            global::System.Collections.Generic.Dictionary<string, string>? headers,
             bool? terminateOnClose,
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? sseReadTimeout)
         {
             this.Timeout = timeout;
             this.Url = url;
-            this.Headers = headers;
             this.TerminateOnClose = terminateOnClose;
+            this.Headers = headers;
             this.SseReadTimeout = sseReadTimeout;
         }
 
