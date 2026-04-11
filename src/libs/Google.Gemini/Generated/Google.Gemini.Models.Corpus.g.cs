@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class Corpus
     {
         /// <summary>
-        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
         /// Output only. The Timestamp of when the `Corpus` was last updated.<br/>
         /// Included only in responses
         /// </summary>
@@ -36,6 +29,13 @@ namespace Google.Gemini
         public string? DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,10 +44,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Corpus" /> class.
         /// </summary>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `Corpus` was last updated.<br/>
         /// Included only in responses
@@ -59,19 +55,23 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `Corpus`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
         /// </param>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Corpus(
-            string? createTime,
             string? updateTime,
             string? name,
-            string? displayName)
+            string? displayName,
+            string? createTime)
         {
-            this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.Name = name;
             this.DisplayName = displayName;
+            this.CreateTime = createTime;
         }
 
         /// <summary>
