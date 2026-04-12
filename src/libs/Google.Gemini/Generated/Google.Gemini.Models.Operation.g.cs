@@ -27,16 +27,16 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public object? Metadata { get; set; }
-
-        /// <summary>
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         public global::Google.Gemini.Status? Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public object? Metadata { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -56,11 +56,11 @@ namespace Google.Gemini
         /// <param name="name">
         /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
         /// </param>
-        /// <param name="metadata">
-        /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        /// </param>
         /// <param name="error">
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </param>
+        /// <param name="metadata">
+        /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -69,14 +69,14 @@ namespace Google.Gemini
             bool? done,
             object? response,
             string? name,
-            object? metadata,
-            global::Google.Gemini.Status? error)
+            global::Google.Gemini.Status? error,
+            object? metadata)
         {
             this.Done = done;
             this.Response = response;
             this.Name = name;
-            this.Metadata = metadata;
             this.Error = error;
+            this.Metadata = metadata;
         }
 
         /// <summary>
