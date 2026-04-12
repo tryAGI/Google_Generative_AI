@@ -21,16 +21,16 @@ namespace Google.Gemini
         public global::Google.Gemini.ChunkingConfig? ChunkingConfig { get; set; }
 
         /// <summary>
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
         /// Custom metadata to be associated with the data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
-        /// <param name="mimeType">
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
+        /// </param>
+        /// <param name="mimeType">
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public UploadToFileSearchStoreRequest(
             string? displayName,
             global::Google.Gemini.ChunkingConfig? chunkingConfig,
-            string? mimeType,
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata)
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
+            string? mimeType)
         {
             this.DisplayName = displayName;
             this.ChunkingConfig = chunkingConfig;
-            this.MimeType = mimeType;
             this.CustomMetadata = customMetadata;
+            this.MimeType = mimeType;
         }
 
         /// <summary>
