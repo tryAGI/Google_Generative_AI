@@ -27,17 +27,32 @@ namespace Google.Gemini
         public global::Google.Gemini.CitationMetadata? CitationMetadata { get; set; }
 
         /// <summary>
-        /// Metadata returned to client when grounding is enabled.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingMetadata")]
-        public global::Google.Gemini.GroundingMetadata? GroundingMetadata { get; set; }
-
-        /// <summary>
-        /// Output only. Average log probability score of the candidate.<br/>
+        /// Output only. Token count for this candidate.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("avgLogprobs")]
-        public double? AvgLogprobs { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tokenCount")]
+        public int? TokenCount { get; set; }
+
+        /// <summary>
+        /// Output only. Index of the candidate in the list of response candidates.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        public int? Index { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("finishMessage")]
+        public string? FinishMessage { get; set; }
+
+        /// <summary>
+        /// Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingAttributions")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? GroundingAttributions { get; set; }
 
         /// <summary>
         /// Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.<br/>
@@ -48,17 +63,11 @@ namespace Google.Gemini
         public global::Google.Gemini.CandidateFinishReason? FinishReason { get; set; }
 
         /// <summary>
-        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("safetyRatings")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? SafetyRatings { get; set; }
-
-        /// <summary>
-        /// Output only. Index of the candidate in the list of response candidates.<br/>
+        /// Output only. Average log probability score of the candidate.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
-        public int? Index { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("avgLogprobs")]
+        public double? AvgLogprobs { get; set; }
 
         /// <summary>
         /// Metadata related to url context retrieval tool.
@@ -67,25 +76,16 @@ namespace Google.Gemini
         public global::Google.Gemini.UrlContextMetadata? UrlContextMetadata { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.<br/>
-        /// Included only in responses
+        /// Metadata returned to client when grounding is enabled.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("finishMessage")]
-        public string? FinishMessage { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingMetadata")]
+        public global::Google.Gemini.GroundingMetadata? GroundingMetadata { get; set; }
 
         /// <summary>
-        /// Output only. Token count for this candidate.<br/>
-        /// Included only in responses
+        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tokenCount")]
-        public int? TokenCount { get; set; }
-
-        /// <summary>
-        /// Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingAttributions")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? GroundingAttributions { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("safetyRatings")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? SafetyRatings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -105,38 +105,38 @@ namespace Google.Gemini
         /// <param name="citationMetadata">
         /// A collection of source attributions for a piece of content.
         /// </param>
-        /// <param name="groundingMetadata">
-        /// Metadata returned to client when grounding is enabled.
+        /// <param name="tokenCount">
+        /// Output only. Token count for this candidate.<br/>
+        /// Included only in responses
         /// </param>
-        /// <param name="avgLogprobs">
-        /// Output only. Average log probability score of the candidate.<br/>
+        /// <param name="index">
+        /// Output only. Index of the candidate in the list of response candidates.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="finishMessage">
+        /// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="groundingAttributions">
+        /// Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="finishReason">
         /// Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="safetyRatings">
-        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
-        /// </param>
-        /// <param name="index">
-        /// Output only. Index of the candidate in the list of response candidates.<br/>
+        /// <param name="avgLogprobs">
+        /// Output only. Average log probability score of the candidate.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="urlContextMetadata">
         /// Metadata related to url context retrieval tool.
         /// </param>
-        /// <param name="finishMessage">
-        /// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.<br/>
-        /// Included only in responses
+        /// <param name="groundingMetadata">
+        /// Metadata returned to client when grounding is enabled.
         /// </param>
-        /// <param name="tokenCount">
-        /// Output only. Token count for this candidate.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="groundingAttributions">
-        /// Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.<br/>
-        /// Included only in responses
+        /// <param name="safetyRatings">
+        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -145,28 +145,28 @@ namespace Google.Gemini
             global::Google.Gemini.Content? content,
             global::Google.Gemini.LogprobsResult? logprobsResult,
             global::Google.Gemini.CitationMetadata? citationMetadata,
-            global::Google.Gemini.GroundingMetadata? groundingMetadata,
-            double? avgLogprobs,
-            global::Google.Gemini.CandidateFinishReason? finishReason,
-            global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? safetyRatings,
-            int? index,
-            global::Google.Gemini.UrlContextMetadata? urlContextMetadata,
-            string? finishMessage,
             int? tokenCount,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? groundingAttributions)
+            int? index,
+            string? finishMessage,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? groundingAttributions,
+            global::Google.Gemini.CandidateFinishReason? finishReason,
+            double? avgLogprobs,
+            global::Google.Gemini.UrlContextMetadata? urlContextMetadata,
+            global::Google.Gemini.GroundingMetadata? groundingMetadata,
+            global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? safetyRatings)
         {
             this.Content = content;
             this.LogprobsResult = logprobsResult;
             this.CitationMetadata = citationMetadata;
-            this.GroundingMetadata = groundingMetadata;
-            this.AvgLogprobs = avgLogprobs;
-            this.FinishReason = finishReason;
-            this.SafetyRatings = safetyRatings;
-            this.Index = index;
-            this.UrlContextMetadata = urlContextMetadata;
-            this.FinishMessage = finishMessage;
             this.TokenCount = tokenCount;
+            this.Index = index;
+            this.FinishMessage = finishMessage;
             this.GroundingAttributions = groundingAttributions;
+            this.FinishReason = finishReason;
+            this.AvgLogprobs = avgLogprobs;
+            this.UrlContextMetadata = urlContextMetadata;
+            this.GroundingMetadata = groundingMetadata;
+            this.SafetyRatings = safetyRatings;
         }
 
         /// <summary>
