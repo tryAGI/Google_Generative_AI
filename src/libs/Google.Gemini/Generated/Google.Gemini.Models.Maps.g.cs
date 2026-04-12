@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
+        public string? PlaceId { get; set; }
+
+        /// <summary>
         /// Title of the place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -19,12 +25,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
-
-        /// <summary>
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
-        public string? PlaceId { get; set; }
 
         /// <summary>
         /// URI reference of the place.
@@ -47,14 +47,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
+        /// <param name="placeId">
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </param>
         /// <param name="title">
         /// Title of the place.
         /// </param>
         /// <param name="text">
         /// Text description of the place answer.
-        /// </param>
-        /// <param name="placeId">
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
         /// </param>
         /// <param name="uri">
         /// URI reference of the place.
@@ -66,15 +66,15 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
+            string? placeId,
             string? title,
             string? text,
-            string? placeId,
             string? uri,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources)
         {
+            this.PlaceId = placeId;
             this.Title = title;
             this.Text = text;
-            this.PlaceId = placeId;
             this.Uri = uri;
             this.PlaceAnswerSources = placeAnswerSources;
         }
