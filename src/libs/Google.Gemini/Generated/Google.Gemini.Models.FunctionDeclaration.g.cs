@@ -21,17 +21,10 @@ namespace Google.Gemini
         public global::Google.Gemini.Schema? Parameters { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
+        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("behavior")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionDeclarationBehaviorJsonConverter))]
-        public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
-
-        /// <summary>
-        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
-        public object? ParametersJsonSchema { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public global::Google.Gemini.Schema? Response { get; set; }
 
         /// <summary>
         /// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema is the response value of the function. This field is mutually exclusive with `response`.
@@ -40,16 +33,23 @@ namespace Google.Gemini
         public object? ResponseJsonSchema { get; set; }
 
         /// <summary>
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
+        public object? ParametersJsonSchema { get; set; }
+
+        /// <summary>
         /// Required. A brief description of the function.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public global::Google.Gemini.Schema? Response { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("behavior")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionDeclarationBehaviorJsonConverter))]
+        public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -66,20 +66,20 @@ namespace Google.Gemini
         /// <param name="parameters">
         /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </param>
-        /// <param name="behavior">
-        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
-        /// </param>
-        /// <param name="parametersJsonSchema">
-        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// <param name="response">
+        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </param>
         /// <param name="responseJsonSchema">
         /// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema is the response value of the function. This field is mutually exclusive with `response`.
         /// </param>
+        /// <param name="parametersJsonSchema">
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// </param>
         /// <param name="description">
         /// Required. A brief description of the function.
         /// </param>
-        /// <param name="response">
-        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// <param name="behavior">
+        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -87,19 +87,19 @@ namespace Google.Gemini
         public FunctionDeclaration(
             string? name,
             global::Google.Gemini.Schema? parameters,
-            global::Google.Gemini.FunctionDeclarationBehavior? behavior,
-            object? parametersJsonSchema,
+            global::Google.Gemini.Schema? response,
             object? responseJsonSchema,
+            object? parametersJsonSchema,
             string? description,
-            global::Google.Gemini.Schema? response)
+            global::Google.Gemini.FunctionDeclarationBehavior? behavior)
         {
             this.Name = name;
             this.Parameters = parameters;
-            this.Behavior = behavior;
-            this.ParametersJsonSchema = parametersJsonSchema;
-            this.ResponseJsonSchema = responseJsonSchema;
-            this.Description = description;
             this.Response = response;
+            this.ResponseJsonSchema = responseJsonSchema;
+            this.ParametersJsonSchema = parametersJsonSchema;
+            this.Description = description;
+            this.Behavior = behavior;
         }
 
         /// <summary>
