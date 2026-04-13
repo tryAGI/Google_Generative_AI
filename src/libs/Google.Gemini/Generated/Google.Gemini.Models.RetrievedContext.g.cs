@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Optional. Title of the document.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// Optional. User-provided metadata about the retrieved context.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. Title of the document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Optional. Text of the chunk.
@@ -50,11 +50,11 @@ namespace Google.Gemini
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
-        /// <param name="title">
-        /// Optional. Title of the document.
-        /// </param>
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
+        /// </param>
+        /// <param name="title">
+        /// Optional. Title of the document.
         /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
@@ -67,14 +67,14 @@ namespace Google.Gemini
 #endif
         public RetrievedContext(
             string? uri,
-            string? title,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
+            string? title,
             string? text,
             string? fileSearchStore)
         {
             this.Uri = uri;
-            this.Title = title;
             this.CustomMetadata = customMetadata;
+            this.Title = title;
             this.Text = text;
             this.FileSearchStore = fileSearchStore;
         }
