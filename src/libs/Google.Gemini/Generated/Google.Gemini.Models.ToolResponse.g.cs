@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class ToolResponse
     {
         /// <summary>
-        /// Optional. The tool response.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public object? Response { get; set; }
-
-        /// <summary>
         /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolResponseToolTypeJsonConverter))]
         public global::Google.Gemini.ToolResponseToolType? ToolType { get; set; }
+
+        /// <summary>
+        /// Optional. The tool response.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public object? Response { get; set; }
 
         /// <summary>
         /// Optional. The identifier of the tool call this response is for.
@@ -36,11 +36,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolResponse" /> class.
         /// </summary>
-        /// <param name="response">
-        /// Optional. The tool response.
-        /// </param>
         /// <param name="toolType">
         /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
+        /// </param>
+        /// <param name="response">
+        /// Optional. The tool response.
         /// </param>
         /// <param name="id">
         /// Optional. The identifier of the tool call this response is for.
@@ -49,12 +49,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolResponse(
-            object? response,
             global::Google.Gemini.ToolResponseToolType? toolType,
+            object? response,
             string? id)
         {
-            this.Response = response;
             this.ToolType = toolType;
+            this.Response = response;
             this.Id = id;
         }
 
