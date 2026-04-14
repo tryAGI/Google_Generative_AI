@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class StreamableHttpTransport
     {
         /// <summary>
+        /// Whether to close the client session when the transport closes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
+        public bool? TerminateOnClose { get; set; }
+
+        /// <summary>
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
@@ -33,12 +39,6 @@ namespace Google.Gemini
         public string? SseReadTimeout { get; set; }
 
         /// <summary>
-        /// Whether to close the client session when the transport closes.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
-        public bool? TerminateOnClose { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +47,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamableHttpTransport" /> class.
         /// </summary>
+        /// <param name="terminateOnClose">
+        /// Whether to close the client session when the transport closes.
+        /// </param>
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
@@ -59,24 +62,21 @@ namespace Google.Gemini
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
-        /// <param name="terminateOnClose">
-        /// Whether to close the client session when the transport closes.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
+            bool? terminateOnClose,
             string? url,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? timeout,
-            string? sseReadTimeout,
-            bool? terminateOnClose)
+            string? sseReadTimeout)
         {
+            this.TerminateOnClose = terminateOnClose;
             this.Url = url;
             this.Headers = headers;
             this.Timeout = timeout;
             this.SseReadTimeout = sseReadTimeout;
-            this.TerminateOnClose = terminateOnClose;
         }
 
         /// <summary>
