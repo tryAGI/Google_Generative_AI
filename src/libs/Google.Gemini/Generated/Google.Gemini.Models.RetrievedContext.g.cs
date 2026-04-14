@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
+        /// Optional. Text of the chunk.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
+
+        /// <summary>
         /// Optional. Title of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -27,12 +33,6 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Optional. Text of the chunk.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
-
-        /// <summary>
         /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
@@ -47,6 +47,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
+        /// <param name="text">
+        /// Optional. Text of the chunk.
+        /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
         /// </param>
@@ -56,9 +59,6 @@ namespace Google.Gemini
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
-        /// <param name="text">
-        /// Optional. Text of the chunk.
-        /// </param>
         /// <param name="fileSearchStore">
         /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
@@ -66,16 +66,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
+            string? text,
             string? title,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? uri,
-            string? text,
             string? fileSearchStore)
         {
+            this.Text = text;
             this.Title = title;
             this.CustomMetadata = customMetadata;
             this.Uri = uri;
-            this.Text = text;
             this.FileSearchStore = fileSearchStore;
         }
 
