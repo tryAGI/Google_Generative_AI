@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class Image
     {
         /// <summary>
-        /// The web page URI for attribution.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
-        public string? SourceUri { get; set; }
-
-        /// <summary>
         /// The image asset URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("imageUri")]
         public string? ImageUri { get; set; }
+
+        /// <summary>
+        /// The web page URI for attribution.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
+        public string? SourceUri { get; set; }
 
         /// <summary>
         /// The root domain of the web page that the image is from, e.g. "example.com".
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Image" /> class.
         /// </summary>
-        /// <param name="sourceUri">
-        /// The web page URI for attribution.
-        /// </param>
         /// <param name="imageUri">
         /// The image asset URL.
+        /// </param>
+        /// <param name="sourceUri">
+        /// The web page URI for attribution.
         /// </param>
         /// <param name="domain">
         /// The root domain of the web page that the image is from, e.g. "example.com".
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Image(
-            string? sourceUri,
             string? imageUri,
+            string? sourceUri,
             string? domain,
             string? title)
         {
-            this.SourceUri = sourceUri;
             this.ImageUri = imageUri;
+            this.SourceUri = sourceUri;
             this.Domain = domain;
             this.Title = title;
         }
