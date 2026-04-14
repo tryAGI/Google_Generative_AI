@@ -15,10 +15,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
-        /// Optional. Text of the chunk.
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
+        public string? FileSearchStore { get; set; }
 
         /// <summary>
         /// Optional. URI reference of the semantic retrieval document.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// Optional. Text of the chunk.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
-        public string? FileSearchStore { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Optional. Title of the document.
@@ -50,14 +50,14 @@ namespace Google.Gemini
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
         /// </param>
-        /// <param name="text">
-        /// Optional. Text of the chunk.
+        /// <param name="fileSearchStore">
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
-        /// <param name="fileSearchStore">
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// <param name="text">
+        /// Optional. Text of the chunk.
         /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
@@ -67,15 +67,15 @@ namespace Google.Gemini
 #endif
         public RetrievedContext(
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
-            string? text,
-            string? uri,
             string? fileSearchStore,
+            string? uri,
+            string? text,
             string? title)
         {
             this.CustomMetadata = customMetadata;
-            this.Text = text;
-            this.Uri = uri;
             this.FileSearchStore = fileSearchStore;
+            this.Uri = uri;
+            this.Text = text;
             this.Title = title;
         }
 
