@@ -9,22 +9,28 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
+        /// Optional. Page number of the retrieved context, if applicable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        /// <summary>
         /// Optional. URI reference of the semantic retrieval document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Optional. Text of the chunk.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
-
-        /// <summary>
         /// Optional. Title of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
+
+        /// <summary>
+        /// Optional. Text of the chunk.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
@@ -47,14 +53,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
+        /// <param name="pageNumber">
+        /// Optional. Page number of the retrieved context, if applicable.
+        /// </param>
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
-        /// <param name="text">
-        /// Optional. Text of the chunk.
-        /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
+        /// </param>
+        /// <param name="text">
+        /// Optional. Text of the chunk.
         /// </param>
         /// <param name="fileSearchStore">
         /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
@@ -66,15 +75,17 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
+            int? pageNumber,
             string? uri,
-            string? text,
             string? title,
+            string? text,
             string? fileSearchStore,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata)
         {
+            this.PageNumber = pageNumber;
             this.Uri = uri;
-            this.Text = text;
             this.Title = title;
+            this.Text = text;
             this.FileSearchStore = fileSearchStore;
             this.CustomMetadata = customMetadata;
         }
