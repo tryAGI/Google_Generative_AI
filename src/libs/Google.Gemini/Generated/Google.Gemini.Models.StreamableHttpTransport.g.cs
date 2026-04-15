@@ -15,6 +15,12 @@ namespace Google.Gemini
         public string? Url { get; set; }
 
         /// <summary>
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+
+        /// <summary>
         /// HTTP timeout for regular operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
@@ -25,12 +31,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sseReadTimeout")]
         public string? SseReadTimeout { get; set; }
-
-        /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Whether to close the client session when the transport closes.
@@ -50,14 +50,14 @@ namespace Google.Gemini
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// </param>
         /// <param name="timeout">
         /// HTTP timeout for regular operations.
         /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
-        /// </param>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
         /// <param name="terminateOnClose">
         /// Whether to close the client session when the transport closes.
@@ -67,15 +67,15 @@ namespace Google.Gemini
 #endif
         public StreamableHttpTransport(
             string? url,
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? timeout,
             string? sseReadTimeout,
-            global::System.Collections.Generic.Dictionary<string, string>? headers,
             bool? terminateOnClose)
         {
             this.Url = url;
+            this.Headers = headers;
             this.Timeout = timeout;
             this.SseReadTimeout = sseReadTimeout;
-            this.Headers = headers;
             this.TerminateOnClose = terminateOnClose;
         }
 
