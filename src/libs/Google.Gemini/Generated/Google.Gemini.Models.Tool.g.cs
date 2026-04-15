@@ -9,16 +9,10 @@ namespace Google.Gemini
     public sealed partial class Tool
     {
         /// <summary>
-        /// Optional. MCP Servers to connect to.
+        /// Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling. The model or system does not execute the function. Instead the defined function may be returned as a FunctionCall with arguments to the client side for execution. The model may decide to call a subset of these functions by populating FunctionCall in the response. The next conversation turn may contain a FunctionResponse with the Content.role "function" generation context for the next model turn.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mcpServers")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? McpServers { get; set; }
-
-        /// <summary>
-        /// The GoogleMaps Tool that provides geospatial context for the user's query.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("googleMaps")]
-        public global::Google.Gemini.GoogleMaps? GoogleMaps { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("functionDeclarations")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? FunctionDeclarations { get; set; }
 
         /// <summary>
         /// Computer Use tool type.
@@ -33,10 +27,16 @@ namespace Google.Gemini
         public global::Google.Gemini.GoogleSearchRetrieval? GoogleSearchRetrieval { get; set; }
 
         /// <summary>
-        /// Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling. The model or system does not execute the function. Instead the defined function may be returned as a FunctionCall with arguments to the client side for execution. The model may decide to call a subset of these functions by populating FunctionCall in the response. The next conversation turn may contain a FunctionResponse with the Content.role "function" generation context for the next model turn.
+        /// Optional. MCP Servers to connect to.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("functionDeclarations")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? FunctionDeclarations { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mcpServers")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? McpServers { get; set; }
+
+        /// <summary>
+        /// The GoogleMaps Tool that provides geospatial context for the user's query.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleMaps")]
+        public global::Google.Gemini.GoogleMaps? GoogleMaps { get; set; }
 
         /// <summary>
         /// GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
@@ -71,11 +71,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Tool" /> class.
         /// </summary>
-        /// <param name="mcpServers">
-        /// Optional. MCP Servers to connect to.
-        /// </param>
-        /// <param name="googleMaps">
-        /// The GoogleMaps Tool that provides geospatial context for the user's query.
+        /// <param name="functionDeclarations">
+        /// Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling. The model or system does not execute the function. Instead the defined function may be returned as a FunctionCall with arguments to the client side for execution. The model may decide to call a subset of these functions by populating FunctionCall in the response. The next conversation turn may contain a FunctionResponse with the Content.role "function" generation context for the next model turn.
         /// </param>
         /// <param name="computerUse">
         /// Computer Use tool type.
@@ -83,8 +80,11 @@ namespace Google.Gemini
         /// <param name="googleSearchRetrieval">
         /// Tool to retrieve public web data for grounding, powered by Google.
         /// </param>
-        /// <param name="functionDeclarations">
-        /// Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling. The model or system does not execute the function. Instead the defined function may be returned as a FunctionCall with arguments to the client side for execution. The model may decide to call a subset of these functions by populating FunctionCall in the response. The next conversation turn may contain a FunctionResponse with the Content.role "function" generation context for the next model turn.
+        /// <param name="mcpServers">
+        /// Optional. MCP Servers to connect to.
+        /// </param>
+        /// <param name="googleMaps">
+        /// The GoogleMaps Tool that provides geospatial context for the user's query.
         /// </param>
         /// <param name="googleSearch">
         /// GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
@@ -102,21 +102,21 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Tool(
-            global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? mcpServers,
-            global::Google.Gemini.GoogleMaps? googleMaps,
+            global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? functionDeclarations,
             global::Google.Gemini.ComputerUse? computerUse,
             global::Google.Gemini.GoogleSearchRetrieval? googleSearchRetrieval,
-            global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? functionDeclarations,
+            global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? mcpServers,
+            global::Google.Gemini.GoogleMaps? googleMaps,
             global::Google.Gemini.GoogleSearch? googleSearch,
             global::Google.Gemini.CodeExecution? codeExecution,
             global::Google.Gemini.UrlContext? urlContext,
             global::Google.Gemini.FileSearch? fileSearch)
         {
-            this.McpServers = mcpServers;
-            this.GoogleMaps = googleMaps;
+            this.FunctionDeclarations = functionDeclarations;
             this.ComputerUse = computerUse;
             this.GoogleSearchRetrieval = googleSearchRetrieval;
-            this.FunctionDeclarations = functionDeclarations;
+            this.McpServers = mcpServers;
+            this.GoogleMaps = googleMaps;
             this.GoogleSearch = googleSearch;
             this.CodeExecution = codeExecution;
             this.UrlContext = urlContext;
