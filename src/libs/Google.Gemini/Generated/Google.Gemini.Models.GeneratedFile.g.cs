@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
-        /// MIME type of the generatedFile.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// MIME type of the generatedFile.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Output only. The state of the GeneratedFile.<br/>
@@ -43,11 +43,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// MIME type of the generatedFile.
-        /// </param>
         /// <param name="name">
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
+        /// </param>
+        /// <param name="mimeType">
+        /// MIME type of the generatedFile.
         /// </param>
         /// <param name="state">
         /// Output only. The state of the GeneratedFile.<br/>
@@ -60,13 +60,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
-            string? mimeType,
             string? name,
+            string? mimeType,
             global::Google.Gemini.GeneratedFileState? state,
             global::Google.Gemini.Status? error)
         {
-            this.MimeType = mimeType;
             this.Name = name;
+            this.MimeType = mimeType;
             this.State = state;
             this.Error = error;
         }
