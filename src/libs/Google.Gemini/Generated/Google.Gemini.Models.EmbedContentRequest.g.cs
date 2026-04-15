@@ -15,12 +15,6 @@ namespace Google.Gemini
         public global::Google.Gemini.Content? Content { get; set; }
 
         /// <summary>
-        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
-
-        /// <summary>
         /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -32,6 +26,12 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter))]
         public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
+
+        /// <summary>
+        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
@@ -51,14 +51,14 @@ namespace Google.Gemini
         /// <param name="content">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
-        /// <param name="outputDimensionality">
-        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
-        /// </param>
         /// <param name="title">
         /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </param>
         /// <param name="taskType">
         /// Optional. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
+        /// </param>
+        /// <param name="outputDimensionality">
+        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
         /// </param>
         /// <param name="model">
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
@@ -68,15 +68,15 @@ namespace Google.Gemini
 #endif
         public EmbedContentRequest(
             global::Google.Gemini.Content? content,
-            int? outputDimensionality,
             string? title,
             global::Google.Gemini.EmbedContentRequestTaskType? taskType,
+            int? outputDimensionality,
             string? model)
         {
             this.Content = content;
-            this.OutputDimensionality = outputDimensionality;
             this.Title = title;
             this.TaskType = taskType;
+            this.OutputDimensionality = outputDimensionality;
             this.Model = model;
         }
 
