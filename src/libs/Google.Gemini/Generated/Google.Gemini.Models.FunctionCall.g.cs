@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class FunctionCall
     {
         /// <summary>
+        /// Optional. Unique identifier of the function call. If populated, the client to execute the `function_call` and return the response with the matching `id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -21,12 +27,6 @@ namespace Google.Gemini
         public object? Args { get; set; }
 
         /// <summary>
-        /// Optional. Unique identifier of the function call. If populated, the client to execute the `function_call` and return the response with the matching `id`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionCall" /> class.
         /// </summary>
+        /// <param name="id">
+        /// Optional. Unique identifier of the function call. If populated, the client to execute the `function_call` and return the response with the matching `id`.
+        /// </param>
         /// <param name="name">
         /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </param>
         /// <param name="args">
         /// Optional. The function parameters and values in JSON object format.
         /// </param>
-        /// <param name="id">
-        /// Optional. Unique identifier of the function call. If populated, the client to execute the `function_call` and return the response with the matching `id`.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionCall(
+            string? id,
             string? name,
-            object? args,
-            string? id)
+            object? args)
         {
+            this.Id = id;
             this.Name = name;
             this.Args = args;
-            this.Id = id;
         }
 
         /// <summary>

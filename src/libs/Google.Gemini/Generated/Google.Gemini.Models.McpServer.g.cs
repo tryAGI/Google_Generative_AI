@@ -4,7 +4,7 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// A MCPServer is a server that can be called by the model to perform actions. It is a server that implements the MCP protocol. Next ID: 5
+    /// A MCPServer is a server that can be called by the model to perform actions. It is a server that implements the MCP protocol. Next ID: 6
     /// </summary>
     public sealed partial class McpServer
     {
