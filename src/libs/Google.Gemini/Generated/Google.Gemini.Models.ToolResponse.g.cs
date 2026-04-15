@@ -9,11 +9,10 @@ namespace Google.Gemini
     public sealed partial class ToolResponse
     {
         /// <summary>
-        /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
+        /// Optional. The tool response.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolResponseToolTypeJsonConverter))]
-        public global::Google.Gemini.ToolResponseToolType? ToolType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public object? Response { get; set; }
 
         /// <summary>
         /// Optional. The identifier of the tool call this response is for.
@@ -22,10 +21,11 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
-        /// Optional. The tool response.
+        /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public object? Response { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolResponseToolTypeJsonConverter))]
+        public global::Google.Gemini.ToolResponseToolType? ToolType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -36,26 +36,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolResponse" /> class.
         /// </summary>
-        /// <param name="toolType">
-        /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
+        /// <param name="response">
+        /// Optional. The tool response.
         /// </param>
         /// <param name="id">
         /// Optional. The identifier of the tool call this response is for.
         /// </param>
-        /// <param name="response">
-        /// Optional. The tool response.
+        /// <param name="toolType">
+        /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolResponse(
-            global::Google.Gemini.ToolResponseToolType? toolType,
+            object? response,
             string? id,
-            object? response)
+            global::Google.Gemini.ToolResponseToolType? toolType)
         {
-            this.ToolType = toolType;
-            this.Id = id;
             this.Response = response;
+            this.Id = id;
+            this.ToolType = toolType;
         }
 
         /// <summary>
