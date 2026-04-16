@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
-        /// URI reference of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Title of the place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
+
+        /// <summary>
+        /// URI reference of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Text description of the place answer.
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
-        /// <param name="uri">
-        /// URI reference of the place.
-        /// </param>
         /// <param name="title">
         /// Title of the place.
+        /// </param>
+        /// <param name="uri">
+        /// URI reference of the place.
         /// </param>
         /// <param name="text">
         /// Text description of the place answer.
@@ -66,14 +66,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
-            string? uri,
             string? title,
+            string? uri,
             string? text,
             string? placeId,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources)
         {
-            this.Uri = uri;
             this.Title = title;
+            this.Uri = uri;
             this.Text = text;
             this.PlaceId = placeId;
             this.PlaceAnswerSources = placeAnswerSources;

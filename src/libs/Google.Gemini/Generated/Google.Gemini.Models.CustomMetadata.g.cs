@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class CustomMetadata
     {
         /// <summary>
-        /// The numeric value of the metadata to store.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
-        public float? NumericValue { get; set; }
-
-        /// <summary>
         /// Required. The key of the metadata to store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("key")]
         public string? Key { get; set; }
+
+        /// <summary>
+        /// The numeric value of the metadata to store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
+        public float? NumericValue { get; set; }
 
         /// <summary>
         /// The string value of the metadata to store.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomMetadata" /> class.
         /// </summary>
-        /// <param name="numericValue">
-        /// The numeric value of the metadata to store.
-        /// </param>
         /// <param name="key">
         /// Required. The key of the metadata to store.
+        /// </param>
+        /// <param name="numericValue">
+        /// The numeric value of the metadata to store.
         /// </param>
         /// <param name="stringValue">
         /// The string value of the metadata to store.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CustomMetadata(
-            float? numericValue,
             string? key,
+            float? numericValue,
             string? stringValue,
             global::Google.Gemini.StringList? stringListValue)
         {
-            this.NumericValue = numericValue;
             this.Key = key;
+            this.NumericValue = numericValue;
             this.StringValue = stringValue;
             this.StringListValue = stringListValue;
         }
