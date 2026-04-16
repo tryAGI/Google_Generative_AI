@@ -9,35 +9,16 @@ namespace Google.Gemini
     public sealed partial class TunedModel
     {
         /// <summary>
-        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
+        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("topP")]
-        public float? TopP { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
         public float? Temperature { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp when this model was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
-        /// Tuning tasks that create tuned models.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tuningTask")]
-        public global::Google.Gemini.TuningTask? TuningTask { get; set; }
-
-        /// <summary>
-        /// Optional. A short description of this model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
 
         /// <summary>
         /// Output only. The tuned model name. A unique name will be generated on create. Example: `tunedModels/az2mb0bpw6i` If display_name is set on create, the id portion of the name will be set by concatenating the words of the display_name with hyphens and adding a random portion for uniqueness. Example: * display_name = `Sentence Translator` * name = `tunedModels/sentence-translator-u3b7m`<br/>
@@ -55,22 +36,16 @@ namespace Google.Gemini
         public global::Google.Gemini.TunedModelState? State { get; set; }
 
         /// <summary>
-        /// Tuned model as a source for training a new model.
+        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tunedModelSource")]
-        public global::Google.Gemini.TunedModelSource? TunedModelSource { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("topP")]
+        public float? TopP { get; set; }
 
         /// <summary>
-        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
+        /// Tuning tasks that create tuned models.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
-
-        /// <summary>
-        /// Optional. List of project numbers that have read access to the tuned model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("readerProjectNumbers")]
-        public global::System.Collections.Generic.IList<string>? ReaderProjectNumbers { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tuningTask")]
+        public global::Google.Gemini.TuningTask? TuningTask { get; set; }
 
         /// <summary>
         /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
@@ -92,6 +67,31 @@ namespace Google.Gemini
         public string? UpdateTime { get; set; }
 
         /// <summary>
+        /// Optional. List of project numbers that have read access to the tuned model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("readerProjectNumbers")]
+        public global::System.Collections.Generic.IList<string>? ReaderProjectNumbers { get; set; }
+
+        /// <summary>
+        /// Tuned model as a source for training a new model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tunedModelSource")]
+        public global::Google.Gemini.TunedModelSource? TunedModelSource { get; set; }
+
+        /// <summary>
+        /// Optional. A short description of this model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when this model was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -100,21 +100,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="TunedModel" /> class.
         /// </summary>
-        /// <param name="topP">
-        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
+        /// <param name="displayName">
+        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
         /// </param>
         /// <param name="temperature">
         /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
-        /// <param name="createTime">
-        /// Output only. The timestamp when this model was created.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="tuningTask">
-        /// Tuning tasks that create tuned models.
-        /// </param>
-        /// <param name="description">
-        /// Optional. A short description of this model.
         /// </param>
         /// <param name="name">
         /// Output only. The tuned model name. A unique name will be generated on create. Example: `tunedModels/az2mb0bpw6i` If display_name is set on create, the id portion of the name will be set by concatenating the words of the display_name with hyphens and adding a random portion for uniqueness. Example: * display_name = `Sentence Translator` * name = `tunedModels/sentence-translator-u3b7m`<br/>
@@ -124,14 +114,11 @@ namespace Google.Gemini
         /// Output only. The state of the tuned model.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="tunedModelSource">
-        /// Tuned model as a source for training a new model.
+        /// <param name="topP">
+        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
-        /// <param name="displayName">
-        /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
-        /// </param>
-        /// <param name="readerProjectNumbers">
-        /// Optional. List of project numbers that have read access to the tuned model.
+        /// <param name="tuningTask">
+        /// Tuning tasks that create tuned models.
         /// </param>
         /// <param name="topK">
         /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
@@ -143,37 +130,50 @@ namespace Google.Gemini
         /// Output only. The timestamp when this model was updated.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="readerProjectNumbers">
+        /// Optional. List of project numbers that have read access to the tuned model.
+        /// </param>
+        /// <param name="tunedModelSource">
+        /// Tuned model as a source for training a new model.
+        /// </param>
+        /// <param name="description">
+        /// Optional. A short description of this model.
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The timestamp when this model was created.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TunedModel(
-            float? topP,
+            string? displayName,
             float? temperature,
-            string? createTime,
-            global::Google.Gemini.TuningTask? tuningTask,
-            string? description,
             string? name,
             global::Google.Gemini.TunedModelState? state,
-            global::Google.Gemini.TunedModelSource? tunedModelSource,
-            string? displayName,
-            global::System.Collections.Generic.IList<string>? readerProjectNumbers,
+            float? topP,
+            global::Google.Gemini.TuningTask? tuningTask,
             int? topK,
             string? baseModel,
-            string? updateTime)
+            string? updateTime,
+            global::System.Collections.Generic.IList<string>? readerProjectNumbers,
+            global::Google.Gemini.TunedModelSource? tunedModelSource,
+            string? description,
+            string? createTime)
         {
-            this.TopP = topP;
+            this.DisplayName = displayName;
             this.Temperature = temperature;
-            this.CreateTime = createTime;
-            this.TuningTask = tuningTask;
-            this.Description = description;
             this.Name = name;
             this.State = state;
-            this.TunedModelSource = tunedModelSource;
-            this.DisplayName = displayName;
-            this.ReaderProjectNumbers = readerProjectNumbers;
+            this.TopP = topP;
+            this.TuningTask = tuningTask;
             this.TopK = topK;
             this.BaseModel = baseModel;
             this.UpdateTime = updateTime;
+            this.ReaderProjectNumbers = readerProjectNumbers;
+            this.TunedModelSource = tunedModelSource;
+            this.Description = description;
+            this.CreateTime = createTime;
         }
 
         /// <summary>
