@@ -34,17 +34,17 @@ namespace Google.Gemini
         public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
 
         /// <summary>
+        /// Candidate responses from the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
+
+        /// <summary>
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
         public string? ModelVersion { get; set; }
-
-        /// <summary>
-        /// Candidate responses from the model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,12 +68,12 @@ namespace Google.Gemini
         /// <param name="promptFeedback">
         /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </param>
+        /// <param name="candidates">
+        /// Candidate responses from the model.
+        /// </param>
         /// <param name="modelVersion">
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="candidates">
-        /// Candidate responses from the model.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -83,15 +83,15 @@ namespace Google.Gemini
             global::Google.Gemini.ModelStatus? modelStatus,
             string? responseId,
             global::Google.Gemini.PromptFeedback? promptFeedback,
-            string? modelVersion,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates)
+            global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
+            string? modelVersion)
         {
             this.UsageMetadata = usageMetadata;
             this.ModelStatus = modelStatus;
             this.ResponseId = responseId;
             this.PromptFeedback = promptFeedback;
-            this.ModelVersion = modelVersion;
             this.Candidates = candidates;
+            this.ModelVersion = modelVersion;
         }
 
         /// <summary>
