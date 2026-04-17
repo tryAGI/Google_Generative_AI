@@ -22,16 +22,16 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<int>? RenderedParts { get; set; }
 
         /// <summary>
-        /// Segment of the content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("segment")]
-        public global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? Segment { get; set; }
-
-        /// <summary>
         /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("confidenceScores")]
         public global::System.Collections.Generic.IList<float>? ConfidenceScores { get; set; }
+
+        /// <summary>
+        /// Segment of the content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("segment")]
+        public global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? Segment { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -49,11 +49,11 @@ namespace Google.Gemini
         /// Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="segment">
-        /// Segment of the content.
-        /// </param>
         /// <param name="confidenceScores">
         /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
+        /// </param>
+        /// <param name="segment">
+        /// Segment of the content.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -61,13 +61,13 @@ namespace Google.Gemini
         public GoogleAiGenerativelanguageV1betaGroundingSupport(
             global::System.Collections.Generic.IList<int>? groundingChunkIndices,
             global::System.Collections.Generic.IList<int>? renderedParts,
-            global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? segment,
-            global::System.Collections.Generic.IList<float>? confidenceScores)
+            global::System.Collections.Generic.IList<float>? confidenceScores,
+            global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? segment)
         {
             this.GroundingChunkIndices = groundingChunkIndices;
             this.RenderedParts = renderedParts;
-            this.Segment = segment;
             this.ConfidenceScores = confidenceScores;
+            this.Segment = segment;
         }
 
         /// <summary>
