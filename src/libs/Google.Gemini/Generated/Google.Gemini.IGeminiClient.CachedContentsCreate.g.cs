@@ -25,26 +25,26 @@ namespace Google.Gemini
         /// <param name="toolConfig">
         /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </param>
-        /// <param name="expireTime">
-        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
         /// </param>
         /// <param name="ttl">
         /// Input only. New TTL for this resource, input only.
         /// </param>
-        /// <param name="model">
-        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-        /// </param>
         /// <param name="contents">
         /// Optional. Input only. Immutable. The content to cache.
+        /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the usage of the cached content.
+        /// </param>
+        /// <param name="expireTime">
+        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
         /// </param>
         /// <param name="tools">
         /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
         /// </param>
-        /// <param name="usageMetadata">
-        /// Metadata on the usage of the cached content.
+        /// <param name="model">
+        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -52,13 +52,13 @@ namespace Google.Gemini
         global::System.Threading.Tasks.Task<global::Google.Gemini.CachedContent> CachedContentsCreateAsync(
             global::Google.Gemini.Content? systemInstruction = default,
             global::Google.Gemini.ToolConfig? toolConfig = default,
-            string? expireTime = default,
             string? displayName = default,
             string? ttl = default,
-            string? model = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
             global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
+            string? expireTime = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
+            string? model = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -9,10 +9,18 @@ namespace Google.Gemini
     public sealed partial class GenerateContentResponse
     {
         /// <summary>
-        /// Metadata on the generation request's token usage.
+        /// Output only. response_id is used to identify each response.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
-        public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
+        public string? ResponseId { get; set; }
+
+        /// <summary>
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
+        public string? ModelVersion { get; set; }
 
         /// <summary>
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
@@ -21,17 +29,10 @@ namespace Google.Gemini
         public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
 
         /// <summary>
-        /// Output only. response_id is used to identify each response.<br/>
-        /// Included only in responses
+        /// Metadata on the generation request's token usage.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
-        public string? ResponseId { get; set; }
-
-        /// <summary>
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
-        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
+        public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
 
         /// <summary>
         /// Candidate responses from the model.
@@ -40,11 +41,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
 
         /// <summary>
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
-        public string? ModelVersion { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
+        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,43 +55,43 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentResponse" /> class.
         /// </summary>
-        /// <param name="usageMetadata">
-        /// Metadata on the generation request's token usage.
-        /// </param>
-        /// <param name="modelStatus">
-        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
-        /// </param>
         /// <param name="responseId">
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="promptFeedback">
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </param>
-        /// <param name="candidates">
-        /// Candidate responses from the model.
         /// </param>
         /// <param name="modelVersion">
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="modelStatus">
+        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
+        /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the generation request's token usage.
+        /// </param>
+        /// <param name="candidates">
+        /// Candidate responses from the model.
+        /// </param>
+        /// <param name="promptFeedback">
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentResponse(
-            global::Google.Gemini.UsageMetadata? usageMetadata,
-            global::Google.Gemini.ModelStatus? modelStatus,
             string? responseId,
-            global::Google.Gemini.PromptFeedback? promptFeedback,
+            string? modelVersion,
+            global::Google.Gemini.ModelStatus? modelStatus,
+            global::Google.Gemini.UsageMetadata? usageMetadata,
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
-            string? modelVersion)
+            global::Google.Gemini.PromptFeedback? promptFeedback)
         {
-            this.UsageMetadata = usageMetadata;
-            this.ModelStatus = modelStatus;
             this.ResponseId = responseId;
-            this.PromptFeedback = promptFeedback;
-            this.Candidates = candidates;
             this.ModelVersion = modelVersion;
+            this.ModelStatus = modelStatus;
+            this.UsageMetadata = usageMetadata;
+            this.Candidates = candidates;
+            this.PromptFeedback = promptFeedback;
         }
 
         /// <summary>

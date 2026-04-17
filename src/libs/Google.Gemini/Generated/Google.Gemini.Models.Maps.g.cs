@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// URI reference of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Text description of the place answer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// URI reference of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
@@ -50,11 +50,11 @@ namespace Google.Gemini
         /// <param name="title">
         /// Title of the place.
         /// </param>
-        /// <param name="uri">
-        /// URI reference of the place.
-        /// </param>
         /// <param name="text">
         /// Text description of the place answer.
+        /// </param>
+        /// <param name="uri">
+        /// URI reference of the place.
         /// </param>
         /// <param name="placeId">
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
@@ -67,14 +67,14 @@ namespace Google.Gemini
 #endif
         public Maps(
             string? title,
-            string? uri,
             string? text,
+            string? uri,
             string? placeId,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources)
         {
             this.Title = title;
-            this.Uri = uri;
             this.Text = text;
+            this.Uri = uri;
             this.PlaceId = placeId;
             this.PlaceAnswerSources = placeAnswerSources;
         }
