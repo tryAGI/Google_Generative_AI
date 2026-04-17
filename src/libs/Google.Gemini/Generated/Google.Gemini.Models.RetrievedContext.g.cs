@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
-        public string? FileSearchStore { get; set; }
-
-        /// <summary>
         /// Optional. User-provided metadata about the retrieved context.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
@@ -39,6 +33,12 @@ namespace Google.Gemini
         public int? PageNumber { get; set; }
 
         /// <summary>
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
+        public string? FileSearchStore { get; set; }
+
+        /// <summary>
         /// Optional. Text of the chunk.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
@@ -53,9 +53,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
-        /// <param name="fileSearchStore">
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
-        /// </param>
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
         /// </param>
@@ -68,6 +65,9 @@ namespace Google.Gemini
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
         /// </param>
+        /// <param name="fileSearchStore">
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
         /// </param>
@@ -75,18 +75,18 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
-            string? fileSearchStore,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? uri,
             string? title,
             int? pageNumber,
+            string? fileSearchStore,
             string? text)
         {
-            this.FileSearchStore = fileSearchStore;
             this.CustomMetadata = customMetadata;
             this.Uri = uri;
             this.Title = title;
             this.PageNumber = pageNumber;
+            this.FileSearchStore = fileSearchStore;
             this.Text = text;
         }
 
