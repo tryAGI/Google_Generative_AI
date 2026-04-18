@@ -31,11 +31,11 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
-        /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
+        /// </param>
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
@@ -51,8 +51,8 @@ namespace Google.Gemini
             string? updateMask = default,
             string? priority = default,
             string? model = default,
-            string? displayName = default,
             global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
+            string? displayName = default,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig = default,
             global::Google.Gemini.EmbedContentBatchOutput? output = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
