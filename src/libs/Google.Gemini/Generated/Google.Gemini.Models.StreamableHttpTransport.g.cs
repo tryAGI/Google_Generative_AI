@@ -9,28 +9,28 @@ namespace Google.Gemini
     public sealed partial class StreamableHttpTransport
     {
         /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
-
-        /// <summary>
         /// Timeout for SSE read operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sseReadTimeout")]
         public string? SseReadTimeout { get; set; }
 
         /// <summary>
-        /// Whether to close the client session when the transport closes.
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
-        public bool? TerminateOnClose { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// HTTP timeout for regular operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
         public string? Timeout { get; set; }
+
+        /// <summary>
+        /// Whether to close the client session when the transport closes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
+        public bool? TerminateOnClose { get; set; }
 
         /// <summary>
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
@@ -47,17 +47,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamableHttpTransport" /> class.
         /// </summary>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
-        /// <param name="terminateOnClose">
-        /// Whether to close the client session when the transport closes.
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
         /// <param name="timeout">
         /// HTTP timeout for regular operations.
+        /// </param>
+        /// <param name="terminateOnClose">
+        /// Whether to close the client session when the transport closes.
         /// </param>
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
@@ -66,16 +66,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
-            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? sseReadTimeout,
-            bool? terminateOnClose,
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? timeout,
+            bool? terminateOnClose,
             string? url)
         {
-            this.Headers = headers;
             this.SseReadTimeout = sseReadTimeout;
-            this.TerminateOnClose = terminateOnClose;
+            this.Headers = headers;
             this.Timeout = timeout;
+            this.TerminateOnClose = terminateOnClose;
             this.Url = url;
         }
 

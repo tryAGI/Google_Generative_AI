@@ -390,11 +390,11 @@ namespace Google.Gemini
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
-        /// <param name="customMetadata">
-        /// Custom metadata to be associated with the file.
-        /// </param>
         /// <param name="fileName">
         /// Required. The name of the `File` to import. Example: `files/abc-123`
+        /// </param>
+        /// <param name="customMetadata">
+        /// Custom metadata to be associated with the file.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -402,16 +402,16 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> FileSearchStoresImportFileAsync(
             string fileSearchStoresId,
             global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
             string? fileName = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.ImportFileRequest
             {
                 ChunkingConfig = chunkingConfig,
-                CustomMetadata = customMetadata,
                 FileName = fileName,
+                CustomMetadata = customMetadata,
             };
 
             return await FileSearchStoresImportFileAsync(
