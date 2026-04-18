@@ -15,6 +15,13 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
 
         /// <summary>
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
+        public string? ModelVersion { get; set; }
+
+        /// <summary>
         /// Metadata on the generation request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
@@ -31,13 +38,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
         public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
-
-        /// <summary>
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
-        public string? ModelVersion { get; set; }
 
         /// <summary>
         /// Output only. response_id is used to identify each response.<br/>
@@ -58,6 +58,10 @@ namespace Google.Gemini
         /// <param name="candidates">
         /// Candidate responses from the model.
         /// </param>
+        /// <param name="modelVersion">
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
         /// </param>
@@ -66,10 +70,6 @@ namespace Google.Gemini
         /// </param>
         /// <param name="promptFeedback">
         /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </param>
-        /// <param name="modelVersion">
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="responseId">
         /// Output only. response_id is used to identify each response.<br/>
@@ -80,17 +80,17 @@ namespace Google.Gemini
 #endif
         public GenerateContentResponse(
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
+            string? modelVersion,
             global::Google.Gemini.UsageMetadata? usageMetadata,
             global::Google.Gemini.ModelStatus? modelStatus,
             global::Google.Gemini.PromptFeedback? promptFeedback,
-            string? modelVersion,
             string? responseId)
         {
             this.Candidates = candidates;
+            this.ModelVersion = modelVersion;
             this.UsageMetadata = usageMetadata;
             this.ModelStatus = modelStatus;
             this.PromptFeedback = promptFeedback;
-            this.ModelVersion = modelVersion;
             this.ResponseId = responseId;
         }
 
