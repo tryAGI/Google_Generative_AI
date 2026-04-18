@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class UploadToFileSearchStoreRequest
     {
         /// <summary>
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
         /// Optional. Display name of the created document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Custom metadata to be associated with the data.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadToFileSearchStoreRequest" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the created document.
+        /// </param>
+        /// <param name="mimeType">
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadToFileSearchStoreRequest(
-            string? mimeType,
             string? displayName,
+            string? mimeType,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
             global::Google.Gemini.ChunkingConfig? chunkingConfig)
         {
-            this.MimeType = mimeType;
             this.DisplayName = displayName;
+            this.MimeType = mimeType;
             this.CustomMetadata = customMetadata;
             this.ChunkingConfig = chunkingConfig;
         }
