@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
+        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
         /// </summary>
@@ -29,12 +35,6 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,6 +43,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
+        /// <param name="name">
+        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
+        /// </param>
         /// <param name="state">
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
@@ -53,22 +56,19 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// MIME type of the generatedFile.
         /// </param>
-        /// <param name="name">
-        /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
+            string? name,
             global::Google.Gemini.GeneratedFileState? state,
             global::Google.Gemini.Status? error,
-            string? mimeType,
-            string? name)
+            string? mimeType)
         {
+            this.Name = name;
             this.State = state;
             this.Error = error;
             this.MimeType = mimeType;
-            this.Name = name;
         }
 
         /// <summary>
