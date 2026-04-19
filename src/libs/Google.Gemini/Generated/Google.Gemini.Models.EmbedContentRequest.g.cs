@@ -22,12 +22,6 @@ namespace Google.Gemini
         public string? Model { get; set; }
 
         /// <summary>
-        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
-
-        /// <summary>
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
@@ -38,6 +32,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
+
+        /// <summary>
+        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,14 +54,14 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
         /// </param>
-        /// <param name="outputDimensionality">
-        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
-        /// </param>
         /// <param name="content">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
         /// <param name="title">
         /// Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
+        /// </param>
+        /// <param name="outputDimensionality">
+        /// Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -69,15 +69,15 @@ namespace Google.Gemini
         public EmbedContentRequest(
             global::Google.Gemini.EmbedContentRequestTaskType? taskType,
             string? model,
-            int? outputDimensionality,
             global::Google.Gemini.Content? content,
-            string? title)
+            string? title,
+            int? outputDimensionality)
         {
             this.TaskType = taskType;
             this.Model = model;
-            this.OutputDimensionality = outputDimensionality;
             this.Content = content;
             this.Title = title;
+            this.OutputDimensionality = outputDimensionality;
         }
 
         /// <summary>
