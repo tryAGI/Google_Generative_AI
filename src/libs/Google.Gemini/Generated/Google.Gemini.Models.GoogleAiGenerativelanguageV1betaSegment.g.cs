@@ -21,16 +21,16 @@ namespace Google.Gemini
         public int? StartIndex { get; set; }
 
         /// <summary>
-        /// The index of a Part object within its parent Content object.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("partIndex")]
-        public int? PartIndex { get; set; }
-
-        /// <summary>
         /// The text corresponding to the segment from the response.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// The index of a Part object within its parent Content object.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("partIndex")]
+        public int? PartIndex { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="startIndex">
         /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </param>
-        /// <param name="partIndex">
-        /// The index of a Part object within its parent Content object.
-        /// </param>
         /// <param name="text">
         /// The text corresponding to the segment from the response.
+        /// </param>
+        /// <param name="partIndex">
+        /// The index of a Part object within its parent Content object.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public GoogleAiGenerativelanguageV1betaSegment(
             int? endIndex,
             int? startIndex,
-            int? partIndex,
-            string? text)
+            string? text,
+            int? partIndex)
         {
             this.EndIndex = endIndex;
             this.StartIndex = startIndex;
-            this.PartIndex = partIndex;
             this.Text = text;
+            this.PartIndex = partIndex;
         }
 
         /// <summary>
