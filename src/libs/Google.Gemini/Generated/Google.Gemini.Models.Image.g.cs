@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Image
     {
         /// <summary>
+        /// The image asset URL.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("imageUri")]
+        public string? ImageUri { get; set; }
+
+        /// <summary>
         /// The title of the web page that the image is from.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -27,12 +33,6 @@ namespace Google.Gemini
         public string? SourceUri { get; set; }
 
         /// <summary>
-        /// The image asset URL.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("imageUri")]
-        public string? ImageUri { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Image" /> class.
         /// </summary>
+        /// <param name="imageUri">
+        /// The image asset URL.
+        /// </param>
         /// <param name="title">
         /// The title of the web page that the image is from.
         /// </param>
@@ -50,22 +53,19 @@ namespace Google.Gemini
         /// <param name="sourceUri">
         /// The web page URI for attribution.
         /// </param>
-        /// <param name="imageUri">
-        /// The image asset URL.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Image(
+            string? imageUri,
             string? title,
             string? domain,
-            string? sourceUri,
-            string? imageUri)
+            string? sourceUri)
         {
+            this.ImageUri = imageUri;
             this.Title = title;
             this.Domain = domain;
             this.SourceUri = sourceUri;
-            this.ImageUri = imageUri;
         }
 
         /// <summary>
