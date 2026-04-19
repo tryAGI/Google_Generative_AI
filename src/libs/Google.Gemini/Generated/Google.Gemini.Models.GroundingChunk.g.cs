@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class GroundingChunk
     {
         /// <summary>
-        /// Chunk from the web.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("web")]
-        public global::Google.Gemini.Web? Web { get; set; }
-
-        /// <summary>
         /// Chunk from image search.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         public global::Google.Gemini.Image? Image { get; set; }
+
+        /// <summary>
+        /// Chunk from the web.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("web")]
+        public global::Google.Gemini.Web? Web { get; set; }
 
         /// <summary>
         /// Chunk from context retrieved by the file search tool.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingChunk" /> class.
         /// </summary>
-        /// <param name="web">
-        /// Chunk from the web.
-        /// </param>
         /// <param name="image">
         /// Chunk from image search.
+        /// </param>
+        /// <param name="web">
+        /// Chunk from the web.
         /// </param>
         /// <param name="retrievedContext">
         /// Chunk from context retrieved by the file search tool.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunk(
-            global::Google.Gemini.Web? web,
             global::Google.Gemini.Image? image,
+            global::Google.Gemini.Web? web,
             global::Google.Gemini.RetrievedContext? retrievedContext,
             global::Google.Gemini.Maps? maps)
         {
-            this.Web = web;
             this.Image = image;
+            this.Web = web;
             this.RetrievedContext = retrievedContext;
             this.Maps = maps;
         }
