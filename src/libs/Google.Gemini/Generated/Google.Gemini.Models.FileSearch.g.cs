@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class FileSearch
     {
         /// <summary>
-        /// Optional. Metadata filter to apply to the semantic retrieval documents and chunks.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadataFilter")]
-        public string? MetadataFilter { get; set; }
-
-        /// <summary>
         /// Optional. The number of semantic retrieval chunks to retrieve.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("topK")]
         public int? TopK { get; set; }
+
+        /// <summary>
+        /// Optional. Metadata filter to apply to the semantic retrieval documents and chunks.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadataFilter")]
+        public string? MetadataFilter { get; set; }
 
         /// <summary>
         /// Required. The names of the file_search_stores to retrieve from. Example: `fileSearchStores/my-file-search-store-123`
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSearch" /> class.
         /// </summary>
-        /// <param name="metadataFilter">
-        /// Optional. Metadata filter to apply to the semantic retrieval documents and chunks.
-        /// </param>
         /// <param name="topK">
         /// Optional. The number of semantic retrieval chunks to retrieve.
+        /// </param>
+        /// <param name="metadataFilter">
+        /// Optional. Metadata filter to apply to the semantic retrieval documents and chunks.
         /// </param>
         /// <param name="fileSearchStoreNames">
         /// Required. The names of the file_search_stores to retrieve from. Example: `fileSearchStores/my-file-search-store-123`
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileSearch(
-            string? metadataFilter,
             int? topK,
+            string? metadataFilter,
             global::System.Collections.Generic.IList<string>? fileSearchStoreNames)
         {
-            this.MetadataFilter = metadataFilter;
             this.TopK = topK;
+            this.MetadataFilter = metadataFilter;
             this.FileSearchStoreNames = fileSearchStoreNames;
         }
 
