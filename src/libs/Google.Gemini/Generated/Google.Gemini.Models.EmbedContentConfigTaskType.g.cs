@@ -4,9 +4,9 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
+    /// Optional. The task type of the embedding.
     /// </summary>
-    public enum EmbedContentRequestTaskType
+    public enum EmbedContentConfigTaskType
     {
         /// <summary>
         /// Specifies that the given text will be classified.
@@ -49,43 +49,43 @@ namespace Google.Gemini
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class EmbedContentRequestTaskTypeExtensions
+    public static class EmbedContentConfigTaskTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this EmbedContentRequestTaskType value)
+        public static string ToValueString(this EmbedContentConfigTaskType value)
         {
             return value switch
             {
-                EmbedContentRequestTaskType.Classification => "CLASSIFICATION",
-                EmbedContentRequestTaskType.Clustering => "CLUSTERING",
-                EmbedContentRequestTaskType.CodeRetrievalQuery => "CODE_RETRIEVAL_QUERY",
-                EmbedContentRequestTaskType.FactVerification => "FACT_VERIFICATION",
-                EmbedContentRequestTaskType.QuestionAnswering => "QUESTION_ANSWERING",
-                EmbedContentRequestTaskType.RetrievalDocument => "RETRIEVAL_DOCUMENT",
-                EmbedContentRequestTaskType.RetrievalQuery => "RETRIEVAL_QUERY",
-                EmbedContentRequestTaskType.SemanticSimilarity => "SEMANTIC_SIMILARITY",
-                EmbedContentRequestTaskType.TaskTypeUnspecified => "TASK_TYPE_UNSPECIFIED",
+                EmbedContentConfigTaskType.Classification => "CLASSIFICATION",
+                EmbedContentConfigTaskType.Clustering => "CLUSTERING",
+                EmbedContentConfigTaskType.CodeRetrievalQuery => "CODE_RETRIEVAL_QUERY",
+                EmbedContentConfigTaskType.FactVerification => "FACT_VERIFICATION",
+                EmbedContentConfigTaskType.QuestionAnswering => "QUESTION_ANSWERING",
+                EmbedContentConfigTaskType.RetrievalDocument => "RETRIEVAL_DOCUMENT",
+                EmbedContentConfigTaskType.RetrievalQuery => "RETRIEVAL_QUERY",
+                EmbedContentConfigTaskType.SemanticSimilarity => "SEMANTIC_SIMILARITY",
+                EmbedContentConfigTaskType.TaskTypeUnspecified => "TASK_TYPE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static EmbedContentRequestTaskType? ToEnum(string value)
+        public static EmbedContentConfigTaskType? ToEnum(string value)
         {
             return value switch
             {
-                "CLASSIFICATION" => EmbedContentRequestTaskType.Classification,
-                "CLUSTERING" => EmbedContentRequestTaskType.Clustering,
-                "CODE_RETRIEVAL_QUERY" => EmbedContentRequestTaskType.CodeRetrievalQuery,
-                "FACT_VERIFICATION" => EmbedContentRequestTaskType.FactVerification,
-                "QUESTION_ANSWERING" => EmbedContentRequestTaskType.QuestionAnswering,
-                "RETRIEVAL_DOCUMENT" => EmbedContentRequestTaskType.RetrievalDocument,
-                "RETRIEVAL_QUERY" => EmbedContentRequestTaskType.RetrievalQuery,
-                "SEMANTIC_SIMILARITY" => EmbedContentRequestTaskType.SemanticSimilarity,
-                "TASK_TYPE_UNSPECIFIED" => EmbedContentRequestTaskType.TaskTypeUnspecified,
+                "CLASSIFICATION" => EmbedContentConfigTaskType.Classification,
+                "CLUSTERING" => EmbedContentConfigTaskType.Clustering,
+                "CODE_RETRIEVAL_QUERY" => EmbedContentConfigTaskType.CodeRetrievalQuery,
+                "FACT_VERIFICATION" => EmbedContentConfigTaskType.FactVerification,
+                "QUESTION_ANSWERING" => EmbedContentConfigTaskType.QuestionAnswering,
+                "RETRIEVAL_DOCUMENT" => EmbedContentConfigTaskType.RetrievalDocument,
+                "RETRIEVAL_QUERY" => EmbedContentConfigTaskType.RetrievalQuery,
+                "SEMANTIC_SIMILARITY" => EmbedContentConfigTaskType.SemanticSimilarity,
+                "TASK_TYPE_UNSPECIFIED" => EmbedContentConfigTaskType.TaskTypeUnspecified,
                 _ => null,
             };
         }
