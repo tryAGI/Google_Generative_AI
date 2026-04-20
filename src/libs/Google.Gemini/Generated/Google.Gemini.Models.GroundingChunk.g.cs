@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class GroundingChunk
     {
         /// <summary>
-        /// Chunk from context retrieved by the file search tool.
+        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrievedContext")]
-        public global::Google.Gemini.RetrievedContext? RetrievedContext { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("maps")]
+        public global::Google.Gemini.Maps? Maps { get; set; }
 
         /// <summary>
         /// Chunk from image search.
@@ -21,10 +21,10 @@ namespace Google.Gemini
         public global::Google.Gemini.Image? Image { get; set; }
 
         /// <summary>
-        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
+        /// Chunk from context retrieved by the file search tool.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maps")]
-        public global::Google.Gemini.Maps? Maps { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("retrievedContext")]
+        public global::Google.Gemini.RetrievedContext? RetrievedContext { get; set; }
 
         /// <summary>
         /// Chunk from the web.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingChunk" /> class.
         /// </summary>
-        /// <param name="retrievedContext">
-        /// Chunk from context retrieved by the file search tool.
+        /// <param name="maps">
+        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
         /// </param>
         /// <param name="image">
         /// Chunk from image search.
         /// </param>
-        /// <param name="maps">
-        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
+        /// <param name="retrievedContext">
+        /// Chunk from context retrieved by the file search tool.
         /// </param>
         /// <param name="web">
         /// Chunk from the web.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunk(
-            global::Google.Gemini.RetrievedContext? retrievedContext,
-            global::Google.Gemini.Image? image,
             global::Google.Gemini.Maps? maps,
+            global::Google.Gemini.Image? image,
+            global::Google.Gemini.RetrievedContext? retrievedContext,
             global::Google.Gemini.Web? web)
         {
-            this.RetrievedContext = retrievedContext;
-            this.Image = image;
             this.Maps = maps;
+            this.Image = image;
+            this.RetrievedContext = retrievedContext;
             this.Web = web;
         }
 
