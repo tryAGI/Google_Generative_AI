@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
+        /// Optional. Title of the document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
         /// Optional. User-provided metadata about the retrieved context.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
-        /// Optional. URI reference of the semantic retrieval document.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
 
         /// <summary>
         /// Optional. Page number of the retrieved context, if applicable.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public int? PageNumber { get; set; }
 
         /// <summary>
-        /// Optional. Title of the document.
+        /// Optional. URI reference of the semantic retrieval document.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Optional. Text of the chunk.
@@ -53,17 +53,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
+        /// <param name="title">
+        /// Optional. Title of the document.
+        /// </param>
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
-        /// </param>
-        /// <param name="uri">
-        /// Optional. URI reference of the semantic retrieval document.
         /// </param>
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
         /// </param>
-        /// <param name="title">
-        /// Optional. Title of the document.
+        /// <param name="uri">
+        /// Optional. URI reference of the semantic retrieval document.
         /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
@@ -75,17 +75,17 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
-            string? uri,
-            int? pageNumber,
             string? title,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
+            int? pageNumber,
+            string? uri,
             string? text,
             string? fileSearchStore)
         {
-            this.CustomMetadata = customMetadata;
-            this.Uri = uri;
-            this.PageNumber = pageNumber;
             this.Title = title;
+            this.CustomMetadata = customMetadata;
+            this.PageNumber = pageNumber;
+            this.Uri = uri;
             this.Text = text;
             this.FileSearchStore = fileSearchStore;
         }
