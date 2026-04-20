@@ -404,11 +404,11 @@ namespace Google.Gemini
         /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="emailAddress">
-        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
-        /// </param>
         /// <param name="role">
         /// Required. The role granted by this permission.
+        /// </param>
+        /// <param name="emailAddress">
+        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
@@ -420,16 +420,16 @@ namespace Google.Gemini
             string tunedModelsId,
             string permissionsId,
             string? updateMask = default,
-            string? emailAddress = default,
             global::Google.Gemini.PermissionRole? role = default,
+            string? emailAddress = default,
             global::Google.Gemini.PermissionGranteeType? granteeType = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.Permission
             {
-                EmailAddress = emailAddress,
                 Role = role,
+                EmailAddress = emailAddress,
                 GranteeType = granteeType,
             };
 
