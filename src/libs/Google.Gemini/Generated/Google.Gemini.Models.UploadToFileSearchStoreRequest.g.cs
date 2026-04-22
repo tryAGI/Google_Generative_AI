@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class UploadToFileSearchStoreRequest
     {
         /// <summary>
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// Optional. Display name of the created document.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
-        /// Optional. Display name of the created document.
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,8 +41,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadToFileSearchStoreRequest" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// <param name="displayName">
+        /// Optional. Display name of the created document.
         /// </param>
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
@@ -50,22 +50,22 @@ namespace Google.Gemini
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
         /// </param>
-        /// <param name="displayName">
-        /// Optional. Display name of the created document.
+        /// <param name="mimeType">
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadToFileSearchStoreRequest(
-            string? mimeType,
+            string? displayName,
             global::Google.Gemini.ChunkingConfig? chunkingConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
-            string? displayName)
+            string? mimeType)
         {
-            this.MimeType = mimeType;
+            this.DisplayName = displayName;
             this.ChunkingConfig = chunkingConfig;
             this.CustomMetadata = customMetadata;
-            this.DisplayName = displayName;
+            this.MimeType = mimeType;
         }
 
         /// <summary>
