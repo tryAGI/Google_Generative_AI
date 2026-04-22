@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
-        /// Optional. Page number of the retrieved context, if applicable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
-        public int? PageNumber { get; set; }
-
-        /// <summary>
         /// Optional. Title of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -45,6 +39,12 @@ namespace Google.Gemini
         public string? Text { get; set; }
 
         /// <summary>
+        /// Optional. Page number of the retrieved context, if applicable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -53,9 +53,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
-        /// <param name="pageNumber">
-        /// Optional. Page number of the retrieved context, if applicable.
-        /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
         /// </param>
@@ -71,23 +68,26 @@ namespace Google.Gemini
         /// <param name="text">
         /// Optional. Text of the chunk.
         /// </param>
+        /// <param name="pageNumber">
+        /// Optional. Page number of the retrieved context, if applicable.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
-            int? pageNumber,
             string? title,
             string? fileSearchStore,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? uri,
-            string? text)
+            string? text,
+            int? pageNumber)
         {
-            this.PageNumber = pageNumber;
             this.Title = title;
             this.FileSearchStore = fileSearchStore;
             this.CustomMetadata = customMetadata;
             this.Uri = uri;
             this.Text = text;
+            this.PageNumber = pageNumber;
         }
 
         /// <summary>
