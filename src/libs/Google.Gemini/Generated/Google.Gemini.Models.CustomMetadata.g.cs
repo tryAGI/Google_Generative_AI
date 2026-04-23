@@ -21,16 +21,16 @@ namespace Google.Gemini
         public float? NumericValue { get; set; }
 
         /// <summary>
-        /// The string value of the metadata to store.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
-        public string? StringValue { get; set; }
-
-        /// <summary>
         /// Required. The key of the metadata to store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("key")]
         public string? Key { get; set; }
+
+        /// <summary>
+        /// The string value of the metadata to store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
+        public string? StringValue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="numericValue">
         /// The numeric value of the metadata to store.
         /// </param>
-        /// <param name="stringValue">
-        /// The string value of the metadata to store.
-        /// </param>
         /// <param name="key">
         /// Required. The key of the metadata to store.
+        /// </param>
+        /// <param name="stringValue">
+        /// The string value of the metadata to store.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public CustomMetadata(
             global::Google.Gemini.StringList? stringListValue,
             float? numericValue,
-            string? stringValue,
-            string? key)
+            string? key,
+            string? stringValue)
         {
             this.StringListValue = stringListValue;
             this.NumericValue = numericValue;
-            this.StringValue = stringValue;
             this.Key = key;
+            this.StringValue = stringValue;
         }
 
         /// <summary>
