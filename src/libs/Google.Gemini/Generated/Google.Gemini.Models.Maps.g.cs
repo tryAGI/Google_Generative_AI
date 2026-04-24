@@ -9,6 +9,18 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
+        public string? PlaceId { get; set; }
+
+        /// <summary>
+        /// URI reference of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
+
+        /// <summary>
         /// Title of the place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -27,18 +39,6 @@ namespace Google.Gemini
         public global::Google.Gemini.PlaceAnswerSources? PlaceAnswerSources { get; set; }
 
         /// <summary>
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
-        public string? PlaceId { get; set; }
-
-        /// <summary>
-        /// URI reference of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +47,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
+        /// <param name="placeId">
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </param>
+        /// <param name="uri">
+        /// URI reference of the place.
+        /// </param>
         /// <param name="title">
         /// Title of the place.
         /// </param>
@@ -56,27 +62,21 @@ namespace Google.Gemini
         /// <param name="placeAnswerSources">
         /// Collection of sources that provide answers about the features of a given place in Google Maps. Each PlaceAnswerSources message corresponds to a specific place in Google Maps. The Google Maps tool used these sources in order to answer questions about features of the place (e.g: "does Bar Foo have Wifi" or "is Foo Bar wheelchair accessible?"). Currently we only support review snippets as sources.
         /// </param>
-        /// <param name="placeId">
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </param>
-        /// <param name="uri">
-        /// URI reference of the place.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
+            string? placeId,
+            string? uri,
             string? title,
             string? text,
-            global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
-            string? placeId,
-            string? uri)
+            global::Google.Gemini.PlaceAnswerSources? placeAnswerSources)
         {
+            this.PlaceId = placeId;
+            this.Uri = uri;
             this.Title = title;
             this.Text = text;
             this.PlaceAnswerSources = placeAnswerSources;
-            this.PlaceId = placeId;
-            this.Uri = uri;
         }
 
         /// <summary>
