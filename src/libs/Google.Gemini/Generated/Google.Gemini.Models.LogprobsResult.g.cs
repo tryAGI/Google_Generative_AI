@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class LogprobsResult
     {
         /// <summary>
-        /// Sum of log probabilities for all tokens.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logProbabilitySum")]
-        public float? LogProbabilitySum { get; set; }
-
-        /// <summary>
         /// Length = total number of decoding steps.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("topCandidates")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.TopCandidates>? TopCandidates { get; set; }
+
+        /// <summary>
+        /// Sum of log probabilities for all tokens.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logProbabilitySum")]
+        public float? LogProbabilitySum { get; set; }
 
         /// <summary>
         /// Length = total number of decoding steps. The chosen candidates may or may not be in top_candidates.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="LogprobsResult" /> class.
         /// </summary>
-        /// <param name="logProbabilitySum">
-        /// Sum of log probabilities for all tokens.
-        /// </param>
         /// <param name="topCandidates">
         /// Length = total number of decoding steps.
+        /// </param>
+        /// <param name="logProbabilitySum">
+        /// Sum of log probabilities for all tokens.
         /// </param>
         /// <param name="chosenCandidates">
         /// Length = total number of decoding steps. The chosen candidates may or may not be in top_candidates.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LogprobsResult(
-            float? logProbabilitySum,
             global::System.Collections.Generic.IList<global::Google.Gemini.TopCandidates>? topCandidates,
+            float? logProbabilitySum,
             global::System.Collections.Generic.IList<global::Google.Gemini.LogprobsResultCandidate>? chosenCandidates)
         {
-            this.LogProbabilitySum = logProbabilitySum;
             this.TopCandidates = topCandidates;
+            this.LogProbabilitySum = logProbabilitySum;
             this.ChosenCandidates = chosenCandidates;
         }
 
