@@ -397,14 +397,11 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="inputConfig">
-        /// Configures the input to the batch request.
-        /// </param>
-        /// <param name="priority">
-        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
-        /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// </param>
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
@@ -412,8 +409,11 @@ namespace Google.Gemini
         /// <param name="batchStats">
         /// Stats about the batch.
         /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="inputConfig">
+        /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="priority">
+        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -421,23 +421,23 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentBatch> BatchesUpdateGenerateContentBatchAsync(
             string batchesId,
             string? updateMask = default,
-            global::Google.Gemini.InputConfig? inputConfig = default,
-            string? priority = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
+            string? model = default,
             string? displayName = default,
             global::Google.Gemini.BatchStats? batchStats = default,
-            string? model = default,
+            global::Google.Gemini.InputConfig? inputConfig = default,
+            string? priority = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.GenerateContentBatch
             {
-                InputConfig = inputConfig,
-                Priority = priority,
                 Output = output,
+                Model = model,
                 DisplayName = displayName,
                 BatchStats = batchStats,
-                Model = model,
+                InputConfig = inputConfig,
+                Priority = priority,
             };
 
             return await BatchesUpdateGenerateContentBatchAsync(
