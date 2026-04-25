@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? FileName { get; set; }
 
         /// <summary>
-        /// Custom metadata to be associated with the file.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunkingConfig")]
         public global::Google.Gemini.ChunkingConfig? ChunkingConfig { get; set; }
+
+        /// <summary>
+        /// Custom metadata to be associated with the file.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="fileName">
         /// Required. The name of the `File` to import. Example: `files/abc-123`
         /// </param>
-        /// <param name="customMetadata">
-        /// Custom metadata to be associated with the file.
-        /// </param>
         /// <param name="chunkingConfig">
         /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
+        /// </param>
+        /// <param name="customMetadata">
+        /// Custom metadata to be associated with the file.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ImportFileRequest(
             string? fileName,
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
-            global::Google.Gemini.ChunkingConfig? chunkingConfig)
+            global::Google.Gemini.ChunkingConfig? chunkingConfig,
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata)
         {
             this.FileName = fileName;
-            this.CustomMetadata = customMetadata;
             this.ChunkingConfig = chunkingConfig;
+            this.CustomMetadata = customMetadata;
         }
 
         /// <summary>
