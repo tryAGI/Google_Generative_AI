@@ -16,18 +16,18 @@ namespace Google.Gemini
         public float? MeanLoss { get; set; }
 
         /// <summary>
-        /// Output only. The tuning step.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
-        public int? Step { get; set; }
-
-        /// <summary>
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("computeTime")]
         public string? ComputeTime { get; set; }
+
+        /// <summary>
+        /// Output only. The tuning step.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
+        public int? Step { get; set; }
 
         /// <summary>
         /// Output only. The epoch this step was part of.<br/>
@@ -49,12 +49,12 @@ namespace Google.Gemini
         /// Output only. The mean loss of the training examples for this step.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="step">
-        /// Output only. The tuning step.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="computeTime">
         /// Output only. The timestamp when this metric was computed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="step">
+        /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="epoch">
@@ -66,13 +66,13 @@ namespace Google.Gemini
 #endif
         public TuningSnapshot(
             float? meanLoss,
-            int? step,
             string? computeTime,
+            int? step,
             int? epoch)
         {
             this.MeanLoss = meanLoss;
-            this.Step = step;
             this.ComputeTime = computeTime;
+            this.Step = step;
             this.Epoch = epoch;
         }
 

@@ -21,11 +21,10 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
-        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("parts")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
 
         /// <summary>
         /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
@@ -34,16 +33,17 @@ namespace Google.Gemini
         public bool? WillContinue { get; set; }
 
         /// <summary>
-        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parts")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
-
-        /// <summary>
         /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
+        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,17 +60,17 @@ namespace Google.Gemini
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
-        /// <param name="scheduling">
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// <param name="parts">
+        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </param>
         /// <param name="willContinue">
         /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
         /// </param>
-        /// <param name="parts">
-        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
-        /// </param>
         /// <param name="name">
         /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+        /// </param>
+        /// <param name="scheduling">
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,17 +78,17 @@ namespace Google.Gemini
         public FunctionResponse(
             object? response,
             string? id,
-            global::Google.Gemini.FunctionResponseScheduling? scheduling,
-            bool? willContinue,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
-            string? name)
+            bool? willContinue,
+            string? name,
+            global::Google.Gemini.FunctionResponseScheduling? scheduling)
         {
             this.Response = response;
             this.Id = id;
-            this.Scheduling = scheduling;
-            this.WillContinue = willContinue;
             this.Parts = parts;
+            this.WillContinue = willContinue;
             this.Name = name;
+            this.Scheduling = scheduling;
         }
 
         /// <summary>
