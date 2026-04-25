@@ -9,20 +9,6 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
-        /// MIME type of the generatedFile.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
-        /// Output only. The state of the GeneratedFile.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GeneratedFileStateJsonConverter))]
-        public global::Google.Gemini.GeneratedFileState? State { get; set; }
-
-        /// <summary>
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
@@ -35,6 +21,20 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
+        /// Output only. The state of the GeneratedFile.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GeneratedFileStateJsonConverter))]
+        public global::Google.Gemini.GeneratedFileState? State { get; set; }
+
+        /// <summary>
+        /// MIME type of the generatedFile.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,32 +43,32 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// MIME type of the generatedFile.
-        /// </param>
-        /// <param name="state">
-        /// Output only. The state of the GeneratedFile.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="error">
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </param>
         /// <param name="name">
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
         /// </param>
+        /// <param name="state">
+        /// Output only. The state of the GeneratedFile.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="mimeType">
+        /// MIME type of the generatedFile.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
-            string? mimeType,
-            global::Google.Gemini.GeneratedFileState? state,
             global::Google.Gemini.Status? error,
-            string? name)
+            string? name,
+            global::Google.Gemini.GeneratedFileState? state,
+            string? mimeType)
         {
-            this.MimeType = mimeType;
-            this.State = state;
             this.Error = error;
             this.Name = name;
+            this.State = state;
+            this.MimeType = mimeType;
         }
 
         /// <summary>
