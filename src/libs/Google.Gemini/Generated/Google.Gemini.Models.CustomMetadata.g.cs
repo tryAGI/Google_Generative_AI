@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class CustomMetadata
     {
         /// <summary>
-        /// Required. The key of the metadata to store.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
-
-        /// <summary>
         /// The string value of the metadata to store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
@@ -25,6 +19,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
         public float? NumericValue { get; set; }
+
+        /// <summary>
+        /// Required. The key of the metadata to store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// User provided string values assigned to a single metadata key.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomMetadata" /> class.
         /// </summary>
-        /// <param name="key">
-        /// Required. The key of the metadata to store.
-        /// </param>
         /// <param name="stringValue">
         /// The string value of the metadata to store.
         /// </param>
         /// <param name="numericValue">
         /// The numeric value of the metadata to store.
+        /// </param>
+        /// <param name="key">
+        /// Required. The key of the metadata to store.
         /// </param>
         /// <param name="stringListValue">
         /// User provided string values assigned to a single metadata key.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CustomMetadata(
-            string? key,
             string? stringValue,
             float? numericValue,
+            string? key,
             global::Google.Gemini.StringList? stringListValue)
         {
-            this.Key = key;
             this.StringValue = stringValue;
             this.NumericValue = numericValue;
+            this.Key = key;
             this.StringListValue = stringListValue;
         }
 
