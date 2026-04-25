@@ -15,6 +15,12 @@ namespace Google.Gemini
         public global::Google.Gemini.GroundingChunkStringList? StringListValue { get; set; }
 
         /// <summary>
+        /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
+        public float? NumericValue { get; set; }
+
+        /// <summary>
         /// Optional. The string value of the metadata.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
@@ -25,12 +31,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("key")]
         public string? Key { get; set; }
-
-        /// <summary>
-        /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
-        public float? NumericValue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,28 +44,28 @@ namespace Google.Gemini
         /// <param name="stringListValue">
         /// A list of string values.
         /// </param>
+        /// <param name="numericValue">
+        /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
+        /// </param>
         /// <param name="stringValue">
         /// Optional. The string value of the metadata.
         /// </param>
         /// <param name="key">
         /// The key of the metadata.
         /// </param>
-        /// <param name="numericValue">
-        /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunkCustomMetadata(
             global::Google.Gemini.GroundingChunkStringList? stringListValue,
+            float? numericValue,
             string? stringValue,
-            string? key,
-            float? numericValue)
+            string? key)
         {
             this.StringListValue = stringListValue;
+            this.NumericValue = numericValue;
             this.StringValue = stringValue;
             this.Key = key;
-            this.NumericValue = numericValue;
         }
 
         /// <summary>
