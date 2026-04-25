@@ -25,17 +25,17 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
-        /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
         /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
+        /// </param>
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="priority">
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
@@ -49,10 +49,10 @@ namespace Google.Gemini
         global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentBatch> BatchesUpdateEmbedContentBatchAsync(
             string batchesId,
             string? updateMask = default,
-            string? displayName = default,
             global::Google.Gemini.EmbedContentBatchOutput? output = default,
-            string? model = default,
+            string? displayName = default,
             global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
+            string? model = default,
             string? priority = default,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
