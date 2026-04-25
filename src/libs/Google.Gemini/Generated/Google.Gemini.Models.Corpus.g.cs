@@ -22,18 +22,18 @@ namespace Google.Gemini
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
         /// Output only. The Timestamp of when the `Corpus` was last updated.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public string? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,12 +51,12 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `Corpus`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
         /// </param>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `Corpus` was last updated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -65,13 +65,13 @@ namespace Google.Gemini
         public Corpus(
             string? name,
             string? displayName,
-            string? createTime,
-            string? updateTime)
+            string? updateTime,
+            string? createTime)
         {
             this.Name = name;
             this.DisplayName = displayName;
-            this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.CreateTime = createTime;
         }
 
         /// <summary>
