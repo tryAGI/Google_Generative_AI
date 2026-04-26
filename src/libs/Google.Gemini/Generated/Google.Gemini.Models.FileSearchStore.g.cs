@@ -9,6 +9,13 @@ namespace Google.Gemini
     public sealed partial class FileSearchStore
     {
         /// <summary>
+        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pendingDocumentsCount")]
+        public string? PendingDocumentsCount { get; set; }
+
+        /// <summary>
         /// Output only. The number of documents in the `FileSearchStore` that have failed processing.<br/>
         /// Included only in responses
         /// </summary>
@@ -23,6 +30,12 @@ namespace Google.Gemini
         public string? CreateTime { get; set; }
 
         /// <summary>
+        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
         /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
         /// Included only in responses
         /// </summary>
@@ -35,19 +48,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
         public string? ActiveDocumentsCount { get; set; }
-
-        /// <summary>
-        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pendingDocumentsCount")]
-        public string? PendingDocumentsCount { get; set; }
-
-        /// <summary>
-        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
@@ -72,6 +72,10 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSearchStore" /> class.
         /// </summary>
+        /// <param name="pendingDocumentsCount">
+        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="failedDocumentsCount">
         /// Output only. The number of documents in the `FileSearchStore` that have failed processing.<br/>
         /// Included only in responses
@@ -80,6 +84,9 @@ namespace Google.Gemini
         /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="displayName">
+        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
+        /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
         /// Included only in responses
@@ -87,13 +94,6 @@ namespace Google.Gemini
         /// <param name="activeDocumentsCount">
         /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="pendingDocumentsCount">
-        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="displayName">
-        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
         /// </param>
         /// <param name="sizeBytes">
         /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
@@ -107,21 +107,21 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileSearchStore(
+            string? pendingDocumentsCount,
             string? failedDocumentsCount,
             string? createTime,
+            string? displayName,
             string? updateTime,
             string? activeDocumentsCount,
-            string? pendingDocumentsCount,
-            string? displayName,
             string? sizeBytes,
             string? name)
         {
+            this.PendingDocumentsCount = pendingDocumentsCount;
             this.FailedDocumentsCount = failedDocumentsCount;
             this.CreateTime = createTime;
+            this.DisplayName = displayName;
             this.UpdateTime = updateTime;
             this.ActiveDocumentsCount = activeDocumentsCount;
-            this.PendingDocumentsCount = pendingDocumentsCount;
-            this.DisplayName = displayName;
             this.SizeBytes = sizeBytes;
             this.Name = name;
         }
