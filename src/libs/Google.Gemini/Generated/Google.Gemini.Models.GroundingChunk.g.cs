@@ -15,16 +15,16 @@ namespace Google.Gemini
         public global::Google.Gemini.Image? Image { get; set; }
 
         /// <summary>
-        /// Chunk from context retrieved by the file search tool.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrievedContext")]
-        public global::Google.Gemini.RetrievedContext? RetrievedContext { get; set; }
-
-        /// <summary>
         /// Chunk from the web.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("web")]
         public global::Google.Gemini.Web? Web { get; set; }
+
+        /// <summary>
+        /// Chunk from context retrieved by the file search tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retrievedContext")]
+        public global::Google.Gemini.RetrievedContext? RetrievedContext { get; set; }
 
         /// <summary>
         /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
@@ -44,11 +44,11 @@ namespace Google.Gemini
         /// <param name="image">
         /// Chunk from image search.
         /// </param>
-        /// <param name="retrievedContext">
-        /// Chunk from context retrieved by the file search tool.
-        /// </param>
         /// <param name="web">
         /// Chunk from the web.
+        /// </param>
+        /// <param name="retrievedContext">
+        /// Chunk from context retrieved by the file search tool.
         /// </param>
         /// <param name="maps">
         /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
@@ -58,13 +58,13 @@ namespace Google.Gemini
 #endif
         public GroundingChunk(
             global::Google.Gemini.Image? image,
-            global::Google.Gemini.RetrievedContext? retrievedContext,
             global::Google.Gemini.Web? web,
+            global::Google.Gemini.RetrievedContext? retrievedContext,
             global::Google.Gemini.Maps? maps)
         {
             this.Image = image;
-            this.RetrievedContext = retrievedContext;
             this.Web = web;
+            this.RetrievedContext = retrievedContext;
             this.Maps = maps;
         }
 

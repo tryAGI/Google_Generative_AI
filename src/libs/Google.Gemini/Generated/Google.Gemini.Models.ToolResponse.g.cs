@@ -16,16 +16,16 @@ namespace Google.Gemini
         public global::Google.Gemini.ToolResponseToolType? ToolType { get; set; }
 
         /// <summary>
-        /// Optional. The tool response.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public object? Response { get; set; }
-
-        /// <summary>
         /// Optional. The identifier of the tool call this response is for.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
+
+        /// <summary>
+        /// Optional. The tool response.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public object? Response { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini
         /// <param name="toolType">
         /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
         /// </param>
-        /// <param name="response">
-        /// Optional. The tool response.
-        /// </param>
         /// <param name="id">
         /// Optional. The identifier of the tool call this response is for.
+        /// </param>
+        /// <param name="response">
+        /// Optional. The tool response.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolResponse(
             global::Google.Gemini.ToolResponseToolType? toolType,
-            object? response,
-            string? id)
+            string? id,
+            object? response)
         {
             this.ToolType = toolType;
-            this.Response = response;
             this.Id = id;
+            this.Response = response;
         }
 
         /// <summary>
