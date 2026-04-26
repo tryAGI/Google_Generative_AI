@@ -9,6 +9,47 @@ namespace Google.Gemini
     public sealed partial class FileSearchStore
     {
         /// <summary>
+        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
+        public string? SizeBytes { get; set; }
+
+        /// <summary>
+        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
+        public string? ActiveDocumentsCount { get; set; }
+
+        /// <summary>
+        /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
         /// Included only in responses
         /// </summary>
@@ -23,47 +64,6 @@ namespace Google.Gemini
         public string? FailedDocumentsCount { get; set; }
 
         /// <summary>
-        /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
-        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
-        public string? ActiveDocumentsCount { get; set; }
-
-        /// <summary>
-        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
-        public string? SizeBytes { get; set; }
-
-        /// <summary>
-        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -72,6 +72,29 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSearchStore" /> class.
         /// </summary>
+        /// <param name="sizeBytes">
+        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
+        /// </param>
+        /// <param name="activeDocumentsCount">
+        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="name">
+        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="pendingDocumentsCount">
         /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
         /// Included only in responses
@@ -80,50 +103,27 @@ namespace Google.Gemini
         /// Output only. The number of documents in the `FileSearchStore` that have failed processing.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="displayName">
-        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
-        /// </param>
-        /// <param name="updateTime">
-        /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="activeDocumentsCount">
-        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="name">
-        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileSearchStore(
-            string? pendingDocumentsCount,
-            string? failedDocumentsCount,
-            string? createTime,
-            string? displayName,
-            string? updateTime,
-            string? activeDocumentsCount,
             string? sizeBytes,
-            string? name)
+            string? displayName,
+            string? activeDocumentsCount,
+            string? updateTime,
+            string? createTime,
+            string? name,
+            string? pendingDocumentsCount,
+            string? failedDocumentsCount)
         {
+            this.SizeBytes = sizeBytes;
+            this.DisplayName = displayName;
+            this.ActiveDocumentsCount = activeDocumentsCount;
+            this.UpdateTime = updateTime;
+            this.CreateTime = createTime;
+            this.Name = name;
             this.PendingDocumentsCount = pendingDocumentsCount;
             this.FailedDocumentsCount = failedDocumentsCount;
-            this.CreateTime = createTime;
-            this.DisplayName = displayName;
-            this.UpdateTime = updateTime;
-            this.ActiveDocumentsCount = activeDocumentsCount;
-            this.SizeBytes = sizeBytes;
-            this.Name = name;
         }
 
         /// <summary>
