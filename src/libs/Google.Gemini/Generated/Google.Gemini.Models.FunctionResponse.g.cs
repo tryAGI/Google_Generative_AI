@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class FunctionResponse
     {
         /// <summary>
+        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parts")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
+
+        /// <summary>
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -40,12 +46,6 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parts")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,6 +54,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponse" /> class.
         /// </summary>
+        /// <param name="parts">
+        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
+        /// </param>
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
@@ -69,26 +72,23 @@ namespace Google.Gemini
         /// <param name="name">
         /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </param>
-        /// <param name="parts">
-        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponse(
+            global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
             string? id,
             object? response,
             bool? willContinue,
             global::Google.Gemini.FunctionResponseScheduling? scheduling,
-            string? name,
-            global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts)
+            string? name)
         {
+            this.Parts = parts;
             this.Id = id;
             this.Response = response;
             this.WillContinue = willContinue;
             this.Scheduling = scheduling;
             this.Name = name;
-            this.Parts = parts;
         }
 
         /// <summary>
