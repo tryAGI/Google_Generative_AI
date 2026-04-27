@@ -390,11 +390,11 @@ namespace Google.Gemini
         /// <param name="emailAddress">
         /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </param>
-        /// <param name="role">
-        /// Required. The role granted by this permission.
-        /// </param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
+        /// </param>
+        /// <param name="role">
+        /// Required. The role granted by this permission.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -402,16 +402,16 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Permission> TunedModelsPermissionsCreateAsync(
             string tunedModelsId,
             string? emailAddress = default,
-            global::Google.Gemini.PermissionRole? role = default,
             global::Google.Gemini.PermissionGranteeType? granteeType = default,
+            global::Google.Gemini.PermissionRole? role = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.Permission
             {
                 EmailAddress = emailAddress,
-                Role = role,
                 GranteeType = granteeType,
+                Role = role,
             };
 
             return await TunedModelsPermissionsCreateAsync(
