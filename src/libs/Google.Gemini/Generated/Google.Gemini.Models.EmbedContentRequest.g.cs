@@ -11,12 +11,6 @@ namespace Google.Gemini
     public sealed partial class EmbedContentRequest
     {
         /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public global::Google.Gemini.Content? Content { get; set; }
-
-        /// <summary>
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
@@ -44,6 +38,12 @@ namespace Google.Gemini
         public int? OutputDimensionality { get; set; }
 
         /// <summary>
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::Google.Gemini.Content? Content { get; set; }
+
+        /// <summary>
         /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -59,26 +59,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentRequest" /> class.
         /// </summary>
-        /// <param name="content">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
         /// <param name="model">
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
         /// </param>
         /// <param name="embedContentConfig">
         /// Configurations for the EmbedContent request.
         /// </param>
+        /// <param name="content">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentRequest(
-            global::Google.Gemini.Content? content,
             string? model,
-            global::Google.Gemini.EmbedContentConfig? embedContentConfig)
+            global::Google.Gemini.EmbedContentConfig? embedContentConfig,
+            global::Google.Gemini.Content? content)
         {
-            this.Content = content;
             this.Model = model;
             this.EmbedContentConfig = embedContentConfig;
+            this.Content = content;
         }
 
         /// <summary>
