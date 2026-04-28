@@ -9,18 +9,6 @@ namespace Google.Gemini
     public sealed partial class EmbedContentConfig
     {
         /// <summary>
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
-
-        /// <summary>
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
-        public bool? AutoTruncate { get; set; }
-
-        /// <summary>
         /// Optional. Whether to enable OCR for document content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documentOcr")]
@@ -39,11 +27,23 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
+        public bool? AutoTruncate { get; set; }
+
+        /// <summary>
         /// Optional. The task type of the embedding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
+
+        /// <summary>
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,12 +54,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentConfig" /> class.
         /// </summary>
-        /// <param name="outputDimensionality">
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </param>
-        /// <param name="autoTruncate">
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
-        /// </param>
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
@@ -69,26 +63,32 @@ namespace Google.Gemini
         /// <param name="title">
         /// Optional. The title for the text.
         /// </param>
+        /// <param name="autoTruncate">
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// </param>
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
+        /// </param>
+        /// <param name="outputDimensionality">
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
-            int? outputDimensionality,
-            bool? autoTruncate,
             bool? documentOcr,
             bool? audioTrackExtraction,
             string? title,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
+            bool? autoTruncate,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
+            int? outputDimensionality)
         {
-            this.OutputDimensionality = outputDimensionality;
-            this.AutoTruncate = autoTruncate;
             this.DocumentOcr = documentOcr;
             this.AudioTrackExtraction = audioTrackExtraction;
             this.Title = title;
+            this.AutoTruncate = autoTruncate;
             this.TaskType = taskType;
+            this.OutputDimensionality = outputDimensionality;
         }
 
         /// <summary>
