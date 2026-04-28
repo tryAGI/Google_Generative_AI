@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class CustomLongRunningOperation
     {
         /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response")]
@@ -33,12 +39,6 @@ namespace Google.Gemini
         public bool? Done { get; set; }
 
         /// <summary>
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +47,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomLongRunningOperation" /> class.
         /// </summary>
+        /// <param name="name">
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </param>
         /// <param name="response">
         /// The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         /// </param>
@@ -59,24 +62,21 @@ namespace Google.Gemini
         /// <param name="done">
         /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
         /// </param>
-        /// <param name="name">
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CustomLongRunningOperation(
+            string? name,
             object? response,
             global::Google.Gemini.Status? error,
             object? metadata,
-            bool? done,
-            string? name)
+            bool? done)
         {
+            this.Name = name;
             this.Response = response;
             this.Error = error;
             this.Metadata = metadata;
             this.Done = done;
-            this.Name = name;
         }
 
         /// <summary>
