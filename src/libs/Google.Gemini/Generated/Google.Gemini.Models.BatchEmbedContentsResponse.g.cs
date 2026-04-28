@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class BatchEmbedContentsResponse
     {
         /// <summary>
-        /// Metadata on the usage of the embedding request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
-        public global::Google.Gemini.EmbeddingUsageMetadata? UsageMetadata { get; set; }
-
-        /// <summary>
         /// Output only. The embeddings for each request, in the same order as provided in the batch request.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embeddings")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.ContentEmbedding>? Embeddings { get; set; }
+
+        /// <summary>
+        /// Metadata on the usage of the embedding request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
+        public global::Google.Gemini.EmbeddingUsageMetadata? UsageMetadata { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,22 +30,22 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchEmbedContentsResponse" /> class.
         /// </summary>
-        /// <param name="usageMetadata">
-        /// Metadata on the usage of the embedding request.
-        /// </param>
         /// <param name="embeddings">
         /// Output only. The embeddings for each request, in the same order as provided in the batch request.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the usage of the embedding request.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BatchEmbedContentsResponse(
-            global::Google.Gemini.EmbeddingUsageMetadata? usageMetadata,
-            global::System.Collections.Generic.IList<global::Google.Gemini.ContentEmbedding>? embeddings)
+            global::System.Collections.Generic.IList<global::Google.Gemini.ContentEmbedding>? embeddings,
+            global::Google.Gemini.EmbeddingUsageMetadata? usageMetadata)
         {
-            this.UsageMetadata = usageMetadata;
             this.Embeddings = embeddings;
+            this.UsageMetadata = usageMetadata;
         }
 
         /// <summary>
