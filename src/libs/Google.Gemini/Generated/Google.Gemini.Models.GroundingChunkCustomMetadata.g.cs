@@ -21,16 +21,16 @@ namespace Google.Gemini
         public float? NumericValue { get; set; }
 
         /// <summary>
-        /// The key of the metadata.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
-
-        /// <summary>
         /// Optional. The string value of the metadata.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
         public string? StringValue { get; set; }
+
+        /// <summary>
+        /// The key of the metadata.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="numericValue">
         /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
         /// </param>
-        /// <param name="key">
-        /// The key of the metadata.
-        /// </param>
         /// <param name="stringValue">
         /// Optional. The string value of the metadata.
+        /// </param>
+        /// <param name="key">
+        /// The key of the metadata.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public GroundingChunkCustomMetadata(
             global::Google.Gemini.GroundingChunkStringList? stringListValue,
             float? numericValue,
-            string? key,
-            string? stringValue)
+            string? stringValue,
+            string? key)
         {
             this.StringListValue = stringListValue;
             this.NumericValue = numericValue;
-            this.Key = key;
             this.StringValue = stringValue;
+            this.Key = key;
         }
 
         /// <summary>
