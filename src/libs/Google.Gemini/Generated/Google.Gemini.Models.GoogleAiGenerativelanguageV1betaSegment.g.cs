@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class GoogleAiGenerativelanguageV1betaSegment
     {
         /// <summary>
-        /// The index of a Part object within its parent Content object.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("partIndex")]
-        public int? PartIndex { get; set; }
-
-        /// <summary>
         /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
@@ -25,6 +19,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
         public int? EndIndex { get; set; }
+
+        /// <summary>
+        /// The index of a Part object within its parent Content object.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("partIndex")]
+        public int? PartIndex { get; set; }
 
         /// <summary>
         /// The text corresponding to the segment from the response.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleAiGenerativelanguageV1betaSegment" /> class.
         /// </summary>
-        /// <param name="partIndex">
-        /// The index of a Part object within its parent Content object.
-        /// </param>
         /// <param name="startIndex">
         /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </param>
         /// <param name="endIndex">
         /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
+        /// </param>
+        /// <param name="partIndex">
+        /// The index of a Part object within its parent Content object.
         /// </param>
         /// <param name="text">
         /// The text corresponding to the segment from the response.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleAiGenerativelanguageV1betaSegment(
-            int? partIndex,
             int? startIndex,
             int? endIndex,
+            int? partIndex,
             string? text)
         {
-            this.PartIndex = partIndex;
             this.StartIndex = startIndex;
             this.EndIndex = endIndex;
+            this.PartIndex = partIndex;
             this.Text = text;
         }
 
