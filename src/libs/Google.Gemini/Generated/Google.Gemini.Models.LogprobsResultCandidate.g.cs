@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class LogprobsResultCandidate
     {
         /// <summary>
+        /// The candidate's log probability.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logProbability")]
+        public float? LogProbability { get; set; }
+
+        /// <summary>
         /// The candidate’s token id value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tokenId")]
@@ -21,12 +27,6 @@ namespace Google.Gemini
         public string? Token { get; set; }
 
         /// <summary>
-        /// The candidate's log probability.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logProbability")]
-        public float? LogProbability { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="LogprobsResultCandidate" /> class.
         /// </summary>
+        /// <param name="logProbability">
+        /// The candidate's log probability.
+        /// </param>
         /// <param name="tokenId">
         /// The candidate’s token id value.
         /// </param>
         /// <param name="token">
         /// The candidate’s token string value.
         /// </param>
-        /// <param name="logProbability">
-        /// The candidate's log probability.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LogprobsResultCandidate(
+            float? logProbability,
             int? tokenId,
-            string? token,
-            float? logProbability)
+            string? token)
         {
+            this.LogProbability = logProbability;
             this.TokenId = tokenId;
             this.Token = token;
-            this.LogProbability = logProbability;
         }
 
         /// <summary>
