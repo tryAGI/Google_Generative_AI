@@ -115,7 +115,7 @@ namespace Google.Gemini
                 PrepareCorporaGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corporaId: corporaId);
+                    corporaId: corporaId!);
 
                 return __httpRequest;
             }

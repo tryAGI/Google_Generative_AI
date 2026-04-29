@@ -129,7 +129,7 @@ namespace Google.Gemini
                 PrepareCorporaPermissionsCreateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corporaId: corporaId,
+                    corporaId: corporaId!,
                     request: request);
 
                 return __httpRequest;

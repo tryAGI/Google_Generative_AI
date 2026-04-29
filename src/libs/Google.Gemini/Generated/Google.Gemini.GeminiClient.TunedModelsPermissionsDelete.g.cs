@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareTunedModelsPermissionsDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    tunedModelsId: tunedModelsId,
-                    permissionsId: permissionsId);
+                    tunedModelsId: tunedModelsId!,
+                    permissionsId: permissionsId!);
 
                 return __httpRequest;
             }

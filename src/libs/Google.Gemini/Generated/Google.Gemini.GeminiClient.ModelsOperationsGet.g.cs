@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareModelsOperationsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    operationsId: operationsId,
-                    modelsId: modelsId);
+                    operationsId: operationsId!,
+                    modelsId: modelsId!);
 
                 return __httpRequest;
             }

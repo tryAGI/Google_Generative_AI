@@ -115,7 +115,7 @@ namespace Google.Gemini
                 PrepareCachedContentsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cachedContentsId: cachedContentsId);
+                    cachedContentsId: cachedContentsId!);
 
                 return __httpRequest;
             }

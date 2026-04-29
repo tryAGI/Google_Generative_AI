@@ -128,9 +128,9 @@ namespace Google.Gemini
                 PrepareFileSearchStoresDocumentsDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    fileSearchStoresId: fileSearchStoresId,
+                    fileSearchStoresId: fileSearchStoresId!,
                     force: force,
-                    documentsId: documentsId);
+                    documentsId: documentsId!);
 
                 return __httpRequest;
             }

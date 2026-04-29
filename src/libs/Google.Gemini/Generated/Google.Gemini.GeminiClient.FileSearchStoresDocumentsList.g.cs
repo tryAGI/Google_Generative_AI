@@ -131,7 +131,7 @@ namespace Google.Gemini
                     httpRequestMessage: __httpRequest,
                     pageSize: pageSize,
                     pageToken: pageToken,
-                    fileSearchStoresId: fileSearchStoresId);
+                    fileSearchStoresId: fileSearchStoresId!);
 
                 return __httpRequest;
             }

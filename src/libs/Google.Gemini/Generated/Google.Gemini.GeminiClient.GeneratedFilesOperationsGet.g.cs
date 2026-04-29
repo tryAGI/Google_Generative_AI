@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareGeneratedFilesOperationsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    operationsId: operationsId,
-                    generatedFilesId: generatedFilesId);
+                    operationsId: operationsId!,
+                    generatedFilesId: generatedFilesId!);
 
                 return __httpRequest;
             }

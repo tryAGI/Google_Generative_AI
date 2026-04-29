@@ -129,7 +129,7 @@ namespace Google.Gemini
                 PrepareModelsBatchGenerateContentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelsId: modelsId,
+                    modelsId: modelsId!,
                     request: request);
 
                 return __httpRequest;

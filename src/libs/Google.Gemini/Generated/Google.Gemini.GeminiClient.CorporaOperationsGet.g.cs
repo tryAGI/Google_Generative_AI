@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareCorporaOperationsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    operationsId: operationsId,
-                    corporaId: corporaId);
+                    operationsId: operationsId!,
+                    corporaId: corporaId!);
 
                 return __httpRequest;
             }

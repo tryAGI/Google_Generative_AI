@@ -142,7 +142,7 @@ namespace Google.Gemini
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     filter: filter,
-                    modelsId: modelsId,
+                    modelsId: modelsId!,
                     pageSize: pageSize,
                     pageToken: pageToken,
                     returnPartialSuccess: returnPartialSuccess);

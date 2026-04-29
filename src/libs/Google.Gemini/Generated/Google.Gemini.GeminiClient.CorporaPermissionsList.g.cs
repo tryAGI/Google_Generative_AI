@@ -131,7 +131,7 @@ namespace Google.Gemini
                     httpRequestMessage: __httpRequest,
                     pageSize: pageSize,
                     pageToken: pageToken,
-                    corporaId: corporaId);
+                    corporaId: corporaId!);
 
                 return __httpRequest;
             }

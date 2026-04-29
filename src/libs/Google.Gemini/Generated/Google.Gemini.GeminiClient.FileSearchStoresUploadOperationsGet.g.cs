@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareFileSearchStoresUploadOperationsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    operationsId: operationsId,
-                    fileSearchStoresId: fileSearchStoresId);
+                    operationsId: operationsId!,
+                    fileSearchStoresId: fileSearchStoresId!);
 
                 return __httpRequest;
             }
