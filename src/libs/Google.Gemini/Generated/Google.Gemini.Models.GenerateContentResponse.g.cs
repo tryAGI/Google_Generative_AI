@@ -16,12 +16,6 @@ namespace Google.Gemini
         public string? ModelVersion { get; set; }
 
         /// <summary>
-        /// Metadata on the generation request's token usage.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
-        public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
-
-        /// <summary>
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </summary>
@@ -33,6 +27,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelStatus")]
         public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
+
+        /// <summary>
+        /// Metadata on the generation request's token usage.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
+        public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
 
         /// <summary>
         /// Candidate responses from the model.
@@ -59,15 +59,15 @@ namespace Google.Gemini
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="usageMetadata">
-        /// Metadata on the generation request's token usage.
-        /// </param>
         /// <param name="responseId">
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="modelStatus">
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
+        /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the generation request's token usage.
         /// </param>
         /// <param name="candidates">
         /// Candidate responses from the model.
@@ -80,16 +80,16 @@ namespace Google.Gemini
 #endif
         public GenerateContentResponse(
             string? modelVersion,
-            global::Google.Gemini.UsageMetadata? usageMetadata,
             string? responseId,
             global::Google.Gemini.ModelStatus? modelStatus,
+            global::Google.Gemini.UsageMetadata? usageMetadata,
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
             global::Google.Gemini.PromptFeedback? promptFeedback)
         {
             this.ModelVersion = modelVersion;
-            this.UsageMetadata = usageMetadata;
             this.ResponseId = responseId;
             this.ModelStatus = modelStatus;
+            this.UsageMetadata = usageMetadata;
             this.Candidates = candidates;
             this.PromptFeedback = promptFeedback;
         }
