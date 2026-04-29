@@ -142,8 +142,8 @@ namespace Google.Gemini
                 PrepareCorporaPermissionsPatchRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    permissionsId: permissionsId,
-                    corporaId: corporaId,
+                    permissionsId: permissionsId!,
+                    corporaId: corporaId!,
                     updateMask: updateMask,
                     request: request);
 

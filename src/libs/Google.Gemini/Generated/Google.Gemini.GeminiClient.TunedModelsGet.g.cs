@@ -115,7 +115,7 @@ namespace Google.Gemini
                 PrepareTunedModelsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    tunedModelsId: tunedModelsId);
+                    tunedModelsId: tunedModelsId!);
 
                 return __httpRequest;
             }

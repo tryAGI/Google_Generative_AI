@@ -124,7 +124,7 @@ namespace Google.Gemini
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     force: force,
-                    fileSearchStoresId: fileSearchStoresId);
+                    fileSearchStoresId: fileSearchStoresId!);
 
                 return __httpRequest;
             }

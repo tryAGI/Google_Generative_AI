@@ -115,7 +115,7 @@ namespace Google.Gemini
                 PrepareFilesGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    filesId: filesId);
+                    filesId: filesId!);
 
                 return __httpRequest;
             }

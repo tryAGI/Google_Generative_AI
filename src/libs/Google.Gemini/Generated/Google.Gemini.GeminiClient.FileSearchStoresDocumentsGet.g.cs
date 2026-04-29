@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareFileSearchStoresDocumentsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    fileSearchStoresId: fileSearchStoresId,
-                    documentsId: documentsId);
+                    fileSearchStoresId: fileSearchStoresId!,
+                    documentsId: documentsId!);
 
                 return __httpRequest;
             }

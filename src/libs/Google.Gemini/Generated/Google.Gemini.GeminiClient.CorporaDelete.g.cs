@@ -124,7 +124,7 @@ namespace Google.Gemini
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     force: force,
-                    corporaId: corporaId);
+                    corporaId: corporaId!);
 
                 return __httpRequest;
             }

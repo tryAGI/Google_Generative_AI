@@ -129,7 +129,7 @@ namespace Google.Gemini
                 PrepareTunedModelsTransferOwnershipRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    tunedModelsId: tunedModelsId,
+                    tunedModelsId: tunedModelsId!,
                     request: request);
 
                 return __httpRequest;

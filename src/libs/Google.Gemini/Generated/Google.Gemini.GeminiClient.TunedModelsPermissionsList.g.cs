@@ -131,7 +131,7 @@ namespace Google.Gemini
                     httpRequestMessage: __httpRequest,
                     pageSize: pageSize,
                     pageToken: pageToken,
-                    tunedModelsId: tunedModelsId);
+                    tunedModelsId: tunedModelsId!);
 
                 return __httpRequest;
             }

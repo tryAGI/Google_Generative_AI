@@ -142,8 +142,8 @@ namespace Google.Gemini
                 PrepareTunedModelsPermissionsPatchRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    tunedModelsId: tunedModelsId,
-                    permissionsId: permissionsId,
+                    tunedModelsId: tunedModelsId!,
+                    permissionsId: permissionsId!,
                     updateMask: updateMask,
                     request: request);
 

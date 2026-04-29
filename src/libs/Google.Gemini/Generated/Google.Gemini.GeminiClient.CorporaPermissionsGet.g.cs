@@ -120,8 +120,8 @@ namespace Google.Gemini
                 PrepareCorporaPermissionsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    permissionsId: permissionsId,
-                    corporaId: corporaId);
+                    permissionsId: permissionsId!,
+                    corporaId: corporaId!);
 
                 return __httpRequest;
             }

@@ -115,7 +115,7 @@ namespace Google.Gemini
                 PrepareModelsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelsId: modelsId);
+                    modelsId: modelsId!);
 
                 return __httpRequest;
             }

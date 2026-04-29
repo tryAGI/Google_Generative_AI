@@ -115,7 +115,7 @@ namespace Google.Gemini
                 PrepareBatchesGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    batchesId: batchesId);
+                    batchesId: batchesId!);
 
                 return __httpRequest;
             }
