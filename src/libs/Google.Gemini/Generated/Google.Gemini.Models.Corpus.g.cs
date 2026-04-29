@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class Corpus
     {
         /// <summary>
-        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
         /// Output only. The Timestamp of when the `Corpus` was last updated.<br/>
         /// Included only in responses
         /// </summary>
@@ -27,6 +20,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Output only. Immutable. Identifier. The `Corpus` resource name. The ID (name excluding the "corpora/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `corpora/my-awesome-corpora-123a456b789c`<br/>
@@ -44,16 +44,16 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Corpus" /> class.
         /// </summary>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `Corpus` was last updated.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `Corpus`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `Corpus` was created.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="name">
         /// Output only. Immutable. Identifier. The `Corpus` resource name. The ID (name excluding the "corpora/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `corpora/my-awesome-corpora-123a456b789c`<br/>
@@ -63,14 +63,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Corpus(
-            string? createTime,
             string? updateTime,
             string? displayName,
+            string? createTime,
             string? name)
         {
-            this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.DisplayName = displayName;
+            this.CreateTime = createTime;
             this.Name = name;
         }
 
