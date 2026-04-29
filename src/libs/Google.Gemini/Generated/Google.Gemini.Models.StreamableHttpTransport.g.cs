@@ -15,10 +15,10 @@ namespace Google.Gemini
         public string? Url { get; set; }
 
         /// <summary>
-        /// Whether to close the client session when the transport closes.
+        /// HTTP timeout for regular operations.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
-        public bool? TerminateOnClose { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public string? Timeout { get; set; }
 
         /// <summary>
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
-        /// HTTP timeout for regular operations.
+        /// Whether to close the client session when the transport closes.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
-        public string? Timeout { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
+        public bool? TerminateOnClose { get; set; }
 
         /// <summary>
         /// Timeout for SSE read operations.
@@ -50,14 +50,14 @@ namespace Google.Gemini
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
-        /// <param name="terminateOnClose">
-        /// Whether to close the client session when the transport closes.
+        /// <param name="timeout">
+        /// HTTP timeout for regular operations.
         /// </param>
         /// <param name="headers">
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
-        /// <param name="timeout">
-        /// HTTP timeout for regular operations.
+        /// <param name="terminateOnClose">
+        /// Whether to close the client session when the transport closes.
         /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
@@ -67,15 +67,15 @@ namespace Google.Gemini
 #endif
         public StreamableHttpTransport(
             string? url,
-            bool? terminateOnClose,
-            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? timeout,
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
+            bool? terminateOnClose,
             string? sseReadTimeout)
         {
             this.Url = url;
-            this.TerminateOnClose = terminateOnClose;
-            this.Headers = headers;
             this.Timeout = timeout;
+            this.Headers = headers;
+            this.TerminateOnClose = terminateOnClose;
             this.SseReadTimeout = sseReadTimeout;
         }
 
