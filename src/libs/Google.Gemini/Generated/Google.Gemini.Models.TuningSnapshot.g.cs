@@ -23,18 +23,18 @@ namespace Google.Gemini
         public int? Step { get; set; }
 
         /// <summary>
-        /// Output only. The timestamp when this metric was computed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("computeTime")]
-        public string? ComputeTime { get; set; }
-
-        /// <summary>
         /// Output only. The mean loss of the training examples for this step.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("meanLoss")]
         public float? MeanLoss { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when this metric was computed.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("computeTime")]
+        public string? ComputeTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,12 +53,12 @@ namespace Google.Gemini
         /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="computeTime">
-        /// Output only. The timestamp when this metric was computed.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="meanLoss">
         /// Output only. The mean loss of the training examples for this step.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="computeTime">
+        /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -67,13 +67,13 @@ namespace Google.Gemini
         public TuningSnapshot(
             int? epoch,
             int? step,
-            string? computeTime,
-            float? meanLoss)
+            float? meanLoss,
+            string? computeTime)
         {
             this.Epoch = epoch;
             this.Step = step;
-            this.ComputeTime = computeTime;
             this.MeanLoss = meanLoss;
+            this.ComputeTime = computeTime;
         }
 
         /// <summary>

@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class TuningTask
     {
         /// <summary>
-        /// Output only. The timestamp when tuning this model started.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startTime")]
-        public string? StartTime { get; set; }
-
-        /// <summary>
         /// Output only. The timestamp when tuning this model completed.<br/>
         /// Included only in responses
         /// </summary>
@@ -23,10 +16,17 @@ namespace Google.Gemini
         public string? CompleteTime { get; set; }
 
         /// <summary>
-        /// Dataset for training or validation.
+        /// Hyperparameters controlling the tuning process. Read more at https://ai.google.dev/docs/model_tuning_guidance
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("trainingData")]
-        public global::Google.Gemini.Dataset? TrainingData { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("hyperparameters")]
+        public global::Google.Gemini.Hyperparameters? Hyperparameters { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when tuning this model started.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startTime")]
+        public string? StartTime { get; set; }
 
         /// <summary>
         /// Output only. Metrics collected during tuning.<br/>
@@ -36,10 +36,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Snapshots { get; set; }
 
         /// <summary>
-        /// Hyperparameters controlling the tuning process. Read more at https://ai.google.dev/docs/model_tuning_guidance
+        /// Dataset for training or validation.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("hyperparameters")]
-        public global::Google.Gemini.Hyperparameters? Hyperparameters { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("trainingData")]
+        public global::Google.Gemini.Dataset? TrainingData { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -50,39 +50,39 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="TuningTask" /> class.
         /// </summary>
-        /// <param name="startTime">
-        /// Output only. The timestamp when tuning this model started.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="completeTime">
         /// Output only. The timestamp when tuning this model completed.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="trainingData">
-        /// Dataset for training or validation.
-        /// </param>
-        /// <param name="snapshots">
-        /// Output only. Metrics collected during tuning.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="hyperparameters">
         /// Hyperparameters controlling the tuning process. Read more at https://ai.google.dev/docs/model_tuning_guidance
         /// </param>
+        /// <param name="startTime">
+        /// Output only. The timestamp when tuning this model started.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="snapshots">
+        /// Output only. Metrics collected during tuning.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="trainingData">
+        /// Dataset for training or validation.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TuningTask(
-            string? startTime,
             string? completeTime,
-            global::Google.Gemini.Dataset? trainingData,
+            global::Google.Gemini.Hyperparameters? hyperparameters,
+            string? startTime,
             global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? snapshots,
-            global::Google.Gemini.Hyperparameters? hyperparameters)
+            global::Google.Gemini.Dataset? trainingData)
         {
-            this.StartTime = startTime;
             this.CompleteTime = completeTime;
-            this.TrainingData = trainingData;
-            this.Snapshots = snapshots;
             this.Hyperparameters = hyperparameters;
+            this.StartTime = startTime;
+            this.Snapshots = snapshots;
+            this.TrainingData = trainingData;
         }
 
         /// <summary>
