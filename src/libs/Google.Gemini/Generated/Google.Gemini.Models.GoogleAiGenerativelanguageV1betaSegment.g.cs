@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class GoogleAiGenerativelanguageV1betaSegment
     {
         /// <summary>
-        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
-        public int? StartIndex { get; set; }
-
-        /// <summary>
         /// The index of a Part object within its parent Content object.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("partIndex")]
         public int? PartIndex { get; set; }
+
+        /// <summary>
+        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
+        public int? StartIndex { get; set; }
 
         /// <summary>
         /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleAiGenerativelanguageV1betaSegment" /> class.
         /// </summary>
-        /// <param name="startIndex">
-        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
-        /// </param>
         /// <param name="partIndex">
         /// The index of a Part object within its parent Content object.
+        /// </param>
+        /// <param name="startIndex">
+        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </param>
         /// <param name="endIndex">
         /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleAiGenerativelanguageV1betaSegment(
-            int? startIndex,
             int? partIndex,
+            int? startIndex,
             int? endIndex,
             string? text)
         {
-            this.StartIndex = startIndex;
             this.PartIndex = partIndex;
+            this.StartIndex = startIndex;
             this.EndIndex = endIndex;
             this.Text = text;
         }
