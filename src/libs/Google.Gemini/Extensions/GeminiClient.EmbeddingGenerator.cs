@@ -26,7 +26,7 @@ public partial class GeminiClient : Meai.IEmbeddingGenerator<string, Meai.Embedd
 
         var modelId = options?.ModelId ?? "gemini-embedding-001";
 
-        EmbedContentRequestTaskType? taskType = null;
+        EmbedContentConfigTaskType? taskType = null;
         string? title = null;
         if (options?.AdditionalProperties is { Count: > 0 } additionalProps)
         {
@@ -34,8 +34,10 @@ public partial class GeminiClient : Meai.IEmbeddingGenerator<string, Meai.Embedd
             {
                 taskType = taskTypeVal switch
                 {
-                    EmbedContentRequestTaskType enumVal => enumVal,
-                    string str => EmbedContentRequestTaskTypeExtensions.ToEnum(str),
+                    EmbedContentConfigTaskType enumVal => enumVal,
+                    EmbedContentRequestTaskType requestEnumVal => EmbedContentConfigTaskTypeExtensions.ToEnum(
+                        requestEnumVal.ToValueString()),
+                    string str => EmbedContentConfigTaskTypeExtensions.ToEnum(str),
                     _ => null,
                 };
             }
@@ -46,17 +48,25 @@ public partial class GeminiClient : Meai.IEmbeddingGenerator<string, Meai.Embedd
             }
         }
 
+        var embedContentConfig =
+            options?.Dimensions is not null || taskType is not null || title is not null
+                ? new EmbedContentConfig
+                {
+                    OutputDimensionality = options?.Dimensions,
+                    TaskType = taskType,
+                    Title = title,
+                }
+                : null;
+
         var requests = values
             .Select(text => new EmbedContentRequest
             {
+                EmbedContentConfig = embedContentConfig,
                 Model = $"models/{modelId}",
                 Content = new Content
                 {
                     Parts = [new Part { Text = text }],
                 },
-                OutputDimensionality = options?.Dimensions,
-                TaskType = taskType,
-                Title = title,
             })
             .ToList();
 
