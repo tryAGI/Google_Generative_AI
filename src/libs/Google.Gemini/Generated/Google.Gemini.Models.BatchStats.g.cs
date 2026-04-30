@@ -23,18 +23,18 @@ namespace Google.Gemini
         public string? PendingRequestCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of requests in the batch.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("requestCount")]
-        public string? RequestCount { get; set; }
-
-        /// <summary>
         /// Output only. The number of requests that were successfully processed.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("successfulRequestCount")]
         public string? SuccessfulRequestCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of requests in the batch.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("requestCount")]
+        public string? RequestCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,12 +53,12 @@ namespace Google.Gemini
         /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="requestCount">
-        /// Output only. The number of requests in the batch.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="successfulRequestCount">
         /// Output only. The number of requests that were successfully processed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="requestCount">
+        /// Output only. The number of requests in the batch.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -67,13 +67,13 @@ namespace Google.Gemini
         public BatchStats(
             string? failedRequestCount,
             string? pendingRequestCount,
-            string? requestCount,
-            string? successfulRequestCount)
+            string? successfulRequestCount,
+            string? requestCount)
         {
             this.FailedRequestCount = failedRequestCount;
             this.PendingRequestCount = pendingRequestCount;
-            this.RequestCount = requestCount;
             this.SuccessfulRequestCount = successfulRequestCount;
+            this.RequestCount = requestCount;
         }
 
         /// <summary>

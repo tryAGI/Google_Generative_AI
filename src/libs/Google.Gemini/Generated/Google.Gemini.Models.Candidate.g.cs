@@ -9,10 +9,23 @@ namespace Google.Gemini
     public sealed partial class Candidate
     {
         /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// Output only. Token count for this candidate.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public global::Google.Gemini.Content? Content { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tokenCount")]
+        public int? TokenCount { get; set; }
+
+        /// <summary>
+        /// A collection of source attributions for a piece of content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("citationMetadata")]
+        public global::Google.Gemini.CitationMetadata? CitationMetadata { get; set; }
+
+        /// <summary>
+        /// Logprobs Result
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logprobsResult")]
+        public global::Google.Gemini.LogprobsResult? LogprobsResult { get; set; }
 
         /// <summary>
         /// Output only. Average log probability score of the candidate.<br/>
@@ -22,10 +35,12 @@ namespace Google.Gemini
         public double? AvgLogprobs { get; set; }
 
         /// <summary>
-        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
+        /// Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("safetyRatings")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? SafetyRatings { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("finishReason")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.CandidateFinishReasonJsonConverter))]
+        public global::Google.Gemini.CandidateFinishReason? FinishReason { get; set; }
 
         /// <summary>
         /// Output only. Index of the candidate in the list of response candidates.<br/>
@@ -33,6 +48,18 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("index")]
         public int? Index { get; set; }
+
+        /// <summary>
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public global::Google.Gemini.Content? Content { get; set; }
+
+        /// <summary>
+        /// Metadata returned to client when grounding is enabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingMetadata")]
+        public global::Google.Gemini.GroundingMetadata? GroundingMetadata { get; set; }
 
         /// <summary>
         /// Metadata related to url context retrieval tool.
@@ -48,27 +75,6 @@ namespace Google.Gemini
         public string? FinishMessage { get; set; }
 
         /// <summary>
-        /// Output only. Token count for this candidate.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tokenCount")]
-        public int? TokenCount { get; set; }
-
-        /// <summary>
-        /// Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("finishReason")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.CandidateFinishReasonJsonConverter))]
-        public global::Google.Gemini.CandidateFinishReason? FinishReason { get; set; }
-
-        /// <summary>
-        /// A collection of source attributions for a piece of content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("citationMetadata")]
-        public global::Google.Gemini.CitationMetadata? CitationMetadata { get; set; }
-
-        /// <summary>
         /// Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.<br/>
         /// Included only in responses
         /// </summary>
@@ -76,16 +82,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? GroundingAttributions { get; set; }
 
         /// <summary>
-        /// Logprobs Result
+        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logprobsResult")]
-        public global::Google.Gemini.LogprobsResult? LogprobsResult { get; set; }
-
-        /// <summary>
-        /// Metadata returned to client when grounding is enabled.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingMetadata")]
-        public global::Google.Gemini.GroundingMetadata? GroundingMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("safetyRatings")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? SafetyRatings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -96,19 +96,33 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Candidate" /> class.
         /// </summary>
-        /// <param name="content">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// <param name="tokenCount">
+        /// Output only. Token count for this candidate.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="citationMetadata">
+        /// A collection of source attributions for a piece of content.
+        /// </param>
+        /// <param name="logprobsResult">
+        /// Logprobs Result
         /// </param>
         /// <param name="avgLogprobs">
         /// Output only. Average log probability score of the candidate.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="safetyRatings">
-        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
+        /// <param name="finishReason">
+        /// Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="index">
         /// Output only. Index of the candidate in the list of response candidates.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="content">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
+        /// <param name="groundingMetadata">
+        /// Metadata returned to client when grounding is enabled.
         /// </param>
         /// <param name="urlContextMetadata">
         /// Metadata related to url context retrieval tool.
@@ -117,56 +131,42 @@ namespace Google.Gemini
         /// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="tokenCount">
-        /// Output only. Token count for this candidate.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="finishReason">
-        /// Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="citationMetadata">
-        /// A collection of source attributions for a piece of content.
-        /// </param>
         /// <param name="groundingAttributions">
         /// Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="logprobsResult">
-        /// Logprobs Result
-        /// </param>
-        /// <param name="groundingMetadata">
-        /// Metadata returned to client when grounding is enabled.
+        /// <param name="safetyRatings">
+        /// List of ratings for the safety of a response candidate. There is at most one rating per category.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Candidate(
-            global::Google.Gemini.Content? content,
+            int? tokenCount,
+            global::Google.Gemini.CitationMetadata? citationMetadata,
+            global::Google.Gemini.LogprobsResult? logprobsResult,
             double? avgLogprobs,
-            global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? safetyRatings,
+            global::Google.Gemini.CandidateFinishReason? finishReason,
             int? index,
+            global::Google.Gemini.Content? content,
+            global::Google.Gemini.GroundingMetadata? groundingMetadata,
             global::Google.Gemini.UrlContextMetadata? urlContextMetadata,
             string? finishMessage,
-            int? tokenCount,
-            global::Google.Gemini.CandidateFinishReason? finishReason,
-            global::Google.Gemini.CitationMetadata? citationMetadata,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingAttribution>? groundingAttributions,
-            global::Google.Gemini.LogprobsResult? logprobsResult,
-            global::Google.Gemini.GroundingMetadata? groundingMetadata)
+            global::System.Collections.Generic.IList<global::Google.Gemini.SafetyRating>? safetyRatings)
         {
-            this.Content = content;
+            this.TokenCount = tokenCount;
+            this.CitationMetadata = citationMetadata;
+            this.LogprobsResult = logprobsResult;
             this.AvgLogprobs = avgLogprobs;
-            this.SafetyRatings = safetyRatings;
+            this.FinishReason = finishReason;
             this.Index = index;
+            this.Content = content;
+            this.GroundingMetadata = groundingMetadata;
             this.UrlContextMetadata = urlContextMetadata;
             this.FinishMessage = finishMessage;
-            this.TokenCount = tokenCount;
-            this.FinishReason = finishReason;
-            this.CitationMetadata = citationMetadata;
             this.GroundingAttributions = groundingAttributions;
-            this.LogprobsResult = logprobsResult;
-            this.GroundingMetadata = groundingMetadata;
+            this.SafetyRatings = safetyRatings;
         }
 
         /// <summary>
