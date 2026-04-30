@@ -27,16 +27,16 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// Text description of the place answer.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
-
-        /// <summary>
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
         public string? PlaceId { get; set; }
+
+        /// <summary>
+        /// Text description of the place answer.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -56,11 +56,11 @@ namespace Google.Gemini
         /// <param name="title">
         /// Title of the place.
         /// </param>
-        /// <param name="text">
-        /// Text description of the place answer.
-        /// </param>
         /// <param name="placeId">
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </param>
+        /// <param name="text">
+        /// Text description of the place answer.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -69,14 +69,14 @@ namespace Google.Gemini
             string? uri,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
             string? title,
-            string? text,
-            string? placeId)
+            string? placeId,
+            string? text)
         {
             this.Uri = uri;
             this.PlaceAnswerSources = placeAnswerSources;
             this.Title = title;
-            this.Text = text;
             this.PlaceId = placeId;
+            this.Text = text;
         }
 
         /// <summary>
