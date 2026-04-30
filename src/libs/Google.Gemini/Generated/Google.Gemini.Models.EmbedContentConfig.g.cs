@@ -15,6 +15,12 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
+
+        /// <summary>
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
@@ -40,12 +46,6 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -56,6 +56,9 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="title">
         /// Optional. The title for the text.
+        /// </param>
+        /// <param name="outputDimensionality">
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
         /// <param name="autoTruncate">
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
@@ -69,26 +72,23 @@ namespace Google.Gemini
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
         /// </param>
-        /// <param name="outputDimensionality">
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
             string? title,
+            int? outputDimensionality,
             bool? autoTruncate,
             bool? documentOcr,
             bool? audioTrackExtraction,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
-            int? outputDimensionality)
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
         {
             this.Title = title;
+            this.OutputDimensionality = outputDimensionality;
             this.AutoTruncate = autoTruncate;
             this.DocumentOcr = documentOcr;
             this.AudioTrackExtraction = audioTrackExtraction;
             this.TaskType = taskType;
-            this.OutputDimensionality = outputDimensionality;
         }
 
         /// <summary>
