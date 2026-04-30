@@ -27,7 +27,7 @@ public partial class Tests
         {
             AssertTransientAvailability(ex);
         }
-        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequest)
+        catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.BadRequest or System.Net.HttpStatusCode.NotFound)
         {
             // VIDEO modality may not be supported in generateContent endpoint yet
             Assert.Inconclusive("Video generation not supported: " + ex.Message[..Math.Min(ex.Message.Length, 200)]);
