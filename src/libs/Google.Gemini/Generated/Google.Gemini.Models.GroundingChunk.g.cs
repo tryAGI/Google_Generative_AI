@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class GroundingChunk
     {
         /// <summary>
+        /// Chunk from image search.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("image")]
+        public global::Google.Gemini.Image? Image { get; set; }
+
+        /// <summary>
         /// Chunk from the web.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("web")]
@@ -27,12 +33,6 @@ namespace Google.Gemini
         public global::Google.Gemini.Maps? Maps { get; set; }
 
         /// <summary>
-        /// Chunk from image search.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("image")]
-        public global::Google.Gemini.Image? Image { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingChunk" /> class.
         /// </summary>
+        /// <param name="image">
+        /// Chunk from image search.
+        /// </param>
         /// <param name="web">
         /// Chunk from the web.
         /// </param>
@@ -50,22 +53,19 @@ namespace Google.Gemini
         /// <param name="maps">
         /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
         /// </param>
-        /// <param name="image">
-        /// Chunk from image search.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunk(
+            global::Google.Gemini.Image? image,
             global::Google.Gemini.Web? web,
             global::Google.Gemini.RetrievedContext? retrievedContext,
-            global::Google.Gemini.Maps? maps,
-            global::Google.Gemini.Image? image)
+            global::Google.Gemini.Maps? maps)
         {
+            this.Image = image;
             this.Web = web;
             this.RetrievedContext = retrievedContext;
             this.Maps = maps;
-            this.Image = image;
         }
 
         /// <summary>
