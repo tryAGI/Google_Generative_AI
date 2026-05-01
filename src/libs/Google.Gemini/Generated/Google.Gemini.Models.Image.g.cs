@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class Image
     {
         /// <summary>
-        /// The root domain of the web page that the image is from, e.g. "example.com".
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
-
-        /// <summary>
         /// The image asset URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("imageUri")]
         public string? ImageUri { get; set; }
+
+        /// <summary>
+        /// The root domain of the web page that the image is from, e.g. "example.com".
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// The title of the web page that the image is from.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Image" /> class.
         /// </summary>
-        /// <param name="domain">
-        /// The root domain of the web page that the image is from, e.g. "example.com".
-        /// </param>
         /// <param name="imageUri">
         /// The image asset URL.
+        /// </param>
+        /// <param name="domain">
+        /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </param>
         /// <param name="title">
         /// The title of the web page that the image is from.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Image(
-            string? domain,
             string? imageUri,
+            string? domain,
             string? title,
             string? sourceUri)
         {
-            this.Domain = domain;
             this.ImageUri = imageUri;
+            this.Domain = domain;
             this.Title = title;
             this.SourceUri = sourceUri;
         }
