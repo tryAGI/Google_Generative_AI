@@ -9,60 +9,6 @@ namespace Google.Gemini
     public sealed partial class Model
     {
         /// <summary>
-        /// Maximum number of output tokens available for this model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputTokenLimit")]
-        public int? OutputTokenLimit { get; set; }
-
-        /// <summary>
-        /// A short description of the model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// The maximum temperature this model can use.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maxTemperature")]
-        public float? MaxTemperature { get; set; }
-
-        /// <summary>
-        /// Required. The resource name of the `Model`. Refer to [Model variants](https://ai.google.dev/gemini-api/docs/models/gemini#model-variations) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of: * "{base_model_id}-{version}" Examples: * `models/gemini-1.5-flash-001`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Required. The name of the base model, pass this to the generation request. Examples: * `gemini-1.5-flash`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("baseModelId")]
-        public string? BaseModelId { get; set; }
-
-        /// <summary>
-        /// Whether the model supports thinking.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("thinking")]
-        public bool? Thinking { get; set; }
-
-        /// <summary>
-        /// Required. The version number of the model. This represents the major version (`1.0` or `1.5`)
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
-        public string? Version { get; set; }
-
-        /// <summary>
-        /// For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("topK")]
-        public int? TopK { get; set; }
-
-        /// <summary>
-        /// The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("supportedGenerationMethods")]
-        public global::System.Collections.Generic.IList<string>? SupportedGenerationMethods { get; set; }
-
-        /// <summary>
         /// The human-readable name of the model. E.g. "Gemini 1.5 Flash". The name can be up to 128 characters long and can consist of any UTF-8 characters.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
@@ -87,6 +33,60 @@ namespace Google.Gemini
         public int? InputTokenLimit { get; set; }
 
         /// <summary>
+        /// The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supportedGenerationMethods")]
+        public global::System.Collections.Generic.IList<string>? SupportedGenerationMethods { get; set; }
+
+        /// <summary>
+        /// Maximum number of output tokens available for this model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputTokenLimit")]
+        public int? OutputTokenLimit { get; set; }
+
+        /// <summary>
+        /// Required. The version number of the model. This represents the major version (`1.0` or `1.5`)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
+        public string? Version { get; set; }
+
+        /// <summary>
+        /// A short description of the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Whether the model supports thinking.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("thinking")]
+        public bool? Thinking { get; set; }
+
+        /// <summary>
+        /// Required. The name of the base model, pass this to the generation request. Examples: * `gemini-1.5-flash`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("baseModelId")]
+        public string? BaseModelId { get; set; }
+
+        /// <summary>
+        /// The maximum temperature this model can use.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxTemperature")]
+        public float? MaxTemperature { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the `Model`. Refer to [Model variants](https://ai.google.dev/gemini-api/docs/models/gemini#model-variations) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of: * "{base_model_id}-{version}" Examples: * `models/gemini-1.5-flash-001`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("topK")]
+        public int? TopK { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -95,33 +95,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
-        /// <param name="outputTokenLimit">
-        /// Maximum number of output tokens available for this model.
-        /// </param>
-        /// <param name="description">
-        /// A short description of the model.
-        /// </param>
-        /// <param name="maxTemperature">
-        /// The maximum temperature this model can use.
-        /// </param>
-        /// <param name="name">
-        /// Required. The resource name of the `Model`. Refer to [Model variants](https://ai.google.dev/gemini-api/docs/models/gemini#model-variations) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of: * "{base_model_id}-{version}" Examples: * `models/gemini-1.5-flash-001`
-        /// </param>
-        /// <param name="baseModelId">
-        /// Required. The name of the base model, pass this to the generation request. Examples: * `gemini-1.5-flash`
-        /// </param>
-        /// <param name="thinking">
-        /// Whether the model supports thinking.
-        /// </param>
-        /// <param name="version">
-        /// Required. The version number of the model. This represents the major version (`1.0` or `1.5`)
-        /// </param>
-        /// <param name="topK">
-        /// For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
-        /// </param>
-        /// <param name="supportedGenerationMethods">
-        /// The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
-        /// </param>
         /// <param name="displayName">
         /// The human-readable name of the model. E.g. "Gemini 1.5 Flash". The name can be up to 128 characters long and can consist of any UTF-8 characters.
         /// </param>
@@ -134,37 +107,64 @@ namespace Google.Gemini
         /// <param name="inputTokenLimit">
         /// Maximum number of input tokens allowed for this model.
         /// </param>
+        /// <param name="supportedGenerationMethods">
+        /// The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
+        /// </param>
+        /// <param name="outputTokenLimit">
+        /// Maximum number of output tokens available for this model.
+        /// </param>
+        /// <param name="version">
+        /// Required. The version number of the model. This represents the major version (`1.0` or `1.5`)
+        /// </param>
+        /// <param name="description">
+        /// A short description of the model.
+        /// </param>
+        /// <param name="thinking">
+        /// Whether the model supports thinking.
+        /// </param>
+        /// <param name="baseModelId">
+        /// Required. The name of the base model, pass this to the generation request. Examples: * `gemini-1.5-flash`
+        /// </param>
+        /// <param name="maxTemperature">
+        /// The maximum temperature this model can use.
+        /// </param>
+        /// <param name="name">
+        /// Required. The resource name of the `Model`. Refer to [Model variants](https://ai.google.dev/gemini-api/docs/models/gemini#model-variations) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of: * "{base_model_id}-{version}" Examples: * `models/gemini-1.5-flash-001`
+        /// </param>
+        /// <param name="topK">
+        /// For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Model(
-            int? outputTokenLimit,
-            string? description,
-            float? maxTemperature,
-            string? name,
-            string? baseModelId,
-            bool? thinking,
-            string? version,
-            int? topK,
-            global::System.Collections.Generic.IList<string>? supportedGenerationMethods,
             string? displayName,
             float? temperature,
             float? topP,
-            int? inputTokenLimit)
+            int? inputTokenLimit,
+            global::System.Collections.Generic.IList<string>? supportedGenerationMethods,
+            int? outputTokenLimit,
+            string? version,
+            string? description,
+            bool? thinking,
+            string? baseModelId,
+            float? maxTemperature,
+            string? name,
+            int? topK)
         {
-            this.OutputTokenLimit = outputTokenLimit;
-            this.Description = description;
-            this.MaxTemperature = maxTemperature;
-            this.Name = name;
-            this.BaseModelId = baseModelId;
-            this.Thinking = thinking;
-            this.Version = version;
-            this.TopK = topK;
-            this.SupportedGenerationMethods = supportedGenerationMethods;
             this.DisplayName = displayName;
             this.Temperature = temperature;
             this.TopP = topP;
             this.InputTokenLimit = inputTokenLimit;
+            this.SupportedGenerationMethods = supportedGenerationMethods;
+            this.OutputTokenLimit = outputTokenLimit;
+            this.Version = version;
+            this.Description = description;
+            this.Thinking = thinking;
+            this.BaseModelId = baseModelId;
+            this.MaxTemperature = maxTemperature;
+            this.Name = name;
+            this.TopK = topK;
         }
 
         /// <summary>
