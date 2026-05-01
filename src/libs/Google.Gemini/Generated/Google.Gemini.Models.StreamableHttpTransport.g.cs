@@ -9,22 +9,16 @@ namespace Google.Gemini
     public sealed partial class StreamableHttpTransport
     {
         /// <summary>
-        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
-
-        /// <summary>
         /// Timeout for SSE read operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sseReadTimeout")]
         public string? SseReadTimeout { get; set; }
 
         /// <summary>
-        /// HTTP timeout for regular operations.
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
-        public string? Timeout { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Whether to close the client session when the transport closes.
@@ -33,10 +27,16 @@ namespace Google.Gemini
         public bool? TerminateOnClose { get; set; }
 
         /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
+        /// HTTP timeout for regular operations.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public string? Timeout { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,36 +47,36 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamableHttpTransport" /> class.
         /// </summary>
-        /// <param name="url">
-        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-        /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
-        /// <param name="timeout">
-        /// HTTP timeout for regular operations.
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
         /// <param name="terminateOnClose">
         /// Whether to close the client session when the transport closes.
         /// </param>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// <param name="url">
+        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+        /// </param>
+        /// <param name="timeout">
+        /// HTTP timeout for regular operations.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
-            string? url,
             string? sseReadTimeout,
-            string? timeout,
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
             bool? terminateOnClose,
-            global::System.Collections.Generic.Dictionary<string, string>? headers)
+            string? url,
+            string? timeout)
         {
-            this.Url = url;
             this.SseReadTimeout = sseReadTimeout;
-            this.Timeout = timeout;
-            this.TerminateOnClose = terminateOnClose;
             this.Headers = headers;
+            this.TerminateOnClose = terminateOnClose;
+            this.Url = url;
+            this.Timeout = timeout;
         }
 
         /// <summary>
