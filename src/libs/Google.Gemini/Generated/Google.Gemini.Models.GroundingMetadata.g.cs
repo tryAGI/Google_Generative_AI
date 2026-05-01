@@ -15,6 +15,12 @@ namespace Google.Gemini
         public global::Google.Gemini.RetrievalMetadata? RetrievalMetadata { get; set; }
 
         /// <summary>
+        /// List of grounding support.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingSupports")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? GroundingSupports { get; set; }
+
+        /// <summary>
         /// Web search queries for the following-up web search.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webSearchQueries")]
@@ -39,12 +45,6 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? ImageSearchQueries { get; set; }
 
         /// <summary>
-        /// List of grounding support.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingSupports")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? GroundingSupports { get; set; }
-
-        /// <summary>
         /// Google search entry point.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("searchEntryPoint")]
@@ -62,6 +62,9 @@ namespace Google.Gemini
         /// <param name="retrievalMetadata">
         /// Metadata related to retrieval in the grounding flow.
         /// </param>
+        /// <param name="groundingSupports">
+        /// List of grounding support.
+        /// </param>
         /// <param name="webSearchQueries">
         /// Web search queries for the following-up web search.
         /// </param>
@@ -74,9 +77,6 @@ namespace Google.Gemini
         /// <param name="imageSearchQueries">
         /// Image search queries used for grounding.
         /// </param>
-        /// <param name="groundingSupports">
-        /// List of grounding support.
-        /// </param>
         /// <param name="searchEntryPoint">
         /// Google search entry point.
         /// </param>
@@ -85,19 +85,19 @@ namespace Google.Gemini
 #endif
         public GroundingMetadata(
             global::Google.Gemini.RetrievalMetadata? retrievalMetadata,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
             global::System.Collections.Generic.IList<string>? webSearchQueries,
             string? googleMapsWidgetContextToken,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
             global::System.Collections.Generic.IList<string>? imageSearchQueries,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
             global::Google.Gemini.SearchEntryPoint? searchEntryPoint)
         {
             this.RetrievalMetadata = retrievalMetadata;
+            this.GroundingSupports = groundingSupports;
             this.WebSearchQueries = webSearchQueries;
             this.GoogleMapsWidgetContextToken = googleMapsWidgetContextToken;
             this.GroundingChunks = groundingChunks;
             this.ImageSearchQueries = imageSearchQueries;
-            this.GroundingSupports = groundingSupports;
             this.SearchEntryPoint = searchEntryPoint;
         }
 

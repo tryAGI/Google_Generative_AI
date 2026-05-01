@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class Image
     {
         /// <summary>
-        /// The web page URI for attribution.
+        /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
-        public string? SourceUri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// The image asset URL.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// The root domain of the web page that the image is from, e.g. "example.com".
+        /// The web page URI for attribution.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
+        public string? SourceUri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,8 +41,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Image" /> class.
         /// </summary>
-        /// <param name="sourceUri">
-        /// The web page URI for attribution.
+        /// <param name="domain">
+        /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </param>
         /// <param name="imageUri">
         /// The image asset URL.
@@ -50,22 +50,22 @@ namespace Google.Gemini
         /// <param name="title">
         /// The title of the web page that the image is from.
         /// </param>
-        /// <param name="domain">
-        /// The root domain of the web page that the image is from, e.g. "example.com".
+        /// <param name="sourceUri">
+        /// The web page URI for attribution.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Image(
-            string? sourceUri,
+            string? domain,
             string? imageUri,
             string? title,
-            string? domain)
+            string? sourceUri)
         {
-            this.SourceUri = sourceUri;
+            this.Domain = domain;
             this.ImageUri = imageUri;
             this.Title = title;
-            this.Domain = domain;
+            this.SourceUri = sourceUri;
         }
 
         /// <summary>

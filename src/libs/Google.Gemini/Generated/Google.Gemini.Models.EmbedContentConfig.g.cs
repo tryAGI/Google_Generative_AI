@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class EmbedContentConfig
     {
         /// <summary>
+        /// Optional. Whether to enable OCR for document content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("documentOcr")]
+        public bool? DocumentOcr { get; set; }
+
+        /// <summary>
         /// Optional. The task type of the embedding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
@@ -16,10 +22,16 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable OCR for document content.
+        /// Optional. Whether to extract audio from video content.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("documentOcr")]
-        public bool? DocumentOcr { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
+        public bool? AudioTrackExtraction { get; set; }
+
+        /// <summary>
+        /// Optional. The title for the text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
@@ -34,18 +46,6 @@ namespace Google.Gemini
         public int? OutputDimensionality { get; set; }
 
         /// <summary>
-        /// Optional. The title for the text.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
-        /// Optional. Whether to extract audio from video content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
-        public bool? AudioTrackExtraction { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,11 +54,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentConfig" /> class.
         /// </summary>
+        /// <param name="documentOcr">
+        /// Optional. Whether to enable OCR for document content.
+        /// </param>
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
         /// </param>
-        /// <param name="documentOcr">
-        /// Optional. Whether to enable OCR for document content.
+        /// <param name="audioTrackExtraction">
+        /// Optional. Whether to extract audio from video content.
+        /// </param>
+        /// <param name="title">
+        /// Optional. The title for the text.
         /// </param>
         /// <param name="autoTruncate">
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
@@ -66,29 +72,23 @@ namespace Google.Gemini
         /// <param name="outputDimensionality">
         /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
-        /// <param name="title">
-        /// Optional. The title for the text.
-        /// </param>
-        /// <param name="audioTrackExtraction">
-        /// Optional. Whether to extract audio from video content.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             bool? documentOcr,
-            bool? autoTruncate,
-            int? outputDimensionality,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
+            bool? audioTrackExtraction,
             string? title,
-            bool? audioTrackExtraction)
+            bool? autoTruncate,
+            int? outputDimensionality)
         {
-            this.TaskType = taskType;
             this.DocumentOcr = documentOcr;
+            this.TaskType = taskType;
+            this.AudioTrackExtraction = audioTrackExtraction;
+            this.Title = title;
             this.AutoTruncate = autoTruncate;
             this.OutputDimensionality = outputDimensionality;
-            this.Title = title;
-            this.AudioTrackExtraction = audioTrackExtraction;
         }
 
         /// <summary>
