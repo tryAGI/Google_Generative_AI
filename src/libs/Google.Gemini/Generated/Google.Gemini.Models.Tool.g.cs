@@ -9,28 +9,22 @@ namespace Google.Gemini
     public sealed partial class Tool
     {
         /// <summary>
-        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearch")]
-        public global::Google.Gemini.FileSearch? FileSearch { get; set; }
-
-        /// <summary>
         /// Computer Use tool type.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("computerUse")]
         public global::Google.Gemini.ComputerUse? ComputerUse { get; set; }
 
         /// <summary>
-        /// Tool to retrieve public web data for grounding, powered by Google.
+        /// The GoogleMaps Tool that provides geospatial context for the user's query.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("googleSearchRetrieval")]
-        public global::Google.Gemini.GoogleSearchRetrieval? GoogleSearchRetrieval { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleMaps")]
+        public global::Google.Gemini.GoogleMaps? GoogleMaps { get; set; }
 
         /// <summary>
-        /// Tool to support URL context retrieval.
+        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("urlContext")]
-        public global::Google.Gemini.UrlContext? UrlContext { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearch")]
+        public global::Google.Gemini.FileSearch? FileSearch { get; set; }
 
         /// <summary>
         /// Optional. MCP Servers to connect to.
@@ -39,10 +33,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? McpServers { get; set; }
 
         /// <summary>
-        /// The GoogleMaps Tool that provides geospatial context for the user's query.
+        /// Tool to retrieve public web data for grounding, powered by Google.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("googleMaps")]
-        public global::Google.Gemini.GoogleMaps? GoogleMaps { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleSearchRetrieval")]
+        public global::Google.Gemini.GoogleSearchRetrieval? GoogleSearchRetrieval { get; set; }
 
         /// <summary>
         /// GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
@@ -63,6 +57,12 @@ namespace Google.Gemini
         public global::Google.Gemini.CodeExecution? CodeExecution { get; set; }
 
         /// <summary>
+        /// Tool to support URL context retrieval.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("urlContext")]
+        public global::Google.Gemini.UrlContext? UrlContext { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -71,23 +71,20 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Tool" /> class.
         /// </summary>
-        /// <param name="fileSearch">
-        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
-        /// </param>
         /// <param name="computerUse">
         /// Computer Use tool type.
         /// </param>
-        /// <param name="googleSearchRetrieval">
-        /// Tool to retrieve public web data for grounding, powered by Google.
+        /// <param name="googleMaps">
+        /// The GoogleMaps Tool that provides geospatial context for the user's query.
         /// </param>
-        /// <param name="urlContext">
-        /// Tool to support URL context retrieval.
+        /// <param name="fileSearch">
+        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
         /// </param>
         /// <param name="mcpServers">
         /// Optional. MCP Servers to connect to.
         /// </param>
-        /// <param name="googleMaps">
-        /// The GoogleMaps Tool that provides geospatial context for the user's query.
+        /// <param name="googleSearchRetrieval">
+        /// Tool to retrieve public web data for grounding, powered by Google.
         /// </param>
         /// <param name="googleSearch">
         /// GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
@@ -98,29 +95,32 @@ namespace Google.Gemini
         /// <param name="codeExecution">
         /// Tool that executes code generated by the model, and automatically returns the result to the model. See also `ExecutableCode` and `CodeExecutionResult` which are only generated when using this tool.
         /// </param>
+        /// <param name="urlContext">
+        /// Tool to support URL context retrieval.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Tool(
-            global::Google.Gemini.FileSearch? fileSearch,
             global::Google.Gemini.ComputerUse? computerUse,
-            global::Google.Gemini.GoogleSearchRetrieval? googleSearchRetrieval,
-            global::Google.Gemini.UrlContext? urlContext,
-            global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? mcpServers,
             global::Google.Gemini.GoogleMaps? googleMaps,
+            global::Google.Gemini.FileSearch? fileSearch,
+            global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? mcpServers,
+            global::Google.Gemini.GoogleSearchRetrieval? googleSearchRetrieval,
             global::Google.Gemini.GoogleSearch? googleSearch,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? functionDeclarations,
-            global::Google.Gemini.CodeExecution? codeExecution)
+            global::Google.Gemini.CodeExecution? codeExecution,
+            global::Google.Gemini.UrlContext? urlContext)
         {
-            this.FileSearch = fileSearch;
             this.ComputerUse = computerUse;
-            this.GoogleSearchRetrieval = googleSearchRetrieval;
-            this.UrlContext = urlContext;
-            this.McpServers = mcpServers;
             this.GoogleMaps = googleMaps;
+            this.FileSearch = fileSearch;
+            this.McpServers = mcpServers;
+            this.GoogleSearchRetrieval = googleSearchRetrieval;
             this.GoogleSearch = googleSearch;
             this.FunctionDeclarations = functionDeclarations;
             this.CodeExecution = codeExecution;
+            this.UrlContext = urlContext;
         }
 
         /// <summary>
