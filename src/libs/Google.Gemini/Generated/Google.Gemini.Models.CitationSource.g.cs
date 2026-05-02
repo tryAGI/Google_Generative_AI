@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class CitationSource
     {
         /// <summary>
+        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
+        public int? StartIndex { get; set; }
+
+        /// <summary>
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("license")]
@@ -27,12 +33,6 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
-        public int? StartIndex { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CitationSource" /> class.
         /// </summary>
+        /// <param name="startIndex">
+        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+        /// </param>
         /// <param name="license">
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
         /// </param>
@@ -50,22 +53,19 @@ namespace Google.Gemini
         /// <param name="uri">
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
-        /// <param name="startIndex">
-        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CitationSource(
+            int? startIndex,
             string? license,
             int? endIndex,
-            string? uri,
-            int? startIndex)
+            string? uri)
         {
+            this.StartIndex = startIndex;
             this.License = license;
             this.EndIndex = endIndex;
             this.Uri = uri;
-            this.StartIndex = startIndex;
         }
 
         /// <summary>
