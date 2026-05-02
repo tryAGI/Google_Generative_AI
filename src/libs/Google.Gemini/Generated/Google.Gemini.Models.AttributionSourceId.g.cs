@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class AttributionSourceId
     {
         /// <summary>
-        /// Identifier for a `Chunk` retrieved via Semantic Retriever specified in the `GenerateAnswerRequest` using `SemanticRetrieverConfig`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("semanticRetrieverChunk")]
-        public global::Google.Gemini.SemanticRetrieverChunk? SemanticRetrieverChunk { get; set; }
-
-        /// <summary>
         /// Identifier for a part within a `GroundingPassage`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("groundingPassage")]
         public global::Google.Gemini.GroundingPassageId? GroundingPassage { get; set; }
+
+        /// <summary>
+        /// Identifier for a `Chunk` retrieved via Semantic Retriever specified in the `GenerateAnswerRequest` using `SemanticRetrieverConfig`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("semanticRetrieverChunk")]
+        public global::Google.Gemini.SemanticRetrieverChunk? SemanticRetrieverChunk { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AttributionSourceId" /> class.
         /// </summary>
-        /// <param name="semanticRetrieverChunk">
-        /// Identifier for a `Chunk` retrieved via Semantic Retriever specified in the `GenerateAnswerRequest` using `SemanticRetrieverConfig`.
-        /// </param>
         /// <param name="groundingPassage">
         /// Identifier for a part within a `GroundingPassage`.
+        /// </param>
+        /// <param name="semanticRetrieverChunk">
+        /// Identifier for a `Chunk` retrieved via Semantic Retriever specified in the `GenerateAnswerRequest` using `SemanticRetrieverConfig`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AttributionSourceId(
-            global::Google.Gemini.SemanticRetrieverChunk? semanticRetrieverChunk,
-            global::Google.Gemini.GroundingPassageId? groundingPassage)
+            global::Google.Gemini.GroundingPassageId? groundingPassage,
+            global::Google.Gemini.SemanticRetrieverChunk? semanticRetrieverChunk)
         {
-            this.SemanticRetrieverChunk = semanticRetrieverChunk;
             this.GroundingPassage = groundingPassage;
+            this.SemanticRetrieverChunk = semanticRetrieverChunk;
         }
 
         /// <summary>
