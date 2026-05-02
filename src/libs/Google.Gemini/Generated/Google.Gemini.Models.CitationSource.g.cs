@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class CitationSource
     {
         /// <summary>
-        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
-        public int? StartIndex { get; set; }
-
-        /// <summary>
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
+
+        /// <summary>
+        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
+        public int? StartIndex { get; set; }
 
         /// <summary>
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CitationSource" /> class.
         /// </summary>
-        /// <param name="startIndex">
-        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
-        /// </param>
         /// <param name="uri">
         /// Optional. URI that is attributed as a source for a portion of the text.
+        /// </param>
+        /// <param name="startIndex">
+        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
         /// </param>
         /// <param name="license">
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CitationSource(
-            int? startIndex,
             string? uri,
+            int? startIndex,
             string? license,
             int? endIndex)
         {
-            this.StartIndex = startIndex;
             this.Uri = uri;
+            this.StartIndex = startIndex;
             this.License = license;
             this.EndIndex = endIndex;
         }
