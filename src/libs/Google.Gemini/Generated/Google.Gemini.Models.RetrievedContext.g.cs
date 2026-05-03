@@ -9,6 +9,18 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
+        /// Optional. Title of the document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
+        public string? FileSearchStore { get; set; }
+
+        /// <summary>
         /// Optional. Page number of the retrieved context, if applicable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
@@ -27,28 +39,16 @@ namespace Google.Gemini
         public string? MediaId { get; set; }
 
         /// <summary>
-        /// Optional. Text of the chunk.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
-
-        /// <summary>
-        /// Optional. Title of the document.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// Optional. URI reference of the semantic retrieval document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// Optional. Text of the chunk.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
-        public string? FileSearchStore { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -59,6 +59,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
+        /// <param name="title">
+        /// Optional. Title of the document.
+        /// </param>
+        /// <param name="fileSearchStore">
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// </param>
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
         /// </param>
@@ -68,37 +74,31 @@ namespace Google.Gemini
         /// <param name="mediaId">
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </param>
-        /// <param name="text">
-        /// Optional. Text of the chunk.
-        /// </param>
-        /// <param name="title">
-        /// Optional. Title of the document.
-        /// </param>
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
-        /// <param name="fileSearchStore">
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+        /// <param name="text">
+        /// Optional. Text of the chunk.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
+            string? title,
+            string? fileSearchStore,
             int? pageNumber,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? mediaId,
-            string? text,
-            string? title,
             string? uri,
-            string? fileSearchStore)
+            string? text)
         {
+            this.Title = title;
+            this.FileSearchStore = fileSearchStore;
             this.PageNumber = pageNumber;
             this.CustomMetadata = customMetadata;
             this.MediaId = mediaId;
-            this.Text = text;
-            this.Title = title;
             this.Uri = uri;
-            this.FileSearchStore = fileSearchStore;
+            this.Text = text;
         }
 
         /// <summary>
