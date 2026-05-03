@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Image
     {
         /// <summary>
+        /// The web page URI for attribution.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
+        public string? SourceUri { get; set; }
+
+        /// <summary>
         /// The title of the web page that the image is from.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -27,12 +33,6 @@ namespace Google.Gemini
         public string? Domain { get; set; }
 
         /// <summary>
-        /// The web page URI for attribution.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
-        public string? SourceUri { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Image" /> class.
         /// </summary>
+        /// <param name="sourceUri">
+        /// The web page URI for attribution.
+        /// </param>
         /// <param name="title">
         /// The title of the web page that the image is from.
         /// </param>
@@ -50,22 +53,19 @@ namespace Google.Gemini
         /// <param name="domain">
         /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </param>
-        /// <param name="sourceUri">
-        /// The web page URI for attribution.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Image(
+            string? sourceUri,
             string? title,
             string? imageUri,
-            string? domain,
-            string? sourceUri)
+            string? domain)
         {
+            this.SourceUri = sourceUri;
             this.Title = title;
             this.ImageUri = imageUri;
             this.Domain = domain;
-            this.SourceUri = sourceUri;
         }
 
         /// <summary>
