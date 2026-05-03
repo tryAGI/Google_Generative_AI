@@ -9,18 +9,18 @@ namespace Google.Gemini
     public sealed partial class EmbedContentBatchStats
     {
         /// <summary>
-        /// Output only. The number of requests that were successfully processed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("successfulRequestCount")]
-        public string? SuccessfulRequestCount { get; set; }
-
-        /// <summary>
         /// Output only. The number of requests that failed to be processed.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("failedRequestCount")]
         public string? FailedRequestCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of requests that are still pending processing.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pendingRequestCount")]
+        public string? PendingRequestCount { get; set; }
 
         /// <summary>
         /// Output only. The number of requests in the batch.<br/>
@@ -30,11 +30,11 @@ namespace Google.Gemini
         public string? RequestCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of requests that are still pending processing.<br/>
+        /// Output only. The number of requests that were successfully processed.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pendingRequestCount")]
-        public string? PendingRequestCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("successfulRequestCount")]
+        public string? SuccessfulRequestCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,35 +45,35 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentBatchStats" /> class.
         /// </summary>
-        /// <param name="successfulRequestCount">
-        /// Output only. The number of requests that were successfully processed.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="failedRequestCount">
         /// Output only. The number of requests that failed to be processed.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="requestCount">
-        /// Output only. The number of requests in the batch.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="pendingRequestCount">
         /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="requestCount">
+        /// Output only. The number of requests in the batch.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="successfulRequestCount">
+        /// Output only. The number of requests that were successfully processed.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentBatchStats(
-            string? successfulRequestCount,
             string? failedRequestCount,
+            string? pendingRequestCount,
             string? requestCount,
-            string? pendingRequestCount)
+            string? successfulRequestCount)
         {
-            this.SuccessfulRequestCount = successfulRequestCount;
             this.FailedRequestCount = failedRequestCount;
-            this.RequestCount = requestCount;
             this.PendingRequestCount = pendingRequestCount;
+            this.RequestCount = requestCount;
+            this.SuccessfulRequestCount = successfulRequestCount;
         }
 
         /// <summary>
