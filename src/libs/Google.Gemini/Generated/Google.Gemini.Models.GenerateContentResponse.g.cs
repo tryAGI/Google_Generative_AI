@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class GenerateContentResponse
     {
         /// <summary>
+        /// Candidate responses from the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
+
+        /// <summary>
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </summary>
@@ -16,10 +22,11 @@ namespace Google.Gemini
         public string? ModelVersion { get; set; }
 
         /// <summary>
-        /// Candidate responses from the model.
+        /// Output only. response_id is used to identify each response.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
+        public string? ResponseId { get; set; }
 
         /// <summary>
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
@@ -40,13 +47,6 @@ namespace Google.Gemini
         public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
 
         /// <summary>
-        /// Output only. response_id is used to identify each response.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
-        public string? ResponseId { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,12 +55,16 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentResponse" /> class.
         /// </summary>
+        /// <param name="candidates">
+        /// Candidate responses from the model.
+        /// </param>
         /// <param name="modelVersion">
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="candidates">
-        /// Candidate responses from the model.
+        /// <param name="responseId">
+        /// Output only. response_id is used to identify each response.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="modelStatus">
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
@@ -71,27 +75,23 @@ namespace Google.Gemini
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
         /// </param>
-        /// <param name="responseId">
-        /// Output only. response_id is used to identify each response.<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentResponse(
-            string? modelVersion,
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
+            string? modelVersion,
+            string? responseId,
             global::Google.Gemini.ModelStatus? modelStatus,
             global::Google.Gemini.PromptFeedback? promptFeedback,
-            global::Google.Gemini.UsageMetadata? usageMetadata,
-            string? responseId)
+            global::Google.Gemini.UsageMetadata? usageMetadata)
         {
-            this.ModelVersion = modelVersion;
             this.Candidates = candidates;
+            this.ModelVersion = modelVersion;
+            this.ResponseId = responseId;
             this.ModelStatus = modelStatus;
             this.PromptFeedback = promptFeedback;
             this.UsageMetadata = usageMetadata;
-            this.ResponseId = responseId;
         }
 
         /// <summary>

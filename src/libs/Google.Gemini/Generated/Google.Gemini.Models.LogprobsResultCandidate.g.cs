@@ -15,16 +15,16 @@ namespace Google.Gemini
         public int? TokenId { get; set; }
 
         /// <summary>
-        /// The candidate's log probability.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logProbability")]
-        public float? LogProbability { get; set; }
-
-        /// <summary>
         /// The candidate’s token string value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("token")]
         public string? Token { get; set; }
+
+        /// <summary>
+        /// The candidate's log probability.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logProbability")]
+        public float? LogProbability { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="tokenId">
         /// The candidate’s token id value.
         /// </param>
-        /// <param name="logProbability">
-        /// The candidate's log probability.
-        /// </param>
         /// <param name="token">
         /// The candidate’s token string value.
+        /// </param>
+        /// <param name="logProbability">
+        /// The candidate's log probability.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LogprobsResultCandidate(
             int? tokenId,
-            float? logProbability,
-            string? token)
+            string? token,
+            float? logProbability)
         {
             this.TokenId = tokenId;
-            this.LogProbability = logProbability;
             this.Token = token;
+            this.LogProbability = logProbability;
         }
 
         /// <summary>
