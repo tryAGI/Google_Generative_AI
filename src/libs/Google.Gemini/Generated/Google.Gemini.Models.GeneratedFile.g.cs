@@ -9,18 +9,18 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Google.Gemini.Status? Error { get; set; }
-
-        /// <summary>
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GeneratedFileStateJsonConverter))]
         public global::Google.Gemini.GeneratedFileState? State { get; set; }
+
+        /// <summary>
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::Google.Gemini.Status? Error { get; set; }
 
         /// <summary>
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
@@ -43,12 +43,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
-        /// <param name="error">
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        /// </param>
         /// <param name="state">
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="error">
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </param>
         /// <param name="name">
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
@@ -60,13 +60,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
-            global::Google.Gemini.Status? error,
             global::Google.Gemini.GeneratedFileState? state,
+            global::Google.Gemini.Status? error,
             string? name,
             string? mimeType)
         {
-            this.Error = error;
             this.State = state;
+            this.Error = error;
             this.Name = name;
             this.MimeType = mimeType;
         }
