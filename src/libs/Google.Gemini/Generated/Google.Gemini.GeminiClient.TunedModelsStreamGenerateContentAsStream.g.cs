@@ -360,14 +360,14 @@ namespace Google.Gemini
         /// Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.
         /// </summary>
         /// <param name="tunedModelsId"></param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="generationConfig">
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
         /// <param name="tools">
         /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
         /// </param>
-        /// <param name="store">
-        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
+        /// <param name="cachedContent">
+        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
         /// <param name="serviceTier">
         /// Optional. The service tier of the request.
@@ -381,45 +381,45 @@ namespace Google.Gemini
         /// <param name="contents">
         /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
         /// </param>
-        /// <param name="cachedContent">
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
-        /// </param>
         /// <param name="toolConfig">
         /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </param>
-        /// <param name="generationConfig">
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// <param name="store">
+        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
+        /// </param>
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Collections.Generic.IAsyncEnumerable<global::Google.Gemini.GenerateContentResponse> TunedModelsStreamGenerateContentAsStreamAsync(
             string tunedModelsId,
-            string? model = default,
+            global::Google.Gemini.GenerationConfig? generationConfig = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
-            bool? store = default,
+            string? cachedContent = default,
             global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier = default,
             global::Google.Gemini.Content? systemInstruction = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
-            string? cachedContent = default,
             global::Google.Gemini.ToolConfig? toolConfig = default,
-            global::Google.Gemini.GenerationConfig? generationConfig = default,
+            bool? store = default,
+            string? model = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.GenerateContentRequest
             {
-                Model = model,
+                GenerationConfig = generationConfig,
                 Tools = tools,
-                Store = store,
+                CachedContent = cachedContent,
                 ServiceTier = serviceTier,
                 SystemInstruction = systemInstruction,
                 SafetySettings = safetySettings,
                 Contents = contents,
-                CachedContent = cachedContent,
                 ToolConfig = toolConfig,
-                GenerationConfig = generationConfig,
+                Store = store,
+                Model = model,
             };
 
             var __enumerable = TunedModelsStreamGenerateContentAsStreamAsync(
