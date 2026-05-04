@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class CustomLongRunningOperation
     {
         /// <summary>
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Google.Gemini.Status? Error { get; set; }
-
-        /// <summary>
         /// The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response")]
         public object? Response { get; set; }
+
+        /// <summary>
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::Google.Gemini.Status? Error { get; set; }
 
         /// <summary>
         /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomLongRunningOperation" /> class.
         /// </summary>
-        /// <param name="error">
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        /// </param>
         /// <param name="response">
         /// The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </param>
+        /// <param name="error">
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </param>
         /// <param name="done">
         /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
@@ -66,14 +66,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CustomLongRunningOperation(
-            global::Google.Gemini.Status? error,
             object? response,
+            global::Google.Gemini.Status? error,
             bool? done,
             string? name,
             object? metadata)
         {
-            this.Error = error;
             this.Response = response;
+            this.Error = error;
             this.Done = done;
             this.Name = name;
             this.Metadata = metadata;
