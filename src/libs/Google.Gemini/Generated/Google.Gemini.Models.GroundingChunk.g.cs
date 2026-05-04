@@ -15,16 +15,16 @@ namespace Google.Gemini
         public global::Google.Gemini.Web? Web { get; set; }
 
         /// <summary>
-        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maps")]
-        public global::Google.Gemini.Maps? Maps { get; set; }
-
-        /// <summary>
         /// Chunk from image search.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         public global::Google.Gemini.Image? Image { get; set; }
+
+        /// <summary>
+        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maps")]
+        public global::Google.Gemini.Maps? Maps { get; set; }
 
         /// <summary>
         /// Chunk from context retrieved by the file search tool.
@@ -44,11 +44,11 @@ namespace Google.Gemini
         /// <param name="web">
         /// Chunk from the web.
         /// </param>
-        /// <param name="maps">
-        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
-        /// </param>
         /// <param name="image">
         /// Chunk from image search.
+        /// </param>
+        /// <param name="maps">
+        /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
         /// </param>
         /// <param name="retrievedContext">
         /// Chunk from context retrieved by the file search tool.
@@ -58,13 +58,13 @@ namespace Google.Gemini
 #endif
         public GroundingChunk(
             global::Google.Gemini.Web? web,
-            global::Google.Gemini.Maps? maps,
             global::Google.Gemini.Image? image,
+            global::Google.Gemini.Maps? maps,
             global::Google.Gemini.RetrievedContext? retrievedContext)
         {
             this.Web = web;
-            this.Maps = maps;
             this.Image = image;
+            this.Maps = maps;
             this.RetrievedContext = retrievedContext;
         }
 

@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class TuningSnapshot
     {
         /// <summary>
-        /// Output only. The epoch this step was part of.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
-        public int? Epoch { get; set; }
-
-        /// <summary>
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </summary>
@@ -37,6 +30,13 @@ namespace Google.Gemini
         public int? Step { get; set; }
 
         /// <summary>
+        /// Output only. The epoch this step was part of.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
+        public int? Epoch { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,10 +45,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="TuningSnapshot" /> class.
         /// </summary>
-        /// <param name="epoch">
-        /// Output only. The epoch this step was part of.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="computeTime">
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
@@ -61,19 +57,23 @@ namespace Google.Gemini
         /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="epoch">
+        /// Output only. The epoch this step was part of.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TuningSnapshot(
-            int? epoch,
             string? computeTime,
             float? meanLoss,
-            int? step)
+            int? step,
+            int? epoch)
         {
-            this.Epoch = epoch;
             this.ComputeTime = computeTime;
             this.MeanLoss = meanLoss;
             this.Step = step;
+            this.Epoch = epoch;
         }
 
         /// <summary>
