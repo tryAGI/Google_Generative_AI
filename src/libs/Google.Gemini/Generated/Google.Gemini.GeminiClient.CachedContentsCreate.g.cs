@@ -383,8 +383,14 @@ namespace Google.Gemini
         /// <param name="expireTime">
         /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
         /// </param>
-        /// <param name="ttl">
-        /// Input only. New TTL for this resource, input only.
+        /// <param name="model">
+        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
+        /// </param>
+        /// <param name="usageMetadata">
+        /// Metadata on the usage of the cached content.
+        /// </param>
+        /// <param name="tools">
+        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
         /// </param>
         /// <param name="contents">
         /// Optional. Input only. Immutable. The content to cache.
@@ -395,14 +401,8 @@ namespace Google.Gemini
         /// <param name="toolConfig">
         /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </param>
-        /// <param name="usageMetadata">
-        /// Metadata on the usage of the cached content.
-        /// </param>
-        /// <param name="model">
-        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-        /// </param>
-        /// <param name="tools">
-        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
+        /// <param name="ttl">
+        /// Input only. New TTL for this resource, input only.
         /// </param>
         /// <param name="displayName">
         /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
@@ -412,13 +412,13 @@ namespace Google.Gemini
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CachedContent> CachedContentsCreateAsync(
             string? expireTime = default,
-            string? ttl = default,
+            string? model = default,
+            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             global::Google.Gemini.Content? systemInstruction = default,
             global::Google.Gemini.ToolConfig? toolConfig = default,
-            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
-            string? model = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
+            string? ttl = default,
             string? displayName = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -426,13 +426,13 @@ namespace Google.Gemini
             var __request = new global::Google.Gemini.CachedContent
             {
                 ExpireTime = expireTime,
-                Ttl = ttl,
+                Model = model,
+                UsageMetadata = usageMetadata,
+                Tools = tools,
                 Contents = contents,
                 SystemInstruction = systemInstruction,
                 ToolConfig = toolConfig,
-                UsageMetadata = usageMetadata,
-                Model = model,
-                Tools = tools,
+                Ttl = ttl,
                 DisplayName = displayName,
             };
 
