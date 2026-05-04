@@ -400,9 +400,6 @@ namespace Google.Gemini
         /// <param name="output">
         /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
         /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
-        /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
         /// </param>
@@ -411,6 +408,9 @@ namespace Google.Gemini
         /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
@@ -422,10 +422,10 @@ namespace Google.Gemini
             string batchesId,
             string? updateMask = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
-            string? model = default,
             global::Google.Gemini.BatchStats? batchStats = default,
             string? priority = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
+            string? model = default,
             string? displayName = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -433,10 +433,10 @@ namespace Google.Gemini
             var __request = new global::Google.Gemini.GenerateContentBatch
             {
                 Output = output,
-                Model = model,
                 BatchStats = batchStats,
                 Priority = priority,
                 InputConfig = inputConfig,
+                Model = model,
                 DisplayName = displayName,
             };
 
