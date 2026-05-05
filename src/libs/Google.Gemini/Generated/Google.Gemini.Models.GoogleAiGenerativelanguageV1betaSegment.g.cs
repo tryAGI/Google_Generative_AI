@@ -21,16 +21,16 @@ namespace Google.Gemini
         public int? PartIndex { get; set; }
 
         /// <summary>
-        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
-        public int? EndIndex { get; set; }
-
-        /// <summary>
         /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
         public int? StartIndex { get; set; }
+
+        /// <summary>
+        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
+        public int? EndIndex { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="partIndex">
         /// The index of a Part object within its parent Content object.
         /// </param>
-        /// <param name="endIndex">
-        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
-        /// </param>
         /// <param name="startIndex">
         /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
+        /// </param>
+        /// <param name="endIndex">
+        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public GoogleAiGenerativelanguageV1betaSegment(
             string? text,
             int? partIndex,
-            int? endIndex,
-            int? startIndex)
+            int? startIndex,
+            int? endIndex)
         {
             this.Text = text;
             this.PartIndex = partIndex;
-            this.EndIndex = endIndex;
             this.StartIndex = startIndex;
+            this.EndIndex = endIndex;
         }
 
         /// <summary>
