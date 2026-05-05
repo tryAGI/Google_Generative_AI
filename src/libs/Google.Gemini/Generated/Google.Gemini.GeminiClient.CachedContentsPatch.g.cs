@@ -62,6 +62,34 @@ namespace Google.Gemini
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await CachedContentsPatchAsResponseAsync(
+                cachedContentsId: cachedContentsId,
+
+                request: request,
+                updateMask: updateMask,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Updates CachedContent resource (only expiration is updatable).
+        /// </summary>
+        /// <param name="cachedContentsId"></param>
+        /// <param name="updateMask"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Google.Gemini.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.CachedContent>> CachedContentsPatchAsResponseAsync(
+            string cachedContentsId,
+
+            global::Google.Gemini.CachedContent request,
+            string? updateMask = default,
+            global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -94,6 +122,7 @@ namespace Google.Gemini
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                                 path: $"/cachedContents/{cachedContentsId}",
                                 baseUri: HttpClient.BaseAddress);
@@ -104,9 +133,9 @@ namespace Google.Gemini
                                 {
                                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                                 }
-                            } 
+                            }
                             __pathBuilder
-                                .AddOptionalParameter("updateMask", updateMask) 
+                                .AddOptionalParameter("updateMask", updateMask)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Google.Gemini.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -169,6 +198,8 @@ namespace Google.Gemini
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -179,6 +210,11 @@ namespace Google.Gemini
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Google.Gemini.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -196,6 +232,8 @@ namespace Google.Gemini
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -205,8 +243,7 @@ namespace Google.Gemini
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -215,6 +252,11 @@ namespace Google.Gemini
                         __attempt < __maxAttempts &&
                         global::Google.Gemini.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Google.Gemini.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -231,14 +273,15 @@ namespace Google.Gemini
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -278,6 +321,8 @@ namespace Google.Gemini
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -298,6 +343,8 @@ namespace Google.Gemini
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -322,9 +369,13 @@ namespace Google.Gemini
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Google.Gemini.CachedContent.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Google.Gemini.CachedContent.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.CachedContent>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Google.Gemini.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -352,9 +403,13 @@ namespace Google.Gemini
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Google.Gemini.CachedContent.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Google.Gemini.CachedContent.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.CachedContent>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Google.Gemini.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -397,32 +452,32 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="cachedContentsId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="expireTime">
-        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
-        /// </param>
-        /// <param name="model">
-        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-        /// </param>
-        /// <param name="contents">
-        /// Optional. Input only. Immutable. The content to cache.
-        /// </param>
-        /// <param name="toolConfig">
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// <param name="tools">
+        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
         /// </param>
         /// <param name="ttl">
         /// Input only. New TTL for this resource, input only.
         /// </param>
-        /// <param name="displayName">
-        /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+        /// <param name="model">
+        /// Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
         /// </param>
         /// <param name="systemInstruction">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
+        /// <param name="toolConfig">
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// </param>
+        /// <param name="expireTime">
+        /// Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+        /// </param>
+        /// <param name="contents">
+        /// Optional. Input only. Immutable. The content to cache.
+        /// </param>
         /// <param name="usageMetadata">
         /// Metadata on the usage of the cached content.
-        /// </param>
-        /// <param name="tools">
-        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -430,29 +485,29 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CachedContent> CachedContentsPatchAsync(
             string cachedContentsId,
             string? updateMask = default,
-            string? expireTime = default,
-            string? model = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
-            global::Google.Gemini.ToolConfig? toolConfig = default,
-            string? ttl = default,
-            string? displayName = default,
-            global::Google.Gemini.Content? systemInstruction = default,
-            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
+            string? ttl = default,
+            string? model = default,
+            global::Google.Gemini.Content? systemInstruction = default,
+            global::Google.Gemini.ToolConfig? toolConfig = default,
+            string? expireTime = default,
+            string? displayName = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
+            global::Google.Gemini.CachedContentUsageMetadata? usageMetadata = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.CachedContent
             {
-                ExpireTime = expireTime,
-                Model = model,
-                Contents = contents,
-                ToolConfig = toolConfig,
-                Ttl = ttl,
-                DisplayName = displayName,
-                SystemInstruction = systemInstruction,
-                UsageMetadata = usageMetadata,
                 Tools = tools,
+                Ttl = ttl,
+                Model = model,
+                SystemInstruction = systemInstruction,
+                ToolConfig = toolConfig,
+                ExpireTime = expireTime,
+                DisplayName = displayName,
+                Contents = contents,
+                UsageMetadata = usageMetadata,
             };
 
             return await CachedContentsPatchAsync(

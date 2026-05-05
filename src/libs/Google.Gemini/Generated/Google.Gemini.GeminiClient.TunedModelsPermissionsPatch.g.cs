@@ -66,6 +66,37 @@ namespace Google.Gemini
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await TunedModelsPermissionsPatchAsResponseAsync(
+                tunedModelsId: tunedModelsId,
+                permissionsId: permissionsId,
+
+                request: request,
+                updateMask: updateMask,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Updates the permission.
+        /// </summary>
+        /// <param name="tunedModelsId"></param>
+        /// <param name="permissionsId"></param>
+        /// <param name="updateMask"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Google.Gemini.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.Permission>> TunedModelsPermissionsPatchAsResponseAsync(
+            string tunedModelsId,
+            string permissionsId,
+
+            global::Google.Gemini.Permission request,
+            string? updateMask = default,
+            global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -99,6 +130,7 @@ namespace Google.Gemini
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Google.Gemini.PathBuilder(
                                 path: $"/tunedModels/{tunedModelsId}/permissions/{permissionsId}",
                                 baseUri: HttpClient.BaseAddress);
@@ -109,9 +141,9 @@ namespace Google.Gemini
                                 {
                                     __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
                                 }
-                            } 
+                            }
                             __pathBuilder
-                                .AddOptionalParameter("updateMask", updateMask) 
+                                .AddOptionalParameter("updateMask", updateMask)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Google.Gemini.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -175,6 +207,8 @@ namespace Google.Gemini
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -185,6 +219,11 @@ namespace Google.Gemini
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Google.Gemini.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -202,6 +241,8 @@ namespace Google.Gemini
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -211,8 +252,7 @@ namespace Google.Gemini
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -221,6 +261,11 @@ namespace Google.Gemini
                         __attempt < __maxAttempts &&
                         global::Google.Gemini.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Google.Gemini.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -237,14 +282,15 @@ namespace Google.Gemini
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -284,6 +330,8 @@ namespace Google.Gemini
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -304,6 +352,8 @@ namespace Google.Gemini
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -328,9 +378,13 @@ namespace Google.Gemini
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Google.Gemini.Permission.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Google.Gemini.Permission.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.Permission>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Google.Gemini.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -358,9 +412,13 @@ namespace Google.Gemini
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Google.Gemini.Permission.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Google.Gemini.Permission.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.Permission>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Google.Gemini.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -404,14 +462,14 @@ namespace Google.Gemini
         /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="role">
-        /// Required. The role granted by this permission.
-        /// </param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
         /// </param>
         /// <param name="emailAddress">
         /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
+        /// </param>
+        /// <param name="role">
+        /// Required. The role granted by this permission.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -420,17 +478,17 @@ namespace Google.Gemini
             string tunedModelsId,
             string permissionsId,
             string? updateMask = default,
-            global::Google.Gemini.PermissionRole? role = default,
             global::Google.Gemini.PermissionGranteeType? granteeType = default,
             string? emailAddress = default,
+            global::Google.Gemini.PermissionRole? role = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.Permission
             {
-                Role = role,
                 GranteeType = granteeType,
                 EmailAddress = emailAddress,
+                Role = role,
             };
 
             return await TunedModelsPermissionsPatchAsync(
