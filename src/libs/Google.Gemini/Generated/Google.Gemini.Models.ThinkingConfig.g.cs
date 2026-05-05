@@ -15,17 +15,17 @@ namespace Google.Gemini
         public int? ThinkingBudget { get; set; }
 
         /// <summary>
+        /// Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("includeThoughts")]
+        public bool? IncludeThoughts { get; set; }
+
+        /// <summary>
         /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thinkingLevel")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ThinkingConfigThinkingLevelJsonConverter))]
         public global::Google.Gemini.ThinkingConfigThinkingLevel? ThinkingLevel { get; set; }
-
-        /// <summary>
-        /// Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("includeThoughts")]
-        public bool? IncludeThoughts { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini
         /// <param name="thinkingBudget">
         /// The number of thoughts tokens that the model should generate.
         /// </param>
-        /// <param name="thinkingLevel">
-        /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
-        /// </param>
         /// <param name="includeThoughts">
         /// Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.
+        /// </param>
+        /// <param name="thinkingLevel">
+        /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ThinkingConfig(
             int? thinkingBudget,
-            global::Google.Gemini.ThinkingConfigThinkingLevel? thinkingLevel,
-            bool? includeThoughts)
+            bool? includeThoughts,
+            global::Google.Gemini.ThinkingConfigThinkingLevel? thinkingLevel)
         {
             this.ThinkingBudget = thinkingBudget;
-            this.ThinkingLevel = thinkingLevel;
             this.IncludeThoughts = includeThoughts;
+            this.ThinkingLevel = thinkingLevel;
         }
 
         /// <summary>

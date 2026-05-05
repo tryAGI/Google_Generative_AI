@@ -15,12 +15,6 @@ namespace Google.Gemini
         public string? SseReadTimeout { get; set; }
 
         /// <summary>
-        /// Whether to close the client session when the transport closes.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
-        public bool? TerminateOnClose { get; set; }
-
-        /// <summary>
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
@@ -39,6 +33,12 @@ namespace Google.Gemini
         public string? Timeout { get; set; }
 
         /// <summary>
+        /// Whether to close the client session when the transport closes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
+        public bool? TerminateOnClose { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,9 +50,6 @@ namespace Google.Gemini
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
-        /// <param name="terminateOnClose">
-        /// Whether to close the client session when the transport closes.
-        /// </param>
         /// <param name="headers">
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
@@ -62,21 +59,24 @@ namespace Google.Gemini
         /// <param name="timeout">
         /// HTTP timeout for regular operations.
         /// </param>
+        /// <param name="terminateOnClose">
+        /// Whether to close the client session when the transport closes.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
             string? sseReadTimeout,
-            bool? terminateOnClose,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? url,
-            string? timeout)
+            string? timeout,
+            bool? terminateOnClose)
         {
             this.SseReadTimeout = sseReadTimeout;
-            this.TerminateOnClose = terminateOnClose;
             this.Headers = headers;
             this.Url = url;
             this.Timeout = timeout;
+            this.TerminateOnClose = terminateOnClose;
         }
 
         /// <summary>
