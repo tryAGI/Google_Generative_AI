@@ -16,13 +16,6 @@ namespace Google.Gemini
         public string? RequestCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of requests that failed to be processed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("failedRequestCount")]
-        public string? FailedRequestCount { get; set; }
-
-        /// <summary>
         /// Output only. The number of requests that were successfully processed.<br/>
         /// Included only in responses
         /// </summary>
@@ -37,6 +30,13 @@ namespace Google.Gemini
         public string? PendingRequestCount { get; set; }
 
         /// <summary>
+        /// Output only. The number of requests that failed to be processed.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failedRequestCount")]
+        public string? FailedRequestCount { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,10 +49,6 @@ namespace Google.Gemini
         /// Output only. The number of requests in the batch.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="failedRequestCount">
-        /// Output only. The number of requests that failed to be processed.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="successfulRequestCount">
         /// Output only. The number of requests that were successfully processed.<br/>
         /// Included only in responses
@@ -61,19 +57,23 @@ namespace Google.Gemini
         /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="failedRequestCount">
+        /// Output only. The number of requests that failed to be processed.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BatchStats(
             string? requestCount,
-            string? failedRequestCount,
             string? successfulRequestCount,
-            string? pendingRequestCount)
+            string? pendingRequestCount,
+            string? failedRequestCount)
         {
             this.RequestCount = requestCount;
-            this.FailedRequestCount = failedRequestCount;
             this.SuccessfulRequestCount = successfulRequestCount;
             this.PendingRequestCount = pendingRequestCount;
+            this.FailedRequestCount = failedRequestCount;
         }
 
         /// <summary>
