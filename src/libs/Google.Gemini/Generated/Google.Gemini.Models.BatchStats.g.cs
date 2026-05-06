@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class BatchStats
     {
         /// <summary>
-        /// Output only. The number of requests that were successfully processed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("successfulRequestCount")]
-        public string? SuccessfulRequestCount { get; set; }
-
-        /// <summary>
         /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </summary>
@@ -37,6 +30,13 @@ namespace Google.Gemini
         public string? RequestCount { get; set; }
 
         /// <summary>
+        /// Output only. The number of requests that were successfully processed.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("successfulRequestCount")]
+        public string? SuccessfulRequestCount { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,10 +45,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchStats" /> class.
         /// </summary>
-        /// <param name="successfulRequestCount">
-        /// Output only. The number of requests that were successfully processed.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="pendingRequestCount">
         /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
@@ -61,19 +57,23 @@ namespace Google.Gemini
         /// Output only. The number of requests in the batch.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="successfulRequestCount">
+        /// Output only. The number of requests that were successfully processed.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BatchStats(
-            string? successfulRequestCount,
             string? pendingRequestCount,
             string? failedRequestCount,
-            string? requestCount)
+            string? requestCount,
+            string? successfulRequestCount)
         {
-            this.SuccessfulRequestCount = successfulRequestCount;
             this.PendingRequestCount = pendingRequestCount;
             this.FailedRequestCount = failedRequestCount;
             this.RequestCount = requestCount;
+            this.SuccessfulRequestCount = successfulRequestCount;
         }
 
         /// <summary>
