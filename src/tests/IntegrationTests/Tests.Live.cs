@@ -1,5 +1,7 @@
 namespace Google.Gemini.IntegrationTests;
 
+using System.Text.Json;
+
 public partial class Tests
 {
     private static string GetLiveModelId()
@@ -141,13 +143,14 @@ public partial class Tests
         }
 
         //// Send the tool response to unblock the model.
+        using var responseDocument = JsonDocument.Parse("""{"results":"Found 3 cats"}""");
         await session.SendToolResponseAsync(
         [
             new FunctionResponse
             {
                 Name = "slow_lookup",
                 Id = toolCall!.FunctionCalls![0].Id,
-                Response = new { results = "Found 3 cats" },
+                Response = responseDocument.RootElement.Clone(),
             },
         ], cts.Token);
 

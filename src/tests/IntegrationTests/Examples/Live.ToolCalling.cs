@@ -98,13 +98,14 @@ public partial class Tests
             toolCall.FunctionCalls![0].Name.Should().Be("get_weather");
 
             //// Send a tool response.
+            using var responseDocument = JsonDocument.Parse("""{"temperature":"15C","condition":"cloudy"}""");
             await session.SendToolResponseAsync(
             [
                 new FunctionResponse
                 {
                     Name = "get_weather",
                     Id = toolCall.FunctionCalls[0].Id,
-                    Response = new { temperature = "15C", condition = "cloudy" },
+                    Response = responseDocument.RootElement.Clone(),
                 },
             ], cts.Token);
 
