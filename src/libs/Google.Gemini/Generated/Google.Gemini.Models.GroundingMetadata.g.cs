@@ -27,6 +27,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? ImageSearchQueries { get; set; }
 
         /// <summary>
+        /// Web search queries for the following-up web search.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webSearchQueries")]
+        public global::System.Collections.Generic.IList<string>? WebSearchQueries { get; set; }
+
+        /// <summary>
         /// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("googleMapsWidgetContextToken")]
@@ -43,12 +49,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrievalMetadata")]
         public global::Google.Gemini.RetrievalMetadata? RetrievalMetadata { get; set; }
-
-        /// <summary>
-        /// Web search queries for the following-up web search.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("webSearchQueries")]
-        public global::System.Collections.Generic.IList<string>? WebSearchQueries { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,6 +68,9 @@ namespace Google.Gemini
         /// <param name="imageSearchQueries">
         /// Image search queries used for grounding.
         /// </param>
+        /// <param name="webSearchQueries">
+        /// Web search queries for the following-up web search.
+        /// </param>
         /// <param name="googleMapsWidgetContextToken">
         /// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
         /// </param>
@@ -77,9 +80,6 @@ namespace Google.Gemini
         /// <param name="retrievalMetadata">
         /// Metadata related to retrieval in the grounding flow.
         /// </param>
-        /// <param name="webSearchQueries">
-        /// Web search queries for the following-up web search.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -87,18 +87,18 @@ namespace Google.Gemini
             global::Google.Gemini.SearchEntryPoint? searchEntryPoint,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
             global::System.Collections.Generic.IList<string>? imageSearchQueries,
+            global::System.Collections.Generic.IList<string>? webSearchQueries,
             string? googleMapsWidgetContextToken,
             global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
-            global::Google.Gemini.RetrievalMetadata? retrievalMetadata,
-            global::System.Collections.Generic.IList<string>? webSearchQueries)
+            global::Google.Gemini.RetrievalMetadata? retrievalMetadata)
         {
             this.SearchEntryPoint = searchEntryPoint;
             this.GroundingChunks = groundingChunks;
             this.ImageSearchQueries = imageSearchQueries;
+            this.WebSearchQueries = webSearchQueries;
             this.GoogleMapsWidgetContextToken = googleMapsWidgetContextToken;
             this.GroundingSupports = groundingSupports;
             this.RetrievalMetadata = retrievalMetadata;
-            this.WebSearchQueries = webSearchQueries;
         }
 
         /// <summary>
