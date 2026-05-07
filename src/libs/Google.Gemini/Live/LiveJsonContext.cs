@@ -2,6 +2,7 @@
 
 namespace Google.Gemini;
 
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 /// <summary>
@@ -29,6 +30,25 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(LiveSlidingWindow))]
 [JsonSerializable(typeof(LiveInputAudioTranscription))]
 [JsonSerializable(typeof(LiveOutputAudioTranscription))]
+[JsonSerializable(typeof(JsonElement))]
 [JsonSourceGenerationOptions(
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
-internal sealed partial class LiveJsonContext : JsonSerializerContext;
+internal sealed partial class LiveJsonContext : JsonSerializerContext
+{
+    public static LiveJsonContext WithGeneratedConverters { get; } = new(CreateOptions());
+
+    private static JsonSerializerOptions CreateOptions()
+    {
+        var options = new JsonSerializerOptions
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        };
+
+        foreach (var converter in SourceGenerationContext.Default.Options.Converters)
+        {
+            options.Converters.Add(converter);
+        }
+
+        return options;
+    }
+}
