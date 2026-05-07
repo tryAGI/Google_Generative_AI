@@ -212,7 +212,7 @@ public sealed class GeminiLiveSession : IAsyncDisposable
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
 
-        var json = JsonSerializer.Serialize(message, _jsonOptions);
+        var json = JsonSerializer.Serialize(message, LiveJsonContext.Default.LiveClientMessage);
         var payload = Encoding.UTF8.GetBytes(json);
 
         await _webSocket.SendAsync(
@@ -243,7 +243,7 @@ public sealed class GeminiLiveSession : IAsyncDisposable
             return null;
         }
 
-        var message = JsonSerializer.Deserialize<LiveServerMessage>(json, _jsonOptions);
+        var message = JsonSerializer.Deserialize(json, LiveJsonContext.Default.LiveServerMessage);
 
         if (message?.SessionResumptionUpdate?.NewHandle is { Length: > 0 } handle)
         {
