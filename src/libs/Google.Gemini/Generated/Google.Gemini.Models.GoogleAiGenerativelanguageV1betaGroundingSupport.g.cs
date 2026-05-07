@@ -22,16 +22,16 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<int>? GroundingChunkIndices { get; set; }
 
         /// <summary>
-        /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("confidenceScores")]
-        public global::System.Collections.Generic.IList<float>? ConfidenceScores { get; set; }
-
-        /// <summary>
         /// Segment of the content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("segment")]
         public global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? Segment { get; set; }
+
+        /// <summary>
+        /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("confidenceScores")]
+        public global::System.Collections.Generic.IList<float>? ConfidenceScores { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -49,11 +49,11 @@ namespace Google.Gemini
         /// <param name="groundingChunkIndices">
         /// Optional. A list of indices (into 'grounding_chunk' in `response.candidate.grounding_metadata`) specifying the citations associated with the claim. For instance [1,3,4] means that grounding_chunk[1], grounding_chunk[3], grounding_chunk[4] are the retrieved content attributed to the claim. If the response is streaming, the grounding_chunk_indices refer to the indices across all responses. It is the client's responsibility to accumulate the grounding chunks from all responses (while maintaining the same order).
         /// </param>
-        /// <param name="confidenceScores">
-        /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
-        /// </param>
         /// <param name="segment">
         /// Segment of the content.
+        /// </param>
+        /// <param name="confidenceScores">
+        /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -61,13 +61,13 @@ namespace Google.Gemini
         public GoogleAiGenerativelanguageV1betaGroundingSupport(
             global::System.Collections.Generic.IList<int>? renderedParts,
             global::System.Collections.Generic.IList<int>? groundingChunkIndices,
-            global::System.Collections.Generic.IList<float>? confidenceScores,
-            global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? segment)
+            global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? segment,
+            global::System.Collections.Generic.IList<float>? confidenceScores)
         {
             this.RenderedParts = renderedParts;
             this.GroundingChunkIndices = groundingChunkIndices;
-            this.ConfidenceScores = confidenceScores;
             this.Segment = segment;
+            this.ConfidenceScores = confidenceScores;
         }
 
         /// <summary>
