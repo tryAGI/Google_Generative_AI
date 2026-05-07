@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class StreamableHttpTransport
     {
         /// <summary>
-        /// HTTP timeout for regular operations.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
-        public string? Timeout { get; set; }
-
-        /// <summary>
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
@@ -33,6 +27,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
+        /// HTTP timeout for regular operations.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public string? Timeout { get; set; }
+
+        /// <summary>
         /// Timeout for SSE read operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sseReadTimeout")]
@@ -47,9 +47,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamableHttpTransport" /> class.
         /// </summary>
-        /// <param name="timeout">
-        /// HTTP timeout for regular operations.
-        /// </param>
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
@@ -59,6 +56,9 @@ namespace Google.Gemini
         /// <param name="headers">
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
+        /// <param name="timeout">
+        /// HTTP timeout for regular operations.
+        /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
@@ -66,16 +66,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
-            string? timeout,
             string? url,
             bool? terminateOnClose,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
+            string? timeout,
             string? sseReadTimeout)
         {
-            this.Timeout = timeout;
             this.Url = url;
             this.TerminateOnClose = terminateOnClose;
             this.Headers = headers;
+            this.Timeout = timeout;
             this.SseReadTimeout = sseReadTimeout;
         }
 
