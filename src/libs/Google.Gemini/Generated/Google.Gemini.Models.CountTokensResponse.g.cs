@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class CountTokensResponse
     {
         /// <summary>
-        /// Output only. List of modalities that were processed in the cached content.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("cacheTokensDetails")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? CacheTokensDetails { get; set; }
-
-        /// <summary>
         /// Number of tokens in the cached part of the prompt (the cached content).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cachedContentTokenCount")]
@@ -27,6 +20,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptTokensDetails")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? PromptTokensDetails { get; set; }
+
+        /// <summary>
+        /// Output only. List of modalities that were processed in the cached content.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cacheTokensDetails")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? CacheTokensDetails { get; set; }
 
         /// <summary>
         /// The number of tokens that the `Model` tokenizes the `prompt` into. Always non-negative.
@@ -43,15 +43,15 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CountTokensResponse" /> class.
         /// </summary>
-        /// <param name="cacheTokensDetails">
-        /// Output only. List of modalities that were processed in the cached content.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="cachedContentTokenCount">
         /// Number of tokens in the cached part of the prompt (the cached content).
         /// </param>
         /// <param name="promptTokensDetails">
         /// Output only. List of modalities that were processed in the request input.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="cacheTokensDetails">
+        /// Output only. List of modalities that were processed in the cached content.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="totalTokens">
@@ -61,14 +61,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CountTokensResponse(
-            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? cacheTokensDetails,
             int? cachedContentTokenCount,
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? promptTokensDetails,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? cacheTokensDetails,
             int? totalTokens)
         {
-            this.CacheTokensDetails = cacheTokensDetails;
             this.CachedContentTokenCount = cachedContentTokenCount;
             this.PromptTokensDetails = promptTokensDetails;
+            this.CacheTokensDetails = cacheTokensDetails;
             this.TotalTokens = totalTokens;
         }
 
