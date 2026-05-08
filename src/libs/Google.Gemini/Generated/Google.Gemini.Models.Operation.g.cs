@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class Operation
     {
         /// <summary>
-        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("done")]
-        public bool? Done { get; set; }
-
-        /// <summary>
         /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
@@ -39,6 +33,12 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("done")]
+        public bool? Done { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,9 +47,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Operation" /> class.
         /// </summary>
-        /// <param name="done">
-        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        /// </param>
         /// <param name="metadata">
         /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         /// </param>
@@ -62,21 +59,24 @@ namespace Google.Gemini
         /// <param name="name">
         /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
         /// </param>
+        /// <param name="done">
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Operation(
-            bool? done,
             object? metadata,
             object? response,
             global::Google.Gemini.Status? error,
-            string? name)
+            string? name,
+            bool? done)
         {
-            this.Done = done;
             this.Metadata = metadata;
             this.Response = response;
             this.Error = error;
             this.Name = name;
+            this.Done = done;
         }
 
         /// <summary>
