@@ -429,25 +429,25 @@ namespace Google.Gemini
         /// <summary>
         /// Creates an empty `FileSearchStore`.
         /// </summary>
-        /// <param name="displayName">
-        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
-        /// </param>
         /// <param name="embeddingModel">
         /// Optional. The embedding model to use for the `FileSearchStore`. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`. If not specified, the default embedding model will be used.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.FileSearchStore> FileSearchStoresCreateAsync(
-            string? displayName = default,
             string? embeddingModel = default,
+            string? displayName = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.FileSearchStore
             {
-                DisplayName = displayName,
                 EmbeddingModel = embeddingModel,
+                DisplayName = displayName,
             };
 
             return await FileSearchStoresCreateAsync(
