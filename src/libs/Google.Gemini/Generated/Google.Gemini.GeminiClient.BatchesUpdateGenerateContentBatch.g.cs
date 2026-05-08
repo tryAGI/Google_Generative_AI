@@ -458,6 +458,9 @@ namespace Google.Gemini
         /// <param name="batchStats">
         /// Stats about the batch.
         /// </param>
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
@@ -467,9 +470,6 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
         /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -478,10 +478,10 @@ namespace Google.Gemini
             string? updateMask = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
             global::Google.Gemini.BatchStats? batchStats = default,
+            global::Google.Gemini.GenerateContentBatchOutput? output = default,
             string? model = default,
             string? priority = default,
             string? displayName = default,
-            global::Google.Gemini.GenerateContentBatchOutput? output = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -489,10 +489,10 @@ namespace Google.Gemini
             {
                 InputConfig = inputConfig,
                 BatchStats = batchStats,
+                Output = output,
                 Model = model,
                 Priority = priority,
                 DisplayName = displayName,
-                Output = output,
             };
 
             return await BatchesUpdateGenerateContentBatchAsync(
