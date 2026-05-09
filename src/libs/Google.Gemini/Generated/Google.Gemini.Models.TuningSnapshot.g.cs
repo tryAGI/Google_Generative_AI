@@ -9,18 +9,18 @@ namespace Google.Gemini
     public sealed partial class TuningSnapshot
     {
         /// <summary>
-        /// Output only. The mean loss of the training examples for this step.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("meanLoss")]
-        public float? MeanLoss { get; set; }
-
-        /// <summary>
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("computeTime")]
         public string? ComputeTime { get; set; }
+
+        /// <summary>
+        /// Output only. The mean loss of the training examples for this step.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("meanLoss")]
+        public float? MeanLoss { get; set; }
 
         /// <summary>
         /// Output only. The tuning step.<br/>
@@ -45,12 +45,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="TuningSnapshot" /> class.
         /// </summary>
-        /// <param name="meanLoss">
-        /// Output only. The mean loss of the training examples for this step.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="computeTime">
         /// Output only. The timestamp when this metric was computed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="meanLoss">
+        /// Output only. The mean loss of the training examples for this step.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="step">
@@ -65,13 +65,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TuningSnapshot(
-            float? meanLoss,
             string? computeTime,
+            float? meanLoss,
             int? step,
             int? epoch)
         {
-            this.MeanLoss = meanLoss;
             this.ComputeTime = computeTime;
+            this.MeanLoss = meanLoss;
             this.Step = step;
             this.Epoch = epoch;
         }
