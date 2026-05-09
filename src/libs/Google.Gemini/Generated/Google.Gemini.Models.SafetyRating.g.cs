@@ -9,10 +9,11 @@ namespace Google.Gemini
     public sealed partial class SafetyRating
     {
         /// <summary>
-        /// Was this content blocked because of this rating?
+        /// Required. The probability of harm for this content.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
-        public bool? Blocked { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("probability")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SafetyRatingProbabilityJsonConverter))]
+        public global::Google.Gemini.SafetyRatingProbability? Probability { get; set; }
 
         /// <summary>
         /// Required. The category for this rating.
@@ -22,11 +23,10 @@ namespace Google.Gemini
         public global::Google.Gemini.SafetyRatingCategory? Category { get; set; }
 
         /// <summary>
-        /// Required. The probability of harm for this content.
+        /// Was this content blocked because of this rating?
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("probability")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SafetyRatingProbabilityJsonConverter))]
-        public global::Google.Gemini.SafetyRatingProbability? Probability { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocked")]
+        public bool? Blocked { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,26 +37,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="SafetyRating" /> class.
         /// </summary>
-        /// <param name="blocked">
-        /// Was this content blocked because of this rating?
+        /// <param name="probability">
+        /// Required. The probability of harm for this content.
         /// </param>
         /// <param name="category">
         /// Required. The category for this rating.
         /// </param>
-        /// <param name="probability">
-        /// Required. The probability of harm for this content.
+        /// <param name="blocked">
+        /// Was this content blocked because of this rating?
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SafetyRating(
-            bool? blocked,
+            global::Google.Gemini.SafetyRatingProbability? probability,
             global::Google.Gemini.SafetyRatingCategory? category,
-            global::Google.Gemini.SafetyRatingProbability? probability)
+            bool? blocked)
         {
-            this.Blocked = blocked;
-            this.Category = category;
             this.Probability = probability;
+            this.Category = category;
+            this.Blocked = blocked;
         }
 
         /// <summary>
