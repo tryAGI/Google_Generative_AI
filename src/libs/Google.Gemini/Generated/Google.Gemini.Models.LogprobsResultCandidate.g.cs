@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class LogprobsResultCandidate
     {
         /// <summary>
-        /// The candidate’s token id value.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tokenId")]
-        public int? TokenId { get; set; }
-
-        /// <summary>
         /// The candidate’s token string value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("token")]
         public string? Token { get; set; }
+
+        /// <summary>
+        /// The candidate’s token id value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tokenId")]
+        public int? TokenId { get; set; }
 
         /// <summary>
         /// The candidate's log probability.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="LogprobsResultCandidate" /> class.
         /// </summary>
-        /// <param name="tokenId">
-        /// The candidate’s token id value.
-        /// </param>
         /// <param name="token">
         /// The candidate’s token string value.
+        /// </param>
+        /// <param name="tokenId">
+        /// The candidate’s token id value.
         /// </param>
         /// <param name="logProbability">
         /// The candidate's log probability.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LogprobsResultCandidate(
-            int? tokenId,
             string? token,
+            int? tokenId,
             float? logProbability)
         {
-            this.TokenId = tokenId;
             this.Token = token;
+            this.TokenId = tokenId;
             this.LogProbability = logProbability;
         }
 
