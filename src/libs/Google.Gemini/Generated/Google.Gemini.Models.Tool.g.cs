@@ -9,22 +9,16 @@ namespace Google.Gemini
     public sealed partial class Tool
     {
         /// <summary>
-        /// Tool to retrieve public web data for grounding, powered by Google.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("googleSearchRetrieval")]
-        public global::Google.Gemini.GoogleSearchRetrieval? GoogleSearchRetrieval { get; set; }
-
-        /// <summary>
-        /// Optional. MCP Servers to connect to.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mcpServers")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? McpServers { get; set; }
-
-        /// <summary>
         /// Tool to support URL context retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("urlContext")]
         public global::Google.Gemini.UrlContext? UrlContext { get; set; }
+
+        /// <summary>
+        /// Tool to retrieve public web data for grounding, powered by Google.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleSearchRetrieval")]
+        public global::Google.Gemini.GoogleSearchRetrieval? GoogleSearchRetrieval { get; set; }
 
         /// <summary>
         /// Computer Use tool type.
@@ -33,10 +27,10 @@ namespace Google.Gemini
         public global::Google.Gemini.ComputerUse? ComputerUse { get; set; }
 
         /// <summary>
-        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
+        /// Optional. MCP Servers to connect to.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearch")]
-        public global::Google.Gemini.FileSearch? FileSearch { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mcpServers")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? McpServers { get; set; }
 
         /// <summary>
         /// The GoogleMaps Tool that provides geospatial context for the user's query.
@@ -63,6 +57,12 @@ namespace Google.Gemini
         public global::Google.Gemini.GoogleSearch? GoogleSearch { get; set; }
 
         /// <summary>
+        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearch")]
+        public global::Google.Gemini.FileSearch? FileSearch { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -71,20 +71,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Tool" /> class.
         /// </summary>
-        /// <param name="googleSearchRetrieval">
-        /// Tool to retrieve public web data for grounding, powered by Google.
-        /// </param>
-        /// <param name="mcpServers">
-        /// Optional. MCP Servers to connect to.
-        /// </param>
         /// <param name="urlContext">
         /// Tool to support URL context retrieval.
+        /// </param>
+        /// <param name="googleSearchRetrieval">
+        /// Tool to retrieve public web data for grounding, powered by Google.
         /// </param>
         /// <param name="computerUse">
         /// Computer Use tool type.
         /// </param>
-        /// <param name="fileSearch">
-        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
+        /// <param name="mcpServers">
+        /// Optional. MCP Servers to connect to.
         /// </param>
         /// <param name="googleMaps">
         /// The GoogleMaps Tool that provides geospatial context for the user's query.
@@ -98,29 +95,32 @@ namespace Google.Gemini
         /// <param name="googleSearch">
         /// GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
         /// </param>
+        /// <param name="fileSearch">
+        /// The FileSearch tool that retrieves knowledge from Semantic Retrieval corpora. Files are imported to Semantic Retrieval corpora using the ImportFile API.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Tool(
-            global::Google.Gemini.GoogleSearchRetrieval? googleSearchRetrieval,
-            global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? mcpServers,
             global::Google.Gemini.UrlContext? urlContext,
+            global::Google.Gemini.GoogleSearchRetrieval? googleSearchRetrieval,
             global::Google.Gemini.ComputerUse? computerUse,
-            global::Google.Gemini.FileSearch? fileSearch,
+            global::System.Collections.Generic.IList<global::Google.Gemini.McpServer>? mcpServers,
             global::Google.Gemini.GoogleMaps? googleMaps,
             global::Google.Gemini.CodeExecution? codeExecution,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionDeclaration>? functionDeclarations,
-            global::Google.Gemini.GoogleSearch? googleSearch)
+            global::Google.Gemini.GoogleSearch? googleSearch,
+            global::Google.Gemini.FileSearch? fileSearch)
         {
-            this.GoogleSearchRetrieval = googleSearchRetrieval;
-            this.McpServers = mcpServers;
             this.UrlContext = urlContext;
+            this.GoogleSearchRetrieval = googleSearchRetrieval;
             this.ComputerUse = computerUse;
-            this.FileSearch = fileSearch;
+            this.McpServers = mcpServers;
             this.GoogleMaps = googleMaps;
             this.CodeExecution = codeExecution;
             this.FunctionDeclarations = functionDeclarations;
             this.GoogleSearch = googleSearch;
+            this.FileSearch = fileSearch;
         }
 
         /// <summary>
