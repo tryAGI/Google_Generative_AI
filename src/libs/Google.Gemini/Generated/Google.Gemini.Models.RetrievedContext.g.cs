@@ -15,10 +15,10 @@ namespace Google.Gemini
         public string? FileSearchStore { get; set; }
 
         /// <summary>
-        /// Optional. Title of the document.
+        /// Optional. URI reference of the semantic retrieval document.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Optional. Page number of the retrieved context, if applicable.
@@ -27,10 +27,16 @@ namespace Google.Gemini
         public int? PageNumber { get; set; }
 
         /// <summary>
-        /// Optional. URI reference of the semantic retrieval document.
+        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
+        public string? MediaId { get; set; }
+
+        /// <summary>
+        /// Optional. Title of the document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Optional. Text of the chunk.
@@ -45,12 +51,6 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
-        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
-        public string? MediaId { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -62,14 +62,17 @@ namespace Google.Gemini
         /// <param name="fileSearchStore">
         /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
-        /// <param name="title">
-        /// Optional. Title of the document.
+        /// <param name="uri">
+        /// Optional. URI reference of the semantic retrieval document.
         /// </param>
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
         /// </param>
-        /// <param name="uri">
-        /// Optional. URI reference of the semantic retrieval document.
+        /// <param name="mediaId">
+        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
+        /// </param>
+        /// <param name="title">
+        /// Optional. Title of the document.
         /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
@@ -77,28 +80,25 @@ namespace Google.Gemini
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
         /// </param>
-        /// <param name="mediaId">
-        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
             string? fileSearchStore,
-            string? title,
-            int? pageNumber,
             string? uri,
+            int? pageNumber,
+            string? mediaId,
+            string? title,
             string? text,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
-            string? mediaId)
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata)
         {
             this.FileSearchStore = fileSearchStore;
-            this.Title = title;
-            this.PageNumber = pageNumber;
             this.Uri = uri;
+            this.PageNumber = pageNumber;
+            this.MediaId = mediaId;
+            this.Title = title;
             this.Text = text;
             this.CustomMetadata = customMetadata;
-            this.MediaId = mediaId;
         }
 
         /// <summary>
