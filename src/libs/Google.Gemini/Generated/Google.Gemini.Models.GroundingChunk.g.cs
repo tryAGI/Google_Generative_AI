@@ -15,12 +15,6 @@ namespace Google.Gemini
         public global::Google.Gemini.Web? Web { get; set; }
 
         /// <summary>
-        /// Chunk from context retrieved by the file search tool.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrievedContext")]
-        public global::Google.Gemini.RetrievedContext? RetrievedContext { get; set; }
-
-        /// <summary>
         /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maps")]
@@ -31,6 +25,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         public global::Google.Gemini.Image? Image { get; set; }
+
+        /// <summary>
+        /// Chunk from context retrieved by the file search tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retrievedContext")]
+        public global::Google.Gemini.RetrievedContext? RetrievedContext { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,28 +44,28 @@ namespace Google.Gemini
         /// <param name="web">
         /// Chunk from the web.
         /// </param>
-        /// <param name="retrievedContext">
-        /// Chunk from context retrieved by the file search tool.
-        /// </param>
         /// <param name="maps">
         /// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
         /// </param>
         /// <param name="image">
         /// Chunk from image search.
         /// </param>
+        /// <param name="retrievedContext">
+        /// Chunk from context retrieved by the file search tool.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunk(
             global::Google.Gemini.Web? web,
-            global::Google.Gemini.RetrievedContext? retrievedContext,
             global::Google.Gemini.Maps? maps,
-            global::Google.Gemini.Image? image)
+            global::Google.Gemini.Image? image,
+            global::Google.Gemini.RetrievedContext? retrievedContext)
         {
             this.Web = web;
-            this.RetrievedContext = retrievedContext;
             this.Maps = maps;
             this.Image = image;
+            this.RetrievedContext = retrievedContext;
         }
 
         /// <summary>
