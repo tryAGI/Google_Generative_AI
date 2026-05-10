@@ -53,5 +53,6 @@ namespace Google.Gemini
         public FunctionCallingConfig()
         {
         }
+
     }
 }

@@ -41,5 +41,6 @@ namespace Google.Gemini
         public FunctionResponsePart()
         {
         }
+
     }
 }

@@ -65,5 +65,6 @@ namespace Google.Gemini
         public InlinedResponse()
         {
         }
+
     }
 }

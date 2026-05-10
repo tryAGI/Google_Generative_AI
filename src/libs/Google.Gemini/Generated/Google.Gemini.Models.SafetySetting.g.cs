@@ -54,5 +54,6 @@ namespace Google.Gemini
         public SafetySetting()
         {
         }
+
     }
 }

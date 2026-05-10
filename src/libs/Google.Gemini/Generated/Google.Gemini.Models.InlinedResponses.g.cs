@@ -43,5 +43,6 @@ namespace Google.Gemini
         public InlinedResponses()
         {
         }
+
     }
 }

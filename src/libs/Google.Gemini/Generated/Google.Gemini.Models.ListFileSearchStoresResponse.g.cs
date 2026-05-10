@@ -52,5 +52,6 @@ namespace Google.Gemini
         public ListFileSearchStoresResponse()
         {
         }
+
     }
 }
