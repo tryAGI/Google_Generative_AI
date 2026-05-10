@@ -63,5 +63,6 @@ namespace Google.Gemini
         public LogprobsResultCandidate()
         {
         }
+
     }
 }

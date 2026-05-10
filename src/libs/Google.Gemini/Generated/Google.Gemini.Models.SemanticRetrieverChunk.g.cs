@@ -56,5 +56,6 @@ namespace Google.Gemini
         public SemanticRetrieverChunk()
         {
         }
+
     }
 }
