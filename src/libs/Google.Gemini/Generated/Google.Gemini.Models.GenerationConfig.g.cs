@@ -130,12 +130,6 @@ namespace Google.Gemini
         public global::Google.Gemini.GenerationConfigMediaResolution? MediaResolution { get; set; }
 
         /// <summary>
-        /// Configuration for the response output format. This is a flat object where each optional sub-field configures a specific output modality.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("responseFormat")]
-        public global::Google.Gemini.ResponseFormatConfig? ResponseFormat { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -204,9 +198,6 @@ namespace Google.Gemini
         /// <param name="mediaResolution">
         /// Optional. If specified, the media resolution specified will be used.
         /// </param>
-        /// <param name="responseFormat">
-        /// Configuration for the response output format. This is a flat object where each optional sub-field configures a specific output modality.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -230,8 +221,7 @@ namespace Google.Gemini
             global::Google.Gemini.SpeechConfig? speechConfig,
             global::Google.Gemini.ThinkingConfig? thinkingConfig,
             global::Google.Gemini.ImageConfig? imageConfig,
-            global::Google.Gemini.GenerationConfigMediaResolution? mediaResolution,
-            global::Google.Gemini.ResponseFormatConfig? responseFormat)
+            global::Google.Gemini.GenerationConfigMediaResolution? mediaResolution)
         {
             this.CandidateCount = candidateCount;
             this.StopSequences = stopSequences;
@@ -253,7 +243,6 @@ namespace Google.Gemini
             this.ThinkingConfig = thinkingConfig;
             this.ImageConfig = imageConfig;
             this.MediaResolution = mediaResolution;
-            this.ResponseFormat = responseFormat;
         }
 
         /// <summary>
