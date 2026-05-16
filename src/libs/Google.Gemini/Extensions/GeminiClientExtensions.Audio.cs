@@ -11,7 +11,7 @@ public static class GeminiClientAudioExtensions
     /// <param name="client">The Gemini client.</param>
     /// <param name="text">The text to convert to speech.</param>
     /// <param name="voiceName">Voice name (e.g., "Puck", "Charon", "Kore", "Fenrir", "Aoede"). Defaults to "Puck".</param>
-    /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash-preview-tts".</param>
+    /// <param name="modelId">The model to use. Defaults to "gemini-3.1-flash-tts-preview".</param>
     /// <param name="languageCode">Optional BCP-47 language code (e.g., "en-US", "de-DE").</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated audio result.</returns>
@@ -19,7 +19,7 @@ public static class GeminiClientAudioExtensions
         this GeminiClient client,
         string text,
         string voiceName = "Puck",
-        string modelId = "gemini-2.5-flash-preview-tts",
+        string modelId = "gemini-3.1-flash-tts-preview",
         string? languageCode = null,
         CancellationToken cancellationToken = default)
     {
