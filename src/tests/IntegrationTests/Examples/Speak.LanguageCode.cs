@@ -1,7 +1,7 @@
 /*
-order: 280
-title: Speak with Gemini 3.1 Flash TTS
-slug: speak-gemini-3-1-flash-tts
+order: 285
+title: Speak with Language Code
+slug: speak-language-code
 */
 
 namespace Google.Gemini.IntegrationTests;
@@ -9,29 +9,24 @@ namespace Google.Gemini.IntegrationTests;
 public partial class Tests
 {
     [TestMethod]
-    public async Task Speak_GeminiFlash31Tts()
+    public async Task Speak_LanguageCode()
     {
         using var client = GetAuthenticatedClient();
 
         try
         {
-            //// Gemini 3.1 Flash TTS supports 200+ audio tags for controlling vocal style,
-            //// pacing, and delivery. Tags are written inline as bracketed directives;
-            //// the GeminiAudioTags helper exposes constants for the commonly used ones.
-            var text =
-                $"{GeminiAudioTags.Cheerful} Hello! " +
-                $"{GeminiAudioTags.Excited} This is Gemini 3.1 Flash TTS. " +
-                $"{GeminiAudioTags.Calm} It sounds great.";
-
+            //// Gemini 3.1 Flash TTS supports 70+ languages. Pass a BCP-47
+            //// languageCode to bias the model toward a specific locale's
+            //// pronunciation and prosody.
             var result = await client.SpeakAsync(
-                text: text,
-                voiceName: GeminiVoices.Puck,
-                modelId: "gemini-3.1-flash-tts-preview");
+                text: "Hola, ¿cómo estás hoy? Espero que tengas un día maravilloso.",
+                voiceName: GeminiVoices.Kore,
+                modelId: "gemini-3.1-flash-tts-preview",
+                languageCode: "es-ES");
 
             result.HasAudio.Should().BeTrue();
             result.AudioData.Should().NotBeNullOrEmpty();
             result.MimeType.Should().NotBeNullOrWhiteSpace();
-            result.ModelId.Should().Contain("3.1-flash-tts");
         }
         catch (ApiException ex) when (IsTransientAvailabilityIssue(ex))
         {
