@@ -120,6 +120,27 @@ public static class GeminiClientAudioExtensions
         return candidate?.Content?.Parts?.FirstOrDefault(p => p.Text is not null)?.Text ?? string.Empty;
     }
 
+    /// <summary>
+    /// Returns the TTS-capable models exposed by the Gemini API (filtered by
+    /// the <c>-tts</c> suffix in <see cref="Model.Name"/>). Use this to discover
+    /// new TTS preview models without hard-coding their IDs in client code.
+    /// </summary>
+    /// <param name="client">The Gemini client.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    public static async Task<IReadOnlyList<Model>> ListTtsModelsAsync(
+        this GeminiClient client,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+
+        var response = await client.ModelsListAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+        var models = response.Models ?? [];
+
+        return models
+            .Where(m => m.Name is { } name && name.Contains("-tts", StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
     private static AudioResult ParseAudioResult(GenerateContentResponse response, string modelId)
     {
         var candidate = response.Candidates is { Count: > 0 } ? response.Candidates[0] : null;

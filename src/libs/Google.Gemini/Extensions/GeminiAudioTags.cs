@@ -183,4 +183,17 @@ public static class GeminiVoices
 
     /// <summary>Sulafat voice.</summary>
     public const string Sulafat = "Sulafat";
+
+    /// <summary>
+    /// All prebuilt voice names known at build time. Suitable for iteration,
+    /// dropdowns, or validation. Add new entries here as Google publishes them
+    /// — voices are not enumerated by the Gemini API itself, only by the docs.
+    /// </summary>
+    public static System.Collections.Generic.IReadOnlyList<string> All { get; } =
+    [
+        Zephyr, Puck, Charon, Kore, Fenrir, Leda, Orus, Aoede, Callirrhoe, Autonoe,
+        Enceladus, Iapetus, Umbriel, Algieba, Despina, Erinome, Algenib, Rasalgethi,
+        Laomedeia, Achernar, Alnilam, Schedar, Gacrux, Pulcherrima, Achird,
+        Zubenelgenubi, Vindemiatrix, Sadachbia, Sadaltager, Sulafat,
+    ];
 }
