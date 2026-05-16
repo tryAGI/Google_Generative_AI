@@ -77,6 +77,34 @@ namespace Google.Gemini
 
             typeof(global::Google.Gemini.JsonConverters.ThinkingConfigThinkingLevelNullableJsonConverter),
 
+            typeof(global::Google.Gemini.JsonConverters.TextResponseFormatMimeTypeJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.TextResponseFormatMimeTypeNullableJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatMimeTypeJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatMimeTypeNullableJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatDeliveryJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatDeliveryNullableJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatMimeTypeJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatMimeTypeNullableJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatDeliveryJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatDeliveryNullableJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatAspectRatioJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatAspectRatioNullableJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatImageSizeJsonConverter),
+
+            typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatImageSizeNullableJsonConverter),
+
             typeof(global::Google.Gemini.JsonConverters.CandidateFinishReasonJsonConverter),
 
             typeof(global::Google.Gemini.JsonConverters.CandidateFinishReasonNullableJsonConverter),
@@ -236,12 +264,23 @@ namespace Google.Gemini
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ThinkingConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ImageConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerationConfigMediaResolution), TypeInfoPropertyName = "GenerationConfigMediaResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ResponseFormatConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.VoiceConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.MultiSpeakerVoiceConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.PrebuiltVoiceConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.SpeakerVoiceConfig>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.SpeakerVoiceConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ThinkingConfigThinkingLevel), TypeInfoPropertyName = "ThinkingConfigThinkingLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.TextResponseFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.AudioResponseFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ImageResponseFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.TextResponseFormatMimeType), TypeInfoPropertyName = "TextResponseFormatMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.AudioResponseFormatMimeType), TypeInfoPropertyName = "AudioResponseFormatMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.AudioResponseFormatDelivery), TypeInfoPropertyName = "AudioResponseFormatDelivery2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ImageResponseFormatMimeType), TypeInfoPropertyName = "ImageResponseFormatMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ImageResponseFormatDelivery), TypeInfoPropertyName = "ImageResponseFormatDelivery2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ImageResponseFormatAspectRatio), TypeInfoPropertyName = "ImageResponseFormatAspectRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.ImageResponseFormatImageSize), TypeInfoPropertyName = "ImageResponseFormatImageSize2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.GenerateContentResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.Candidate))]
