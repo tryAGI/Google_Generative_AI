@@ -105,6 +105,9 @@ public partial class Tests
         return null;
     }
 
+    // 429s from Gemini are usually the free-tier daily cap (~10 TTS calls/day
+    // on `gemini-3.1-flash-tts-preview`). Treating them as inconclusive lets
+    // the suite pass once you've exhausted the quota for the day.
     private static bool IsTransientAvailabilityIssue(ApiException ex)
     {
         if (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests)

@@ -10,6 +10,7 @@ nav:
   - Gemini API Free Tier: guides/free-tier-and-image-generation.md
   - Live API (Real-time Voice/Video): guides/live-api.md
   - Microsoft.Extensions.AI: guides/meai.md
+  - Text-to-Speech & Speech-to-Text: guides/tts-and-stt.md
 # EXAMPLES:START
 - Examples:
   - Chat Client Five Random Words Streaming: examples/chat-client-five-random-words-streaming.md

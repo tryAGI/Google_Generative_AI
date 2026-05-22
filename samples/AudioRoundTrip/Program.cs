@@ -40,7 +40,7 @@ if (!tts.HasAudio)
 }
 
 var pcmData = tts.AudioData!;
-var sampleRate = ParseSampleRate(tts.MimeType) ?? 24000;
+var sampleRate = tts.SampleRateHz ?? 24000;
 Console.WriteLine($"  {pcmData.Length:N0} bytes PCM @ {sampleRate} Hz ({pcmData.Length / (double)(sampleRate * 2):F1}s)");
 
 // 2) Save as WAV next to the executable so the user can play it.
@@ -61,30 +61,6 @@ Console.WriteLine($"  Model: {response.ModelId}");
 Console.WriteLine($"  Text:  {response.Text}");
 
 return 0;
-
-static int? ParseSampleRate(string? mimeType)
-{
-    // Gemini TTS returns MIME types like "audio/L16;codec=pcm;rate=24000".
-    if (mimeType is null)
-    {
-        return null;
-    }
-
-    var rateIndex = mimeType.IndexOf("rate=", StringComparison.OrdinalIgnoreCase);
-    if (rateIndex < 0)
-    {
-        return null;
-    }
-
-    var rateValue = mimeType[(rateIndex + "rate=".Length)..];
-    var end = rateValue.IndexOf(';');
-    if (end >= 0)
-    {
-        rateValue = rateValue[..end];
-    }
-
-    return int.TryParse(rateValue, out var rate) ? rate : null;
-}
 
 static void WriteWavFile(string path, byte[] pcmData, int sampleRate, int bitsPerSample, int channels)
 {

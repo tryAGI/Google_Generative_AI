@@ -207,4 +207,39 @@ public record AudioResult
     /// Whether the result contains audio data.
     /// </summary>
     public bool HasAudio => AudioData is { Length: > 0 };
+
+    /// <summary>
+    /// Sample rate parsed from <see cref="MimeType"/> when the server returns
+    /// a parameterized PCM type such as <c>audio/L16;codec=pcm;rate=24000</c>.
+    /// Returns <c>null</c> when no rate parameter is present (e.g., for
+    /// container formats like <c>audio/wav</c> or <c>audio/mp3</c>).
+    /// </summary>
+    public int? SampleRateHz => ParseSampleRateHz(MimeType);
+
+    /// <summary>
+    /// Extracts the <c>rate=</c> parameter from a Gemini TTS MIME type.
+    /// Returns <c>null</c> when the input is null/empty or contains no rate parameter.
+    /// </summary>
+    public static int? ParseSampleRateHz(string? mimeType)
+    {
+        if (string.IsNullOrEmpty(mimeType))
+        {
+            return null;
+        }
+
+        var rateIndex = mimeType.IndexOf("rate=", StringComparison.OrdinalIgnoreCase);
+        if (rateIndex < 0)
+        {
+            return null;
+        }
+
+        var rateValue = mimeType.AsSpan(rateIndex + "rate=".Length);
+        var end = rateValue.IndexOf(';');
+        if (end >= 0)
+        {
+            rateValue = rateValue[..end];
+        }
+
+        return int.TryParse(rateValue, out var rate) ? rate : null;
+    }
 }
