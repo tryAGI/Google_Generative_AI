@@ -71,26 +71,30 @@ public partial class GeminiClient : Meai.ISpeechToTextClient
         Stream audioSpeechStream,
         CancellationToken cancellationToken)
     {
+        byte[] data;
         if (audioSpeechStream is MemoryStream existing && existing.Position == 0)
         {
-            return (existing.ToArray(), GuessMimeType(existing));
+            data = existing.ToArray();
+        }
+        else
+        {
+            using var buffer = new MemoryStream();
+            await audioSpeechStream.CopyToAsync(buffer, 81920, cancellationToken).ConfigureAwait(false);
+            data = buffer.ToArray();
         }
 
-        using var buffer = new MemoryStream();
-        await audioSpeechStream.CopyToAsync(buffer, 81920, cancellationToken).ConfigureAwait(false);
-        return (buffer.ToArray(), GuessMimeType(buffer));
+        return (data, GuessMimeType(data));
     }
 
     // Best-effort sniff for the common formats Gemini accepts. Callers should
-    // set SpeechToTextOptions.MediaType for non-WAV/MP3 content.
-    private static string GuessMimeType(MemoryStream stream)
+    // override via SpeechToTextOptions.RawRepresentationFactory for unusual content.
+    private static string GuessMimeType(byte[] header)
     {
-        if (stream.Length < 4)
+        if (header.Length < 4)
         {
             return "audio/wav";
         }
 
-        var header = stream.GetBuffer();
         // RIFF....WAVE
         if (header[0] == 'R' && header[1] == 'I' && header[2] == 'F' && header[3] == 'F')
         {
