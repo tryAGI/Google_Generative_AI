@@ -11,7 +11,8 @@
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
-- Microsoft.Extensions.AI `IChatClient` and `IEmbeddingGenerator` support
+- Microsoft.Extensions.AI `IChatClient`, `IEmbeddingGenerator` and `ISpeechToTextClient` support
+- First-class TTS (`SpeakAsync` with Gemini 3.1 Flash TTS), audio-tag controllability, and built-in WAV output
 
 ### Usage
 ```csharp
@@ -26,6 +27,7 @@ The SDK implements [`IChatClient`](https://learn.microsoft.com/en-us/dotnet/api/
 ```csharp
 using Google.Gemini;
 using Microsoft.Extensions.AI;
+#pragma warning disable MEAI001 // ISpeechToTextClient is evaluation API
 
 // IChatClient
 IChatClient chatClient = new GeminiClient(apiKey);
@@ -38,7 +40,36 @@ IEmbeddingGenerator<string, Embedding<float>> generator = new GeminiClient(apiKe
 var embeddings = await generator.GenerateAsync(
     ["Hello, world!"],
     new EmbeddingGenerationOptions { ModelId = "gemini-embedding-001" });
+
+// ISpeechToTextClient
+ISpeechToTextClient stt = new GeminiClient(apiKey);
+using var wav = File.OpenRead("speech.wav");
+var transcription = await stt.GetTextAsync(wav);
 ```
+
+### Text-to-Speech and Speech-to-Text
+
+`SpeakAsync` synthesizes speech with `gemini-3.1-flash-tts-preview` (default) and returns
+raw PCM that you can write to disk with the built-in WAV helper:
+
+```csharp
+using Google.Gemini;
+
+using var client = new GeminiClient(apiKey);
+
+var result = await client.SpeakAsync(
+    text: $"{GeminiAudioTags.Cheerful} Hello! {GeminiAudioTags.Excited} This is Gemini.",
+    voiceName: GeminiVoices.Puck);
+
+Console.WriteLine($"{result.AudioData!.Length} bytes @ {result.SampleRateHz} Hz");
+result.WriteWavFile("speech.wav");
+```
+
+`GeminiAudioTags` exposes constants for the commonly supported inline audio tags
+(emotion / style / delivery / pacing). `GeminiVoices` lists all 30 prebuilt voice
+names, and `client.ListTtsModelsAsync()` discovers TTS-capable models at runtime.
+See [`docs/guides/tts-and-stt.md`](docs/guides/tts-and-stt.md) and the
+[`samples/AudioRoundTrip`](samples/AudioRoundTrip) console for a complete walk-through.
 
 ### Live API (Real-time Voice/Video)
 

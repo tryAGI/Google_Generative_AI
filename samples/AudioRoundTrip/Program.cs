@@ -39,13 +39,12 @@ if (!tts.HasAudio)
     return 1;
 }
 
-var pcmData = tts.AudioData!;
 var sampleRate = tts.SampleRateHz ?? 24000;
-Console.WriteLine($"  {pcmData.Length:N0} bytes PCM @ {sampleRate} Hz ({pcmData.Length / (double)(sampleRate * 2):F1}s)");
+Console.WriteLine($"  {tts.AudioData!.Length:N0} bytes PCM @ {sampleRate} Hz ({tts.AudioData.Length / (double)(sampleRate * 2):F1}s)");
 
 // 2) Save as WAV next to the executable so the user can play it.
 var wavPath = Path.Combine(Directory.GetCurrentDirectory(), "audio_round_trip.wav");
-WriteWavFile(wavPath, pcmData, sampleRate: sampleRate, bitsPerSample: 16, channels: 1);
+tts.WriteWavFile(wavPath);
 Console.WriteLine($"  Saved: {wavPath}");
 
 // 3) Round-trip the audio through the MEAI ISpeechToTextClient interface
@@ -61,29 +60,3 @@ Console.WriteLine($"  Model: {response.ModelId}");
 Console.WriteLine($"  Text:  {response.Text}");
 
 return 0;
-
-static void WriteWavFile(string path, byte[] pcmData, int sampleRate, int bitsPerSample, int channels)
-{
-    var byteRate = sampleRate * channels * bitsPerSample / 8;
-    var blockAlign = channels * bitsPerSample / 8;
-
-    using var fs = System.IO.File.Create(path);
-    using var writer = new BinaryWriter(fs);
-
-    writer.Write("RIFF"u8);
-    writer.Write(36 + pcmData.Length);
-    writer.Write("WAVE"u8);
-
-    writer.Write("fmt "u8);
-    writer.Write(16);
-    writer.Write((short)1);
-    writer.Write((short)channels);
-    writer.Write(sampleRate);
-    writer.Write(byteRate);
-    writer.Write((short)blockAlign);
-    writer.Write((short)bitsPerSample);
-
-    writer.Write("data"u8);
-    writer.Write(pcmData.Length);
-    writer.Write(pcmData);
-}

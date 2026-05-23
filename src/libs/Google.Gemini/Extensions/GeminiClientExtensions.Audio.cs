@@ -242,4 +242,76 @@ public record AudioResult
 
         return int.TryParse(rateValue, out var rate) ? rate : null;
     }
+
+    /// <summary>
+    /// Writes <see cref="AudioData"/> as a 16-bit little-endian PCM WAV stream.
+    /// Useful for saving Gemini TTS output (which arrives as raw PCM in
+    /// <c>audio/L16;…;rate=NNN</c>) to a playable file or HTTP response.
+    /// </summary>
+    /// <param name="destination">Target stream. Must be writable. Not closed by this method.</param>
+    /// <param name="sampleRate">Sample rate in Hz. Defaults to <see cref="SampleRateHz"/> or 24000.</param>
+    /// <param name="channels">Channel count. Defaults to 1 (mono — Gemini TTS is single-channel).</param>
+    /// <param name="bitsPerSample">Bit depth. Defaults to 16 (matches Gemini's L16 output).</param>
+    public void WriteWavTo(
+        Stream destination,
+        int? sampleRate = null,
+        int channels = 1,
+        int bitsPerSample = 16)
+    {
+        ArgumentNullException.ThrowIfNull(destination);
+        if (AudioData is not { Length: > 0 } pcm)
+        {
+            throw new InvalidOperationException("AudioResult contains no audio data.");
+        }
+
+        var effectiveRate = sampleRate ?? SampleRateHz ?? 24000;
+        WriteWavHeaderAndBody(destination, pcm, effectiveRate, channels, bitsPerSample);
+    }
+
+    /// <summary>
+    /// Writes <see cref="AudioData"/> as a WAV file at <paramref name="path"/>.
+    /// Overwrites the file if it already exists.
+    /// </summary>
+    public void WriteWavFile(
+        string path,
+        int? sampleRate = null,
+        int channels = 1,
+        int bitsPerSample = 16)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(path);
+
+        using var fs = System.IO.File.Create(path);
+        WriteWavTo(fs, sampleRate, channels, bitsPerSample);
+    }
+
+    private static void WriteWavHeaderAndBody(
+        Stream destination,
+        byte[] pcmData,
+        int sampleRate,
+        int channels,
+        int bitsPerSample)
+    {
+        var byteRate = sampleRate * channels * bitsPerSample / 8;
+        var blockAlign = channels * bitsPerSample / 8;
+
+        using var writer = new BinaryWriter(destination, System.Text.Encoding.ASCII, leaveOpen: true);
+
+        writer.Write("RIFF"u8);
+        writer.Write(36 + pcmData.Length);
+        writer.Write("WAVE"u8);
+
+        writer.Write("fmt "u8);
+        writer.Write(16);
+        writer.Write((short)1);
+        writer.Write((short)channels);
+        writer.Write(sampleRate);
+        writer.Write(byteRate);
+        writer.Write((short)blockAlign);
+        writer.Write((short)bitsPerSample);
+
+        writer.Write("data"u8);
+        writer.Write(pcmData.Length);
+        writer.Write(pcmData);
+        writer.Flush();
+    }
 }

@@ -99,7 +99,7 @@ while (!cts.Token.IsCancellationRequested)
     {
         var pcmData = audioStream.ToArray();
         var wavPath = Path.Combine(Directory.GetCurrentDirectory(), $"response_{turnNumber:D3}.wav");
-        WriteWavFile(wavPath, pcmData, sampleRate: 24000, bitsPerSample: 16, channels: 1);
+        new AudioResult { AudioData = pcmData }.WriteWavFile(wavPath, sampleRate: 24000);
         Console.WriteLine($"  Audio saved: {wavPath} ({pcmData.Length:N0} bytes PCM, {pcmData.Length / 48000.0:F1}s)\n");
     }
     else
@@ -109,35 +109,3 @@ while (!cts.Token.IsCancellationRequested)
 }
 
 Console.WriteLine("\nSession ended.");
-
-/// <summary>
-/// Writes raw PCM audio data as a WAV file with the specified format.
-/// </summary>
-static void WriteWavFile(string path, byte[] pcmData, int sampleRate, int bitsPerSample, int channels)
-{
-    var byteRate = sampleRate * channels * bitsPerSample / 8;
-    var blockAlign = channels * bitsPerSample / 8;
-
-    using var fs = System.IO.File.Create(path);
-    using var writer = new BinaryWriter(fs);
-
-    // RIFF header
-    writer.Write("RIFF"u8);
-    writer.Write(36 + pcmData.Length); // file size - 8
-    writer.Write("WAVE"u8);
-
-    // fmt sub-chunk
-    writer.Write("fmt "u8);
-    writer.Write(16);               // sub-chunk size (PCM)
-    writer.Write((short)1);         // audio format (PCM = 1)
-    writer.Write((short)channels);
-    writer.Write(sampleRate);
-    writer.Write(byteRate);
-    writer.Write((short)blockAlign);
-    writer.Write((short)bitsPerSample);
-
-    // data sub-chunk
-    writer.Write("data"u8);
-    writer.Write(pcmData.Length);
-    writer.Write(pcmData);
-}
