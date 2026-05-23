@@ -80,3 +80,12 @@ The sample:
 > **Free-tier quota:** Gemini's free tier currently allows ~10 TTS requests
 > per day per model. The sample handles HTTP 429 cleanly and prints an
 > explanatory message instead of throwing.
+
+## Live-API counterpart
+
+For real-time bidirectional voice over WebSocket (instead of REST round-trips),
+see [`samples/LiveAudioPlayback`](https://github.com/tryAGI/Google.Gemini/tree/main/samples/LiveAudioPlayback).
+It uses `gemini-3.1-flash-live-preview`, captures the streamed PCM chunks
+into per-turn WAV files via the same `AudioResult.WriteWavFile` helper, and
+prints text transcriptions alongside the audio. The Live-API surface is
+covered in depth in the [Live API guide](live-api.md).

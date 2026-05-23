@@ -67,7 +67,7 @@ public partial class GeminiClient : Meai.ISpeechToTextClient
         }
     }
 
-    private static async Task<(byte[] Data, string MimeType)> ReadAudioAsync(
+    internal static async Task<(byte[] Data, string MimeType)> ReadAudioAsync(
         Stream audioSpeechStream,
         CancellationToken cancellationToken)
     {
@@ -88,7 +88,7 @@ public partial class GeminiClient : Meai.ISpeechToTextClient
 
     // Best-effort sniff for the common formats Gemini accepts. Callers should
     // override via SpeechToTextOptions.RawRepresentationFactory for unusual content.
-    private static string GuessMimeType(byte[] header)
+    internal static string GuessMimeType(byte[] header)
     {
         if (header.Length < 4)
         {
