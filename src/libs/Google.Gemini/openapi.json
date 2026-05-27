@@ -4239,7 +4239,8 @@
               "Model generated a tool call but no tools were enabled in the request.",
               "Model called too many tools consecutively, thus the system exited execution.",
               "Request has at least one thought signature missing.",
-              "Finished due to malformed response."
+              "Finished due to malformed response.",
+              "Request was filtered by an escalation rule."
             ],
             "enum": [
               "FINISH_REASON_UNSPECIFIED",
@@ -4261,7 +4262,8 @@
               "UNEXPECTED_TOOL_CALL",
               "TOO_MANY_TOOL_CALLS",
               "MISSING_THOUGHT_SIGNATURE",
-              "MALFORMED_RESPONSE"
+              "MALFORMED_RESPONSE",
+              "ESCALATION"
             ]
           },
           "finishMessage": {
