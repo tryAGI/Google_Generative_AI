@@ -14,6 +14,10 @@ namespace Google.Gemini
         /// </summary>
         Blocklist,
         /// <summary>
+        /// Request was filtered by an escalation rule.
+        /// </summary>
+        Escalation,
+        /// <summary>
         /// Default value. This value is unused.
         /// </summary>
         FinishReasonUnspecified,
@@ -104,6 +108,7 @@ namespace Google.Gemini
             return value switch
             {
                 CandidateFinishReason.Blocklist => "BLOCKLIST",
+                CandidateFinishReason.Escalation => "ESCALATION",
                 CandidateFinishReason.FinishReasonUnspecified => "FINISH_REASON_UNSPECIFIED",
                 CandidateFinishReason.ImageOther => "IMAGE_OTHER",
                 CandidateFinishReason.ImageProhibitedContent => "IMAGE_PROHIBITED_CONTENT",
@@ -134,6 +139,7 @@ namespace Google.Gemini
             return value switch
             {
                 "BLOCKLIST" => CandidateFinishReason.Blocklist,
+                "ESCALATION" => CandidateFinishReason.Escalation,
                 "FINISH_REASON_UNSPECIFIED" => CandidateFinishReason.FinishReasonUnspecified,
                 "IMAGE_OTHER" => CandidateFinishReason.ImageOther,
                 "IMAGE_PROHIBITED_CONTENT" => CandidateFinishReason.ImageProhibitedContent,
