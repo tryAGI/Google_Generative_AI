@@ -17,19 +17,6 @@ namespace Google.Gemini
         public global::Google.Gemini.Content? Content { get; set; }
 
         /// <summary>
-        /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
@@ -43,6 +30,19 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public int? OutputDimensionality { get; set; }
+
+        /// <summary>
+        /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Configurations for the EmbedContent request.
