@@ -16,16 +16,16 @@ namespace Google.Gemini
         public global::Google.Gemini.ExecutableCodeLanguage? Language { get; set; }
 
         /// <summary>
-        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
         /// Required. The code to be executed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]
         public string? Code { get; set; }
+
+        /// <summary>
+        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini
         /// <param name="language">
         /// Required. Programming language of the `code`.
         /// </param>
-        /// <param name="id">
-        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
-        /// </param>
         /// <param name="code">
         /// Required. The code to be executed.
+        /// </param>
+        /// <param name="id">
+        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ExecutableCode(
             global::Google.Gemini.ExecutableCodeLanguage? language,
-            string? id,
-            string? code)
+            string? code,
+            string? id)
         {
             this.Language = language;
-            this.Id = id;
             this.Code = code;
+            this.Id = id;
         }
 
         /// <summary>
