@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class Hyperparameters
     {
         /// <summary>
-        /// Immutable. The number of training epochs. An epoch is one pass through the training data. If not set, a default of 5 will be used.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("epochCount")]
-        public int? EpochCount { get; set; }
-
-        /// <summary>
         /// Optional. Immutable. The learning rate hyperparameter for tuning. If not set, a default of 0.001 or 0.0002 will be calculated based on the number of training examples.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("learningRate")]
         public float? LearningRate { get; set; }
+
+        /// <summary>
+        /// Immutable. The number of training epochs. An epoch is one pass through the training data. If not set, a default of 5 will be used.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("epochCount")]
+        public int? EpochCount { get; set; }
 
         /// <summary>
         /// Immutable. The batch size hyperparameter for tuning. If not set, a default of 4 or 16 will be used based on the number of training examples.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Hyperparameters" /> class.
         /// </summary>
-        /// <param name="epochCount">
-        /// Immutable. The number of training epochs. An epoch is one pass through the training data. If not set, a default of 5 will be used.
-        /// </param>
         /// <param name="learningRate">
         /// Optional. Immutable. The learning rate hyperparameter for tuning. If not set, a default of 0.001 or 0.0002 will be calculated based on the number of training examples.
+        /// </param>
+        /// <param name="epochCount">
+        /// Immutable. The number of training epochs. An epoch is one pass through the training data. If not set, a default of 5 will be used.
         /// </param>
         /// <param name="batchSize">
         /// Immutable. The batch size hyperparameter for tuning. If not set, a default of 4 or 16 will be used based on the number of training examples.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Hyperparameters(
-            int? epochCount,
             float? learningRate,
+            int? epochCount,
             int? batchSize,
             float? learningRateMultiplier)
         {
-            this.EpochCount = epochCount;
             this.LearningRate = learningRate;
+            this.EpochCount = epochCount;
             this.BatchSize = batchSize;
             this.LearningRateMultiplier = learningRateMultiplier;
         }
