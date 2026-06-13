@@ -9,43 +9,6 @@ namespace Google.Gemini
     public sealed partial class GenerateContentRequest
     {
         /// <summary>
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
-
-        /// <summary>
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
-
-        /// <summary>
-        /// Optional. The service tier of the request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("serviceTier")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GenerateContentRequestServiceTierJsonConverter))]
-        public global::Google.Gemini.GenerateContentRequestServiceTier? ServiceTier { get; set; }
-
-        /// <summary>
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("cachedContent")]
-        public string? CachedContent { get; set; }
-
-        /// <summary>
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolConfig")]
-        public global::Google.Gemini.ToolConfig? ToolConfig { get; set; }
-
-        /// <summary>
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
-        public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
-
-        /// <summary>
         /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
@@ -64,10 +27,47 @@ namespace Google.Gemini
         public global::Google.Gemini.Content? SystemInstruction { get; set; }
 
         /// <summary>
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
+        public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
+
+        /// <summary>
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("store")]
         public bool? Store { get; set; }
+
+        /// <summary>
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
+
+        /// <summary>
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// Optional. The service tier of the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("serviceTier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GenerateContentRequestServiceTierJsonConverter))]
+        public global::Google.Gemini.GenerateContentRequestServiceTier? ServiceTier { get; set; }
+
+        /// <summary>
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolConfig")]
+        public global::Google.Gemini.ToolConfig? ToolConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cachedContent")]
+        public string? CachedContent { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -78,24 +78,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentRequest" /> class.
         /// </summary>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
-        /// </param>
-        /// <param name="contents">
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-        /// </param>
-        /// <param name="serviceTier">
-        /// Optional. The service tier of the request.
-        /// </param>
-        /// <param name="cachedContent">
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
-        /// </param>
-        /// <param name="toolConfig">
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
-        /// </param>
-        /// <param name="generationConfig">
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </param>
         /// <param name="tools">
         /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
         /// </param>
@@ -105,34 +87,52 @@ namespace Google.Gemini
         /// <param name="systemInstruction">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
+        /// <param name="generationConfig">
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// </param>
         /// <param name="store">
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
+        /// </param>
+        /// <param name="contents">
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
+        /// </param>
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// </param>
+        /// <param name="serviceTier">
+        /// Optional. The service tier of the request.
+        /// </param>
+        /// <param name="toolConfig">
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// </param>
+        /// <param name="cachedContent">
+        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentRequest(
-            string? model,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
-            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier,
-            string? cachedContent,
-            global::Google.Gemini.ToolConfig? toolConfig,
-            global::Google.Gemini.GenerationConfig? generationConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings,
             global::Google.Gemini.Content? systemInstruction,
-            bool? store)
+            global::Google.Gemini.GenerationConfig? generationConfig,
+            bool? store,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
+            string? model,
+            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier,
+            global::Google.Gemini.ToolConfig? toolConfig,
+            string? cachedContent)
         {
-            this.Model = model;
-            this.Contents = contents;
-            this.ServiceTier = serviceTier;
-            this.CachedContent = cachedContent;
-            this.ToolConfig = toolConfig;
-            this.GenerationConfig = generationConfig;
             this.Tools = tools;
             this.SafetySettings = safetySettings;
             this.SystemInstruction = systemInstruction;
+            this.GenerationConfig = generationConfig;
             this.Store = store;
+            this.Contents = contents;
+            this.Model = model;
+            this.ServiceTier = serviceTier;
+            this.ToolConfig = toolConfig;
+            this.CachedContent = cachedContent;
         }
 
         /// <summary>
