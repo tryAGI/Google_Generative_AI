@@ -21,16 +21,16 @@ namespace Google.Gemini
         public global::Google.Gemini.StringList? StringListValue { get; set; }
 
         /// <summary>
-        /// Required. The key of the metadata to store.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
-
-        /// <summary>
         /// The numeric value of the metadata to store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
         public float? NumericValue { get; set; }
+
+        /// <summary>
+        /// Required. The key of the metadata to store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="stringListValue">
         /// User provided string values assigned to a single metadata key.
         /// </param>
-        /// <param name="key">
-        /// Required. The key of the metadata to store.
-        /// </param>
         /// <param name="numericValue">
         /// The numeric value of the metadata to store.
+        /// </param>
+        /// <param name="key">
+        /// Required. The key of the metadata to store.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public CustomMetadata(
             string? stringValue,
             global::Google.Gemini.StringList? stringListValue,
-            string? key,
-            float? numericValue)
+            float? numericValue,
+            string? key)
         {
             this.StringValue = stringValue;
             this.StringListValue = stringListValue;
-            this.Key = key;
             this.NumericValue = numericValue;
+            this.Key = key;
         }
 
         /// <summary>
