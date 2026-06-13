@@ -16,6 +16,13 @@ namespace Google.Gemini
         public string? ModelVersion { get; set; }
 
         /// <summary>
+        /// Output only. response_id is used to identify each response.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
+        public string? ResponseId { get; set; }
+
+        /// <summary>
         /// Candidate responses from the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
@@ -40,13 +47,6 @@ namespace Google.Gemini
         public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
 
         /// <summary>
-        /// Output only. response_id is used to identify each response.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
-        public string? ResponseId { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -57,6 +57,10 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="modelVersion">
         /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="responseId">
+        /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="candidates">
@@ -71,27 +75,23 @@ namespace Google.Gemini
         /// <param name="promptFeedback">
         /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </param>
-        /// <param name="responseId">
-        /// Output only. response_id is used to identify each response.<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentResponse(
             string? modelVersion,
+            string? responseId,
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
             global::Google.Gemini.UsageMetadata? usageMetadata,
             global::Google.Gemini.ModelStatus? modelStatus,
-            global::Google.Gemini.PromptFeedback? promptFeedback,
-            string? responseId)
+            global::Google.Gemini.PromptFeedback? promptFeedback)
         {
             this.ModelVersion = modelVersion;
+            this.ResponseId = responseId;
             this.Candidates = candidates;
             this.UsageMetadata = usageMetadata;
             this.ModelStatus = modelStatus;
             this.PromptFeedback = promptFeedback;
-            this.ResponseId = responseId;
         }
 
         /// <summary>

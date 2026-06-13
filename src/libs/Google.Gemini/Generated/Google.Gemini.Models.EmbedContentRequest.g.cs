@@ -19,12 +19,6 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Configurations for the EmbedContent request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
-        public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
-
-        /// <summary>
         /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -37,6 +31,12 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public int? OutputDimensionality { get; set; }
+
+        /// <summary>
+        /// Configurations for the EmbedContent request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
+        public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
 
         /// <summary>
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
