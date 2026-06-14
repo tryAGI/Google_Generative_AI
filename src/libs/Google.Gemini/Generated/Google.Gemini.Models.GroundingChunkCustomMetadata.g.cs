@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class GroundingChunkCustomMetadata
     {
         /// <summary>
-        /// Optional. The string value of the metadata.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
-        public string? StringValue { get; set; }
-
-        /// <summary>
         /// A list of string values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringListValue")]
         public global::Google.Gemini.GroundingChunkStringList? StringListValue { get; set; }
+
+        /// <summary>
+        /// Optional. The string value of the metadata.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
+        public string? StringValue { get; set; }
 
         /// <summary>
         /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingChunkCustomMetadata" /> class.
         /// </summary>
-        /// <param name="stringValue">
-        /// Optional. The string value of the metadata.
-        /// </param>
         /// <param name="stringListValue">
         /// A list of string values.
+        /// </param>
+        /// <param name="stringValue">
+        /// Optional. The string value of the metadata.
         /// </param>
         /// <param name="numericValue">
         /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunkCustomMetadata(
-            string? stringValue,
             global::Google.Gemini.GroundingChunkStringList? stringListValue,
+            string? stringValue,
             float? numericValue,
             string? key)
         {
-            this.StringValue = stringValue;
             this.StringListValue = stringListValue;
+            this.StringValue = stringValue;
             this.NumericValue = numericValue;
             this.Key = key;
         }
