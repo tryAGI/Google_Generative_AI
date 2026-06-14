@@ -441,11 +441,11 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </param>
-        /// <param name="displayName">
-        /// Optional. Display name of the created document.
-        /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. Display name of the created document.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -454,8 +454,8 @@ namespace Google.Gemini
             string fileSearchStoresId,
             global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             string? mimeType = default,
-            string? displayName = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
+            string? displayName = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -463,8 +463,8 @@ namespace Google.Gemini
             {
                 ChunkingConfig = chunkingConfig,
                 MimeType = mimeType,
-                DisplayName = displayName,
                 CustomMetadata = customMetadata,
+                DisplayName = displayName,
             };
 
             return await MediaUploadToFileSearchStoreAsync(
