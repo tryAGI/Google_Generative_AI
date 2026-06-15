@@ -13,6 +13,14 @@ namespace Google.Gemini
         /// </summary>
         EnvironmentBrowser,
         /// <summary>
+        /// Operates in a desktop environment.
+        /// </summary>
+        EnvironmentDesktop,
+        /// <summary>
+        /// Operates in a mobile environment.
+        /// </summary>
+        EnvironmentMobile,
+        /// <summary>
         /// Defaults to browser.
         /// </summary>
         EnvironmentUnspecified,
@@ -31,6 +39,8 @@ namespace Google.Gemini
             return value switch
             {
                 ComputerUseEnvironment.EnvironmentBrowser => "ENVIRONMENT_BROWSER",
+                ComputerUseEnvironment.EnvironmentDesktop => "ENVIRONMENT_DESKTOP",
+                ComputerUseEnvironment.EnvironmentMobile => "ENVIRONMENT_MOBILE",
                 ComputerUseEnvironment.EnvironmentUnspecified => "ENVIRONMENT_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +53,8 @@ namespace Google.Gemini
             return value switch
             {
                 "ENVIRONMENT_BROWSER" => ComputerUseEnvironment.EnvironmentBrowser,
+                "ENVIRONMENT_DESKTOP" => ComputerUseEnvironment.EnvironmentDesktop,
+                "ENVIRONMENT_MOBILE" => ComputerUseEnvironment.EnvironmentMobile,
                 "ENVIRONMENT_UNSPECIFIED" => ComputerUseEnvironment.EnvironmentUnspecified,
                 _ => null,
             };
