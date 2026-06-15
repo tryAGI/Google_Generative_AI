@@ -21,12 +21,6 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
-        public string? PlaceId { get; set; }
-
-        /// <summary>
         /// URI reference of the place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
@@ -37,6 +31,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
+        public string? PlaceId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,14 +53,14 @@ namespace Google.Gemini
         /// <param name="title">
         /// Title of the place.
         /// </param>
-        /// <param name="placeId">
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </param>
         /// <param name="uri">
         /// URI reference of the place.
         /// </param>
         /// <param name="text">
         /// Text description of the place answer.
+        /// </param>
+        /// <param name="placeId">
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -68,15 +68,15 @@ namespace Google.Gemini
         public Maps(
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
             string? title,
-            string? placeId,
             string? uri,
-            string? text)
+            string? text,
+            string? placeId)
         {
             this.PlaceAnswerSources = placeAnswerSources;
             this.Title = title;
-            this.PlaceId = placeId;
             this.Uri = uri;
             this.Text = text;
+            this.PlaceId = placeId;
         }
 
         /// <summary>
