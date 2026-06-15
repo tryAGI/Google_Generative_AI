@@ -16,11 +16,11 @@ namespace Google.Gemini
         public string? ComputeTime { get; set; }
 
         /// <summary>
-        /// Output only. The epoch this step was part of.<br/>
+        /// Output only. The mean loss of the training examples for this step.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
-        public int? Epoch { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("meanLoss")]
+        public float? MeanLoss { get; set; }
 
         /// <summary>
         /// Output only. The tuning step.<br/>
@@ -30,11 +30,11 @@ namespace Google.Gemini
         public int? Step { get; set; }
 
         /// <summary>
-        /// Output only. The mean loss of the training examples for this step.<br/>
+        /// Output only. The epoch this step was part of.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("meanLoss")]
-        public float? MeanLoss { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
+        public int? Epoch { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -49,16 +49,16 @@ namespace Google.Gemini
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="epoch">
-        /// Output only. The epoch this step was part of.<br/>
+        /// <param name="meanLoss">
+        /// Output only. The mean loss of the training examples for this step.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="step">
         /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="meanLoss">
-        /// Output only. The mean loss of the training examples for this step.<br/>
+        /// <param name="epoch">
+        /// Output only. The epoch this step was part of.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -66,14 +66,14 @@ namespace Google.Gemini
 #endif
         public TuningSnapshot(
             string? computeTime,
-            int? epoch,
+            float? meanLoss,
             int? step,
-            float? meanLoss)
+            int? epoch)
         {
             this.ComputeTime = computeTime;
-            this.Epoch = epoch;
-            this.Step = step;
             this.MeanLoss = meanLoss;
+            this.Step = step;
+            this.Epoch = epoch;
         }
 
         /// <summary>
