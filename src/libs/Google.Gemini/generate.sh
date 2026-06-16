@@ -1,11 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# OpenAPI spec: Google Discovery API https://generativelanguage.googleapis.com/\$discovery/rest?version=v1beta (converted to OpenAPI via Python)
+install_autosdk_cli() {
+  dotnet tool update --global autosdk.cli --prerelease >/dev/null 2>&1 || \
+    dotnet tool install --global autosdk.cli --prerelease
+}
 
-dotnet tool install --global autosdk.cli --prerelease
+fetch_spec() {
+  curl "$@" \
+    --fail --silent --show-error --location \
+    --retry 5 --retry-delay 10 --retry-all-errors \
+    --connect-timeout 30 --max-time 300
+}
+
+# OpenAPI spec: Google Discovery API https://generativelanguage.googleapis.com/\$discovery/rest?version=v1beta (converted to OpenAPI via Python)
+install_autosdk_cli
 rm -rf Generated
-curl --fail --silent --show-error -L -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
+fetch_spec --fail --silent --show-error -L -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
 python3 convert_discovery.py discovery.json openapi.json
 rm discovery.json
 
