@@ -9,11 +9,11 @@ namespace Google.Gemini
     public sealed partial class BatchStats
     {
         /// <summary>
-        /// Output only. The number of requests that failed to be processed.<br/>
+        /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("failedRequestCount")]
-        public string? FailedRequestCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("pendingRequestCount")]
+        public string? PendingRequestCount { get; set; }
 
         /// <summary>
         /// Output only. The number of requests in the batch.<br/>
@@ -30,11 +30,11 @@ namespace Google.Gemini
         public string? SuccessfulRequestCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of requests that are still pending processing.<br/>
+        /// Output only. The number of requests that failed to be processed.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pendingRequestCount")]
-        public string? PendingRequestCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("failedRequestCount")]
+        public string? FailedRequestCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,8 +45,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchStats" /> class.
         /// </summary>
-        /// <param name="failedRequestCount">
-        /// Output only. The number of requests that failed to be processed.<br/>
+        /// <param name="pendingRequestCount">
+        /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="requestCount">
@@ -57,23 +57,23 @@ namespace Google.Gemini
         /// Output only. The number of requests that were successfully processed.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="pendingRequestCount">
-        /// Output only. The number of requests that are still pending processing.<br/>
+        /// <param name="failedRequestCount">
+        /// Output only. The number of requests that failed to be processed.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BatchStats(
-            string? failedRequestCount,
+            string? pendingRequestCount,
             string? requestCount,
             string? successfulRequestCount,
-            string? pendingRequestCount)
+            string? failedRequestCount)
         {
-            this.FailedRequestCount = failedRequestCount;
+            this.PendingRequestCount = pendingRequestCount;
             this.RequestCount = requestCount;
             this.SuccessfulRequestCount = successfulRequestCount;
-            this.PendingRequestCount = pendingRequestCount;
+            this.FailedRequestCount = failedRequestCount;
         }
 
         /// <summary>
