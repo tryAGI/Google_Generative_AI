@@ -31,11 +31,10 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
+        /// Configurations for the EmbedContent request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? Title { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
+        public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
 
         /// <summary>
         /// Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
@@ -45,10 +44,11 @@ namespace Google.Gemini
         public int? OutputDimensionality { get; set; }
 
         /// <summary>
-        /// Configurations for the EmbedContent request.
+        /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
-        public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
