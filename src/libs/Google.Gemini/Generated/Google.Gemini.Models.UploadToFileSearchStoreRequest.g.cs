@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class UploadToFileSearchStoreRequest
     {
         /// <summary>
-        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chunkingConfig")]
-        public global::Google.Gemini.ChunkingConfig? ChunkingConfig { get; set; }
-
-        /// <summary>
         /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
         public string? MimeType { get; set; }
+
+        /// <summary>
+        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chunkingConfig")]
+        public global::Google.Gemini.ChunkingConfig? ChunkingConfig { get; set; }
 
         /// <summary>
         /// Optional. Display name of the created document.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadToFileSearchStoreRequest" /> class.
         /// </summary>
-        /// <param name="chunkingConfig">
-        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
-        /// </param>
         /// <param name="mimeType">
         /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// </param>
+        /// <param name="chunkingConfig">
+        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the created document.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadToFileSearchStoreRequest(
-            global::Google.Gemini.ChunkingConfig? chunkingConfig,
             string? mimeType,
+            global::Google.Gemini.ChunkingConfig? chunkingConfig,
             string? displayName,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata)
         {
-            this.ChunkingConfig = chunkingConfig;
             this.MimeType = mimeType;
+            this.ChunkingConfig = chunkingConfig;
             this.DisplayName = displayName;
             this.CustomMetadata = customMetadata;
         }
