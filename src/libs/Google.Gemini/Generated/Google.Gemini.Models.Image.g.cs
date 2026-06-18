@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? ImageUri { get; set; }
 
         /// <summary>
-        /// The title of the web page that the image is from.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
         public string? Domain { get; set; }
+
+        /// <summary>
+        /// The title of the web page that the image is from.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// The web page URI for attribution.
@@ -44,11 +44,11 @@ namespace Google.Gemini
         /// <param name="imageUri">
         /// The image asset URL.
         /// </param>
-        /// <param name="title">
-        /// The title of the web page that the image is from.
-        /// </param>
         /// <param name="domain">
         /// The root domain of the web page that the image is from, e.g. "example.com".
+        /// </param>
+        /// <param name="title">
+        /// The title of the web page that the image is from.
         /// </param>
         /// <param name="sourceUri">
         /// The web page URI for attribution.
@@ -58,13 +58,13 @@ namespace Google.Gemini
 #endif
         public Image(
             string? imageUri,
-            string? title,
             string? domain,
+            string? title,
             string? sourceUri)
         {
             this.ImageUri = imageUri;
-            this.Title = title;
             this.Domain = domain;
+            this.Title = title;
             this.SourceUri = sourceUri;
         }
 
