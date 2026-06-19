@@ -451,11 +451,11 @@ namespace Google.Gemini
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
         /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
-        /// </param>
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
+        /// </param>
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
@@ -473,8 +473,8 @@ namespace Google.Gemini
             string batchesId,
             string? updateMask = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
-            global::Google.Gemini.GenerateContentBatchOutput? output = default,
             string? displayName = default,
+            global::Google.Gemini.GenerateContentBatchOutput? output = default,
             global::Google.Gemini.BatchStats? batchStats = default,
             string? model = default,
             string? priority = default,
@@ -484,8 +484,8 @@ namespace Google.Gemini
             var __request = new global::Google.Gemini.GenerateContentBatch
             {
                 InputConfig = inputConfig,
-                Output = output,
                 DisplayName = displayName,
+                Output = output,
                 BatchStats = batchStats,
                 Model = model,
                 Priority = priority,

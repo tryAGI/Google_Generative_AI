@@ -15,12 +15,6 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
 
         /// <summary>
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
-        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
-
-        /// <summary>
         /// Metadata on the generation request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
@@ -38,6 +32,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
         public string? ResponseId { get; set; }
+
+        /// <summary>
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
+        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
 
         /// <summary>
         /// Output only. The model version used to generate the response.<br/>
@@ -58,9 +58,6 @@ namespace Google.Gemini
         /// <param name="candidates">
         /// Candidate responses from the model.
         /// </param>
-        /// <param name="promptFeedback">
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </param>
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
         /// </param>
@@ -71,6 +68,9 @@ namespace Google.Gemini
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="promptFeedback">
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// </param>
         /// <param name="modelVersion">
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
@@ -80,17 +80,17 @@ namespace Google.Gemini
 #endif
         public GenerateContentResponse(
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
-            global::Google.Gemini.PromptFeedback? promptFeedback,
             global::Google.Gemini.UsageMetadata? usageMetadata,
             global::Google.Gemini.ModelStatus? modelStatus,
             string? responseId,
+            global::Google.Gemini.PromptFeedback? promptFeedback,
             string? modelVersion)
         {
             this.Candidates = candidates;
-            this.PromptFeedback = promptFeedback;
             this.UsageMetadata = usageMetadata;
             this.ModelStatus = modelStatus;
             this.ResponseId = responseId;
+            this.PromptFeedback = promptFeedback;
             this.ModelVersion = modelVersion;
         }
 
