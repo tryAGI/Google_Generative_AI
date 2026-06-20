@@ -9,25 +9,16 @@ namespace Google.Gemini
     public sealed partial class EmbedContentBatch
     {
         /// <summary>
-        /// Output only. The state of the batch.<br/>
-        /// Included only in responses
+        /// Required. The user-defined name of this batch.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentBatchStateJsonConverter))]
-        public global::Google.Gemini.EmbedContentBatchState? State { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Stats about the batch.
+        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("batchStats")]
-        public global::Google.Gemini.EmbedContentBatchStats? BatchStats { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the batch was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
+        public global::Google.Gemini.EmbedContentBatchOutput? Output { get; set; }
 
         /// <summary>
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
@@ -36,10 +27,11 @@ namespace Google.Gemini
         public string? Model { get; set; }
 
         /// <summary>
-        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
+        /// Output only. The time at which the batch was last updated.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
-        public global::Google.Gemini.EmbedContentBatchOutput? Output { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. The time at which the batch processing completed.<br/>
@@ -49,10 +41,18 @@ namespace Google.Gemini
         public string? EndTime { get; set; }
 
         /// <summary>
-        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+        /// Configures the input to the batch request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
-        public string? Priority { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("inputConfig")]
+        public global::Google.Gemini.InputEmbedContentConfig? InputConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the batch.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentBatchStateJsonConverter))]
+        public global::Google.Gemini.EmbedContentBatchState? State { get; set; }
 
         /// <summary>
         /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
@@ -62,23 +62,23 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Required. The user-defined name of this batch.
+        /// Stats about the batch.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("batchStats")]
+        public global::Google.Gemini.EmbedContentBatchStats? BatchStats { get; set; }
 
         /// <summary>
-        /// Configures the input to the batch request.
+        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inputConfig")]
-        public global::Google.Gemini.InputEmbedContentConfig? InputConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public string? Priority { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the batch was last updated.<br/>
+        /// Output only. The time at which the batch was created.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -89,71 +89,71 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentBatch" /> class.
         /// </summary>
-        /// <param name="state">
-        /// Output only. The state of the batch.<br/>
-        /// Included only in responses
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
-        /// <param name="createTime">
-        /// Output only. The time at which the batch was created.<br/>
-        /// Included only in responses
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
         /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
+        /// <param name="updateTime">
+        /// Output only. The time at which the batch was last updated.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="endTime">
         /// Output only. The time at which the batch processing completed.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="priority">
-        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+        /// <param name="inputConfig">
+        /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="state">
+        /// Output only. The state of the batch.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="name">
         /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
+        /// <param name="batchStats">
+        /// Stats about the batch.
         /// </param>
-        /// <param name="inputConfig">
-        /// Configures the input to the batch request.
+        /// <param name="priority">
+        /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </param>
-        /// <param name="updateTime">
-        /// Output only. The time at which the batch was last updated.<br/>
+        /// <param name="createTime">
+        /// Output only. The time at which the batch was created.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentBatch(
-            global::Google.Gemini.EmbedContentBatchState? state,
-            global::Google.Gemini.EmbedContentBatchStats? batchStats,
-            string? createTime,
-            string? model,
-            global::Google.Gemini.EmbedContentBatchOutput? output,
-            string? endTime,
-            string? priority,
-            string? name,
             string? displayName,
+            global::Google.Gemini.EmbedContentBatchOutput? output,
+            string? model,
+            string? updateTime,
+            string? endTime,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig,
-            string? updateTime)
+            global::Google.Gemini.EmbedContentBatchState? state,
+            string? name,
+            global::Google.Gemini.EmbedContentBatchStats? batchStats,
+            string? priority,
+            string? createTime)
         {
-            this.State = state;
-            this.BatchStats = batchStats;
-            this.CreateTime = createTime;
-            this.Model = model;
-            this.Output = output;
-            this.EndTime = endTime;
-            this.Priority = priority;
-            this.Name = name;
             this.DisplayName = displayName;
-            this.InputConfig = inputConfig;
+            this.Output = output;
+            this.Model = model;
             this.UpdateTime = updateTime;
+            this.EndTime = endTime;
+            this.InputConfig = inputConfig;
+            this.State = state;
+            this.Name = name;
+            this.BatchStats = batchStats;
+            this.Priority = priority;
+            this.CreateTime = createTime;
         }
 
         /// <summary>
