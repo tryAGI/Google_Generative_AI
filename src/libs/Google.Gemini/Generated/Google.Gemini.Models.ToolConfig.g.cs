@@ -15,16 +15,16 @@ namespace Google.Gemini
         public global::Google.Gemini.RetrievalConfig? RetrievalConfig { get; set; }
 
         /// <summary>
-        /// Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("includeServerSideToolInvocations")]
-        public bool? IncludeServerSideToolInvocations { get; set; }
-
-        /// <summary>
         /// Configuration for specifying function calling behavior.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("functionCallingConfig")]
         public global::Google.Gemini.FunctionCallingConfig? FunctionCallingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("includeServerSideToolInvocations")]
+        public bool? IncludeServerSideToolInvocations { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="retrievalConfig">
         /// Retrieval config.
         /// </param>
-        /// <param name="includeServerSideToolInvocations">
-        /// Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
-        /// </param>
         /// <param name="functionCallingConfig">
         /// Configuration for specifying function calling behavior.
+        /// </param>
+        /// <param name="includeServerSideToolInvocations">
+        /// Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolConfig(
             global::Google.Gemini.RetrievalConfig? retrievalConfig,
-            bool? includeServerSideToolInvocations,
-            global::Google.Gemini.FunctionCallingConfig? functionCallingConfig)
+            global::Google.Gemini.FunctionCallingConfig? functionCallingConfig,
+            bool? includeServerSideToolInvocations)
         {
             this.RetrievalConfig = retrievalConfig;
-            this.IncludeServerSideToolInvocations = includeServerSideToolInvocations;
             this.FunctionCallingConfig = functionCallingConfig;
+            this.IncludeServerSideToolInvocations = includeServerSideToolInvocations;
         }
 
         /// <summary>
