@@ -35,16 +35,16 @@ namespace Google.Gemini
         public string? ModelVersion { get; set; }
 
         /// <summary>
-        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelStatus")]
-        public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
-
-        /// <summary>
         /// Metadata on the generation request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
         public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
+
+        /// <summary>
+        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelStatus")]
+        public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -69,11 +69,11 @@ namespace Google.Gemini
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="modelStatus">
-        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
-        /// </param>
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
+        /// </param>
+        /// <param name="modelStatus">
+        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -83,15 +83,15 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
             global::Google.Gemini.PromptFeedback? promptFeedback,
             string? modelVersion,
-            global::Google.Gemini.ModelStatus? modelStatus,
-            global::Google.Gemini.UsageMetadata? usageMetadata)
+            global::Google.Gemini.UsageMetadata? usageMetadata,
+            global::Google.Gemini.ModelStatus? modelStatus)
         {
             this.ResponseId = responseId;
             this.Candidates = candidates;
             this.PromptFeedback = promptFeedback;
             this.ModelVersion = modelVersion;
-            this.ModelStatus = modelStatus;
             this.UsageMetadata = usageMetadata;
+            this.ModelStatus = modelStatus;
         }
 
         /// <summary>
