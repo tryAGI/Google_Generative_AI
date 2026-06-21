@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class UploadToFileSearchStoreRequest
     {
         /// <summary>
-        /// Custom metadata to be associated with the data.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
         /// Optional. Display name of the created document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Custom metadata to be associated with the data.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadToFileSearchStoreRequest" /> class.
         /// </summary>
-        /// <param name="customMetadata">
-        /// Custom metadata to be associated with the data.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the created document.
+        /// </param>
+        /// <param name="customMetadata">
+        /// Custom metadata to be associated with the data.
         /// </param>
         /// <param name="mimeType">
         /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
@@ -57,13 +57,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadToFileSearchStoreRequest(
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
             string? displayName,
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
             string? mimeType,
             global::Google.Gemini.ChunkingConfig? chunkingConfig)
         {
-            this.CustomMetadata = customMetadata;
             this.DisplayName = displayName;
+            this.CustomMetadata = customMetadata;
             this.MimeType = mimeType;
             this.ChunkingConfig = chunkingConfig;
         }
