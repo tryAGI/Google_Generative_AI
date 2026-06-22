@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class GroundingChunkCustomMetadata
     {
         /// <summary>
+        /// The key of the metadata.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
         /// Optional. The string value of the metadata.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
@@ -19,12 +25,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("numericValue")]
         public float? NumericValue { get; set; }
-
-        /// <summary>
-        /// The key of the metadata.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
 
         /// <summary>
         /// A list of string values.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingChunkCustomMetadata" /> class.
         /// </summary>
+        /// <param name="key">
+        /// The key of the metadata.
+        /// </param>
         /// <param name="stringValue">
         /// Optional. The string value of the metadata.
         /// </param>
         /// <param name="numericValue">
         /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
-        /// </param>
-        /// <param name="key">
-        /// The key of the metadata.
         /// </param>
         /// <param name="stringListValue">
         /// A list of string values.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunkCustomMetadata(
+            string? key,
             string? stringValue,
             float? numericValue,
-            string? key,
             global::Google.Gemini.GroundingChunkStringList? stringListValue)
         {
+            this.Key = key;
             this.StringValue = stringValue;
             this.NumericValue = numericValue;
-            this.Key = key;
             this.StringListValue = stringListValue;
         }
 
