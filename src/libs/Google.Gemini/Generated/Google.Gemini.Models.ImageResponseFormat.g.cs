@@ -9,11 +9,11 @@ namespace Google.Gemini
     public sealed partial class ImageResponseFormat
     {
         /// <summary>
-        /// Optional. The size of the image output.
+        /// Optional. The aspect ratio for the image output.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("imageSize")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatImageSizeJsonConverter))]
-        public global::Google.Gemini.ImageResponseFormatImageSize? ImageSize { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("aspectRatio")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatAspectRatioJsonConverter))]
+        public global::Google.Gemini.ImageResponseFormatAspectRatio? AspectRatio { get; set; }
 
         /// <summary>
         /// Optional. The delivery mode for the image output.
@@ -23,11 +23,11 @@ namespace Google.Gemini
         public global::Google.Gemini.ImageResponseFormatDelivery? Delivery { get; set; }
 
         /// <summary>
-        /// Optional. The aspect ratio for the image output.
+        /// Optional. The size of the image output.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aspectRatio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatAspectRatioJsonConverter))]
-        public global::Google.Gemini.ImageResponseFormatAspectRatio? AspectRatio { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("imageSize")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatImageSizeJsonConverter))]
+        public global::Google.Gemini.ImageResponseFormatImageSize? ImageSize { get; set; }
 
         /// <summary>
         /// Optional. The MIME type of the image output.
@@ -45,14 +45,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageResponseFormat" /> class.
         /// </summary>
-        /// <param name="imageSize">
-        /// Optional. The size of the image output.
+        /// <param name="aspectRatio">
+        /// Optional. The aspect ratio for the image output.
         /// </param>
         /// <param name="delivery">
         /// Optional. The delivery mode for the image output.
         /// </param>
-        /// <param name="aspectRatio">
-        /// Optional. The aspect ratio for the image output.
+        /// <param name="imageSize">
+        /// Optional. The size of the image output.
         /// </param>
         /// <param name="mimeType">
         /// Optional. The MIME type of the image output.
@@ -61,14 +61,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ImageResponseFormat(
-            global::Google.Gemini.ImageResponseFormatImageSize? imageSize,
-            global::Google.Gemini.ImageResponseFormatDelivery? delivery,
             global::Google.Gemini.ImageResponseFormatAspectRatio? aspectRatio,
+            global::Google.Gemini.ImageResponseFormatDelivery? delivery,
+            global::Google.Gemini.ImageResponseFormatImageSize? imageSize,
             global::Google.Gemini.ImageResponseFormatMimeType? mimeType)
         {
-            this.ImageSize = imageSize;
-            this.Delivery = delivery;
             this.AspectRatio = aspectRatio;
+            this.Delivery = delivery;
+            this.ImageSize = imageSize;
             this.MimeType = mimeType;
         }
 
