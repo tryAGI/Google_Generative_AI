@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class Permission
     {
         /// <summary>
-        /// Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Optional. Immutable. The type of the grantee.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("granteeType")]
@@ -23,17 +16,24 @@ namespace Google.Gemini
         public global::Google.Gemini.PermissionGranteeType? GranteeType { get; set; }
 
         /// <summary>
-        /// Required. The role granted by this permission.
+        /// Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.PermissionRoleJsonConverter))]
-        public global::Google.Gemini.PermissionRole? Role { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
         public string? EmailAddress { get; set; }
+
+        /// <summary>
+        /// Required. The role granted by this permission.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.PermissionRoleJsonConverter))]
+        public global::Google.Gemini.PermissionRole? Role { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,32 +44,32 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Permission" /> class.
         /// </summary>
+        /// <param name="granteeType">
+        /// Optional. Immutable. The type of the grantee.
+        /// </param>
         /// <param name="name">
         /// Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="granteeType">
-        /// Optional. Immutable. The type of the grantee.
+        /// <param name="emailAddress">
+        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </param>
         /// <param name="role">
         /// Required. The role granted by this permission.
-        /// </param>
-        /// <param name="emailAddress">
-        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Permission(
-            string? name,
             global::Google.Gemini.PermissionGranteeType? granteeType,
-            global::Google.Gemini.PermissionRole? role,
-            string? emailAddress)
+            string? name,
+            string? emailAddress,
+            global::Google.Gemini.PermissionRole? role)
         {
-            this.Name = name;
             this.GranteeType = granteeType;
-            this.Role = role;
+            this.Name = name;
             this.EmailAddress = emailAddress;
+            this.Role = role;
         }
 
         /// <summary>
