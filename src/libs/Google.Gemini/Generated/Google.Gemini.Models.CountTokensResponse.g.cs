@@ -22,17 +22,17 @@ namespace Google.Gemini
         public int? TotalTokens { get; set; }
 
         /// <summary>
-        /// Number of tokens in the cached part of the prompt (the cached content).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("cachedContentTokenCount")]
-        public int? CachedContentTokenCount { get; set; }
-
-        /// <summary>
         /// Output only. List of modalities that were processed in the cached content.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cacheTokensDetails")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? CacheTokensDetails { get; set; }
+
+        /// <summary>
+        /// Number of tokens in the cached part of the prompt (the cached content).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cachedContentTokenCount")]
+        public int? CachedContentTokenCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -50,12 +50,12 @@ namespace Google.Gemini
         /// <param name="totalTokens">
         /// The number of tokens that the `Model` tokenizes the `prompt` into. Always non-negative.
         /// </param>
-        /// <param name="cachedContentTokenCount">
-        /// Number of tokens in the cached part of the prompt (the cached content).
-        /// </param>
         /// <param name="cacheTokensDetails">
         /// Output only. List of modalities that were processed in the cached content.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="cachedContentTokenCount">
+        /// Number of tokens in the cached part of the prompt (the cached content).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -63,13 +63,13 @@ namespace Google.Gemini
         public CountTokensResponse(
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? promptTokensDetails,
             int? totalTokens,
-            int? cachedContentTokenCount,
-            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? cacheTokensDetails)
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? cacheTokensDetails,
+            int? cachedContentTokenCount)
         {
             this.PromptTokensDetails = promptTokensDetails;
             this.TotalTokens = totalTokens;
-            this.CachedContentTokenCount = cachedContentTokenCount;
             this.CacheTokensDetails = cacheTokensDetails;
+            this.CachedContentTokenCount = cachedContentTokenCount;
         }
 
         /// <summary>
