@@ -21,6 +21,12 @@ namespace Google.Gemini
         public string? MediaId { get; set; }
 
         /// <summary>
+        /// Optional. User-provided metadata about the retrieved context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
+
+        /// <summary>
         /// Optional. URI reference of the semantic retrieval document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
@@ -31,12 +37,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
-
-        /// <summary>
-        /// Optional. User-provided metadata about the retrieved context.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Optional. Page number of the retrieved context, if applicable.
@@ -65,14 +65,14 @@ namespace Google.Gemini
         /// <param name="mediaId">
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </param>
+        /// <param name="customMetadata">
+        /// Optional. User-provided metadata about the retrieved context.
+        /// </param>
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
         /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
-        /// </param>
-        /// <param name="customMetadata">
-        /// Optional. User-provided metadata about the retrieved context.
         /// </param>
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
@@ -86,17 +86,17 @@ namespace Google.Gemini
         public RetrievedContext(
             string? text,
             string? mediaId,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? uri,
             string? title,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             int? pageNumber,
             string? fileSearchStore)
         {
             this.Text = text;
             this.MediaId = mediaId;
+            this.CustomMetadata = customMetadata;
             this.Uri = uri;
             this.Title = title;
-            this.CustomMetadata = customMetadata;
             this.PageNumber = pageNumber;
             this.FileSearchStore = fileSearchStore;
         }
