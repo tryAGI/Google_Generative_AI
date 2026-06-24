@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
-        /// Text description of the place answer.
+        /// Title of the place.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
@@ -33,10 +33,10 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Title of the place.
+        /// Text description of the place answer.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,8 +47,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
-        /// <param name="text">
-        /// Text description of the place answer.
+        /// <param name="title">
+        /// Title of the place.
         /// </param>
         /// <param name="placeId">
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
@@ -59,24 +59,24 @@ namespace Google.Gemini
         /// <param name="uri">
         /// URI reference of the place.
         /// </param>
-        /// <param name="title">
-        /// Title of the place.
+        /// <param name="text">
+        /// Text description of the place answer.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
-            string? text,
+            string? title,
             string? placeId,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
             string? uri,
-            string? title)
+            string? text)
         {
-            this.Text = text;
+            this.Title = title;
             this.PlaceId = placeId;
             this.PlaceAnswerSources = placeAnswerSources;
             this.Uri = uri;
-            this.Title = title;
+            this.Text = text;
         }
 
         /// <summary>
