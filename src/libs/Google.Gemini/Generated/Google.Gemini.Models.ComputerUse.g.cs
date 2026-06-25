@@ -9,10 +9,11 @@ namespace Google.Gemini
     public sealed partial class ComputerUse
     {
         /// <summary>
-        /// Optional. Disabled safety policies for computer use.
+        /// Required. The environment being operated.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("disabledSafetyPolicies")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? DisabledSafetyPolicies { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ComputerUseEnvironmentJsonConverter))]
+        public global::Google.Gemini.ComputerUseEnvironment? Environment { get; set; }
 
         /// <summary>
         /// Optional. Whether enable the prompt injection detection check on computer-use request.
@@ -21,11 +22,10 @@ namespace Google.Gemini
         public bool? EnablePromptInjectionDetection { get; set; }
 
         /// <summary>
-        /// Required. The environment being operated.
+        /// Optional. Disabled safety policies for computer use.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ComputerUseEnvironmentJsonConverter))]
-        public global::Google.Gemini.ComputerUseEnvironment? Environment { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("disabledSafetyPolicies")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? DisabledSafetyPolicies { get; set; }
 
         /// <summary>
         /// Optional. By default, predefined functions are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
@@ -42,14 +42,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ComputerUse" /> class.
         /// </summary>
-        /// <param name="disabledSafetyPolicies">
-        /// Optional. Disabled safety policies for computer use.
+        /// <param name="environment">
+        /// Required. The environment being operated.
         /// </param>
         /// <param name="enablePromptInjectionDetection">
         /// Optional. Whether enable the prompt injection detection check on computer-use request.
         /// </param>
-        /// <param name="environment">
-        /// Required. The environment being operated.
+        /// <param name="disabledSafetyPolicies">
+        /// Optional. Disabled safety policies for computer use.
         /// </param>
         /// <param name="excludedPredefinedFunctions">
         /// Optional. By default, predefined functions are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
@@ -58,14 +58,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ComputerUse(
-            global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies,
-            bool? enablePromptInjectionDetection,
             global::Google.Gemini.ComputerUseEnvironment? environment,
+            bool? enablePromptInjectionDetection,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies,
             global::System.Collections.Generic.IList<string>? excludedPredefinedFunctions)
         {
-            this.DisabledSafetyPolicies = disabledSafetyPolicies;
-            this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
             this.Environment = environment;
+            this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
+            this.DisabledSafetyPolicies = disabledSafetyPolicies;
             this.ExcludedPredefinedFunctions = excludedPredefinedFunctions;
         }
 
