@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class ModelStatus
     {
         /// <summary>
-        /// A message explaining the model status.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
-        public string? Message { get; set; }
-
-        /// <summary>
         /// The stage of the underlying model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelStage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ModelStatusModelStageJsonConverter))]
         public global::Google.Gemini.ModelStatusModelStage? ModelStage { get; set; }
+
+        /// <summary>
+        /// A message explaining the model status.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; }
 
         /// <summary>
         /// The time at which the model will be retired.
@@ -36,11 +36,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelStatus" /> class.
         /// </summary>
-        /// <param name="message">
-        /// A message explaining the model status.
-        /// </param>
         /// <param name="modelStage">
         /// The stage of the underlying model.
+        /// </param>
+        /// <param name="message">
+        /// A message explaining the model status.
         /// </param>
         /// <param name="retirementTime">
         /// The time at which the model will be retired.
@@ -49,12 +49,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ModelStatus(
-            string? message,
             global::Google.Gemini.ModelStatusModelStage? modelStage,
+            string? message,
             string? retirementTime)
         {
-            this.Message = message;
             this.ModelStage = modelStage;
+            this.Message = message;
             this.RetirementTime = retirementTime;
         }
 
