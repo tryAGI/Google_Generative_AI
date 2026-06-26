@@ -21,12 +21,6 @@ namespace Google.Gemini
         public string? Timeout { get; set; }
 
         /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
-
-        /// <summary>
         /// Timeout for SSE read operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sseReadTimeout")]
@@ -37,6 +31,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
         public bool? TerminateOnClose { get; set; }
+
+        /// <summary>
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,14 +53,14 @@ namespace Google.Gemini
         /// <param name="timeout">
         /// HTTP timeout for regular operations.
         /// </param>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
         /// <param name="terminateOnClose">
         /// Whether to close the client session when the transport closes.
+        /// </param>
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -68,15 +68,15 @@ namespace Google.Gemini
         public StreamableHttpTransport(
             string? url,
             string? timeout,
-            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? sseReadTimeout,
-            bool? terminateOnClose)
+            bool? terminateOnClose,
+            global::System.Collections.Generic.Dictionary<string, string>? headers)
         {
             this.Url = url;
             this.Timeout = timeout;
-            this.Headers = headers;
             this.SseReadTimeout = sseReadTimeout;
             this.TerminateOnClose = terminateOnClose;
+            this.Headers = headers;
         }
 
         /// <summary>
