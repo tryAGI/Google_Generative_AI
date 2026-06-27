@@ -21,12 +21,6 @@ namespace Google.Gemini
         public string? FileSearchStore { get; set; }
 
         /// <summary>
-        /// Optional. Page number of the retrieved context, if applicable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
-        public int? PageNumber { get; set; }
-
-        /// <summary>
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
@@ -43,6 +37,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// Optional. Page number of the retrieved context, if applicable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
+        public int? PageNumber { get; set; }
 
         /// <summary>
         /// Optional. User-provided metadata about the retrieved context.
@@ -65,9 +65,6 @@ namespace Google.Gemini
         /// <param name="fileSearchStore">
         /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
-        /// <param name="pageNumber">
-        /// Optional. Page number of the retrieved context, if applicable.
-        /// </param>
         /// <param name="mediaId">
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </param>
@@ -76,6 +73,9 @@ namespace Google.Gemini
         /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
+        /// </param>
+        /// <param name="pageNumber">
+        /// Optional. Page number of the retrieved context, if applicable.
         /// </param>
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
@@ -86,18 +86,18 @@ namespace Google.Gemini
         public RetrievedContext(
             string? title,
             string? fileSearchStore,
-            int? pageNumber,
             string? mediaId,
             string? uri,
             string? text,
+            int? pageNumber,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata)
         {
             this.Title = title;
             this.FileSearchStore = fileSearchStore;
-            this.PageNumber = pageNumber;
             this.MediaId = mediaId;
             this.Uri = uri;
             this.Text = text;
+            this.PageNumber = pageNumber;
             this.CustomMetadata = customMetadata;
         }
 
