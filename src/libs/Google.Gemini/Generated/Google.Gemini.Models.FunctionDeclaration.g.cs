@@ -33,6 +33,13 @@ namespace Google.Gemini
         public string? Description { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("behavior")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionDeclarationBehaviorJsonConverter))]
+        public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
+
+        /// <summary>
         /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -43,13 +50,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("responseJsonSchema")]
         public object? ResponseJsonSchema { get; set; }
-
-        /// <summary>
-        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("behavior")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionDeclarationBehaviorJsonConverter))]
-        public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -72,14 +72,14 @@ namespace Google.Gemini
         /// <param name="description">
         /// Required. A brief description of the function.
         /// </param>
+        /// <param name="behavior">
+        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
+        /// </param>
         /// <param name="name">
         /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </param>
         /// <param name="responseJsonSchema">
         /// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema is the response value of the function. This field is mutually exclusive with `response`.
-        /// </param>
-        /// <param name="behavior">
-        /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -89,17 +89,17 @@ namespace Google.Gemini
             object? parametersJsonSchema,
             global::Google.Gemini.Schema? response,
             string? description,
+            global::Google.Gemini.FunctionDeclarationBehavior? behavior,
             string? name,
-            object? responseJsonSchema,
-            global::Google.Gemini.FunctionDeclarationBehavior? behavior)
+            object? responseJsonSchema)
         {
             this.Parameters = parameters;
             this.ParametersJsonSchema = parametersJsonSchema;
             this.Response = response;
             this.Description = description;
+            this.Behavior = behavior;
             this.Name = name;
             this.ResponseJsonSchema = responseJsonSchema;
-            this.Behavior = behavior;
         }
 
         /// <summary>
