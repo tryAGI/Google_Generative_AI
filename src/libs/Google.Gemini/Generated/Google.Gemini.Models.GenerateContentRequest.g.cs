@@ -9,10 +9,22 @@ namespace Google.Gemini
     public sealed partial class GenerateContentRequest
     {
         /// <summary>
-        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("store")]
-        public bool? Store { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
+
+        /// <summary>
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
+        public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
 
         /// <summary>
         /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
@@ -39,18 +51,6 @@ namespace Google.Gemini
         public string? CachedContent { get; set; }
 
         /// <summary>
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
-        public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
-
-        /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
-        public global::Google.Gemini.Content? SystemInstruction { get; set; }
-
-        /// <summary>
         /// Optional. The service tier of the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("serviceTier")]
@@ -58,16 +58,16 @@ namespace Google.Gemini
         public global::Google.Gemini.GenerateContentRequestServiceTier? ServiceTier { get; set; }
 
         /// <summary>
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
+        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("store")]
+        public bool? Store { get; set; }
 
         /// <summary>
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
+        public global::Google.Gemini.Content? SystemInstruction { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -78,8 +78,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentRequest" /> class.
         /// </summary>
-        /// <param name="store">
-        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// </param>
+        /// <param name="contents">
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
+        /// </param>
+        /// <param name="generationConfig">
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
         /// <param name="tools">
         /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
@@ -93,46 +99,40 @@ namespace Google.Gemini
         /// <param name="cachedContent">
         /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
-        /// <param name="generationConfig">
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
         /// <param name="serviceTier">
         /// Optional. The service tier of the request.
         /// </param>
-        /// <param name="contents">
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
+        /// <param name="store">
+        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentRequest(
-            bool? store,
+            string? model,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
+            global::Google.Gemini.GenerationConfig? generationConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
             global::Google.Gemini.ToolConfig? toolConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings,
             string? cachedContent,
-            global::Google.Gemini.GenerationConfig? generationConfig,
-            global::Google.Gemini.Content? systemInstruction,
             global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
-            string? model)
+            bool? store,
+            global::Google.Gemini.Content? systemInstruction)
         {
-            this.Store = store;
+            this.Model = model;
+            this.Contents = contents;
+            this.GenerationConfig = generationConfig;
             this.Tools = tools;
             this.ToolConfig = toolConfig;
             this.SafetySettings = safetySettings;
             this.CachedContent = cachedContent;
-            this.GenerationConfig = generationConfig;
-            this.SystemInstruction = systemInstruction;
             this.ServiceTier = serviceTier;
-            this.Contents = contents;
-            this.Model = model;
+            this.Store = store;
+            this.SystemInstruction = systemInstruction;
         }
 
         /// <summary>
