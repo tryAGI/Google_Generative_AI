@@ -121,6 +121,72 @@ public static class GeminiClientAudioExtensions
     }
 
     /// <summary>
+    /// Transcribes audio data to a structured text response constrained by a Gemini response schema.
+    /// </summary>
+    /// <param name="client">The Gemini client.</param>
+    /// <param name="audioData">The audio bytes to transcribe.</param>
+    /// <param name="mimeType">MIME type of the audio (e.g., "audio/wav", "audio/mp3", "audio/flac").</param>
+    /// <param name="responseSchema">Gemini response schema used to constrain the text output.</param>
+    /// <param name="modelId">The model to use. Defaults to "gemini-2.5-flash".</param>
+    /// <param name="prompt">Optional prompt to guide transcription.</param>
+    /// <param name="responseMimeType">MIME type of the generated text. Defaults to "application/json".</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The structured transcription text.</returns>
+    public static async Task<string> TranscribeStructuredAsync(
+        this GeminiClient client,
+        byte[] audioData,
+        string mimeType,
+        Schema responseSchema,
+        string modelId = "gemini-2.5-flash",
+        string? prompt = null,
+        string responseMimeType = "application/json",
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(audioData);
+        ArgumentException.ThrowIfNullOrWhiteSpace(mimeType);
+        ArgumentNullException.ThrowIfNull(responseSchema);
+        ArgumentException.ThrowIfNullOrWhiteSpace(responseMimeType);
+
+        var parts = new List<Part>
+        {
+            new()
+            {
+                InlineData = new Blob
+                {
+                    MimeType = mimeType,
+                    Data = audioData,
+                },
+            },
+            new()
+            {
+                Text = prompt ?? "Transcribe this audio accurately.",
+            },
+        };
+
+        var request = new GenerateContentRequest
+        {
+            Contents =
+            [
+                new Content { Parts = parts },
+            ],
+            GenerationConfig = new GenerationConfig
+            {
+                ResponseMimeType = responseMimeType,
+                ResponseSchema = responseSchema,
+            },
+        };
+
+        var response = await client.ModelsGenerateContentAsync(
+            modelsId: modelId,
+            request: request,
+            cancellationToken: cancellationToken).ConfigureAwait(false);
+
+        var candidate = response.Candidates is { Count: > 0 } ? response.Candidates[0] : null;
+        return candidate?.Content?.Parts?.FirstOrDefault(p => p.Text is not null)?.Text ?? string.Empty;
+    }
+
+    /// <summary>
     /// Returns the TTS-capable models exposed by the Gemini API (filtered by
     /// the <c>-tts</c> suffix in <see cref="Model.Name"/>). Use this to discover
     /// new TTS preview models without hard-coding their IDs in client code.
