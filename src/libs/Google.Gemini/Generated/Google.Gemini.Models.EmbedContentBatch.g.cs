@@ -9,10 +9,44 @@ namespace Google.Gemini
     public sealed partial class EmbedContentBatch
     {
         /// <summary>
+        /// Output only. The state of the batch.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentBatchStateJsonConverter))]
+        public global::Google.Gemini.EmbedContentBatchState? State { get; set; }
+
+        /// <summary>
+        /// Stats about the batch.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("batchStats")]
+        public global::Google.Gemini.EmbedContentBatchStats? BatchStats { get; set; }
+
+        /// <summary>
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
         public string? Priority { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the batch processing completed.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endTime")]
+        public string? EndTime { get; set; }
+
+        /// <summary>
+        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
+        public global::Google.Gemini.EmbedContentBatchOutput? Output { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
@@ -28,44 +62,10 @@ namespace Google.Gemini
         public string? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The state of the batch.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentBatchStateJsonConverter))]
-        public global::Google.Gemini.EmbedContentBatchState? State { get; set; }
-
-        /// <summary>
-        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
-        public global::Google.Gemini.EmbedContentBatchOutput? Output { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the batch processing completed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endTime")]
-        public string? EndTime { get; set; }
-
-        /// <summary>
-        /// Stats about the batch.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("batchStats")]
-        public global::Google.Gemini.EmbedContentBatchStats? BatchStats { get; set; }
-
-        /// <summary>
         /// Required. The user-defined name of this batch.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
 
         /// <summary>
         /// Configures the input to the batch request.
@@ -89,8 +89,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentBatch" /> class.
         /// </summary>
+        /// <param name="state">
+        /// Output only. The state of the batch.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="batchStats">
+        /// Stats about the batch.
+        /// </param>
         /// <param name="priority">
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+        /// </param>
+        /// <param name="endTime">
+        /// Output only. The time at which the batch processing completed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
+        /// </param>
+        /// <param name="name">
+        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
@@ -99,26 +117,8 @@ namespace Google.Gemini
         /// Output only. The time at which the batch was created.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="state">
-        /// Output only. The state of the batch.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
-        /// </param>
-        /// <param name="endTime">
-        /// Output only. The time at which the batch processing completed.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
         /// <param name="displayName">
         /// Required. The user-defined name of this batch.
-        /// </param>
-        /// <param name="name">
-        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
@@ -131,27 +131,27 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentBatch(
+            global::Google.Gemini.EmbedContentBatchState? state,
+            global::Google.Gemini.EmbedContentBatchStats? batchStats,
             string? priority,
+            string? endTime,
+            global::Google.Gemini.EmbedContentBatchOutput? output,
+            string? name,
             string? model,
             string? createTime,
-            global::Google.Gemini.EmbedContentBatchState? state,
-            global::Google.Gemini.EmbedContentBatchOutput? output,
-            string? endTime,
-            global::Google.Gemini.EmbedContentBatchStats? batchStats,
             string? displayName,
-            string? name,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig,
             string? updateTime)
         {
+            this.State = state;
+            this.BatchStats = batchStats;
             this.Priority = priority;
+            this.EndTime = endTime;
+            this.Output = output;
+            this.Name = name;
             this.Model = model;
             this.CreateTime = createTime;
-            this.State = state;
-            this.Output = output;
-            this.EndTime = endTime;
-            this.BatchStats = batchStats;
             this.DisplayName = displayName;
-            this.Name = name;
             this.InputConfig = inputConfig;
             this.UpdateTime = updateTime;
         }
