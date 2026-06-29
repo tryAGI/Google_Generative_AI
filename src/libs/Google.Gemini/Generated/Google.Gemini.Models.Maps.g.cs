@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
-        /// Title of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// URI reference of the place.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
@@ -39,6 +33,12 @@ namespace Google.Gemini
         public string? PlaceId { get; set; }
 
         /// <summary>
+        /// Title of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,9 +47,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
-        /// <param name="title">
-        /// Title of the place.
-        /// </param>
         /// <param name="uri">
         /// URI reference of the place.
         /// </param>
@@ -62,21 +59,24 @@ namespace Google.Gemini
         /// <param name="placeId">
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
         /// </param>
+        /// <param name="title">
+        /// Title of the place.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
-            string? title,
             string? uri,
             string? text,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
-            string? placeId)
+            string? placeId,
+            string? title)
         {
-            this.Title = title;
             this.Uri = uri;
             this.Text = text;
             this.PlaceAnswerSources = placeAnswerSources;
             this.PlaceId = placeId;
+            this.Title = title;
         }
 
         /// <summary>
