@@ -15,6 +15,13 @@ namespace Google.Gemini
         public global::Google.Gemini.Hyperparameters? Hyperparameters { get; set; }
 
         /// <summary>
+        /// Output only. The timestamp when tuning this model started.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startTime")]
+        public string? StartTime { get; set; }
+
+        /// <summary>
         /// Output only. The timestamp when tuning this model completed.<br/>
         /// Included only in responses
         /// </summary>
@@ -35,13 +42,6 @@ namespace Google.Gemini
         public global::Google.Gemini.Dataset? TrainingData { get; set; }
 
         /// <summary>
-        /// Output only. The timestamp when tuning this model started.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startTime")]
-        public string? StartTime { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,6 +52,10 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="hyperparameters">
         /// Hyperparameters controlling the tuning process. Read more at https://ai.google.dev/docs/model_tuning_guidance
+        /// </param>
+        /// <param name="startTime">
+        /// Output only. The timestamp when tuning this model started.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="completeTime">
         /// Output only. The timestamp when tuning this model completed.<br/>
@@ -64,25 +68,21 @@ namespace Google.Gemini
         /// <param name="trainingData">
         /// Dataset for training or validation.
         /// </param>
-        /// <param name="startTime">
-        /// Output only. The timestamp when tuning this model started.<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TuningTask(
             global::Google.Gemini.Hyperparameters? hyperparameters,
+            string? startTime,
             string? completeTime,
             global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? snapshots,
-            global::Google.Gemini.Dataset? trainingData,
-            string? startTime)
+            global::Google.Gemini.Dataset? trainingData)
         {
             this.Hyperparameters = hyperparameters;
+            this.StartTime = startTime;
             this.CompleteTime = completeTime;
             this.Snapshots = snapshots;
             this.TrainingData = trainingData;
-            this.StartTime = startTime;
         }
 
         /// <summary>
