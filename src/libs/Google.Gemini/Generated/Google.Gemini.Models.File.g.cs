@@ -35,11 +35,24 @@ namespace Google.Gemini
         public string? DisplayName { get; set; }
 
         /// <summary>
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public global::Google.Gemini.Status? Error { get; set; }
+
+        /// <summary>
         /// Output only. SHA-256 hash of the uploaded bytes.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sha256Hash")]
         public byte[]? Sha256Hash { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp of when the `File` was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. Processing state of the File.<br/>
@@ -50,17 +63,32 @@ namespace Google.Gemini
         public global::Google.Gemini.FileState? State { get; set; }
 
         /// <summary>
-        /// Output only. The timestamp of when the `File` was last updated.<br/>
+        /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("expirationTime")]
+        public string? ExpirationTime { get; set; }
 
         /// <summary>
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// Output only. The download uri of the `File`.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Google.Gemini.Status? Error { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("downloadUri")]
+        public string? DownloadUri { get; set; }
+
+        /// <summary>
+        /// Output only. The uri of the `File`.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp of when the `File` was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Output only. Size of the file in bytes.<br/>
@@ -74,34 +102,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
         public global::Google.Gemini.VideoFileMetadata? VideoMetadata { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp of when the `File` was created.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("expirationTime")]
-        public string? ExpirationTime { get; set; }
-
-        /// <summary>
-        /// Output only. The uri of the `File`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
-        /// Output only. The download uri of the `File`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("downloadUri")]
-        public string? DownloadUri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -125,20 +125,36 @@ namespace Google.Gemini
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `File`. The display name must be no more than 512 characters in length, including spaces. Example: "Welcome Image"
         /// </param>
+        /// <param name="error">
+        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// </param>
         /// <param name="sha256Hash">
         /// Output only. SHA-256 hash of the uploaded bytes.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="state">
-        /// Output only. Processing state of the File.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
         /// Output only. The timestamp of when the `File` was last updated.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="error">
-        /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        /// <param name="state">
+        /// Output only. Processing state of the File.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="expirationTime">
+        /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="downloadUri">
+        /// Output only. The download uri of the `File`.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="uri">
+        /// Output only. The uri of the `File`.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The timestamp of when the `File` was created.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="sizeBytes">
         /// Output only. Size of the file in bytes.<br/>
@@ -146,22 +162,6 @@ namespace Google.Gemini
         /// </param>
         /// <param name="videoMetadata">
         /// Metadata for a video `File`.
-        /// </param>
-        /// <param name="createTime">
-        /// Output only. The timestamp of when the `File` was created.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="expirationTime">
-        /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="uri">
-        /// Output only. The uri of the `File`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="downloadUri">
-        /// Output only. The download uri of the `File`.<br/>
-        /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -171,31 +171,31 @@ namespace Google.Gemini
             string? mimeType,
             string? name,
             string? displayName,
-            byte[]? sha256Hash,
-            global::Google.Gemini.FileState? state,
-            string? updateTime,
             global::Google.Gemini.Status? error,
-            string? sizeBytes,
-            global::Google.Gemini.VideoFileMetadata? videoMetadata,
-            string? createTime,
+            byte[]? sha256Hash,
+            string? updateTime,
+            global::Google.Gemini.FileState? state,
             string? expirationTime,
+            string? downloadUri,
             string? uri,
-            string? downloadUri)
+            string? createTime,
+            string? sizeBytes,
+            global::Google.Gemini.VideoFileMetadata? videoMetadata)
         {
             this.Source = source;
             this.MimeType = mimeType;
             this.Name = name;
             this.DisplayName = displayName;
-            this.Sha256Hash = sha256Hash;
-            this.State = state;
-            this.UpdateTime = updateTime;
             this.Error = error;
+            this.Sha256Hash = sha256Hash;
+            this.UpdateTime = updateTime;
+            this.State = state;
+            this.ExpirationTime = expirationTime;
+            this.DownloadUri = downloadUri;
+            this.Uri = uri;
+            this.CreateTime = createTime;
             this.SizeBytes = sizeBytes;
             this.VideoMetadata = videoMetadata;
-            this.CreateTime = createTime;
-            this.ExpirationTime = expirationTime;
-            this.Uri = uri;
-            this.DownloadUri = downloadUri;
         }
 
         /// <summary>
