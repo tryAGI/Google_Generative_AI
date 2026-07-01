@@ -21,10 +21,11 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
-        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("willContinue")]
-        public bool? WillContinue { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
+        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
 
         /// <summary>
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
@@ -39,11 +40,10 @@ namespace Google.Gemini
         public object? Response { get; set; }
 
         /// <summary>
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
-        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("willContinue")]
+        public bool? WillContinue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,8 +60,8 @@ namespace Google.Gemini
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
-        /// <param name="willContinue">
-        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
+        /// <param name="scheduling">
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </param>
         /// <param name="parts">
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
@@ -69,8 +69,8 @@ namespace Google.Gemini
         /// <param name="response">
         /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
         /// </param>
-        /// <param name="scheduling">
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// <param name="willContinue">
+        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,17 +78,17 @@ namespace Google.Gemini
         public FunctionResponse(
             string? name,
             string? id,
-            bool? willContinue,
+            global::Google.Gemini.FunctionResponseScheduling? scheduling,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
             object? response,
-            global::Google.Gemini.FunctionResponseScheduling? scheduling)
+            bool? willContinue)
         {
             this.Name = name;
             this.Id = id;
-            this.WillContinue = willContinue;
+            this.Scheduling = scheduling;
             this.Parts = parts;
             this.Response = response;
-            this.Scheduling = scheduling;
+            this.WillContinue = willContinue;
         }
 
         /// <summary>
