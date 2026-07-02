@@ -9,16 +9,10 @@ namespace Google.Gemini
     public sealed partial class GenerateContentResponse
     {
         /// <summary>
-        /// Candidate responses from the model.
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
-
-        /// <summary>
-        /// Metadata on the generation request's token usage.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
-        public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
+        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
 
         /// <summary>
         /// Output only. response_id is used to identify each response.<br/>
@@ -28,10 +22,16 @@ namespace Google.Gemini
         public string? ResponseId { get; set; }
 
         /// <summary>
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// Metadata on the generation request's token usage.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
-        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
+        public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
+
+        /// <summary>
+        /// Candidate responses from the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
 
         /// <summary>
         /// Output only. The model version used to generate the response.<br/>
@@ -55,18 +55,18 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentResponse" /> class.
         /// </summary>
-        /// <param name="candidates">
-        /// Candidate responses from the model.
-        /// </param>
-        /// <param name="usageMetadata">
-        /// Metadata on the generation request's token usage.
+        /// <param name="promptFeedback">
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </param>
         /// <param name="responseId">
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="promptFeedback">
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// <param name="usageMetadata">
+        /// Metadata on the generation request's token usage.
+        /// </param>
+        /// <param name="candidates">
+        /// Candidate responses from the model.
         /// </param>
         /// <param name="modelVersion">
         /// Output only. The model version used to generate the response.<br/>
@@ -79,17 +79,17 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentResponse(
-            global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
-            global::Google.Gemini.UsageMetadata? usageMetadata,
-            string? responseId,
             global::Google.Gemini.PromptFeedback? promptFeedback,
+            string? responseId,
+            global::Google.Gemini.UsageMetadata? usageMetadata,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
             string? modelVersion,
             global::Google.Gemini.ModelStatus? modelStatus)
         {
-            this.Candidates = candidates;
-            this.UsageMetadata = usageMetadata;
-            this.ResponseId = responseId;
             this.PromptFeedback = promptFeedback;
+            this.ResponseId = responseId;
+            this.UsageMetadata = usageMetadata;
+            this.Candidates = candidates;
             this.ModelVersion = modelVersion;
             this.ModelStatus = modelStatus;
         }
