@@ -21,10 +21,10 @@ namespace Google.Gemini
         public string? SseReadTimeout { get; set; }
 
         /// <summary>
-        /// Whether to close the client session when the transport closes.
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
-        public bool? TerminateOnClose { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
@@ -33,10 +33,10 @@ namespace Google.Gemini
         public string? Url { get; set; }
 
         /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// Whether to close the client session when the transport closes.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
+        public bool? TerminateOnClose { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,14 +53,14 @@ namespace Google.Gemini
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
-        /// <param name="terminateOnClose">
-        /// Whether to close the client session when the transport closes.
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
         /// <param name="url">
         /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// <param name="terminateOnClose">
+        /// Whether to close the client session when the transport closes.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -68,15 +68,15 @@ namespace Google.Gemini
         public StreamableHttpTransport(
             string? timeout,
             string? sseReadTimeout,
-            bool? terminateOnClose,
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
             string? url,
-            global::System.Collections.Generic.Dictionary<string, string>? headers)
+            bool? terminateOnClose)
         {
             this.Timeout = timeout;
             this.SseReadTimeout = sseReadTimeout;
-            this.TerminateOnClose = terminateOnClose;
-            this.Url = url;
             this.Headers = headers;
+            this.Url = url;
+            this.TerminateOnClose = terminateOnClose;
         }
 
         /// <summary>
