@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class StreamableHttpTransport
     {
         /// <summary>
-        /// HTTP timeout for regular operations.
+        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
-        public string? Timeout { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
 
         /// <summary>
         /// Timeout for SSE read operations.
@@ -33,10 +33,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
-        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+        /// HTTP timeout for regular operations.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public string? Timeout { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,8 +47,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamableHttpTransport" /> class.
         /// </summary>
-        /// <param name="timeout">
-        /// HTTP timeout for regular operations.
+        /// <param name="url">
+        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
         /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
@@ -59,24 +59,24 @@ namespace Google.Gemini
         /// <param name="headers">
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
-        /// <param name="url">
-        /// The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+        /// <param name="timeout">
+        /// HTTP timeout for regular operations.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
-            string? timeout,
+            string? url,
             string? sseReadTimeout,
             bool? terminateOnClose,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
-            string? url)
+            string? timeout)
         {
-            this.Timeout = timeout;
+            this.Url = url;
             this.SseReadTimeout = sseReadTimeout;
             this.TerminateOnClose = terminateOnClose;
             this.Headers = headers;
-            this.Url = url;
+            this.Timeout = timeout;
         }
 
         /// <summary>

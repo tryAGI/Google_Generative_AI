@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class Document
     {
         /// <summary>
-        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
-
-        /// <summary>
         /// Output only. The size of raw bytes ingested into the Document.<br/>
         /// Included only in responses
         /// </summary>
@@ -36,12 +29,10 @@ namespace Google.Gemini
         public string? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. Current state of the `Document`.<br/>
-        /// Included only in responses
+        /// Optional. The human-readable display name for the `Document`. The display name must be no more than 512 characters in length, including spaces. Example: "Semantic Retriever Documentation"
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.DocumentStateJsonConverter))]
-        public global::Google.Gemini.DocumentState? State { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Output only. The mime type of the Document.<br/>
@@ -51,16 +42,25 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
+        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. Current state of the `Document`.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.DocumentStateJsonConverter))]
+        public global::Google.Gemini.DocumentState? State { get; set; }
+
+        /// <summary>
         /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
-        /// Optional. The human-readable display name for the `Document`. The display name must be no more than 512 characters in length, including spaces. Example: "Semantic Retriever Documentation"
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -71,10 +71,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Document" /> class.
         /// </summary>
-        /// <param name="updateTime">
-        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="sizeBytes">
         /// Output only. The size of raw bytes ingested into the Document.<br/>
         /// Included only in responses
@@ -86,41 +82,45 @@ namespace Google.Gemini
         /// Output only. The Timestamp of when the `Document` was created.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="state">
-        /// Output only. Current state of the `Document`.<br/>
-        /// Included only in responses
+        /// <param name="displayName">
+        /// Optional. The human-readable display name for the `Document`. The display name must be no more than 512 characters in length, including spaces. Example: "Semantic Retriever Documentation"
         /// </param>
         /// <param name="mimeType">
         /// Output only. The mime type of the Document.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="updateTime">
+        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="state">
+        /// Output only. Current state of the `Document`.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="customMetadata">
         /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
-        /// </param>
-        /// <param name="displayName">
-        /// Optional. The human-readable display name for the `Document`. The display name must be no more than 512 characters in length, including spaces. Example: "Semantic Retriever Documentation"
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Document(
-            string? updateTime,
             string? sizeBytes,
             string? name,
             string? createTime,
-            global::Google.Gemini.DocumentState? state,
+            string? displayName,
             string? mimeType,
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
-            string? displayName)
+            string? updateTime,
+            global::Google.Gemini.DocumentState? state,
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata)
         {
-            this.UpdateTime = updateTime;
             this.SizeBytes = sizeBytes;
             this.Name = name;
             this.CreateTime = createTime;
-            this.State = state;
-            this.MimeType = mimeType;
-            this.CustomMetadata = customMetadata;
             this.DisplayName = displayName;
+            this.MimeType = mimeType;
+            this.UpdateTime = updateTime;
+            this.State = state;
+            this.CustomMetadata = customMetadata;
         }
 
         /// <summary>
