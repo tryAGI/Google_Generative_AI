@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
+        /// URI reference of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
+
+        /// <summary>
         /// Text description of the place answer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
@@ -33,12 +39,6 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// URI reference of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +47,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
+        /// <param name="uri">
+        /// URI reference of the place.
+        /// </param>
         /// <param name="text">
         /// Text description of the place answer.
         /// </param>
@@ -59,24 +62,21 @@ namespace Google.Gemini
         /// <param name="title">
         /// Title of the place.
         /// </param>
-        /// <param name="uri">
-        /// URI reference of the place.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
+            string? uri,
             string? text,
             string? placeId,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
-            string? title,
-            string? uri)
+            string? title)
         {
+            this.Uri = uri;
             this.Text = text;
             this.PlaceId = placeId;
             this.PlaceAnswerSources = placeAnswerSources;
             this.Title = title;
-            this.Uri = uri;
         }
 
         /// <summary>
