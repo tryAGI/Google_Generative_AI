@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
+        /// <param name="inputConfig">
+        /// Configures the input to the batch request.
+        /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
         /// </param>
@@ -56,21 +59,18 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
-        /// <param name="inputConfig">
-        /// Configures the input to the batch request.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentBatch> BatchesUpdateGenerateContentBatchAsync(
             string batchesId,
             string? updateMask = default,
+            global::Google.Gemini.InputConfig? inputConfig = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
             string? priority = default,
             global::Google.Gemini.BatchStats? batchStats = default,
             string? displayName = default,
             string? model = default,
-            global::Google.Gemini.InputConfig? inputConfig = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
