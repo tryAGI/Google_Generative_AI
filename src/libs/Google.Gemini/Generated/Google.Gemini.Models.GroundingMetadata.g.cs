@@ -15,28 +15,16 @@ namespace Google.Gemini
         public global::Google.Gemini.RetrievalMetadata? RetrievalMetadata { get; set; }
 
         /// <summary>
-        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingChunks")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? GroundingChunks { get; set; }
-
-        /// <summary>
-        /// Google search entry point.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("searchEntryPoint")]
-        public global::Google.Gemini.SearchEntryPoint? SearchEntryPoint { get; set; }
-
-        /// <summary>
         /// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("googleMapsWidgetContextToken")]
         public string? GoogleMapsWidgetContextToken { get; set; }
 
         /// <summary>
-        /// Image search queries used for grounding.
+        /// Google search entry point.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("imageSearchQueries")]
-        public global::System.Collections.Generic.IList<string>? ImageSearchQueries { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("searchEntryPoint")]
+        public global::Google.Gemini.SearchEntryPoint? SearchEntryPoint { get; set; }
 
         /// <summary>
         /// List of grounding support.
@@ -51,6 +39,18 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? WebSearchQueries { get; set; }
 
         /// <summary>
+        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingChunks")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? GroundingChunks { get; set; }
+
+        /// <summary>
+        /// Image search queries used for grounding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("imageSearchQueries")]
+        public global::System.Collections.Generic.IList<string>? ImageSearchQueries { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -62,17 +62,11 @@ namespace Google.Gemini
         /// <param name="retrievalMetadata">
         /// Metadata related to retrieval in the grounding flow.
         /// </param>
-        /// <param name="groundingChunks">
-        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
-        /// </param>
-        /// <param name="searchEntryPoint">
-        /// Google search entry point.
-        /// </param>
         /// <param name="googleMapsWidgetContextToken">
         /// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
         /// </param>
-        /// <param name="imageSearchQueries">
-        /// Image search queries used for grounding.
+        /// <param name="searchEntryPoint">
+        /// Google search entry point.
         /// </param>
         /// <param name="groundingSupports">
         /// List of grounding support.
@@ -80,25 +74,31 @@ namespace Google.Gemini
         /// <param name="webSearchQueries">
         /// Web search queries for the following-up web search.
         /// </param>
+        /// <param name="groundingChunks">
+        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
+        /// </param>
+        /// <param name="imageSearchQueries">
+        /// Image search queries used for grounding.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingMetadata(
             global::Google.Gemini.RetrievalMetadata? retrievalMetadata,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
-            global::Google.Gemini.SearchEntryPoint? searchEntryPoint,
             string? googleMapsWidgetContextToken,
-            global::System.Collections.Generic.IList<string>? imageSearchQueries,
+            global::Google.Gemini.SearchEntryPoint? searchEntryPoint,
             global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
-            global::System.Collections.Generic.IList<string>? webSearchQueries)
+            global::System.Collections.Generic.IList<string>? webSearchQueries,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
+            global::System.Collections.Generic.IList<string>? imageSearchQueries)
         {
             this.RetrievalMetadata = retrievalMetadata;
-            this.GroundingChunks = groundingChunks;
-            this.SearchEntryPoint = searchEntryPoint;
             this.GoogleMapsWidgetContextToken = googleMapsWidgetContextToken;
-            this.ImageSearchQueries = imageSearchQueries;
+            this.SearchEntryPoint = searchEntryPoint;
             this.GroundingSupports = groundingSupports;
             this.WebSearchQueries = webSearchQueries;
+            this.GroundingChunks = groundingChunks;
+            this.ImageSearchQueries = imageSearchQueries;
         }
 
         /// <summary>
