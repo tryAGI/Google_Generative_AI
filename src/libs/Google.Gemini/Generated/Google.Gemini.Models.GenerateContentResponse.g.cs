@@ -21,6 +21,13 @@ namespace Google.Gemini
         public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
 
         /// <summary>
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
+        public string? ModelVersion { get; set; }
+
+        /// <summary>
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </summary>
@@ -32,13 +39,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("candidates")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
-
-        /// <summary>
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
-        public string? ModelVersion { get; set; }
 
         /// <summary>
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
@@ -61,16 +61,16 @@ namespace Google.Gemini
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
         /// </param>
+        /// <param name="modelVersion">
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="responseId">
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="candidates">
         /// Candidate responses from the model.
-        /// </param>
-        /// <param name="modelVersion">
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="modelStatus">
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
@@ -81,16 +81,16 @@ namespace Google.Gemini
         public GenerateContentResponse(
             global::Google.Gemini.PromptFeedback? promptFeedback,
             global::Google.Gemini.UsageMetadata? usageMetadata,
+            string? modelVersion,
             string? responseId,
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
-            string? modelVersion,
             global::Google.Gemini.ModelStatus? modelStatus)
         {
             this.PromptFeedback = promptFeedback;
             this.UsageMetadata = usageMetadata;
+            this.ModelVersion = modelVersion;
             this.ResponseId = responseId;
             this.Candidates = candidates;
-            this.ModelVersion = modelVersion;
             this.ModelStatus = modelStatus;
         }
 
