@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
+        /// <param name="batchStats">
+        /// Stats about the batch.
+        /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
         /// </param>
@@ -53,9 +56,6 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
         /// </param>
@@ -65,11 +65,11 @@ namespace Google.Gemini
         global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentBatch> BatchesUpdateEmbedContentBatchAsync(
             string batchesId,
             string? updateMask = default,
+            global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
             global::Google.Gemini.EmbedContentBatchOutput? output = default,
             string? priority = default,
             string? displayName = default,
             string? model = default,
-            global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
