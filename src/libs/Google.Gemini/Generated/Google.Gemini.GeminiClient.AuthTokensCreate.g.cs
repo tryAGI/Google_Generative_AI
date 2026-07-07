@@ -425,12 +425,6 @@ namespace Google.Gemini
         /// <summary>
         /// Creates a token that can be used to constrain the behavior of a BidiGenerateContent session.
         /// </summary>
-        /// <param name="uses">
-        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
-        /// </param>
-        /// <param name="fieldMask">
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </param>
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
@@ -440,25 +434,31 @@ namespace Google.Gemini
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
+        /// <param name="fieldMask">
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+        /// </param>
+        /// <param name="uses">
+        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AuthToken> AuthTokensCreateAsync(
-            int? uses = default,
-            string? fieldMask = default,
             string? newSessionExpireTime = default,
             string? expireTime = default,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
+            string? fieldMask = default,
+            int? uses = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.AuthToken
             {
-                Uses = uses,
-                FieldMask = fieldMask,
                 NewSessionExpireTime = newSessionExpireTime,
                 ExpireTime = expireTime,
                 BidiGenerateContentSetup = bidiGenerateContentSetup,
+                FieldMask = fieldMask,
+                Uses = uses,
             };
 
             return await AuthTokensCreateAsync(
