@@ -15,17 +15,17 @@ namespace Google.Gemini
         public string? Message { get; set; }
 
         /// <summary>
-        /// The time at which the model will be retired.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retirementTime")]
-        public string? RetirementTime { get; set; }
-
-        /// <summary>
         /// The stage of the underlying model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelStage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ModelStatusModelStageJsonConverter))]
         public global::Google.Gemini.ModelStatusModelStage? ModelStage { get; set; }
+
+        /// <summary>
+        /// The time at which the model will be retired.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retirementTime")]
+        public string? RetirementTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini
         /// <param name="message">
         /// A message explaining the model status.
         /// </param>
-        /// <param name="retirementTime">
-        /// The time at which the model will be retired.
-        /// </param>
         /// <param name="modelStage">
         /// The stage of the underlying model.
+        /// </param>
+        /// <param name="retirementTime">
+        /// The time at which the model will be retired.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ModelStatus(
             string? message,
-            string? retirementTime,
-            global::Google.Gemini.ModelStatusModelStage? modelStage)
+            global::Google.Gemini.ModelStatusModelStage? modelStage,
+            string? retirementTime)
         {
             this.Message = message;
-            this.RetirementTime = retirementTime;
             this.ModelStage = modelStage;
+            this.RetirementTime = retirementTime;
         }
 
         /// <summary>
