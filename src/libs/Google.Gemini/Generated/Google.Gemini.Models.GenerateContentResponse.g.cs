@@ -15,6 +15,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? Candidates { get; set; }
 
         /// <summary>
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
+        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
+
+        /// <summary>
         /// Metadata on the generation request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageMetadata")]
@@ -41,12 +47,6 @@ namespace Google.Gemini
         public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
 
         /// <summary>
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
-        public global::Google.Gemini.PromptFeedback? PromptFeedback { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -57,6 +57,9 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="candidates">
         /// Candidate responses from the model.
+        /// </param>
+        /// <param name="promptFeedback">
+        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </param>
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
@@ -72,26 +75,23 @@ namespace Google.Gemini
         /// <param name="modelStatus">
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
         /// </param>
-        /// <param name="promptFeedback">
-        /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentResponse(
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
+            global::Google.Gemini.PromptFeedback? promptFeedback,
             global::Google.Gemini.UsageMetadata? usageMetadata,
             string? modelVersion,
             string? responseId,
-            global::Google.Gemini.ModelStatus? modelStatus,
-            global::Google.Gemini.PromptFeedback? promptFeedback)
+            global::Google.Gemini.ModelStatus? modelStatus)
         {
             this.Candidates = candidates;
+            this.PromptFeedback = promptFeedback;
             this.UsageMetadata = usageMetadata;
             this.ModelVersion = modelVersion;
             this.ResponseId = responseId;
             this.ModelStatus = modelStatus;
-            this.PromptFeedback = promptFeedback;
         }
 
         /// <summary>
