@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
+        /// Optional. URI reference of the semantic retrieval document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
+
+        /// <summary>
         /// Optional. Page number of the retrieved context, if applicable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
@@ -21,10 +27,10 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// Optional. URI reference of the semantic retrieval document.
+        /// Optional. User-provided metadata about the retrieved context.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Optional. Text of the chunk.
@@ -33,22 +39,16 @@ namespace Google.Gemini
         public string? Text { get; set; }
 
         /// <summary>
-        /// Optional. User-provided metadata about the retrieved context.
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
+        public string? FileSearchStore { get; set; }
 
         /// <summary>
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
         public string? MediaId { get; set; }
-
-        /// <summary>
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileSearchStore")]
-        public string? FileSearchStore { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -59,46 +59,46 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
+        /// <param name="uri">
+        /// Optional. URI reference of the semantic retrieval document.
+        /// </param>
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
         /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
         /// </param>
-        /// <param name="uri">
-        /// Optional. URI reference of the semantic retrieval document.
+        /// <param name="customMetadata">
+        /// Optional. User-provided metadata about the retrieved context.
         /// </param>
         /// <param name="text">
         /// Optional. Text of the chunk.
         /// </param>
-        /// <param name="customMetadata">
-        /// Optional. User-provided metadata about the retrieved context.
+        /// <param name="fileSearchStore">
+        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
         /// <param name="mediaId">
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
-        /// </param>
-        /// <param name="fileSearchStore">
-        /// Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
+            string? uri,
             int? pageNumber,
             string? title,
-            string? uri,
-            string? text,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
-            string? mediaId,
-            string? fileSearchStore)
+            string? text,
+            string? fileSearchStore,
+            string? mediaId)
         {
+            this.Uri = uri;
             this.PageNumber = pageNumber;
             this.Title = title;
-            this.Uri = uri;
-            this.Text = text;
             this.CustomMetadata = customMetadata;
-            this.MediaId = mediaId;
+            this.Text = text;
             this.FileSearchStore = fileSearchStore;
+            this.MediaId = mediaId;
         }
 
         /// <summary>
