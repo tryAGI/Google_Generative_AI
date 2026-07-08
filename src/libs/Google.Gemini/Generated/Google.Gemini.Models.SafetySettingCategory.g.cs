@@ -33,10 +33,6 @@ namespace Google.Gemini
         /// </summary>
         HarmCategoryHateSpeech,
         /// <summary>
-        /// **Gemini** - Prompts attempting to bypass or subvert the model's safety guidelines (jailbreak attempts).
-        /// </summary>
-        HarmCategoryJailbreak,
-        /// <summary>
         /// **PaLM** - Promotes unchecked medical advice.
         /// </summary>
         HarmCategoryMedical,
@@ -80,7 +76,6 @@ namespace Google.Gemini
                 SafetySettingCategory.HarmCategoryDerogatory => "HARM_CATEGORY_DEROGATORY",
                 SafetySettingCategory.HarmCategoryHarassment => "HARM_CATEGORY_HARASSMENT",
                 SafetySettingCategory.HarmCategoryHateSpeech => "HARM_CATEGORY_HATE_SPEECH",
-                SafetySettingCategory.HarmCategoryJailbreak => "HARM_CATEGORY_JAILBREAK",
                 SafetySettingCategory.HarmCategoryMedical => "HARM_CATEGORY_MEDICAL",
                 SafetySettingCategory.HarmCategorySexual => "HARM_CATEGORY_SEXUAL",
                 SafetySettingCategory.HarmCategorySexuallyExplicit => "HARM_CATEGORY_SEXUALLY_EXPLICIT",
@@ -103,7 +98,6 @@ namespace Google.Gemini
                 "HARM_CATEGORY_DEROGATORY" => SafetySettingCategory.HarmCategoryDerogatory,
                 "HARM_CATEGORY_HARASSMENT" => SafetySettingCategory.HarmCategoryHarassment,
                 "HARM_CATEGORY_HATE_SPEECH" => SafetySettingCategory.HarmCategoryHateSpeech,
-                "HARM_CATEGORY_JAILBREAK" => SafetySettingCategory.HarmCategoryJailbreak,
                 "HARM_CATEGORY_MEDICAL" => SafetySettingCategory.HarmCategoryMedical,
                 "HARM_CATEGORY_SEXUAL" => SafetySettingCategory.HarmCategorySexual,
                 "HARM_CATEGORY_SEXUALLY_EXPLICIT" => SafetySettingCategory.HarmCategorySexuallyExplicit,
