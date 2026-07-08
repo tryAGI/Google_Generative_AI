@@ -21,28 +21,28 @@ namespace Google.Gemini
         public string? GoogleMapsWidgetContextToken { get; set; }
 
         /// <summary>
-        /// Google search entry point.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("searchEntryPoint")]
-        public global::Google.Gemini.SearchEntryPoint? SearchEntryPoint { get; set; }
-
-        /// <summary>
         /// Metadata related to retrieval in the grounding flow.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrievalMetadata")]
         public global::Google.Gemini.RetrievalMetadata? RetrievalMetadata { get; set; }
 
         /// <summary>
-        /// List of grounding support.
+        /// Google search entry point.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingSupports")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? GroundingSupports { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("searchEntryPoint")]
+        public global::Google.Gemini.SearchEntryPoint? SearchEntryPoint { get; set; }
 
         /// <summary>
         /// Web search queries for the following-up web search.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webSearchQueries")]
         public global::System.Collections.Generic.IList<string>? WebSearchQueries { get; set; }
+
+        /// <summary>
+        /// List of grounding support.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingSupports")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? GroundingSupports { get; set; }
 
         /// <summary>
         /// Image search queries used for grounding.
@@ -65,17 +65,17 @@ namespace Google.Gemini
         /// <param name="googleMapsWidgetContextToken">
         /// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
         /// </param>
-        /// <param name="searchEntryPoint">
-        /// Google search entry point.
-        /// </param>
         /// <param name="retrievalMetadata">
         /// Metadata related to retrieval in the grounding flow.
         /// </param>
-        /// <param name="groundingSupports">
-        /// List of grounding support.
+        /// <param name="searchEntryPoint">
+        /// Google search entry point.
         /// </param>
         /// <param name="webSearchQueries">
         /// Web search queries for the following-up web search.
+        /// </param>
+        /// <param name="groundingSupports">
+        /// List of grounding support.
         /// </param>
         /// <param name="imageSearchQueries">
         /// Image search queries used for grounding.
@@ -86,18 +86,18 @@ namespace Google.Gemini
         public GroundingMetadata(
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
             string? googleMapsWidgetContextToken,
-            global::Google.Gemini.SearchEntryPoint? searchEntryPoint,
             global::Google.Gemini.RetrievalMetadata? retrievalMetadata,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
+            global::Google.Gemini.SearchEntryPoint? searchEntryPoint,
             global::System.Collections.Generic.IList<string>? webSearchQueries,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
             global::System.Collections.Generic.IList<string>? imageSearchQueries)
         {
             this.GroundingChunks = groundingChunks;
             this.GoogleMapsWidgetContextToken = googleMapsWidgetContextToken;
-            this.SearchEntryPoint = searchEntryPoint;
             this.RetrievalMetadata = retrievalMetadata;
-            this.GroundingSupports = groundingSupports;
+            this.SearchEntryPoint = searchEntryPoint;
             this.WebSearchQueries = webSearchQueries;
+            this.GroundingSupports = groundingSupports;
             this.ImageSearchQueries = imageSearchQueries;
         }
 
