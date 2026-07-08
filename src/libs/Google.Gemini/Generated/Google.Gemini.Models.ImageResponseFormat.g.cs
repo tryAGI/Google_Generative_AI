@@ -9,6 +9,13 @@ namespace Google.Gemini
     public sealed partial class ImageResponseFormat
     {
         /// <summary>
+        /// Optional. The MIME type of the image output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatMimeTypeJsonConverter))]
+        public global::Google.Gemini.ImageResponseFormatMimeType? MimeType { get; set; }
+
+        /// <summary>
         /// Optional. The delivery mode for the image output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
@@ -21,13 +28,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("aspectRatio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatAspectRatioJsonConverter))]
         public global::Google.Gemini.ImageResponseFormatAspectRatio? AspectRatio { get; set; }
-
-        /// <summary>
-        /// Optional. The MIME type of the image output.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ImageResponseFormatMimeTypeJsonConverter))]
-        public global::Google.Gemini.ImageResponseFormatMimeType? MimeType { get; set; }
 
         /// <summary>
         /// Optional. The size of the image output.
@@ -45,14 +45,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageResponseFormat" /> class.
         /// </summary>
+        /// <param name="mimeType">
+        /// Optional. The MIME type of the image output.
+        /// </param>
         /// <param name="delivery">
         /// Optional. The delivery mode for the image output.
         /// </param>
         /// <param name="aspectRatio">
         /// Optional. The aspect ratio for the image output.
-        /// </param>
-        /// <param name="mimeType">
-        /// Optional. The MIME type of the image output.
         /// </param>
         /// <param name="imageSize">
         /// Optional. The size of the image output.
@@ -61,14 +61,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ImageResponseFormat(
+            global::Google.Gemini.ImageResponseFormatMimeType? mimeType,
             global::Google.Gemini.ImageResponseFormatDelivery? delivery,
             global::Google.Gemini.ImageResponseFormatAspectRatio? aspectRatio,
-            global::Google.Gemini.ImageResponseFormatMimeType? mimeType,
             global::Google.Gemini.ImageResponseFormatImageSize? imageSize)
         {
+            this.MimeType = mimeType;
             this.Delivery = delivery;
             this.AspectRatio = aspectRatio;
-            this.MimeType = mimeType;
             this.ImageSize = imageSize;
         }
 
