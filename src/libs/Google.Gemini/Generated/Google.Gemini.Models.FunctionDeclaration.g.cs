@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class FunctionDeclaration
     {
         /// <summary>
-        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("behavior")]
@@ -26,6 +20,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
         public object? ParametersJsonSchema { get; set; }
+
+        /// <summary>
+        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Required. A brief description of the function.
@@ -60,14 +60,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionDeclaration" /> class.
         /// </summary>
-        /// <param name="name">
-        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
-        /// </param>
         /// <param name="behavior">
         /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </param>
         /// <param name="parametersJsonSchema">
         /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// </param>
+        /// <param name="name">
+        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </param>
         /// <param name="description">
         /// Required. A brief description of the function.
@@ -85,17 +85,17 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionDeclaration(
-            string? name,
             global::Google.Gemini.FunctionDeclarationBehavior? behavior,
             object? parametersJsonSchema,
+            string? name,
             string? description,
             global::Google.Gemini.Schema? parameters,
             global::Google.Gemini.Schema? response,
             object? responseJsonSchema)
         {
-            this.Name = name;
             this.Behavior = behavior;
             this.ParametersJsonSchema = parametersJsonSchema;
+            this.Name = name;
             this.Description = description;
             this.Parameters = parameters;
             this.Response = response;
