@@ -16,16 +16,16 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
 
         /// <summary>
-        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
-        public object? ParametersJsonSchema { get; set; }
-
-        /// <summary>
         /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
+        public object? ParametersJsonSchema { get; set; }
 
         /// <summary>
         /// Required. A brief description of the function.
@@ -63,11 +63,11 @@ namespace Google.Gemini
         /// <param name="behavior">
         /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </param>
-        /// <param name="parametersJsonSchema">
-        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
-        /// </param>
         /// <param name="name">
         /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
+        /// </param>
+        /// <param name="parametersJsonSchema">
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
         /// </param>
         /// <param name="description">
         /// Required. A brief description of the function.
@@ -86,16 +86,16 @@ namespace Google.Gemini
 #endif
         public FunctionDeclaration(
             global::Google.Gemini.FunctionDeclarationBehavior? behavior,
-            object? parametersJsonSchema,
             string? name,
+            object? parametersJsonSchema,
             string? description,
             global::Google.Gemini.Schema? parameters,
             global::Google.Gemini.Schema? response,
             object? responseJsonSchema)
         {
             this.Behavior = behavior;
-            this.ParametersJsonSchema = parametersJsonSchema;
             this.Name = name;
+            this.ParametersJsonSchema = parametersJsonSchema;
             this.Description = description;
             this.Parameters = parameters;
             this.Response = response;
