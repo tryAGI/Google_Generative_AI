@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
-        /// Provides hints to the model about possible languages present in the audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
-        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
-
-        /// <summary>
         /// Indicates the language of the audio should be automatically detected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
+        /// Provides hints to the model about possible languages present in the audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
+        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscriptionConfig" /> class.
         /// </summary>
-        /// <param name="languageHints">
-        /// Provides hints to the model about possible languages present in the audio.
-        /// </param>
         /// <param name="languageAuto">
         /// Indicates the language of the audio should be automatically detected.
         /// </param>
         /// <param name="adaptationPhrases">
         /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
         /// </param>
+        /// <param name="languageHints">
+        /// Provides hints to the model about possible languages present in the audio.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscriptionConfig(
-            global::Google.Gemini.LanguageHints? languageHints,
             global::Google.Gemini.LanguageAuto? languageAuto,
-            global::System.Collections.Generic.IList<string>? adaptationPhrases)
+            global::System.Collections.Generic.IList<string>? adaptationPhrases,
+            global::Google.Gemini.LanguageHints? languageHints)
         {
-            this.LanguageHints = languageHints;
             this.LanguageAuto = languageAuto;
             this.AdaptationPhrases = adaptationPhrases;
+            this.LanguageHints = languageHints;
         }
 
         /// <summary>
