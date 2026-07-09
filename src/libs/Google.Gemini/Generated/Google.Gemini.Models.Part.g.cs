@@ -11,35 +11,10 @@ namespace Google.Gemini
     public sealed partial class Part
     {
         /// <summary>
-        /// Optional. Indicates if the part is thought from the model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("thought")]
-        public bool? Thought { get; set; }
-
-        /// <summary>
-        /// Deprecated: Use `GenerateContentRequest.processing_options` instead. Metadata describes the input video content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.VideoMetadata? VideoMetadata { get; set; }
-
-        /// <summary>
-        /// URI based data.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileData")]
-        public global::Google.Gemini.FileData? FileData { get; set; }
-
-        /// <summary>
         /// Optional. An opaque signature for the thought so it can be reused in subsequent requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thoughtSignature")]
         public byte[]? ThoughtSignature { get; set; }
-
-        /// <summary>
-        /// Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inlineData")]
-        public global::Google.Gemini.Blob? InlineData { get; set; }
 
         /// <summary>
         /// The result output from a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model. This should contain the result of a`FunctionCall` made based on model prediction.
@@ -54,6 +29,49 @@ namespace Google.Gemini
         public global::Google.Gemini.ExecutableCode? ExecutableCode { get; set; }
 
         /// <summary>
+        /// Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inlineData")]
+        public global::Google.Gemini.Blob? InlineData { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the part is thought from the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("thought")]
+        public bool? Thought { get; set; }
+
+        /// <summary>
+        /// Deprecated: Use `GenerateContentRequest.processing_options` instead. Metadata describes the input video content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.VideoMetadata? VideoMetadata { get; set; }
+
+        /// <summary>
+        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("functionCall")]
+        public global::Google.Gemini.FunctionCall? FunctionCall { get; set; }
+
+        /// <summary>
+        /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolResponse")]
+        public global::Google.Gemini.ToolResponse? ToolResponse { get; set; }
+
+        /// <summary>
+        /// URI based data.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileData")]
+        public global::Google.Gemini.FileData? FileData { get; set; }
+
+        /// <summary>
+        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("codeExecutionResult")]
+        public global::Google.Gemini.CodeExecutionResult? CodeExecutionResult { get; set; }
+
+        /// <summary>
         /// A predicted server-side `ToolCall` returned from the model. This message contains information about a tool that the model wants to invoke. The client is NOT expected to execute this `ToolCall`. Instead, the client should pass this `ToolCall` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolResponse`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolCall")]
@@ -66,28 +84,10 @@ namespace Google.Gemini
         public object? PartMetadata { get; set; }
 
         /// <summary>
-        /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolResponse")]
-        public global::Google.Gemini.ToolResponse? ToolResponse { get; set; }
-
-        /// <summary>
         /// Inline text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
-
-        /// <summary>
-        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("codeExecutionResult")]
-        public global::Google.Gemini.CodeExecutionResult? CodeExecutionResult { get; set; }
-
-        /// <summary>
-        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("functionCall")]
-        public global::Google.Gemini.FunctionCall? FunctionCall { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -98,17 +98,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Part" /> class.
         /// </summary>
-        /// <param name="thought">
-        /// Optional. Indicates if the part is thought from the model.
-        /// </param>
-        /// <param name="fileData">
-        /// URI based data.
-        /// </param>
         /// <param name="thoughtSignature">
         /// Optional. An opaque signature for the thought so it can be reused in subsequent requests.
-        /// </param>
-        /// <param name="inlineData">
-        /// Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
         /// </param>
         /// <param name="functionResponse">
         /// The result output from a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model. This should contain the result of a`FunctionCall` made based on model prediction.
@@ -116,53 +107,62 @@ namespace Google.Gemini
         /// <param name="executableCode">
         /// Code generated by the model that is meant to be executed, and the result returned to the model. Only generated when using the `CodeExecution` tool, in which the code will be automatically executed, and a corresponding `CodeExecutionResult` will also be generated.
         /// </param>
+        /// <param name="inlineData">
+        /// Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
+        /// </param>
+        /// <param name="thought">
+        /// Optional. Indicates if the part is thought from the model.
+        /// </param>
+        /// <param name="functionCall">
+        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
+        /// </param>
+        /// <param name="toolResponse">
+        /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
+        /// </param>
+        /// <param name="fileData">
+        /// URI based data.
+        /// </param>
+        /// <param name="codeExecutionResult">
+        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
+        /// </param>
         /// <param name="toolCall">
         /// A predicted server-side `ToolCall` returned from the model. This message contains information about a tool that the model wants to invoke. The client is NOT expected to execute this `ToolCall`. Instead, the client should pass this `ToolCall` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolResponse`.
         /// </param>
         /// <param name="partMetadata">
         /// Custom metadata associated with the Part. Agents using genai.Part as content representation may need to keep track of the additional information. For example it can be name of a file/source from which the Part originates or a way to multiplex multiple Part streams.
         /// </param>
-        /// <param name="toolResponse">
-        /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
-        /// </param>
         /// <param name="text">
         /// Inline text.
-        /// </param>
-        /// <param name="codeExecutionResult">
-        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
-        /// </param>
-        /// <param name="functionCall">
-        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Part(
-            bool? thought,
-            global::Google.Gemini.FileData? fileData,
             byte[]? thoughtSignature,
-            global::Google.Gemini.Blob? inlineData,
             global::Google.Gemini.FunctionResponse? functionResponse,
             global::Google.Gemini.ExecutableCode? executableCode,
+            global::Google.Gemini.Blob? inlineData,
+            bool? thought,
+            global::Google.Gemini.FunctionCall? functionCall,
+            global::Google.Gemini.ToolResponse? toolResponse,
+            global::Google.Gemini.FileData? fileData,
+            global::Google.Gemini.CodeExecutionResult? codeExecutionResult,
             global::Google.Gemini.ToolCall? toolCall,
             object? partMetadata,
-            global::Google.Gemini.ToolResponse? toolResponse,
-            string? text,
-            global::Google.Gemini.CodeExecutionResult? codeExecutionResult,
-            global::Google.Gemini.FunctionCall? functionCall)
+            string? text)
         {
-            this.Thought = thought;
-            this.FileData = fileData;
             this.ThoughtSignature = thoughtSignature;
-            this.InlineData = inlineData;
             this.FunctionResponse = functionResponse;
             this.ExecutableCode = executableCode;
+            this.InlineData = inlineData;
+            this.Thought = thought;
+            this.FunctionCall = functionCall;
+            this.ToolResponse = toolResponse;
+            this.FileData = fileData;
+            this.CodeExecutionResult = codeExecutionResult;
             this.ToolCall = toolCall;
             this.PartMetadata = partMetadata;
-            this.ToolResponse = toolResponse;
             this.Text = text;
-            this.CodeExecutionResult = codeExecutionResult;
-            this.FunctionCall = functionCall;
         }
 
         /// <summary>
