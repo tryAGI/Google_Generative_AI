@@ -15,10 +15,10 @@ namespace Google.Gemini
         public string? Model { get; set; }
 
         /// <summary>
-        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Tools { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
+        public global::Google.Gemini.Content? SystemInstruction { get; set; }
 
         /// <summary>
         /// The audio transcription configuration.
@@ -27,34 +27,10 @@ namespace Google.Gemini
         public global::Google.Gemini.AudioTranscriptionConfig? InputAudioTranscription { get; set; }
 
         /// <summary>
-        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
+        /// Session resumption configuration. This message is included in the session configuration as `BidiGenerateContentSetup.session_resumption`. If configured, the server will send `SessionResumptionUpdate` messages.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("historyConfig")]
-        public global::Google.Gemini.HistoryConfig? HistoryConfig { get; set; }
-
-        /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
-        public global::Google.Gemini.Content? SystemInstruction { get; set; }
-
-        /// <summary>
-        /// Configures the realtime input behavior in `BidiGenerateContent`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("realtimeInputConfig")]
-        public global::Google.Gemini.RealtimeInputConfig? RealtimeInputConfig { get; set; }
-
-        /// <summary>
-        /// Enables context window compression — a mechanism for managing the model's context window so that it does not exceed a given length.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contextWindowCompression")]
-        public global::Google.Gemini.ContextWindowCompressionConfig? ContextWindowCompression { get; set; }
-
-        /// <summary>
-        /// The audio transcription configuration.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputAudioTranscription")]
-        public global::Google.Gemini.AudioTranscriptionConfig? OutputAudioTranscription { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("sessionResumption")]
+        public global::Google.Gemini.SessionResumptionConfig? SessionResumption { get; set; }
 
         /// <summary>
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
@@ -63,10 +39,34 @@ namespace Google.Gemini
         public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
 
         /// <summary>
-        /// Session resumption configuration. This message is included in the session configuration as `BidiGenerateContentSetup.session_resumption`. If configured, the server will send `SessionResumptionUpdate` messages.
+        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sessionResumption")]
-        public global::Google.Gemini.SessionResumptionConfig? SessionResumption { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Tools { get; set; }
+
+        /// <summary>
+        /// Configures the realtime input behavior in `BidiGenerateContent`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("realtimeInputConfig")]
+        public global::Google.Gemini.RealtimeInputConfig? RealtimeInputConfig { get; set; }
+
+        /// <summary>
+        /// The audio transcription configuration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputAudioTranscription")]
+        public global::Google.Gemini.AudioTranscriptionConfig? OutputAudioTranscription { get; set; }
+
+        /// <summary>
+        /// Enables context window compression — a mechanism for managing the model's context window so that it does not exceed a given length.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contextWindowCompression")]
+        public global::Google.Gemini.ContextWindowCompressionConfig? ContextWindowCompression { get; set; }
+
+        /// <summary>
+        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("historyConfig")]
+        public global::Google.Gemini.HistoryConfig? HistoryConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -80,58 +80,58 @@ namespace Google.Gemini
         /// <param name="model">
         /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
         /// </param>
-        /// <param name="tools">
-        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
         /// <param name="inputAudioTranscription">
         /// The audio transcription configuration.
         /// </param>
-        /// <param name="historyConfig">
-        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
-        /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
-        /// <param name="realtimeInputConfig">
-        /// Configures the realtime input behavior in `BidiGenerateContent`.
-        /// </param>
-        /// <param name="contextWindowCompression">
-        /// Enables context window compression — a mechanism for managing the model's context window so that it does not exceed a given length.
-        /// </param>
-        /// <param name="outputAudioTranscription">
-        /// The audio transcription configuration.
+        /// <param name="sessionResumption">
+        /// Session resumption configuration. This message is included in the session configuration as `BidiGenerateContentSetup.session_resumption`. If configured, the server will send `SessionResumptionUpdate` messages.
         /// </param>
         /// <param name="generationConfig">
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
-        /// <param name="sessionResumption">
-        /// Session resumption configuration. This message is included in the session configuration as `BidiGenerateContentSetup.session_resumption`. If configured, the server will send `SessionResumptionUpdate` messages.
+        /// <param name="tools">
+        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
+        /// </param>
+        /// <param name="realtimeInputConfig">
+        /// Configures the realtime input behavior in `BidiGenerateContent`.
+        /// </param>
+        /// <param name="outputAudioTranscription">
+        /// The audio transcription configuration.
+        /// </param>
+        /// <param name="contextWindowCompression">
+        /// Enables context window compression — a mechanism for managing the model's context window so that it does not exceed a given length.
+        /// </param>
+        /// <param name="historyConfig">
+        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BidiGenerateContentSetup(
             string? model,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
-            global::Google.Gemini.AudioTranscriptionConfig? inputAudioTranscription,
-            global::Google.Gemini.HistoryConfig? historyConfig,
             global::Google.Gemini.Content? systemInstruction,
-            global::Google.Gemini.RealtimeInputConfig? realtimeInputConfig,
-            global::Google.Gemini.ContextWindowCompressionConfig? contextWindowCompression,
-            global::Google.Gemini.AudioTranscriptionConfig? outputAudioTranscription,
+            global::Google.Gemini.AudioTranscriptionConfig? inputAudioTranscription,
+            global::Google.Gemini.SessionResumptionConfig? sessionResumption,
             global::Google.Gemini.GenerationConfig? generationConfig,
-            global::Google.Gemini.SessionResumptionConfig? sessionResumption)
+            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
+            global::Google.Gemini.RealtimeInputConfig? realtimeInputConfig,
+            global::Google.Gemini.AudioTranscriptionConfig? outputAudioTranscription,
+            global::Google.Gemini.ContextWindowCompressionConfig? contextWindowCompression,
+            global::Google.Gemini.HistoryConfig? historyConfig)
         {
             this.Model = model;
-            this.Tools = tools;
-            this.InputAudioTranscription = inputAudioTranscription;
-            this.HistoryConfig = historyConfig;
             this.SystemInstruction = systemInstruction;
-            this.RealtimeInputConfig = realtimeInputConfig;
-            this.ContextWindowCompression = contextWindowCompression;
-            this.OutputAudioTranscription = outputAudioTranscription;
-            this.GenerationConfig = generationConfig;
+            this.InputAudioTranscription = inputAudioTranscription;
             this.SessionResumption = sessionResumption;
+            this.GenerationConfig = generationConfig;
+            this.Tools = tools;
+            this.RealtimeInputConfig = realtimeInputConfig;
+            this.OutputAudioTranscription = outputAudioTranscription;
+            this.ContextWindowCompression = contextWindowCompression;
+            this.HistoryConfig = historyConfig;
         }
 
         /// <summary>
