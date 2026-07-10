@@ -9,18 +9,6 @@ namespace Google.Gemini
     public sealed partial class RetrievedContext
     {
         /// <summary>
-        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
-        public string? MediaId { get; set; }
-
-        /// <summary>
-        /// Optional. User-provided metadata about the retrieved context.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
         /// Optional. Title of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -37,6 +25,18 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pageNumber")]
         public int? PageNumber { get; set; }
+
+        /// <summary>
+        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
+        public string? MediaId { get; set; }
+
+        /// <summary>
+        /// Optional. User-provided metadata about the retrieved context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Optional. URI reference of the semantic retrieval document.
@@ -59,12 +59,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RetrievedContext" /> class.
         /// </summary>
-        /// <param name="mediaId">
-        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
-        /// </param>
-        /// <param name="customMetadata">
-        /// Optional. User-provided metadata about the retrieved context.
-        /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
         /// </param>
@@ -73,6 +67,12 @@ namespace Google.Gemini
         /// </param>
         /// <param name="pageNumber">
         /// Optional. Page number of the retrieved context, if applicable.
+        /// </param>
+        /// <param name="mediaId">
+        /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
+        /// </param>
+        /// <param name="customMetadata">
+        /// Optional. User-provided metadata about the retrieved context.
         /// </param>
         /// <param name="uri">
         /// Optional. URI reference of the semantic retrieval document.
@@ -84,19 +84,19 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetrievedContext(
-            string? mediaId,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? title,
             string? text,
             int? pageNumber,
+            string? mediaId,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
             string? uri,
             string? fileSearchStore)
         {
-            this.MediaId = mediaId;
-            this.CustomMetadata = customMetadata;
             this.Title = title;
             this.Text = text;
             this.PageNumber = pageNumber;
+            this.MediaId = mediaId;
+            this.CustomMetadata = customMetadata;
             this.Uri = uri;
             this.FileSearchStore = fileSearchStore;
         }
