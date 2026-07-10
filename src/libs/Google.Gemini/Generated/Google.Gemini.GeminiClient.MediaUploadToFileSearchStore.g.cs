@@ -435,11 +435,11 @@ namespace Google.Gemini
         /// Uploads data to a FileSearchStore, preprocesses and chunks before storing it in a FileSearchStore Document.
         /// </summary>
         /// <param name="fileSearchStoresId"></param>
-        /// <param name="chunkingConfig">
-        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the created document.
+        /// </param>
+        /// <param name="chunkingConfig">
+        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
@@ -452,8 +452,8 @@ namespace Google.Gemini
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.CustomLongRunningOperation> MediaUploadToFileSearchStoreAsync(
             string fileSearchStoresId,
-            global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             string? displayName = default,
+            global::Google.Gemini.ChunkingConfig? chunkingConfig = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata = default,
             string? mimeType = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -461,8 +461,8 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.UploadToFileSearchStoreRequest
             {
-                ChunkingConfig = chunkingConfig,
                 DisplayName = displayName,
+                ChunkingConfig = chunkingConfig,
                 CustomMetadata = customMetadata,
                 MimeType = mimeType,
             };
