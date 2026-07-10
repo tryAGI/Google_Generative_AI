@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class AutomaticActivityDetection
     {
         /// <summary>
+        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("silenceDurationMs")]
+        public int? SilenceDurationMs { get; set; }
+
+        /// <summary>
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disabled")]
@@ -20,12 +26,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("endOfSpeechSensitivity")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionEndOfSpeechSensitivityJsonConverter))]
         public global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? EndOfSpeechSensitivity { get; set; }
-
-        /// <summary>
-        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("silenceDurationMs")]
-        public int? SilenceDurationMs { get; set; }
 
         /// <summary>
         /// Optional. Determines how likely speech is to be detected.
@@ -49,14 +49,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomaticActivityDetection" /> class.
         /// </summary>
+        /// <param name="silenceDurationMs">
+        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
+        /// </param>
         /// <param name="disabled">
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
         /// </param>
         /// <param name="endOfSpeechSensitivity">
         /// Optional. Determines how likely detected speech is ended.
-        /// </param>
-        /// <param name="silenceDurationMs">
-        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
         /// </param>
         /// <param name="startOfSpeechSensitivity">
         /// Optional. Determines how likely speech is to be detected.
@@ -68,15 +68,15 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AutomaticActivityDetection(
+            int? silenceDurationMs,
             bool? disabled,
             global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity,
-            int? silenceDurationMs,
             global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity,
             int? prefixPaddingMs)
         {
+            this.SilenceDurationMs = silenceDurationMs;
             this.Disabled = disabled;
             this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
-            this.SilenceDurationMs = silenceDurationMs;
             this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
             this.PrefixPaddingMs = prefixPaddingMs;
         }
