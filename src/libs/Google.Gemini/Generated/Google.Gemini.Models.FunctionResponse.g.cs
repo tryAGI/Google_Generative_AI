@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public object? Response { get; set; }
-
-        /// <summary>
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parts")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
+
+        /// <summary>
+        /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public object? Response { get; set; }
 
         /// <summary>
         /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
@@ -57,11 +57,11 @@ namespace Google.Gemini
         /// <param name="name">
         /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </param>
-        /// <param name="response">
-        /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
-        /// </param>
         /// <param name="parts">
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
+        /// </param>
+        /// <param name="response">
+        /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
         /// </param>
         /// <param name="scheduling">
         /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
@@ -77,15 +77,15 @@ namespace Google.Gemini
 #endif
         public FunctionResponse(
             string? name,
-            object? response,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
+            object? response,
             global::Google.Gemini.FunctionResponseScheduling? scheduling,
             bool? willContinue,
             string? id)
         {
             this.Name = name;
-            this.Response = response;
             this.Parts = parts;
+            this.Response = response;
             this.Scheduling = scheduling;
             this.WillContinue = willContinue;
             this.Id = id;
