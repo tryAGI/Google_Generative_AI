@@ -16,18 +16,18 @@ namespace Google.Gemini
         public string? FailedRequestCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of requests that are still pending processing.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pendingRequestCount")]
-        public string? PendingRequestCount { get; set; }
-
-        /// <summary>
         /// Output only. The number of requests that were successfully processed.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("successfulRequestCount")]
         public string? SuccessfulRequestCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of requests that are still pending processing.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pendingRequestCount")]
+        public string? PendingRequestCount { get; set; }
 
         /// <summary>
         /// Output only. The number of requests in the batch.<br/>
@@ -49,12 +49,12 @@ namespace Google.Gemini
         /// Output only. The number of requests that failed to be processed.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="pendingRequestCount">
-        /// Output only. The number of requests that are still pending processing.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="successfulRequestCount">
         /// Output only. The number of requests that were successfully processed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="pendingRequestCount">
+        /// Output only. The number of requests that are still pending processing.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="requestCount">
@@ -66,13 +66,13 @@ namespace Google.Gemini
 #endif
         public EmbedContentBatchStats(
             string? failedRequestCount,
-            string? pendingRequestCount,
             string? successfulRequestCount,
+            string? pendingRequestCount,
             string? requestCount)
         {
             this.FailedRequestCount = failedRequestCount;
-            this.PendingRequestCount = pendingRequestCount;
             this.SuccessfulRequestCount = successfulRequestCount;
+            this.PendingRequestCount = pendingRequestCount;
             this.RequestCount = requestCount;
         }
 
