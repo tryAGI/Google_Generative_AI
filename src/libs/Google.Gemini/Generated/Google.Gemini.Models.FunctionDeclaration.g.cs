@@ -15,6 +15,12 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
+        public object? ParametersJsonSchema { get; set; }
+
+        /// <summary>
         /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response")]
@@ -25,18 +31,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parameters")]
         public global::Google.Gemini.Schema? Parameters { get; set; }
-
-        /// <summary>
-        /// Required. A brief description of the function.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parametersJsonSchema")]
-        public object? ParametersJsonSchema { get; set; }
 
         /// <summary>
         /// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema is the response value of the function. This field is mutually exclusive with `response`.
@@ -52,6 +46,12 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
 
         /// <summary>
+        /// Required. A brief description of the function.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,17 +63,14 @@ namespace Google.Gemini
         /// <param name="name">
         /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </param>
+        /// <param name="parametersJsonSchema">
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
+        /// </param>
         /// <param name="response">
         /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </param>
         /// <param name="parameters">
         /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
-        /// </param>
-        /// <param name="description">
-        /// Required. A brief description of the function.
-        /// </param>
-        /// <param name="parametersJsonSchema">
-        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object where the properties are the parameters to the function. For example: ``` { "type": "object", "properties": { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required": ["name", "age"], "propertyOrdering": ["name", "age"] } ``` This field is mutually exclusive with `parameters`.
         /// </param>
         /// <param name="responseJsonSchema">
         /// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema is the response value of the function. This field is mutually exclusive with `response`.
@@ -81,25 +78,28 @@ namespace Google.Gemini
         /// <param name="behavior">
         /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </param>
+        /// <param name="description">
+        /// Required. A brief description of the function.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionDeclaration(
             string? name,
+            object? parametersJsonSchema,
             global::Google.Gemini.Schema? response,
             global::Google.Gemini.Schema? parameters,
-            string? description,
-            object? parametersJsonSchema,
             object? responseJsonSchema,
-            global::Google.Gemini.FunctionDeclarationBehavior? behavior)
+            global::Google.Gemini.FunctionDeclarationBehavior? behavior,
+            string? description)
         {
             this.Name = name;
+            this.ParametersJsonSchema = parametersJsonSchema;
             this.Response = response;
             this.Parameters = parameters;
-            this.Description = description;
-            this.ParametersJsonSchema = parametersJsonSchema;
             this.ResponseJsonSchema = responseJsonSchema;
             this.Behavior = behavior;
+            this.Description = description;
         }
 
         /// <summary>
