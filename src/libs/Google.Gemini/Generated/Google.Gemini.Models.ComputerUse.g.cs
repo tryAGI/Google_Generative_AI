@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class ComputerUse
     {
         /// <summary>
+        /// Optional. Whether enable the prompt injection detection check on computer-use request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enablePromptInjectionDetection")]
+        public bool? EnablePromptInjectionDetection { get; set; }
+
+        /// <summary>
         /// Optional. Disabled safety policies for computer use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disabledSafetyPolicies")]
@@ -20,12 +26,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ComputerUseEnvironmentJsonConverter))]
         public global::Google.Gemini.ComputerUseEnvironment? Environment { get; set; }
-
-        /// <summary>
-        /// Optional. Whether enable the prompt injection detection check on computer-use request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("enablePromptInjectionDetection")]
-        public bool? EnablePromptInjectionDetection { get; set; }
 
         /// <summary>
         /// Optional. By default, predefined functions are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
@@ -42,14 +42,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ComputerUse" /> class.
         /// </summary>
+        /// <param name="enablePromptInjectionDetection">
+        /// Optional. Whether enable the prompt injection detection check on computer-use request.
+        /// </param>
         /// <param name="disabledSafetyPolicies">
         /// Optional. Disabled safety policies for computer use.
         /// </param>
         /// <param name="environment">
         /// Required. The environment being operated.
-        /// </param>
-        /// <param name="enablePromptInjectionDetection">
-        /// Optional. Whether enable the prompt injection detection check on computer-use request.
         /// </param>
         /// <param name="excludedPredefinedFunctions">
         /// Optional. By default, predefined functions are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
@@ -58,14 +58,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ComputerUse(
+            bool? enablePromptInjectionDetection,
             global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies,
             global::Google.Gemini.ComputerUseEnvironment? environment,
-            bool? enablePromptInjectionDetection,
             global::System.Collections.Generic.IList<string>? excludedPredefinedFunctions)
         {
+            this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
             this.DisabledSafetyPolicies = disabledSafetyPolicies;
             this.Environment = environment;
-            this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
             this.ExcludedPredefinedFunctions = excludedPredefinedFunctions;
         }
 
