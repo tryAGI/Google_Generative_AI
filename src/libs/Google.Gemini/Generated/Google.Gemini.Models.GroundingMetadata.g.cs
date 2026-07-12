@@ -15,16 +15,22 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? GroundingSupports { get; set; }
 
         /// <summary>
-        /// Metadata related to retrieval in the grounding flow.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrievalMetadata")]
-        public global::Google.Gemini.RetrievalMetadata? RetrievalMetadata { get; set; }
-
-        /// <summary>
         /// Google search entry point.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("searchEntryPoint")]
         public global::Google.Gemini.SearchEntryPoint? SearchEntryPoint { get; set; }
+
+        /// <summary>
+        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groundingChunks")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? GroundingChunks { get; set; }
+
+        /// <summary>
+        /// Metadata related to retrieval in the grounding flow.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retrievalMetadata")]
+        public global::Google.Gemini.RetrievalMetadata? RetrievalMetadata { get; set; }
 
         /// <summary>
         /// Image search queries used for grounding.
@@ -37,12 +43,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("googleMapsWidgetContextToken")]
         public string? GoogleMapsWidgetContextToken { get; set; }
-
-        /// <summary>
-        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("groundingChunks")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? GroundingChunks { get; set; }
 
         /// <summary>
         /// Web search queries for the following-up web search.
@@ -62,20 +62,20 @@ namespace Google.Gemini
         /// <param name="groundingSupports">
         /// List of grounding support.
         /// </param>
-        /// <param name="retrievalMetadata">
-        /// Metadata related to retrieval in the grounding flow.
-        /// </param>
         /// <param name="searchEntryPoint">
         /// Google search entry point.
+        /// </param>
+        /// <param name="groundingChunks">
+        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
+        /// </param>
+        /// <param name="retrievalMetadata">
+        /// Metadata related to retrieval in the grounding flow.
         /// </param>
         /// <param name="imageSearchQueries">
         /// Image search queries used for grounding.
         /// </param>
         /// <param name="googleMapsWidgetContextToken">
         /// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
-        /// </param>
-        /// <param name="groundingChunks">
-        /// List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
         /// </param>
         /// <param name="webSearchQueries">
         /// Web search queries for the following-up web search.
@@ -85,19 +85,19 @@ namespace Google.Gemini
 #endif
         public GroundingMetadata(
             global::System.Collections.Generic.IList<global::Google.Gemini.GoogleAiGenerativelanguageV1betaGroundingSupport>? groundingSupports,
-            global::Google.Gemini.RetrievalMetadata? retrievalMetadata,
             global::Google.Gemini.SearchEntryPoint? searchEntryPoint,
+            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
+            global::Google.Gemini.RetrievalMetadata? retrievalMetadata,
             global::System.Collections.Generic.IList<string>? imageSearchQueries,
             string? googleMapsWidgetContextToken,
-            global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunk>? groundingChunks,
             global::System.Collections.Generic.IList<string>? webSearchQueries)
         {
             this.GroundingSupports = groundingSupports;
-            this.RetrievalMetadata = retrievalMetadata;
             this.SearchEntryPoint = searchEntryPoint;
+            this.GroundingChunks = groundingChunks;
+            this.RetrievalMetadata = retrievalMetadata;
             this.ImageSearchQueries = imageSearchQueries;
             this.GoogleMapsWidgetContextToken = googleMapsWidgetContextToken;
-            this.GroundingChunks = groundingChunks;
             this.WebSearchQueries = webSearchQueries;
         }
 
