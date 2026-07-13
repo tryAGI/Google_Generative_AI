@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class AudioResponseFormat
     {
         /// <summary>
+        /// Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bitRate")]
+        public int? BitRate { get; set; }
+
+        /// <summary>
         /// Optional. The MIME type of the audio output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
@@ -21,12 +27,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatDeliveryJsonConverter))]
         public global::Google.Gemini.AudioResponseFormatDelivery? Delivery { get; set; }
-
-        /// <summary>
-        /// Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("bitRate")]
-        public int? BitRate { get; set; }
 
         /// <summary>
         /// Optional. Sample rate in Hz.
@@ -43,14 +43,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioResponseFormat" /> class.
         /// </summary>
+        /// <param name="bitRate">
+        /// Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+        /// </param>
         /// <param name="mimeType">
         /// Optional. The MIME type of the audio output.
         /// </param>
         /// <param name="delivery">
         /// Optional. The delivery mode for the audio output.
-        /// </param>
-        /// <param name="bitRate">
-        /// Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
         /// </param>
         /// <param name="sampleRate">
         /// Optional. Sample rate in Hz.
@@ -59,14 +59,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioResponseFormat(
+            int? bitRate,
             global::Google.Gemini.AudioResponseFormatMimeType? mimeType,
             global::Google.Gemini.AudioResponseFormatDelivery? delivery,
-            int? bitRate,
             int? sampleRate)
         {
+            this.BitRate = bitRate;
             this.MimeType = mimeType;
             this.Delivery = delivery;
-            this.BitRate = bitRate;
             this.SampleRate = sampleRate;
         }
 
