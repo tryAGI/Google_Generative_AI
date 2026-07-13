@@ -448,6 +448,9 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="tunedModelsId"></param>
         /// <param name="updateMask"></param>
+        /// <param name="readerProjectNumbers">
+        /// Optional. List of project numbers that have read access to the tuned model.
+        /// </param>
         /// <param name="description">
         /// Optional. A short description of this model.
         /// </param>
@@ -463,17 +466,14 @@ namespace Google.Gemini
         /// <param name="topP">
         /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
-        /// <param name="readerProjectNumbers">
-        /// Optional. List of project numbers that have read access to the tuned model.
-        /// </param>
-        /// <param name="tuningTask">
-        /// Tuning tasks that create tuned models.
-        /// </param>
         /// <param name="baseModel">
         /// Immutable. The name of the `Model` to tune. Example: `models/gemini-1.5-flash-001`
         /// </param>
         /// <param name="tunedModelSource">
         /// Tuned model as a source for training a new model.
+        /// </param>
+        /// <param name="tuningTask">
+        /// Tuning tasks that create tuned models.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -481,29 +481,29 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.TunedModel> TunedModelsPatchAsync(
             string tunedModelsId,
             string? updateMask = default,
+            global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
             string? description = default,
             string? displayName = default,
             float? temperature = default,
             int? topK = default,
             float? topP = default,
-            global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
-            global::Google.Gemini.TuningTask? tuningTask = default,
             string? baseModel = default,
             global::Google.Gemini.TunedModelSource? tunedModelSource = default,
+            global::Google.Gemini.TuningTask? tuningTask = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.TunedModel
             {
+                ReaderProjectNumbers = readerProjectNumbers,
                 Description = description,
                 DisplayName = displayName,
                 Temperature = temperature,
                 TopK = topK,
                 TopP = topP,
-                ReaderProjectNumbers = readerProjectNumbers,
-                TuningTask = tuningTask,
                 BaseModel = baseModel,
                 TunedModelSource = tunedModelSource,
+                TuningTask = tuningTask,
             };
 
             return await TunedModelsPatchAsync(
