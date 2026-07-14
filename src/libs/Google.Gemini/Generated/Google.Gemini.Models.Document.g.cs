@@ -28,11 +28,10 @@ namespace Google.Gemini
         public string? UpdateTime { get; set; }
 
         /// <summary>
-        /// Output only. The Timestamp of when the `Document` was created.<br/>
-        /// Included only in responses
+        /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
         /// Output only. Current state of the `Document`.<br/>
@@ -43,10 +42,11 @@ namespace Google.Gemini
         public global::Google.Gemini.DocumentState? State { get; set; }
 
         /// <summary>
-        /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
+        /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
+        public string? SizeBytes { get; set; }
 
         /// <summary>
         /// Output only. The mime type of the Document.<br/>
@@ -56,11 +56,11 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
-        /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// Output only. The Timestamp of when the `Document` was created.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
-        public string? SizeBytes { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -81,23 +81,23 @@ namespace Google.Gemini
         /// Output only. The Timestamp of when the `Document` was last updated.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `Document` was created.<br/>
-        /// Included only in responses
+        /// <param name="customMetadata">
+        /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
         /// </param>
         /// <param name="state">
         /// Output only. Current state of the `Document`.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="customMetadata">
-        /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
+        /// <param name="sizeBytes">
+        /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="mimeType">
         /// Output only. The mime type of the Document.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `Document` was created.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -107,20 +107,20 @@ namespace Google.Gemini
             string? name,
             string? displayName,
             string? updateTime,
-            string? createTime,
-            global::Google.Gemini.DocumentState? state,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
+            global::Google.Gemini.DocumentState? state,
+            string? sizeBytes,
             string? mimeType,
-            string? sizeBytes)
+            string? createTime)
         {
             this.Name = name;
             this.DisplayName = displayName;
             this.UpdateTime = updateTime;
-            this.CreateTime = createTime;
-            this.State = state;
             this.CustomMetadata = customMetadata;
-            this.MimeType = mimeType;
+            this.State = state;
             this.SizeBytes = sizeBytes;
+            this.MimeType = mimeType;
+            this.CreateTime = createTime;
         }
 
         /// <summary>
