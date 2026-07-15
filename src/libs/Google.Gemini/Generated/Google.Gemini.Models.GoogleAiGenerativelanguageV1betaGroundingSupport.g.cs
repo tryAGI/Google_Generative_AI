@@ -9,6 +9,13 @@ namespace Google.Gemini
     public sealed partial class GoogleAiGenerativelanguageV1betaGroundingSupport
     {
         /// <summary>
+        /// Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("renderedParts")]
+        public global::System.Collections.Generic.IList<int>? RenderedParts { get; set; }
+
+        /// <summary>
         /// Segment of the content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("segment")]
@@ -27,13 +34,6 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<float>? ConfidenceScores { get; set; }
 
         /// <summary>
-        /// Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("renderedParts")]
-        public global::System.Collections.Generic.IList<int>? RenderedParts { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -42,6 +42,10 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleAiGenerativelanguageV1betaGroundingSupport" /> class.
         /// </summary>
+        /// <param name="renderedParts">
+        /// Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="segment">
         /// Segment of the content.
         /// </param>
@@ -51,23 +55,19 @@ namespace Google.Gemini
         /// <param name="confidenceScores">
         /// Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
         /// </param>
-        /// <param name="renderedParts">
-        /// Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleAiGenerativelanguageV1betaGroundingSupport(
+            global::System.Collections.Generic.IList<int>? renderedParts,
             global::Google.Gemini.GoogleAiGenerativelanguageV1betaSegment? segment,
             global::System.Collections.Generic.IList<int>? groundingChunkIndices,
-            global::System.Collections.Generic.IList<float>? confidenceScores,
-            global::System.Collections.Generic.IList<int>? renderedParts)
+            global::System.Collections.Generic.IList<float>? confidenceScores)
         {
+            this.RenderedParts = renderedParts;
             this.Segment = segment;
             this.GroundingChunkIndices = groundingChunkIndices;
             this.ConfidenceScores = confidenceScores;
-            this.RenderedParts = renderedParts;
         }
 
         /// <summary>
