@@ -9,25 +9,10 @@ namespace Google.Gemini
     public sealed partial class FileSearchStore
     {
         /// <summary>
-        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
-        /// Included only in responses
+        /// Optional. The embedding model to use for the `FileSearchStore`. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`. If not specified, the default embedding model will be used.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pendingDocumentsCount")]
-        public string? PendingDocumentsCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("embeddingModel")]
+        public string? EmbeddingModel { get; set; }
 
         /// <summary>
         /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
@@ -37,11 +22,25 @@ namespace Google.Gemini
         public string? CreateTime { get; set; }
 
         /// <summary>
+        /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
+
+        /// <summary>
         /// Output only. The number of documents in the `FileSearchStore` that have failed processing.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("failedDocumentsCount")]
         public string? FailedDocumentsCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pendingDocumentsCount")]
+        public string? PendingDocumentsCount { get; set; }
 
         /// <summary>
         /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
@@ -50,10 +49,18 @@ namespace Google.Gemini
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. The embedding model to use for the `FileSearchStore`. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`. If not specified, the default embedding model will be used.
+        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("embeddingModel")]
-        public string? EmbeddingModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
+        public string? ActiveDocumentsCount { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
@@ -61,13 +68,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
         public string? SizeBytes { get; set; }
-
-        /// <summary>
-        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
-        public string? ActiveDocumentsCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -78,63 +78,63 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSearchStore" /> class.
         /// </summary>
-        /// <param name="name">
-        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// <param name="embeddingModel">
+        /// Optional. The embedding model to use for the `FileSearchStore`. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`. If not specified, the default embedding model will be used.
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="pendingDocumentsCount">
-        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="failedDocumentsCount">
         /// Output only. The number of documents in the `FileSearchStore` that have failed processing.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="pendingDocumentsCount">
+        /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `FileSearchStore`. The display name must be no more than 512 characters in length, including spaces. Example: "Docs on Semantic Retriever"
         /// </param>
-        /// <param name="embeddingModel">
-        /// Optional. The embedding model to use for the `FileSearchStore`. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`. If not specified, the default embedding model will be used.
+        /// <param name="activeDocumentsCount">
+        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="name">
+        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="sizeBytes">
         /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="activeDocumentsCount">
-        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileSearchStore(
-            string? name,
-            string? updateTime,
-            string? pendingDocumentsCount,
-            string? createTime,
-            string? failedDocumentsCount,
-            string? displayName,
             string? embeddingModel,
-            string? sizeBytes,
-            string? activeDocumentsCount)
+            string? createTime,
+            string? updateTime,
+            string? failedDocumentsCount,
+            string? pendingDocumentsCount,
+            string? displayName,
+            string? activeDocumentsCount,
+            string? name,
+            string? sizeBytes)
         {
-            this.Name = name;
-            this.UpdateTime = updateTime;
-            this.PendingDocumentsCount = pendingDocumentsCount;
-            this.CreateTime = createTime;
-            this.FailedDocumentsCount = failedDocumentsCount;
-            this.DisplayName = displayName;
             this.EmbeddingModel = embeddingModel;
-            this.SizeBytes = sizeBytes;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.FailedDocumentsCount = failedDocumentsCount;
+            this.PendingDocumentsCount = pendingDocumentsCount;
+            this.DisplayName = displayName;
             this.ActiveDocumentsCount = activeDocumentsCount;
+            this.Name = name;
+            this.SizeBytes = sizeBytes;
         }
 
         /// <summary>
