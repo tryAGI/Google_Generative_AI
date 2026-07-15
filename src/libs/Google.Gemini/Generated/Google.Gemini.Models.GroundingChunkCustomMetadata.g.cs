@@ -21,16 +21,16 @@ namespace Google.Gemini
         public string? Key { get; set; }
 
         /// <summary>
-        /// Optional. The string value of the metadata.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
-        public string? StringValue { get; set; }
-
-        /// <summary>
         /// A list of string values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringListValue")]
         public global::Google.Gemini.GroundingChunkStringList? StringListValue { get; set; }
+
+        /// <summary>
+        /// Optional. The string value of the metadata.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
+        public string? StringValue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="key">
         /// The key of the metadata.
         /// </param>
-        /// <param name="stringValue">
-        /// Optional. The string value of the metadata.
-        /// </param>
         /// <param name="stringListValue">
         /// A list of string values.
+        /// </param>
+        /// <param name="stringValue">
+        /// Optional. The string value of the metadata.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public GroundingChunkCustomMetadata(
             float? numericValue,
             string? key,
-            string? stringValue,
-            global::Google.Gemini.GroundingChunkStringList? stringListValue)
+            global::Google.Gemini.GroundingChunkStringList? stringListValue,
+            string? stringValue)
         {
             this.NumericValue = numericValue;
             this.Key = key;
-            this.StringValue = stringValue;
             this.StringListValue = stringListValue;
+            this.StringValue = stringValue;
         }
 
         /// <summary>
