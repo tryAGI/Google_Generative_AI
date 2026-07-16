@@ -9,11 +9,11 @@ namespace Google.Gemini
     public sealed partial class FileSearchStore
     {
         /// <summary>
-        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
+        public string? ActiveDocumentsCount { get; set; }
 
         /// <summary>
         /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
@@ -21,6 +21,20 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pendingDocumentsCount")]
         public string? PendingDocumentsCount { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
+        public string? SizeBytes { get; set; }
 
         /// <summary>
         /// Output only. The number of documents in the `FileSearchStore` that have failed processing.<br/>
@@ -35,20 +49,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public string? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("activeDocumentsCount")]
-        public string? ActiveDocumentsCount { get; set; }
-
-        /// <summary>
-        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
-        public string? SizeBytes { get; set; }
 
         /// <summary>
         /// Output only. The Timestamp of when the `FileSearchStore` was created.<br/>
@@ -78,12 +78,20 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSearchStore" /> class.
         /// </summary>
-        /// <param name="name">
-        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// <param name="activeDocumentsCount">
+        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="pendingDocumentsCount">
         /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="name">
+        /// Output only. Immutable. Identifier. The `FileSearchStore` resource name. It is an ID (name excluding the "fileSearchStores/" prefix) that can contain up to 40 characters that are lowercase alphanumeric or dashes (-). It is output only. The unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/my-awesome-file-search-store-123a456b789c` If `display_name` is not provided, the name will be randomly generated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="sizeBytes">
+        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="failedDocumentsCount">
@@ -92,14 +100,6 @@ namespace Google.Gemini
         /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="activeDocumentsCount">
-        /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="createTime">
@@ -116,22 +116,22 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileSearchStore(
-            string? name,
+            string? activeDocumentsCount,
             string? pendingDocumentsCount,
+            string? name,
+            string? sizeBytes,
             string? failedDocumentsCount,
             string? updateTime,
-            string? activeDocumentsCount,
-            string? sizeBytes,
             string? createTime,
             string? displayName,
             string? embeddingModel)
         {
-            this.Name = name;
+            this.ActiveDocumentsCount = activeDocumentsCount;
             this.PendingDocumentsCount = pendingDocumentsCount;
+            this.Name = name;
+            this.SizeBytes = sizeBytes;
             this.FailedDocumentsCount = failedDocumentsCount;
             this.UpdateTime = updateTime;
-            this.ActiveDocumentsCount = activeDocumentsCount;
-            this.SizeBytes = sizeBytes;
             this.CreateTime = createTime;
             this.DisplayName = displayName;
             this.EmbeddingModel = embeddingModel;
