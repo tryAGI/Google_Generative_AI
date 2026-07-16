@@ -15,10 +15,10 @@ namespace Google.Gemini
         public string? License { get; set; }
 
         /// <summary>
-        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+        /// Optional. URI that is attributed as a source for a portion of the text.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
-        public int? StartIndex { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Optional. End of the attributed segment, exclusive.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public int? EndIndex { get; set; }
 
         /// <summary>
-        /// Optional. URI that is attributed as a source for a portion of the text.
+        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
+        public int? StartIndex { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,28 +44,28 @@ namespace Google.Gemini
         /// <param name="license">
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
         /// </param>
-        /// <param name="startIndex">
-        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+        /// <param name="uri">
+        /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
         /// <param name="endIndex">
         /// Optional. End of the attributed segment, exclusive.
         /// </param>
-        /// <param name="uri">
-        /// Optional. URI that is attributed as a source for a portion of the text.
+        /// <param name="startIndex">
+        /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CitationSource(
             string? license,
-            int? startIndex,
+            string? uri,
             int? endIndex,
-            string? uri)
+            int? startIndex)
         {
             this.License = license;
-            this.StartIndex = startIndex;
-            this.EndIndex = endIndex;
             this.Uri = uri;
+            this.EndIndex = endIndex;
+            this.StartIndex = startIndex;
         }
 
         /// <summary>
