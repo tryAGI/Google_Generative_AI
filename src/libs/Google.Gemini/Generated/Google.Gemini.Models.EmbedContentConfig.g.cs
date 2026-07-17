@@ -22,10 +22,10 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Optional. The title for the text.
+        /// Optional. Whether to enable OCR for document content.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("documentOcr")]
+        public bool? DocumentOcr { get; set; }
 
         /// <summary>
         /// Optional. Whether to extract audio from video content.
@@ -34,16 +34,16 @@ namespace Google.Gemini
         public bool? AudioTrackExtraction { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable OCR for document content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("documentOcr")]
-        public bool? DocumentOcr { get; set; }
-
-        /// <summary>
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
         public bool? AutoTruncate { get; set; }
+
+        /// <summary>
+        /// Optional. The title for the text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,17 +60,17 @@ namespace Google.Gemini
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
         /// </param>
-        /// <param name="title">
-        /// Optional. The title for the text.
+        /// <param name="documentOcr">
+        /// Optional. Whether to enable OCR for document content.
         /// </param>
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
         /// </param>
-        /// <param name="documentOcr">
-        /// Optional. Whether to enable OCR for document content.
-        /// </param>
         /// <param name="autoTruncate">
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// </param>
+        /// <param name="title">
+        /// Optional. The title for the text.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,17 +78,17 @@ namespace Google.Gemini
         public EmbedContentConfig(
             int? outputDimensionality,
             global::Google.Gemini.EmbedContentConfigTaskType? taskType,
-            string? title,
-            bool? audioTrackExtraction,
             bool? documentOcr,
-            bool? autoTruncate)
+            bool? audioTrackExtraction,
+            bool? autoTruncate,
+            string? title)
         {
             this.OutputDimensionality = outputDimensionality;
             this.TaskType = taskType;
-            this.Title = title;
-            this.AudioTrackExtraction = audioTrackExtraction;
             this.DocumentOcr = documentOcr;
+            this.AudioTrackExtraction = audioTrackExtraction;
             this.AutoTruncate = autoTruncate;
+            this.Title = title;
         }
 
         /// <summary>
