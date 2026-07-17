@@ -448,11 +448,11 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
-        /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// </param>
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
@@ -472,8 +472,8 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentBatch> BatchesUpdateGenerateContentBatchAsync(
             string batchesId,
             string? updateMask = default,
-            string? displayName = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
+            string? displayName = default,
             global::Google.Gemini.BatchStats? batchStats = default,
             string? priority = default,
             string? model = default,
@@ -483,8 +483,8 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.GenerateContentBatch
             {
-                DisplayName = displayName,
                 Output = output,
+                DisplayName = displayName,
                 BatchStats = batchStats,
                 Priority = priority,
                 Model = model,
