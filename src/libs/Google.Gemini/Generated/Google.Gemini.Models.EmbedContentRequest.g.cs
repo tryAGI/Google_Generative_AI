@@ -23,6 +23,14 @@ namespace Google.Gemini
         public global::Google.Gemini.Content? Content { get; set; }
 
         /// <summary>
+        /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter))]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
+
+        /// <summary>
         /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -41,14 +49,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
         public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter))]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
