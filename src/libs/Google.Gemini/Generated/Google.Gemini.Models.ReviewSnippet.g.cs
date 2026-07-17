@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? GoogleMapsUri { get; set; }
 
         /// <summary>
-        /// Title of the review.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// The ID of the review snippet.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reviewId")]
         public string? ReviewId { get; set; }
+
+        /// <summary>
+        /// Title of the review.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="googleMapsUri">
         /// A link that corresponds to the user review on Google Maps.
         /// </param>
-        /// <param name="title">
-        /// Title of the review.
-        /// </param>
         /// <param name="reviewId">
         /// The ID of the review snippet.
+        /// </param>
+        /// <param name="title">
+        /// Title of the review.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ReviewSnippet(
             string? googleMapsUri,
-            string? title,
-            string? reviewId)
+            string? reviewId,
+            string? title)
         {
             this.GoogleMapsUri = googleMapsUri;
-            this.Title = title;
             this.ReviewId = reviewId;
+            this.Title = title;
         }
 
         /// <summary>
