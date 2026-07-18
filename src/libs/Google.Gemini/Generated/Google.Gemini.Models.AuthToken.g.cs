@@ -21,6 +21,12 @@ namespace Google.Gemini
         public string? ExpireTime { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fieldMask")]
+        public string? FieldMask { get; set; }
+
+        /// <summary>
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("newSessionExpireTime")]
@@ -40,12 +46,6 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fieldMask")]
-        public string? FieldMask { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +60,9 @@ namespace Google.Gemini
         /// <param name="expireTime">
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
+        /// <param name="fieldMask">
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+        /// </param>
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
@@ -70,26 +73,23 @@ namespace Google.Gemini
         /// Output only. Identifier. The token itself.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="fieldMask">
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AuthToken(
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup,
             string? expireTime,
+            string? fieldMask,
             string? newSessionExpireTime,
             int? uses,
-            string? name,
-            string? fieldMask)
+            string? name)
         {
             this.BidiGenerateContentSetup = bidiGenerateContentSetup;
             this.ExpireTime = expireTime;
+            this.FieldMask = fieldMask;
             this.NewSessionExpireTime = newSessionExpireTime;
             this.Uses = uses;
             this.Name = name;
-            this.FieldMask = fieldMask;
         }
 
         /// <summary>
