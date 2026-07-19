@@ -28,6 +28,12 @@ namespace Google.Gemini
         public string? ModelVersion { get; set; }
 
         /// <summary>
+        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelStatus")]
+        public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
+
+        /// <summary>
         /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptFeedback")]
@@ -39,12 +45,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("responseId")]
         public string? ResponseId { get; set; }
-
-        /// <summary>
-        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelStatus")]
-        public global::Google.Gemini.ModelStatus? ModelStatus { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -65,15 +65,15 @@ namespace Google.Gemini
         /// Output only. The model version used to generate the response.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="modelStatus">
+        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
+        /// </param>
         /// <param name="promptFeedback">
         /// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
         /// </param>
         /// <param name="responseId">
         /// Output only. response_id is used to identify each response.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="modelStatus">
-        /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -82,16 +82,16 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
             global::Google.Gemini.UsageMetadata? usageMetadata,
             string? modelVersion,
+            global::Google.Gemini.ModelStatus? modelStatus,
             global::Google.Gemini.PromptFeedback? promptFeedback,
-            string? responseId,
-            global::Google.Gemini.ModelStatus? modelStatus)
+            string? responseId)
         {
             this.Candidates = candidates;
             this.UsageMetadata = usageMetadata;
             this.ModelVersion = modelVersion;
+            this.ModelStatus = modelStatus;
             this.PromptFeedback = promptFeedback;
             this.ResponseId = responseId;
-            this.ModelStatus = modelStatus;
         }
 
         /// <summary>
