@@ -21,6 +21,30 @@ namespace Google.Gemini
         public global::Google.Gemini.ContextWindowCompressionConfig? ContextWindowCompression { get; set; }
 
         /// <summary>
+        /// The audio transcription configuration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inputAudioTranscription")]
+        public global::Google.Gemini.AudioTranscriptionConfig? InputAudioTranscription { get; set; }
+
+        /// <summary>
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
+        public global::Google.Gemini.Content? SystemInstruction { get; set; }
+
+        /// <summary>
+        /// Configures the realtime input behavior in `BidiGenerateContent`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("realtimeInputConfig")]
+        public global::Google.Gemini.RealtimeInputConfig? RealtimeInputConfig { get; set; }
+
+        /// <summary>
+        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
@@ -45,30 +69,6 @@ namespace Google.Gemini
         public global::Google.Gemini.AudioTranscriptionConfig? OutputAudioTranscription { get; set; }
 
         /// <summary>
-        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
-
-        /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
-        public global::Google.Gemini.Content? SystemInstruction { get; set; }
-
-        /// <summary>
-        /// The audio transcription configuration.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inputAudioTranscription")]
-        public global::Google.Gemini.AudioTranscriptionConfig? InputAudioTranscription { get; set; }
-
-        /// <summary>
-        /// Configures the realtime input behavior in `BidiGenerateContent`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("realtimeInputConfig")]
-        public global::Google.Gemini.RealtimeInputConfig? RealtimeInputConfig { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,6 +83,18 @@ namespace Google.Gemini
         /// <param name="contextWindowCompression">
         /// Enables context window compression — a mechanism for managing the model's context window so that it does not exceed a given length.
         /// </param>
+        /// <param name="inputAudioTranscription">
+        /// The audio transcription configuration.
+        /// </param>
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
+        /// <param name="realtimeInputConfig">
+        /// Configures the realtime input behavior in `BidiGenerateContent`.
+        /// </param>
+        /// <param name="model">
+        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
+        /// </param>
         /// <param name="generationConfig">
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
@@ -95,43 +107,31 @@ namespace Google.Gemini
         /// <param name="outputAudioTranscription">
         /// The audio transcription configuration.
         /// </param>
-        /// <param name="model">
-        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
-        /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
-        /// <param name="inputAudioTranscription">
-        /// The audio transcription configuration.
-        /// </param>
-        /// <param name="realtimeInputConfig">
-        /// Configures the realtime input behavior in `BidiGenerateContent`.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BidiGenerateContentSetup(
             global::Google.Gemini.SessionResumptionConfig? sessionResumption,
             global::Google.Gemini.ContextWindowCompressionConfig? contextWindowCompression,
+            global::Google.Gemini.AudioTranscriptionConfig? inputAudioTranscription,
+            global::Google.Gemini.Content? systemInstruction,
+            global::Google.Gemini.RealtimeInputConfig? realtimeInputConfig,
+            string? model,
             global::Google.Gemini.GenerationConfig? generationConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
             global::Google.Gemini.HistoryConfig? historyConfig,
-            global::Google.Gemini.AudioTranscriptionConfig? outputAudioTranscription,
-            string? model,
-            global::Google.Gemini.Content? systemInstruction,
-            global::Google.Gemini.AudioTranscriptionConfig? inputAudioTranscription,
-            global::Google.Gemini.RealtimeInputConfig? realtimeInputConfig)
+            global::Google.Gemini.AudioTranscriptionConfig? outputAudioTranscription)
         {
             this.SessionResumption = sessionResumption;
             this.ContextWindowCompression = contextWindowCompression;
+            this.InputAudioTranscription = inputAudioTranscription;
+            this.SystemInstruction = systemInstruction;
+            this.RealtimeInputConfig = realtimeInputConfig;
+            this.Model = model;
             this.GenerationConfig = generationConfig;
             this.Tools = tools;
             this.HistoryConfig = historyConfig;
             this.OutputAudioTranscription = outputAudioTranscription;
-            this.Model = model;
-            this.SystemInstruction = systemInstruction;
-            this.InputAudioTranscription = inputAudioTranscription;
-            this.RealtimeInputConfig = realtimeInputConfig;
         }
 
         /// <summary>
