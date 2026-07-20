@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ToolConfig
     {
         /// <summary>
-        /// Retrieval config.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrievalConfig")]
-        public global::Google.Gemini.RetrievalConfig? RetrievalConfig { get; set; }
-
-        /// <summary>
         /// Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("includeServerSideToolInvocations")]
         public bool? IncludeServerSideToolInvocations { get; set; }
+
+        /// <summary>
+        /// Retrieval config.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retrievalConfig")]
+        public global::Google.Gemini.RetrievalConfig? RetrievalConfig { get; set; }
 
         /// <summary>
         /// Configuration for specifying function calling behavior.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolConfig" /> class.
         /// </summary>
-        /// <param name="retrievalConfig">
-        /// Retrieval config.
-        /// </param>
         /// <param name="includeServerSideToolInvocations">
         /// Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
+        /// </param>
+        /// <param name="retrievalConfig">
+        /// Retrieval config.
         /// </param>
         /// <param name="functionCallingConfig">
         /// Configuration for specifying function calling behavior.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolConfig(
-            global::Google.Gemini.RetrievalConfig? retrievalConfig,
             bool? includeServerSideToolInvocations,
+            global::Google.Gemini.RetrievalConfig? retrievalConfig,
             global::Google.Gemini.FunctionCallingConfig? functionCallingConfig)
         {
-            this.RetrievalConfig = retrievalConfig;
             this.IncludeServerSideToolInvocations = includeServerSideToolInvocations;
+            this.RetrievalConfig = retrievalConfig;
             this.FunctionCallingConfig = functionCallingConfig;
         }
 
