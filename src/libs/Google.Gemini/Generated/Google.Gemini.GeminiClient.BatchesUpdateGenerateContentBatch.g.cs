@@ -460,11 +460,11 @@ namespace Google.Gemini
         /// <param name="output">
         /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
         /// </param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="batchStats">
+        /// Stats about the batch.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -476,8 +476,8 @@ namespace Google.Gemini
             string? priority = default,
             string? displayName = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
-            global::Google.Gemini.BatchStats? batchStats = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
+            global::Google.Gemini.BatchStats? batchStats = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -487,8 +487,8 @@ namespace Google.Gemini
                 Priority = priority,
                 DisplayName = displayName,
                 Output = output,
-                BatchStats = batchStats,
                 InputConfig = inputConfig,
+                BatchStats = batchStats,
             };
 
             return await BatchesUpdateGenerateContentBatchAsync(
