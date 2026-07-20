@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
+        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
+        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
+
+        /// <summary>
         /// Indicates the language of the audio should be automatically detected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
@@ -21,12 +27,6 @@ namespace Google.Gemini
         public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
 
         /// <summary>
-        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
-        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscriptionConfig" /> class.
         /// </summary>
+        /// <param name="adaptationPhrases">
+        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// </param>
         /// <param name="languageAuto">
         /// Indicates the language of the audio should be automatically detected.
         /// </param>
         /// <param name="languageHints">
         /// Provides hints to the model about possible languages present in the audio.
         /// </param>
-        /// <param name="adaptationPhrases">
-        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscriptionConfig(
+            global::System.Collections.Generic.IList<string>? adaptationPhrases,
             global::Google.Gemini.LanguageAuto? languageAuto,
-            global::Google.Gemini.LanguageHints? languageHints,
-            global::System.Collections.Generic.IList<string>? adaptationPhrases)
+            global::Google.Gemini.LanguageHints? languageHints)
         {
+            this.AdaptationPhrases = adaptationPhrases;
             this.LanguageAuto = languageAuto;
             this.LanguageHints = languageHints;
-            this.AdaptationPhrases = adaptationPhrases;
         }
 
         /// <summary>
