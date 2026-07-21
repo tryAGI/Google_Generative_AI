@@ -11,6 +11,18 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
+        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customVocabulary")]
+        public global::System.Collections.Generic.IList<string>? CustomVocabulary { get; set; }
+
+        /// <summary>
+        /// Indicates the language of the audio should be automatically detected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
+        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
+
+        /// <summary>
         /// Provides hints to the model about possible languages present in the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
@@ -24,18 +36,6 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
-        /// Indicates the language of the audio should be automatically detected.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
-        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
-
-        /// <summary>
-        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customVocabulary")]
-        public global::System.Collections.Generic.IList<string>? CustomVocabulary { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,26 +44,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscriptionConfig" /> class.
         /// </summary>
-        /// <param name="languageHints">
-        /// Provides hints to the model about possible languages present in the audio.
+        /// <param name="customVocabulary">
+        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
         /// </param>
         /// <param name="languageAuto">
         /// Indicates the language of the audio should be automatically detected.
         /// </param>
-        /// <param name="customVocabulary">
-        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
+        /// <param name="languageHints">
+        /// Provides hints to the model about possible languages present in the audio.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscriptionConfig(
-            global::Google.Gemini.LanguageHints? languageHints,
+            global::System.Collections.Generic.IList<string>? customVocabulary,
             global::Google.Gemini.LanguageAuto? languageAuto,
-            global::System.Collections.Generic.IList<string>? customVocabulary)
+            global::Google.Gemini.LanguageHints? languageHints)
         {
-            this.LanguageHints = languageHints;
-            this.LanguageAuto = languageAuto;
             this.CustomVocabulary = customVocabulary;
+            this.LanguageAuto = languageAuto;
+            this.LanguageHints = languageHints;
         }
 
         /// <summary>
