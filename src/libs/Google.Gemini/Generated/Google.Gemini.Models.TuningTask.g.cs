@@ -15,17 +15,11 @@ namespace Google.Gemini
         public global::Google.Gemini.Hyperparameters? Hyperparameters { get; set; }
 
         /// <summary>
-        /// Output only. The timestamp when tuning this model started.<br/>
+        /// Output only. Metrics collected during tuning.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startTime")]
-        public string? StartTime { get; set; }
-
-        /// <summary>
-        /// Dataset for training or validation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("trainingData")]
-        public global::Google.Gemini.Dataset? TrainingData { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("snapshots")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Snapshots { get; set; }
 
         /// <summary>
         /// Output only. The timestamp when tuning this model completed.<br/>
@@ -35,11 +29,17 @@ namespace Google.Gemini
         public string? CompleteTime { get; set; }
 
         /// <summary>
-        /// Output only. Metrics collected during tuning.<br/>
+        /// Dataset for training or validation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trainingData")]
+        public global::Google.Gemini.Dataset? TrainingData { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when tuning this model started.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("snapshots")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Snapshots { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("startTime")]
+        public string? StartTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,19 +53,19 @@ namespace Google.Gemini
         /// <param name="hyperparameters">
         /// Hyperparameters controlling the tuning process. Read more at https://ai.google.dev/docs/model_tuning_guidance
         /// </param>
-        /// <param name="startTime">
-        /// Output only. The timestamp when tuning this model started.<br/>
+        /// <param name="snapshots">
+        /// Output only. Metrics collected during tuning.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="trainingData">
-        /// Dataset for training or validation.
         /// </param>
         /// <param name="completeTime">
         /// Output only. The timestamp when tuning this model completed.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="snapshots">
-        /// Output only. Metrics collected during tuning.<br/>
+        /// <param name="trainingData">
+        /// Dataset for training or validation.
+        /// </param>
+        /// <param name="startTime">
+        /// Output only. The timestamp when tuning this model started.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -73,16 +73,16 @@ namespace Google.Gemini
 #endif
         public TuningTask(
             global::Google.Gemini.Hyperparameters? hyperparameters,
-            string? startTime,
-            global::Google.Gemini.Dataset? trainingData,
+            global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? snapshots,
             string? completeTime,
-            global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? snapshots)
+            global::Google.Gemini.Dataset? trainingData,
+            string? startTime)
         {
             this.Hyperparameters = hyperparameters;
-            this.StartTime = startTime;
-            this.TrainingData = trainingData;
-            this.CompleteTime = completeTime;
             this.Snapshots = snapshots;
+            this.CompleteTime = completeTime;
+            this.TrainingData = trainingData;
+            this.StartTime = startTime;
         }
 
         /// <summary>
