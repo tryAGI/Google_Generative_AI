@@ -11,6 +11,13 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
+        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
+
+        /// <summary>
         /// Provides hints to the model about possible languages present in the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
@@ -21,13 +28,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
         public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
-
-        /// <summary>
-        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
