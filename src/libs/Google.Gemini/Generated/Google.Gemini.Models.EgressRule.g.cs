@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class EgressRule
     {
         /// <summary>
-        /// The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
-
-        /// <summary>
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transform")]
         public global::System.Collections.Generic.Dictionary<string, string>? Transform { get; set; }
+
+        /// <summary>
+        /// The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EgressRule" /> class.
         /// </summary>
-        /// <param name="domain">
-        /// The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
-        /// </param>
         /// <param name="transform">
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
+        /// </param>
+        /// <param name="domain">
+        /// The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EgressRule(
-            string? domain,
-            global::System.Collections.Generic.Dictionary<string, string>? transform)
+            global::System.Collections.Generic.Dictionary<string, string>? transform,
+            string? domain)
         {
-            this.Domain = domain;
             this.Transform = transform;
+            this.Domain = domain;
         }
 
         /// <summary>

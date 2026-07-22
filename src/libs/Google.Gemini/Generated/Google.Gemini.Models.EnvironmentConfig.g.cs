@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class EnvironmentConfig
     {
         /// <summary>
+        /// Network egress configuration for the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
+        public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
+
+        /// <summary>
         /// Network egress mode.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
@@ -28,12 +34,6 @@ namespace Google.Gemini
         public string? EnvironmentId { get; set; }
 
         /// <summary>
-        /// Network egress configuration for the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
-        public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -42,6 +42,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EnvironmentConfig" /> class.
         /// </summary>
+        /// <param name="networkAllowlist">
+        /// Network egress configuration for the environment.
+        /// </param>
         /// <param name="networkMode">
         /// Network egress mode.
         /// </param>
@@ -49,22 +52,19 @@ namespace Google.Gemini
         /// <param name="environmentId">
         /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
         /// </param>
-        /// <param name="networkAllowlist">
-        /// Network egress configuration for the environment.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentConfig(
+            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
             global::Google.Gemini.EnvironmentConfigNetworkMode? networkMode,
             global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources,
-            string? environmentId,
-            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist)
+            string? environmentId)
         {
+            this.NetworkAllowlist = networkAllowlist;
             this.NetworkMode = networkMode;
             this.Sources = sources;
             this.EnvironmentId = environmentId;
-            this.NetworkAllowlist = networkAllowlist;
         }
 
         /// <summary>
