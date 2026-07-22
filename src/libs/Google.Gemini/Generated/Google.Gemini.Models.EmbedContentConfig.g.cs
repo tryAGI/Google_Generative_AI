@@ -22,6 +22,12 @@ namespace Google.Gemini
         public bool? DocumentOcr { get; set; }
 
         /// <summary>
+        /// Optional. The title for the text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
         /// Optional. Whether to extract audio from video content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
@@ -40,12 +46,6 @@ namespace Google.Gemini
         public int? OutputDimensionality { get; set; }
 
         /// <summary>
-        /// Optional. The title for the text.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +60,9 @@ namespace Google.Gemini
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
+        /// <param name="title">
+        /// Optional. The title for the text.
+        /// </param>
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
         /// </param>
@@ -69,26 +72,23 @@ namespace Google.Gemini
         /// <param name="outputDimensionality">
         /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
-        /// <param name="title">
-        /// Optional. The title for the text.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
             global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             bool? documentOcr,
+            string? title,
             bool? audioTrackExtraction,
             bool? autoTruncate,
-            int? outputDimensionality,
-            string? title)
+            int? outputDimensionality)
         {
             this.TaskType = taskType;
             this.DocumentOcr = documentOcr;
+            this.Title = title;
             this.AudioTrackExtraction = audioTrackExtraction;
             this.AutoTruncate = autoTruncate;
             this.OutputDimensionality = outputDimensionality;
-            this.Title = title;
         }
 
         /// <summary>
