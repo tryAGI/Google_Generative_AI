@@ -15,11 +15,10 @@ namespace Google.Gemini
         public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
 
         /// <summary>
-        /// Network egress mode.
+        /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentConfigNetworkModeJsonConverter))]
-        public global::Google.Gemini.EnvironmentConfigNetworkMode? NetworkMode { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("environmentId")]
+        public string? EnvironmentId { get; set; }
 
         /// <summary>
         /// 
@@ -28,10 +27,11 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.Source>? Sources { get; set; }
 
         /// <summary>
-        /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
+        /// Network egress mode.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentConfigNetworkModeJsonConverter))]
+        public global::Google.Gemini.EnvironmentConfigNetworkMode? NetworkMode { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,26 +45,26 @@ namespace Google.Gemini
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
         /// </param>
-        /// <param name="networkMode">
-        /// Network egress mode.
-        /// </param>
-        /// <param name="sources"></param>
         /// <param name="environmentId">
         /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
+        /// </param>
+        /// <param name="sources"></param>
+        /// <param name="networkMode">
+        /// Network egress mode.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentConfig(
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
-            global::Google.Gemini.EnvironmentConfigNetworkMode? networkMode,
+            string? environmentId,
             global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources,
-            string? environmentId)
+            global::Google.Gemini.EnvironmentConfigNetworkMode? networkMode)
         {
             this.NetworkAllowlist = networkAllowlist;
-            this.NetworkMode = networkMode;
-            this.Sources = sources;
             this.EnvironmentId = environmentId;
+            this.Sources = sources;
+            this.NetworkMode = networkMode;
         }
 
         /// <summary>
