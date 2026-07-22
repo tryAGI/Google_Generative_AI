@@ -9,18 +9,6 @@ namespace Google.Gemini
     public sealed partial class Source
     {
         /// <summary>
-        /// Where the source should appear in the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
-        public string? Target { get; set; }
-
-        /// <summary>
-        /// The inline content if `type` is `INLINE`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -28,10 +16,22 @@ namespace Google.Gemini
         public global::Google.Gemini.SourceType? Type { get; set; }
 
         /// <summary>
+        /// Where the source should appear in the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
         /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
         public string? Source1 { get; set; }
+
+        /// <summary>
+        /// The inline content if `type` is `INLINE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
 
         /// <summary>
         /// Optional encoding for inline content (e.g. `base64`).
@@ -48,15 +48,15 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
+        /// <param name="type"></param>
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
-        /// <param name="content">
-        /// The inline content if `type` is `INLINE`.
-        /// </param>
-        /// <param name="type"></param>
         /// <param name="source1">
         /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
+        /// </param>
+        /// <param name="content">
+        /// The inline content if `type` is `INLINE`.
         /// </param>
         /// <param name="encoding">
         /// Optional encoding for inline content (e.g. `base64`).
@@ -65,16 +65,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
-            string? target,
-            string? content,
             global::Google.Gemini.SourceType? type,
+            string? target,
             string? source1,
+            string? content,
             string? encoding)
         {
-            this.Target = target;
-            this.Content = content;
             this.Type = type;
+            this.Target = target;
             this.Source1 = source1;
+            this.Content = content;
             this.Encoding = encoding;
         }
 
