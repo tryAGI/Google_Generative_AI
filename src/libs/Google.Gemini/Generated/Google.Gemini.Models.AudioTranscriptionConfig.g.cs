@@ -11,17 +11,29 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
-        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// Optional. Configures word-level timestamp generation.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("wordTimestamp")]
+        public bool? WordTimestamp { get; set; }
+
+        /// <summary>
+        /// Optional. Configures speaker diarization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
+        public bool? Diarization { get; set; }
 
         /// <summary>
         /// Provides hints to the model about possible languages present in the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
         public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
+
+        /// <summary>
+        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
         /// Indicates the language of the audio should be automatically detected.
@@ -44,6 +56,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscriptionConfig" /> class.
         /// </summary>
+        /// <param name="wordTimestamp">
+        /// Optional. Configures word-level timestamp generation.
+        /// </param>
+        /// <param name="diarization">
+        /// Optional. Configures speaker diarization.
+        /// </param>
         /// <param name="languageHints">
         /// Provides hints to the model about possible languages present in the audio.
         /// </param>
@@ -57,10 +75,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscriptionConfig(
+            bool? wordTimestamp,
+            bool? diarization,
             global::Google.Gemini.LanguageHints? languageHints,
             global::Google.Gemini.LanguageAuto? languageAuto,
             global::System.Collections.Generic.IList<string>? customVocabulary)
         {
+            this.WordTimestamp = wordTimestamp;
+            this.Diarization = diarization;
             this.LanguageHints = languageHints;
             this.LanguageAuto = languageAuto;
             this.CustomVocabulary = customVocabulary;
