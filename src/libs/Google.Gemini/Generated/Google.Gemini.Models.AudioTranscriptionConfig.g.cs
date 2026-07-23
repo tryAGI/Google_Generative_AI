@@ -11,6 +11,24 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
+        /// Indicates the language of the audio should be automatically detected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
+        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
+
+        /// <summary>
+        /// Optional. Configures speaker diarization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
+        public bool? Diarization { get; set; }
+
+        /// <summary>
+        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customVocabulary")]
+        public global::System.Collections.Generic.IList<string>? CustomVocabulary { get; set; }
+
+        /// <summary>
         /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
@@ -22,24 +40,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
         public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
-
-        /// <summary>
-        /// Optional. Configures speaker diarization.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
-        public bool? Diarization { get; set; }
-
-        /// <summary>
-        /// Indicates the language of the audio should be automatically detected.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
-        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
-
-        /// <summary>
-        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customVocabulary")]
-        public global::System.Collections.Generic.IList<string>? CustomVocabulary { get; set; }
 
         /// <summary>
         /// Optional. Configures word-level timestamp generation.
@@ -56,17 +56,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscriptionConfig" /> class.
         /// </summary>
-        /// <param name="languageHints">
-        /// Provides hints to the model about possible languages present in the audio.
+        /// <param name="languageAuto">
+        /// Indicates the language of the audio should be automatically detected.
         /// </param>
         /// <param name="diarization">
         /// Optional. Configures speaker diarization.
         /// </param>
-        /// <param name="languageAuto">
-        /// Indicates the language of the audio should be automatically detected.
-        /// </param>
         /// <param name="customVocabulary">
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
+        /// </param>
+        /// <param name="languageHints">
+        /// Provides hints to the model about possible languages present in the audio.
         /// </param>
         /// <param name="wordTimestamp">
         /// Optional. Configures word-level timestamp generation.
@@ -75,16 +75,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscriptionConfig(
-            global::Google.Gemini.LanguageHints? languageHints,
-            bool? diarization,
             global::Google.Gemini.LanguageAuto? languageAuto,
+            bool? diarization,
             global::System.Collections.Generic.IList<string>? customVocabulary,
+            global::Google.Gemini.LanguageHints? languageHints,
             bool? wordTimestamp)
         {
-            this.LanguageHints = languageHints;
-            this.Diarization = diarization;
             this.LanguageAuto = languageAuto;
+            this.Diarization = diarization;
             this.CustomVocabulary = customVocabulary;
+            this.LanguageHints = languageHints;
             this.WordTimestamp = wordTimestamp;
         }
 
