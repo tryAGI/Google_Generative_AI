@@ -16,17 +16,17 @@ namespace Google.Gemini
         public global::Google.Gemini.PermissionRole? Role { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
-        public string? EmailAddress { get; set; }
-
-        /// <summary>
         /// Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
+        public string? EmailAddress { get; set; }
 
         /// <summary>
         /// Optional. Immutable. The type of the grantee.
@@ -47,12 +47,12 @@ namespace Google.Gemini
         /// <param name="role">
         /// Required. The role granted by this permission.
         /// </param>
-        /// <param name="emailAddress">
-        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
-        /// </param>
         /// <param name="name">
         /// Output only. Identifier. The permission name. A unique name will be generated on create. Examples: tunedModels/{tuned_model}/permissions/{permission} corpora/{corpus}/permissions/{permission} Output only.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="emailAddress">
+        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
         /// </param>
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
@@ -62,13 +62,13 @@ namespace Google.Gemini
 #endif
         public Permission(
             global::Google.Gemini.PermissionRole? role,
-            string? emailAddress,
             string? name,
+            string? emailAddress,
             global::Google.Gemini.PermissionGranteeType? granteeType)
         {
             this.Role = role;
-            this.EmailAddress = emailAddress;
             this.Name = name;
+            this.EmailAddress = emailAddress;
             this.GranteeType = granteeType;
         }
 
