@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class AutomaticActivityDetection
     {
         /// <summary>
-        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("prefixPaddingMs")]
-        public int? PrefixPaddingMs { get; set; }
-
-        /// <summary>
         /// Optional. Determines how likely detected speech is ended.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endOfSpeechSensitivity")]
@@ -34,6 +28,12 @@ namespace Google.Gemini
         public bool? Disabled { get; set; }
 
         /// <summary>
+        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prefixPaddingMs")]
+        public int? PrefixPaddingMs { get; set; }
+
+        /// <summary>
         /// Optional. Determines how likely speech is to be detected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startOfSpeechSensitivity")]
@@ -49,9 +49,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomaticActivityDetection" /> class.
         /// </summary>
-        /// <param name="prefixPaddingMs">
-        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
-        /// </param>
         /// <param name="endOfSpeechSensitivity">
         /// Optional. Determines how likely detected speech is ended.
         /// </param>
@@ -61,6 +58,9 @@ namespace Google.Gemini
         /// <param name="disabled">
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
         /// </param>
+        /// <param name="prefixPaddingMs">
+        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
+        /// </param>
         /// <param name="startOfSpeechSensitivity">
         /// Optional. Determines how likely speech is to be detected.
         /// </param>
@@ -68,16 +68,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AutomaticActivityDetection(
-            int? prefixPaddingMs,
             global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity,
             int? silenceDurationMs,
             bool? disabled,
+            int? prefixPaddingMs,
             global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity)
         {
-            this.PrefixPaddingMs = prefixPaddingMs;
             this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
             this.SilenceDurationMs = silenceDurationMs;
             this.Disabled = disabled;
+            this.PrefixPaddingMs = prefixPaddingMs;
             this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
         }
 
