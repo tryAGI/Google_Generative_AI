@@ -425,6 +425,9 @@ namespace Google.Gemini
         /// <summary>
         /// Creates an environment.
         /// </summary>
+        /// <param name="environmentId">
+        /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
+        /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
         /// </param>
@@ -432,26 +435,23 @@ namespace Google.Gemini
         /// Network egress mode.
         /// </param>
         /// <param name="sources"></param>
-        /// <param name="environmentId">
-        /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EnvironmentConfig> EnvironmentsCreateAsync(
+            string? environmentId = default,
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
             global::Google.Gemini.EnvironmentConfigNetworkMode? networkMode = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
-            string? environmentId = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.EnvironmentConfig
             {
+                EnvironmentId = environmentId,
                 NetworkAllowlist = networkAllowlist,
                 NetworkMode = networkMode,
                 Sources = sources,
-                EnvironmentId = environmentId,
             };
 
             return await EnvironmentsCreateAsync(
