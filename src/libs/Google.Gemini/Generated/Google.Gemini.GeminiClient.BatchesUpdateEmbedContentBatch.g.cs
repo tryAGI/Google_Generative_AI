@@ -448,9 +448,6 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="batchStats">
-        /// Stats about the batch.
-        /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
         /// </param>
@@ -459,6 +456,9 @@ namespace Google.Gemini
         /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
+        /// </param>
+        /// <param name="batchStats">
+        /// Stats about the batch.
         /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
@@ -472,10 +472,10 @@ namespace Google.Gemini
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.EmbedContentBatch> BatchesUpdateEmbedContentBatchAsync(
             string batchesId,
             string? updateMask = default,
-            global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
             global::Google.Gemini.InputEmbedContentConfig? inputConfig = default,
             string? priority = default,
             global::Google.Gemini.EmbedContentBatchOutput? output = default,
+            global::Google.Gemini.EmbedContentBatchStats? batchStats = default,
             string? model = default,
             string? displayName = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -483,10 +483,10 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.EmbedContentBatch
             {
-                BatchStats = batchStats,
                 InputConfig = inputConfig,
                 Priority = priority,
                 Output = output,
+                BatchStats = batchStats,
                 Model = model,
                 DisplayName = displayName,
             };
