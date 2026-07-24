@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class FunctionDeclaration
     {
         /// <summary>
-        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
-        public global::Google.Gemini.Schema? Response { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
@@ -40,10 +40,10 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionDeclarationBehavior? Behavior { get; set; }
 
         /// <summary>
-        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
+        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("response")]
+        public global::Google.Gemini.Schema? Response { get; set; }
 
         /// <summary>
         /// Required. A brief description of the function.
@@ -60,8 +60,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionDeclaration" /> class.
         /// </summary>
-        /// <param name="response">
-        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+        /// <param name="name">
+        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
         /// </param>
         /// <param name="parameters">
         /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
@@ -75,8 +75,8 @@ namespace Google.Gemini
         /// <param name="behavior">
         /// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
         /// </param>
-        /// <param name="name">
-        /// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 128.
+        /// <param name="response">
+        /// The `Schema` object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
         /// </param>
         /// <param name="description">
         /// Required. A brief description of the function.
@@ -85,20 +85,20 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionDeclaration(
-            global::Google.Gemini.Schema? response,
+            string? name,
             global::Google.Gemini.Schema? parameters,
             object? parametersJsonSchema,
             object? responseJsonSchema,
             global::Google.Gemini.FunctionDeclarationBehavior? behavior,
-            string? name,
+            global::Google.Gemini.Schema? response,
             string? description)
         {
-            this.Response = response;
+            this.Name = name;
             this.Parameters = parameters;
             this.ParametersJsonSchema = parametersJsonSchema;
             this.ResponseJsonSchema = responseJsonSchema;
             this.Behavior = behavior;
-            this.Name = name;
+            this.Response = response;
             this.Description = description;
         }
 
