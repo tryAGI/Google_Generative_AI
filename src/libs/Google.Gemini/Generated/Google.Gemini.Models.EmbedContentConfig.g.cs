@@ -9,10 +9,23 @@ namespace Google.Gemini
     public sealed partial class EmbedContentConfig
     {
         /// <summary>
+        /// Optional. Whether to extract audio from video content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
+        public bool? AudioTrackExtraction { get; set; }
+
+        /// <summary>
         /// Optional. The title for the text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
+
+        /// <summary>
+        /// Optional. The task type of the embedding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
+        public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
         /// Optional. Whether to enable OCR for document content.
@@ -33,19 +46,6 @@ namespace Google.Gemini
         public bool? AutoTruncate { get; set; }
 
         /// <summary>
-        /// Optional. Whether to extract audio from video content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
-        public bool? AudioTrackExtraction { get; set; }
-
-        /// <summary>
-        /// Optional. The task type of the embedding.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
-        public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,8 +54,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentConfig" /> class.
         /// </summary>
+        /// <param name="audioTrackExtraction">
+        /// Optional. Whether to extract audio from video content.
+        /// </param>
         /// <param name="title">
         /// Optional. The title for the text.
+        /// </param>
+        /// <param name="taskType">
+        /// Optional. The task type of the embedding.
         /// </param>
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
@@ -66,29 +72,23 @@ namespace Google.Gemini
         /// <param name="autoTruncate">
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </param>
-        /// <param name="audioTrackExtraction">
-        /// Optional. Whether to extract audio from video content.
-        /// </param>
-        /// <param name="taskType">
-        /// Optional. The task type of the embedding.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
+            bool? audioTrackExtraction,
             string? title,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             bool? documentOcr,
             int? outputDimensionality,
-            bool? autoTruncate,
-            bool? audioTrackExtraction,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
+            bool? autoTruncate)
         {
+            this.AudioTrackExtraction = audioTrackExtraction;
             this.Title = title;
+            this.TaskType = taskType;
             this.DocumentOcr = documentOcr;
             this.OutputDimensionality = outputDimensionality;
             this.AutoTruncate = autoTruncate;
-            this.AudioTrackExtraction = audioTrackExtraction;
-            this.TaskType = taskType;
         }
 
         /// <summary>
