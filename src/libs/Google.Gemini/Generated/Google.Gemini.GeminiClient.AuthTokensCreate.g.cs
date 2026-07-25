@@ -425,11 +425,11 @@ namespace Google.Gemini
         /// <summary>
         /// Creates a token that can be used to constrain the behavior of a BidiGenerateContent session.
         /// </summary>
-        /// <param name="bidiGenerateContentSetup">
-        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
-        /// </param>
         /// <param name="expireTime">
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
+        /// </param>
+        /// <param name="bidiGenerateContentSetup">
+        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
@@ -444,8 +444,8 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AuthToken> AuthTokensCreateAsync(
-            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
             string? expireTime = default,
+            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
             string? newSessionExpireTime = default,
             string? fieldMask = default,
             int? uses = default,
@@ -454,8 +454,8 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.AuthToken
             {
-                BidiGenerateContentSetup = bidiGenerateContentSetup,
                 ExpireTime = expireTime,
+                BidiGenerateContentSetup = bidiGenerateContentSetup,
                 NewSessionExpireTime = newSessionExpireTime,
                 FieldMask = fieldMask,
                 Uses = uses,
