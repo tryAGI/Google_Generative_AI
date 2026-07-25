@@ -31,11 +31,11 @@ namespace Google.Gemini
         /// <summary>
         /// Creates a token that can be used to constrain the behavior of a BidiGenerateContent session.
         /// </summary>
-        /// <param name="expireTime">
-        /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
-        /// </param>
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
+        /// </param>
+        /// <param name="expireTime">
+        /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
         /// <param name="uses">
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
@@ -50,8 +50,8 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.AuthToken> AuthTokensCreateAsync(
-            string? expireTime = default,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
+            string? expireTime = default,
             int? uses = default,
             string? fieldMask = default,
             string? newSessionExpireTime = default,

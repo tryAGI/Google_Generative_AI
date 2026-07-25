@@ -438,15 +438,6 @@ namespace Google.Gemini
         /// Creates a tuned model. Check intermediate tuning progress (if any) through the [google.longrunning.Operations] service. Access status and results through the Operations service. Example: GET /v1/tunedModels/az2mb0bpw6i/operations/000-111-222
         /// </summary>
         /// <param name="tunedModelId"></param>
-        /// <param name="temperature">
-        /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
-        /// <param name="topP">
-        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
-        /// <param name="readerProjectNumbers">
-        /// Optional. List of project numbers that have read access to the tuned model.
-        /// </param>
         /// <param name="displayName">
         /// Optional. The name to display for this model in user interfaces. The display name must be up to 40 characters including spaces.
         /// </param>
@@ -456,8 +447,17 @@ namespace Google.Gemini
         /// <param name="tunedModelSource">
         /// Tuned model as a source for training a new model.
         /// </param>
+        /// <param name="readerProjectNumbers">
+        /// Optional. List of project numbers that have read access to the tuned model.
+        /// </param>
+        /// <param name="temperature">
+        /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
+        /// </param>
         /// <param name="tuningTask">
         /// Tuning tasks that create tuned models.
+        /// </param>
+        /// <param name="topP">
+        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
         /// <param name="description">
         /// Optional. A short description of this model.
@@ -470,13 +470,13 @@ namespace Google.Gemini
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Operation> TunedModelsCreateAsync(
             string? tunedModelId = default,
-            float? temperature = default,
-            float? topP = default,
-            global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
             string? displayName = default,
             string? baseModel = default,
             global::Google.Gemini.TunedModelSource? tunedModelSource = default,
+            global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
+            float? temperature = default,
             global::Google.Gemini.TuningTask? tuningTask = default,
+            float? topP = default,
             string? description = default,
             int? topK = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -484,13 +484,13 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.TunedModel
             {
-                Temperature = temperature,
-                TopP = topP,
-                ReaderProjectNumbers = readerProjectNumbers,
                 DisplayName = displayName,
                 BaseModel = baseModel,
                 TunedModelSource = tunedModelSource,
+                ReaderProjectNumbers = readerProjectNumbers,
+                Temperature = temperature,
                 TuningTask = tuningTask,
+                TopP = topP,
                 Description = description,
                 TopK = topK,
             };
