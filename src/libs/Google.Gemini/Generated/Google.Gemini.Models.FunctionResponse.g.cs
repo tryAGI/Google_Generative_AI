@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class FunctionResponse
     {
         /// <summary>
+        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
@@ -34,12 +40,6 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
-        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parts")]
@@ -54,6 +54,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponse" /> class.
         /// </summary>
+        /// <param name="name">
+        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+        /// </param>
         /// <param name="scheduling">
         /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </param>
@@ -66,9 +69,6 @@ namespace Google.Gemini
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
-        /// <param name="name">
-        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
-        /// </param>
         /// <param name="parts">
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </param>
@@ -76,18 +76,18 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponse(
+            string? name,
             global::Google.Gemini.FunctionResponseScheduling? scheduling,
             object? response,
             bool? willContinue,
             string? id,
-            string? name,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts)
         {
+            this.Name = name;
             this.Scheduling = scheduling;
             this.Response = response;
             this.WillContinue = willContinue;
             this.Id = id;
-            this.Name = name;
             this.Parts = parts;
         }
 

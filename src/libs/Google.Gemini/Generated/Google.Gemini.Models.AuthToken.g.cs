@@ -21,19 +21,6 @@ namespace Google.Gemini
         public string? FieldMask { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uses")]
-        public int? Uses { get; set; }
-
-        /// <summary>
-        /// Output only. Identifier. The token itself.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("newSessionExpireTime")]
@@ -44,6 +31,19 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bidiGenerateContentSetup")]
         public global::Google.Gemini.BidiGenerateContentSetup? BidiGenerateContentSetup { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The token itself.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uses")]
+        public int? Uses { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,18 +60,18 @@ namespace Google.Gemini
         /// <param name="fieldMask">
         /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
         /// </param>
-        /// <param name="uses">
-        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
-        /// </param>
-        /// <param name="name">
-        /// Output only. Identifier. The token itself.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
+        /// </param>
+        /// <param name="name">
+        /// Output only. Identifier. The token itself.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="uses">
+        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -79,17 +79,17 @@ namespace Google.Gemini
         public AuthToken(
             string? expireTime,
             string? fieldMask,
-            int? uses,
-            string? name,
             string? newSessionExpireTime,
-            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup)
+            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup,
+            string? name,
+            int? uses)
         {
             this.ExpireTime = expireTime;
             this.FieldMask = fieldMask;
-            this.Uses = uses;
-            this.Name = name;
             this.NewSessionExpireTime = newSessionExpireTime;
             this.BidiGenerateContentSetup = bidiGenerateContentSetup;
+            this.Name = name;
+            this.Uses = uses;
         }
 
         /// <summary>
