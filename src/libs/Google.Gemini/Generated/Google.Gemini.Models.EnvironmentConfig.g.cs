@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class EnvironmentConfig
     {
         /// <summary>
-        /// Network egress mode.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentConfigNetworkModeJsonConverter))]
-        public global::Google.Gemini.EnvironmentConfigNetworkMode? NetworkMode { get; set; }
-
-        /// <summary>
         /// Network egress configuration for the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
@@ -26,6 +19,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environmentId")]
         public string? EnvironmentId { get; set; }
+
+        /// <summary>
+        /// Network egress mode.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentConfigNetworkModeJsonConverter))]
+        public global::Google.Gemini.EnvironmentConfigNetworkMode? NetworkMode { get; set; }
 
         /// <summary>
         /// 
@@ -42,28 +42,28 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EnvironmentConfig" /> class.
         /// </summary>
-        /// <param name="networkMode">
-        /// Network egress mode.
-        /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
         /// </param>
         /// <param name="environmentId">
         /// Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
         /// </param>
+        /// <param name="networkMode">
+        /// Network egress mode.
+        /// </param>
         /// <param name="sources"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentConfig(
-            global::Google.Gemini.EnvironmentConfigNetworkMode? networkMode,
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
             string? environmentId,
+            global::Google.Gemini.EnvironmentConfigNetworkMode? networkMode,
             global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources)
         {
-            this.NetworkMode = networkMode;
             this.NetworkAllowlist = networkAllowlist;
             this.EnvironmentId = environmentId;
+            this.NetworkMode = networkMode;
             this.Sources = sources;
         }
 
