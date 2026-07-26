@@ -21,12 +21,6 @@ namespace Google.Gemini
         public bool? AutoTruncate { get; set; }
 
         /// <summary>
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
-
-        /// <summary>
         /// Optional. Whether to extract audio from video content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
@@ -46,6 +40,12 @@ namespace Google.Gemini
         public bool? DocumentOcr { get; set; }
 
         /// <summary>
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,9 +60,6 @@ namespace Google.Gemini
         /// <param name="autoTruncate">
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </param>
-        /// <param name="outputDimensionality">
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </param>
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
         /// </param>
@@ -72,23 +69,26 @@ namespace Google.Gemini
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
+        /// <param name="outputDimensionality">
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
             string? title,
             bool? autoTruncate,
-            int? outputDimensionality,
             bool? audioTrackExtraction,
             global::Google.Gemini.EmbedContentConfigTaskType? taskType,
-            bool? documentOcr)
+            bool? documentOcr,
+            int? outputDimensionality)
         {
             this.Title = title;
             this.AutoTruncate = autoTruncate;
-            this.OutputDimensionality = outputDimensionality;
             this.AudioTrackExtraction = audioTrackExtraction;
             this.TaskType = taskType;
             this.DocumentOcr = documentOcr;
+            this.OutputDimensionality = outputDimensionality;
         }
 
         /// <summary>
