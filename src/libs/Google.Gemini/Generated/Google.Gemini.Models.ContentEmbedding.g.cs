@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ContentEmbedding
     {
         /// <summary>
-        /// The embedding values. This is for 3P users only and will not be populated for 1P calls.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("values")]
-        public global::System.Collections.Generic.IList<float>? Values { get; set; }
-
-        /// <summary>
         /// This field stores the soft tokens tensor frame shape (e.g. [1, 1, 256, 2048]).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shape")]
         public global::System.Collections.Generic.IList<int>? Shape { get; set; }
+
+        /// <summary>
+        /// The embedding values. This is for 3P users only and will not be populated for 1P calls.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("values")]
+        public global::System.Collections.Generic.IList<float>? Values { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentEmbedding" /> class.
         /// </summary>
-        /// <param name="values">
-        /// The embedding values. This is for 3P users only and will not be populated for 1P calls.
-        /// </param>
         /// <param name="shape">
         /// This field stores the soft tokens tensor frame shape (e.g. [1, 1, 256, 2048]).
+        /// </param>
+        /// <param name="values">
+        /// The embedding values. This is for 3P users only and will not be populated for 1P calls.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ContentEmbedding(
-            global::System.Collections.Generic.IList<float>? values,
-            global::System.Collections.Generic.IList<int>? shape)
+            global::System.Collections.Generic.IList<int>? shape,
+            global::System.Collections.Generic.IList<float>? values)
         {
-            this.Values = values;
             this.Shape = shape;
+            this.Values = values;
         }
 
         /// <summary>
