@@ -431,6 +431,9 @@ namespace Google.Gemini
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
+        /// <param name="uses">
+        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+        /// </param>
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
@@ -440,19 +443,16 @@ namespace Google.Gemini
         /// <param name="interactionId">
         /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
         /// </param>
-        /// <param name="uses">
-        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AuthToken> AuthTokensCreateAsync(
             string? expireTime = default,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
+            int? uses = default,
             string? newSessionExpireTime = default,
             string? fieldMask = default,
             string? interactionId = default,
-            int? uses = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -460,10 +460,10 @@ namespace Google.Gemini
             {
                 ExpireTime = expireTime,
                 BidiGenerateContentSetup = bidiGenerateContentSetup,
+                Uses = uses,
                 NewSessionExpireTime = newSessionExpireTime,
                 FieldMask = fieldMask,
                 InteractionId = interactionId,
-                Uses = uses,
             };
 
             return await AuthTokensCreateAsync(
