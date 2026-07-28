@@ -15,17 +15,17 @@ namespace Google.Gemini
         public string? Code { get; set; }
 
         /// <summary>
+        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// Required. Programming language of the `code`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ExecutableCodeLanguageJsonConverter))]
         public global::Google.Gemini.ExecutableCodeLanguage? Language { get; set; }
-
-        /// <summary>
-        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini
         /// <param name="code">
         /// Required. The code to be executed.
         /// </param>
-        /// <param name="language">
-        /// Required. Programming language of the `code`.
-        /// </param>
         /// <param name="id">
         /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
+        /// </param>
+        /// <param name="language">
+        /// Required. Programming language of the `code`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ExecutableCode(
             string? code,
-            global::Google.Gemini.ExecutableCodeLanguage? language,
-            string? id)
+            string? id,
+            global::Google.Gemini.ExecutableCodeLanguage? language)
         {
             this.Code = code;
-            this.Language = language;
             this.Id = id;
+            this.Language = language;
         }
 
         /// <summary>
