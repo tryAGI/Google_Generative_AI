@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class UploadToFileSearchStoreRequest
     {
         /// <summary>
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
         /// Optional. Display name of the created document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
@@ -33,6 +27,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,9 +41,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadToFileSearchStoreRequest" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the created document.
         /// </param>
@@ -53,19 +50,22 @@ namespace Google.Gemini
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the data.
         /// </param>
+        /// <param name="mimeType">
+        /// Optional. MIME type of the data. If not provided, it will be inferred from the uploaded content.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadToFileSearchStoreRequest(
-            string? mimeType,
             string? displayName,
             global::Google.Gemini.ChunkingConfig? chunkingConfig,
-            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata)
+            global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
+            string? mimeType)
         {
-            this.MimeType = mimeType;
             this.DisplayName = displayName;
             this.ChunkingConfig = chunkingConfig;
             this.CustomMetadata = customMetadata;
+            this.MimeType = mimeType;
         }
 
         /// <summary>
