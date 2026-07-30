@@ -9,11 +9,10 @@ namespace Google.Gemini
     public sealed partial class AutomaticActivityDetection
     {
         /// <summary>
-        /// Optional. Determines how likely speech is to be detected.
+        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startOfSpeechSensitivity")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionStartOfSpeechSensitivityJsonConverter))]
-        public global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? StartOfSpeechSensitivity { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("silenceDurationMs")]
+        public int? SilenceDurationMs { get; set; }
 
         /// <summary>
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
@@ -35,10 +34,11 @@ namespace Google.Gemini
         public int? PrefixPaddingMs { get; set; }
 
         /// <summary>
-        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
+        /// Optional. Determines how likely speech is to be detected.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("silenceDurationMs")]
-        public int? SilenceDurationMs { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("startOfSpeechSensitivity")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionStartOfSpeechSensitivityJsonConverter))]
+        public global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? StartOfSpeechSensitivity { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -49,8 +49,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomaticActivityDetection" /> class.
         /// </summary>
-        /// <param name="startOfSpeechSensitivity">
-        /// Optional. Determines how likely speech is to be detected.
+        /// <param name="silenceDurationMs">
+        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
         /// </param>
         /// <param name="disabled">
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
@@ -61,24 +61,24 @@ namespace Google.Gemini
         /// <param name="prefixPaddingMs">
         /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
         /// </param>
-        /// <param name="silenceDurationMs">
-        /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
+        /// <param name="startOfSpeechSensitivity">
+        /// Optional. Determines how likely speech is to be detected.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AutomaticActivityDetection(
-            global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity,
+            int? silenceDurationMs,
             bool? disabled,
             global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity,
             int? prefixPaddingMs,
-            int? silenceDurationMs)
+            global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity)
         {
-            this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
+            this.SilenceDurationMs = silenceDurationMs;
             this.Disabled = disabled;
             this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
             this.PrefixPaddingMs = prefixPaddingMs;
-            this.SilenceDurationMs = silenceDurationMs;
+            this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
         }
 
         /// <summary>
