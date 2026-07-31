@@ -22,6 +22,12 @@ namespace Google.Gemini
         public int? SilenceDurationMs { get; set; }
 
         /// <summary>
+        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prefixPaddingMs")]
+        public int? PrefixPaddingMs { get; set; }
+
+        /// <summary>
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disabled")]
@@ -33,12 +39,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("startOfSpeechSensitivity")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionStartOfSpeechSensitivityJsonConverter))]
         public global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? StartOfSpeechSensitivity { get; set; }
-
-        /// <summary>
-        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("prefixPaddingMs")]
-        public int? PrefixPaddingMs { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,14 +55,14 @@ namespace Google.Gemini
         /// <param name="silenceDurationMs">
         /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
         /// </param>
+        /// <param name="prefixPaddingMs">
+        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
+        /// </param>
         /// <param name="disabled">
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
         /// </param>
         /// <param name="startOfSpeechSensitivity">
         /// Optional. Determines how likely speech is to be detected.
-        /// </param>
-        /// <param name="prefixPaddingMs">
-        /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -70,15 +70,15 @@ namespace Google.Gemini
         public AutomaticActivityDetection(
             global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity,
             int? silenceDurationMs,
+            int? prefixPaddingMs,
             bool? disabled,
-            global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity,
-            int? prefixPaddingMs)
+            global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity)
         {
             this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
             this.SilenceDurationMs = silenceDurationMs;
+            this.PrefixPaddingMs = prefixPaddingMs;
             this.Disabled = disabled;
             this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
-            this.PrefixPaddingMs = prefixPaddingMs;
         }
 
         /// <summary>
