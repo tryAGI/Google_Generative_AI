@@ -6,6 +6,7 @@ namespace Google.Gemini
     /// <summary>
     /// Indicates the language of the audio should be automatically detected.
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class LanguageAuto
     {
 
