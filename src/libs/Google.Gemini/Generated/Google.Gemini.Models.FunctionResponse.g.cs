@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class FunctionResponse
     {
         /// <summary>
-        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("willContinue")]
-        public bool? WillContinue { get; set; }
-
-        /// <summary>
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -46,6 +40,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
 
         /// <summary>
+        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("willContinue")]
+        public bool? WillContinue { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,9 +54,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponse" /> class.
         /// </summary>
-        /// <param name="willContinue">
-        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
-        /// </param>
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
@@ -72,23 +69,26 @@ namespace Google.Gemini
         /// <param name="parts">
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </param>
+        /// <param name="willContinue">
+        /// Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponse(
-            bool? willContinue,
             string? id,
             object? response,
             global::Google.Gemini.FunctionResponseScheduling? scheduling,
             string? name,
-            global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts)
+            global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
+            bool? willContinue)
         {
-            this.WillContinue = willContinue;
             this.Id = id;
             this.Response = response;
             this.Scheduling = scheduling;
             this.Name = name;
             this.Parts = parts;
+            this.WillContinue = willContinue;
         }
 
         /// <summary>
