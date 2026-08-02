@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ToolCall
     {
         /// <summary>
-        /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
         /// Optional. The name of the tool that was called.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolName")]
         public string? ToolName { get; set; }
+
+        /// <summary>
+        /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
 
         /// <summary>
         /// Required. The type of tool that was called.
@@ -42,11 +42,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolCall" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
-        /// </param>
         /// <param name="toolName">
         /// Optional. The name of the tool that was called.
+        /// </param>
+        /// <param name="id">
+        /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
         /// </param>
         /// <param name="toolType">
         /// Required. The type of tool that was called.
@@ -58,13 +58,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolCall(
-            string? id,
             string? toolName,
+            string? id,
             global::Google.Gemini.ToolCallToolType? toolType,
             object? args)
         {
-            this.Id = id;
             this.ToolName = toolName;
+            this.Id = id;
             this.ToolType = toolType;
             this.Args = args;
         }

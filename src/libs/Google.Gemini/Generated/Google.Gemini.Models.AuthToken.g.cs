@@ -9,18 +9,6 @@ namespace Google.Gemini
     public sealed partial class AuthToken
     {
         /// <summary>
-        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("interactionId")]
-        public string? InteractionId { get; set; }
-
-        /// <summary>
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fieldMask")]
-        public string? FieldMask { get; set; }
-
-        /// <summary>
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uses")]
@@ -52,6 +40,18 @@ namespace Google.Gemini
         public string? NewSessionExpireTime { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fieldMask")]
+        public string? FieldMask { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("interactionId")]
+        public string? InteractionId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,12 +60,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthToken" /> class.
         /// </summary>
-        /// <param name="interactionId">
-        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
-        /// </param>
-        /// <param name="fieldMask">
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </param>
         /// <param name="uses">
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
         /// </param>
@@ -82,25 +76,31 @@ namespace Google.Gemini
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
+        /// <param name="fieldMask">
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+        /// </param>
+        /// <param name="interactionId">
+        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AuthToken(
-            string? interactionId,
-            string? fieldMask,
             int? uses,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup,
             string? name,
             string? expireTime,
-            string? newSessionExpireTime)
+            string? newSessionExpireTime,
+            string? fieldMask,
+            string? interactionId)
         {
-            this.InteractionId = interactionId;
-            this.FieldMask = fieldMask;
             this.Uses = uses;
             this.BidiGenerateContentSetup = bidiGenerateContentSetup;
             this.Name = name;
             this.ExpireTime = expireTime;
             this.NewSessionExpireTime = newSessionExpireTime;
+            this.FieldMask = fieldMask;
+            this.InteractionId = interactionId;
         }
 
         /// <summary>
