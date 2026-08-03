@@ -27,16 +27,16 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? CustomMetadata { get; set; }
 
         /// <summary>
-        /// Optional. URI reference of the semantic retrieval document.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mediaId")]
         public string? MediaId { get; set; }
+
+        /// <summary>
+        /// Optional. URI reference of the semantic retrieval document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Optional. Title of the document.
@@ -68,11 +68,11 @@ namespace Google.Gemini
         /// <param name="customMetadata">
         /// Optional. User-provided metadata about the retrieved context.
         /// </param>
-        /// <param name="uri">
-        /// Optional. URI reference of the semantic retrieval document.
-        /// </param>
         /// <param name="mediaId">
         /// Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blob_id}
+        /// </param>
+        /// <param name="uri">
+        /// Optional. URI reference of the semantic retrieval document.
         /// </param>
         /// <param name="title">
         /// Optional. Title of the document.
@@ -87,16 +87,16 @@ namespace Google.Gemini
             string? text,
             string? fileSearchStore,
             global::System.Collections.Generic.IList<global::Google.Gemini.GroundingChunkCustomMetadata>? customMetadata,
-            string? uri,
             string? mediaId,
+            string? uri,
             string? title,
             int? pageNumber)
         {
             this.Text = text;
             this.FileSearchStore = fileSearchStore;
             this.CustomMetadata = customMetadata;
-            this.Uri = uri;
             this.MediaId = mediaId;
+            this.Uri = uri;
             this.Title = title;
             this.PageNumber = pageNumber;
         }
