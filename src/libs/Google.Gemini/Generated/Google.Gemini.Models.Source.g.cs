@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Source
     {
         /// <summary>
+        /// Where the source should appear in the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
         /// Optional encoding for inline content (e.g. `base64`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
@@ -34,12 +40,6 @@ namespace Google.Gemini
         public string? Content { get; set; }
 
         /// <summary>
-        /// Where the source should appear in the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
-        public string? Target { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,6 +48,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
+        /// <param name="target">
+        /// Where the source should appear in the environment.
+        /// </param>
         /// <param name="encoding">
         /// Optional encoding for inline content (e.g. `base64`).
         /// </param>
@@ -58,24 +61,21 @@ namespace Google.Gemini
         /// <param name="content">
         /// The inline content if `type` is `INLINE`.
         /// </param>
-        /// <param name="target">
-        /// Where the source should appear in the environment.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
+            string? target,
             string? encoding,
             global::Google.Gemini.SourceType? type,
             string? source1,
-            string? content,
-            string? target)
+            string? content)
         {
+            this.Target = target;
             this.Encoding = encoding;
             this.Type = type;
             this.Source1 = source1;
             this.Content = content;
-            this.Target = target;
         }
 
         /// <summary>
