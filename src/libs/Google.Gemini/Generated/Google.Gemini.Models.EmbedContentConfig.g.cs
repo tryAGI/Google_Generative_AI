@@ -33,17 +33,17 @@ namespace Google.Gemini
         public bool? AudioTrackExtraction { get; set; }
 
         /// <summary>
-        /// Optional. The title for the text.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// Optional. The task type of the embedding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
+
+        /// <summary>
+        /// Optional. The title for the text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -66,11 +66,11 @@ namespace Google.Gemini
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
         /// </param>
-        /// <param name="title">
-        /// Optional. The title for the text.
-        /// </param>
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
+        /// </param>
+        /// <param name="title">
+        /// Optional. The title for the text.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -80,15 +80,15 @@ namespace Google.Gemini
             int? outputDimensionality,
             bool? documentOcr,
             bool? audioTrackExtraction,
-            string? title,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
+            string? title)
         {
             this.AutoTruncate = autoTruncate;
             this.OutputDimensionality = outputDimensionality;
             this.DocumentOcr = documentOcr;
             this.AudioTrackExtraction = audioTrackExtraction;
-            this.Title = title;
             this.TaskType = taskType;
+            this.Title = title;
         }
 
         /// <summary>
