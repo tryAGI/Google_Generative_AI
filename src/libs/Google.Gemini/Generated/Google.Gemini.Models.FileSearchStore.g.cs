@@ -36,13 +36,6 @@ namespace Google.Gemini
         public string? ActiveDocumentsCount { get; set; }
 
         /// <summary>
-        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
-        public string? SizeBytes { get; set; }
-
-        /// <summary>
         /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
         /// Included only in responses
         /// </summary>
@@ -62,6 +55,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public string? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
+        public string? SizeBytes { get; set; }
 
         /// <summary>
         /// Optional. The embedding model to use for the `FileSearchStore`. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`. If not specified, the default embedding model will be used.
@@ -93,10 +93,6 @@ namespace Google.Gemini
         /// Output only. The number of documents in the `FileSearchStore` that are active and ready for retrieval.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="pendingDocumentsCount">
         /// Output only. The number of documents in the `FileSearchStore` that are being processed.<br/>
         /// Included only in responses
@@ -107,6 +103,10 @@ namespace Google.Gemini
         /// </param>
         /// <param name="updateTime">
         /// Output only. The Timestamp of when the `FileSearchStore` was last updated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="sizeBytes">
+        /// Output only. The size of raw bytes ingested into the `FileSearchStore`. This is the total size of all the documents in the `FileSearchStore`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="embeddingModel">
@@ -120,20 +120,20 @@ namespace Google.Gemini
             string? createTime,
             string? displayName,
             string? activeDocumentsCount,
-            string? sizeBytes,
             string? pendingDocumentsCount,
             string? failedDocumentsCount,
             string? updateTime,
+            string? sizeBytes,
             string? embeddingModel)
         {
             this.Name = name;
             this.CreateTime = createTime;
             this.DisplayName = displayName;
             this.ActiveDocumentsCount = activeDocumentsCount;
-            this.SizeBytes = sizeBytes;
             this.PendingDocumentsCount = pendingDocumentsCount;
             this.FailedDocumentsCount = failedDocumentsCount;
             this.UpdateTime = updateTime;
+            this.SizeBytes = sizeBytes;
             this.EmbeddingModel = embeddingModel;
         }
 

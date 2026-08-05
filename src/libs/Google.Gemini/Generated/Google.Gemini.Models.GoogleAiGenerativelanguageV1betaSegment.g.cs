@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class GoogleAiGenerativelanguageV1betaSegment
     {
         /// <summary>
-        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
+        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
-        public int? StartIndex { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
+        public int? EndIndex { get; set; }
 
         /// <summary>
         /// The index of a Part object within its parent Content object.
@@ -21,10 +21,10 @@ namespace Google.Gemini
         public int? PartIndex { get; set; }
 
         /// <summary>
-        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
+        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
-        public int? EndIndex { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("startIndex")]
+        public int? StartIndex { get; set; }
 
         /// <summary>
         /// The text corresponding to the segment from the response.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleAiGenerativelanguageV1betaSegment" /> class.
         /// </summary>
-        /// <param name="startIndex">
-        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
+        /// <param name="endIndex">
+        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
         /// </param>
         /// <param name="partIndex">
         /// The index of a Part object within its parent Content object.
         /// </param>
-        /// <param name="endIndex">
-        /// End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero.
+        /// <param name="startIndex">
+        /// Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero.
         /// </param>
         /// <param name="text">
         /// The text corresponding to the segment from the response.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleAiGenerativelanguageV1betaSegment(
-            int? startIndex,
-            int? partIndex,
             int? endIndex,
+            int? partIndex,
+            int? startIndex,
             string? text)
         {
-            this.StartIndex = startIndex;
-            this.PartIndex = partIndex;
             this.EndIndex = endIndex;
+            this.PartIndex = partIndex;
+            this.StartIndex = startIndex;
             this.Text = text;
         }
 
