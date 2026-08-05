@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class AudioResponseFormat
     {
         /// <summary>
+        /// Optional. Sample rate in Hz.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sampleRate")]
+        public int? SampleRate { get; set; }
+
+        /// <summary>
         /// Optional. The MIME type of the audio output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatMimeTypeJsonConverter))]
         public global::Google.Gemini.AudioResponseFormatMimeType? MimeType { get; set; }
-
-        /// <summary>
-        /// Optional. Sample rate in Hz.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sampleRate")]
-        public int? SampleRate { get; set; }
 
         /// <summary>
         /// Optional. The delivery mode for the audio output.
@@ -43,11 +43,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioResponseFormat" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// Optional. The MIME type of the audio output.
-        /// </param>
         /// <param name="sampleRate">
         /// Optional. Sample rate in Hz.
+        /// </param>
+        /// <param name="mimeType">
+        /// Optional. The MIME type of the audio output.
         /// </param>
         /// <param name="delivery">
         /// Optional. The delivery mode for the audio output.
@@ -59,13 +59,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioResponseFormat(
-            global::Google.Gemini.AudioResponseFormatMimeType? mimeType,
             int? sampleRate,
+            global::Google.Gemini.AudioResponseFormatMimeType? mimeType,
             global::Google.Gemini.AudioResponseFormatDelivery? delivery,
             int? bitRate)
         {
-            this.MimeType = mimeType;
             this.SampleRate = sampleRate;
+            this.MimeType = mimeType;
             this.Delivery = delivery;
             this.BitRate = bitRate;
         }
