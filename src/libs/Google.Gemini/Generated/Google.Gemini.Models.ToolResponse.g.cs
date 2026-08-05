@@ -15,17 +15,17 @@ namespace Google.Gemini
         public object? Response { get; set; }
 
         /// <summary>
+        /// Optional. The identifier of the tool call this response is for.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolResponseToolTypeJsonConverter))]
         public global::Google.Gemini.ToolResponseToolType? ToolType { get; set; }
-
-        /// <summary>
-        /// Optional. The identifier of the tool call this response is for.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini
         /// <param name="response">
         /// Optional. The tool response.
         /// </param>
-        /// <param name="toolType">
-        /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
-        /// </param>
         /// <param name="id">
         /// Optional. The identifier of the tool call this response is for.
+        /// </param>
+        /// <param name="toolType">
+        /// Required. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolResponse(
             object? response,
-            global::Google.Gemini.ToolResponseToolType? toolType,
-            string? id)
+            string? id,
+            global::Google.Gemini.ToolResponseToolType? toolType)
         {
             this.Response = response;
-            this.ToolType = toolType;
             this.Id = id;
+            this.ToolType = toolType;
         }
 
         /// <summary>
