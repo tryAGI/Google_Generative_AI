@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class CustomMetadata
     {
         /// <summary>
-        /// The string value of the metadata to store.
+        /// Required. The key of the metadata to store.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
-        public string? StringValue { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// User provided string values assigned to a single metadata key.
@@ -27,10 +27,10 @@ namespace Google.Gemini
         public float? NumericValue { get; set; }
 
         /// <summary>
-        /// Required. The key of the metadata to store.
+        /// The string value of the metadata to store.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
+        public string? StringValue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,8 +41,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomMetadata" /> class.
         /// </summary>
-        /// <param name="stringValue">
-        /// The string value of the metadata to store.
+        /// <param name="key">
+        /// Required. The key of the metadata to store.
         /// </param>
         /// <param name="stringListValue">
         /// User provided string values assigned to a single metadata key.
@@ -50,22 +50,22 @@ namespace Google.Gemini
         /// <param name="numericValue">
         /// The numeric value of the metadata to store.
         /// </param>
-        /// <param name="key">
-        /// Required. The key of the metadata to store.
+        /// <param name="stringValue">
+        /// The string value of the metadata to store.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CustomMetadata(
-            string? stringValue,
+            string? key,
             global::Google.Gemini.StringList? stringListValue,
             float? numericValue,
-            string? key)
+            string? stringValue)
         {
-            this.StringValue = stringValue;
+            this.Key = key;
             this.StringListValue = stringListValue;
             this.NumericValue = numericValue;
-            this.Key = key;
+            this.StringValue = stringValue;
         }
 
         /// <summary>
