@@ -15,17 +15,17 @@ namespace Google.Gemini
         public string? Source1 { get; set; }
 
         /// <summary>
-        /// Where the source should appear in the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
-        public string? Target { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SourceTypeJsonConverter))]
         public global::Google.Gemini.SourceType? Type { get; set; }
+
+        /// <summary>
+        /// Where the source should appear in the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
 
         /// <summary>
         /// The inline content if `type` is `INLINE`.
@@ -51,10 +51,10 @@ namespace Google.Gemini
         /// <param name="source1">
         /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
         /// </param>
+        /// <param name="type"></param>
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
-        /// <param name="type"></param>
         /// <param name="content">
         /// The inline content if `type` is `INLINE`.
         /// </param>
@@ -66,14 +66,14 @@ namespace Google.Gemini
 #endif
         public Source(
             string? source1,
-            string? target,
             global::Google.Gemini.SourceType? type,
+            string? target,
             string? content,
             string? encoding)
         {
             this.Source1 = source1;
-            this.Target = target;
             this.Type = type;
+            this.Target = target;
             this.Content = content;
             this.Encoding = encoding;
         }
