@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class CodeExecutionResult
     {
         /// <summary>
-        /// Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
-        public string? Output { get; set; }
-
-        /// <summary>
         /// Optional. The identifier of the `ExecutableCode` part this result is for. Only populated if the corresponding `ExecutableCode` has an id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -28,6 +22,12 @@ namespace Google.Gemini
         public global::Google.Gemini.CodeExecutionResultOutcome? Outcome { get; set; }
 
         /// <summary>
+        /// Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
+        public string? Output { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -36,26 +36,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeExecutionResult" /> class.
         /// </summary>
-        /// <param name="output">
-        /// Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
-        /// </param>
         /// <param name="id">
         /// Optional. The identifier of the `ExecutableCode` part this result is for. Only populated if the corresponding `ExecutableCode` has an id.
         /// </param>
         /// <param name="outcome">
         /// Required. Outcome of the code execution.
         /// </param>
+        /// <param name="output">
+        /// Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CodeExecutionResult(
-            string? output,
             string? id,
-            global::Google.Gemini.CodeExecutionResultOutcome? outcome)
+            global::Google.Gemini.CodeExecutionResultOutcome? outcome,
+            string? output)
         {
-            this.Output = output;
             this.Id = id;
             this.Outcome = outcome;
+            this.Output = output;
         }
 
         /// <summary>
