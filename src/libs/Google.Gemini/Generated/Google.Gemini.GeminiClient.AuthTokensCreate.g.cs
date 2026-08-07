@@ -425,17 +425,17 @@ namespace Google.Gemini
         /// <summary>
         /// Creates a token that can be used to constrain the behavior of a BidiGenerateContent session.
         /// </summary>
-        /// <param name="interactionId">
-        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
-        /// </param>
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
-        /// <param name="newSessionExpireTime">
-        /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
-        /// </param>
         /// <param name="expireTime">
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
+        /// </param>
+        /// <param name="interactionId">
+        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
+        /// </param>
+        /// <param name="newSessionExpireTime">
+        /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
         /// <param name="uses">
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
@@ -447,10 +447,10 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AuthToken> AuthTokensCreateAsync(
-            string? interactionId = default,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
-            string? newSessionExpireTime = default,
             string? expireTime = default,
+            string? interactionId = default,
+            string? newSessionExpireTime = default,
             int? uses = default,
             string? fieldMask = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -458,10 +458,10 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.AuthToken
             {
-                InteractionId = interactionId,
                 BidiGenerateContentSetup = bidiGenerateContentSetup,
-                NewSessionExpireTime = newSessionExpireTime,
                 ExpireTime = expireTime,
+                InteractionId = interactionId,
+                NewSessionExpireTime = newSessionExpireTime,
                 Uses = uses,
                 FieldMask = fieldMask,
             };
