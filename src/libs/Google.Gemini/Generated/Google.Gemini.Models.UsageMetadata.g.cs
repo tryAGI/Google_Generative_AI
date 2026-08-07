@@ -9,10 +9,38 @@ namespace Google.Gemini
     public sealed partial class UsageMetadata
     {
         /// <summary>
+        /// Output only. Number of tokens of thoughts for thinking models.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("thoughtsTokenCount")]
+        public int? ThoughtsTokenCount { get; set; }
+
+        /// <summary>
+        /// Output only. List of modalities that were processed for tool-use request inputs.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolUsePromptTokensDetails")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? ToolUsePromptTokensDetails { get; set; }
+
+        /// <summary>
+        /// Output only. List of modalities that were returned in the response.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("candidatesTokensDetails")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? CandidatesTokensDetails { get; set; }
+
+        /// <summary>
         /// Total token count for the generation request (prompt + thoughts + response candidates).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalTokenCount")]
         public int? TotalTokenCount { get; set; }
+
+        /// <summary>
+        /// Output only. List of modalities that were processed in the request input.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptTokensDetails")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? PromptTokensDetails { get; set; }
 
         /// <summary>
         /// Number of tokens in the cached part of the prompt (the cached content)
@@ -27,11 +55,10 @@ namespace Google.Gemini
         public int? CandidatesTokenCount { get; set; }
 
         /// <summary>
-        /// Output only. Number of tokens of thoughts for thinking models.<br/>
-        /// Included only in responses
+        /// Number of tokens in the prompt. When `cached_content` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("thoughtsTokenCount")]
-        public int? ThoughtsTokenCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptTokenCount")]
+        public int? PromptTokenCount { get; set; }
 
         /// <summary>
         /// Output only. List of modalities of the cached content in the request input.<br/>
@@ -46,33 +73,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolUsePromptTokenCount")]
         public int? ToolUsePromptTokenCount { get; set; }
-
-        /// <summary>
-        /// Output only. List of modalities that were processed for tool-use request inputs.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolUsePromptTokensDetails")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? ToolUsePromptTokensDetails { get; set; }
-
-        /// <summary>
-        /// Number of tokens in the prompt. When `cached_content` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptTokenCount")]
-        public int? PromptTokenCount { get; set; }
-
-        /// <summary>
-        /// Output only. List of modalities that were returned in the response.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("candidatesTokensDetails")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? CandidatesTokensDetails { get; set; }
-
-        /// <summary>
-        /// Output only. List of modalities that were processed in the request input.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptTokensDetails")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? PromptTokensDetails { get; set; }
 
         /// <summary>
         /// Output only. Service tier of the request.<br/>
@@ -105,8 +105,24 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UsageMetadata" /> class.
         /// </summary>
+        /// <param name="thoughtsTokenCount">
+        /// Output only. Number of tokens of thoughts for thinking models.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="toolUsePromptTokensDetails">
+        /// Output only. List of modalities that were processed for tool-use request inputs.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="candidatesTokensDetails">
+        /// Output only. List of modalities that were returned in the response.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="totalTokenCount">
         /// Total token count for the generation request (prompt + thoughts + response candidates).
+        /// </param>
+        /// <param name="promptTokensDetails">
+        /// Output only. List of modalities that were processed in the request input.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="cachedContentTokenCount">
         /// Number of tokens in the cached part of the prompt (the cached content)
@@ -114,9 +130,8 @@ namespace Google.Gemini
         /// <param name="candidatesTokenCount">
         /// Total number of tokens across all the generated response candidates.
         /// </param>
-        /// <param name="thoughtsTokenCount">
-        /// Output only. Number of tokens of thoughts for thinking models.<br/>
-        /// Included only in responses
+        /// <param name="promptTokenCount">
+        /// Number of tokens in the prompt. When `cached_content` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
         /// </param>
         /// <param name="cacheTokensDetails">
         /// Output only. List of modalities of the cached content in the request input.<br/>
@@ -124,21 +139,6 @@ namespace Google.Gemini
         /// </param>
         /// <param name="toolUsePromptTokenCount">
         /// Output only. Number of tokens present in tool-use prompt(s).<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="toolUsePromptTokensDetails">
-        /// Output only. List of modalities that were processed for tool-use request inputs.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="promptTokenCount">
-        /// Number of tokens in the prompt. When `cached_content` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
-        /// </param>
-        /// <param name="candidatesTokensDetails">
-        /// Output only. List of modalities that were returned in the response.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="promptTokensDetails">
-        /// Output only. List of modalities that were processed in the request input.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="serviceTier">
@@ -157,30 +157,30 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UsageMetadata(
+            int? thoughtsTokenCount,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? toolUsePromptTokensDetails,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? candidatesTokensDetails,
             int? totalTokenCount,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? promptTokensDetails,
             int? cachedContentTokenCount,
             int? candidatesTokenCount,
-            int? thoughtsTokenCount,
+            int? promptTokenCount,
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? cacheTokensDetails,
             int? toolUsePromptTokenCount,
-            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? toolUsePromptTokensDetails,
-            int? promptTokenCount,
-            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? candidatesTokensDetails,
-            global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? promptTokensDetails,
             global::Google.Gemini.UsageMetadataServiceTier? serviceTier,
             int? responseTokenCount,
             global::System.Collections.Generic.IList<global::Google.Gemini.ModalityTokenCount>? responseTokensDetails)
         {
+            this.ThoughtsTokenCount = thoughtsTokenCount;
+            this.ToolUsePromptTokensDetails = toolUsePromptTokensDetails;
+            this.CandidatesTokensDetails = candidatesTokensDetails;
             this.TotalTokenCount = totalTokenCount;
+            this.PromptTokensDetails = promptTokensDetails;
             this.CachedContentTokenCount = cachedContentTokenCount;
             this.CandidatesTokenCount = candidatesTokenCount;
-            this.ThoughtsTokenCount = thoughtsTokenCount;
+            this.PromptTokenCount = promptTokenCount;
             this.CacheTokensDetails = cacheTokensDetails;
             this.ToolUsePromptTokenCount = toolUsePromptTokenCount;
-            this.ToolUsePromptTokensDetails = toolUsePromptTokensDetails;
-            this.PromptTokenCount = promptTokenCount;
-            this.CandidatesTokensDetails = candidatesTokensDetails;
-            this.PromptTokensDetails = promptTokensDetails;
             this.ServiceTier = serviceTier;
             this.ResponseTokenCount = responseTokenCount;
             this.ResponseTokensDetails = responseTokensDetails;
