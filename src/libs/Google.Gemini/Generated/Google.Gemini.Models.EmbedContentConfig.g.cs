@@ -27,10 +27,11 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// Optional. The task type of the embedding.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
+        public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
         /// Optional. Whether to enable OCR for document content.
@@ -39,11 +40,10 @@ namespace Google.Gemini
         public bool? DocumentOcr { get; set; }
 
         /// <summary>
-        /// Optional. The task type of the embedding.
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
-        public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,14 +63,14 @@ namespace Google.Gemini
         /// <param name="title">
         /// Optional. The title for the text.
         /// </param>
-        /// <param name="outputDimensionality">
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// <param name="taskType">
+        /// Optional. The task type of the embedding.
         /// </param>
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
-        /// <param name="taskType">
-        /// Optional. The task type of the embedding.
+        /// <param name="outputDimensionality">
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -79,16 +79,16 @@ namespace Google.Gemini
             bool? autoTruncate,
             bool? audioTrackExtraction,
             string? title,
-            int? outputDimensionality,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             bool? documentOcr,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
+            int? outputDimensionality)
         {
             this.AutoTruncate = autoTruncate;
             this.AudioTrackExtraction = audioTrackExtraction;
             this.Title = title;
-            this.OutputDimensionality = outputDimensionality;
-            this.DocumentOcr = documentOcr;
             this.TaskType = taskType;
+            this.DocumentOcr = documentOcr;
+            this.OutputDimensionality = outputDimensionality;
         }
 
         /// <summary>
