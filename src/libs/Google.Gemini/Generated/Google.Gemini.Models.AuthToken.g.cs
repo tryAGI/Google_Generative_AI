@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class AuthToken
     {
         /// <summary>
-        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("interactionId")]
-        public string? InteractionId { get; set; }
-
-        /// <summary>
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bidiGenerateContentSetup")]
@@ -28,16 +22,22 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("newSessionExpireTime")]
-        public string? NewSessionExpireTime { get; set; }
-
-        /// <summary>
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expireTime")]
         public string? ExpireTime { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("interactionId")]
+        public string? InteractionId { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("newSessionExpireTime")]
+        public string? NewSessionExpireTime { get; set; }
 
         /// <summary>
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
@@ -60,9 +60,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthToken" /> class.
         /// </summary>
-        /// <param name="interactionId">
-        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
-        /// </param>
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
@@ -70,11 +67,14 @@ namespace Google.Gemini
         /// Output only. Identifier. The token itself.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="newSessionExpireTime">
-        /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
-        /// </param>
         /// <param name="expireTime">
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
+        /// </param>
+        /// <param name="interactionId">
+        /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
+        /// </param>
+        /// <param name="newSessionExpireTime">
+        /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
         /// <param name="uses">
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
@@ -86,19 +86,19 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AuthToken(
-            string? interactionId,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup,
             string? name,
-            string? newSessionExpireTime,
             string? expireTime,
+            string? interactionId,
+            string? newSessionExpireTime,
             int? uses,
             string? fieldMask)
         {
-            this.InteractionId = interactionId;
             this.BidiGenerateContentSetup = bidiGenerateContentSetup;
             this.Name = name;
-            this.NewSessionExpireTime = newSessionExpireTime;
             this.ExpireTime = expireTime;
+            this.InteractionId = interactionId;
+            this.NewSessionExpireTime = newSessionExpireTime;
             this.Uses = uses;
             this.FieldMask = fieldMask;
         }
