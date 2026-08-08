@@ -18,13 +18,6 @@ namespace Google.Gemini
         public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
 
         /// <summary>
-        /// Provides hints to the model about possible languages present in the audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
-
-        /// <summary>
         /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
@@ -36,6 +29,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageCodes")]
         public global::System.Collections.Generic.IList<string>? LanguageCodes { get; set; }
+
+        /// <summary>
+        /// Provides hints to the model about possible languages present in the audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
 
         /// <summary>
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
