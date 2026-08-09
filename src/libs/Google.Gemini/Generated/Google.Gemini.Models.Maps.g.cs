@@ -21,16 +21,16 @@ namespace Google.Gemini
         public global::Google.Gemini.PlaceAnswerSources? PlaceAnswerSources { get; set; }
 
         /// <summary>
-        /// URI reference of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Text description of the place answer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// URI reference of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
@@ -53,11 +53,11 @@ namespace Google.Gemini
         /// <param name="placeAnswerSources">
         /// Collection of sources that provide answers about the features of a given place in Google Maps. Each PlaceAnswerSources message corresponds to a specific place in Google Maps. The Google Maps tool used these sources in order to answer questions about features of the place (e.g: "does Bar Foo have Wifi" or "is Foo Bar wheelchair accessible?"). Currently we only support review snippets as sources.
         /// </param>
-        /// <param name="uri">
-        /// URI reference of the place.
-        /// </param>
         /// <param name="text">
         /// Text description of the place answer.
+        /// </param>
+        /// <param name="uri">
+        /// URI reference of the place.
         /// </param>
         /// <param name="placeId">
         /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
@@ -68,14 +68,14 @@ namespace Google.Gemini
         public Maps(
             string? title,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
-            string? uri,
             string? text,
+            string? uri,
             string? placeId)
         {
             this.Title = title;
             this.PlaceAnswerSources = placeAnswerSources;
-            this.Uri = uri;
             this.Text = text;
+            this.Uri = uri;
             this.PlaceId = placeId;
         }
 
