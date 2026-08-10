@@ -9,16 +9,23 @@ namespace Google.Gemini
     public sealed partial class AuthToken
     {
         /// <summary>
+        /// Output only. Identifier. The token itself.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("interactionId")]
         public string? InteractionId { get; set; }
 
         /// <summary>
-        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
+        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("bidiGenerateContentSetup")]
-        public global::Google.Gemini.BidiGenerateContentSetup? BidiGenerateContentSetup { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("uses")]
+        public int? Uses { get; set; }
 
         /// <summary>
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
@@ -39,17 +46,10 @@ namespace Google.Gemini
         public string? NewSessionExpireTime { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uses")]
-        public int? Uses { get; set; }
-
-        /// <summary>
-        /// Output only. Identifier. The token itself.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("bidiGenerateContentSetup")]
+        public global::Google.Gemini.BidiGenerateContentSetup? BidiGenerateContentSetup { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,11 +60,15 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthToken" /> class.
         /// </summary>
+        /// <param name="name">
+        /// Output only. Identifier. The token itself.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="interactionId">
         /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
         /// </param>
-        /// <param name="bidiGenerateContentSetup">
-        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
+        /// <param name="uses">
+        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
         /// </param>
         /// <param name="expireTime">
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
@@ -75,32 +79,28 @@ namespace Google.Gemini
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
         /// </param>
-        /// <param name="uses">
-        /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
-        /// </param>
-        /// <param name="name">
-        /// Output only. Identifier. The token itself.<br/>
-        /// Included only in responses
+        /// <param name="bidiGenerateContentSetup">
+        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AuthToken(
+            string? name,
             string? interactionId,
-            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup,
+            int? uses,
             string? expireTime,
             string? fieldMask,
             string? newSessionExpireTime,
-            int? uses,
-            string? name)
+            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup)
         {
+            this.Name = name;
             this.InteractionId = interactionId;
-            this.BidiGenerateContentSetup = bidiGenerateContentSetup;
+            this.Uses = uses;
             this.ExpireTime = expireTime;
             this.FieldMask = fieldMask;
             this.NewSessionExpireTime = newSessionExpireTime;
-            this.Uses = uses;
-            this.Name = name;
+            this.BidiGenerateContentSetup = bidiGenerateContentSetup;
         }
 
         /// <summary>
