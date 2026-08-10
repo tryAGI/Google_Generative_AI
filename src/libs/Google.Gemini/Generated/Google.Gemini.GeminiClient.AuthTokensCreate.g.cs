@@ -425,17 +425,17 @@ namespace Google.Gemini
         /// <summary>
         /// Creates a token that can be used to constrain the behavior of a BidiGenerateContent session.
         /// </summary>
-        /// <param name="bidiGenerateContentSetup">
-        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
-        /// </param>
-        /// <param name="fieldMask">
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </param>
         /// <param name="interactionId">
         /// Optional. Input only. Immutable. The interaction ID that this token is scoped to. Specific to the Live Interactions API.
         /// </param>
+        /// <param name="bidiGenerateContentSetup">
+        /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
+        /// </param>
         /// <param name="expireTime">
         /// Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
+        /// </param>
+        /// <param name="fieldMask">
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
         /// </param>
         /// <param name="newSessionExpireTime">
         /// Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
@@ -447,10 +447,10 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AuthToken> AuthTokensCreateAsync(
-            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
-            string? fieldMask = default,
             string? interactionId = default,
+            global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
             string? expireTime = default,
+            string? fieldMask = default,
             string? newSessionExpireTime = default,
             int? uses = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -458,10 +458,10 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.AuthToken
             {
-                BidiGenerateContentSetup = bidiGenerateContentSetup,
-                FieldMask = fieldMask,
                 InteractionId = interactionId,
+                BidiGenerateContentSetup = bidiGenerateContentSetup,
                 ExpireTime = expireTime,
+                FieldMask = fieldMask,
                 NewSessionExpireTime = newSessionExpireTime,
                 Uses = uses,
             };
