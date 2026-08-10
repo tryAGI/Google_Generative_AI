@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class Document
     {
         /// <summary>
-        /// Immutable. Identifier. The `Document` resource name. The ID (name excluding the "fileSearchStores/*/documents/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/{file_search_store_id}/documents/my-awesome-doc-123a456b789c`
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Optional. The human-readable display name for the `Document`. The display name must be no more than 512 characters in length, including spaces. Example: "Semantic Retriever Documentation"
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
@@ -25,20 +19,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customMetadata")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? CustomMetadata { get; set; }
-
-        /// <summary>
-        /// Output only. The mime type of the Document.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
-        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. The Timestamp of when the `Document` was created.<br/>
@@ -53,6 +33,26 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
         public string? SizeBytes { get; set; }
+
+        /// <summary>
+        /// Output only. The mime type of the Document.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The `Document` resource name. The ID (name excluding the "fileSearchStores/*/documents/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/{file_search_store_id}/documents/my-awesome-doc-123a456b789c`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. Current state of the `Document`.<br/>
@@ -71,22 +71,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Document" /> class.
         /// </summary>
-        /// <param name="name">
-        /// Immutable. Identifier. The `Document` resource name. The ID (name excluding the "fileSearchStores/*/documents/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/{file_search_store_id}/documents/my-awesome-doc-123a456b789c`
-        /// </param>
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `Document`. The display name must be no more than 512 characters in length, including spaces. Example: "Semantic Retriever Documentation"
         /// </param>
         /// <param name="customMetadata">
         /// Optional. User provided custom metadata stored as key-value pairs used for querying. A `Document` can have a maximum of 20 `CustomMetadata`.
-        /// </param>
-        /// <param name="mimeType">
-        /// Output only. The mime type of the Document.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="updateTime">
-        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="createTime">
         /// Output only. The Timestamp of when the `Document` was created.<br/>
@@ -94,6 +83,17 @@ namespace Google.Gemini
         /// </param>
         /// <param name="sizeBytes">
         /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="mimeType">
+        /// Output only. The mime type of the Document.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="name">
+        /// Immutable. Identifier. The `Document` resource name. The ID (name excluding the "fileSearchStores/*/documents/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/{file_search_store_id}/documents/my-awesome-doc-123a456b789c`
+        /// </param>
+        /// <param name="updateTime">
+        /// Output only. The Timestamp of when the `Document` was last updated.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="state">
@@ -104,22 +104,22 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Document(
-            string? name,
             string? displayName,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
-            string? mimeType,
-            string? updateTime,
             string? createTime,
             string? sizeBytes,
+            string? mimeType,
+            string? name,
+            string? updateTime,
             global::Google.Gemini.DocumentState? state)
         {
-            this.Name = name;
             this.DisplayName = displayName;
             this.CustomMetadata = customMetadata;
-            this.MimeType = mimeType;
-            this.UpdateTime = updateTime;
             this.CreateTime = createTime;
             this.SizeBytes = sizeBytes;
+            this.MimeType = mimeType;
+            this.Name = name;
+            this.UpdateTime = updateTime;
             this.State = state;
         }
 
