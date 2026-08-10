@@ -454,14 +454,14 @@ namespace Google.Gemini
         /// <param name="batchStats">
         /// Stats about the batch.
         /// </param>
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
+        /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
-        /// </param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="output">
         /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
@@ -474,9 +474,9 @@ namespace Google.Gemini
             string? updateMask = default,
             string? priority = default,
             global::Google.Gemini.BatchStats? batchStats = default,
+            string? displayName = default,
             string? model = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
-            string? displayName = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -485,9 +485,9 @@ namespace Google.Gemini
             {
                 Priority = priority,
                 BatchStats = batchStats,
+                DisplayName = displayName,
                 Model = model,
                 InputConfig = inputConfig,
-                DisplayName = displayName,
                 Output = output,
             };
 
