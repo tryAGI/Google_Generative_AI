@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class McpServer
     {
         /// <summary>
-        /// A transport that can stream HTTP requests and responses. Next ID: 6
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("streamableHttpTransport")]
-        public global::Google.Gemini.StreamableHttpTransport? StreamableHttpTransport { get; set; }
-
-        /// <summary>
         /// The name of the MCPServer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// A transport that can stream HTTP requests and responses. Next ID: 6
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("streamableHttpTransport")]
+        public global::Google.Gemini.StreamableHttpTransport? StreamableHttpTransport { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="McpServer" /> class.
         /// </summary>
-        /// <param name="streamableHttpTransport">
-        /// A transport that can stream HTTP requests and responses. Next ID: 6
-        /// </param>
         /// <param name="name">
         /// The name of the MCPServer.
+        /// </param>
+        /// <param name="streamableHttpTransport">
+        /// A transport that can stream HTTP requests and responses. Next ID: 6
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public McpServer(
-            global::Google.Gemini.StreamableHttpTransport? streamableHttpTransport,
-            string? name)
+            string? name,
+            global::Google.Gemini.StreamableHttpTransport? streamableHttpTransport)
         {
-            this.StreamableHttpTransport = streamableHttpTransport;
             this.Name = name;
+            this.StreamableHttpTransport = streamableHttpTransport;
         }
 
         /// <summary>
