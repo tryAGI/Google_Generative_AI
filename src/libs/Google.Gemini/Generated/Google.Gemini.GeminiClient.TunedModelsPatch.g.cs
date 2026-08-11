@@ -451,23 +451,23 @@ namespace Google.Gemini
         /// <param name="temperature">
         /// Optional. Controls the randomness of the output. Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
-        /// <param name="topK">
-        /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
-        /// </param>
         /// <param name="readerProjectNumbers">
         /// Optional. List of project numbers that have read access to the tuned model.
         /// </param>
-        /// <param name="description">
-        /// Optional. A short description of this model.
-        /// </param>
-        /// <param name="topP">
-        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
+        /// <param name="topK">
+        /// Optional. For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. This value specifies default to be the one used by the base model while creating the model.
         /// </param>
         /// <param name="baseModel">
         /// Immutable. The name of the `Model` to tune. Example: `models/gemini-1.5-flash-001`
         /// </param>
         /// <param name="tunedModelSource">
         /// Tuned model as a source for training a new model.
+        /// </param>
+        /// <param name="topP">
+        /// Optional. For Nucleus sampling. Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be the one used by the base model while creating the model.
+        /// </param>
+        /// <param name="description">
+        /// Optional. A short description of this model.
         /// </param>
         /// <param name="tuningTask">
         /// Tuning tasks that create tuned models.
@@ -482,12 +482,12 @@ namespace Google.Gemini
             string tunedModelsId,
             string? updateMask = default,
             float? temperature = default,
-            int? topK = default,
             global::System.Collections.Generic.IList<string>? readerProjectNumbers = default,
-            string? description = default,
-            float? topP = default,
+            int? topK = default,
             string? baseModel = default,
             global::Google.Gemini.TunedModelSource? tunedModelSource = default,
+            float? topP = default,
+            string? description = default,
             global::Google.Gemini.TuningTask? tuningTask = default,
             string? displayName = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -496,12 +496,12 @@ namespace Google.Gemini
             var __request = new global::Google.Gemini.TunedModel
             {
                 Temperature = temperature,
-                TopK = topK,
                 ReaderProjectNumbers = readerProjectNumbers,
-                Description = description,
-                TopP = topP,
+                TopK = topK,
                 BaseModel = baseModel,
                 TunedModelSource = tunedModelSource,
+                TopP = topP,
+                Description = description,
                 TuningTask = tuningTask,
                 DisplayName = displayName,
             };

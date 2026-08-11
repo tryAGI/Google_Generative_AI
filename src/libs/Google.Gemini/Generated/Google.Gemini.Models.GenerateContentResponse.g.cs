@@ -9,6 +9,13 @@ namespace Google.Gemini
     public sealed partial class GenerateContentResponse
     {
         /// <summary>
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
+        public string? ModelVersion { get; set; }
+
+        /// <summary>
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelStatus")]
@@ -40,13 +47,6 @@ namespace Google.Gemini
         public global::Google.Gemini.UsageMetadata? UsageMetadata { get; set; }
 
         /// <summary>
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
-        public string? ModelVersion { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +55,10 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentResponse" /> class.
         /// </summary>
+        /// <param name="modelVersion">
+        /// Output only. The model version used to generate the response.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="modelStatus">
         /// The status of the underlying model. This is used to indicate the stage of the underlying model and the retirement time if applicable.
         /// </param>
@@ -71,27 +75,23 @@ namespace Google.Gemini
         /// <param name="usageMetadata">
         /// Metadata on the generation request's token usage.
         /// </param>
-        /// <param name="modelVersion">
-        /// Output only. The model version used to generate the response.<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentResponse(
+            string? modelVersion,
             global::Google.Gemini.ModelStatus? modelStatus,
             global::Google.Gemini.PromptFeedback? promptFeedback,
             global::System.Collections.Generic.IList<global::Google.Gemini.Candidate>? candidates,
             string? responseId,
-            global::Google.Gemini.UsageMetadata? usageMetadata,
-            string? modelVersion)
+            global::Google.Gemini.UsageMetadata? usageMetadata)
         {
+            this.ModelVersion = modelVersion;
             this.ModelStatus = modelStatus;
             this.PromptFeedback = promptFeedback;
             this.Candidates = candidates;
             this.ResponseId = responseId;
             this.UsageMetadata = usageMetadata;
-            this.ModelVersion = modelVersion;
         }
 
         /// <summary>
