@@ -22,13 +22,6 @@ namespace Google.Gemini
         public int? PrefixPaddingMs { get; set; }
 
         /// <summary>
-        /// Optional. Determines how likely detected speech is ended.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endOfSpeechSensitivity")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionEndOfSpeechSensitivityJsonConverter))]
-        public global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? EndOfSpeechSensitivity { get; set; }
-
-        /// <summary>
         /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("silenceDurationMs")]
@@ -39,6 +32,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disabled")]
         public bool? Disabled { get; set; }
+
+        /// <summary>
+        /// Optional. Determines how likely detected speech is ended.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endOfSpeechSensitivity")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionEndOfSpeechSensitivityJsonConverter))]
+        public global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? EndOfSpeechSensitivity { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,14 +55,14 @@ namespace Google.Gemini
         /// <param name="prefixPaddingMs">
         /// Optional. The required duration of detected speech before start-of-speech is committed. The lower this value, the more sensitive the start-of-speech detection is and shorter speech can be recognized. However, this also increases the probability of false positives.
         /// </param>
-        /// <param name="endOfSpeechSensitivity">
-        /// Optional. Determines how likely detected speech is ended.
-        /// </param>
         /// <param name="silenceDurationMs">
         /// Optional. The required duration of detected non-speech (e.g. silence) before end-of-speech is committed. The larger this value, the longer speech gaps can be without interrupting the user's activity but this will increase the model's latency.
         /// </param>
         /// <param name="disabled">
         /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
+        /// </param>
+        /// <param name="endOfSpeechSensitivity">
+        /// Optional. Determines how likely detected speech is ended.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -70,15 +70,15 @@ namespace Google.Gemini
         public AutomaticActivityDetection(
             global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity,
             int? prefixPaddingMs,
-            global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity,
             int? silenceDurationMs,
-            bool? disabled)
+            bool? disabled,
+            global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity)
         {
             this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
             this.PrefixPaddingMs = prefixPaddingMs;
-            this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
             this.SilenceDurationMs = silenceDurationMs;
             this.Disabled = disabled;
+            this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
         }
 
         /// <summary>
