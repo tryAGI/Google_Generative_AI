@@ -21,6 +21,12 @@ namespace Google.Gemini
         public string? Content { get; set; }
 
         /// <summary>
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
+        public string? Encoding { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -32,12 +38,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target")]
         public string? Target { get; set; }
-
-        /// <summary>
-        /// Optional encoding for inline content (e.g. `base64`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
-        public string? Encoding { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,12 +54,12 @@ namespace Google.Gemini
         /// <param name="content">
         /// The inline content if `type` is `INLINE`.
         /// </param>
+        /// <param name="encoding">
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </param>
         /// <param name="type"></param>
         /// <param name="target">
         /// Where the source should appear in the environment.
-        /// </param>
-        /// <param name="encoding">
-        /// Optional encoding for inline content (e.g. `base64`).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -67,15 +67,15 @@ namespace Google.Gemini
         public Source(
             string? source1,
             string? content,
+            string? encoding,
             global::Google.Gemini.SourceType? type,
-            string? target,
-            string? encoding)
+            string? target)
         {
             this.Source1 = source1;
             this.Content = content;
+            this.Encoding = encoding;
             this.Type = type;
             this.Target = target;
-            this.Encoding = encoding;
         }
 
         /// <summary>
