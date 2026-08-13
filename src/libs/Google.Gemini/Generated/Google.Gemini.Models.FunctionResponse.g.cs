@@ -21,6 +21,13 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
 
         /// <summary>
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
+        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
+
+        /// <summary>
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -39,13 +46,6 @@ namespace Google.Gemini
         public object? Response { get; set; }
 
         /// <summary>
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
-        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +60,9 @@ namespace Google.Gemini
         /// <param name="parts">
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </param>
+        /// <param name="scheduling">
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// </param>
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
@@ -69,26 +72,23 @@ namespace Google.Gemini
         /// <param name="response">
         /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
         /// </param>
-        /// <param name="scheduling">
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponse(
             bool? willContinue,
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
+            global::Google.Gemini.FunctionResponseScheduling? scheduling,
             string? id,
             string? name,
-            object? response,
-            global::Google.Gemini.FunctionResponseScheduling? scheduling)
+            object? response)
         {
             this.WillContinue = willContinue;
             this.Parts = parts;
+            this.Scheduling = scheduling;
             this.Id = id;
             this.Name = name;
             this.Response = response;
-            this.Scheduling = scheduling;
         }
 
         /// <summary>
