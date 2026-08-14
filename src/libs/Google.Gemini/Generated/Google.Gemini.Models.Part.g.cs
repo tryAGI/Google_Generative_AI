@@ -17,22 +17,10 @@ namespace Google.Gemini
         public global::Google.Gemini.Blob? InlineData { get; set; }
 
         /// <summary>
-        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("codeExecutionResult")]
-        public global::Google.Gemini.CodeExecutionResult? CodeExecutionResult { get; set; }
-
-        /// <summary>
         /// Optional. An opaque signature for the thought so it can be reused in subsequent requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thoughtSignature")]
         public byte[]? ThoughtSignature { get; set; }
-
-        /// <summary>
-        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("functionCall")]
-        public global::Google.Gemini.FunctionCall? FunctionCall { get; set; }
 
         /// <summary>
         /// A predicted server-side `ToolCall` returned from the model. This message contains information about a tool that the model wants to invoke. The client is NOT expected to execute this `ToolCall`. Instead, the client should pass this `ToolCall` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolResponse`.
@@ -41,11 +29,10 @@ namespace Google.Gemini
         public global::Google.Gemini.ToolCall? ToolCall { get; set; }
 
         /// <summary>
-        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
+        /// Optional. Indicates if the part is thought from the model.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mediaProcessing")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.PartMediaProcessingJsonConverter))]
-        public global::Google.Gemini.PartMediaProcessing? MediaProcessing { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("thought")]
+        public bool? Thought { get; set; }
 
         /// <summary>
         /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
@@ -78,10 +65,11 @@ namespace Google.Gemini
         public global::Google.Gemini.ExecutableCode? ExecutableCode { get; set; }
 
         /// <summary>
-        /// Optional. Indicates if the part is thought from the model.
+        /// Deprecated: Use `GenerateContentRequest.processing_options` instead. Metadata describes the input video content.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("thought")]
-        public bool? Thought { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.VideoMetadata? VideoMetadata { get; set; }
 
         /// <summary>
         /// The result output from a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model. This should contain the result of a`FunctionCall` made based on model prediction.
@@ -90,17 +78,29 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionResponse? FunctionResponse { get; set; }
 
         /// <summary>
-        /// Deprecated: Use `GenerateContentRequest.processing_options` instead. Metadata describes the input video content.
+        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.VideoMetadata? VideoMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("codeExecutionResult")]
+        public global::Google.Gemini.CodeExecutionResult? CodeExecutionResult { get; set; }
+
+        /// <summary>
+        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("functionCall")]
+        public global::Google.Gemini.FunctionCall? FunctionCall { get; set; }
 
         /// <summary>
         /// Custom metadata associated with the Part. Agents using genai.Part as content representation may need to keep track of the additional information. For example it can be name of a file/source from which the Part originates or a way to multiplex multiple Part streams.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("partMetadata")]
         public object? PartMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediaProcessing")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.PartMediaProcessingJsonConverter))]
+        public global::Google.Gemini.PartMediaProcessing? MediaProcessing { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -114,20 +114,14 @@ namespace Google.Gemini
         /// <param name="inlineData">
         /// Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
         /// </param>
-        /// <param name="codeExecutionResult">
-        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
-        /// </param>
         /// <param name="thoughtSignature">
         /// Optional. An opaque signature for the thought so it can be reused in subsequent requests.
-        /// </param>
-        /// <param name="functionCall">
-        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
         /// </param>
         /// <param name="toolCall">
         /// A predicted server-side `ToolCall` returned from the model. This message contains information about a tool that the model wants to invoke. The client is NOT expected to execute this `ToolCall`. Instead, the client should pass this `ToolCall` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolResponse`.
         /// </param>
-        /// <param name="mediaProcessing">
-        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
+        /// <param name="thought">
+        /// Optional. Indicates if the part is thought from the model.
         /// </param>
         /// <param name="toolResponse">
         /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
@@ -144,48 +138,54 @@ namespace Google.Gemini
         /// <param name="executableCode">
         /// Code generated by the model that is meant to be executed, and the result returned to the model. Only generated when using the `CodeExecution` tool, in which the code will be automatically executed, and a corresponding `CodeExecutionResult` will also be generated.
         /// </param>
-        /// <param name="thought">
-        /// Optional. Indicates if the part is thought from the model.
-        /// </param>
         /// <param name="functionResponse">
         /// The result output from a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model. This should contain the result of a`FunctionCall` made based on model prediction.
         /// </param>
+        /// <param name="codeExecutionResult">
+        /// Result of executing the `ExecutableCode`. Generated only when the `CodeExecution` tool is used.
+        /// </param>
+        /// <param name="functionCall">
+        /// A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
+        /// </param>
         /// <param name="partMetadata">
         /// Custom metadata associated with the Part. Agents using genai.Part as content representation may need to keep track of the additional information. For example it can be name of a file/source from which the Part originates or a way to multiplex multiple Part streams.
+        /// </param>
+        /// <param name="mediaProcessing">
+        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Part(
             global::Google.Gemini.Blob? inlineData,
-            global::Google.Gemini.CodeExecutionResult? codeExecutionResult,
             byte[]? thoughtSignature,
-            global::Google.Gemini.FunctionCall? functionCall,
             global::Google.Gemini.ToolCall? toolCall,
-            global::Google.Gemini.PartMediaProcessing? mediaProcessing,
+            bool? thought,
             global::Google.Gemini.ToolResponse? toolResponse,
             global::Google.Gemini.V1mainMediaResolution? mediaResolution,
             string? text,
             global::Google.Gemini.FileData? fileData,
             global::Google.Gemini.ExecutableCode? executableCode,
-            bool? thought,
             global::Google.Gemini.FunctionResponse? functionResponse,
-            object? partMetadata)
+            global::Google.Gemini.CodeExecutionResult? codeExecutionResult,
+            global::Google.Gemini.FunctionCall? functionCall,
+            object? partMetadata,
+            global::Google.Gemini.PartMediaProcessing? mediaProcessing)
         {
             this.InlineData = inlineData;
-            this.CodeExecutionResult = codeExecutionResult;
             this.ThoughtSignature = thoughtSignature;
-            this.FunctionCall = functionCall;
             this.ToolCall = toolCall;
-            this.MediaProcessing = mediaProcessing;
+            this.Thought = thought;
             this.ToolResponse = toolResponse;
             this.MediaResolution = mediaResolution;
             this.Text = text;
             this.FileData = fileData;
             this.ExecutableCode = executableCode;
-            this.Thought = thought;
             this.FunctionResponse = functionResponse;
+            this.CodeExecutionResult = codeExecutionResult;
+            this.FunctionCall = functionCall;
             this.PartMetadata = partMetadata;
+            this.MediaProcessing = mediaProcessing;
         }
 
         /// <summary>
