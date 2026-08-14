@@ -11,10 +11,11 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
-        /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
+        /// Provides hints to the model about possible languages present in the audio.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageCodes")]
-        public global::System.Collections.Generic.IList<string>? LanguageCodes { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
 
         /// <summary>
         /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
@@ -22,6 +23,25 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
+
+        /// <summary>
+        /// Optional. Configures word-level timestamp generation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("wordTimestamp")]
+        public bool? WordTimestamp { get; set; }
+
+        /// <summary>
+        /// Indicates the language of the audio should be automatically detected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
+
+        /// <summary>
+        /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageCodes")]
+        public global::System.Collections.Generic.IList<string>? LanguageCodes { get; set; }
 
         /// <summary>
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
@@ -36,26 +56,6 @@ namespace Google.Gemini
         public bool? Diarization { get; set; }
 
         /// <summary>
-        /// Indicates the language of the audio should be automatically detected.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
-
-        /// <summary>
-        /// Provides hints to the model about possible languages present in the audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
-
-        /// <summary>
-        /// Optional. Configures word-level timestamp generation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("wordTimestamp")]
-        public bool? WordTimestamp { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -64,6 +64,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscriptionConfig" /> class.
         /// </summary>
+        /// <param name="wordTimestamp">
+        /// Optional. Configures word-level timestamp generation.
+        /// </param>
         /// <param name="languageCodes">
         /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
         /// </param>
@@ -73,22 +76,19 @@ namespace Google.Gemini
         /// <param name="diarization">
         /// Optional. Configures speaker diarization.
         /// </param>
-        /// <param name="wordTimestamp">
-        /// Optional. Configures word-level timestamp generation.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscriptionConfig(
+            bool? wordTimestamp,
             global::System.Collections.Generic.IList<string>? languageCodes,
             global::System.Collections.Generic.IList<string>? customVocabulary,
-            bool? diarization,
-            bool? wordTimestamp)
+            bool? diarization)
         {
+            this.WordTimestamp = wordTimestamp;
             this.LanguageCodes = languageCodes;
             this.CustomVocabulary = customVocabulary;
             this.Diarization = diarization;
-            this.WordTimestamp = wordTimestamp;
         }
 
         /// <summary>
