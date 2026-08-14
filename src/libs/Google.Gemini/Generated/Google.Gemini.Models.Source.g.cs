@@ -9,13 +9,6 @@ namespace Google.Gemini
     public sealed partial class Source
     {
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SourceTypeJsonConverter))]
-        public global::Google.Gemini.SourceType? Type { get; set; }
-
-        /// <summary>
         /// The inline content if `type` is `INLINE`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
@@ -34,6 +27,13 @@ namespace Google.Gemini
         public string? Target { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SourceTypeJsonConverter))]
+        public global::Google.Gemini.SourceType? Type { get; set; }
+
+        /// <summary>
         /// Optional encoding for inline content (e.g. `base64`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
@@ -48,7 +48,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="content">
         /// The inline content if `type` is `INLINE`.
         /// </param>
@@ -58,6 +57,7 @@ namespace Google.Gemini
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
+        /// <param name="type"></param>
         /// <param name="encoding">
         /// Optional encoding for inline content (e.g. `base64`).
         /// </param>
@@ -65,16 +65,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
-            global::Google.Gemini.SourceType? type,
             string? content,
             string? source1,
             string? target,
+            global::Google.Gemini.SourceType? type,
             string? encoding)
         {
-            this.Type = type;
             this.Content = content;
             this.Source1 = source1;
             this.Target = target;
+            this.Type = type;
             this.Encoding = encoding;
         }
 
