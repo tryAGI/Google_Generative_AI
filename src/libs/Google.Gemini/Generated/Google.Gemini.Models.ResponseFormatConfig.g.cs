@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ResponseFormatConfig
     {
         /// <summary>
-        /// Configuration for audio output format.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
-        public global::Google.Gemini.AudioResponseFormat? Audio { get; set; }
-
-        /// <summary>
         /// Configuration for image output format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         public global::Google.Gemini.ImageResponseFormat? Image { get; set; }
+
+        /// <summary>
+        /// Configuration for audio output format.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
+        public global::Google.Gemini.AudioResponseFormat? Audio { get; set; }
 
         /// <summary>
         /// Configuration for text output format.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseFormatConfig" /> class.
         /// </summary>
-        /// <param name="audio">
-        /// Configuration for audio output format.
-        /// </param>
         /// <param name="image">
         /// Configuration for image output format.
+        /// </param>
+        /// <param name="audio">
+        /// Configuration for audio output format.
         /// </param>
         /// <param name="text">
         /// Configuration for text output format.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ResponseFormatConfig(
-            global::Google.Gemini.AudioResponseFormat? audio,
             global::Google.Gemini.ImageResponseFormat? image,
+            global::Google.Gemini.AudioResponseFormat? audio,
             global::Google.Gemini.TextResponseFormat? text)
         {
-            this.Audio = audio;
             this.Image = image;
+            this.Audio = audio;
             this.Text = text;
         }
 
