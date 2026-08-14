@@ -24,13 +24,6 @@ namespace Google.Gemini
         public string? Model { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
@@ -49,6 +42,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
         public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`. Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

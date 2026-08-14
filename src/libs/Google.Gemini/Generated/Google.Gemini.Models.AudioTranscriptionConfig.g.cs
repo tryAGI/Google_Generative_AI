@@ -11,6 +11,13 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
+        /// Provides hints to the model about possible languages present in the audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
+
+        /// <summary>
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customVocabulary")]
@@ -24,11 +31,10 @@ namespace Google.Gemini
         public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
 
         /// <summary>
-        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// Optional. Configures speaker diarization.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
+        public bool? Diarization { get; set; }
 
         /// <summary>
         /// Optional. Configures word-level timestamp generation.
@@ -37,17 +43,11 @@ namespace Google.Gemini
         public bool? WordTimestamp { get; set; }
 
         /// <summary>
-        /// Provides hints to the model about possible languages present in the audio.
+        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
-
-        /// <summary>
-        /// Optional. Configures speaker diarization.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
-        public bool? Diarization { get; set; }
+        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
         /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
@@ -67,11 +67,11 @@ namespace Google.Gemini
         /// <param name="customVocabulary">
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
         /// </param>
-        /// <param name="wordTimestamp">
-        /// Optional. Configures word-level timestamp generation.
-        /// </param>
         /// <param name="diarization">
         /// Optional. Configures speaker diarization.
+        /// </param>
+        /// <param name="wordTimestamp">
+        /// Optional. Configures word-level timestamp generation.
         /// </param>
         /// <param name="languageCodes">
         /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
@@ -81,13 +81,13 @@ namespace Google.Gemini
 #endif
         public AudioTranscriptionConfig(
             global::System.Collections.Generic.IList<string>? customVocabulary,
-            bool? wordTimestamp,
             bool? diarization,
+            bool? wordTimestamp,
             global::System.Collections.Generic.IList<string>? languageCodes)
         {
             this.CustomVocabulary = customVocabulary;
-            this.WordTimestamp = wordTimestamp;
             this.Diarization = diarization;
+            this.WordTimestamp = wordTimestamp;
             this.LanguageCodes = languageCodes;
         }
 
