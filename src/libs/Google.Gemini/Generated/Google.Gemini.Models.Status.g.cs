@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class Status
     {
         /// <summary>
-        /// The status code, which should be an enum value of google.rpc.Code.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        public int? Code { get; set; }
-
-        /// <summary>
         /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public string? Message { get; set; }
 
         /// <summary>
+        /// The status code, which should be an enum value of google.rpc.Code.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public int? Code { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Status" /> class.
         /// </summary>
-        /// <param name="code">
-        /// The status code, which should be an enum value of google.rpc.Code.
-        /// </param>
         /// <param name="details">
         /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
         /// </param>
         /// <param name="message">
         /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         /// </param>
+        /// <param name="code">
+        /// The status code, which should be an enum value of google.rpc.Code.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Status(
-            int? code,
             global::System.Collections.Generic.IList<object>? details,
-            string? message)
+            string? message,
+            int? code)
         {
-            this.Code = code;
             this.Details = details;
             this.Message = message;
+            this.Code = code;
         }
 
         /// <summary>
