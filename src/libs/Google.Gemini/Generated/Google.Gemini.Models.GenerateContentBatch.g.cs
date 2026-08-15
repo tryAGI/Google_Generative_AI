@@ -9,10 +9,17 @@ namespace Google.Gemini
     public sealed partial class GenerateContentBatch
     {
         /// <summary>
-        /// Required. The user-defined name of this batch.
+        /// Configures the input to the batch request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("inputConfig")]
+        public global::Google.Gemini.InputConfig? InputConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the batch was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
@@ -21,10 +28,10 @@ namespace Google.Gemini
         public string? Priority { get; set; }
 
         /// <summary>
-        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// Required. The user-defined name of this batch.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
-        public global::Google.Gemini.GenerateContentBatchOutput? Output { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Stats about the batch.
@@ -33,16 +40,11 @@ namespace Google.Gemini
         public global::Google.Gemini.BatchStats? BatchStats { get; set; }
 
         /// <summary>
-        /// Configures the input to the batch request.
+        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inputConfig")]
-        public global::Google.Gemini.InputConfig? InputConfig { get; set; }
-
-        /// <summary>
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Output only. The time at which the batch was last updated.<br/>
@@ -50,13 +52,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public string? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
 
         /// <summary>
         /// Output only. The time at which the batch processing completed.<br/>
@@ -74,11 +69,16 @@ namespace Google.Gemini
         public global::Google.Gemini.GenerateContentBatchState? State { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the batch was created.<br/>
-        /// Included only in responses
+        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
+        public global::Google.Gemini.GenerateContentBatchOutput? Output { get; set; }
+
+        /// <summary>
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -89,30 +89,28 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentBatch" /> class.
         /// </summary>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
+        /// <param name="inputConfig">
+        /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="createTime">
+        /// Output only. The time at which the batch was created.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="priority">
         /// Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
         /// </param>
-        /// <param name="output">
-        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
         /// </param>
-        /// <param name="inputConfig">
-        /// Configures the input to the batch request.
-        /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="name">
+        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="updateTime">
         /// Output only. The time at which the batch was last updated.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="name">
-        /// Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="endTime">
@@ -123,37 +121,39 @@ namespace Google.Gemini
         /// Output only. The state of the batch.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="createTime">
-        /// Output only. The time at which the batch was created.<br/>
-        /// Included only in responses
+        /// <param name="output">
+        /// The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
+        /// </param>
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentBatch(
-            string? displayName,
-            string? priority,
-            global::Google.Gemini.GenerateContentBatchOutput? output,
-            global::Google.Gemini.BatchStats? batchStats,
             global::Google.Gemini.InputConfig? inputConfig,
-            string? model,
-            string? updateTime,
+            string? createTime,
+            string? priority,
+            string? displayName,
+            global::Google.Gemini.BatchStats? batchStats,
             string? name,
+            string? updateTime,
             string? endTime,
             global::Google.Gemini.GenerateContentBatchState? state,
-            string? createTime)
+            global::Google.Gemini.GenerateContentBatchOutput? output,
+            string? model)
         {
-            this.DisplayName = displayName;
-            this.Priority = priority;
-            this.Output = output;
-            this.BatchStats = batchStats;
             this.InputConfig = inputConfig;
-            this.Model = model;
-            this.UpdateTime = updateTime;
+            this.CreateTime = createTime;
+            this.Priority = priority;
+            this.DisplayName = displayName;
+            this.BatchStats = batchStats;
             this.Name = name;
+            this.UpdateTime = updateTime;
             this.EndTime = endTime;
             this.State = state;
-            this.CreateTime = createTime;
+            this.Output = output;
+            this.Model = model;
         }
 
         /// <summary>
