@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Operation
     {
         /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
@@ -33,12 +39,6 @@ namespace Google.Gemini
         public bool? Done { get; set; }
 
         /// <summary>
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +47,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Operation" /> class.
         /// </summary>
+        /// <param name="name">
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </param>
         /// <param name="metadata">
         /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         /// </param>
@@ -59,24 +62,21 @@ namespace Google.Gemini
         /// <param name="done">
         /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
         /// </param>
-        /// <param name="name">
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Operation(
+            string? name,
             object? metadata,
             global::Google.Gemini.Status? error,
             object? response,
-            bool? done,
-            string? name)
+            bool? done)
         {
+            this.Name = name;
             this.Metadata = metadata;
             this.Error = error;
             this.Response = response;
             this.Done = done;
-            this.Name = name;
         }
 
         /// <summary>
