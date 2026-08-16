@@ -9,6 +9,13 @@ namespace Google.Gemini
     public sealed partial class ToolCall
     {
         /// <summary>
+        /// Required. The type of tool that was called.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolCallToolTypeJsonConverter))]
+        public global::Google.Gemini.ToolCallToolType? ToolType { get; set; }
+
+        /// <summary>
         /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -19,13 +26,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolName")]
         public string? ToolName { get; set; }
-
-        /// <summary>
-        /// Required. The type of tool that was called.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolCallToolTypeJsonConverter))]
-        public global::Google.Gemini.ToolCallToolType? ToolType { get; set; }
 
         /// <summary>
         /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
@@ -42,14 +42,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolCall" /> class.
         /// </summary>
+        /// <param name="toolType">
+        /// Required. The type of tool that was called.
+        /// </param>
         /// <param name="id">
         /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
         /// </param>
         /// <param name="toolName">
         /// Optional. The name of the tool that was called.
-        /// </param>
-        /// <param name="toolType">
-        /// Required. The type of tool that was called.
         /// </param>
         /// <param name="args">
         /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
@@ -58,14 +58,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolCall(
+            global::Google.Gemini.ToolCallToolType? toolType,
             string? id,
             string? toolName,
-            global::Google.Gemini.ToolCallToolType? toolType,
             object? args)
         {
+            this.ToolType = toolType;
             this.Id = id;
             this.ToolName = toolName;
-            this.ToolType = toolType;
             this.Args = args;
         }
 
