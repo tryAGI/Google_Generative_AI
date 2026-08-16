@@ -21,12 +21,6 @@ namespace Google.Gemini
         public global::Google.Gemini.ContextWindowCompressionConfig? ContextWindowCompression { get; set; }
 
         /// <summary>
-        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("historyConfig")]
-        public global::Google.Gemini.HistoryConfig? HistoryConfig { get; set; }
-
-        /// <summary>
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
@@ -45,10 +39,10 @@ namespace Google.Gemini
         public global::Google.Gemini.AudioTranscriptionConfig? InputAudioTranscription { get; set; }
 
         /// <summary>
-        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
+        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("historyConfig")]
+        public global::Google.Gemini.HistoryConfig? HistoryConfig { get; set; }
 
         /// <summary>
         /// The audio transcription configuration.
@@ -69,6 +63,12 @@ namespace Google.Gemini
         public global::Google.Gemini.RealtimeInputConfig? RealtimeInputConfig { get; set; }
 
         /// <summary>
+        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,9 +83,6 @@ namespace Google.Gemini
         /// <param name="contextWindowCompression">
         /// Enables context window compression — a mechanism for managing the model's context window so that it does not exceed a given length.
         /// </param>
-        /// <param name="historyConfig">
-        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
-        /// </param>
         /// <param name="generationConfig">
         /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
@@ -95,8 +92,8 @@ namespace Google.Gemini
         /// <param name="inputAudioTranscription">
         /// The audio transcription configuration.
         /// </param>
-        /// <param name="model">
-        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
+        /// <param name="historyConfig">
+        /// History configuration. This message is included in the session configuration as `BidiGenerateContentSetup.history_config`. Configures the exchange of history messages.
         /// </param>
         /// <param name="outputAudioTranscription">
         /// The audio transcription configuration.
@@ -107,31 +104,34 @@ namespace Google.Gemini
         /// <param name="realtimeInputConfig">
         /// Configures the realtime input behavior in `BidiGenerateContent`.
         /// </param>
+        /// <param name="model">
+        /// Required. The model's resource name. This serves as an ID for the Model to use. Format: `models/{model}`
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BidiGenerateContentSetup(
             global::Google.Gemini.Content? systemInstruction,
             global::Google.Gemini.ContextWindowCompressionConfig? contextWindowCompression,
-            global::Google.Gemini.HistoryConfig? historyConfig,
             global::Google.Gemini.GenerationConfig? generationConfig,
             global::Google.Gemini.SessionResumptionConfig? sessionResumption,
             global::Google.Gemini.AudioTranscriptionConfig? inputAudioTranscription,
-            string? model,
+            global::Google.Gemini.HistoryConfig? historyConfig,
             global::Google.Gemini.AudioTranscriptionConfig? outputAudioTranscription,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
-            global::Google.Gemini.RealtimeInputConfig? realtimeInputConfig)
+            global::Google.Gemini.RealtimeInputConfig? realtimeInputConfig,
+            string? model)
         {
             this.SystemInstruction = systemInstruction;
             this.ContextWindowCompression = contextWindowCompression;
-            this.HistoryConfig = historyConfig;
             this.GenerationConfig = generationConfig;
             this.SessionResumption = sessionResumption;
             this.InputAudioTranscription = inputAudioTranscription;
-            this.Model = model;
+            this.HistoryConfig = historyConfig;
             this.OutputAudioTranscription = outputAudioTranscription;
             this.Tools = tools;
             this.RealtimeInputConfig = realtimeInputConfig;
+            this.Model = model;
         }
 
         /// <summary>

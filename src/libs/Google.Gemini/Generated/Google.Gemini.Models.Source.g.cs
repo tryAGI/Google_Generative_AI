@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class Source
     {
         /// <summary>
-        /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
+        /// The inline content if `type` is `INLINE`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        public string? Source1 { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
 
         /// <summary>
         /// 
@@ -34,10 +34,10 @@ namespace Google.Gemini
         public string? Target { get; set; }
 
         /// <summary>
-        /// The inline content if `type` is `INLINE`.
+        /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source1 { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,8 +48,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
-        /// <param name="source1">
-        /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
+        /// <param name="content">
+        /// The inline content if `type` is `INLINE`.
         /// </param>
         /// <param name="type"></param>
         /// <param name="encoding">
@@ -58,24 +58,24 @@ namespace Google.Gemini
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
-        /// <param name="content">
-        /// The inline content if `type` is `INLINE`.
+        /// <param name="source1">
+        /// The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
-            string? source1,
+            string? content,
             global::Google.Gemini.SourceType? type,
             string? encoding,
             string? target,
-            string? content)
+            string? source1)
         {
-            this.Source1 = source1;
+            this.Content = content;
             this.Type = type;
             this.Encoding = encoding;
             this.Target = target;
-            this.Content = content;
+            this.Source1 = source1;
         }
 
         /// <summary>
