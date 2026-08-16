@@ -21,16 +21,16 @@ namespace Google.Gemini
         public int? StartIndex { get; set; }
 
         /// <summary>
-        /// Optional. URI that is attributed as a source for a portion of the text.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
         /// Optional. End of the attributed segment, exclusive.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
         public int? EndIndex { get; set; }
+
+        /// <summary>
+        /// Optional. URI that is attributed as a source for a portion of the text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="startIndex">
         /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
         /// </param>
-        /// <param name="uri">
-        /// Optional. URI that is attributed as a source for a portion of the text.
-        /// </param>
         /// <param name="endIndex">
         /// Optional. End of the attributed segment, exclusive.
+        /// </param>
+        /// <param name="uri">
+        /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public CitationSource(
             string? license,
             int? startIndex,
-            string? uri,
-            int? endIndex)
+            int? endIndex,
+            string? uri)
         {
             this.License = license;
             this.StartIndex = startIndex;
-            this.Uri = uri;
             this.EndIndex = endIndex;
+            this.Uri = uri;
         }
 
         /// <summary>
