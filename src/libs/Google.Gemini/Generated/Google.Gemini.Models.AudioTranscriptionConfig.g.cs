@@ -30,13 +30,6 @@ namespace Google.Gemini
         public global::Google.Gemini.AudioTranscriptionConfigMode? Mode { get; set; }
 
         /// <summary>
-        /// Indicates the language of the audio should be automatically detected.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
-
-        /// <summary>
         /// Provides hints to the model about possible languages present in the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
@@ -44,16 +37,23 @@ namespace Google.Gemini
         public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
 
         /// <summary>
-        /// Optional. Configures speaker diarization.
+        /// Indicates the language of the audio should be automatically detected.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
-        public bool? Diarization { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
 
         /// <summary>
         /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageCodes")]
         public global::System.Collections.Generic.IList<string>? LanguageCodes { get; set; }
+
+        /// <summary>
+        /// Optional. Configures speaker diarization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("diarization")]
+        public bool? Diarization { get; set; }
 
         /// <summary>
         /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
@@ -80,11 +80,11 @@ namespace Google.Gemini
         /// <param name="mode">
         /// Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.
         /// </param>
-        /// <param name="diarization">
-        /// Optional. Configures speaker diarization.
-        /// </param>
         /// <param name="languageCodes">
         /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
+        /// </param>
+        /// <param name="diarization">
+        /// Optional. Configures speaker diarization.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -93,14 +93,14 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<string>? customVocabulary,
             bool? wordTimestamp,
             global::Google.Gemini.AudioTranscriptionConfigMode? mode,
-            bool? diarization,
-            global::System.Collections.Generic.IList<string>? languageCodes)
+            global::System.Collections.Generic.IList<string>? languageCodes,
+            bool? diarization)
         {
             this.CustomVocabulary = customVocabulary;
             this.WordTimestamp = wordTimestamp;
             this.Mode = mode;
-            this.Diarization = diarization;
             this.LanguageCodes = languageCodes;
+            this.Diarization = diarization;
         }
 
         /// <summary>
