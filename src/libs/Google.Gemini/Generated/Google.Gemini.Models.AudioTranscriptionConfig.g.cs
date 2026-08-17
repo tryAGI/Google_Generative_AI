@@ -11,11 +11,11 @@ namespace Google.Gemini
     public sealed partial class AudioTranscriptionConfig
     {
         /// <summary>
-        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+        /// Provides hints to the model about possible languages present in the audio.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
+        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
 
         /// <summary>
         /// Optional. Configures word-level timestamp generation.
@@ -30,11 +30,11 @@ namespace Google.Gemini
         public bool? Diarization { get; set; }
 
         /// <summary>
-        /// Indicates the language of the audio should be automatically detected.
+        /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("adaptationPhrases")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
+        public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
         /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
@@ -49,11 +49,11 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<string>? CustomVocabulary { get; set; }
 
         /// <summary>
-        /// Provides hints to the model about possible languages present in the audio.
+        /// Indicates the language of the audio should be automatically detected.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageHints")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageAuto")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.LanguageHints? LanguageHints { get; set; }
+        public global::Google.Gemini.LanguageAuto? LanguageAuto { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
