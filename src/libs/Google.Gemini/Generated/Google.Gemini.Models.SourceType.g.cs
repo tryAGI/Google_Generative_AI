@@ -9,7 +9,7 @@ namespace Google.Gemini
     public enum SourceType
     {
         /// <summary>
-        /// A GCS bucket.
+        /// A Cloud Storage bucket.
         /// </summary>
         Gcs,
         /// <summary>
