@@ -15,10 +15,11 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? Parts { get; set; }
 
         /// <summary>
-        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
+        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
 
         /// <summary>
         /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
@@ -39,11 +40,10 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("scheduling")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponseSchedulingJsonConverter))]
-        public global::Google.Gemini.FunctionResponseScheduling? Scheduling { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -57,8 +57,8 @@ namespace Google.Gemini
         /// <param name="parts">
         /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
         /// </param>
-        /// <param name="name">
-        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+        /// <param name="scheduling">
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
         /// </param>
         /// <param name="response">
         /// Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See https://ai.google.dev/gemini-api/docs/function-calling#multimodal.
@@ -69,26 +69,26 @@ namespace Google.Gemini
         /// <param name="id">
         /// Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
         /// </param>
-        /// <param name="scheduling">
-        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// <param name="name">
+        /// Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponse(
             global::System.Collections.Generic.IList<global::Google.Gemini.FunctionResponsePart>? parts,
-            string? name,
+            global::Google.Gemini.FunctionResponseScheduling? scheduling,
             object? response,
             bool? willContinue,
             string? id,
-            global::Google.Gemini.FunctionResponseScheduling? scheduling)
+            string? name)
         {
             this.Parts = parts;
-            this.Name = name;
+            this.Scheduling = scheduling;
             this.Response = response;
             this.WillContinue = willContinue;
             this.Id = id;
-            this.Scheduling = scheduling;
+            this.Name = name;
         }
 
         /// <summary>

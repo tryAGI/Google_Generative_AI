@@ -41,9 +41,6 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="batchesId"></param>
         /// <param name="updateMask"></param>
-        /// <param name="displayName">
-        /// Required. The user-defined name of this batch.
-        /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
@@ -52,6 +49,9 @@ namespace Google.Gemini
         /// </param>
         /// <param name="inputConfig">
         /// Configures the input to the batch request.
+        /// </param>
+        /// <param name="displayName">
+        /// Required. The user-defined name of this batch.
         /// </param>
         /// <param name="batchStats">
         /// Stats about the batch.
@@ -65,10 +65,10 @@ namespace Google.Gemini
         global::System.Threading.Tasks.Task<global::Google.Gemini.GenerateContentBatch> BatchesUpdateGenerateContentBatchAsync(
             string batchesId,
             string? updateMask = default,
-            string? displayName = default,
             string? model = default,
             string? priority = default,
             global::Google.Gemini.InputConfig? inputConfig = default,
+            string? displayName = default,
             global::Google.Gemini.BatchStats? batchStats = default,
             global::Google.Gemini.GenerateContentBatchOutput? output = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
