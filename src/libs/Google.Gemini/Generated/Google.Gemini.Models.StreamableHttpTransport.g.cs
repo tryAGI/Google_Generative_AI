@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class StreamableHttpTransport
     {
         /// <summary>
-        /// HTTP timeout for regular operations.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
-        public string? Timeout { get; set; }
-
-        /// <summary>
         /// Timeout for SSE read operations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sseReadTimeout")]
@@ -33,6 +27,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
+        /// HTTP timeout for regular operations.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public string? Timeout { get; set; }
+
+        /// <summary>
         /// Whether to close the client session when the transport closes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("terminateOnClose")]
@@ -47,9 +47,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamableHttpTransport" /> class.
         /// </summary>
-        /// <param name="timeout">
-        /// HTTP timeout for regular operations.
-        /// </param>
         /// <param name="sseReadTimeout">
         /// Timeout for SSE read operations.
         /// </param>
@@ -59,6 +56,9 @@ namespace Google.Gemini
         /// <param name="headers">
         /// Optional: Fields for authentication headers, timeouts, etc., if needed.
         /// </param>
+        /// <param name="timeout">
+        /// HTTP timeout for regular operations.
+        /// </param>
         /// <param name="terminateOnClose">
         /// Whether to close the client session when the transport closes.
         /// </param>
@@ -66,16 +66,16 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StreamableHttpTransport(
-            string? timeout,
             string? sseReadTimeout,
             string? url,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
+            string? timeout,
             bool? terminateOnClose)
         {
-            this.Timeout = timeout;
             this.SseReadTimeout = sseReadTimeout;
             this.Url = url;
             this.Headers = headers;
+            this.Timeout = timeout;
             this.TerminateOnClose = terminateOnClose;
         }
 
