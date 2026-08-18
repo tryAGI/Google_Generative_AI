@@ -15,16 +15,16 @@ namespace Google.Gemini
         public float? NumericValue { get; set; }
 
         /// <summary>
-        /// Required. The key of the metadata to store.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
-
-        /// <summary>
         /// The string value of the metadata to store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringValue")]
         public string? StringValue { get; set; }
+
+        /// <summary>
+        /// Required. The key of the metadata to store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// User provided string values assigned to a single metadata key.
@@ -44,11 +44,11 @@ namespace Google.Gemini
         /// <param name="numericValue">
         /// The numeric value of the metadata to store.
         /// </param>
-        /// <param name="key">
-        /// Required. The key of the metadata to store.
-        /// </param>
         /// <param name="stringValue">
         /// The string value of the metadata to store.
+        /// </param>
+        /// <param name="key">
+        /// Required. The key of the metadata to store.
         /// </param>
         /// <param name="stringListValue">
         /// User provided string values assigned to a single metadata key.
@@ -58,13 +58,13 @@ namespace Google.Gemini
 #endif
         public CustomMetadata(
             float? numericValue,
-            string? key,
             string? stringValue,
+            string? key,
             global::Google.Gemini.StringList? stringListValue)
         {
             this.NumericValue = numericValue;
-            this.Key = key;
             this.StringValue = stringValue;
+            this.Key = key;
             this.StringListValue = stringListValue;
         }
 
