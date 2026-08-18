@@ -9,18 +9,18 @@ namespace Google.Gemini
     public sealed partial class RealtimeInputConfig
     {
         /// <summary>
-        /// Optional. Defines which input is included in the user's turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("turnCoverage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.RealtimeInputConfigTurnCoverageJsonConverter))]
-        public global::Google.Gemini.RealtimeInputConfigTurnCoverage? TurnCoverage { get; set; }
-
-        /// <summary>
         /// Optional. Defines what effect activity has.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("activityHandling")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.RealtimeInputConfigActivityHandlingJsonConverter))]
         public global::Google.Gemini.RealtimeInputConfigActivityHandling? ActivityHandling { get; set; }
+
+        /// <summary>
+        /// Optional. Defines which input is included in the user's turn.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("turnCoverage")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.RealtimeInputConfigTurnCoverageJsonConverter))]
+        public global::Google.Gemini.RealtimeInputConfigTurnCoverage? TurnCoverage { get; set; }
 
         /// <summary>
         /// Configures automatic detection of activity.
@@ -37,11 +37,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RealtimeInputConfig" /> class.
         /// </summary>
-        /// <param name="turnCoverage">
-        /// Optional. Defines which input is included in the user's turn.
-        /// </param>
         /// <param name="activityHandling">
         /// Optional. Defines what effect activity has.
+        /// </param>
+        /// <param name="turnCoverage">
+        /// Optional. Defines which input is included in the user's turn.
         /// </param>
         /// <param name="automaticActivityDetection">
         /// Configures automatic detection of activity.
@@ -50,12 +50,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RealtimeInputConfig(
-            global::Google.Gemini.RealtimeInputConfigTurnCoverage? turnCoverage,
             global::Google.Gemini.RealtimeInputConfigActivityHandling? activityHandling,
+            global::Google.Gemini.RealtimeInputConfigTurnCoverage? turnCoverage,
             global::Google.Gemini.AutomaticActivityDetection? automaticActivityDetection)
         {
-            this.TurnCoverage = turnCoverage;
             this.ActivityHandling = activityHandling;
+            this.TurnCoverage = turnCoverage;
             this.AutomaticActivityDetection = automaticActivityDetection;
         }
 
