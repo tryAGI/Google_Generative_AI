@@ -15,10 +15,10 @@ namespace Google.Gemini
         public string? Target { get; set; }
 
         /// <summary>
-        /// Optional encoding for inline content (e.g. `base64`).
+        /// The inline content if `type` is `INLINE`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
-        public string? Encoding { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
 
         /// <summary>
         /// 
@@ -34,10 +34,10 @@ namespace Google.Gemini
         public string? Source1 { get; set; }
 
         /// <summary>
-        /// The inline content if `type` is `INLINE`.
+        /// Optional encoding for inline content (e.g. `base64`).
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
+        public string? Encoding { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,31 +51,31 @@ namespace Google.Gemini
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
-        /// <param name="encoding">
-        /// Optional encoding for inline content (e.g. `base64`).
+        /// <param name="content">
+        /// The inline content if `type` is `INLINE`.
         /// </param>
         /// <param name="type"></param>
         /// <param name="source1">
         /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
         /// </param>
-        /// <param name="content">
-        /// The inline content if `type` is `INLINE`.
+        /// <param name="encoding">
+        /// Optional encoding for inline content (e.g. `base64`).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
             string? target,
-            string? encoding,
+            string? content,
             global::Google.Gemini.SourceType? type,
             string? source1,
-            string? content)
+            string? encoding)
         {
             this.Target = target;
-            this.Encoding = encoding;
+            this.Content = content;
             this.Type = type;
             this.Source1 = source1;
-            this.Content = content;
+            this.Encoding = encoding;
         }
 
         /// <summary>
