@@ -21,10 +21,22 @@ namespace Google.Gemini
         public bool? DocumentOcr { get; set; }
 
         /// <summary>
+        /// Optional. Whether to extract audio from video content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
+        public bool? AudioTrackExtraction { get; set; }
+
+        /// <summary>
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
         public bool? AutoTruncate { get; set; }
+
+        /// <summary>
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Optional. The task type of the embedding.
@@ -32,18 +44,6 @@ namespace Google.Gemini
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
-
-        /// <summary>
-        /// Optional. Whether to extract audio from video content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
-        public bool? AudioTrackExtraction { get; set; }
-
-        /// <summary>
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,17 +60,17 @@ namespace Google.Gemini
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
-        /// <param name="autoTruncate">
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
-        /// </param>
-        /// <param name="taskType">
-        /// Optional. The task type of the embedding.
-        /// </param>
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
         /// </param>
+        /// <param name="autoTruncate">
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// </param>
         /// <param name="outputDimensionality">
         /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+        /// </param>
+        /// <param name="taskType">
+        /// Optional. The task type of the embedding.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,17 +78,17 @@ namespace Google.Gemini
         public EmbedContentConfig(
             string? title,
             bool? documentOcr,
-            bool? autoTruncate,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             bool? audioTrackExtraction,
-            int? outputDimensionality)
+            bool? autoTruncate,
+            int? outputDimensionality,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
         {
             this.Title = title;
             this.DocumentOcr = documentOcr;
-            this.AutoTruncate = autoTruncate;
-            this.TaskType = taskType;
             this.AudioTrackExtraction = audioTrackExtraction;
+            this.AutoTruncate = autoTruncate;
             this.OutputDimensionality = outputDimensionality;
+            this.TaskType = taskType;
         }
 
         /// <summary>
