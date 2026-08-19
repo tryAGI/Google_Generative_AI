@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class AutomaticActivityDetection
     {
         /// <summary>
-        /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("disabled")]
-        public bool? Disabled { get; set; }
-
-        /// <summary>
         /// Optional. Determines how likely speech is to be detected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startOfSpeechSensitivity")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AutomaticActivityDetectionStartOfSpeechSensitivityJsonConverter))]
         public global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? StartOfSpeechSensitivity { get; set; }
+
+        /// <summary>
+        /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("disabled")]
+        public bool? Disabled { get; set; }
 
         /// <summary>
         /// Optional. Determines how likely detected speech is ended.
@@ -49,11 +49,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomaticActivityDetection" /> class.
         /// </summary>
-        /// <param name="disabled">
-        /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
-        /// </param>
         /// <param name="startOfSpeechSensitivity">
         /// Optional. Determines how likely speech is to be detected.
+        /// </param>
+        /// <param name="disabled">
+        /// Optional. If enabled (the default), detected voice and text input count as activity. If disabled, the client must send activity signals.
         /// </param>
         /// <param name="endOfSpeechSensitivity">
         /// Optional. Determines how likely detected speech is ended.
@@ -68,14 +68,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AutomaticActivityDetection(
-            bool? disabled,
             global::Google.Gemini.AutomaticActivityDetectionStartOfSpeechSensitivity? startOfSpeechSensitivity,
+            bool? disabled,
             global::Google.Gemini.AutomaticActivityDetectionEndOfSpeechSensitivity? endOfSpeechSensitivity,
             int? prefixPaddingMs,
             int? silenceDurationMs)
         {
-            this.Disabled = disabled;
             this.StartOfSpeechSensitivity = startOfSpeechSensitivity;
+            this.Disabled = disabled;
             this.EndOfSpeechSensitivity = endOfSpeechSensitivity;
             this.PrefixPaddingMs = prefixPaddingMs;
             this.SilenceDurationMs = silenceDurationMs;
