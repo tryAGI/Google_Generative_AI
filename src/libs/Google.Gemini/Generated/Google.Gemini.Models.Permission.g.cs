@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class Permission
     {
         /// <summary>
-        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
-        public string? EmailAddress { get; set; }
-
-        /// <summary>
         /// Required. The role granted by this permission.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
@@ -36,6 +30,12 @@ namespace Google.Gemini
         public global::Google.Gemini.PermissionGranteeType? GranteeType { get; set; }
 
         /// <summary>
+        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
+        public string? EmailAddress { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,9 +44,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Permission" /> class.
         /// </summary>
-        /// <param name="emailAddress">
-        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
-        /// </param>
         /// <param name="role">
         /// Required. The role granted by this permission.
         /// </param>
@@ -57,19 +54,22 @@ namespace Google.Gemini
         /// <param name="granteeType">
         /// Optional. Immutable. The type of the grantee.
         /// </param>
+        /// <param name="emailAddress">
+        /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Permission(
-            string? emailAddress,
             global::Google.Gemini.PermissionRole? role,
             string? name,
-            global::Google.Gemini.PermissionGranteeType? granteeType)
+            global::Google.Gemini.PermissionGranteeType? granteeType,
+            string? emailAddress)
         {
-            this.EmailAddress = emailAddress;
             this.Role = role;
             this.Name = name;
             this.GranteeType = granteeType;
+            this.EmailAddress = emailAddress;
         }
 
         /// <summary>
