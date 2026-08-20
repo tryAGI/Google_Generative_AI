@@ -25,14 +25,6 @@ namespace Google.Gemini
         public int? OutputDimensionality { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter))]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
-
-        /// <summary>
         /// Configurations for the EmbedContent request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
@@ -49,6 +41,14 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public global::Google.Gemini.Content? Content { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentRequestTaskTypeJsonConverter))]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
