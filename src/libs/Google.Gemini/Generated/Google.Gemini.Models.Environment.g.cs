@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class Environment
     {
         /// <summary>
+        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated")]
+        public string? Updated { get; set; }
+
+        /// <summary>
         /// Network egress configuration for the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
         public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
-
-        /// <summary>
-        /// Network egress mode.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentNetworkModeJsonConverter))]
-        public global::Google.Gemini.EnvironmentNetworkMode? NetworkMode { get; set; }
 
         /// <summary>
         /// Required. Output only. The ID of the environment.<br/>
@@ -43,11 +43,18 @@ namespace Google.Gemini
         public string? SizeBytes { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updated")]
-        public string? Updated { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
+        public string? Created { get; set; }
+
+        /// <summary>
+        /// Network egress mode.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentNetworkModeJsonConverter))]
+        public global::Google.Gemini.EnvironmentNetworkMode? NetworkMode { get; set; }
 
         /// <summary>
         /// Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
@@ -71,13 +78,6 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.Source>? Sources { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
-        public string? Created { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -86,11 +86,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Environment" /> class.
         /// </summary>
+        /// <param name="updated">
+        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
-        /// </param>
-        /// <param name="networkMode">
-        /// Network egress mode.
         /// </param>
         /// <param name="id">
         /// Required. Output only. The ID of the environment.<br/>
@@ -104,9 +105,12 @@ namespace Google.Gemini
         /// Output only. The total size of the environment files in bytes, output only.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="updated">
-        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// <param name="created">
+        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="networkMode">
+        /// Network egress mode.
         /// </param>
         /// <param name="lastAccessed">
         /// Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
@@ -119,35 +123,31 @@ namespace Google.Gemini
         /// <param name="sources">
         /// Sources to be mounted into the environment.
         /// </param>
-        /// <param name="created">
-        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Environment(
+            string? updated,
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
-            global::Google.Gemini.EnvironmentNetworkMode? networkMode,
             string? id,
             string? fileCount,
             string? sizeBytes,
-            string? updated,
+            string? created,
+            global::Google.Gemini.EnvironmentNetworkMode? networkMode,
             string? lastAccessed,
             global::Google.Gemini.EnvironmentStatus? status,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources,
-            string? created)
+            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources)
         {
+            this.Updated = updated;
             this.NetworkAllowlist = networkAllowlist;
-            this.NetworkMode = networkMode;
             this.Id = id;
             this.FileCount = fileCount;
             this.SizeBytes = sizeBytes;
-            this.Updated = updated;
+            this.Created = created;
+            this.NetworkMode = networkMode;
             this.LastAccessed = lastAccessed;
             this.Status = status;
             this.Sources = sources;
-            this.Created = created;
         }
 
         /// <summary>
