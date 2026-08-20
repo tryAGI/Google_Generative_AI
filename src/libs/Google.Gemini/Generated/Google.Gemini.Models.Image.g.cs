@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class Image
     {
         /// <summary>
-        /// The root domain of the web page that the image is from, e.g. "example.com".
+        /// The web page URI for attribution.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
+        public string? SourceUri { get; set; }
 
         /// <summary>
         /// The image asset URL.
@@ -21,10 +21,10 @@ namespace Google.Gemini
         public string? ImageUri { get; set; }
 
         /// <summary>
-        /// The web page URI for attribution.
+        /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
-        public string? SourceUri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// The title of the web page that the image is from.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Image" /> class.
         /// </summary>
-        /// <param name="domain">
-        /// The root domain of the web page that the image is from, e.g. "example.com".
+        /// <param name="sourceUri">
+        /// The web page URI for attribution.
         /// </param>
         /// <param name="imageUri">
         /// The image asset URL.
         /// </param>
-        /// <param name="sourceUri">
-        /// The web page URI for attribution.
+        /// <param name="domain">
+        /// The root domain of the web page that the image is from, e.g. "example.com".
         /// </param>
         /// <param name="title">
         /// The title of the web page that the image is from.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Image(
-            string? domain,
-            string? imageUri,
             string? sourceUri,
+            string? imageUri,
+            string? domain,
             string? title)
         {
-            this.Domain = domain;
-            this.ImageUri = imageUri;
             this.SourceUri = sourceUri;
+            this.ImageUri = imageUri;
+            this.Domain = domain;
             this.Title = title;
         }
 
