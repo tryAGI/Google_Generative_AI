@@ -9,38 +9,25 @@ namespace Google.Gemini
     public sealed partial class Environment
     {
         /// <summary>
-        /// Network egress configuration for the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
-        public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
-
-        /// <summary>
-        /// Sources to be mounted into the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sources")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Source>? Sources { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updated")]
-        public string? Updated { get; set; }
-
-        /// <summary>
-        /// Output only. The status of the environment container.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentStatusJsonConverter))]
-        public global::Google.Gemini.EnvironmentStatus? Status { get; set; }
-
-        /// <summary>
         /// Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lastAccessed")]
         public string? LastAccessed { get; set; }
+
+        /// <summary>
+        /// Network egress mode.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentNetworkModeJsonConverter))]
+        public global::Google.Gemini.EnvironmentNetworkMode? NetworkMode { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
+        public string? Created { get; set; }
 
         /// <summary>
         /// Output only. The number of files in the environment, output only.<br/>
@@ -57,18 +44,31 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Output only. The status of the environment container.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
-        public string? Created { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentStatusJsonConverter))]
+        public global::Google.Gemini.EnvironmentStatus? Status { get; set; }
 
         /// <summary>
-        /// Network egress mode.
+        /// Network egress configuration for the environment.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentNetworkModeJsonConverter))]
-        public global::Google.Gemini.EnvironmentNetworkMode? NetworkMode { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
+        public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updated")]
+        public string? Updated { get; set; }
+
+        /// <summary>
+        /// Sources to be mounted into the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sources")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Source>? Sources { get; set; }
 
         /// <summary>
         /// Output only. The total size of the environment files in bytes, output only.<br/>
@@ -86,22 +86,15 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Environment" /> class.
         /// </summary>
-        /// <param name="networkAllowlist">
-        /// Network egress configuration for the environment.
-        /// </param>
-        /// <param name="sources">
-        /// Sources to be mounted into the environment.
-        /// </param>
-        /// <param name="updated">
-        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="status">
-        /// Output only. The status of the environment container.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="lastAccessed">
         /// Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="networkMode">
+        /// Network egress mode.
+        /// </param>
+        /// <param name="created">
+        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
         /// Included only in responses
         /// </param>
         /// <param name="fileCount">
@@ -112,12 +105,19 @@ namespace Google.Gemini
         /// Required. Output only. The ID of the environment.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="created">
-        /// Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// <param name="status">
+        /// Output only. The status of the environment container.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="networkMode">
-        /// Network egress mode.
+        /// <param name="networkAllowlist">
+        /// Network egress configuration for the environment.
+        /// </param>
+        /// <param name="updated">
+        /// Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="sources">
+        /// Sources to be mounted into the environment.
         /// </param>
         /// <param name="sizeBytes">
         /// Output only. The total size of the environment files in bytes, output only.<br/>
@@ -127,26 +127,26 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Environment(
-            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources,
-            string? updated,
-            global::Google.Gemini.EnvironmentStatus? status,
             string? lastAccessed,
+            global::Google.Gemini.EnvironmentNetworkMode? networkMode,
+            string? created,
             string? fileCount,
             string? id,
-            string? created,
-            global::Google.Gemini.EnvironmentNetworkMode? networkMode,
+            global::Google.Gemini.EnvironmentStatus? status,
+            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
+            string? updated,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources,
             string? sizeBytes)
         {
-            this.NetworkAllowlist = networkAllowlist;
-            this.Sources = sources;
-            this.Updated = updated;
-            this.Status = status;
             this.LastAccessed = lastAccessed;
+            this.NetworkMode = networkMode;
+            this.Created = created;
             this.FileCount = fileCount;
             this.Id = id;
-            this.Created = created;
-            this.NetworkMode = networkMode;
+            this.Status = status;
+            this.NetworkAllowlist = networkAllowlist;
+            this.Updated = updated;
+            this.Sources = sources;
             this.SizeBytes = sizeBytes;
         }
 
