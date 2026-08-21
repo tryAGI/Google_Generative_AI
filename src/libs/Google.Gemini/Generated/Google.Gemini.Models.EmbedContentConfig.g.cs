@@ -15,16 +15,16 @@ namespace Google.Gemini
         public int? OutputDimensionality { get; set; }
 
         /// <summary>
-        /// Optional. The title for the text.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
         /// Optional. Whether to extract audio from video content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
         public bool? AudioTrackExtraction { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
+        public bool? AutoTruncate { get; set; }
 
         /// <summary>
         /// Optional. The task type of the embedding.
@@ -34,10 +34,10 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// Optional. The title for the text.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
-        public bool? AutoTruncate { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Optional. Whether to enable OCR for document content.
@@ -57,17 +57,17 @@ namespace Google.Gemini
         /// <param name="outputDimensionality">
         /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
-        /// <param name="title">
-        /// Optional. The title for the text.
-        /// </param>
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
+        /// </param>
+        /// <param name="autoTruncate">
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </param>
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
         /// </param>
-        /// <param name="autoTruncate">
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// <param name="title">
+        /// Optional. The title for the text.
         /// </param>
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
@@ -77,17 +77,17 @@ namespace Google.Gemini
 #endif
         public EmbedContentConfig(
             int? outputDimensionality,
-            string? title,
             bool? audioTrackExtraction,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             bool? autoTruncate,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
+            string? title,
             bool? documentOcr)
         {
             this.OutputDimensionality = outputDimensionality;
-            this.Title = title;
             this.AudioTrackExtraction = audioTrackExtraction;
-            this.TaskType = taskType;
             this.AutoTruncate = autoTruncate;
+            this.TaskType = taskType;
+            this.Title = title;
             this.DocumentOcr = documentOcr;
         }
 
