@@ -9,7 +9,7 @@ namespace Google.Gemini
     public sealed partial class PrebuiltVoiceConfig
     {
         /// <summary>
-        /// The name of the preset voice to use.
+        /// Optional. The name of the preset voice to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceName")]
         public string? VoiceName { get; set; }
@@ -24,7 +24,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="PrebuiltVoiceConfig" /> class.
         /// </summary>
         /// <param name="voiceName">
-        /// The name of the preset voice to use.
+        /// Optional. The name of the preset voice to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

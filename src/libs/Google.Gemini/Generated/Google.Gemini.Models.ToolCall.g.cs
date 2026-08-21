@@ -21,17 +21,17 @@ namespace Google.Gemini
         public string? Id { get; set; }
 
         /// <summary>
+        /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("args")]
+        public object? Args { get; set; }
+
+        /// <summary>
         /// Required. The type of tool that was called.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toolType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ToolCallToolTypeJsonConverter))]
         public global::Google.Gemini.ToolCallToolType? ToolType { get; set; }
-
-        /// <summary>
-        /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("args")]
-        public object? Args { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,11 +48,11 @@ namespace Google.Gemini
         /// <param name="id">
         /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
         /// </param>
-        /// <param name="toolType">
-        /// Required. The type of tool that was called.
-        /// </param>
         /// <param name="args">
         /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
+        /// </param>
+        /// <param name="toolType">
+        /// Required. The type of tool that was called.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -60,13 +60,13 @@ namespace Google.Gemini
         public ToolCall(
             string? toolName,
             string? id,
-            global::Google.Gemini.ToolCallToolType? toolType,
-            object? args)
+            object? args,
+            global::Google.Gemini.ToolCallToolType? toolType)
         {
             this.ToolName = toolName;
             this.Id = id;
-            this.ToolType = toolType;
             this.Args = args;
+            this.ToolType = toolType;
         }
 
         /// <summary>
