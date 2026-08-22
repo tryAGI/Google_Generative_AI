@@ -9,14 +9,6 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
-        /// Output only. The state of the GeneratedFile.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GeneratedFileStateJsonConverter))]
-        public global::Google.Gemini.GeneratedFileState? State { get; set; }
-
-        /// <summary>
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -35,6 +27,14 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
+        /// Output only. The state of the GeneratedFile.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GeneratedFileStateJsonConverter))]
+        public global::Google.Gemini.GeneratedFileState? State { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,10 +43,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
-        /// <param name="state">
-        /// Output only. The state of the GeneratedFile.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="name">
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
         /// </param>
@@ -56,19 +52,23 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// MIME type of the generatedFile.
         /// </param>
+        /// <param name="state">
+        /// Output only. The state of the GeneratedFile.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
-            global::Google.Gemini.GeneratedFileState? state,
             string? name,
             global::Google.Gemini.Status? error,
-            string? mimeType)
+            string? mimeType,
+            global::Google.Gemini.GeneratedFileState? state)
         {
-            this.State = state;
             this.Name = name;
             this.Error = error;
             this.MimeType = mimeType;
+            this.State = state;
         }
 
         /// <summary>
