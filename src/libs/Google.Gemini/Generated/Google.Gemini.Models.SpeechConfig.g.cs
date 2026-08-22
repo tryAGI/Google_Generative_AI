@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? LanguageCode { get; set; }
 
         /// <summary>
-        /// The configuration for the voice to use.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voiceConfig")]
-        public global::Google.Gemini.VoiceConfig? VoiceConfig { get; set; }
-
-        /// <summary>
         /// The configuration for the multi-speaker setup.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multiSpeakerVoiceConfig")]
         public global::Google.Gemini.MultiSpeakerVoiceConfig? MultiSpeakerVoiceConfig { get; set; }
+
+        /// <summary>
+        /// The configuration for the voice to use.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voiceConfig")]
+        public global::Google.Gemini.VoiceConfig? VoiceConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="languageCode">
         /// Optional. The IETF [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code that the user configured the app to use. Used for speech recognition and synthesis. Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`, `hi-IN`, `pt-BR`, `ar-XA`, `es-ES`, `fr-CA`, `id-ID`, `it-IT`, `ja-JP`, `tr-TR`, `vi-VN`, `bn-IN`, `gu-IN`, `kn-IN`, `ml-IN`, `mr-IN`, `ta-IN`, `te-IN`, `nl-NL`, `ko-KR`, `cmn-CN`, `pl-PL`, `ru-RU`, and `th-TH`.
         /// </param>
-        /// <param name="voiceConfig">
-        /// The configuration for the voice to use.
-        /// </param>
         /// <param name="multiSpeakerVoiceConfig">
         /// The configuration for the multi-speaker setup.
+        /// </param>
+        /// <param name="voiceConfig">
+        /// The configuration for the voice to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpeechConfig(
             string? languageCode,
-            global::Google.Gemini.VoiceConfig? voiceConfig,
-            global::Google.Gemini.MultiSpeakerVoiceConfig? multiSpeakerVoiceConfig)
+            global::Google.Gemini.MultiSpeakerVoiceConfig? multiSpeakerVoiceConfig,
+            global::Google.Gemini.VoiceConfig? voiceConfig)
         {
             this.LanguageCode = languageCode;
-            this.VoiceConfig = voiceConfig;
             this.MultiSpeakerVoiceConfig = multiSpeakerVoiceConfig;
+            this.VoiceConfig = voiceConfig;
         }
 
         /// <summary>
