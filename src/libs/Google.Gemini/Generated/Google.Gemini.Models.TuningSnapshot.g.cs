@@ -16,18 +16,18 @@ namespace Google.Gemini
         public float? MeanLoss { get; set; }
 
         /// <summary>
-        /// Output only. The epoch this step was part of.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
-        public int? Epoch { get; set; }
-
-        /// <summary>
         /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("step")]
         public int? Step { get; set; }
+
+        /// <summary>
+        /// Output only. The epoch this step was part of.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
+        public int? Epoch { get; set; }
 
         /// <summary>
         /// Output only. The timestamp when this metric was computed.<br/>
@@ -49,12 +49,12 @@ namespace Google.Gemini
         /// Output only. The mean loss of the training examples for this step.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="epoch">
-        /// Output only. The epoch this step was part of.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="step">
         /// Output only. The tuning step.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="epoch">
+        /// Output only. The epoch this step was part of.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="computeTime">
@@ -66,13 +66,13 @@ namespace Google.Gemini
 #endif
         public TuningSnapshot(
             float? meanLoss,
-            int? epoch,
             int? step,
+            int? epoch,
             string? computeTime)
         {
             this.MeanLoss = meanLoss;
-            this.Epoch = epoch;
             this.Step = step;
+            this.Epoch = epoch;
             this.ComputeTime = computeTime;
         }
 
