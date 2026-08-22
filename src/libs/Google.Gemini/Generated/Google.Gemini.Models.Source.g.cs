@@ -15,11 +15,10 @@ namespace Google.Gemini
         public string? Content { get; set; }
 
         /// <summary>
-        /// 
+        /// Where the source should appear in the environment.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SourceTypeJsonConverter))]
-        public global::Google.Gemini.SourceType? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
 
         /// <summary>
         /// Optional encoding for inline content (e.g. `base64`).
@@ -28,10 +27,11 @@ namespace Google.Gemini
         public string? Encoding { get; set; }
 
         /// <summary>
-        /// Where the source should appear in the environment.
+        /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
-        public string? Target { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.SourceTypeJsonConverter))]
+        public global::Google.Gemini.SourceType? Type { get; set; }
 
         /// <summary>
         /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
@@ -51,13 +51,13 @@ namespace Google.Gemini
         /// <param name="content">
         /// The inline content if `type` is `INLINE`.
         /// </param>
-        /// <param name="type"></param>
-        /// <param name="encoding">
-        /// Optional encoding for inline content (e.g. `base64`).
-        /// </param>
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
+        /// <param name="encoding">
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </param>
+        /// <param name="type"></param>
         /// <param name="source1">
         /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
         /// </param>
@@ -66,15 +66,15 @@ namespace Google.Gemini
 #endif
         public Source(
             string? content,
-            global::Google.Gemini.SourceType? type,
-            string? encoding,
             string? target,
+            string? encoding,
+            global::Google.Gemini.SourceType? type,
             string? source1)
         {
             this.Content = content;
-            this.Type = type;
-            this.Encoding = encoding;
             this.Target = target;
+            this.Encoding = encoding;
+            this.Type = type;
             this.Source1 = source1;
         }
 
