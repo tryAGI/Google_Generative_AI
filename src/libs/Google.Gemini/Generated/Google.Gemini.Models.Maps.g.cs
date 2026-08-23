@@ -9,6 +9,18 @@ namespace Google.Gemini
     public sealed partial class Maps
     {
         /// <summary>
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
+        public string? PlaceId { get; set; }
+
+        /// <summary>
+        /// URI reference of the place.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
+
+        /// <summary>
         /// Text description of the place answer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
@@ -27,18 +39,6 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// URI reference of the place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
-
-        /// <summary>
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("placeId")]
-        public string? PlaceId { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +47,12 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Maps" /> class.
         /// </summary>
+        /// <param name="placeId">
+        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
+        /// </param>
+        /// <param name="uri">
+        /// URI reference of the place.
+        /// </param>
         /// <param name="text">
         /// Text description of the place answer.
         /// </param>
@@ -56,27 +62,21 @@ namespace Google.Gemini
         /// <param name="title">
         /// Title of the place.
         /// </param>
-        /// <param name="uri">
-        /// URI reference of the place.
-        /// </param>
-        /// <param name="placeId">
-        /// The ID of the place, in `places/{place_id}` format. A user can use this ID to look up that place.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Maps(
+            string? placeId,
+            string? uri,
             string? text,
             global::Google.Gemini.PlaceAnswerSources? placeAnswerSources,
-            string? title,
-            string? uri,
-            string? placeId)
+            string? title)
         {
+            this.PlaceId = placeId;
+            this.Uri = uri;
             this.Text = text;
             this.PlaceAnswerSources = placeAnswerSources;
             this.Title = title;
-            this.Uri = uri;
-            this.PlaceId = placeId;
         }
 
         /// <summary>
