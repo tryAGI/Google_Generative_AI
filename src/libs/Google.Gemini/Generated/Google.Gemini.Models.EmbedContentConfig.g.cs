@@ -15,11 +15,10 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// Optional. The task type of the embedding.
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
-        public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
+        public bool? AutoTruncate { get; set; }
 
         /// <summary>
         /// Optional. Whether to enable OCR for document content.
@@ -40,10 +39,11 @@ namespace Google.Gemini
         public bool? AudioTrackExtraction { get; set; }
 
         /// <summary>
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// Optional. The task type of the embedding.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
-        public bool? AutoTruncate { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
+        public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -57,8 +57,8 @@ namespace Google.Gemini
         /// <param name="title">
         /// Optional. The title for the text.
         /// </param>
-        /// <param name="taskType">
-        /// Optional. The task type of the embedding.
+        /// <param name="autoTruncate">
+        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </param>
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
@@ -69,26 +69,26 @@ namespace Google.Gemini
         /// <param name="audioTrackExtraction">
         /// Optional. Whether to extract audio from video content.
         /// </param>
-        /// <param name="autoTruncate">
-        /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+        /// <param name="taskType">
+        /// Optional. The task type of the embedding.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
             string? title,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
+            bool? autoTruncate,
             bool? documentOcr,
             int? outputDimensionality,
             bool? audioTrackExtraction,
-            bool? autoTruncate)
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
         {
             this.Title = title;
-            this.TaskType = taskType;
+            this.AutoTruncate = autoTruncate;
             this.DocumentOcr = documentOcr;
             this.OutputDimensionality = outputDimensionality;
             this.AudioTrackExtraction = audioTrackExtraction;
-            this.AutoTruncate = autoTruncate;
+            this.TaskType = taskType;
         }
 
         /// <summary>
