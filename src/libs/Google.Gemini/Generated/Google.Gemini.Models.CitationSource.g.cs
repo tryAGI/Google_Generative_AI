@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class CitationSource
     {
         /// <summary>
-        /// Optional. End of the attributed segment, exclusive.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
-        public int? EndIndex { get; set; }
-
-        /// <summary>
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
@@ -25,6 +19,12 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("license")]
         public string? License { get; set; }
+
+        /// <summary>
+        /// Optional. End of the attributed segment, exclusive.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
+        public int? EndIndex { get; set; }
 
         /// <summary>
         /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
@@ -41,14 +41,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CitationSource" /> class.
         /// </summary>
-        /// <param name="endIndex">
-        /// Optional. End of the attributed segment, exclusive.
-        /// </param>
         /// <param name="uri">
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
         /// <param name="license">
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
+        /// </param>
+        /// <param name="endIndex">
+        /// Optional. End of the attributed segment, exclusive.
         /// </param>
         /// <param name="startIndex">
         /// Optional. Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
@@ -57,14 +57,14 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CitationSource(
-            int? endIndex,
             string? uri,
             string? license,
+            int? endIndex,
             int? startIndex)
         {
-            this.EndIndex = endIndex;
             this.Uri = uri;
             this.License = license;
+            this.EndIndex = endIndex;
             this.StartIndex = startIndex;
         }
 

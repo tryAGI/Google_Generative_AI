@@ -15,17 +15,17 @@ namespace Google.Gemini
         public int? BitRate { get; set; }
 
         /// <summary>
-        /// Optional. Sample rate in Hz.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sampleRate")]
-        public int? SampleRate { get; set; }
-
-        /// <summary>
         /// Optional. The delivery mode for the audio output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.AudioResponseFormatDeliveryJsonConverter))]
         public global::Google.Gemini.AudioResponseFormatDelivery? Delivery { get; set; }
+
+        /// <summary>
+        /// Optional. Sample rate in Hz.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sampleRate")]
+        public int? SampleRate { get; set; }
 
         /// <summary>
         /// Optional. The MIME type of the audio output.
@@ -46,11 +46,11 @@ namespace Google.Gemini
         /// <param name="bitRate">
         /// Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
         /// </param>
-        /// <param name="sampleRate">
-        /// Optional. Sample rate in Hz.
-        /// </param>
         /// <param name="delivery">
         /// Optional. The delivery mode for the audio output.
+        /// </param>
+        /// <param name="sampleRate">
+        /// Optional. Sample rate in Hz.
         /// </param>
         /// <param name="mimeType">
         /// Optional. The MIME type of the audio output.
@@ -60,13 +60,13 @@ namespace Google.Gemini
 #endif
         public AudioResponseFormat(
             int? bitRate,
-            int? sampleRate,
             global::Google.Gemini.AudioResponseFormatDelivery? delivery,
+            int? sampleRate,
             global::Google.Gemini.AudioResponseFormatMimeType? mimeType)
         {
             this.BitRate = bitRate;
-            this.SampleRate = sampleRate;
             this.Delivery = delivery;
+            this.SampleRate = sampleRate;
             this.MimeType = mimeType;
         }
 
