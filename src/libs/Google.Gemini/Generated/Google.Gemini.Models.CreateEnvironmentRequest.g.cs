@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class CreateEnvironmentRequest
     {
         /// <summary>
+        /// Network egress configuration for the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
+        public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
+
+        /// <summary>
         /// Network egress mode.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.CreateEnvironmentRequestNetworkModeJsonConverter))]
         public global::Google.Gemini.CreateEnvironmentRequestNetworkMode? NetworkMode { get; set; }
-
-        /// <summary>
-        /// Network egress configuration for the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkAllowlist")]
-        public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
 
         /// <summary>
         /// Sources to be mounted into the environment.
@@ -36,11 +36,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateEnvironmentRequest" /> class.
         /// </summary>
-        /// <param name="networkMode">
-        /// Network egress mode.
-        /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
+        /// </param>
+        /// <param name="networkMode">
+        /// Network egress mode.
         /// </param>
         /// <param name="sources">
         /// Sources to be mounted into the environment.
@@ -49,12 +49,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateEnvironmentRequest(
-            global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode,
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
+            global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode,
             global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources)
         {
-            this.NetworkMode = networkMode;
             this.NetworkAllowlist = networkAllowlist;
+            this.NetworkMode = networkMode;
             this.Sources = sources;
         }
 
