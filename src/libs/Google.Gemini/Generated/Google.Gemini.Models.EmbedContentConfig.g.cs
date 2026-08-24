@@ -21,12 +21,6 @@ namespace Google.Gemini
         public bool? DocumentOcr { get; set; }
 
         /// <summary>
-        /// Optional. Whether to extract audio from video content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
-        public bool? AudioTrackExtraction { get; set; }
-
-        /// <summary>
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoTruncate")]
@@ -46,6 +40,12 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
 
         /// <summary>
+        /// Optional. Whether to extract audio from video content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
+        public bool? AudioTrackExtraction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,9 +60,6 @@ namespace Google.Gemini
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
-        /// <param name="audioTrackExtraction">
-        /// Optional. Whether to extract audio from video content.
-        /// </param>
         /// <param name="autoTruncate">
         /// Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
         /// </param>
@@ -72,23 +69,26 @@ namespace Google.Gemini
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
         /// </param>
+        /// <param name="audioTrackExtraction">
+        /// Optional. Whether to extract audio from video content.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
             int? outputDimensionality,
             bool? documentOcr,
-            bool? audioTrackExtraction,
             bool? autoTruncate,
             string? title,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType)
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
+            bool? audioTrackExtraction)
         {
             this.OutputDimensionality = outputDimensionality;
             this.DocumentOcr = documentOcr;
-            this.AudioTrackExtraction = audioTrackExtraction;
             this.AutoTruncate = autoTruncate;
             this.Title = title;
             this.TaskType = taskType;
+            this.AudioTrackExtraction = audioTrackExtraction;
         }
 
         /// <summary>
