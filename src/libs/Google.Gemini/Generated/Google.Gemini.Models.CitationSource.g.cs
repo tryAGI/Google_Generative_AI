@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class CitationSource
     {
         /// <summary>
+        /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("license")]
+        public string? License { get; set; }
+
+        /// <summary>
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
@@ -27,12 +33,6 @@ namespace Google.Gemini
         public int? EndIndex { get; set; }
 
         /// <summary>
-        /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("license")]
-        public string? License { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,6 +41,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CitationSource" /> class.
         /// </summary>
+        /// <param name="license">
+        /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
+        /// </param>
         /// <param name="uri">
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
@@ -50,22 +53,19 @@ namespace Google.Gemini
         /// <param name="endIndex">
         /// Optional. End of the attributed segment, exclusive.
         /// </param>
-        /// <param name="license">
-        /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CitationSource(
+            string? license,
             string? uri,
             int? startIndex,
-            int? endIndex,
-            string? license)
+            int? endIndex)
         {
+            this.License = license;
             this.Uri = uri;
             this.StartIndex = startIndex;
             this.EndIndex = endIndex;
-            this.License = license;
         }
 
         /// <summary>
