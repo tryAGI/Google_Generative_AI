@@ -9,6 +9,13 @@ namespace Google.Gemini
     public sealed partial class ModelStatus
     {
         /// <summary>
+        /// The stage of the underlying model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelStage")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ModelStatusModelStageJsonConverter))]
+        public global::Google.Gemini.ModelStatusModelStage? ModelStage { get; set; }
+
+        /// <summary>
         /// A message explaining the model status.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
@@ -21,13 +28,6 @@ namespace Google.Gemini
         public string? RetirementTime { get; set; }
 
         /// <summary>
-        /// The stage of the underlying model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelStage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ModelStatusModelStageJsonConverter))]
-        public global::Google.Gemini.ModelStatusModelStage? ModelStage { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -36,26 +36,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelStatus" /> class.
         /// </summary>
+        /// <param name="modelStage">
+        /// The stage of the underlying model.
+        /// </param>
         /// <param name="message">
         /// A message explaining the model status.
         /// </param>
         /// <param name="retirementTime">
         /// The time at which the model will be retired.
         /// </param>
-        /// <param name="modelStage">
-        /// The stage of the underlying model.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ModelStatus(
+            global::Google.Gemini.ModelStatusModelStage? modelStage,
             string? message,
-            string? retirementTime,
-            global::Google.Gemini.ModelStatusModelStage? modelStage)
+            string? retirementTime)
         {
+            this.ModelStage = modelStage;
             this.Message = message;
             this.RetirementTime = retirementTime;
-            this.ModelStage = modelStage;
         }
 
         /// <summary>
