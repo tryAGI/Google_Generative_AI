@@ -11,12 +11,6 @@ namespace Google.Gemini
     public sealed partial class EmbedContentRequest
     {
         /// <summary>
-        /// Configurations for the EmbedContent request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
-        public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
-
-        /// <summary>
         /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
@@ -25,11 +19,10 @@ namespace Google.Gemini
         public global::Google.Gemini.EmbedContentRequestTaskType? TaskType { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
+        /// Configurations for the EmbedContent request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public int? OutputDimensionality { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("embedContentConfig")]
+        public global::Google.Gemini.EmbedContentConfig? EmbedContentConfig { get; set; }
 
         /// <summary>
         /// Required. The model's resource name. This serves as an ID for the Model to use. This name should match a model name returned by the `ListModels` method. Format: `models/{model}`
@@ -49,6 +42,13 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public global::Google.Gemini.Content? Content { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
