@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class EmbedContentConfig
     {
         /// <summary>
-        /// Optional. Whether to extract audio from video content.
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
-        public bool? AudioTrackExtraction { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
+        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Optional. Whether to enable OCR for document content.
@@ -21,17 +21,17 @@ namespace Google.Gemini
         public bool? DocumentOcr { get; set; }
 
         /// <summary>
+        /// Optional. Whether to extract audio from video content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("audioTrackExtraction")]
+        public bool? AudioTrackExtraction { get; set; }
+
+        /// <summary>
         /// Optional. The task type of the embedding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taskType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EmbedContentConfigTaskTypeJsonConverter))]
         public global::Google.Gemini.EmbedContentConfigTaskType? TaskType { get; set; }
-
-        /// <summary>
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputDimensionality")]
-        public int? OutputDimensionality { get; set; }
 
         /// <summary>
         /// Optional. The title for the text.
@@ -54,17 +54,17 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbedContentConfig" /> class.
         /// </summary>
-        /// <param name="audioTrackExtraction">
-        /// Optional. Whether to extract audio from video content.
+        /// <param name="outputDimensionality">
+        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
         /// <param name="documentOcr">
         /// Optional. Whether to enable OCR for document content.
         /// </param>
+        /// <param name="audioTrackExtraction">
+        /// Optional. Whether to extract audio from video content.
+        /// </param>
         /// <param name="taskType">
         /// Optional. The task type of the embedding.
-        /// </param>
-        /// <param name="outputDimensionality">
-        /// Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
         /// </param>
         /// <param name="title">
         /// Optional. The title for the text.
@@ -76,17 +76,17 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbedContentConfig(
-            bool? audioTrackExtraction,
-            bool? documentOcr,
-            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             int? outputDimensionality,
+            bool? documentOcr,
+            bool? audioTrackExtraction,
+            global::Google.Gemini.EmbedContentConfigTaskType? taskType,
             string? title,
             bool? autoTruncate)
         {
-            this.AudioTrackExtraction = audioTrackExtraction;
-            this.DocumentOcr = documentOcr;
-            this.TaskType = taskType;
             this.OutputDimensionality = outputDimensionality;
+            this.DocumentOcr = documentOcr;
+            this.AudioTrackExtraction = audioTrackExtraction;
+            this.TaskType = taskType;
             this.Title = title;
             this.AutoTruncate = autoTruncate;
         }
