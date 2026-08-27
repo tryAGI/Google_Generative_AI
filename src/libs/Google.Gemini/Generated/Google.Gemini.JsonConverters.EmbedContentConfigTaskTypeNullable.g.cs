@@ -20,7 +20,7 @@ namespace Google.Gemini.JsonConverters
                     {
                         return global::Google.Gemini.EmbedContentConfigTaskTypeExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

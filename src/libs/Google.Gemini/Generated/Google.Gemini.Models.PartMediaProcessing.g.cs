@@ -13,7 +13,7 @@ namespace Google.Gemini
         /// </summary>
         Agentic,
         /// <summary>
-        /// Default. Uses model-specific processing (3.5 Pro+ -&gt; `AGENTIC`, older models -&gt; `STATIC`).
+        /// Defaults to model-specific processing.
         /// </summary>
         MediaProcessingUnspecified,
         /// <summary>

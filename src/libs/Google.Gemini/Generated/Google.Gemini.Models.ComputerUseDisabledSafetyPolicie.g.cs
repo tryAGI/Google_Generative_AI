@@ -4,7 +4,7 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ComputerUseDisabledSafetyPolicie
     {

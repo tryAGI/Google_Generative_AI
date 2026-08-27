@@ -11,7 +11,7 @@ namespace Google.Gemini
     public sealed partial class GeminiClient : global::Google.Gemini.IGeminiClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://generativelanguage.googleapis.com/v1beta";
 
@@ -38,7 +38,7 @@ namespace Google.Gemini
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Google.Gemini.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
