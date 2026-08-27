@@ -4,7 +4,7 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SourceType
     {
@@ -21,7 +21,7 @@ namespace Google.Gemini
         /// </summary>
         Repository,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TypeUnspecified,
     }

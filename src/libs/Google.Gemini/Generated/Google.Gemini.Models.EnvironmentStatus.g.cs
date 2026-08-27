@@ -10,15 +10,15 @@ namespace Google.Gemini
     public enum EnvironmentStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Expired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StatusUnspecified,
     }
