@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ExecutableCode
     {
         /// <summary>
-        /// Required. The code to be executed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        public string? Code { get; set; }
-
-        /// <summary>
         /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
+
+        /// <summary>
+        /// Required. The code to be executed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
 
         /// <summary>
         /// Required. Programming language of the `code`.
@@ -36,11 +36,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ExecutableCode" /> class.
         /// </summary>
-        /// <param name="code">
-        /// Required. The code to be executed.
-        /// </param>
         /// <param name="id">
         /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
+        /// </param>
+        /// <param name="code">
+        /// Required. The code to be executed.
         /// </param>
         /// <param name="language">
         /// Required. Programming language of the `code`.
@@ -49,12 +49,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ExecutableCode(
-            string? code,
             string? id,
+            string? code,
             global::Google.Gemini.ExecutableCodeLanguage? language)
         {
-            this.Code = code;
             this.Id = id;
+            this.Code = code;
             this.Language = language;
         }
 

@@ -9,18 +9,30 @@ namespace Google.Gemini
     public sealed partial class File
     {
         /// <summary>
-        /// Output only. Processing state of the File.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FileStateJsonConverter))]
-        public global::Google.Gemini.FileState? State { get; set; }
-
-        /// <summary>
         /// Optional. The human-readable display name for the `File`. The display name must be no more than 512 characters in length, including spaces. Example: "Welcome Image"
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. MIME type of the file.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
+
+        /// <summary>
+        /// Source of the File.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FileSourceJsonConverter))]
+        public global::Google.Gemini.FileSource? Source { get; set; }
+
+        /// <summary>
+        /// Metadata for a video `File`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
+        public global::Google.Gemini.VideoFileMetadata? VideoMetadata { get; set; }
 
         /// <summary>
         /// Output only. The timestamp of when the `File` was created.<br/>
@@ -30,24 +42,11 @@ namespace Google.Gemini
         public string? CreateTime { get; set; }
 
         /// <summary>
-        /// Metadata for a video `File`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
-        public global::Google.Gemini.VideoFileMetadata? VideoMetadata { get; set; }
-
-        /// <summary>
-        /// Output only. Size of the file in bytes.<br/>
+        /// Output only. SHA-256 hash of the uploaded bytes.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
-        public string? SizeBytes { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp of when the `File` was last updated.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public string? UpdateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("sha256Hash")]
+        public byte[]? Sha256Hash { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The `File` resource name. The ID (name excluding the "files/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be generated. Example: `files/123-456`
@@ -62,25 +61,12 @@ namespace Google.Gemini
         public global::Google.Gemini.Status? Error { get; set; }
 
         /// <summary>
-        /// Output only. SHA-256 hash of the uploaded bytes.<br/>
+        /// Output only. Processing state of the File.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sha256Hash")]
-        public byte[]? Sha256Hash { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("expirationTime")]
-        public string? ExpirationTime { get; set; }
-
-        /// <summary>
-        /// Source of the File.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FileSourceJsonConverter))]
-        public global::Google.Gemini.FileSource? Source { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FileStateJsonConverter))]
+        public global::Google.Gemini.FileState? State { get; set; }
 
         /// <summary>
         /// Output only. The download uri of the `File`.<br/>
@@ -90,6 +76,20 @@ namespace Google.Gemini
         public string? DownloadUri { get; set; }
 
         /// <summary>
+        /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expirationTime")]
+        public string? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// Output only. Size of the file in bytes.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
+        public string? SizeBytes { get; set; }
+
+        /// <summary>
         /// Output only. The uri of the `File`.<br/>
         /// Included only in responses
         /// </summary>
@@ -97,11 +97,11 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
-        /// Output only. MIME type of the file.<br/>
+        /// Output only. The timestamp of when the `File` was last updated.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public string? UpdateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -112,26 +112,25 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="File" /> class.
         /// </summary>
-        /// <param name="state">
-        /// Output only. Processing state of the File.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="displayName">
         /// Optional. The human-readable display name for the `File`. The display name must be no more than 512 characters in length, including spaces. Example: "Welcome Image"
+        /// </param>
+        /// <param name="mimeType">
+        /// Output only. MIME type of the file.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="source">
+        /// Source of the File.
+        /// </param>
+        /// <param name="videoMetadata">
+        /// Metadata for a video `File`.
         /// </param>
         /// <param name="createTime">
         /// Output only. The timestamp of when the `File` was created.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="videoMetadata">
-        /// Metadata for a video `File`.
-        /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. Size of the file in bytes.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="updateTime">
-        /// Output only. The timestamp of when the `File` was last updated.<br/>
+        /// <param name="sha256Hash">
+        /// Output only. SHA-256 hash of the uploaded bytes.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="name">
@@ -140,62 +139,63 @@ namespace Google.Gemini
         /// <param name="error">
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </param>
-        /// <param name="sha256Hash">
-        /// Output only. SHA-256 hash of the uploaded bytes.<br/>
+        /// <param name="state">
+        /// Output only. Processing state of the File.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="downloadUri">
+        /// Output only. The download uri of the `File`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="expirationTime">
         /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is scheduled to expire.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="source">
-        /// Source of the File.
-        /// </param>
-        /// <param name="downloadUri">
-        /// Output only. The download uri of the `File`.<br/>
+        /// <param name="sizeBytes">
+        /// Output only. Size of the file in bytes.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="uri">
         /// Output only. The uri of the `File`.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="mimeType">
-        /// Output only. MIME type of the file.<br/>
+        /// <param name="updateTime">
+        /// Output only. The timestamp of when the `File` was last updated.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public File(
-            global::Google.Gemini.FileState? state,
             string? displayName,
-            string? createTime,
+            string? mimeType,
+            global::Google.Gemini.FileSource? source,
             global::Google.Gemini.VideoFileMetadata? videoMetadata,
-            string? sizeBytes,
-            string? updateTime,
+            string? createTime,
+            byte[]? sha256Hash,
             string? name,
             global::Google.Gemini.Status? error,
-            byte[]? sha256Hash,
-            string? expirationTime,
-            global::Google.Gemini.FileSource? source,
+            global::Google.Gemini.FileState? state,
             string? downloadUri,
+            string? expirationTime,
+            string? sizeBytes,
             string? uri,
-            string? mimeType)
+            string? updateTime)
         {
-            this.State = state;
             this.DisplayName = displayName;
-            this.CreateTime = createTime;
+            this.MimeType = mimeType;
+            this.Source = source;
             this.VideoMetadata = videoMetadata;
-            this.SizeBytes = sizeBytes;
-            this.UpdateTime = updateTime;
+            this.CreateTime = createTime;
+            this.Sha256Hash = sha256Hash;
             this.Name = name;
             this.Error = error;
-            this.Sha256Hash = sha256Hash;
-            this.ExpirationTime = expirationTime;
-            this.Source = source;
+            this.State = state;
             this.DownloadUri = downloadUri;
+            this.ExpirationTime = expirationTime;
+            this.SizeBytes = sizeBytes;
             this.Uri = uri;
-            this.MimeType = mimeType;
+            this.UpdateTime = updateTime;
         }
 
         /// <summary>
