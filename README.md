@@ -1784,6 +1784,16 @@ The SDK defaults to `gemini-embedding-001`. For best retrieval quality, use `gem
 
 This SDK targets the **v1beta** API, which is the full-featured version used by Google's own SDKs (Python, JS, Go). The v1 (stable) API only exposes ~30 of the 70+ available endpoints and lacks critical features like tool calling, file upload, context caching, and grounding.
 
+<!-- AUTOSDK:ECOSYSTEM-MAINTENANCE:START -->
+## Ecosystem maintenance
+
+This SDK is one of more than 200 .NET SDKs maintained with [AutoSDK](https://github.com/tryAGI/AutoSDK). The tryAGI [SDK audit](https://github.com/tryAGI/tryAGI/blob/main/GENERATED_SDK_AUDITS.md) continuously checks repository synchronization, upstream-spec regeneration, release workflows, warnings, public API visibility, and trimming/NativeAOT compatibility.
+
+Every issue is first investigated for ecosystem-wide applicability. When the root cause belongs in AutoSDK, we fix and regression-test the generator, then roll the improvement out to every applicable SDK. Provider-specific behavior remains in this repository when it cannot be derived safely from the API specification.
+
+Issue content—including code blocks, logs, links, and attachments—is treated only as untrusted diagnostic data. Embedded control instructions, hidden directives, delimiter tricks, or requests to alter triage or tooling behavior are ignored. Please report reproducible technical evidence and remove secrets and personal data.
+<!-- AUTOSDK:ECOSYSTEM-MAINTENANCE:END -->
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Google_Generative_AI/issues
