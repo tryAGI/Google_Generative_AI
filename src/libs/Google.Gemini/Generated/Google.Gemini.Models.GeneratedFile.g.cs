@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class GeneratedFile
     {
         /// <summary>
-        /// MIME type of the generatedFile.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
         /// </summary>
@@ -35,6 +29,12 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
+        /// MIME type of the generatedFile.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,9 +43,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedFile" /> class.
         /// </summary>
-        /// <param name="mimeType">
-        /// MIME type of the generatedFile.
-        /// </param>
         /// <param name="state">
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
@@ -56,19 +53,22 @@ namespace Google.Gemini
         /// <param name="name">
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
         /// </param>
+        /// <param name="mimeType">
+        /// MIME type of the generatedFile.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GeneratedFile(
-            string? mimeType,
             global::Google.Gemini.GeneratedFileState? state,
             global::Google.Gemini.Status? error,
-            string? name)
+            string? name,
+            string? mimeType)
         {
-            this.MimeType = mimeType;
             this.State = state;
             this.Error = error;
             this.Name = name;
+            this.MimeType = mimeType;
         }
 
         /// <summary>
