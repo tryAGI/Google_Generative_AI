@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ImportFileRequest
     {
         /// <summary>
-        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chunkingConfig")]
-        public global::Google.Gemini.ChunkingConfig? ChunkingConfig { get; set; }
-
-        /// <summary>
         /// Required. The name of the `File` to import. Example: `files/abc-123`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileName")]
         public string? FileName { get; set; }
+
+        /// <summary>
+        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chunkingConfig")]
+        public global::Google.Gemini.ChunkingConfig? ChunkingConfig { get; set; }
 
         /// <summary>
         /// Custom metadata to be associated with the file.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ImportFileRequest" /> class.
         /// </summary>
-        /// <param name="chunkingConfig">
-        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
-        /// </param>
         /// <param name="fileName">
         /// Required. The name of the `File` to import. Example: `files/abc-123`
+        /// </param>
+        /// <param name="chunkingConfig">
+        /// Parameters for telling the service how to chunk the file. inspired by google3/cloud/ai/platform/extension/lib/retrieval/config/chunker_config.proto
         /// </param>
         /// <param name="customMetadata">
         /// Custom metadata to be associated with the file.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ImportFileRequest(
-            global::Google.Gemini.ChunkingConfig? chunkingConfig,
             string? fileName,
+            global::Google.Gemini.ChunkingConfig? chunkingConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata)
         {
-            this.ChunkingConfig = chunkingConfig;
             this.FileName = fileName;
+            this.ChunkingConfig = chunkingConfig;
             this.CustomMetadata = customMetadata;
         }
 
