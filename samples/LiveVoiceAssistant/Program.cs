@@ -1,7 +1,7 @@
 using Google.Gemini;
 
 // Get API key from environment variable
-var apiKey = Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
+var apiKey = System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
     ?? throw new InvalidOperationException(
         "Set the GOOGLE_GEMINI_API_KEY environment variable.");
 

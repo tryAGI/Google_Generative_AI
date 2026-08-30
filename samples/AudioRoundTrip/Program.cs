@@ -1,7 +1,7 @@
 using Google.Gemini;
 using Microsoft.Extensions.AI;
 
-var apiKey = Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
+var apiKey = System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
     ?? throw new InvalidOperationException(
         "Set the GOOGLE_GEMINI_API_KEY environment variable.");
 
@@ -10,7 +10,7 @@ var prompt = args.Length > 0
     : $"{GeminiAudioTags.Cheerful} Hello! {GeminiAudioTags.Excited} This is Gemini 3.1 Flash TTS speaking. " +
       $"{GeminiAudioTags.Calm} Let's see how well I sound when transcribed back.";
 
-var voice = Environment.GetEnvironmentVariable("GOOGLE_GEMINI_VOICE") is { Length: > 0 } v
+var voice = System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_VOICE") is { Length: > 0 } v
     ? v
     : GeminiVoices.Puck;
 
