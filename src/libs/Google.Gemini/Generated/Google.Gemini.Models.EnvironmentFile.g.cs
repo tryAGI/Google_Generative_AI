@@ -9,14 +9,6 @@ namespace Google.Gemini
     public sealed partial class EnvironmentFile
     {
         /// <summary>
-        /// Output only. The type of the entry.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentFileTypeJsonConverter))]
-        public global::Google.Gemini.EnvironmentFileType? Type { get; set; }
-
-        /// <summary>
         /// Output only. The full relative path within the environment (e.g., "workspace/src/main.py").<br/>
         /// Included only in responses
         /// </summary>
@@ -31,18 +23,11 @@ namespace Google.Gemini
         public string? Modified { get; set; }
 
         /// <summary>
-        /// Output only. The creation time of the file/directory.<br/>
+        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
-        public string? Created { get; set; }
-
-        /// <summary>
-        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("size_bytes")]
-        public string? SizeBytes { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Output only. The name of the file or directory (e.g., "main.py" or "src").<br/>
@@ -52,11 +37,26 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
+        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        public string? MimeType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("size_bytes")]
+        public string? SizeBytes { get; set; }
+
+        /// <summary>
+        /// Output only. The creation time of the file/directory.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
+        public string? Created { get; set; }
+
+        /// <summary>
+        /// Output only. The type of the entry.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EnvironmentFileTypeJsonConverter))]
+        public global::Google.Gemini.EnvironmentFileType? Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -67,10 +67,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EnvironmentFile" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Output only. The type of the entry.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="path">
         /// Output only. The full relative path within the environment (e.g., "workspace/src/main.py").<br/>
         /// Included only in responses
@@ -79,41 +75,45 @@ namespace Google.Gemini
         /// Output only. The modification time of the file/directory.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="created">
-        /// Output only. The creation time of the file/directory.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
+        /// <param name="mimeType">
+        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
         /// Included only in responses
         /// </param>
         /// <param name="name">
         /// Output only. The name of the file or directory (e.g., "main.py" or "src").<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="mimeType">
-        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
+        /// <param name="sizeBytes">
+        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="created">
+        /// Output only. The creation time of the file/directory.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="type">
+        /// Output only. The type of the entry.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentFile(
-            global::Google.Gemini.EnvironmentFileType? type,
             string? path,
             string? modified,
-            string? created,
-            string? sizeBytes,
+            string? mimeType,
             string? name,
-            string? mimeType)
+            string? sizeBytes,
+            string? created,
+            global::Google.Gemini.EnvironmentFileType? type)
         {
-            this.Type = type;
             this.Path = path;
             this.Modified = modified;
-            this.Created = created;
-            this.SizeBytes = sizeBytes;
-            this.Name = name;
             this.MimeType = mimeType;
+            this.Name = name;
+            this.SizeBytes = sizeBytes;
+            this.Created = created;
+            this.Type = type;
         }
 
         /// <summary>
