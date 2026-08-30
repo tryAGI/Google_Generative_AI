@@ -8,7 +8,7 @@ public partial class Tests
     {
         LoadDotEnv();
 
-        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_LIVE_MODEL_ID") is { Length: > 0 } modelIdValue
+        return System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_LIVE_MODEL_ID") is { Length: > 0 } modelIdValue
             ? modelIdValue
             : "models/gemini-3.1-flash-live-preview";
     }

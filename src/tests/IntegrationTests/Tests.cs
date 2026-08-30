@@ -10,8 +10,8 @@ public partial class Tests
         LoadDotEnv();
 
         var apiKey =
-            Environment.GetEnvironmentVariable("API_KEY") is { Length: > 0 } apiKeyValue ? apiKeyValue :
-            Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY") is { Length: > 0 } geminiKeyValue ? geminiKeyValue :
+            System.Environment.GetEnvironmentVariable("API_KEY") is { Length: > 0 } apiKeyValue ? apiKeyValue :
+            System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY") is { Length: > 0 } geminiKeyValue ? geminiKeyValue :
             throw new AssertInconclusiveException(
                 "GOOGLE_GEMINI_API_KEY environment variable is not found. Set GOOGLE_GEMINI_API_KEY or API_KEY, or add a repo-root .env file.");
 
@@ -24,14 +24,14 @@ public partial class Tests
     {
         LoadDotEnv();
 
-        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-flash-latest";
+        return System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-flash-latest";
     }
 
     private static string GetEmbeddingModelId()
     {
         LoadDotEnv();
 
-        return Environment.GetEnvironmentVariable("GOOGLE_GEMINI_EMBEDDING_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-embedding-001";
+        return System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_EMBEDDING_MODEL_ID") is { Length: > 0 } modelIdValue ? modelIdValue : "gemini-embedding-001";
     }
 
     private static void LoadDotEnv()
@@ -69,7 +69,7 @@ public partial class Tests
                 }
 
                 var key = line[..separatorIndex].Trim();
-                if (key.Length == 0 || Environment.GetEnvironmentVariable(key) is not null)
+                if (key.Length == 0 || System.Environment.GetEnvironmentVariable(key) is not null)
                 {
                     continue;
                 }
@@ -81,7 +81,7 @@ public partial class Tests
                     value = value[1..^1];
                 }
 
-                Environment.SetEnvironmentVariable(key, value);
+                System.Environment.SetEnvironmentVariable(key, value);
             }
 
             return;
