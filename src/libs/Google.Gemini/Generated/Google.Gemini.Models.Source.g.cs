@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class Source
     {
         /// <summary>
+        /// Where the source should appear in the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
         /// Optional encoding for inline content (e.g. `base64`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
@@ -19,12 +25,6 @@ namespace Google.Gemini
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
         public string? Source1 { get; set; }
-
-        /// <summary>
-        /// Where the source should appear in the environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
-        public string? Target { get; set; }
 
         /// <summary>
         /// The inline content if `type` is `INLINE`.
@@ -48,14 +48,14 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
+        /// <param name="target">
+        /// Where the source should appear in the environment.
+        /// </param>
         /// <param name="encoding">
         /// Optional encoding for inline content (e.g. `base64`).
         /// </param>
         /// <param name="source1">
         /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-        /// </param>
-        /// <param name="target">
-        /// Where the source should appear in the environment.
         /// </param>
         /// <param name="content">
         /// The inline content if `type` is `INLINE`.
@@ -65,15 +65,15 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
+            string? target,
             string? encoding,
             string? source1,
-            string? target,
             string? content,
             global::Google.Gemini.SourceType? type)
         {
+            this.Target = target;
             this.Encoding = encoding;
             this.Source1 = source1;
-            this.Target = target;
             this.Content = content;
             this.Type = type;
         }

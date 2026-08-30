@@ -31,14 +31,14 @@ namespace Google.Gemini
         /// <param name="serviceTier">
         /// Optional. The service tier of the request.
         /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// <param name="model">
+        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </param>
         /// <param name="safetySettings">
         /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
         /// </param>
-        /// <param name="cachedContent">
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+        /// <param name="generationConfig">
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
         /// </param>
         /// <param name="tools">
         /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
@@ -46,11 +46,11 @@ namespace Google.Gemini
         /// <param name="toolConfig">
         /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </param>
-        /// <param name="generationConfig">
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="cachedContent">
+        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -60,13 +60,13 @@ namespace Google.Gemini
             global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
             bool? store = default,
             global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier = default,
-            global::Google.Gemini.Content? systemInstruction = default,
+            string? model = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings = default,
-            string? cachedContent = default,
+            global::Google.Gemini.GenerationConfig? generationConfig = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
             global::Google.Gemini.ToolConfig? toolConfig = default,
-            global::Google.Gemini.GenerationConfig? generationConfig = default,
-            string? model = default,
+            global::Google.Gemini.Content? systemInstruction = default,
+            string? cachedContent = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
