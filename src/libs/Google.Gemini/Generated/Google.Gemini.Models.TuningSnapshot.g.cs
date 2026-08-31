@@ -9,11 +9,11 @@ namespace Google.Gemini
     public sealed partial class TuningSnapshot
     {
         /// <summary>
-        /// Output only. The epoch this step was part of.<br/>
+        /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
-        public int? Epoch { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
+        public int? Step { get; set; }
 
         /// <summary>
         /// Output only. The mean loss of the training examples for this step.<br/>
@@ -30,11 +30,11 @@ namespace Google.Gemini
         public string? ComputeTime { get; set; }
 
         /// <summary>
-        /// Output only. The tuning step.<br/>
+        /// Output only. The epoch this step was part of.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("step")]
-        public int? Step { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("epoch")]
+        public int? Epoch { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,8 +45,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="TuningSnapshot" /> class.
         /// </summary>
-        /// <param name="epoch">
-        /// Output only. The epoch this step was part of.<br/>
+        /// <param name="step">
+        /// Output only. The tuning step.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="meanLoss">
@@ -57,23 +57,23 @@ namespace Google.Gemini
         /// Output only. The timestamp when this metric was computed.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="step">
-        /// Output only. The tuning step.<br/>
+        /// <param name="epoch">
+        /// Output only. The epoch this step was part of.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TuningSnapshot(
-            int? epoch,
+            int? step,
             float? meanLoss,
             string? computeTime,
-            int? step)
+            int? epoch)
         {
-            this.Epoch = epoch;
+            this.Step = step;
             this.MeanLoss = meanLoss;
             this.ComputeTime = computeTime;
-            this.Step = step;
+            this.Epoch = epoch;
         }
 
         /// <summary>
