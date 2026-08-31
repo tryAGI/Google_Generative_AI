@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class CitationSource
     {
         /// <summary>
-        /// Optional. End of the attributed segment, exclusive.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
-        public int? EndIndex { get; set; }
-
-        /// <summary>
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("license")]
@@ -33,6 +27,12 @@ namespace Google.Gemini
         public string? Uri { get; set; }
 
         /// <summary>
+        /// Optional. End of the attributed segment, exclusive.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endIndex")]
+        public int? EndIndex { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,9 +41,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CitationSource" /> class.
         /// </summary>
-        /// <param name="endIndex">
-        /// Optional. End of the attributed segment, exclusive.
-        /// </param>
         /// <param name="license">
         /// Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
         /// </param>
@@ -53,19 +50,22 @@ namespace Google.Gemini
         /// <param name="uri">
         /// Optional. URI that is attributed as a source for a portion of the text.
         /// </param>
+        /// <param name="endIndex">
+        /// Optional. End of the attributed segment, exclusive.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CitationSource(
-            int? endIndex,
             string? license,
             int? startIndex,
-            string? uri)
+            string? uri,
+            int? endIndex)
         {
-            this.EndIndex = endIndex;
             this.License = license;
             this.StartIndex = startIndex;
             this.Uri = uri;
+            this.EndIndex = endIndex;
         }
 
         /// <summary>
