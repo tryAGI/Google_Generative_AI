@@ -15,9 +15,8 @@ fetch_spec() {
 
 # OpenAPI spec: Google Discovery API https://generativelanguage.googleapis.com/\$discovery/rest?version=v1beta (converted to OpenAPI via Python)
 install_autosdk_cli
-rm -rf Generated
 fetch_spec --fail --silent --show-error -L -o discovery.json 'https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta'
-python3 convert_discovery.py discovery.json openapi.json
+python3 convert_discovery.py discovery.json openapi.next.json
 rm discovery.json
 
 # Post-process the OpenAPI spec:
@@ -27,7 +26,7 @@ rm discovery.json
 python3 -c "
 import json, re
 
-with open('openapi.json', 'r') as f:
+with open('openapi.next.json', 'r') as f:
     spec = json.load(f)
 
 changed = False
@@ -108,10 +107,32 @@ else:
     print('No orphaned schemas found')
 
 if changed:
-    with open('openapi.json', 'w') as f:
+    with open('openapi.next.json', 'w') as f:
         json.dump(spec, f, indent=2)
         f.write('\n')
 "
+
+# The Discovery API can reorder equivalent JSON objects between requests. Avoid
+# regenerating public constructor parameter order when the contract is unchanged.
+if [[ -f openapi.json ]] && python3 - openapi.json openapi.next.json <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], 'r') as current_file:
+    current = json.load(current_file)
+with open(sys.argv[2], 'r') as next_file:
+    next_spec = json.load(next_file)
+
+sys.exit(0 if current == next_spec else 1)
+PY
+then
+  rm openapi.next.json
+  echo 'OpenAPI contract is semantically unchanged; skipping regeneration.'
+  exit 0
+fi
+
+mv openapi.next.json openapi.json
+rm -rf Generated
 autosdk generate openapi.json \
   --namespace Google.Gemini \
   --clientClassName GeminiClient \
