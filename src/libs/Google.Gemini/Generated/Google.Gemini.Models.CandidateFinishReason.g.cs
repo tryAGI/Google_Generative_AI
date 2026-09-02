@@ -70,6 +70,10 @@ namespace Google.Gemini
         /// </summary>
         ProhibitedContent,
         /// <summary>
+        /// Indicates that token generation stopped because the user account is limited or disabled due to Prohibited Use Policy (PUP) violations.
+        /// </summary>
+        PupLimitedDisabled,
+        /// <summary>
         /// The response candidate content was flagged for recitation reasons.
         /// </summary>
         Recitation,
@@ -122,6 +126,7 @@ namespace Google.Gemini
                 CandidateFinishReason.NoImage => "NO_IMAGE",
                 CandidateFinishReason.Other => "OTHER",
                 CandidateFinishReason.ProhibitedContent => "PROHIBITED_CONTENT",
+                CandidateFinishReason.PupLimitedDisabled => "PUP_LIMITED_DISABLED",
                 CandidateFinishReason.Recitation => "RECITATION",
                 CandidateFinishReason.Safety => "SAFETY",
                 CandidateFinishReason.Spii => "SPII",
@@ -153,6 +158,7 @@ namespace Google.Gemini
                 "NO_IMAGE" => CandidateFinishReason.NoImage,
                 "OTHER" => CandidateFinishReason.Other,
                 "PROHIBITED_CONTENT" => CandidateFinishReason.ProhibitedContent,
+                "PUP_LIMITED_DISABLED" => CandidateFinishReason.PupLimitedDisabled,
                 "RECITATION" => CandidateFinishReason.Recitation,
                 "SAFETY" => CandidateFinishReason.Safety,
                 "SPII" => CandidateFinishReason.Spii,
