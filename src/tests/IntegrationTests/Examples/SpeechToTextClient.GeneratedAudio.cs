@@ -28,7 +28,12 @@ public partial class Tests
             ISpeechToTextClient stt = client;
 
             using var stream = new MemoryStream(audio.AudioData!);
-            var response = await stt.GetTextAsync(stream);
+            var response = await stt.GetTextAsync(
+                stream,
+                new SpeechToTextOptions
+                {
+                    RawRepresentationFactory = _ => audio.MimeType,
+                });
 
             response.Text.Should().NotBeNullOrWhiteSpace();
             response.ModelId.Should().NotBeNullOrWhiteSpace();
