@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class FileData
     {
         /// <summary>
-        /// Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalization_mode` is set to `REFERENCE_ONLY`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
-
-        /// <summary>
         /// Required. URI.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUri")]
         public string? FileUri { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalization_mode` is set to `REFERENCE_ONLY`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Optional. The IANA standard MIME type of the source data.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FileData" /> class.
         /// </summary>
-        /// <param name="displayName">
-        /// Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalization_mode` is set to `REFERENCE_ONLY`.
-        /// </param>
         /// <param name="fileUri">
         /// Required. URI.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalization_mode` is set to `REFERENCE_ONLY`.
         /// </param>
         /// <param name="mimeType">
         /// Optional. The IANA standard MIME type of the source data.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileData(
-            string? displayName,
             string? fileUri,
+            string? displayName,
             string? mimeType)
         {
-            this.DisplayName = displayName;
             this.FileUri = fileUri;
+            this.DisplayName = displayName;
             this.MimeType = mimeType;
         }
 
