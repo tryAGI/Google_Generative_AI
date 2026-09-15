@@ -9,11 +9,16 @@ namespace Google.Gemini
     public sealed partial class CreateEnvironmentRequest
     {
         /// <summary>
-        /// Network egress mode.
+        /// Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.CreateEnvironmentRequestNetworkModeJsonConverter))]
-        public global::Google.Gemini.CreateEnvironmentRequestNetworkMode? NetworkMode { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fromEnvironment")]
+        public string? FromEnvironment { get; set; }
+
+        /// <summary>
+        /// Sources to be mounted into the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sources")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Source>? Sources { get; set; }
 
         /// <summary>
         /// Network egress configuration for the environment.
@@ -22,10 +27,11 @@ namespace Google.Gemini
         public global::Google.Gemini.EnvironmentNetworkEgressAllowlist? NetworkAllowlist { get; set; }
 
         /// <summary>
-        /// Sources to be mounted into the environment.
+        /// Network egress mode.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sources")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Source>? Sources { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("networkMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.CreateEnvironmentRequestNetworkModeJsonConverter))]
+        public global::Google.Gemini.CreateEnvironmentRequestNetworkMode? NetworkMode { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -36,26 +42,31 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateEnvironmentRequest" /> class.
         /// </summary>
-        /// <param name="networkMode">
-        /// Network egress mode.
+        /// <param name="fromEnvironment">
+        /// Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
+        /// </param>
+        /// <param name="sources">
+        /// Sources to be mounted into the environment.
         /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
         /// </param>
-        /// <param name="sources">
-        /// Sources to be mounted into the environment.
+        /// <param name="networkMode">
+        /// Network egress mode.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateEnvironmentRequest(
-            global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode,
+            string? fromEnvironment,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources,
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources)
+            global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode)
         {
-            this.NetworkMode = networkMode;
-            this.NetworkAllowlist = networkAllowlist;
+            this.FromEnvironment = fromEnvironment;
             this.Sources = sources;
+            this.NetworkAllowlist = networkAllowlist;
+            this.NetworkMode = networkMode;
         }
 
         /// <summary>
