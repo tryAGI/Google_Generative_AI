@@ -4,12 +4,12 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// A network egress rule that controls which external domains the environment is allowed to reach. Each rule identifies a target domain and, optionally, a set of HTTP headers to inject into every matching outbound request.
+    /// A single domain allowlist rule with optional header injection.
     /// </summary>
     public sealed partial class EgressRule
     {
         /// <summary>
-        /// The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
         public string? Domain { get; set; }
@@ -30,7 +30,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="EgressRule" /> class.
         /// </summary>
         /// <param name="domain">
-        /// The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
         /// </param>
         /// <param name="transform">
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").

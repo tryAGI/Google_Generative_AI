@@ -31,26 +31,26 @@ namespace Google.Gemini
         /// <summary>
         /// Creates an environment.
         /// </summary>
-        /// <param name="fromEnvironment">
-        /// Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
+        /// <param name="networkMode">
+        /// Network egress mode.
         /// </param>
         /// <param name="sources">
         /// Sources to be mounted into the environment.
         /// </param>
+        /// <param name="fromEnvironment">
+        /// Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
+        /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
-        /// </param>
-        /// <param name="networkMode">
-        /// Network egress mode.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.Environment> EnvironmentsCreateAsync(
-            string? fromEnvironment = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
-            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
             global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
+            string? fromEnvironment = default,
+            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

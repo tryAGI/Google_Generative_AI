@@ -50,7 +50,7 @@ namespace Google.Gemini
             ref string content);
 
         /// <summary>
-        /// Retrieves a file or directory from an environment's snapshot (HTTP endpoint).
+        /// Retrieves file metadata or directory contents from an environment's snapshot. To download file contents directly, pass ?alt=media or use the files.download helper.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
@@ -82,7 +82,7 @@ namespace Google.Gemini
             return __response.Body;
         }
         /// <summary>
-        /// Retrieves a file or directory from an environment's snapshot (HTTP endpoint).
+        /// Retrieves file metadata or directory contents from an environment's snapshot. To download file contents directly, pass ?alt=media or use the files.download helper.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>

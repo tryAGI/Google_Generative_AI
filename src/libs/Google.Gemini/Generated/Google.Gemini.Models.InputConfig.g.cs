@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class InputConfig
     {
         /// <summary>
-        /// The name of the `File` containing the input requests.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileName")]
-        public string? FileName { get; set; }
-
-        /// <summary>
         /// The requests to be processed in the batch if provided as part of the batch creation request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requests")]
         public global::Google.Gemini.InlinedRequests? Requests { get; set; }
+
+        /// <summary>
+        /// The name of the `File` containing the input requests.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileName")]
+        public string? FileName { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="InputConfig" /> class.
         /// </summary>
-        /// <param name="fileName">
-        /// The name of the `File` containing the input requests.
-        /// </param>
         /// <param name="requests">
         /// The requests to be processed in the batch if provided as part of the batch creation request.
+        /// </param>
+        /// <param name="fileName">
+        /// The name of the `File` containing the input requests.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public InputConfig(
-            string? fileName,
-            global::Google.Gemini.InlinedRequests? requests)
+            global::Google.Gemini.InlinedRequests? requests,
+            string? fileName)
         {
-            this.FileName = fileName;
             this.Requests = requests;
+            this.FileName = fileName;
         }
 
         /// <summary>

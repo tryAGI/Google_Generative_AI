@@ -5,7 +5,7 @@ namespace Google.Gemini
     public partial interface IGeminiClient
     {
         /// <summary>
-        /// Retrieves a file or directory from an environment's snapshot (HTTP endpoint).
+        /// Retrieves file metadata or directory contents from an environment's snapshot. To download file contents directly, pass ?alt=media or use the files.download helper.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
@@ -24,7 +24,7 @@ namespace Google.Gemini
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Retrieves a file or directory from an environment's snapshot (HTTP endpoint).
+        /// Retrieves file metadata or directory contents from an environment's snapshot. To download file contents directly, pass ?alt=media or use the files.download helper.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
