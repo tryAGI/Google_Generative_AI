@@ -7,7 +7,7 @@ namespace Google.Gemini
     {
 
 
-        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_DynamicStreamGenerateContentAsStreamSecurityRequirement0 =
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement s_EnvironmentsFilesMediaUploadSecurityRequirement0 =
             new global::Google.Gemini.EndPointSecurityRequirement
             {
                 Authorizations = new global::Google.Gemini.EndPointAuthorizationRequirement[]
@@ -21,52 +21,90 @@ namespace Google.Gemini
                     },
                 },
             };
-        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_DynamicStreamGenerateContentAsStreamSecurityRequirements =
+        private static readonly global::Google.Gemini.EndPointSecurityRequirement[] s_EnvironmentsFilesMediaUploadSecurityRequirements =
             new global::Google.Gemini.EndPointSecurityRequirement[]
-            {                s_DynamicStreamGenerateContentAsStreamSecurityRequirement0,
+            {                s_EnvironmentsFilesMediaUploadSecurityRequirement0,
             };
-        partial void PrepareDynamicStreamGenerateContentAsStreamArguments(
+        partial void PrepareEnvironmentsFilesMediaUploadArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string dynamicId,
-            global::Google.Gemini.GenerateContentRequest request);
-        partial void PrepareDynamicStreamGenerateContentAsStreamRequest(
+            ref string environmentsId,
+            ref string filesId,
+            global::Google.Gemini.UploadEnvironmentFileRequest request);
+        partial void PrepareEnvironmentsFilesMediaUploadRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string dynamicId,
-            global::Google.Gemini.GenerateContentRequest request);
-        partial void ProcessDynamicStreamGenerateContentAsStreamResponse(
+            string environmentsId,
+            string filesId,
+            global::Google.Gemini.UploadEnvironmentFileRequest request);
+        partial void ProcessEnvironmentsFilesMediaUploadResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessEnvironmentsFilesMediaUploadResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
-        /// Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.
+        /// Uploads (creates or updates) a file in an environment's workspace.
         /// </summary>
-        /// <param name="dynamicId"></param>
+        /// <param name="environmentsId"></param>
+        /// <param name="filesId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
-        public async global::System.Collections.Generic.IAsyncEnumerable<global::Google.Gemini.GenerateContentResponse> DynamicStreamGenerateContentAsStreamAsync(
-            string dynamicId,
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.UploadEnvironmentFileResponse> EnvironmentsFilesMediaUploadAsync(
+            string environmentsId,
+            string filesId,
 
-            global::Google.Gemini.GenerateContentRequest request,
+            global::Google.Gemini.UploadEnvironmentFileRequest request,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
-            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __response = await EnvironmentsFilesMediaUploadAsResponseAsync(
+                environmentsId: environmentsId,
+                filesId: filesId,
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Uploads (creates or updates) a file in an environment's workspace.
+        /// </summary>
+        /// <param name="environmentsId"></param>
+        /// <param name="filesId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Google.Gemini.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.UploadEnvironmentFileResponse>> EnvironmentsFilesMediaUploadAsResponseAsync(
+            string environmentsId,
+            string filesId,
+
+            global::Google.Gemini.UploadEnvironmentFileRequest request,
+            global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareDynamicStreamGenerateContentAsStreamArguments(
+            PrepareEnvironmentsFilesMediaUploadArguments(
                 httpClient: HttpClient,
-                dynamicId: ref dynamicId,
+                environmentsId: ref environmentsId,
+                filesId: ref filesId,
                 request: request);
 
 
             var __authorizations = global::Google.Gemini.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_DynamicStreamGenerateContentAsStreamSecurityRequirements,
-                operationName: "DynamicStreamGenerateContentAsStreamAsync");
+                securityRequirements: s_EnvironmentsFilesMediaUploadSecurityRequirements,
+                operationName: "EnvironmentsFilesMediaUploadAsync");
 
             using var __timeoutCancellationTokenSource = global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -86,7 +124,7 @@ namespace Google.Gemini
             {
 
                             var __pathBuilder = new global::Google.Gemini.PathBuilder(
-                                path: $"/dynamic/{dynamicId}:streamGenerateContent",
+                                path: $"/environments/{environmentsId}/files/{filesId}",
                                 baseUri: HttpClient.BaseAddress);
                             foreach (var __authorization in __authorizations)
                             {
@@ -102,16 +140,12 @@ namespace Google.Gemini
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Put,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
-
-                __httpRequest.Headers.TryAddWithoutValidation(
-                    "Accept",
-                    "text/event-stream");
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
                                 content: __httpRequestContentBody,
@@ -126,10 +160,11 @@ namespace Google.Gemini
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareDynamicStreamGenerateContentAsStreamRequest(
+                PrepareEnvironmentsFilesMediaUploadRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    dynamicId: dynamicId!,
+                    environmentsId: environmentsId!,
+                    filesId: filesId!,
                     request: request);
 
                 return __httpRequest;
@@ -147,10 +182,10 @@ namespace Google.Gemini
                     await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DynamicStreamGenerateContentAsStream",
-                                methodName: "DynamicStreamGenerateContentAsStreamAsync",
-                                pathTemplate: "$\"/dynamic/{dynamicId}:streamGenerateContent\"",
-                                httpMethod: "POST",
+                                operationId: "EnvironmentsFilesMediaUpload",
+                                methodName: "EnvironmentsFilesMediaUploadAsync",
+                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -167,7 +202,7 @@ namespace Google.Gemini
                     {
                         __response = await HttpClient.SendAsync(
                 request: __httpRequest,
-                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
                 cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
@@ -181,10 +216,10 @@ namespace Google.Gemini
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DynamicStreamGenerateContentAsStream",
-                                methodName: "DynamicStreamGenerateContentAsStreamAsync",
-                                pathTemplate: "$\"/dynamic/{dynamicId}:streamGenerateContent\"",
-                                httpMethod: "POST",
+                                operationId: "EnvironmentsFilesMediaUpload",
+                                methodName: "EnvironmentsFilesMediaUploadAsync",
+                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -222,10 +257,10 @@ namespace Google.Gemini
                         await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DynamicStreamGenerateContentAsStream",
-                                methodName: "DynamicStreamGenerateContentAsStreamAsync",
-                                pathTemplate: "$\"/dynamic/{dynamicId}:streamGenerateContent\"",
-                                httpMethod: "POST",
+                                operationId: "EnvironmentsFilesMediaUpload",
+                                methodName: "EnvironmentsFilesMediaUploadAsync",
+                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -262,7 +297,7 @@ namespace Google.Gemini
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessDynamicStreamGenerateContentAsStreamResponse(
+                ProcessEnvironmentsFilesMediaUploadResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -270,10 +305,10 @@ namespace Google.Gemini
                     await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DynamicStreamGenerateContentAsStream",
-                                methodName: "DynamicStreamGenerateContentAsStreamAsync",
-                                pathTemplate: "$\"/dynamic/{dynamicId}:streamGenerateContent\"",
-                                httpMethod: "POST",
+                                operationId: "EnvironmentsFilesMediaUpload",
+                                methodName: "EnvironmentsFilesMediaUploadAsync",
+                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -292,10 +327,10 @@ namespace Google.Gemini
                     await global::Google.Gemini.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DynamicStreamGenerateContentAsStream",
-                                methodName: "DynamicStreamGenerateContentAsStreamAsync",
-                                pathTemplate: "$\"/dynamic/{dynamicId}:streamGenerateContent\"",
-                                httpMethod: "POST",
+                                operationId: "EnvironmentsFilesMediaUpload",
+                                methodName: "EnvironmentsFilesMediaUploadAsync",
+                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -310,63 +345,92 @@ namespace Google.Gemini
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
-                            try
+                            if (__effectiveReadResponseAsString)
                             {
-                                __response.EnsureSuccessStatusCode();
-                            }
-                            catch (global::System.Net.Http.HttpRequestException __ex)
-                            {
-                                string? __content = null;
+                                var __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                    __effectiveCancellationToken
+                #endif
+                                ).ConfigureAwait(false);
+
+                                ProcessResponseContent(
+                                    client: HttpClient,
+                                    response: __response,
+                                    content: ref __content);
+                                ProcessEnvironmentsFilesMediaUploadResponseContent(
+                                    httpClient: HttpClient,
+                                    httpResponseMessage: __response,
+                                    content: ref __content);
+
                                 try
                                 {
-                                    __content = await __response.Content.ReadAsStringAsync(
+                                    __response.EnsureSuccessStatusCode();
+
+                                    var __value = global::Google.Gemini.UploadEnvironmentFileResponse.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.UploadEnvironmentFileResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Google.Gemini.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    throw global::Google.Gemini.ApiException.Create(
+                                        statusCode: __response.StatusCode,
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value));
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
+
+                                    var __value = await global::Google.Gemini.UploadEnvironmentFileResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.UploadEnvironmentFileResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Google.Gemini.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
-                                catch (global::System.Exception)
+                                catch (global::System.Exception __ex)
                                 {
-                                }
-
-                                throw global::Google.Gemini.ApiException.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __ex,
-                                    responseBody: __content,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-
-                            using var __stream = await __response.Content.ReadAsStreamAsync(
+                                    string? __content = null;
+                                    try
+                                    {
+                                        __content = await __response.Content.ReadAsStringAsync(
                 #if NET5_0_OR_GREATER
-                                __effectiveCancellationToken
+                                            __effectiveCancellationToken
                 #endif
-                            ).ConfigureAwait(false);
+                                        ).ConfigureAwait(false);
+                                    }
+                                    catch (global::System.Exception)
+                                    {
+                                    }
 
-                            await foreach (var __sseEvent in global::System.Net.ServerSentEvents.SseParser
-                                .Create(__stream).EnumerateAsync(__effectiveCancellationToken))
-                            {
-                                var __content = __sseEvent.Data;
-                                if (__content == "[DONE]")
-                                {
-                                    yield break;
+                                    throw global::Google.Gemini.ApiException.Create(
+                                        statusCode: __response.StatusCode,
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value));
                                 }
-
-                                var __streamedResponse = global::Google.Gemini.GenerateContentResponse.FromJson(__content, JsonSerializerContext) ??
-                                                       throw global::Google.Gemini.ApiException.Create(
-                                                           statusCode: __response.StatusCode,
-                                                           message: $"Response deserialization failed for \"{__content}\" ",
-                                                           innerException: null,
-                                                           responseBody: __content,
-                                                           responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                                               __response.Headers,
-                                                               h => h.Key,
-                                                               h => h.Value));
-
-                                yield return __streamedResponse;
                             }
 
                 }
@@ -377,86 +441,39 @@ namespace Google.Gemini
             }
         }
         /// <summary>
-        /// Generates a [streamed response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream) from the model given an input `GenerateContentRequest`.
+        /// Uploads (creates or updates) a file in an environment's workspace.
         /// </summary>
-        /// <param name="dynamicId"></param>
-        /// <param name="cachedContent">
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+        /// <param name="environmentsId"></param>
+        /// <param name="filesId"></param>
+        /// <param name="overwrite">
+        /// Optional. Whether to overwrite the destination file if it already exists.
         /// </param>
-        /// <param name="safetySettings">
-        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-        /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </param>
-        /// <param name="store">
-        /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
-        /// </param>
-        /// <param name="generationConfig">
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </param>
-        /// <param name="tools">
-        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
-        /// </param>
-        /// <param name="toolConfig">
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
-        /// </param>
-        /// <param name="serviceTier">
-        /// Optional. The service tier of the request.
-        /// </param>
-        /// <param name="labels">
-        /// Optional. Labels with user-defined metadata for the request. Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed. Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
-        /// </param>
-        /// <param name="contents">
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-        /// </param>
-        /// <param name="model">
-        /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// <param name="extract">
+        /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Collections.Generic.IAsyncEnumerable<global::Google.Gemini.GenerateContentResponse> DynamicStreamGenerateContentAsStreamAsync(
-            string dynamicId,
-            string? cachedContent = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings = default,
-            global::Google.Gemini.Content? systemInstruction = default,
-            bool? store = default,
-            global::Google.Gemini.GenerationConfig? generationConfig = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools = default,
-            global::Google.Gemini.ToolConfig? toolConfig = default,
-            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier = default,
-            global::System.Collections.Generic.Dictionary<string, string>? labels = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents = default,
-            string? model = default,
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.UploadEnvironmentFileResponse> EnvironmentsFilesMediaUploadAsync(
+            string environmentsId,
+            string filesId,
+            bool? overwrite = default,
+            bool? extract = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
-            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+            global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Google.Gemini.GenerateContentRequest
+            var __request = new global::Google.Gemini.UploadEnvironmentFileRequest
             {
-                CachedContent = cachedContent,
-                SafetySettings = safetySettings,
-                SystemInstruction = systemInstruction,
-                Store = store,
-                GenerationConfig = generationConfig,
-                Tools = tools,
-                ToolConfig = toolConfig,
-                ServiceTier = serviceTier,
-                Labels = labels,
-                Contents = contents,
-                Model = model,
+                Overwrite = overwrite,
+                Extract = extract,
             };
 
-            var __enumerable = DynamicStreamGenerateContentAsStreamAsync(
-                dynamicId: dynamicId,
+            return await EnvironmentsFilesMediaUploadAsync(
+                environmentsId: environmentsId,
+                filesId: filesId,
                 request: __request,
                 requestOptions: requestOptions,
-                cancellationToken: cancellationToken);
-
-            await foreach (var __response in __enumerable)
-            {
-                yield return __response;
-            }
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

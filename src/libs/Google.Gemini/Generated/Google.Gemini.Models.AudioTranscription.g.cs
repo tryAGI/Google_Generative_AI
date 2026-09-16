@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class AudioTranscription
     {
         /// <summary>
-        /// Required. The transcription text of this audio segment.
+        /// Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("words")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.WordInfo>? Words { get; set; }
 
         /// <summary>
         /// Optional. A label identifying the speaker of this audio segment (e.g. "spk_1", "spk_2"). Present when diarization is set.
@@ -21,10 +21,10 @@ namespace Google.Gemini
         public string? SpeakerLabel { get; set; }
 
         /// <summary>
-        /// Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
+        /// Required. The transcription text of this audio segment.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("words")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.WordInfo>? Words { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioTranscription" /> class.
         /// </summary>
-        /// <param name="text">
-        /// Required. The transcription text of this audio segment.
+        /// <param name="words">
+        /// Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
         /// </param>
         /// <param name="speakerLabel">
         /// Optional. A label identifying the speaker of this audio segment (e.g. "spk_1", "spk_2"). Present when diarization is set.
         /// </param>
-        /// <param name="words">
-        /// Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
+        /// <param name="text">
+        /// Required. The transcription text of this audio segment.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioTranscription(
-            string? text,
+            global::System.Collections.Generic.IList<global::Google.Gemini.WordInfo>? words,
             string? speakerLabel,
-            global::System.Collections.Generic.IList<global::Google.Gemini.WordInfo>? words)
+            string? text)
         {
-            this.Text = text;
-            this.SpeakerLabel = speakerLabel;
             this.Words = words;
+            this.SpeakerLabel = speakerLabel;
+            this.Text = text;
         }
 
         /// <summary>

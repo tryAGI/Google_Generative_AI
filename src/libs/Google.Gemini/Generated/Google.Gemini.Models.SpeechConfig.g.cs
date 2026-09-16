@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class SpeechConfig
     {
         /// <summary>
-        /// Optional. The IETF [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code that the user configured the app to use. Used for speech recognition and synthesis. Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`, `hi-IN`, `pt-BR`, `ar-XA`, `es-ES`, `fr-CA`, `id-ID`, `it-IT`, `ja-JP`, `tr-TR`, `vi-VN`, `bn-IN`, `gu-IN`, `kn-IN`, `ml-IN`, `mr-IN`, `ta-IN`, `te-IN`, `nl-NL`, `ko-KR`, `cmn-CN`, `pl-PL`, `ru-RU`, and `th-TH`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("languageCode")]
-        public string? LanguageCode { get; set; }
-
-        /// <summary>
         /// The configuration for the voice to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceConfig")]
         public global::Google.Gemini.VoiceConfig? VoiceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The IETF [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code that the user configured the app to use. Used for speech recognition and synthesis. Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`, `hi-IN`, `pt-BR`, `ar-XA`, `es-ES`, `fr-CA`, `id-ID`, `it-IT`, `ja-JP`, `tr-TR`, `vi-VN`, `bn-IN`, `gu-IN`, `kn-IN`, `ml-IN`, `mr-IN`, `ta-IN`, `te-IN`, `nl-NL`, `ko-KR`, `cmn-CN`, `pl-PL`, `ru-RU`, and `th-TH`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageCode")]
+        public string? LanguageCode { get; set; }
 
         /// <summary>
         /// The configuration for the multi-speaker setup.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="SpeechConfig" /> class.
         /// </summary>
-        /// <param name="languageCode">
-        /// Optional. The IETF [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code that the user configured the app to use. Used for speech recognition and synthesis. Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`, `hi-IN`, `pt-BR`, `ar-XA`, `es-ES`, `fr-CA`, `id-ID`, `it-IT`, `ja-JP`, `tr-TR`, `vi-VN`, `bn-IN`, `gu-IN`, `kn-IN`, `ml-IN`, `mr-IN`, `ta-IN`, `te-IN`, `nl-NL`, `ko-KR`, `cmn-CN`, `pl-PL`, `ru-RU`, and `th-TH`.
-        /// </param>
         /// <param name="voiceConfig">
         /// The configuration for the voice to use.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The IETF [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code that the user configured the app to use. Used for speech recognition and synthesis. Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`, `hi-IN`, `pt-BR`, `ar-XA`, `es-ES`, `fr-CA`, `id-ID`, `it-IT`, `ja-JP`, `tr-TR`, `vi-VN`, `bn-IN`, `gu-IN`, `kn-IN`, `ml-IN`, `mr-IN`, `ta-IN`, `te-IN`, `nl-NL`, `ko-KR`, `cmn-CN`, `pl-PL`, `ru-RU`, and `th-TH`.
         /// </param>
         /// <param name="multiSpeakerVoiceConfig">
         /// The configuration for the multi-speaker setup.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpeechConfig(
-            string? languageCode,
             global::Google.Gemini.VoiceConfig? voiceConfig,
+            string? languageCode,
             global::Google.Gemini.MultiSpeakerVoiceConfig? multiSpeakerVoiceConfig)
         {
-            this.LanguageCode = languageCode;
             this.VoiceConfig = voiceConfig;
+            this.LanguageCode = languageCode;
             this.MultiSpeakerVoiceConfig = multiSpeakerVoiceConfig;
         }
 
