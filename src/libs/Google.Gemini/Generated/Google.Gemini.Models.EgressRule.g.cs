@@ -9,16 +9,22 @@ namespace Google.Gemini
     public sealed partial class EgressRule
     {
         /// <summary>
-        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+        /// Optional. Reference to a server-managed Credential resource by ID.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("credential")]
+        public string? Credential { get; set; }
 
         /// <summary>
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transform")]
         public global::System.Collections.Generic.Dictionary<string, string>? Transform { get; set; }
+
+        /// <summary>
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EgressRule" /> class.
         /// </summary>
-        /// <param name="domain">
-        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+        /// <param name="credential">
+        /// Optional. Reference to a server-managed Credential resource by ID.
         /// </param>
         /// <param name="transform">
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
+        /// </param>
+        /// <param name="domain">
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EgressRule(
-            string? domain,
-            global::System.Collections.Generic.Dictionary<string, string>? transform)
+            string? credential,
+            global::System.Collections.Generic.Dictionary<string, string>? transform,
+            string? domain)
         {
-            this.Domain = domain;
+            this.Credential = credential;
             this.Transform = transform;
+            this.Domain = domain;
         }
 
         /// <summary>
