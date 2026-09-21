@@ -127,6 +127,7 @@ sys.exit(0 if current == next_spec else 1)
 PY
 then
   rm openapi.next.json
+  python3 emit_sse_hook.py
   echo 'OpenAPI contract is semantically unchanged; skipping regeneration.'
   exit 0
 fi
@@ -141,3 +142,4 @@ autosdk generate openapi.json \
   --exclude-deprecated-operations \
   --base-url https://generativelanguage.googleapis.com/v1beta \
   --security-scheme ApiKey:Query:key
+python3 emit_sse_hook.py

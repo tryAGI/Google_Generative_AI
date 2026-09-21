@@ -38,14 +38,7 @@ public partial class Tests
                 }
             }
 
-            // In streaming mode, rate limiting may not throw ApiException but instead
-            // return empty/truncated data. Treat empty results as inconclusive.
-            if (deltas.Count == 0)
-            {
-                Assert.Inconclusive("No streaming deltas received (likely rate limited).");
-                return;
-            }
-
+            deltas.Should().NotBeEmpty("a successful SSE response must contain a text delta");
             string.Concat(deltas).Should().NotBeNullOrWhiteSpace();
         }
         catch (ApiException ex) when (IsTransientAvailabilityIssue(ex))
