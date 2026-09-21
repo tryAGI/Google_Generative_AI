@@ -14,7 +14,8 @@ using System.Text.Json.Serialization.Metadata;
 public static class GeminiClientLiveExtensions
 {
     private const string DefaultLiveModel = "models/gemini-3.1-flash-live-preview";
-    private const string WssBaseUri = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent";
+    private const string WssV1AlphaBaseUri = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent";
+    private const string WssV1BetaBaseUri = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent";
 
     /// <summary>
     /// Connects to the Gemini Live API and returns an active session.
@@ -56,6 +57,7 @@ public static class GeminiClientLiveExtensions
 
         // Ensure model is set
         config.Model ??= DefaultLiveModel;
+        GeminiLiveModelCatalog.PrepareForConnection(config);
 
         // Build JSON serializer options that can handle both Live types and SDK-generated types.
         // Use the SDK's SourceGenerationContext converters (for enums etc.) with reflection fallback
@@ -71,7 +73,9 @@ public static class GeminiClientLiveExtensions
         }
 
         // Build WebSocket URI with API key
-        var uri = new Uri($"{WssBaseUri}?key={Uri.EscapeDataString(apiKey)}");
+        var apiVersion = GeminiLiveModelCatalog.GetApiVersion(config.Model);
+        var baseUri = apiVersion == "v1alpha" ? WssV1AlphaBaseUri : WssV1BetaBaseUri;
+        var uri = new Uri($"{baseUri}?key={Uri.EscapeDataString(apiKey)}");
 
         // Create and configure WebSocket
         // CA2000: ownership of webSocket transfers to GeminiLiveSession on success;
@@ -265,6 +269,11 @@ public static class GeminiClientLiveExtensions
         if (message.UsageMetadata is not null)
         {
             messageTypes.Add(nameof(LiveServerMessage.UsageMetadata));
+        }
+
+        if (message.InteractionStatus is not null)
+        {
+            messageTypes.Add(nameof(LiveServerMessage.InteractionStatus));
         }
 
         return messageTypes;

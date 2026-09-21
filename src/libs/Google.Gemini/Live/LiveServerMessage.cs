@@ -12,6 +12,19 @@ using System.Text.Json.Serialization;
 public sealed class LiveServerMessage
 {
     /// <summary>
+    /// Extended-thinking lifecycle state. <c>IDLE</c> is the terminal signal for
+    /// an interaction; <c>turnComplete</c> can be emitted for intermediate model
+    /// turns while the interaction is still in progress.
+    /// </summary>
+    [JsonPropertyName("interactionStatus")]
+    public string? InteractionStatus { get; set; }
+
+    /// <summary>Whether the extended-thinking interaction is fully complete.</summary>
+    [JsonIgnore]
+    public bool IsInteractionIdle =>
+        string.Equals(InteractionStatus, "IDLE", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
     /// Setup acknowledgement. Sent after the client's setup message is processed.
     /// </summary>
     [JsonPropertyName("setupComplete")]
