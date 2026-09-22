@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class ReviewSnippet
     {
         /// <summary>
-        /// Title of the review.
+        /// A link that corresponds to the user review on Google Maps.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleMapsUri")]
+        public string? GoogleMapsUri { get; set; }
 
         /// <summary>
         /// The ID of the review snippet.
@@ -21,10 +21,10 @@ namespace Google.Gemini
         public string? ReviewId { get; set; }
 
         /// <summary>
-        /// A link that corresponds to the user review on Google Maps.
+        /// Title of the review.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("googleMapsUri")]
-        public string? GoogleMapsUri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ReviewSnippet" /> class.
         /// </summary>
-        /// <param name="title">
-        /// Title of the review.
+        /// <param name="googleMapsUri">
+        /// A link that corresponds to the user review on Google Maps.
         /// </param>
         /// <param name="reviewId">
         /// The ID of the review snippet.
         /// </param>
-        /// <param name="googleMapsUri">
-        /// A link that corresponds to the user review on Google Maps.
+        /// <param name="title">
+        /// Title of the review.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ReviewSnippet(
-            string? title,
+            string? googleMapsUri,
             string? reviewId,
-            string? googleMapsUri)
+            string? title)
         {
-            this.Title = title;
-            this.ReviewId = reviewId;
             this.GoogleMapsUri = googleMapsUri;
+            this.ReviewId = reviewId;
+            this.Title = title;
         }
 
         /// <summary>
