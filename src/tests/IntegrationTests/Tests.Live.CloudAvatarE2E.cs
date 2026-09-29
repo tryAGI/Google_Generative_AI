@@ -133,14 +133,18 @@ public partial class Tests
     {
         using var process = new Process
         {
-            StartInfo = new ProcessStartInfo("ffprobe")
+            StartInfo = new ProcessStartInfo("ffmpeg")
             {
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
             },
         };
-        foreach (var argument in new[] { "-v", "error", "-show_entries", "stream=codec_type", "-of", "csv=p=0", path })
+        foreach (var argument in new[]
+                 {
+                     "-v", "error", "-xerror", "-i", path,
+                     "-map", "0:v:0", "-frames:v", "1", "-f", "null", "-",
+                 })
         {
             process.StartInfo.ArgumentList.Add(argument);
         }
@@ -151,12 +155,11 @@ public partial class Tests
         }
         catch (System.ComponentModel.Win32Exception)
         {
-            throw new AssertInconclusiveException("ffprobe is required to verify Avatar MP4 playback.");
+            throw new AssertInconclusiveException("ffmpeg is required to decode Avatar video.");
         }
 
-        var streams = await process.StandardOutput.ReadToEndAsync(cancellationToken);
+        _ = await process.StandardOutput.ReadToEndAsync(cancellationToken);
         await process.WaitForExitAsync(cancellationToken);
-        Assert.AreEqual(0, process.ExitCode, "ffprobe could not decode the assembled MP4 stream.");
-        StringAssert.Contains(streams, "video");
+        Assert.AreEqual(0, process.ExitCode, "ffmpeg could not decode the first Avatar video frame.");
     }
 }
