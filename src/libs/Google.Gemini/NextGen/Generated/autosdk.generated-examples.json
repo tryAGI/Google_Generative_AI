@@ -1,0 +1,59 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Deletes an Agent.",
+      "Slug": "deleteagent",
+      "Description": "Deletes an Agent.",
+      "Language": "http",
+      "Code": "### Deletes an Agent.\n# @name DeleteAgent\nDELETE {{host}}/v1beta/agents/{{agentsId}}\nx-goog-api-key: {{api_key}}\nAccept: application/json\n\n## Responses\n# default\n# Description: Successful operation\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "DeleteAgent",
+      "Setup": null
+    },
+    {
+      "Order": 2,
+      "Title": "Gets a specific Agent.",
+      "Slug": "getagent",
+      "Description": "Gets a specific Agent.",
+      "Language": "http",
+      "Code": "### Gets a specific Agent.\n# @name GetAgent\nGET {{host}}/v1beta/agents/{{agentsId}}\nx-goog-api-key: {{api_key}}\nAccept: application/json\n\n## Responses\n# default\n# Description: Successful operation\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "GetAgent",
+      "Setup": null
+    },
+    {
+      "Order": 3,
+      "Title": "Cancels an interaction by id. This only applies to background interactions\nthat are still running.",
+      "Slug": "cancelinteractionbyid",
+      "Description": "Cancels an interaction by id. This only applies to background interactions\nthat are still running.",
+      "Language": "http",
+      "Code": "### Cancels an interaction by id. This only applies to background interactions\nthat are still running.\n# @name cancelInteractionById\nPOST {{host}}/v1beta/interactions/{{interactionsId}}/cancel\nx-goog-api-key: {{api_key}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Successful operation\n# Content-Type: application/json\n# 4XX\n# Description: Client Error\n# Content-Type: application/json\n# 5XX\n# Description: Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "cancelInteractionById",
+      "Setup": null
+    },
+    {
+      "Order": 4,
+      "Title": "Creates a new interaction.",
+      "Slug": "createinteraction",
+      "Description": "Creates a new interaction.",
+      "Language": "http",
+      "Code": "### Creates a new interaction.\n# @name CreateInteraction\nPOST {{host}}/v1beta/interactions\nx-goog-api-key: {{api_key}}\nContent-Type: application/json\nAccept: application/json, text/event-stream\n\n{\n  \u0022agent\u0022: \u0022deep-research-pro-preview-12-2025\u0022,\n  \u0022agent_config\u0022: {\n    \u0022max_total_tokens\u0022: \u0022string\u0022,\n    \u0022model\u0022: \u0022string\u0022,\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022background\u0022: true,\n  \u0022created\u0022: \u0022string\u0022,\n  \u0022environment\u0022: {\n    \u0022env\u0022: {},\n    \u0022environment_id\u0022: \u0022string\u0022,\n    \u0022network\u0022: {\n      \u0022allowlist\u0022: []\n    },\n    \u0022sources\u0022: [\n      {}\n    ],\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022environment_id\u0022: \u0022string\u0022,\n  \u0022id\u0022: \u0022string\u0022,\n  \u0022input\u0022: {\n    \u0022channels\u0022: 0,\n    \u0022data\u0022: \u0022\u0022,\n    \u0022mime_type\u0022: \u0022audio/wav\u0022,\n    \u0022sample_rate\u0022: 0,\n    \u0022type\u0022: \u0022string\u0022,\n    \u0022uri\u0022: \u0022string\u0022\n  },\n  \u0022labels\u0022: {},\n  \u0022previous_interaction_id\u0022: \u0022string\u0022,\n  \u0022response_format\u0022: {\n    \u0022bit_rate\u0022: 0,\n    \u0022delivery\u0022: \u0022inline\u0022,\n    \u0022mime_type\u0022: \u0022audio/mp3\u0022,\n    \u0022sample_rate\u0022: 0,\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022response_mime_type\u0022: \u0022string\u0022,\n  \u0022response_modalities\u0022: [\n    \u0022text\u0022\n  ],\n  \u0022safety_settings\u0022: [\n    {\n      \u0022method\u0022: \u0022severity\u0022,\n      \u0022threshold\u0022: \u0022block_low_and_above\u0022,\n      \u0022type\u0022: \u0022hate_speech\u0022\n    }\n  ],\n  \u0022service_tier\u0022: \u0022flex\u0022,\n  \u0022status\u0022: \u0022in_progress\u0022,\n  \u0022store\u0022: true,\n  \u0022stream\u0022: true,\n  \u0022system_instruction\u0022: \u0022string\u0022,\n  \u0022tools\u0022: [\n    {\n      \u0022type\u0022: \u0022string\u0022\n    }\n  ],\n  \u0022updated\u0022: \u0022string\u0022,\n  \u0022webhook_config\u0022: {\n    \u0022uris\u0022: [\n      \u0022string\u0022\n    ],\n    \u0022user_metadata\u0022: {}\n  }\n}\n\n## Responses\n# 200\n# Description: Successful operation\n# Content-Type: application/json, text/event-stream\n# 4XX\n# Description: Client Error\n# Content-Type: application/json\n# 5XX\n# Description: Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "CreateInteraction",
+      "Setup": null
+    },
+    {
+      "Order": 5,
+      "Title": "Retrieves the full details of a single interaction based on its\n\u0060Interaction.id\u0060.",
+      "Slug": "getinteractionbyid",
+      "Description": "Retrieves the full details of a single interaction based on its\n\u0060Interaction.id\u0060.",
+      "Language": "http",
+      "Code": "### Retrieves the full details of a single interaction based on its\n\u0060Interaction.id\u0060.\n# @name getInteractionById\nGET {{host}}/v1beta/interactions/{{interactionsId}}?include_input={{include_input}}\u0026last_event_id={{last_event_id}}\u0026stream={{stream}}\nx-goog-api-key: {{api_key}}\nAccept: application/json, text/event-stream\n\n## Responses\n# 200\n# Description: Successful retrieval of the interaction.\n# Content-Type: application/json, text/event-stream\n# 4XX\n# Description: Client Error\n# Content-Type: application/json\n# 5XX\n# Description: Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "getInteractionById",
+      "Setup": null
+    }
+  ]
+}
