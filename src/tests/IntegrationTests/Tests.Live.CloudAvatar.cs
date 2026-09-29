@@ -141,6 +141,83 @@ public partial class Tests
             .GetProperty("avatarConfig").GetProperty("avatarName").GetString());
     }
 
+    [TestMethod]
+    public async Task CloudLiveAvatar_RefreshesOAuthTokenWhenResuming()
+    {
+        using var portReservation = new TcpListener(IPAddress.Loopback, 0);
+        portReservation.Start();
+        var port = ((IPEndPoint)portReservation.LocalEndpoint).Port;
+        portReservation.Stop();
+
+        using var listener = new HttpListener();
+        listener.Prefixes.Add($"http://127.0.0.1:{port}/");
+        listener.Start();
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var headers = new List<string?>();
+        var setups = new List<string>();
+        var server = Task.Run(async () =>
+        {
+            for (var connection = 0; connection < 2; connection++)
+            {
+                var context = await listener.GetContextAsync().WaitAsync(timeout.Token);
+                headers.Add(context.Request.Headers["Authorization"]);
+                var webSocketContext = await context.AcceptWebSocketAsync(subProtocol: null);
+                using var socket = webSocketContext.WebSocket;
+                var buffer = new byte[16_384];
+                var received = await socket.ReceiveAsync(buffer, timeout.Token);
+                setups.Add(Encoding.UTF8.GetString(buffer, 0, received.Count));
+
+                await socket.SendAsync(Encoding.UTF8.GetBytes("""{"setupComplete":{}}"""),
+                    WebSocketMessageType.Binary, true, timeout.Token);
+                var message = connection == 0
+                    ? """{"sessionResumptionUpdate":{"newHandle":"resume-123","resumable":true}}"""
+                    : """{"serverContent":{"modelTurn":{"parts":[{"inlineData":{"mimeType":"video/mp4","data":"AQID"}}]},"turnComplete":true}}""";
+                await socket.SendAsync(Encoding.UTF8.GetBytes(message),
+                    WebSocketMessageType.Binary, true, timeout.Token);
+                if (connection == 0)
+                {
+                    await socket.SendAsync(Encoding.UTF8.GetBytes("""{"goAway":{"timeLeft":"30s"}}"""),
+                        WebSocketMessageType.Binary, true, timeout.Token);
+                }
+
+                var closing = await socket.ReceiveAsync(buffer, timeout.Token);
+                if (closing.MessageType == WebSocketMessageType.Close)
+                {
+                    await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Done", timeout.Token);
+                }
+            }
+        }, timeout.Token);
+
+        var issued = 0;
+        Task<string> GetToken(CancellationToken _) => Task.FromResult($"token-{Interlocked.Increment(ref issued)}");
+        var setup = GeminiCloudLiveClient.CreateAvatarSetup("Ben", "Puck");
+        await using (var session = await GeminiCloudLiveClient.ConnectResilientCoreAsync(
+                         new Uri($"ws://127.0.0.1:{port}/"),
+                         GeminiCloudLiveClient.GetModelResourceName("test-project", "us-central1", setup.Model!),
+                         GetToken, setup, maxReconnects: 1, cancellationToken: timeout.Token))
+        {
+            await foreach (var message in session.ReadEventsAsync(timeout.Token))
+            {
+                if (message.ServerContent?.GetVideoChunks().SingleOrDefault()?.Data is { } chunk)
+                {
+                    CollectionAssert.AreEqual(new byte[] { 1, 2, 3 }, chunk);
+                    break;
+                }
+            }
+
+            Assert.AreEqual(1, session.ReconnectCount);
+        }
+
+        await server.WaitAsync(timeout.Token);
+        Assert.AreEqual(2, issued);
+        CollectionAssert.AreEqual(new[] { "Bearer token-1", "Bearer token-2" }, headers);
+        using var resumed = JsonDocument.Parse(setups[1]);
+        Assert.AreEqual("resume-123", resumed.RootElement.GetProperty("setup")
+            .GetProperty("sessionResumption").GetProperty("handle").GetString());
+        using var initial = JsonDocument.Parse(setups[0]);
+        Assert.IsTrue(initial.RootElement.GetProperty("setup").TryGetProperty("sessionResumption", out _));
+    }
+
     private static string SerializeSetup(LiveSetupConfig setup)
     {
         var options = new JsonSerializerOptions

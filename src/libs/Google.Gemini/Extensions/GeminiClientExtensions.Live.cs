@@ -145,6 +145,8 @@ public static class GeminiClientLiveExtensions
         TimeSpan? keepAliveInterval = null,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(config);
+        config.SessionResumption ??= new LiveSessionResumptionConfig();
         var session = await client.ConnectLiveAsync(
             config,
             connectTimeout,

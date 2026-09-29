@@ -99,6 +99,20 @@ customers and requires the necessary likeness and voice rights. The SDK
 validates setup shape, but access and live behavior require a Google Cloud
 account authorized for the model.
 
+For sessions that must survive a server `goAway`, pass a token provider to
+`ConnectResilientAsync`. It runs before the first connection and every resume,
+so the bearer token is refreshed instead of reusing an expired token:
+
+```csharp
+await using var session = await GeminiCloudLiveClient.ConnectResilientAsync(
+    projectId, location, getAccessTokenAsync, setup);
+```
+
+`getAccessTokenAsync` is a `Func<CancellationToken, Task<string>>` backed by
+your server's Google Cloud credentials. Resumption retains conversation data
+on Google's servers; see the [session resumption guidance](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/start-manage-session#resume-previous-session)
+before enabling it for sensitive conversations.
+
 ## Regeneration
 
 Run `src/libs/Google.Gemini/generate.sh` to refresh both contracts. The

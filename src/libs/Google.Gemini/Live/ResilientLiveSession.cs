@@ -36,11 +36,9 @@ using System.Runtime.CompilerServices;
 public sealed class ResilientLiveSession : IAsyncDisposable
 {
     private GeminiLiveSession _session;
-    private readonly GeminiClient _client;
+    private readonly Func<LiveSetupConfig, CancellationToken, Task<GeminiLiveSession>> _reconnect;
     private readonly LiveSetupConfig _config;
     private readonly int _maxReconnects;
-    private readonly TimeSpan? _connectTimeout;
-    private readonly TimeSpan? _keepAliveInterval;
     private bool _disposed;
     private int _reconnectCount;
 
@@ -61,13 +59,20 @@ public sealed class ResilientLiveSession : IAsyncDisposable
         int maxReconnects = 5,
         TimeSpan? connectTimeout = null,
         TimeSpan? keepAliveInterval = null)
+        : this(session, config, CreateReconnect(client, connectTimeout, keepAliveInterval), maxReconnects)
+    {
+    }
+
+    internal ResilientLiveSession(
+        GeminiLiveSession session,
+        LiveSetupConfig config,
+        Func<LiveSetupConfig, CancellationToken, Task<GeminiLiveSession>> reconnect,
+        int maxReconnects = 5)
     {
         _session = session ?? throw new ArgumentNullException(nameof(session));
-        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _reconnect = reconnect ?? throw new ArgumentNullException(nameof(reconnect));
         _config = config ?? throw new ArgumentNullException(nameof(config));
         _maxReconnects = maxReconnects;
-        _connectTimeout = connectTimeout;
-        _keepAliveInterval = keepAliveInterval;
 
         // Ensure session resumption is enabled for reconnection
         _config.SessionResumption ??= new LiveSessionResumptionConfig();
@@ -168,16 +173,18 @@ public sealed class ResilientLiveSession : IAsyncDisposable
 
                     // Reconnect using session resumption
                     var handle = _session.LastSessionResumptionHandle;
+                    if (string.IsNullOrWhiteSpace(handle))
+                    {
+                        throw new InvalidOperationException(
+                            "The Live server requested reconnection before providing a session resumption handle.");
+                    }
+
                     await _session.DisposeAsync().ConfigureAwait(false);
 
                     _config.SessionResumption ??= new LiveSessionResumptionConfig();
                     _config.SessionResumption.Handle = handle;
 
-                    _session = await _client.ConnectLiveAsync(
-                        _config,
-                        _connectTimeout,
-                        _keepAliveInterval,
-                        cancellationToken).ConfigureAwait(false);
+                    _session = await _reconnect(_config, cancellationToken).ConfigureAwait(false);
 
                     _reconnectCount++;
                     Reconnected?.Invoke(this, EventArgs.Empty);
@@ -205,5 +212,15 @@ public sealed class ResilientLiveSession : IAsyncDisposable
 
         _disposed = true;
         await _session.DisposeAsync().ConfigureAwait(false);
+    }
+
+    private static Func<LiveSetupConfig, CancellationToken, Task<GeminiLiveSession>> CreateReconnect(
+        GeminiClient client,
+        TimeSpan? connectTimeout,
+        TimeSpan? keepAliveInterval)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+        return (config, cancellationToken) => client.ConnectLiveAsync(
+            config, connectTimeout, keepAliveInterval, cancellationToken);
     }
 }

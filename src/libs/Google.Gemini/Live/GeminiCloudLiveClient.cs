@@ -86,6 +86,57 @@ public static partial class GeminiCloudLiveClient
             .ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Connects a resumable Cloud Live session. The provider is called before every
+    /// WebSocket handshake so a reconnection uses a fresh OAuth access token.
+    /// Session resumption retains conversation data on Google's servers.
+    /// </summary>
+    public static Task<ResilientLiveSession> ConnectResilientAsync(
+        string projectId,
+        string location,
+        Func<CancellationToken, Task<string>> accessTokenProvider,
+        LiveSetupConfig config,
+        int maxReconnects = 5,
+        TimeSpan? connectTimeout = null,
+        TimeSpan? keepAliveInterval = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(config);
+        var uri = GetWebSocketUri(location);
+        var modelResource = GetModelResourceName(
+            projectId, location, config.Model ?? GeminiLiveModelCatalog.Gemini38Live);
+        return ConnectResilientCoreAsync(
+            uri, modelResource, accessTokenProvider, config, maxReconnects,
+            connectTimeout, keepAliveInterval, cancellationToken);
+    }
+
+    internal static async Task<ResilientLiveSession> ConnectResilientCoreAsync(
+        Uri uri,
+        string modelResource,
+        Func<CancellationToken, Task<string>> accessTokenProvider,
+        LiveSetupConfig config,
+        int maxReconnects = 5,
+        TimeSpan? connectTimeout = null,
+        TimeSpan? keepAliveInterval = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(uri);
+        ArgumentNullException.ThrowIfNull(accessTokenProvider);
+        ArgumentNullException.ThrowIfNull(config);
+        config.SessionResumption ??= new LiveSessionResumptionConfig();
+
+        async Task<GeminiLiveSession> ConnectFreshAsync(LiveSetupConfig setup, CancellationToken token)
+        {
+            var accessToken = await accessTokenProvider(token).ConfigureAwait(false);
+            return await ConnectCoreAsync(
+                uri, modelResource, accessToken, setup, connectTimeout, keepAliveInterval, token)
+                .ConfigureAwait(false);
+        }
+
+        var session = await ConnectFreshAsync(config, cancellationToken).ConfigureAwait(false);
+        return new ResilientLiveSession(session, config, ConnectFreshAsync, maxReconnects);
+    }
+
     internal static async Task<GeminiLiveSession> ConnectCoreAsync(
         Uri uri,
         string modelResource,
