@@ -13,6 +13,7 @@ Both clients are generated into this package and accept the same API key.
 | Gemini 3.8 Flash and Flash-Lite TTS | `SpeakAsync` defaults to Flash-Lite; `SpeakAdvancedAsync` selects either model, style, voice ID or key, and audio format. The generated `SpeechConfig` and `SpeechMetadata` types cover multi-speaker turns. |
 | Voice design, replication, and Extended Voice Library | `GeminiNextGenClient.Voices` supports create, list with filters and pagination, get, and delete. `CreateVoiceRequest.Store` controls persistent and stateless replication modes. |
 | Gemini 3.8 Live and Live Extended Thinking | `GeminiLiveModelCatalog` and `ConnectLiveAsync` select the models and validate thinking configuration. |
+| Gemini 3.8 Live Avatar | `GeminiCloudLiveClient` connects to the regional Google Cloud Live WebSocket with OAuth, configures prebuilt or custom avatars, and exposes MP4 chunks through `LiveServerContent.GetVideoChunks()`. |
 | Gemini 3.8 Flash | Pass `gemini-3.8-flash` to GenerateContent or use `NextGen.Model.Gemini38Flash` with Interactions. |
 | Lyria 3.5 and Gemini Omni Flash | Use `GeminiNextGenClient.Interactions`. The generated Interactions models cover audio and video inputs and output controls. Model IDs remain open strings, so newly released IDs work without a package update. |
 | Gemini 3.5 Transcribe and Transcribe Live | Use `Transcribe35FileAsync` or `Transcribe35Async` for unary audio and `gemini-3.5-transcribe-live` with `ConnectLiveAsync` for live audio. Generated `AudioTranscriptionConfig` exposes language, vocabulary, timestamp, diarization, and mode controls. |
@@ -52,6 +53,52 @@ recording in `ReplicatedVoice.SourceAudio` and `ConsentAudio`. The API validates
 consent during creation; the SDK forwards those fields without synthesizing
 consent or storing recordings locally.
 
+## Live Avatar on Google Cloud
+
+Live Avatar uses the [Google Cloud Live API](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/configure-live-avatars),
+which requires a Google Cloud project, a regional endpoint, and an OAuth 2.0
+access token. It is separate from the API-key `GeminiClient.ConnectLiveAsync`
+connection. Obtain the token through your server's Google Cloud credentials;
+do not send it to a browser or mobile client.
+
+```csharp
+using Google.Gemini;
+
+var setup = GeminiCloudLiveClient.CreateAvatarSetup("Ben", "Puck");
+await using var session = await GeminiCloudLiveClient.ConnectAsync(
+    projectId, location, accessToken, setup);
+
+await session.SendTextAsync("Say hello to the audience.");
+await using var video = File.Create("avatar.mp4");
+await foreach (var message in session.ReadEventsAsync())
+{
+    if (message.ServerContent is not { } content)
+    {
+        continue;
+    }
+
+    foreach (var chunk in content.GetVideoChunks())
+    {
+        await video.WriteAsync(chunk.Data!);
+    }
+
+    if (content.TurnComplete is true)
+    {
+        break;
+    }
+}
+```
+
+The server returns synchronized MP4 chunks in `serverContent.modelTurn.parts`
+with `video/mp4` inline data. Playback applications should process the chunks
+as a stream and clear queued output when a response is interrupted. For a
+custom avatar, replace `setup.AvatarConfig` with `new LiveAvatarConfig {
+CustomizedAvatar = new LiveCustomizedAvatar { ImageData = imageBytes,
+ImageMimeType = "png" } }`. Google restricts custom avatars to approved
+customers and requires the necessary likeness and voice rights. The SDK
+validates setup shape, but access and live behavior require a Google Cloud
+account authorized for the model.
+
 ## Regeneration
 
 Run `src/libs/Google.Gemini/generate.sh` to refresh both contracts. The
@@ -59,3 +106,7 @@ NextGen generator normalizes Google's `{api_version}` path parameter to
 `v1beta` and preserves a pinned copy in `nextgen.openapi.json`. It also gives
 the second JSON source generation context a distinct name so both clients
 compile in one assembly. Do not edit either `Generated/` tree by hand.
+Run `src/libs/Google.Gemini/check_contract_drift.sh` to compare both published
+contracts with the checked-in versions without rewriting generated sources.
+The scheduled contract-drift workflow runs this check daily and reports new,
+removed, and changed API paths and schemas.

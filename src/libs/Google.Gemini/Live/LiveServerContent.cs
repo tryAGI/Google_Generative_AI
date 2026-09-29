@@ -10,6 +10,17 @@ using System.Text.Json.Serialization;
 public sealed class LiveServerContent
 {
     /// <summary>
+    /// Returns generated MP4 chunks from this update in server order.
+    /// The caller is responsible for buffering or playing the chunks.
+    /// </summary>
+    public IEnumerable<Blob> GetVideoChunks() =>
+        ModelTurn?.Parts?.Where(static part =>
+            part.InlineData?.Data is { Length: > 0 } &&
+            (string.Equals(part.InlineData.MimeType, "video/mp4", StringComparison.OrdinalIgnoreCase) ||
+             part.InlineData.MimeType?.StartsWith("video/mp4;", StringComparison.OrdinalIgnoreCase) is true))
+            .Select(static part => part.InlineData!) ?? [];
+
+    /// <summary>
     /// The model's response turn containing generated parts (text, audio, etc.).
     /// </summary>
     [JsonPropertyName("modelTurn")]

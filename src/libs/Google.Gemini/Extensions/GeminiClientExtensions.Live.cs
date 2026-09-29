@@ -198,7 +198,7 @@ public static class GeminiClientLiveExtensions
         return client.ConnectLiveAsync(config, connectTimeout, keepAliveInterval, cancellationToken);
     }
 
-    private static async Task WaitForSetupCompleteAsync(
+    internal static async Task WaitForSetupCompleteAsync(
         Func<CancellationToken, Task<LiveServerMessage?>> receiveAsync,
         CancellationToken cancellationToken)
     {

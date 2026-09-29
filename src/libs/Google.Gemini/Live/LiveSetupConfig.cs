@@ -68,6 +68,39 @@ public sealed class LiveSetupConfig
     /// </summary>
     [JsonPropertyName("outputAudioTranscription")]
     public LiveOutputAudioTranscription? OutputAudioTranscription { get; set; }
+
+    /// <summary>
+    /// Optional. Avatar video configuration for Gemini 3.8 Live on Google Cloud.
+    /// Requires VIDEO in <see cref="GenerationConfig.ResponseModalities"/>.
+    /// </summary>
+    [JsonPropertyName("avatarConfig")]
+    public LiveAvatarConfig? AvatarConfig { get; set; }
+}
+
+/// <summary>Avatar appearance for a Google Cloud Gemini Live session.</summary>
+public sealed class LiveAvatarConfig
+{
+    /// <summary>Name of a prebuilt avatar, for example Ben.</summary>
+    [JsonPropertyName("avatarName")]
+    public string? AvatarName { get; set; }
+
+    /// <summary>Custom reference image; available only to approved Google Cloud customers.</summary>
+    [JsonPropertyName("customizedAvatar")]
+    public LiveCustomizedAvatar? CustomizedAvatar { get; set; }
+}
+
+/// <summary>Reference image for a custom Live Avatar.</summary>
+public sealed class LiveCustomizedAvatar
+{
+    /// <summary>Reference image bytes. JSON serialization encodes them as base64.</summary>
+    [JsonPropertyName("imageData")]
+#pragma warning disable CA1819 // byte[] is required for base64 JSON serialization.
+    public byte[]? ImageData { get; set; }
+#pragma warning restore CA1819
+
+    /// <summary>Image format, for example <c>png</c>.</summary>
+    [JsonPropertyName("imageMimeType")]
+    public string? ImageMimeType { get; set; }
 }
 
 /// <summary>

@@ -14,6 +14,7 @@
 - Microsoft.Extensions.AI `IChatClient`, `IEmbeddingGenerator` and `ISpeechToTextClient` support
 - Gemini 3.8 Flash and Flash-Lite TTS, the Voices API, and WAV or PCM output
 - Typed Interactions, agents, triggers, webhooks, credentials, and environments through `GeminiNextGenClient`
+- Google Cloud Gemini 3.8 Live Avatar through `GeminiCloudLiveClient`
 
 ### Usage
 ```csharp
@@ -99,6 +100,8 @@ var designed = await nextGen.Voices.CreateAsync(new CreateVoiceRequest
 Gemini Omni video operations, agent workflows, and newer platform endpoints.
 See [`docs/guides/tts-and-stt.md`](docs/guides/tts-and-stt.md) and the
 [`samples/AudioRoundTrip`](samples/AudioRoundTrip) console for a complete walk-through.
+
+For Google Cloud Live Avatar, see the [recent Gemini API guide](docs/guides/recent-gemini-api.md#live-avatar-on-google-cloud).
 
 ### Live API (Real-time Voice/Video)
 

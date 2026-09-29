@@ -30,6 +30,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(LiveSlidingWindow))]
 [JsonSerializable(typeof(LiveInputAudioTranscription))]
 [JsonSerializable(typeof(LiveOutputAudioTranscription))]
+[JsonSerializable(typeof(LiveAvatarConfig))]
+[JsonSerializable(typeof(LiveCustomizedAvatar))]
 [JsonSerializable(typeof(JsonElement))]
 [JsonSourceGenerationOptions(
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
