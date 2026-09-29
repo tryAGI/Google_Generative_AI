@@ -15,9 +15,11 @@ public partial class Tests
 
         try
         {
-            var result = await client.SpeakAsync(
-                text: "Say calmly: Testing with a different voice. This should sound professional.",
-                voiceName: "Kore");
+            var result = await client.SpeakAdvancedAsync(
+                text: "Testing with a different voice. This should sound professional.",
+                voiceName: "Kore",
+                modelId: "gemini-3.8-flash-tts",
+                style: "calm and professional");
 
             result.HasAudio.Should().BeTrue();
             result.AudioData.Should().NotBeNullOrEmpty();

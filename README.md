@@ -6,13 +6,14 @@
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
 ## Features 🔥
-- Fully generated C# SDK based on [official Google.Gemini OpenAPI specification](https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
+- Generated C# clients based on Google's [Discovery contract](https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta) and [Interactions OpenAPI contract](https://ai.google.dev/static/api/interactions.openapi.json) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
-- Support .Net Framework/.Net Standard 2.0
+- Target `net10.0`
 - Microsoft.Extensions.AI `IChatClient`, `IEmbeddingGenerator` and `ISpeechToTextClient` support
-- First-class TTS (`SpeakAsync` with Gemini 3.1 Flash TTS), audio-tag controllability, and built-in WAV output
+- Gemini 3.8 Flash and Flash-Lite TTS, the Voices API, and WAV or PCM output
+- Typed Interactions, agents, triggers, webhooks, credentials, and environments through `GeminiNextGenClient`
 
 ### Usage
 ```csharp
@@ -49,25 +50,53 @@ var transcription = await stt.GetTextAsync(wav);
 
 ### Text-to-Speech and Speech-to-Text
 
-`SpeakAsync` synthesizes speech with `gemini-3.1-flash-tts-preview` (default) and returns
-raw PCM that you can write to disk with the built-in WAV helper:
+`SpeakAsync` defaults to `gemini-3.8-flash-lite-tts`; choose
+`gemini-3.8-flash-tts` for more expressive speech. Gemini 3.8 returns WAV by
+default, which `WriteWavFile` saves without adding a second header:
 
 ```csharp
 using Google.Gemini;
 
 using var client = new GeminiClient(apiKey);
 
-var result = await client.SpeakAsync(
-    text: $"{GeminiAudioTags.Cheerful} Hello! {GeminiAudioTags.Excited} This is Gemini.",
-    voiceName: GeminiVoices.Puck);
+var result = await client.SpeakAdvancedAsync(
+    text: "Hello! This is Gemini.",
+    voiceName: GeminiVoices.Puck,
+    style: "cheerful and friendly");
 
-Console.WriteLine($"{result.AudioData!.Length} bytes @ {result.SampleRateHz} Hz");
+Console.WriteLine($"{result.AudioData!.Length} bytes, {result.MimeType}");
 result.WriteWavFile("speech.wav");
 ```
 
 `GeminiAudioTags` exposes constants for the commonly supported inline audio tags
 (emotion / style / delivery / pacing). `GeminiVoices` lists all 30 prebuilt voice
 names, and `client.ListTtsModelsAsync()` discovers TTS-capable models at runtime.
+`SpeakAdvancedAsync` also accepts a stored `voice_...` ID or stateless
+`voicekey_...` and an explicit audio output format. Use the generated
+`SpeechConfig`, `SpeechMetadata`, and `MultiSpeakerVoiceConfig` models for
+multi-speaker turns.
+
+The new Voices endpoint is exposed by a separate generated client:
+
+```csharp
+using Google.Gemini.NextGen;
+
+using var nextGen = new GeminiNextGenClient(apiKey);
+var voices = await nextGen.Voices.ListAsync(type: ["prebuilt"]);
+var designed = await nextGen.Voices.CreateAsync(new CreateVoiceRequest
+{
+    Store = true,
+    Voice = new Voice
+    {
+        Type = VoiceType.Prompted,
+        Prompted = new PromptedVoice { Input = "A warm, thoughtful narrator" },
+    },
+});
+// Use designed.Id as voiceName in SpeakAdvancedAsync.
+```
+
+`GeminiNextGenClient` also exposes the Interactions API used by Lyria 3.5,
+Gemini Omni video operations, agent workflows, and newer platform endpoints.
 See [`docs/guides/tts-and-stt.md`](docs/guides/tts-and-stt.md) and the
 [`samples/AudioRoundTrip`](samples/AudioRoundTrip) console for a complete walk-through.
 

@@ -23,6 +23,6 @@ public partial class Tests
         }
 
         ttsModels.Should().NotBeEmpty();
-        ttsModels.Should().Contain(m => m.Name == "models/gemini-3.1-flash-tts-preview");
+        ttsModels.Should().Contain(m => m.Name == "models/gemini-3.8-flash-lite-tts");
     }
 }

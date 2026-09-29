@@ -7,8 +7,7 @@ var apiKey = System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_API_KEY")
 
 var prompt = args.Length > 0
     ? string.Join(' ', args)
-    : $"{GeminiAudioTags.Cheerful} Hello! {GeminiAudioTags.Excited} This is Gemini 3.1 Flash TTS speaking. " +
-      $"{GeminiAudioTags.Calm} Let's see how well I sound when transcribed back.";
+    : "Hello! This is Gemini 3.8 Flash-Lite TTS speaking. Let's see how well I sound when transcribed back.";
 
 var voice = System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_VOICE") is { Length: > 0 } v
     ? v
@@ -16,14 +15,14 @@ var voice = System.Environment.GetEnvironmentVariable("GOOGLE_GEMINI_VOICE") is 
 
 using var client = new GeminiClient(apiKey);
 
-// 1) Synthesize speech with Gemini 3.1 Flash TTS.
+// 1) Synthesize speech with Gemini 3.8 Flash-Lite TTS.
 Console.WriteLine($"Synthesizing with voice '{voice}'...");
 Console.WriteLine($"  Prompt: {prompt}");
 
 AudioResult tts;
 try
 {
-    tts = await client.SpeakAsync(text: prompt, voiceName: voice);
+    tts = await client.SpeakAdvancedAsync(text: prompt, voiceName: voice, style: "calm and friendly");
 }
 catch (ApiException ex) when (ex.StatusCode is System.Net.HttpStatusCode.TooManyRequests
                                               or System.Net.HttpStatusCode.ServiceUnavailable)
@@ -39,8 +38,7 @@ if (!tts.HasAudio)
     return 1;
 }
 
-var sampleRate = tts.SampleRateHz ?? 24000;
-Console.WriteLine($"  {tts.AudioData!.Length:N0} bytes PCM @ {sampleRate} Hz ({tts.AudioData.Length / (double)(sampleRate * 2):F1}s)");
+Console.WriteLine($"  {tts.AudioData!.Length:N0} bytes of {tts.MimeType} audio");
 
 // 2) Save as WAV next to the executable so the user can play it.
 var wavPath = Path.Combine(Directory.GetCurrentDirectory(), "audio_round_trip.wav");

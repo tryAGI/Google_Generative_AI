@@ -1,0 +1,94 @@
+
+#nullable enable
+
+namespace Google.Gemini.NextGen
+{
+    /// <summary>
+    /// The Gemini Interactions API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.<br/>
+    /// If no httpClient is provided, a new one will be created.<br/>
+    /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
+    /// </summary>
+    public partial interface IGeminiNextGenClient : global::System.IDisposable
+    {
+        /// <summary>
+        /// The HttpClient instance.
+        /// </summary>
+        public global::System.Net.Http.HttpClient HttpClient { get; }
+
+        /// <summary>
+        /// The base URL for the API.
+        /// </summary>
+        public System.Uri? BaseUri { get; }
+
+        /// <summary>
+        /// The authorizations to use for the requests.
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.EndPointAuthorization> Authorizations { get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the response content should be read as a string.
+        /// True by default in debug builds, false otherwise.
+        /// When false, successful responses are deserialized directly from the response stream for better performance.
+        /// Error responses are always read as strings regardless of this setting,
+        /// ensuring <see cref="ApiException.ResponseBody"/> is populated.
+        /// </summary>
+        public bool ReadResponseAsString { get; set; }
+        /// <summary>
+        /// Client-wide request defaults such as headers, query parameters, retries, and timeout.
+        /// </summary>
+        public global::Google.Gemini.NextGen.AutoSDKClientOptions Options { get; }
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        public AgentsClient Agents { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CredentialsClient Credentials { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public EnvironmentsClient Environments { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public EnvironmentsFilesClient EnvironmentsFiles { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public EnvironmentsInternalClient EnvironmentsInternal { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public InteractionsClient Interactions { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TriggersClient Triggers { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public VoicesClient Voices { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public WebhooksClient Webhooks { get; }
+
+    }
+}

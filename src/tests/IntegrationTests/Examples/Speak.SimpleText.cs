@@ -15,9 +15,10 @@ public partial class Tests
 
         try
         {
-            var result = await client.SpeakAsync(
-                text: "Say cheerfully: Hello, this is a test of text to speech. Have a wonderful day!",
-                voiceName: "Puck");
+            var result = await client.SpeakAdvancedAsync(
+                text: "Hello, this is a test of text to speech. Have a wonderful day!",
+                voiceName: "Puck",
+                style: "cheerful and friendly");
 
             result.HasAudio.Should().BeTrue();
             result.AudioData.Should().NotBeNullOrEmpty();

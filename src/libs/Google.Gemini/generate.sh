@@ -128,6 +128,7 @@ PY
 then
   rm openapi.next.json
   python3 emit_sse_hook.py
+  ./generate_nextgen.sh
   echo 'OpenAPI contract is semantically unchanged; skipping regeneration.'
   exit 0
 fi
@@ -143,3 +144,4 @@ autosdk generate openapi.json \
   --base-url https://generativelanguage.googleapis.com/v1beta \
   --security-scheme ApiKey:Query:key
 python3 emit_sse_hook.py
+./generate_nextgen.sh

@@ -1,0 +1,65 @@
+
+#nullable enable
+
+namespace Google.Gemini.NextGen
+{
+    /// <summary>
+    /// Response for `GetEnvironmentFiles`.
+    /// </summary>
+    public sealed partial class GetEnvironmentFilesResponse
+    {
+        /// <summary>
+        /// If the requested path is a directory, this contains its contents.<br/>
+        /// If the requested path is a file, this contains a single entry with the<br/>
+        /// file's metadata.<br/>
+        /// If alt=media was specified, this is empty (content is served via `blob`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("files")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.EnvironmentFile>? Files { get; set; }
+
+        /// <summary>
+        /// Pagination token for directory listing.<br/>
+        /// NOLINT
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_page_token")]
+        public string? NextPageToken { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetEnvironmentFilesResponse" /> class.
+        /// </summary>
+        /// <param name="files">
+        /// If the requested path is a directory, this contains its contents.<br/>
+        /// If the requested path is a file, this contains a single entry with the<br/>
+        /// file's metadata.<br/>
+        /// If alt=media was specified, this is empty (content is served via `blob`).
+        /// </param>
+        /// <param name="nextPageToken">
+        /// Pagination token for directory listing.<br/>
+        /// NOLINT
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public GetEnvironmentFilesResponse(
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.EnvironmentFile>? files,
+            string? nextPageToken)
+        {
+            this.Files = files;
+            this.NextPageToken = nextPageToken;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetEnvironmentFilesResponse" /> class.
+        /// </summary>
+        public GetEnvironmentFilesResponse()
+        {
+        }
+
+    }
+}

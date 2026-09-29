@@ -10,8 +10,8 @@ public static class GeminiClientAudioExtensions
     /// </summary>
     /// <param name="client">The Gemini client.</param>
     /// <param name="text">The text to convert to speech.</param>
-    /// <param name="voiceName">Voice name (e.g., "Puck", "Charon", "Kore", "Fenrir", "Aoede"). Defaults to "Puck".</param>
-    /// <param name="modelId">The model to use. Defaults to "gemini-3.1-flash-tts-preview".</param>
+    /// <param name="voiceName">Prebuilt voice name, stored voice ID, or stateless voice key. Defaults to "Puck".</param>
+    /// <param name="modelId">The model to use. Defaults to "gemini-3.8-flash-lite-tts".</param>
     /// <param name="languageCode">Optional BCP-47 language code (e.g., "en-US", "de-DE").</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The generated audio result.</returns>
@@ -19,22 +19,44 @@ public static class GeminiClientAudioExtensions
         this GeminiClient client,
         string text,
         string voiceName = "Puck",
-        string modelId = "gemini-3.1-flash-tts-preview",
+        string modelId = "gemini-3.8-flash-lite-tts",
         string? languageCode = null,
+        CancellationToken cancellationToken = default)
+        => await client.SpeakAdvancedAsync(
+            text, voiceName, modelId, languageCode, style: null, audioFormat: null, cancellationToken)
+            .ConfigureAwait(false);
+
+    /// <summary>Generates speech with explicit voice, style, and audio format options.</summary>
+    /// <param name="client">The Gemini client.</param>
+    /// <param name="text">The verbatim transcript.</param>
+    /// <param name="voiceName">Prebuilt voice name, stored voice ID, or stateless voice key.</param>
+    /// <param name="modelId">The TTS model.</param>
+    /// <param name="languageCode">Optional BCP-47 language code.</param>
+    /// <param name="style">Optional turn-level delivery instruction for Gemini 3.8 TTS.</param>
+    /// <param name="audioFormat">Optional audio output format. Gemini 3.8 TTS defaults to WAV.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The generated audio result.</returns>
+    public static async Task<AudioResult> SpeakAdvancedAsync(
+        this GeminiClient client,
+        string text,
+        string voiceName = "Puck",
+        string modelId = "gemini-3.8-flash-lite-tts",
+        string? languageCode = null,
+        string? style = null,
+        AudioResponseFormatMimeType? audioFormat = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentException.ThrowIfNullOrWhiteSpace(text);
+        ArgumentException.ThrowIfNullOrWhiteSpace(voiceName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(modelId);
 
         var speechConfig = new SpeechConfig
         {
-            VoiceConfig = new VoiceConfig
-            {
-                PrebuiltVoiceConfig = new PrebuiltVoiceConfig
-                {
-                    VoiceName = voiceName,
-                },
-            },
+            VoiceConfig = modelId.EndsWith("gemini-3.1-flash-tts-preview", StringComparison.Ordinal) ||
+                          modelId.EndsWith("gemini-2.5-pro-preview-tts", StringComparison.Ordinal)
+                ? new VoiceConfig { PrebuiltVoiceConfig = new PrebuiltVoiceConfig { VoiceName = voiceName } }
+                : new VoiceConfig { Voice = voiceName },
             LanguageCode = languageCode,
         };
 
@@ -44,7 +66,11 @@ public static class GeminiClientAudioExtensions
             [
                 new Content
                 {
-                    Parts = [new Part { Text = text }],
+                    Parts = [new Part
+                    {
+                        Text = text,
+                        SpeechMetadata = style is null ? null : new SpeechMetadata { Style = style },
+                    }],
                 },
             ],
             GenerationConfig = new GenerationConfig
@@ -54,6 +80,10 @@ public static class GeminiClientAudioExtensions
                     GenerationConfigResponseModalitie.Audio,
                 ],
                 SpeechConfig = speechConfig,
+                ResponseFormat = audioFormat is null ? null : new ResponseFormatConfig
+                {
+                    Audio = new AudioResponseFormat { MimeType = audioFormat },
+                },
             },
         };
 
@@ -118,6 +148,64 @@ public static class GeminiClientAudioExtensions
 
         var candidate = response.Candidates is { Count: > 0 } ? response.Candidates[0] : null;
         return candidate?.Content?.Parts?.FirstOrDefault(p => p.Text is not null)?.Text ?? string.Empty;
+    }
+
+    /// <summary>
+    /// Transcribes an uploaded audio file with Gemini 3.5 Transcribe. Returns the
+    /// complete response so callers can inspect timestamps and speaker metadata.
+    /// </summary>
+    public static Task<GenerateContentResponse> Transcribe35FileAsync(
+        this GeminiClient client,
+        Uri fileUri,
+        string mimeType,
+        AudioTranscriptionConfig? transcriptionConfig = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(fileUri);
+        ArgumentException.ThrowIfNullOrWhiteSpace(mimeType);
+        return Transcribe35PartAsync(client, new Part
+        {
+            FileData = new FileData { FileUri = fileUri.ToString(), MimeType = mimeType },
+        }, transcriptionConfig, cancellationToken);
+    }
+
+    /// <summary>
+    /// Transcribes short inline audio with Gemini 3.5 Transcribe. Use
+    /// <see cref="Transcribe35FileAsync"/> for uploaded long recordings.
+    /// </summary>
+    public static Task<GenerateContentResponse> Transcribe35Async(
+        this GeminiClient client,
+        byte[] audioData,
+        string mimeType,
+        AudioTranscriptionConfig? transcriptionConfig = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(audioData);
+        ArgumentException.ThrowIfNullOrWhiteSpace(mimeType);
+        return Transcribe35PartAsync(client, new Part
+        {
+            InlineData = new Blob { Data = audioData, MimeType = mimeType },
+        }, transcriptionConfig, cancellationToken);
+    }
+
+    private static Task<GenerateContentResponse> Transcribe35PartAsync(
+        GeminiClient client,
+        Part audioPart,
+        AudioTranscriptionConfig? transcriptionConfig,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+        return client.ModelsGenerateContentAsync(
+            modelsId: "gemini-3.5-transcribe",
+            request: new GenerateContentRequest
+            {
+                Contents = [new Content { Parts = [audioPart] }],
+                GenerationConfig = transcriptionConfig is null ? null : new GenerationConfig
+                {
+                    AudioTranscriptionConfig = transcriptionConfig,
+                },
+            },
+            cancellationToken: cancellationToken);
     }
 
     /// <summary>
@@ -310,9 +398,7 @@ public record AudioResult
     }
 
     /// <summary>
-    /// Writes <see cref="AudioData"/> as a 16-bit little-endian PCM WAV stream.
-    /// Useful for saving Gemini TTS output (which arrives as raw PCM in
-    /// <c>audio/L16;…;rate=NNN</c>) to a playable file or HTTP response.
+    /// Writes WAV output directly, or wraps raw 16-bit PCM in a WAV header.
     /// </summary>
     /// <param name="destination">Target stream. Must be writable. Not closed by this method.</param>
     /// <param name="sampleRate">Sample rate in Hz. Defaults to <see cref="SampleRateHz"/> or 24000.</param>
@@ -325,13 +411,25 @@ public record AudioResult
         int bitsPerSample = 16)
     {
         ArgumentNullException.ThrowIfNull(destination);
-        if (AudioData is not { Length: > 0 } pcm)
+        if (AudioData is not { Length: > 0 } audio)
         {
             throw new InvalidOperationException("AudioResult contains no audio data.");
         }
 
+        if (MimeType?.StartsWith("audio/wav", StringComparison.OrdinalIgnoreCase) is true)
+        {
+            destination.Write(audio);
+            return;
+        }
+
+        if (MimeType is not null &&
+            !MimeType.StartsWith("audio/l16", StringComparison.OrdinalIgnoreCase))
+        {
+            throw new NotSupportedException($"Cannot write {MimeType} as a WAV file.");
+        }
+
         var effectiveRate = sampleRate ?? SampleRateHz ?? 24000;
-        WriteWavHeaderAndBody(destination, pcm, effectiveRate, channels, bitsPerSample);
+        WriteWavHeaderAndBody(destination, audio, effectiveRate, channels, bitsPerSample);
     }
 
     /// <summary>

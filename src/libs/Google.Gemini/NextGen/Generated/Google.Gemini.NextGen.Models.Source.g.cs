@@ -1,0 +1,93 @@
+
+#nullable enable
+
+namespace Google.Gemini.NextGen
+{
+    /// <summary>
+    /// A source to be mounted into the environment.
+    /// </summary>
+    public sealed partial class Source
+    {
+        /// <summary>
+        /// The inline content if `type` is `INLINE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
+
+        /// <summary>
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
+        public string? Encoding { get; set; }
+
+        /// <summary>
+        /// The source of the environment.<br/>
+        /// For Cloud Storage, this is the Cloud Storage path.<br/>
+        /// For GitHub, this is the GitHub path.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source1 { get; set; }
+
+        /// <summary>
+        /// Where the source should appear in the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        public string? Target { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.SourceTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.SourceType? Type { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Source" /> class.
+        /// </summary>
+        /// <param name="content">
+        /// The inline content if `type` is `INLINE`.
+        /// </param>
+        /// <param name="encoding">
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </param>
+        /// <param name="source1">
+        /// The source of the environment.<br/>
+        /// For Cloud Storage, this is the Cloud Storage path.<br/>
+        /// For GitHub, this is the GitHub path.
+        /// </param>
+        /// <param name="target">
+        /// Where the source should appear in the environment.
+        /// </param>
+        /// <param name="type"></param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public Source(
+            string? content,
+            string? encoding,
+            string? source1,
+            string? target,
+            global::Google.Gemini.NextGen.SourceType? type)
+        {
+            this.Content = content;
+            this.Encoding = encoding;
+            this.Source1 = source1;
+            this.Target = target;
+            this.Type = type;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Source" /> class.
+        /// </summary>
+        public Source()
+        {
+        }
+
+    }
+}
