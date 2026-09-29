@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""Apply the same Google Discovery normalization used for generation and drift checks."""
+import json, re, sys
+
+with open(sys.argv[1], 'r') as f:
+    spec = json.load(f)
+
+changed = False
+
+# --- Inject VIDEO modality ---
+gen_config = spec.get('components', {}).get('schemas', {}).get('GenerationConfig', {}).get('properties', {}).get('responseModalities', {})
+items = gen_config.get('items', {})
+enums = items.get('enum', [])
+descs = items.get('x-enum-descriptions', [])
+
+if enums and 'VIDEO' not in enums:
+    enums.append('VIDEO')
+    descs.append('Indicates the model should return video.')
+    changed = True
+    print('Injected VIDEO modality into responseModalities enum')
+else:
+    print('VIDEO modality already present or enum not found')
+
+# --- Remove legacy PaLM endpoints ---
+legacy_suffixes = [
+    ':generateText', ':generateMessage', ':embedText', ':batchEmbedText',
+    ':countTextTokens', ':countMessageTokens', ':generateAnswer',
+    ':predict', ':predictLongRunning',
+]
+paths_to_remove = [
+    path for path in spec.get('paths', {})
+    if any(path.endswith(suffix) for suffix in legacy_suffixes)
+]
+for path in paths_to_remove:
+    del spec['paths'][path]
+    changed = True
+if paths_to_remove:
+    print(f'Removed {len(paths_to_remove)} legacy PaLM endpoints')
+else:
+    print('No legacy PaLM endpoints found')
+
+# --- Inject responseTokenCount into UsageMetadata ---
+# Gemini 3.1+ Live API sends responseTokenCount and responseTokensDetails
+# instead of candidatesTokenCount, but the Discovery spec doesn't include them yet.
+usage_meta = spec.get('components', {}).get('schemas', {}).get('UsageMetadata', {}).get('properties', {})
+if usage_meta and 'responseTokenCount' not in usage_meta:
+    usage_meta['responseTokenCount'] = {
+        'description': 'Output only. Number of tokens in the response. Used by Gemini 3.1+ Live API models instead of candidatesTokenCount.',
+        'type': 'integer',
+        'format': 'int32',
+        'readOnly': True,
+    }
+    usage_meta['responseTokensDetails'] = {
+        'description': 'Output only. List of modalities returned in the response with per-modality token counts. Used by Gemini 3.1+ Live API models instead of candidatesTokensDetails.',
+        'type': 'array',
+        'readOnly': True,
+        'items': {'$ref': '#/components/schemas/ModalityTokenCount'},
+    }
+    changed = True
+    print('Injected responseTokenCount/responseTokensDetails into UsageMetadata')
+else:
+    print('responseTokenCount already present in UsageMetadata or schema not found')
+
+# --- Prune orphaned schemas ---
+def find_refs(name, schemas, visited):
+    if name in visited or name not in schemas:
+        return
+    visited.add(name)
+    for ref in re.findall(r'#/components/schemas/(\w+)', json.dumps(schemas[name])):
+        find_refs(ref, schemas, visited)
+
+all_schemas = spec.get('components', {}).get('schemas', {})
+used = set()
+for ref in re.findall(r'#/components/schemas/(\w+)', json.dumps(spec.get('paths', {}))):
+    find_refs(ref, all_schemas, used)
+orphaned = sorted(set(all_schemas.keys()) - used)
+for name in orphaned:
+    del all_schemas[name]
+    changed = True
+if orphaned:
+    print(f'Pruned {len(orphaned)} orphaned schemas: {orphaned}')
+else:
+    print('No orphaned schemas found')
+
+if changed:
+    with open(sys.argv[1], 'w') as f:
+        json.dump(spec, f, indent=2)
+        f.write('\n')
