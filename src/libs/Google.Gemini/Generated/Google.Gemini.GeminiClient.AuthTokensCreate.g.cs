@@ -169,7 +169,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/auth_tokens\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -203,7 +203,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/auth_tokens\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -244,7 +244,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/auth_tokens\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -292,7 +292,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/auth_tokens\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -314,7 +314,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/auth_tokens\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -434,11 +434,11 @@ namespace Google.Gemini
         /// <param name="bidiGenerateContentSetup">
         /// Message to be sent in the first (and only in the first) `BidiGenerateContentClientMessage`. Contains configuration that will apply for the duration of the streaming RPC. Clients should wait for a `BidiGenerateContentSetupComplete` message before sending any additional messages.
         /// </param>
-        /// <param name="fieldMask">
-        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
-        /// </param>
         /// <param name="uses">
         /// Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+        /// </param>
+        /// <param name="fieldMask">
+        /// Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` _is_ present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -447,8 +447,8 @@ namespace Google.Gemini
             string? newSessionExpireTime = default,
             string? expireTime = default,
             global::Google.Gemini.BidiGenerateContentSetup? bidiGenerateContentSetup = default,
-            string? fieldMask = default,
             int? uses = default,
+            string? fieldMask = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -457,8 +457,8 @@ namespace Google.Gemini
                 NewSessionExpireTime = newSessionExpireTime,
                 ExpireTime = expireTime,
                 BidiGenerateContentSetup = bidiGenerateContentSetup,
-                FieldMask = fieldMask,
                 Uses = uses,
+                FieldMask = fieldMask,
             };
 
             return await AuthTokensCreateAsync(

@@ -169,7 +169,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/environments:create\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -203,7 +203,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/environments:create\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -244,7 +244,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/environments:create\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -292,7 +292,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/environments:create\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -314,7 +314,7 @@ namespace Google.Gemini
                                 pathTemplate: "\"/environments:create\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -425,9 +425,6 @@ namespace Google.Gemini
         /// <summary>
         /// Creates an environment.
         /// </summary>
-        /// <param name="networkAllowlist">
-        /// Network egress configuration for the environment.
-        /// </param>
         /// <param name="networkMode">
         /// Network egress mode.
         /// </param>
@@ -437,23 +434,26 @@ namespace Google.Gemini
         /// <param name="fromEnvironment">
         /// Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
         /// </param>
+        /// <param name="networkAllowlist">
+        /// Network egress configuration for the environment.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Environment> EnvironmentsCreateAsync(
-            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
             global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
             string? fromEnvironment = default,
+            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.CreateEnvironmentRequest
             {
-                NetworkAllowlist = networkAllowlist,
                 NetworkMode = networkMode,
                 Sources = sources,
                 FromEnvironment = fromEnvironment,
+                NetworkAllowlist = networkAllowlist,
             };
 
             return await EnvironmentsCreateAsync(

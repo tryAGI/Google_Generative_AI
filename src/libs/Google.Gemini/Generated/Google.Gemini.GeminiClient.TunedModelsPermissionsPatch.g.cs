@@ -174,8 +174,8 @@ namespace Google.Gemini
                 PrepareTunedModelsPermissionsPatchRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    tunedModelsId: tunedModelsId!,
-                    permissionsId: permissionsId!,
+                    tunedModelsId: tunedModelsId,
+                    permissionsId: permissionsId,
                     updateMask: updateMask,
                     request: request);
 
@@ -199,7 +199,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/tunedModels/{tunedModelsId}/permissions/{permissionsId}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -233,7 +233,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/tunedModels/{tunedModelsId}/permissions/{permissionsId}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -274,7 +274,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/tunedModels/{tunedModelsId}/permissions/{permissionsId}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -322,7 +322,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/tunedModels/{tunedModelsId}/permissions/{permissionsId}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -344,7 +344,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/tunedModels/{tunedModelsId}/permissions/{permissionsId}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -458,14 +458,14 @@ namespace Google.Gemini
         /// <param name="tunedModelsId"></param>
         /// <param name="permissionsId"></param>
         /// <param name="updateMask"></param>
+        /// <param name="granteeType">
+        /// Optional. Immutable. The type of the grantee.
+        /// </param>
         /// <param name="role">
         /// Required. The role granted by this permission.
         /// </param>
         /// <param name="emailAddress">
         /// Optional. Immutable. The email address of the user of group which this permission refers. Field is not set when permission's grantee type is EVERYONE.
-        /// </param>
-        /// <param name="granteeType">
-        /// Optional. Immutable. The type of the grantee.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -474,17 +474,17 @@ namespace Google.Gemini
             string tunedModelsId,
             string permissionsId,
             string? updateMask = default,
+            global::Google.Gemini.PermissionGranteeType? granteeType = default,
             global::Google.Gemini.PermissionRole? role = default,
             string? emailAddress = default,
-            global::Google.Gemini.PermissionGranteeType? granteeType = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.Permission
             {
+                GranteeType = granteeType,
                 Role = role,
                 EmailAddress = emailAddress,
-                GranteeType = granteeType,
             };
 
             return await TunedModelsPermissionsPatchAsync(

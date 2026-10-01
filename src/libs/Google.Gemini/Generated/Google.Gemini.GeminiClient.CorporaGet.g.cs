@@ -136,7 +136,7 @@ namespace Google.Gemini
                 PrepareCorporaGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corporaId: corporaId!);
+                    corporaId: corporaId);
 
                 return __httpRequest;
             }
@@ -158,7 +158,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/corpora/{corporaId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -192,7 +192,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/corpora/{corporaId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -233,7 +233,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/corpora/{corporaId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -281,7 +281,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/corpora/{corporaId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -303,7 +303,7 @@ namespace Google.Gemini
                                 pathTemplate: "$\"/corpora/{corporaId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
