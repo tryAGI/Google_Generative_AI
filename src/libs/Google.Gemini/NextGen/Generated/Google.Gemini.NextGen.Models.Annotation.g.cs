@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.FileCitation PickFileCitation() => IsFileCitation
-            ? FileCitation!
+        public global::Google.Gemini.NextGen.FileCitation PickFileCitation() => FileCitation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileCitation' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.PlaceCitation PickPlaceCitation() => IsPlaceCitation
-            ? PlaceCitation!
+        public global::Google.Gemini.NextGen.PlaceCitation PickPlaceCitation() => PlaceCitation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PlaceCitation' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SpeechAnnotation PickSpeech() => IsSpeech
-            ? Speech!
+        public global::Google.Gemini.NextGen.SpeechAnnotation PickSpeech() => Speech is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Speech' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLCitation PickURLCitation() => IsURLCitation
-            ? URLCitation!
+        public global::Google.Gemini.NextGen.URLCitation PickURLCitation() => URLCitation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLCitation' but the value was {ToString()}.");
 
         /// <summary>
@@ -191,8 +191,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WordInfo PickWordInfo() => IsWordInfo
-            ? WordInfo!
+        public global::Google.Gemini.NextGen.WordInfo PickWordInfo() => WordInfo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WordInfo' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -373,25 +373,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsFileCitation && fileCitation != null)
+            if (FileCitation is { } __value0 && fileCitation != null)
             {
-                return fileCitation(FileCitation!);
+                return fileCitation(__value0);
             }
-            else if (IsPlaceCitation && placeCitation != null)
+            else if (PlaceCitation is { } __value1 && placeCitation != null)
             {
-                return placeCitation(PlaceCitation!);
+                return placeCitation(__value1);
             }
-            else if (IsSpeech && speech != null)
+            else if (Speech is { } __value2 && speech != null)
             {
-                return speech(Speech!);
+                return speech(__value2);
             }
-            else if (IsURLCitation && uRLCitation != null)
+            else if (URLCitation is { } __value3 && uRLCitation != null)
             {
-                return uRLCitation(URLCitation!);
+                return uRLCitation(__value3);
             }
-            else if (IsWordInfo && wordInfo != null)
+            else if (WordInfo is { } __value4 && wordInfo != null)
             {
-                return wordInfo(WordInfo!);
+                return wordInfo(__value4);
             }
 
             return default(TResult);
@@ -417,25 +417,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsFileCitation)
+            if (FileCitation is { } __value0)
             {
-                fileCitation?.Invoke(FileCitation!);
+                fileCitation?.Invoke(__value0);
             }
-            else if (IsPlaceCitation)
+            else if (PlaceCitation is { } __value1)
             {
-                placeCitation?.Invoke(PlaceCitation!);
+                placeCitation?.Invoke(__value1);
             }
-            else if (IsSpeech)
+            else if (Speech is { } __value2)
             {
-                speech?.Invoke(Speech!);
+                speech?.Invoke(__value2);
             }
-            else if (IsURLCitation)
+            else if (URLCitation is { } __value3)
             {
-                uRLCitation?.Invoke(URLCitation!);
+                uRLCitation?.Invoke(__value3);
             }
-            else if (IsWordInfo)
+            else if (WordInfo is { } __value4)
             {
-                wordInfo?.Invoke(WordInfo!);
+                wordInfo?.Invoke(__value4);
             }
         }
 
@@ -455,25 +455,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsFileCitation)
+            if (FileCitation is { } __value0)
             {
-                fileCitation?.Invoke(FileCitation!);
+                fileCitation?.Invoke(__value0);
             }
-            else if (IsPlaceCitation)
+            else if (PlaceCitation is { } __value1)
             {
-                placeCitation?.Invoke(PlaceCitation!);
+                placeCitation?.Invoke(__value1);
             }
-            else if (IsSpeech)
+            else if (Speech is { } __value2)
             {
-                speech?.Invoke(Speech!);
+                speech?.Invoke(__value2);
             }
-            else if (IsURLCitation)
+            else if (URLCitation is { } __value3)
             {
-                uRLCitation?.Invoke(URLCitation!);
+                uRLCitation?.Invoke(__value3);
             }
-            else if (IsWordInfo)
+            else if (WordInfo is { } __value4)
             {
-                wordInfo?.Invoke(WordInfo!);
+                wordInfo?.Invoke(__value4);
             }
         }
 

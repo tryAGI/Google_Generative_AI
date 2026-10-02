@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.AudioResponseFormat PickAudioFormat() => IsAudioFormat
-            ? AudioFormat!
+        public global::Google.Gemini.NextGen.AudioResponseFormat PickAudioFormat() => AudioFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AudioFormat' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageResponseFormat PickImageFormat() => IsImageFormat
-            ? ImageFormat!
+        public global::Google.Gemini.NextGen.ImageResponseFormat PickImageFormat() => ImageFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ImageFormat' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextResponseFormat PickTextFormat() => IsTextFormat
-            ? TextFormat!
+        public global::Google.Gemini.NextGen.TextResponseFormat PickTextFormat() => TextFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextFormat' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoResponseFormat PickVideoFormat() => IsVideoFormat
-            ? VideoFormat!
+        public global::Google.Gemini.NextGen.VideoResponseFormat PickVideoFormat() => VideoFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VideoFormat' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public object PickFormatVariant5() => IsFormatVariant5
-            ? FormatVariant5!
+        public object PickFormatVariant5() => FormatVariant5 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FormatVariant5' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -349,25 +349,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAudioFormat && audioFormat != null)
+            if (AudioFormat is { } __value0 && audioFormat != null)
             {
-                return audioFormat(AudioFormat!);
+                return audioFormat(__value0);
             }
-            else if (IsImageFormat && imageFormat != null)
+            else if (ImageFormat is { } __value1 && imageFormat != null)
             {
-                return imageFormat(ImageFormat!);
+                return imageFormat(__value1);
             }
-            else if (IsTextFormat && textFormat != null)
+            else if (TextFormat is { } __value2 && textFormat != null)
             {
-                return textFormat(TextFormat!);
+                return textFormat(__value2);
             }
-            else if (IsVideoFormat && videoFormat != null)
+            else if (VideoFormat is { } __value3 && videoFormat != null)
             {
-                return videoFormat(VideoFormat!);
+                return videoFormat(__value3);
             }
-            else if (IsFormatVariant5 && formatVariant5 != null)
+            else if (FormatVariant5 is { } __value4 && formatVariant5 != null)
             {
-                return formatVariant5(FormatVariant5!);
+                return formatVariant5(__value4);
             }
 
             return default(TResult);
@@ -393,25 +393,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAudioFormat)
+            if (AudioFormat is { } __value0)
             {
-                audioFormat?.Invoke(AudioFormat!);
+                audioFormat?.Invoke(__value0);
             }
-            else if (IsImageFormat)
+            else if (ImageFormat is { } __value1)
             {
-                imageFormat?.Invoke(ImageFormat!);
+                imageFormat?.Invoke(__value1);
             }
-            else if (IsTextFormat)
+            else if (TextFormat is { } __value2)
             {
-                textFormat?.Invoke(TextFormat!);
+                textFormat?.Invoke(__value2);
             }
-            else if (IsVideoFormat)
+            else if (VideoFormat is { } __value3)
             {
-                videoFormat?.Invoke(VideoFormat!);
+                videoFormat?.Invoke(__value3);
             }
-            else if (IsFormatVariant5)
+            else if (FormatVariant5 is { } __value4)
             {
-                formatVariant5?.Invoke(FormatVariant5!);
+                formatVariant5?.Invoke(__value4);
             }
         }
 
@@ -431,25 +431,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAudioFormat)
+            if (AudioFormat is { } __value0)
             {
-                audioFormat?.Invoke(AudioFormat!);
+                audioFormat?.Invoke(__value0);
             }
-            else if (IsImageFormat)
+            else if (ImageFormat is { } __value1)
             {
-                imageFormat?.Invoke(ImageFormat!);
+                imageFormat?.Invoke(__value1);
             }
-            else if (IsTextFormat)
+            else if (TextFormat is { } __value2)
             {
-                textFormat?.Invoke(TextFormat!);
+                textFormat?.Invoke(__value2);
             }
-            else if (IsVideoFormat)
+            else if (VideoFormat is { } __value3)
             {
-                videoFormat?.Invoke(VideoFormat!);
+                videoFormat?.Invoke(__value3);
             }
-            else if (IsFormatVariant5)
+            else if (FormatVariant5 is { } __value4)
             {
-                formatVariant5?.Invoke(FormatVariant5!);
+                formatVariant5?.Invoke(__value4);
             }
         }
 

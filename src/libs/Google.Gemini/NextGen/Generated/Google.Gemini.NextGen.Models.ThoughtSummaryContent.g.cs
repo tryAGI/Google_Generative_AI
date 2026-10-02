@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageContent PickImage() => IsImage
-            ? Image!
+        public global::Google.Gemini.NextGen.ImageContent PickImage() => Image is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextContent PickText() => IsText
-            ? Text!
+        public global::Google.Gemini.NextGen.TextContent PickText() => Text is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsImage && image != null)
+            if (Image is { } __value0 && image != null)
             {
-                return image(Image!);
+                return image(__value0);
             }
-            else if (IsText && text != null)
+            else if (Text is { } __value1 && text != null)
             {
-                return text(Text!);
+                return text(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsImage)
+            if (Image is { } __value0)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value0);
             }
-            else if (IsText)
+            else if (Text is { } __value1)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsImage)
+            if (Image is { } __value0)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value0);
             }
-            else if (IsText)
+            else if (Text is { } __value1)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value1);
             }
         }
 

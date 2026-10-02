@@ -247,25 +247,25 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.Content), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.Content> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.Content).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Content!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickContent(), typeInfo);
             }
             else if (value.IsStepList)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.StepList!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickStepList(), typeInfo);
             }
             else if (value.IsContentList)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ContentList!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickContentList(), typeInfo);
             }
             else if (value.IsInteractionsInputVariant4)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(string), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<string?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(string).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.InteractionsInputVariant4!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickInteractionsInputVariant4(), typeInfo);
             }
         }
     }

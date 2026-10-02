@@ -214,7 +214,7 @@ namespace Google.Gemini.NextGen
                                 pathTemplate: "\"/v1beta/voices\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -248,7 +248,7 @@ namespace Google.Gemini.NextGen
                                 pathTemplate: "\"/v1beta/voices\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -289,7 +289,7 @@ namespace Google.Gemini.NextGen
                                 pathTemplate: "\"/v1beta/voices\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -337,7 +337,7 @@ namespace Google.Gemini.NextGen
                                 pathTemplate: "\"/v1beta/voices\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -359,7 +359,7 @@ namespace Google.Gemini.NextGen
                                 pathTemplate: "\"/v1beta/voices\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -513,9 +513,11 @@ namespace Google.Gemini.NextGen
         /// Optional. Whether the created voice is persisted and managed by Google.<br/>
         /// * When `true`, Google stores the voice and returns `Voice.id` (for example,<br/>
         ///   `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,<br/>
-        ///   and `DeleteVoice` and referenced by ID in synthesis requests. Projects<br/>
-        ///   are subject to a maximum active stored voice quota; exceeding the quota<br/>
-        ///   returns `RESOURCE_EXHAUSTED`.<br/>
+        ///   and `DeleteVoice` and referenced by ID in synthesis requests. Stored<br/>
+        ///   voices expire after 1 year of inactivity; using a stored voice in speech<br/>
+        ///   synthesis or as a `base_voice` in `CreateVoice` extends its<br/>
+        ///   `expire_time`. Projects are subject to a maximum active stored voice<br/>
+        ///   quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.<br/>
         /// * When `false` (default), the voice is not stored by Google and `Voice.key`<br/>
         ///   (for example, `voicekey_...`) is returned for client-side storage and<br/>
         ///   synthesis. Optional discovery metadata fields on `voice` are not<br/>

@@ -9,11 +9,18 @@ namespace Google.Gemini
     public sealed partial class EnvironmentFile
     {
         /// <summary>
-        /// Output only. The creation time of the file/directory.<br/>
+        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
-        public string? Created { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("size_bytes")]
+        public string? SizeBytes { get; set; }
+
+        /// <summary>
+        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Output only. The name of the file or directory (e.g., "main.py" or "src").<br/>
@@ -23,11 +30,11 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
+        /// Output only. The modification time of the file/directory.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("size_bytes")]
-        public string? SizeBytes { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("modified")]
+        public string? Modified { get; set; }
 
         /// <summary>
         /// Output only. The full relative path within the environment (e.g., "workspace/src/main.py").<br/>
@@ -45,18 +52,11 @@ namespace Google.Gemini
         public global::Google.Gemini.EnvironmentFileType? Type { get; set; }
 
         /// <summary>
-        /// Output only. The modification time of the file/directory.<br/>
+        /// Output only. The creation time of the file/directory.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modified")]
-        public string? Modified { get; set; }
-
-        /// <summary>
-        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        public string? MimeType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
+        public string? Created { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -67,16 +67,20 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="EnvironmentFile" /> class.
         /// </summary>
-        /// <param name="created">
-        /// Output only. The creation time of the file/directory.<br/>
+        /// <param name="sizeBytes">
+        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="mimeType">
+        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
         /// Included only in responses
         /// </param>
         /// <param name="name">
         /// Output only. The name of the file or directory (e.g., "main.py" or "src").<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="sizeBytes">
-        /// Output only. The size of the file/directory in bytes. NOLINT<br/>
+        /// <param name="modified">
+        /// Output only. The modification time of the file/directory.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="path">
@@ -87,33 +91,29 @@ namespace Google.Gemini
         /// Output only. The type of the entry.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="modified">
-        /// Output only. The modification time of the file/directory.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="mimeType">
-        /// Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT<br/>
+        /// <param name="created">
+        /// Output only. The creation time of the file/directory.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentFile(
-            string? created,
-            string? name,
             string? sizeBytes,
+            string? mimeType,
+            string? name,
+            string? modified,
             string? path,
             global::Google.Gemini.EnvironmentFileType? type,
-            string? modified,
-            string? mimeType)
+            string? created)
         {
-            this.Created = created;
-            this.Name = name;
             this.SizeBytes = sizeBytes;
+            this.MimeType = mimeType;
+            this.Name = name;
+            this.Modified = modified;
             this.Path = path;
             this.Type = type;
-            this.Modified = modified;
-            this.MimeType = mimeType;
+            this.Created = created;
         }
 
         /// <summary>

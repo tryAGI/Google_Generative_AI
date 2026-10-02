@@ -127,13 +127,13 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Allowlist!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAllowlist(), typeInfo);
             }
             else if (value.IsDisabled)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Disabled!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDisabled(), typeInfo);
             }
         }
     }

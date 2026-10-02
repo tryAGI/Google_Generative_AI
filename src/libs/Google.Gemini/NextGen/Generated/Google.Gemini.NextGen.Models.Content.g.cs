@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.AudioContent PickAudio() => IsAudio
-            ? Audio!
+        public global::Google.Gemini.NextGen.AudioContent PickAudio() => Audio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.DocumentContent PickDocument() => IsDocument
-            ? Document!
+        public global::Google.Gemini.NextGen.DocumentContent PickDocument() => Document is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Document' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageContent PickImage() => IsImage
-            ? Image!
+        public global::Google.Gemini.NextGen.ImageContent PickImage() => Image is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextContent PickText() => IsText
-            ? Text!
+        public global::Google.Gemini.NextGen.TextContent PickText() => Text is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoContent PickVideo() => IsVideo
-            ? Video!
+        public global::Google.Gemini.NextGen.VideoContent PickVideo() => Video is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -372,25 +372,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAudio && audio != null)
+            if (Audio is { } __value0 && audio != null)
             {
-                return audio(Audio!);
+                return audio(__value0);
             }
-            else if (IsDocument && document != null)
+            else if (Document is { } __value1 && document != null)
             {
-                return document(Document!);
+                return document(__value1);
             }
-            else if (IsImage && image != null)
+            else if (Image is { } __value2 && image != null)
             {
-                return image(Image!);
+                return image(__value2);
             }
-            else if (IsText && text != null)
+            else if (Text is { } __value3 && text != null)
             {
-                return text(Text!);
+                return text(__value3);
             }
-            else if (IsVideo && video != null)
+            else if (Video is { } __value4 && video != null)
             {
-                return video(Video!);
+                return video(__value4);
             }
 
             return default(TResult);
@@ -416,25 +416,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAudio)
+            if (Audio is { } __value0)
             {
-                audio?.Invoke(Audio!);
+                audio?.Invoke(__value0);
             }
-            else if (IsDocument)
+            else if (Document is { } __value1)
             {
-                document?.Invoke(Document!);
+                document?.Invoke(__value1);
             }
-            else if (IsImage)
+            else if (Image is { } __value2)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value2);
             }
-            else if (IsText)
+            else if (Text is { } __value3)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value3);
             }
-            else if (IsVideo)
+            else if (Video is { } __value4)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value4);
             }
         }
 
@@ -454,25 +454,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAudio)
+            if (Audio is { } __value0)
             {
-                audio?.Invoke(Audio!);
+                audio?.Invoke(__value0);
             }
-            else if (IsDocument)
+            else if (Document is { } __value1)
             {
-                document?.Invoke(Document!);
+                document?.Invoke(__value1);
             }
-            else if (IsImage)
+            else if (Image is { } __value2)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value2);
             }
-            else if (IsText)
+            else if (Text is { } __value3)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value3);
             }
-            else if (IsVideo)
+            else if (Video is { } __value4)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value4);
             }
         }
 

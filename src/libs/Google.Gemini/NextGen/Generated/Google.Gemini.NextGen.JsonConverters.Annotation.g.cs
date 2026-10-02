@@ -270,31 +270,31 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.FileCitation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.FileCitation?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.FileCitation).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FileCitation!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFileCitation(), typeInfo);
             }
             else if (value.IsPlaceCitation)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.PlaceCitation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.PlaceCitation?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.PlaceCitation).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PlaceCitation!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPlaceCitation(), typeInfo);
             }
             else if (value.IsSpeech)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.SpeechAnnotation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.SpeechAnnotation?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.SpeechAnnotation).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Speech!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSpeech(), typeInfo);
             }
             else if (value.IsURLCitation)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.URLCitation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.URLCitation?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.URLCitation).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.URLCitation!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickURLCitation(), typeInfo);
             }
             else if (value.IsWordInfo)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.WordInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.WordInfo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.WordInfo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WordInfo!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWordInfo(), typeInfo);
             }
         }
     }

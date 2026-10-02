@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ArgumentsDelta PickArguments() => IsArguments
-            ? Arguments!
+        public global::Google.Gemini.NextGen.ArgumentsDelta PickArguments() => Arguments is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Arguments' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.AudioDelta PickAudio() => IsAudio
-            ? Audio!
+        public global::Google.Gemini.NextGen.AudioDelta PickAudio() => Audio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.CodeExecutionCallDelta PickCodeExecutionCall() => IsCodeExecutionCall
-            ? CodeExecutionCall!
+        public global::Google.Gemini.NextGen.CodeExecutionCallDelta PickCodeExecutionCall() => CodeExecutionCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecutionCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.CodeExecutionResultDelta PickCodeExecutionResult() => IsCodeExecutionResult
-            ? CodeExecutionResult!
+        public global::Google.Gemini.NextGen.CodeExecutionResultDelta PickCodeExecutionResult() => CodeExecutionResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecutionResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.DocumentDelta PickDocument() => IsDocument
-            ? Document!
+        public global::Google.Gemini.NextGen.DocumentDelta PickDocument() => Document is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Document' but the value was {ToString()}.");
 
         /// <summary>
@@ -227,8 +227,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.FileSearchCallDelta PickFileSearchCall() => IsFileSearchCall
-            ? FileSearchCall!
+        public global::Google.Gemini.NextGen.FileSearchCallDelta PickFileSearchCall() => FileSearchCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileSearchCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.FileSearchResultDelta PickFileSearchResult() => IsFileSearchResult
-            ? FileSearchResult!
+        public global::Google.Gemini.NextGen.FileSearchResultDelta PickFileSearchResult() => FileSearchResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileSearchResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -301,8 +301,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.FunctionResultDelta PickFunctionResult() => IsFunctionResult
-            ? FunctionResult!
+        public global::Google.Gemini.NextGen.FunctionResultDelta PickFunctionResult() => FunctionResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -338,8 +338,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GoogleMapsCallDelta PickGoogleMapsCall() => IsGoogleMapsCall
-            ? GoogleMapsCall!
+        public global::Google.Gemini.NextGen.GoogleMapsCallDelta PickGoogleMapsCall() => GoogleMapsCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleMapsCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -375,8 +375,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GoogleMapsResultDelta PickGoogleMapsResult() => IsGoogleMapsResult
-            ? GoogleMapsResult!
+        public global::Google.Gemini.NextGen.GoogleMapsResultDelta PickGoogleMapsResult() => GoogleMapsResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleMapsResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -412,8 +412,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GoogleSearchCallDelta PickGoogleSearchCall() => IsGoogleSearchCall
-            ? GoogleSearchCall!
+        public global::Google.Gemini.NextGen.GoogleSearchCallDelta PickGoogleSearchCall() => GoogleSearchCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearchCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -449,8 +449,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GoogleSearchResultDelta PickGoogleSearchResult() => IsGoogleSearchResult
-            ? GoogleSearchResult!
+        public global::Google.Gemini.NextGen.GoogleSearchResultDelta PickGoogleSearchResult() => GoogleSearchResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearchResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -486,8 +486,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageDelta PickImage() => IsImage
-            ? Image!
+        public global::Google.Gemini.NextGen.ImageDelta PickImage() => Image is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
@@ -523,8 +523,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MCPServerToolCallDelta PickMCPServerToolCall() => IsMCPServerToolCall
-            ? MCPServerToolCall!
+        public global::Google.Gemini.NextGen.MCPServerToolCallDelta PickMCPServerToolCall() => MCPServerToolCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServerToolCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -560,8 +560,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MCPServerToolResultDelta PickMCPServerToolResult() => IsMCPServerToolResult
-            ? MCPServerToolResult!
+        public global::Google.Gemini.NextGen.MCPServerToolResultDelta PickMCPServerToolResult() => MCPServerToolResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServerToolResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -597,8 +597,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ProcessingCallDelta PickProcessingCall() => IsProcessingCall
-            ? ProcessingCall!
+        public global::Google.Gemini.NextGen.ProcessingCallDelta PickProcessingCall() => ProcessingCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ProcessingCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -634,8 +634,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ProcessingResultDelta PickProcessingResult() => IsProcessingResult
-            ? ProcessingResult!
+        public global::Google.Gemini.NextGen.ProcessingResultDelta PickProcessingResult() => ProcessingResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ProcessingResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -672,8 +672,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.RetrievalCallDelta PickRetrievalCall() => IsRetrievalCall
-            ? RetrievalCall!
+        public global::Google.Gemini.NextGen.RetrievalCallDelta PickRetrievalCall() => RetrievalCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetrievalCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -711,8 +711,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.RetrievalResultDelta PickRetrievalResult() => IsRetrievalResult
-            ? RetrievalResult!
+        public global::Google.Gemini.NextGen.RetrievalResultDelta PickRetrievalResult() => RetrievalResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetrievalResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -748,8 +748,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextAnnotationDelta PickTextAnnotation() => IsTextAnnotation
-            ? TextAnnotation!
+        public global::Google.Gemini.NextGen.TextAnnotationDelta PickTextAnnotation() => TextAnnotation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextAnnotation' but the value was {ToString()}.");
 
         /// <summary>
@@ -785,8 +785,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextDelta PickText() => IsText
-            ? Text!
+        public global::Google.Gemini.NextGen.TextDelta PickText() => Text is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
 
         /// <summary>
@@ -822,8 +822,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ThoughtSignatureDelta PickThoughtSignature() => IsThoughtSignature
-            ? ThoughtSignature!
+        public global::Google.Gemini.NextGen.ThoughtSignatureDelta PickThoughtSignature() => ThoughtSignature is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ThoughtSignature' but the value was {ToString()}.");
 
         /// <summary>
@@ -859,8 +859,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ThoughtSummaryDelta PickThoughtSummary() => IsThoughtSummary
-            ? ThoughtSummary!
+        public global::Google.Gemini.NextGen.ThoughtSummaryDelta PickThoughtSummary() => ThoughtSummary is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ThoughtSummary' but the value was {ToString()}.");
 
         /// <summary>
@@ -896,8 +896,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextCallDelta PickURLContextCall() => IsURLContextCall
-            ? URLContextCall!
+        public global::Google.Gemini.NextGen.URLContextCallDelta PickURLContextCall() => URLContextCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContextCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -933,8 +933,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextResultDelta PickURLContextResult() => IsURLContextResult
-            ? URLContextResult!
+        public global::Google.Gemini.NextGen.URLContextResultDelta PickURLContextResult() => URLContextResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContextResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -970,8 +970,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoDelta PickVideo() => IsVideo
-            ? Video!
+        public global::Google.Gemini.NextGen.VideoDelta PickVideo() => Video is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -1740,109 +1740,109 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsArguments && arguments != null)
+            if (Arguments is { } __value0 && arguments != null)
             {
-                return arguments(Arguments!);
+                return arguments(__value0);
             }
-            else if (IsAudio && audio != null)
+            else if (Audio is { } __value1 && audio != null)
             {
-                return audio(Audio!);
+                return audio(__value1);
             }
-            else if (IsCodeExecutionCall && codeExecutionCall != null)
+            else if (CodeExecutionCall is { } __value2 && codeExecutionCall != null)
             {
-                return codeExecutionCall(CodeExecutionCall!);
+                return codeExecutionCall(__value2);
             }
-            else if (IsCodeExecutionResult && codeExecutionResult != null)
+            else if (CodeExecutionResult is { } __value3 && codeExecutionResult != null)
             {
-                return codeExecutionResult(CodeExecutionResult!);
+                return codeExecutionResult(__value3);
             }
-            else if (IsDocument && document != null)
+            else if (Document is { } __value4 && document != null)
             {
-                return document(Document!);
+                return document(__value4);
             }
-            else if (IsFileSearchCall && fileSearchCall != null)
+            else if (FileSearchCall is { } __value5 && fileSearchCall != null)
             {
-                return fileSearchCall(FileSearchCall!);
+                return fileSearchCall(__value5);
             }
-            else if (IsFileSearchResult && fileSearchResult != null)
+            else if (FileSearchResult is { } __value6 && fileSearchResult != null)
             {
-                return fileSearchResult(FileSearchResult!);
+                return fileSearchResult(__value6);
             }
-            else if (IsFunctionResult && functionResult != null)
+            else if (FunctionResult is { } __value7 && functionResult != null)
             {
-                return functionResult(FunctionResult!);
+                return functionResult(__value7);
             }
-            else if (IsGoogleMapsCall && googleMapsCall != null)
+            else if (GoogleMapsCall is { } __value8 && googleMapsCall != null)
             {
-                return googleMapsCall(GoogleMapsCall!);
+                return googleMapsCall(__value8);
             }
-            else if (IsGoogleMapsResult && googleMapsResult != null)
+            else if (GoogleMapsResult is { } __value9 && googleMapsResult != null)
             {
-                return googleMapsResult(GoogleMapsResult!);
+                return googleMapsResult(__value9);
             }
-            else if (IsGoogleSearchCall && googleSearchCall != null)
+            else if (GoogleSearchCall is { } __value10 && googleSearchCall != null)
             {
-                return googleSearchCall(GoogleSearchCall!);
+                return googleSearchCall(__value10);
             }
-            else if (IsGoogleSearchResult && googleSearchResult != null)
+            else if (GoogleSearchResult is { } __value11 && googleSearchResult != null)
             {
-                return googleSearchResult(GoogleSearchResult!);
+                return googleSearchResult(__value11);
             }
-            else if (IsImage && image != null)
+            else if (Image is { } __value12 && image != null)
             {
-                return image(Image!);
+                return image(__value12);
             }
-            else if (IsMCPServerToolCall && mCPServerToolCall != null)
+            else if (MCPServerToolCall is { } __value13 && mCPServerToolCall != null)
             {
-                return mCPServerToolCall(MCPServerToolCall!);
+                return mCPServerToolCall(__value13);
             }
-            else if (IsMCPServerToolResult && mCPServerToolResult != null)
+            else if (MCPServerToolResult is { } __value14 && mCPServerToolResult != null)
             {
-                return mCPServerToolResult(MCPServerToolResult!);
+                return mCPServerToolResult(__value14);
             }
-            else if (IsProcessingCall && processingCall != null)
+            else if (ProcessingCall is { } __value15 && processingCall != null)
             {
-                return processingCall(ProcessingCall!);
+                return processingCall(__value15);
             }
-            else if (IsProcessingResult && processingResult != null)
+            else if (ProcessingResult is { } __value16 && processingResult != null)
             {
-                return processingResult(ProcessingResult!);
+                return processingResult(__value16);
             }
-            else if (IsRetrievalCall && retrievalCall != null)
+            else if (RetrievalCall is { } __value17 && retrievalCall != null)
             {
-                return retrievalCall(RetrievalCall!);
+                return retrievalCall(__value17);
             }
-            else if (IsRetrievalResult && retrievalResult != null)
+            else if (RetrievalResult is { } __value18 && retrievalResult != null)
             {
-                return retrievalResult(RetrievalResult!);
+                return retrievalResult(__value18);
             }
-            else if (IsTextAnnotation && textAnnotation != null)
+            else if (TextAnnotation is { } __value19 && textAnnotation != null)
             {
-                return textAnnotation(TextAnnotation!);
+                return textAnnotation(__value19);
             }
-            else if (IsText && text != null)
+            else if (Text is { } __value20 && text != null)
             {
-                return text(Text!);
+                return text(__value20);
             }
-            else if (IsThoughtSignature && thoughtSignature != null)
+            else if (ThoughtSignature is { } __value21 && thoughtSignature != null)
             {
-                return thoughtSignature(ThoughtSignature!);
+                return thoughtSignature(__value21);
             }
-            else if (IsThoughtSummary && thoughtSummary != null)
+            else if (ThoughtSummary is { } __value22 && thoughtSummary != null)
             {
-                return thoughtSummary(ThoughtSummary!);
+                return thoughtSummary(__value22);
             }
-            else if (IsURLContextCall && uRLContextCall != null)
+            else if (URLContextCall is { } __value23 && uRLContextCall != null)
             {
-                return uRLContextCall(URLContextCall!);
+                return uRLContextCall(__value23);
             }
-            else if (IsURLContextResult && uRLContextResult != null)
+            else if (URLContextResult is { } __value24 && uRLContextResult != null)
             {
-                return uRLContextResult(URLContextResult!);
+                return uRLContextResult(__value24);
             }
-            else if (IsVideo && video != null)
+            else if (Video is { } __value25 && video != null)
             {
-                return video(Video!);
+                return video(__value25);
             }
 
             return default(TResult);
@@ -1910,109 +1910,109 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsArguments)
+            if (Arguments is { } __value0)
             {
-                arguments?.Invoke(Arguments!);
+                arguments?.Invoke(__value0);
             }
-            else if (IsAudio)
+            else if (Audio is { } __value1)
             {
-                audio?.Invoke(Audio!);
+                audio?.Invoke(__value1);
             }
-            else if (IsCodeExecutionCall)
+            else if (CodeExecutionCall is { } __value2)
             {
-                codeExecutionCall?.Invoke(CodeExecutionCall!);
+                codeExecutionCall?.Invoke(__value2);
             }
-            else if (IsCodeExecutionResult)
+            else if (CodeExecutionResult is { } __value3)
             {
-                codeExecutionResult?.Invoke(CodeExecutionResult!);
+                codeExecutionResult?.Invoke(__value3);
             }
-            else if (IsDocument)
+            else if (Document is { } __value4)
             {
-                document?.Invoke(Document!);
+                document?.Invoke(__value4);
             }
-            else if (IsFileSearchCall)
+            else if (FileSearchCall is { } __value5)
             {
-                fileSearchCall?.Invoke(FileSearchCall!);
+                fileSearchCall?.Invoke(__value5);
             }
-            else if (IsFileSearchResult)
+            else if (FileSearchResult is { } __value6)
             {
-                fileSearchResult?.Invoke(FileSearchResult!);
+                fileSearchResult?.Invoke(__value6);
             }
-            else if (IsFunctionResult)
+            else if (FunctionResult is { } __value7)
             {
-                functionResult?.Invoke(FunctionResult!);
+                functionResult?.Invoke(__value7);
             }
-            else if (IsGoogleMapsCall)
+            else if (GoogleMapsCall is { } __value8)
             {
-                googleMapsCall?.Invoke(GoogleMapsCall!);
+                googleMapsCall?.Invoke(__value8);
             }
-            else if (IsGoogleMapsResult)
+            else if (GoogleMapsResult is { } __value9)
             {
-                googleMapsResult?.Invoke(GoogleMapsResult!);
+                googleMapsResult?.Invoke(__value9);
             }
-            else if (IsGoogleSearchCall)
+            else if (GoogleSearchCall is { } __value10)
             {
-                googleSearchCall?.Invoke(GoogleSearchCall!);
+                googleSearchCall?.Invoke(__value10);
             }
-            else if (IsGoogleSearchResult)
+            else if (GoogleSearchResult is { } __value11)
             {
-                googleSearchResult?.Invoke(GoogleSearchResult!);
+                googleSearchResult?.Invoke(__value11);
             }
-            else if (IsImage)
+            else if (Image is { } __value12)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value12);
             }
-            else if (IsMCPServerToolCall)
+            else if (MCPServerToolCall is { } __value13)
             {
-                mCPServerToolCall?.Invoke(MCPServerToolCall!);
+                mCPServerToolCall?.Invoke(__value13);
             }
-            else if (IsMCPServerToolResult)
+            else if (MCPServerToolResult is { } __value14)
             {
-                mCPServerToolResult?.Invoke(MCPServerToolResult!);
+                mCPServerToolResult?.Invoke(__value14);
             }
-            else if (IsProcessingCall)
+            else if (ProcessingCall is { } __value15)
             {
-                processingCall?.Invoke(ProcessingCall!);
+                processingCall?.Invoke(__value15);
             }
-            else if (IsProcessingResult)
+            else if (ProcessingResult is { } __value16)
             {
-                processingResult?.Invoke(ProcessingResult!);
+                processingResult?.Invoke(__value16);
             }
-            else if (IsRetrievalCall)
+            else if (RetrievalCall is { } __value17)
             {
-                retrievalCall?.Invoke(RetrievalCall!);
+                retrievalCall?.Invoke(__value17);
             }
-            else if (IsRetrievalResult)
+            else if (RetrievalResult is { } __value18)
             {
-                retrievalResult?.Invoke(RetrievalResult!);
+                retrievalResult?.Invoke(__value18);
             }
-            else if (IsTextAnnotation)
+            else if (TextAnnotation is { } __value19)
             {
-                textAnnotation?.Invoke(TextAnnotation!);
+                textAnnotation?.Invoke(__value19);
             }
-            else if (IsText)
+            else if (Text is { } __value20)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value20);
             }
-            else if (IsThoughtSignature)
+            else if (ThoughtSignature is { } __value21)
             {
-                thoughtSignature?.Invoke(ThoughtSignature!);
+                thoughtSignature?.Invoke(__value21);
             }
-            else if (IsThoughtSummary)
+            else if (ThoughtSummary is { } __value22)
             {
-                thoughtSummary?.Invoke(ThoughtSummary!);
+                thoughtSummary?.Invoke(__value22);
             }
-            else if (IsURLContextCall)
+            else if (URLContextCall is { } __value23)
             {
-                uRLContextCall?.Invoke(URLContextCall!);
+                uRLContextCall?.Invoke(__value23);
             }
-            else if (IsURLContextResult)
+            else if (URLContextResult is { } __value24)
             {
-                uRLContextResult?.Invoke(URLContextResult!);
+                uRLContextResult?.Invoke(__value24);
             }
-            else if (IsVideo)
+            else if (Video is { } __value25)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value25);
             }
         }
 
@@ -2053,109 +2053,109 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsArguments)
+            if (Arguments is { } __value0)
             {
-                arguments?.Invoke(Arguments!);
+                arguments?.Invoke(__value0);
             }
-            else if (IsAudio)
+            else if (Audio is { } __value1)
             {
-                audio?.Invoke(Audio!);
+                audio?.Invoke(__value1);
             }
-            else if (IsCodeExecutionCall)
+            else if (CodeExecutionCall is { } __value2)
             {
-                codeExecutionCall?.Invoke(CodeExecutionCall!);
+                codeExecutionCall?.Invoke(__value2);
             }
-            else if (IsCodeExecutionResult)
+            else if (CodeExecutionResult is { } __value3)
             {
-                codeExecutionResult?.Invoke(CodeExecutionResult!);
+                codeExecutionResult?.Invoke(__value3);
             }
-            else if (IsDocument)
+            else if (Document is { } __value4)
             {
-                document?.Invoke(Document!);
+                document?.Invoke(__value4);
             }
-            else if (IsFileSearchCall)
+            else if (FileSearchCall is { } __value5)
             {
-                fileSearchCall?.Invoke(FileSearchCall!);
+                fileSearchCall?.Invoke(__value5);
             }
-            else if (IsFileSearchResult)
+            else if (FileSearchResult is { } __value6)
             {
-                fileSearchResult?.Invoke(FileSearchResult!);
+                fileSearchResult?.Invoke(__value6);
             }
-            else if (IsFunctionResult)
+            else if (FunctionResult is { } __value7)
             {
-                functionResult?.Invoke(FunctionResult!);
+                functionResult?.Invoke(__value7);
             }
-            else if (IsGoogleMapsCall)
+            else if (GoogleMapsCall is { } __value8)
             {
-                googleMapsCall?.Invoke(GoogleMapsCall!);
+                googleMapsCall?.Invoke(__value8);
             }
-            else if (IsGoogleMapsResult)
+            else if (GoogleMapsResult is { } __value9)
             {
-                googleMapsResult?.Invoke(GoogleMapsResult!);
+                googleMapsResult?.Invoke(__value9);
             }
-            else if (IsGoogleSearchCall)
+            else if (GoogleSearchCall is { } __value10)
             {
-                googleSearchCall?.Invoke(GoogleSearchCall!);
+                googleSearchCall?.Invoke(__value10);
             }
-            else if (IsGoogleSearchResult)
+            else if (GoogleSearchResult is { } __value11)
             {
-                googleSearchResult?.Invoke(GoogleSearchResult!);
+                googleSearchResult?.Invoke(__value11);
             }
-            else if (IsImage)
+            else if (Image is { } __value12)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value12);
             }
-            else if (IsMCPServerToolCall)
+            else if (MCPServerToolCall is { } __value13)
             {
-                mCPServerToolCall?.Invoke(MCPServerToolCall!);
+                mCPServerToolCall?.Invoke(__value13);
             }
-            else if (IsMCPServerToolResult)
+            else if (MCPServerToolResult is { } __value14)
             {
-                mCPServerToolResult?.Invoke(MCPServerToolResult!);
+                mCPServerToolResult?.Invoke(__value14);
             }
-            else if (IsProcessingCall)
+            else if (ProcessingCall is { } __value15)
             {
-                processingCall?.Invoke(ProcessingCall!);
+                processingCall?.Invoke(__value15);
             }
-            else if (IsProcessingResult)
+            else if (ProcessingResult is { } __value16)
             {
-                processingResult?.Invoke(ProcessingResult!);
+                processingResult?.Invoke(__value16);
             }
-            else if (IsRetrievalCall)
+            else if (RetrievalCall is { } __value17)
             {
-                retrievalCall?.Invoke(RetrievalCall!);
+                retrievalCall?.Invoke(__value17);
             }
-            else if (IsRetrievalResult)
+            else if (RetrievalResult is { } __value18)
             {
-                retrievalResult?.Invoke(RetrievalResult!);
+                retrievalResult?.Invoke(__value18);
             }
-            else if (IsTextAnnotation)
+            else if (TextAnnotation is { } __value19)
             {
-                textAnnotation?.Invoke(TextAnnotation!);
+                textAnnotation?.Invoke(__value19);
             }
-            else if (IsText)
+            else if (Text is { } __value20)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value20);
             }
-            else if (IsThoughtSignature)
+            else if (ThoughtSignature is { } __value21)
             {
-                thoughtSignature?.Invoke(ThoughtSignature!);
+                thoughtSignature?.Invoke(__value21);
             }
-            else if (IsThoughtSummary)
+            else if (ThoughtSummary is { } __value22)
             {
-                thoughtSummary?.Invoke(ThoughtSummary!);
+                thoughtSummary?.Invoke(__value22);
             }
-            else if (IsURLContextCall)
+            else if (URLContextCall is { } __value23)
             {
-                uRLContextCall?.Invoke(URLContextCall!);
+                uRLContextCall?.Invoke(__value23);
             }
-            else if (IsURLContextResult)
+            else if (URLContextResult is { } __value24)
             {
-                uRLContextResult?.Invoke(URLContextResult!);
+                uRLContextResult?.Invoke(__value24);
             }
-            else if (IsVideo)
+            else if (Video is { } __value25)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value25);
             }
         }
 

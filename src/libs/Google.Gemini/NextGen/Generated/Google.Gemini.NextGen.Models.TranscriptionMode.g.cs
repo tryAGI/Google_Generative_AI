@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SmartTranscriptionMode PickSmart() => IsSmart
-            ? Smart!
+        public global::Google.Gemini.NextGen.SmartTranscriptionMode PickSmart() => Smart is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Smart' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VerbatimTranscriptionMode PickVerbatim() => IsVerbatim
-            ? Verbatim!
+        public global::Google.Gemini.NextGen.VerbatimTranscriptionMode PickVerbatim() => Verbatim is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Verbatim' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsSmart && smart != null)
+            if (Smart is { } __value0 && smart != null)
             {
-                return smart(Smart!);
+                return smart(__value0);
             }
-            else if (IsVerbatim && verbatim != null)
+            else if (Verbatim is { } __value1 && verbatim != null)
             {
-                return verbatim(Verbatim!);
+                return verbatim(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsSmart)
+            if (Smart is { } __value0)
             {
-                smart?.Invoke(Smart!);
+                smart?.Invoke(__value0);
             }
-            else if (IsVerbatim)
+            else if (Verbatim is { } __value1)
             {
-                verbatim?.Invoke(Verbatim!);
+                verbatim?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsSmart)
+            if (Smart is { } __value0)
             {
-                smart?.Invoke(Smart!);
+                smart?.Invoke(__value0);
             }
-            else if (IsVerbatim)
+            else if (Verbatim is { } __value1)
             {
-                verbatim?.Invoke(Verbatim!);
+                verbatim?.Invoke(__value1);
             }
         }
 

@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Content PickContent() => IsContent
-            ? Content!.Value
+        public global::Google.Gemini.NextGen.Content PickContent() => Content is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Content' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step> PickStepList() => IsStepList
-            ? StepList!
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step> PickStepList() => StepList is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StepList' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content> PickContentList() => IsContentList
-            ? ContentList!
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content> PickContentList() => ContentList is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ContentList' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public string PickInteractionsInputVariant4() => IsInteractionsInputVariant4
-            ? InteractionsInputVariant4!
+        public string PickInteractionsInputVariant4() => InteractionsInputVariant4 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'InteractionsInputVariant4' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -261,21 +261,21 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsContent && content != null)
+            if (Content is { } __value0 && content != null)
             {
-                return content(Content!);
+                return content(__value0);
             }
-            else if (IsStepList && stepList != null)
+            else if (StepList is { } __value1 && stepList != null)
             {
-                return stepList(StepList!);
+                return stepList(__value1);
             }
-            else if (IsContentList && contentList != null)
+            else if (ContentList is { } __value2 && contentList != null)
             {
-                return contentList(ContentList!);
+                return contentList(__value2);
             }
-            else if (IsInteractionsInputVariant4 && interactionsInputVariant4 != null)
+            else if (InteractionsInputVariant4 is { } __value3 && interactionsInputVariant4 != null)
             {
-                return interactionsInputVariant4(InteractionsInputVariant4!);
+                return interactionsInputVariant4(__value3);
             }
 
             return default(TResult);
@@ -299,21 +299,21 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsContent)
+            if (Content is { } __value0)
             {
-                content?.Invoke(Content!);
+                content?.Invoke(__value0);
             }
-            else if (IsStepList)
+            else if (StepList is { } __value1)
             {
-                stepList?.Invoke(StepList!);
+                stepList?.Invoke(__value1);
             }
-            else if (IsContentList)
+            else if (ContentList is { } __value2)
             {
-                contentList?.Invoke(ContentList!);
+                contentList?.Invoke(__value2);
             }
-            else if (IsInteractionsInputVariant4)
+            else if (InteractionsInputVariant4 is { } __value3)
             {
-                interactionsInputVariant4?.Invoke(InteractionsInputVariant4!);
+                interactionsInputVariant4?.Invoke(__value3);
             }
         }
 
@@ -332,21 +332,21 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsContent)
+            if (Content is { } __value0)
             {
-                content?.Invoke(Content!);
+                content?.Invoke(__value0);
             }
-            else if (IsStepList)
+            else if (StepList is { } __value1)
             {
-                stepList?.Invoke(StepList!);
+                stepList?.Invoke(__value1);
             }
-            else if (IsContentList)
+            else if (ContentList is { } __value2)
             {
-                contentList?.Invoke(ContentList!);
+                contentList?.Invoke(__value2);
             }
-            else if (IsInteractionsInputVariant4)
+            else if (InteractionsInputVariant4 is { } __value3)
             {
-                interactionsInputVariant4?.Invoke(InteractionsInputVariant4!);
+                interactionsInputVariant4?.Invoke(__value3);
             }
         }
 

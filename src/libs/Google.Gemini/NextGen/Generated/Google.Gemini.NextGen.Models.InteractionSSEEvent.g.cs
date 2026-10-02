@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ErrorEvent PickError() => IsError
-            ? Error!
+        public global::Google.Gemini.NextGen.ErrorEvent PickError() => Error is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.InteractionCompletedEvent PickCompleted() => IsCompleted
-            ? Completed!
+        public global::Google.Gemini.NextGen.InteractionCompletedEvent PickCompleted() => Completed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
 
         /// <summary>
@@ -118,8 +118,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.InteractionCreatedEvent PickCreated() => IsCreated
-            ? Created!
+        public global::Google.Gemini.NextGen.InteractionCreatedEvent PickCreated() => Created is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Created' but the value was {ToString()}.");
 
         /// <summary>
@@ -155,8 +155,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.InteractionStatusUpdate PickStatusUpdate() => IsStatusUpdate
-            ? StatusUpdate!
+        public global::Google.Gemini.NextGen.InteractionStatusUpdate PickStatusUpdate() => StatusUpdate is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StatusUpdate' but the value was {ToString()}.");
 
         /// <summary>
@@ -192,8 +192,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.StepDelta PickStepDelta() => IsStepDelta
-            ? StepDelta!
+        public global::Google.Gemini.NextGen.StepDelta PickStepDelta() => StepDelta is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StepDelta' but the value was {ToString()}.");
 
         /// <summary>
@@ -229,8 +229,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.StepStart PickStepStart() => IsStepStart
-            ? StepStart!
+        public global::Google.Gemini.NextGen.StepStart PickStepStart() => StepStart is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StepStart' but the value was {ToString()}.");
 
         /// <summary>
@@ -266,8 +266,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.StepStop PickStepStop() => IsStepStop
-            ? StepStop!
+        public global::Google.Gemini.NextGen.StepStop PickStepStop() => StepStop is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StepStop' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -504,33 +504,33 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsError && error != null)
+            if (Error is { } __value0 && error != null)
             {
-                return error(Error!);
+                return error(__value0);
             }
-            else if (IsCompleted && completed != null)
+            else if (Completed is { } __value1 && completed != null)
             {
-                return completed(Completed!);
+                return completed(__value1);
             }
-            else if (IsCreated && created != null)
+            else if (Created is { } __value2 && created != null)
             {
-                return created(Created!);
+                return created(__value2);
             }
-            else if (IsStatusUpdate && statusUpdate != null)
+            else if (StatusUpdate is { } __value3 && statusUpdate != null)
             {
-                return statusUpdate(StatusUpdate!);
+                return statusUpdate(__value3);
             }
-            else if (IsStepDelta && stepDelta != null)
+            else if (StepDelta is { } __value4 && stepDelta != null)
             {
-                return stepDelta(StepDelta!);
+                return stepDelta(__value4);
             }
-            else if (IsStepStart && stepStart != null)
+            else if (StepStart is { } __value5 && stepStart != null)
             {
-                return stepStart(StepStart!);
+                return stepStart(__value5);
             }
-            else if (IsStepStop && stepStop != null)
+            else if (StepStop is { } __value6 && stepStop != null)
             {
-                return stepStop(StepStop!);
+                return stepStop(__value6);
             }
 
             return default(TResult);
@@ -560,33 +560,33 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsError)
+            if (Error is { } __value0)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value0);
             }
-            else if (IsCompleted)
+            else if (Completed is { } __value1)
             {
-                completed?.Invoke(Completed!);
+                completed?.Invoke(__value1);
             }
-            else if (IsCreated)
+            else if (Created is { } __value2)
             {
-                created?.Invoke(Created!);
+                created?.Invoke(__value2);
             }
-            else if (IsStatusUpdate)
+            else if (StatusUpdate is { } __value3)
             {
-                statusUpdate?.Invoke(StatusUpdate!);
+                statusUpdate?.Invoke(__value3);
             }
-            else if (IsStepDelta)
+            else if (StepDelta is { } __value4)
             {
-                stepDelta?.Invoke(StepDelta!);
+                stepDelta?.Invoke(__value4);
             }
-            else if (IsStepStart)
+            else if (StepStart is { } __value5)
             {
-                stepStart?.Invoke(StepStart!);
+                stepStart?.Invoke(__value5);
             }
-            else if (IsStepStop)
+            else if (StepStop is { } __value6)
             {
-                stepStop?.Invoke(StepStop!);
+                stepStop?.Invoke(__value6);
             }
         }
 
@@ -608,33 +608,33 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsError)
+            if (Error is { } __value0)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value0);
             }
-            else if (IsCompleted)
+            else if (Completed is { } __value1)
             {
-                completed?.Invoke(Completed!);
+                completed?.Invoke(__value1);
             }
-            else if (IsCreated)
+            else if (Created is { } __value2)
             {
-                created?.Invoke(Created!);
+                created?.Invoke(__value2);
             }
-            else if (IsStatusUpdate)
+            else if (StatusUpdate is { } __value3)
             {
-                statusUpdate?.Invoke(StatusUpdate!);
+                statusUpdate?.Invoke(__value3);
             }
-            else if (IsStepDelta)
+            else if (StepDelta is { } __value4)
             {
-                stepDelta?.Invoke(StepDelta!);
+                stepDelta?.Invoke(__value4);
             }
-            else if (IsStepStart)
+            else if (StepStart is { } __value5)
             {
-                stepStart?.Invoke(StepStart!);
+                stepStart?.Invoke(__value5);
             }
-            else if (IsStepStop)
+            else if (StepStop is { } __value6)
             {
-                stepStop?.Invoke(StepStop!);
+                stepStop?.Invoke(__value6);
             }
         }
 

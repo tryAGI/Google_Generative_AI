@@ -130,13 +130,13 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.SmartTranscriptionMode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.SmartTranscriptionMode?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.SmartTranscriptionMode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Smart!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSmart(), typeInfo);
             }
             else if (value.IsVerbatim)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.VerbatimTranscriptionMode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.VerbatimTranscriptionMode?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.VerbatimTranscriptionMode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Verbatim!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVerbatim(), typeInfo);
             }
         }
     }

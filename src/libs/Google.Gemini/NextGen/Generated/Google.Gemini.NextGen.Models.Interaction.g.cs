@@ -22,8 +22,8 @@ namespace Google.Gemini.NextGen
         /// Configuration parameters for the agent interaction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent_config")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.AgentConfig2JsonConverter))]
-        public global::Google.Gemini.NextGen.AgentConfig2? AgentConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? AgentConfig { get; set; }
 
         /// <summary>
         /// Input only. Whether to run the model interaction in the background.<br/>
@@ -320,7 +320,7 @@ namespace Google.Gemini.NextGen
 #endif
         public Interaction(
             global::Google.Gemini.NextGen.AgentOption? agent,
-            global::Google.Gemini.NextGen.AgentConfig2? agentConfig,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? agentConfig,
             bool? background,
             string? created,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,

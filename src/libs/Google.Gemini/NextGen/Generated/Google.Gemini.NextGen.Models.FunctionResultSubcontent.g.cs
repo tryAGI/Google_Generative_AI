@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageContent PickImageContent() => IsImageContent
-            ? ImageContent!
+        public global::Google.Gemini.NextGen.ImageContent PickImageContent() => ImageContent is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ImageContent' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextContent PickTextContent() => IsTextContent
-            ? TextContent!
+        public global::Google.Gemini.NextGen.TextContent PickTextContent() => TextContent is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextContent' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsImageContent && imageContent != null)
+            if (ImageContent is { } __value0 && imageContent != null)
             {
-                return imageContent(ImageContent!);
+                return imageContent(__value0);
             }
-            else if (IsTextContent && textContent != null)
+            else if (TextContent is { } __value1 && textContent != null)
             {
-                return textContent(TextContent!);
+                return textContent(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsImageContent)
+            if (ImageContent is { } __value0)
             {
-                imageContent?.Invoke(ImageContent!);
+                imageContent?.Invoke(__value0);
             }
-            else if (IsTextContent)
+            else if (TextContent is { } __value1)
             {
-                textContent?.Invoke(TextContent!);
+                textContent?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsImageContent)
+            if (ImageContent is { } __value0)
             {
-                imageContent?.Invoke(ImageContent!);
+                imageContent?.Invoke(__value0);
             }
-            else if (IsTextContent)
+            else if (TextContent is { } __value1)
             {
-                textContent?.Invoke(TextContent!);
+                textContent?.Invoke(__value1);
             }
         }
 

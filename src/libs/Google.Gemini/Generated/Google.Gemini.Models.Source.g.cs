@@ -9,18 +9,6 @@ namespace Google.Gemini
     public sealed partial class Source
     {
         /// <summary>
-        /// The inline content if `type` is `INLINE`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
-
-        /// <summary>
-        /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        public string? Source1 { get; set; }
-
-        /// <summary>
         /// Where the source should appear in the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target")]
@@ -40,6 +28,18 @@ namespace Google.Gemini
         public global::Google.Gemini.SourceType? Type { get; set; }
 
         /// <summary>
+        /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
+        public string? Source1 { get; set; }
+
+        /// <summary>
+        /// The inline content if `type` is `INLINE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,12 +48,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
-        /// <param name="content">
-        /// The inline content if `type` is `INLINE`.
-        /// </param>
-        /// <param name="source1">
-        /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-        /// </param>
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
@@ -61,21 +55,27 @@ namespace Google.Gemini
         /// Optional encoding for inline content (e.g. `base64`).
         /// </param>
         /// <param name="type"></param>
+        /// <param name="source1">
+        /// The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+        /// </param>
+        /// <param name="content">
+        /// The inline content if `type` is `INLINE`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
-            string? content,
-            string? source1,
             string? target,
             string? encoding,
-            global::Google.Gemini.SourceType? type)
+            global::Google.Gemini.SourceType? type,
+            string? source1,
+            string? content)
         {
-            this.Content = content;
-            this.Source1 = source1;
             this.Target = target;
             this.Encoding = encoding;
             this.Type = type;
+            this.Source1 = source1;
+            this.Content = content;
         }
 
         /// <summary>

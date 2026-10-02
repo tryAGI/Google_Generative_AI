@@ -250,31 +250,31 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.CodeExecution), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.CodeExecution?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.CodeExecution).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CodeExecution!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCodeExecution(), typeInfo);
             }
             else if (value.IsFunction)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.Function), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.Function?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.Function).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Function!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFunction(), typeInfo);
             }
             else if (value.IsGoogleSearch)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.GoogleSearch), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.GoogleSearch?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.GoogleSearch).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GoogleSearch!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGoogleSearch(), typeInfo);
             }
             else if (value.IsMCPServer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServer?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServer).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MCPServer!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMCPServer(), typeInfo);
             }
             else if (value.IsURLContext)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.URLContext), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.URLContext?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.URLContext).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.URLContext!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickURLContext(), typeInfo);
             }
         }
     }

@@ -134,13 +134,13 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.ImageContent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.ImageContent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ImageContent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ImageContent!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickImageContent(), typeInfo);
             }
             else if (value.IsTextContent)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.TextContent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.TextContent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.TextContent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TextContent!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTextContent(), typeInfo);
             }
         }
     }

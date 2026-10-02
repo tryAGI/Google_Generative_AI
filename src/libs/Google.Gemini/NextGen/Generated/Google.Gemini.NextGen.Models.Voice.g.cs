@@ -37,8 +37,10 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// Output only. The timestamp at which a custom stored voice (`store = true`)<br/>
-        /// or replicated voice key (`store = false`) expires. Unset for prebuilt<br/>
-        /// catalog voices (`"prebuilt"`), which do not expire.<br/>
+        /// or replicated voice key (`store = false`) expires. For custom stored voices<br/>
+        /// (`store = true`), this expiration time is extended when the voice is used<br/>
+        /// for speech synthesis or as a `base_voice` in `CreateVoice`. Unset for<br/>
+        /// prebuilt catalog voices (`"prebuilt"`), which do not expire.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expire_time")]
@@ -178,8 +180,10 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="expireTime">
         /// Output only. The timestamp at which a custom stored voice (`store = true`)<br/>
-        /// or replicated voice key (`store = false`) expires. Unset for prebuilt<br/>
-        /// catalog voices (`"prebuilt"`), which do not expire.<br/>
+        /// or replicated voice key (`store = false`) expires. For custom stored voices<br/>
+        /// (`store = true`), this expiration time is extended when the voice is used<br/>
+        /// for speech synthesis or as a `base_voice` in `CreateVoice`. Unset for<br/>
+        /// prebuilt catalog voices (`"prebuilt"`), which do not expire.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="gender">

@@ -26,20 +26,10 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? AgentConfig { get; set; }
 
         /// <summary>
-        /// Input only. Whether to run the model interaction in the background.<br/>
-        /// Included only in requests
+        /// Input only. Whether to run the model interaction in the background.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("background")]
         public bool? Background { get; set; }
-
-        /// <summary>
-        /// Required. Output only. The time at which the response was created in ISO 8601 format<br/>
-        /// (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
-        public string Created { get; set; } = default!;
 
         /// <summary>
         /// The environment configuration for the interaction. Can be an object<br/>
@@ -49,22 +39,6 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.Environment3, string>))]
         public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? Environment { get; set; }
-
-        /// <summary>
-        /// Output only. The environment ID for the interaction. Only populated if environment<br/>
-        /// config is set in the request.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environment_id")]
-        public string? EnvironmentId { get; set; }
-
-        /// <summary>
-        /// Required. Output only. A unique identifier for the interaction completion.<br/>
-        /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; } = default!;
 
         /// <summary>
         /// The input for the interaction.
@@ -125,24 +99,13 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.ServiceTier? ServiceTier { get; set; }
 
         /// <summary>
-        /// Required. Output only. The status of the interaction.<br/>
-        /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.CreateAgentInteractionStatusJsonConverter))]
-        public global::Google.Gemini.NextGen.CreateAgentInteractionStatus Status { get; set; } = default!;
-
-        /// <summary>
-        /// Input only. Whether to store the response and request for later retrieval.<br/>
-        /// Included only in requests
+        /// Input only. Whether to store the response and request for later retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("store")]
         public bool? Store { get; set; }
 
         /// <summary>
-        /// Input only. Whether the interaction will be streamed.<br/>
-        /// Included only in requests
+        /// Input only. Whether the interaction will be streamed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
         public bool? Stream { get; set; }
@@ -158,15 +121,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? Tools { get; set; }
-
-        /// <summary>
-        /// Required. Output only. The time at which the response was last updated in ISO 8601 format<br/>
-        /// (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updated")]
-        public string Updated { get; set; } = default!;
 
         /// <summary>
         /// Message for configuring webhook events for a request.
@@ -190,18 +144,12 @@ namespace Google.Gemini.NextGen
         /// Configuration parameters for the agent interaction.
         /// </param>
         /// <param name="background">
-        /// Input only. Whether to run the model interaction in the background.<br/>
-        /// Included only in requests
+        /// Input only. Whether to run the model interaction in the background.
         /// </param>
         /// <param name="environment">
         /// The environment configuration for the interaction. Can be an object<br/>
         /// specifying remote environment sources or a string referencing an existing<br/>
         /// environment ID.
-        /// </param>
-        /// <param name="environmentId">
-        /// Output only. The environment ID for the interaction. Only populated if environment<br/>
-        /// config is set in the request.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="input">
         /// The input for the interaction.
@@ -225,12 +173,10 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="serviceTier"></param>
         /// <param name="store">
-        /// Input only. Whether to store the response and request for later retrieval.<br/>
-        /// Included only in requests
+        /// Input only. Whether to store the response and request for later retrieval.
         /// </param>
         /// <param name="stream">
-        /// Input only. Whether the interaction will be streamed.<br/>
-        /// Included only in requests
+        /// Input only. Whether the interaction will be streamed.
         /// </param>
         /// <param name="systemInstruction">
         /// System instruction for the interaction.
@@ -241,24 +187,6 @@ namespace Google.Gemini.NextGen
         /// <param name="webhookConfig">
         /// Message for configuring webhook events for a request.
         /// </param>
-        /// <param name="created">
-        /// Required. Output only. The time at which the response was created in ISO 8601 format<br/>
-        /// (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="id">
-        /// Required. Output only. A unique identifier for the interaction completion.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="status">
-        /// Required. Output only. The status of the interaction.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="updated">
-        /// Required. Output only. The time at which the response was last updated in ISO 8601 format<br/>
-        /// (YYYY-MM-DDThh:mm:ssZ).<br/>
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -267,7 +195,6 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? agentConfig,
             bool? background,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,
-            string? environmentId,
             global::Google.Gemini.NextGen.InteractionsInput? input,
             global::System.Collections.Generic.Dictionary<string, string>? labels,
             string? previousInteractionId,
@@ -278,31 +205,22 @@ namespace Google.Gemini.NextGen
             bool? stream,
             string? systemInstruction,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? tools,
-            global::Google.Gemini.NextGen.WebhookConfig? webhookConfig,
-            string created = default!,
-            string id = default!,
-            global::Google.Gemini.NextGen.CreateAgentInteractionStatus status = default!,
-            string updated = default!)
+            global::Google.Gemini.NextGen.WebhookConfig? webhookConfig)
         {
             this.Agent = agent;
             this.AgentConfig = agentConfig;
             this.Background = background;
-            this.Created = created;
             this.Environment = environment;
-            this.EnvironmentId = environmentId;
-            this.Id = id;
             this.Input = input;
             this.Labels = labels;
             this.PreviousInteractionId = previousInteractionId;
             this.ResponseFormat = responseFormat;
             this.SafetySettings = safetySettings;
             this.ServiceTier = serviceTier;
-            this.Status = status;
             this.Store = store;
             this.Stream = stream;
             this.SystemInstruction = systemInstruction;
             this.Tools = tools;
-            this.Updated = updated;
             this.WebhookConfig = webhookConfig;
         }
 
@@ -311,18 +229,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public CreateAgentInteraction()
         {
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="CreateAgentInteraction"/> from its single non-const required field,
-        /// hardcoding any const discriminator fields.
-        /// </summary>
-        public static CreateAgentInteraction FromAgent(global::Google.Gemini.NextGen.AgentOption agent)
-        {
-            return new CreateAgentInteraction
-            {
-                Agent = agent,
-            };
         }
 
     }

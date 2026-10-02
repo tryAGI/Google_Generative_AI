@@ -43,6 +43,13 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<string>? StopSequences { get; set; }
 
         /// <summary>
+        /// Controls the randomness of the output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public float? Temperature { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thinking_level")]
@@ -62,6 +69,13 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>))]
         public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? ToolChoice { get; set; }
+
+        /// <summary>
+        /// The maximum cumulative probability of tokens to consider when sampling.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_p")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public float? TopP { get; set; }
 
         /// <summary>
         /// Configuration for speech recognition (transcription).

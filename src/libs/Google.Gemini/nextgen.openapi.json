@@ -137,6 +137,11 @@
             "label": "list",
             "lang": "java",
             "source": "import com.google.genai.gaos.models.agents.Agent;\nimport com.google.genai.gaos.models.agents.AgentListResponse;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.ListAgentsResponse;\n\nClient client = new Client();\nListAgentsResponse response = client.agents.list().call();\nList<Agent> agents =\n    response.agentListResponse().flatMap(AgentListResponse::agents).orElse(List.of());\nfor (Agent agent : agents) {\n  agent.id().ifPresent(System.out::println);\n}\n"
+          },
+          {
+            "label": "list",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    res, err := client.Agents.List(ctx, operations.ListAgentsRequest{})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.AgentListResponse != nil {\n        for _, agent := range res.AgentListResponse.Agents {\n            if agent.ID != nil {\n                fmt.Println(*agent.ID)\n            }\n        }\n    }\n}\n"
           }
         ]
       },
@@ -238,6 +243,21 @@
             "label": "fork_from_env",
             "lang": "java",
             "source": "import com.google.genai.gaos.models.agents.Agent;\nimport com.google.genai.gaos.models.interactions.AgentOption;\nimport com.google.genai.gaos.models.agents.BaseEnvironment;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteraction;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;\nimport com.google.genai.gaos.models.operations.CreateAgentResponse;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\nimport com.google.genai.gaos.models.interactions.Step;\n\nClient client = new Client();\n\n// Step 1: Set up the environment interactively.\nCreateAgentInteraction params =\n    CreateAgentInteraction.builder()\n        .agent(AgentOption.of(\"antigravity-preview-05-2026\"))\n        .input(\n            InteractionsInput.of(\n                \"Write a basic Hello World template to /workspace/template.py.\"))\n        .environment(CreateAgentInteractionEnvironment.of(\"remote\"))\n        .build();\nCreateInteractionResponse interactionResponse =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    interactionResponse\n        .interaction()\n        .orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\n\n// Step 2: Fork that environment into a named agent.\nString agentId = \"my-data-analyst-\" + UUID.randomUUID().toString().substring(0, 8);\nAgent agent =\n    Agent.builder()\n        .id(agentId)\n        .baseAgent(\"antigravity-preview-05-2026\")\n        .systemInstruction(\n            \"You are a data analyst. Use the template at /workspace/template.py for all\"\n                + \" reports.\")\n        .baseEnvironment(BaseEnvironment.of(interaction.environmentId().orElse(\"\")))\n        .build();\nCreateAgentResponse agentResponse = client.agents.create(agent);\nSystem.out.println(\"Forked agent: \" + agentResponse.agent().flatMap(Agent::id).orElse(\"\"));\n"
+          },
+          {
+            "label": "create",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"time\"\n    \"google.golang.org/genai\"\n    gaos_agents \"google.golang.org/genai/interactions/models/agents\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    agentID := fmt.Sprintf(\"research-assistant-%d\", time.Now().UnixNano())\n    req := operations.CreateAgentRequest{\n        Body: gaos_agents.Agent{\n            ID:                genai.Ptr(agentID),\n            BaseAgent:         genai.Ptr(\"antigravity-preview-05-2026\"),\n            Description:       genai.Ptr(\"A helpful research assistant.\"),\n            SystemInstruction: genai.Ptr(\"You are a helpful research assistant.\"),\n            BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(\"remote\")),\n            Tools: []gaos_agents.AgentTool{\n                gaos_agents.NewAgentTool(gaos_interactions.GoogleSearch{}),\n            },\n        },\n    }\n\n    res, err := client.Agents.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Agent != nil && res.Agent.ID != nil {\n        fmt.Println(*res.Agent.ID)\n    }\n}\n"
+          },
+          {
+            "label": "with_sources",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"time\"\n    \"google.golang.org/genai\"\n    gaos_agents \"google.golang.org/genai/interactions/models/agents\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    agentID := fmt.Sprintf(\"data-analyst-%d\", time.Now().UnixNano())\n    env := gaos_interactions.Environment{\n        Sources: []gaos_interactions.Source{\n            {\n                Type:    genai.Ptr(gaos_interactions.SourceTypeInline),\n                Target:  genai.Ptr(\".agents/AGENTS.md\"),\n                Content: genai.Ptr(\"Always use matplotlib for charts. Include a summary table in every report.\"),\n            },\n            {\n                Type:   genai.Ptr(gaos_interactions.SourceTypeRepository),\n                Source: genai.Ptr(\"https://github.com/my-org/analysis-templates\"),\n                Target: genai.Ptr(\"/workspace/templates\"),\n            },\n        },\n    }\n\n    req := operations.CreateAgentRequest{\n        Body: gaos_agents.Agent{\n            ID:                genai.Ptr(agentID),\n            BaseAgent:         genai.Ptr(\"antigravity-preview-05-2026\"),\n            SystemInstruction: genai.Ptr(\"You are a data analyst. Always include visualizations and export results as PDF.\"),\n            BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(env)),\n        },\n    }\n\n    res, err := client.Agents.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Agent != nil && res.Agent.ID != nil {\n        fmt.Printf(\"Created agent: %s\\n\", *res.Agent.ID)\n    }\n}\n"
+          },
+          {
+            "label": "fork_from_env",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"time\"\n    \"google.golang.org/genai\"\n    gaos_agents \"google.golang.org/genai/interactions/models/agents\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    // Step 1: Set up the environment interactively.\n    interactionReq := operations.CreateInteractionRequest{\n        Body: operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n            Agent:       gaos_interactions.AgentOption(\"antigravity-preview-05-2026\"),\n            Input:       genai.Ptr(gaos_interactions.NewInteractionsInput(\"Write a basic Hello World template to /workspace/template.py.\")),\n            Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(\"remote\")),\n        }),\n    }\n    interactionRes, err := client.Interactions.Create(ctx, interactionReq)\n    if err != nil {\n        log.Fatal(err)\n    }\n    envID := \"\"\n    if interactionRes.Interaction != nil && interactionRes.Interaction.EnvironmentID != nil {\n        envID = *interactionRes.Interaction.EnvironmentID\n    }\n\n    // Step 2: Fork that environment into a named agent.\n    agentID := fmt.Sprintf(\"my-data-analyst-%d\", time.Now().UnixNano())\n    req := operations.CreateAgentRequest{\n        Body: gaos_agents.Agent{\n            ID:                genai.Ptr(agentID),\n            BaseAgent:         genai.Ptr(\"antigravity-preview-05-2026\"),\n            SystemInstruction: genai.Ptr(\"You are a data analyst. Use the template at /workspace/template.py for all reports.\"),\n            BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(envID)),\n        },\n    }\n    res, err := client.Agents.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Agent != nil && res.Agent.ID != nil {\n        fmt.Printf(\"Forked agent: %s\\n\", *res.Agent.ID)\n    }\n}\n"
           }
         ]
       }
@@ -306,6 +326,11 @@
             "label": "delete",
             "lang": "java",
             "source": "import com.google.genai.gaos.models.agents.Agent;\nimport com.google.genai.Client;\n\nClient client = new Client();\n\n\nclient.agents.delete(agentId);\nSystem.out.println(\"Agent deleted successfully.\");\n"
+          },
+          {
+            "label": "delete",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n\n    _, err = client.Agents.Delete(ctx, operations.DeleteAgentRequest{ID: agentID})\n    if err != nil {\n        log.Fatal(err)\n    }\n    fmt.Println(\"Agent deleted successfully.\")\n}\n"
           }
         ]
       },
@@ -384,6 +409,11 @@
             "label": "get",
             "lang": "java",
             "source": "import com.google.genai.gaos.models.agents.Agent;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.GetAgentResponse;\n\nClient client = new Client();\n\n\nGetAgentResponse response = client.agents.get(agentId);\nAgent agent = response.agent().orElseThrow(() -> new RuntimeException(\"No agent returned\"));\nSystem.out.println(agent.id().orElse(\"\"));\n"
+          },
+          {
+            "label": "get",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n\n    res, err := client.Agents.Get(ctx, operations.GetAgentRequest{ID: agentID})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Agent != nil && res.Agent.ID != nil {\n        fmt.Println(*res.Agent.ID)\n    }\n}\n"
           }
         ]
       }
@@ -668,6 +698,11 @@
             "label": "list",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.environments.Environment;\nimport com.google.genai.gaos.models.operations.ListEnvironmentsResponse;\n\nClient client = new Client();\nListEnvironmentsResponse response = client.environments.listEnvironmentsDirect();\nfor (com.google.genai.gaos.models.environments.Environment env :\n    response.listEnvironmentsResponse().flatMap(res -> res.environments()).orElse(List.of())) {\n  System.out.println(env.id().orElse(\"\"));\n}\n"
+          },
+          {
+            "label": "list",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n    res, err := client.Environments.ListEnvironments(ctx, operations.ListEnvironmentsRequest{})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.ListEnvironmentsResponse != nil {\n        for _, env := range res.ListEnvironmentsResponse.Environments {\n            if env.ID != \"\" {\n                fmt.Println(env.ID)\n            }\n        }\n    }\n}\n"
           }
         ]
       },
@@ -741,6 +776,16 @@
             "label": "copy",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.environments.CreateEnvironmentRequest;\nimport com.google.genai.gaos.models.environments.Environment;\n\nClient client = new Client();\n\n\nCreateEnvironmentRequest request =\n    CreateEnvironmentRequest.builder().fromEnvironment(sourceEnvId).build();\ncom.google.genai.gaos.models.environments.Environment environment =\n    client.environments.createEnvironment(request).environment().orElseThrow();\nSystem.out.println(environment.id().orElse(\"\"));\n"
+          },
+          {
+            "label": "create",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_environments \"google.golang.org/genai/interactions/models/environments\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n    req := operations.CreateEnvironmentRequest{\n        Body: gaos_environments.CreateEnvironmentRequest{\n            Sources: []gaos_interactions.Source{\n                {\n                    Type:    genai.Ptr(gaos_interactions.SourceTypeInline),\n                    Target:  genai.Ptr(\"main.py\"),\n                    Content: genai.Ptr(\"print('Hello, World!')\"),\n                },\n            },\n        },\n    }\n\n    res, err := client.Environments.CreateEnvironment(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Environment != nil && res.Environment.ID != \"\" {\n        fmt.Println(res.Environment.ID)\n\n    }\n}\n"
+          },
+          {
+            "label": "copy",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_environments \"google.golang.org/genai/interactions/models/environments\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n\n    res, err := client.Environments.CreateEnvironment(ctx, operations.CreateEnvironmentRequest{\n        Body: gaos_environments.CreateEnvironmentRequest{\n            FromEnvironment: genai.Ptr(sourceEnvID),\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Environment != nil && res.Environment.ID != \"\" {\n        fmt.Println(res.Environment.ID)\n\n    }\n}\n"
           }
         ]
       }
@@ -842,6 +887,16 @@
             "label": "get_file",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.environments.EnvironmentFile;\nimport com.google.genai.gaos.models.operations.GetEnvironmentFilesRequest;\nimport com.google.genai.gaos.models.environments.GetEnvironmentFilesResponse;\n\nClient client = new Client();\n\n\ncom.google.genai.gaos.models.operations.GetEnvironmentFilesResponse response =\n    client\n        .environments\n        .files()\n        .list(GetEnvironmentFilesRequest.builder().environment(envId).path(\"main.py\").build());\nGetEnvironmentFilesResponse filesResponse =\n    response.getEnvironmentFilesResponse().orElseThrow();\nfor (EnvironmentFile file : filesResponse.files().orElse(List.of())) {\n  System.out.println(file.name().orElse(\"\") + \" \" + file.sizeBytes().orElse(\"\"));\n}\n"
+          },
+          {
+            "label": "list_files",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n\n    res, err := client.Environments.Files.List(ctx, operations.GetEnvironmentFilesRequest{\n        Environment: envID,\n        Path:        \"src\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.GetEnvironmentFilesResponse != nil {\n        for _, file := range res.GetEnvironmentFilesResponse.Files {\n            name := \"\"\n            if file.Name != nil {\n                name = *file.Name\n            }\n            fileType := \"\"\n            if file.Type != nil {\n                fileType = string(*file.Type)\n            }\n            var size int64\n            if file.SizeBytes != nil {\n                size = *file.SizeBytes\n            }\n            fmt.Println(name, fileType, size)\n        }\n    }\n}\n"
+          },
+          {
+            "label": "get_file",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n\n    res, err := client.Environments.Files.List(ctx, operations.GetEnvironmentFilesRequest{\n        Environment: envID,\n        Path:        \"main.py\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.GetEnvironmentFilesResponse != nil {\n        for _, file := range res.GetEnvironmentFilesResponse.Files {\n            name := \"\"\n            if file.Name != nil {\n                name = *file.Name\n            }\n            var size int64\n            if file.SizeBytes != nil {\n                size = *file.SizeBytes\n            }\n            fmt.Println(name, size)\n        }\n    }\n}\n"
           }
         ]
       }
@@ -896,6 +951,11 @@
             "label": "delete",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.environments.Environment;\n\nClient client = new Client();\n\n\nclient.environments.deleteEnvironment(envId);\nSystem.out.println(\n    \"com.google.genai.gaos.models.environments.Environment deleted successfully.\");\n"
+          },
+          {
+            "label": "delete",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n\n    _, err = client.Environments.DeleteEnvironment(ctx, operations.DeleteEnvironmentRequest{\n        ID: envID,\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    fmt.Println(\"Environment deleted successfully.\")\n}\n"
           }
         ]
       },
@@ -948,6 +1008,11 @@
             "label": "get",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.environments.Environment;\n\nClient client = new Client();\n\n\ncom.google.genai.gaos.models.environments.Environment environment =\n    client.environments.getEnvironment(envId).environment().orElseThrow();\nSystem.out.println(environment.id().orElse(\"\"));\n"
+          },
+          {
+            "label": "get",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client := interactions.New()\n\n\n    res, err := client.Environments.GetEnvironment(ctx, operations.GetEnvironmentRequest{\n        ID: envID,\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Environment != nil && res.Environment.ID != \"\" {\n        fmt.Println(res.Environment.ID)\n    }\n}\n"
           }
         ]
       }
@@ -1479,6 +1544,51 @@
             "label": "custom_agent",
             "lang": "java",
             "source": "import com.google.genai.gaos.models.agents.Agent;\nimport com.google.genai.gaos.models.interactions.AgentOption;\nimport com.google.genai.gaos.models.agents.BaseEnvironment;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteraction;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.environments.Environment;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\nimport com.google.genai.gaos.models.interactions.Source;\nimport com.google.genai.gaos.models.interactions.SourceType;\nimport com.google.genai.gaos.models.interactions.Step;\n\nClient client = new Client();\n\n// Step 1: Create a custom agent.\nString agentId = \"code-reviewer-\" + UUID.randomUUID().toString().substring(0, 8);\ncom.google.genai.gaos.models.interactions.Environment baseEnv =\n    com.google.genai.gaos.models.interactions.Environment.builder()\n        .sources(\n            List.of(\n                Source.builder()\n                    .type(SourceType.REPOSITORY)\n                    .source(\"https://github.com/octocat/Spoon-Knife\")\n                    .target(\"/workspace/repo\")\n                    .build()))\n        .build();\nAgent customAgent =\n    Agent.builder()\n        .id(agentId)\n        .baseAgent(\"antigravity-preview-05-2026\")\n        .systemInstruction(\n            \"You are a senior code reviewer. Check every file for bugs, style issues, and\"\n                + \" security vulnerabilities.\")\n        .baseEnvironment(BaseEnvironment.of(baseEnv))\n        .build();\nclient.agents.create(customAgent);\n\n// Step 2: Use the custom agent.\nCreateAgentInteraction params =\n    CreateAgentInteraction.builder()\n        .agent(AgentOption.of(agentId))\n        .input(\n            InteractionsInput.of(\n                \"Review the latest changes in /workspace/repo/src and file a summary.\"))\n        .environment(CreateAgentInteractionEnvironment.of(\"remote\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "simple",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"Hello, how are you?\")),\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
+          },
+          {
+            "label": "multi_turn",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    history := []gaos_interactions.Step{\n        gaos_interactions.NewStep(gaos_interactions.UserInputStep{\n            Content: []gaos_interactions.Content{\n                gaos_interactions.NewContent(gaos_interactions.TextContent{\n                    Text: \"Hello!\",\n                }),\n            },\n        }),\n        gaos_interactions.NewStep(gaos_interactions.ModelOutputStep{\n            Content: []gaos_interactions.Content{\n                gaos_interactions.NewContent(gaos_interactions.TextContent{\n                    Text: \"Hi there! How can I help you today?\",\n                }),\n            },\n        }),\n        gaos_interactions.NewStep(gaos_interactions.UserInputStep{\n            Content: []gaos_interactions.Content{\n                gaos_interactions.NewContent(gaos_interactions.TextContent{\n                    Text: \"What is the capital of France?\",\n                }),\n            },\n        }),\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(history)),\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
+          },
+          {
+            "label": "multimodal_image",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    contents := []gaos_interactions.Content{\n        gaos_interactions.NewContent(gaos_interactions.TextContent{\n            Text: \"What is in this picture?\",\n        }),\n        gaos_interactions.NewContent(gaos_interactions.ImageContent{\n            Data:     genai.Ptr(\"BASE64_ENCODED_IMAGE\"),\n            MimeType: gaos_interactions.ImageContentMimeTypeImagePng.ToPointer(),\n        }),\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
+          },
+          {
+            "label": "function_calling",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    function := gaos_interactions.Function{\n        Name:        genai.Ptr(\"get_weather\"),\n        Description: genai.Ptr(\"Get the current weather in a given location\"),\n        Parameters: map[string]any{\n            \"type\": \"object\",\n            \"properties\": map[string]any{\n                \"location\": map[string]any{\n                    \"type\":        \"string\",\n                    \"description\": \"The city and state, e.g. San Francisco, CA\",\n                },\n            },\n            \"required\": []string{\"location\"},\n        },\n    }\n\n    tool := gaos_interactions.NewTool(function)\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"What is the weather like in Boston, MA?\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil {\n        for _, step := range res.Interaction.Steps {\n            if step.FunctionCallStep != nil {\n                fmt.Println(\"Function Call:\", step.FunctionCallStep.Name)\n                fmt.Println(\"Arguments:\", step.FunctionCallStep.Arguments)\n            }\n        }\n    }\n}\n"
+          },
+          {
+            "label": "deep_research",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:      gaos_interactions.AgentOption(\"deep-research-pro-preview-12-2025\"),\n        Input:      genai.Ptr(gaos_interactions.NewInteractionsInput(\"find a cure to cancer\")),\n        Background: genai.Ptr(true),\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil {\n        fmt.Println(res.Interaction.Status)\n    }\n}\n"
+          },
+          {
+            "label": "antigravity",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:       gaos_interactions.AgentOption(\"antigravity-preview-05-2026\"),\n        Input:       genai.Ptr(gaos_interactions.NewInteractionsInput(\"Read Hacker News, summarize the top 5 stories, and save results as a markdown file.\")),\n        Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(\"remote\")),\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
+          },
+          {
+            "label": "reuse_env",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    // Step 1: Create an interaction with a fresh remote environment.\n    body1 := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:       gaos_interactions.AgentOption(\"antigravity-preview-05-2026\"),\n        Input:       genai.Ptr(gaos_interactions.NewInteractionsInput(\"Write a hello world script at /workspace/hello.py.\")),\n        Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(\"remote\")),\n    })\n\n    res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body1})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res1.Interaction == nil || res1.Interaction.EnvironmentID == nil {\n        log.Fatal(\"No environment ID returned\")\n    }\n    fmt.Printf(\"Environment ID: %s\\n\", *res1.Interaction.EnvironmentID)\n\n    // Step 2: Reuse the same environment in a follow-up interaction.\n    body2 := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:                 gaos_interactions.AgentOption(\"antigravity-preview-05-2026\"),\n        Input:                 genai.Ptr(gaos_interactions.NewInteractionsInput(\"Modify the script to accept a name argument and greet the user.\")),\n        Environment:           genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(*res1.Interaction.EnvironmentID)),\n        PreviousInteractionID: res1.Interaction.ID,\n    })\n\n    res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body2})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res2.Interaction != nil && res2.Interaction.OutputText != nil {\n        fmt.Println(*res2.Interaction.OutputText)\n    }\n}\n"
+          },
+          {
+            "label": "with_sources",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    env := gaos_interactions.Environment{\n        Sources: []gaos_interactions.Source{\n            {\n                Type:   genai.Ptr(gaos_interactions.SourceTypeRepository),\n                Source: genai.Ptr(\"https://github.com/octocat/Spoon-Knife\"),\n                Target: genai.Ptr(\"/workspace/repo\"),\n            },\n            {\n                Type:    genai.Ptr(gaos_interactions.SourceTypeInline),\n                Content: genai.Ptr(\"Focus on Python files only.\"),\n                Target:  genai.Ptr(\"/workspace/notes.txt\"),\n            },\n        },\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:       gaos_interactions.AgentOption(\"antigravity-preview-05-2026\"),\n        Input:       genai.Ptr(gaos_interactions.NewInteractionsInput(\"List all files under /workspace and summarize what you find.\")),\n        Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(env)),\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
+          },
+          {
+            "label": "custom_agent",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"time\"\n    \"google.golang.org/genai\"\n    gaos_agents \"google.golang.org/genai/interactions/models/agents\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    // Step 1: Create a custom agent.\n    agentID := fmt.Sprintf(\"code-reviewer-%d\", time.Now().UnixNano())\n    baseEnv := gaos_interactions.Environment{\n        Sources: []gaos_interactions.Source{\n            {\n                Type:   genai.Ptr(gaos_interactions.SourceTypeRepository),\n                Source: genai.Ptr(\"https://github.com/octocat/Spoon-Knife\"),\n                Target: genai.Ptr(\"/workspace/repo\"),\n            },\n        },\n    }\n\n    _, err = client.Agents.Create(ctx, operations.CreateAgentRequest{\n        Body: gaos_agents.Agent{\n            ID:                genai.Ptr(agentID),\n            BaseAgent:         genai.Ptr(\"antigravity-preview-05-2026\"),\n            SystemInstruction: genai.Ptr(\"You are a senior code reviewer. Check every file for bugs, style issues, and security vulnerabilities.\"),\n            BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(baseEnv)),\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    // Step 2: Use the custom agent.\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:       gaos_interactions.AgentOption(agentID),\n        Input:       genai.Ptr(gaos_interactions.NewInteractionsInput(\"Review the latest changes in /workspace/repo/src and file a summary.\")),\n        Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(\"remote\")),\n    })\n\n    res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       }
@@ -1570,6 +1680,11 @@
             "label": "delete",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.Interaction;\n\nClient client = new Client();\n\n\nclient.interactions.delete(interactionId);\nSystem.out.println(\"Interaction deleted successfully.\");\n"
+          },
+          {
+            "label": "delete",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n\n    req := operations.DeleteInteractionRequest{\n        ID: interactionID,\n    }\n\n    _, err = client.Interactions.Delete(\n        ctx,\n        req,\n    )\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    fmt.Println(\"Interaction deleted successfully.\")\n}\n"
           }
         ]
       },
@@ -1721,6 +1836,11 @@
             "label": "get",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.GetInteractionByIdRequest;\nimport com.google.genai.gaos.models.operations.GetInteractionByIdResponse;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionStatus;\n\nClient client = new Client();\n\n\nGetInteractionByIdResponse getResponse =\n    client.interactions.get(new GetInteractionByIdRequest(interactionId));\nInteraction interaction =\n    getResponse\n        .interaction()\n        .orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.status().map(InteractionStatus::value).orElse(\"\"));\n"
+          },
+          {
+            "label": "get",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n\n    interaction, err := client.Interactions.Get(ctx, operations.GetInteractionByIDRequest{\n        ID: *created.Interaction.ID,\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if interaction.Interaction != nil {\n        fmt.Println(interaction.Interaction.Status)\n    }\n}\n"
           }
         ]
       }
@@ -1819,6 +1939,11 @@
             "label": "cancel",
             "lang": "java",
             "source": "import com.google.genai.gaos.models.operations.CancelInteractionByIdResponse;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.ComputerUse;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionStatus;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\n\n// Start a background interaction so it stays in-progress.\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .input(InteractionsInput.of(\"Write a long essay about the history of computing.\"))\n        .tools(List.of(new ComputerUse()))\n        .background(true)\n        .build();\nCreateInteractionResponse created =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nString interactionId = created.interaction().flatMap(Interaction::id).orElseThrow();\n\n// Cancel the in-progress interaction.\nCancelInteractionByIdResponse cancelResponse = client.interactions.cancel(interactionId);\nInteraction interaction =\n    cancelResponse\n        .interaction()\n        .orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.status().map(InteractionStatus::value).orElse(\"\"));\n"
+          },
+          {
+            "label": "cancel",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n\n    req := operations.CancelInteractionByIDRequest{\n        ID: interactionID,\n    }\n\n    res, err := client.Interactions.Cancel(\n        ctx,\n        req,\n    )\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil {\n        fmt.Println(res.Interaction.Status)\n    }\n}\n"
           }
         ]
       }
@@ -1915,7 +2040,29 @@
             "representation": "input"
           }
         ],
-        "x-speakeasy-name-override": "create"
+        "x-speakeasy-name-override": "create",
+        "x-codeSamples": [
+          {
+            "label": "create",
+            "lang": "sh",
+            "source": "curl -X POST https://generativelanguage.googleapis.com/v1beta/triggers \\\n  -H \"x-goog-api-key: $GEMINI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"schedule\": \"0 9 * * *\",\n    \"time_zone\": \"America/New_York\",\n    \"interaction\": {\n      \"agent\": \"antigravity-preview-05-2026\",\n      \"input\": \"Summarize top news stories.\",\n      \"environment\": \"remote\"\n    }\n  }'\n"
+          },
+          {
+            "label": "create",
+            "lang": "python",
+            "source": "from google import genai\n\nclient = genai.Client()\ntrigger = client.triggers.create(\n    schedule=\"0 9 * * *\",\n    time_zone=\"America/New_York\",\n    interaction={\n        \"agent\": \"antigravity-preview-05-2026\",\n        \"input\": \"Summarize top news stories.\",\n        \"environment\": \"remote\",\n    },\n)\nprint(trigger.id, trigger.interaction.agent)\n"
+          },
+          {
+            "label": "create",
+            "lang": "javascript",
+            "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst trigger = await ai.triggers.create({\n  schedule: '0 9 * * *',\n  time_zone: 'America/New_York',\n  interaction: {\n    agent: 'antigravity-preview-05-2026',\n    input: 'Summarize top news stories.',\n    environment: 'remote',\n  },\n});\nconsole.log(trigger.id, trigger.interaction.agent);\n"
+          },
+          {
+            "label": "create",
+            "lang": "java",
+            "source": "import com.google.genai.gaos.models.interactions.AgentOption;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteraction;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;\nimport com.google.genai.gaos.models.operations.CreateTriggerResponse;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\nimport com.google.genai.gaos.models.triggers.Trigger;\nimport com.google.genai.gaos.models.triggers.TriggerCreateParams;\n\nClient client = new Client();\nCreateAgentInteraction interaction =\n    CreateAgentInteraction.builder()\n        .agent(AgentOption.of(\"antigravity-preview-05-2026\"))\n        .input(InteractionsInput.of(\"Summarize top news stories.\"))\n        .environment(CreateAgentInteractionEnvironment.of(\"remote\"))\n        .build();\nTriggerCreateParams params =\n    TriggerCreateParams.builder()\n        .schedule(\"0 9 * * *\")\n        .timeZone(\"America/New_York\")\n        .interaction(interaction)\n        .build();\nCreateTriggerResponse response = client.triggers.create(params);\nTrigger trigger =\n    response.trigger().orElseThrow(() -> new RuntimeException(\"No trigger returned\"));\nSystem.out.println(\n    trigger.id().orElse(\"\")\n        + \" \"\n        + trigger.interaction().flatMap(CreateAgentInteraction::agent).orElse(null));\n"
+          }
+        ]
       }
     },
     "/v1beta/triggers/{id}": {
@@ -2940,17 +3087,12 @@
               {
                 "$ref": "#/components/schemas/DynamicAgentConfig"
               }
-            ]
+            ],
+            "x-speakeasy-unknown-values": "disallow"
           },
           "background": {
             "description": "Input only. Whether to run the model interaction in the background.",
-            "type": "boolean",
-            "writeOnly": true
-          },
-          "created": {
-            "description": "Required. Output only. The time at which the response was created in ISO 8601 format\n(YYYY-MM-DDThh:mm:ssZ).",
-            "type": "string",
-            "readOnly": true
+            "type": "boolean"
           },
           "environment": {
             "description": "The environment configuration for the interaction. Can be an object\nspecifying remote environment sources or a string referencing an existing\nenvironment ID.",
@@ -2961,17 +3103,8 @@
               {
                 "type": "string"
               }
-            ]
-          },
-          "environment_id": {
-            "description": "Output only. The environment ID for the interaction. Only populated if environment\nconfig is set in the request.",
-            "type": "string",
-            "readOnly": true
-          },
-          "id": {
-            "description": "Required. Output only. A unique identifier for the interaction completion.",
-            "type": "string",
-            "readOnly": true
+            ],
+            "x-speakeasy-unknown-values": "disallow"
           },
           "input": {
             "$ref": "#/components/schemas/InteractionsInput"
@@ -3026,50 +3159,13 @@
             "description": "The service tier for the interaction.",
             "$ref": "#/components/schemas/ServiceTier"
           },
-          "status": {
-            "description": "Required. Output only. The status of the interaction.",
-            "type": "string",
-            "enum": [
-              "in_progress",
-              "requires_action",
-              "completed",
-              "failed",
-              "cancelled",
-              "incomplete",
-              "budget_exceeded",
-              "queued"
-            ],
-            "readOnly": true,
-            "x-google-enum-deprecated": [
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              true,
-              false
-            ],
-            "x-google-enum-descriptions": [
-              "The interaction is in progress.",
-              "The interaction requires action/input from the user.",
-              "The interaction is completed.",
-              "The interaction failed.",
-              "The interaction was cancelled.",
-              "The interaction is completed, but contains incomplete results (e.g.\nhitting max_tokens).",
-              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
-              "The interaction is queued, waiting for processing (e.g. waiting for\noff-peak capacity)."
-            ]
-          },
           "store": {
             "description": "Input only. Whether to store the response and request for later retrieval.",
-            "type": "boolean",
-            "writeOnly": true
+            "type": "boolean"
           },
           "stream": {
             "description": "Input only. Whether the interaction will be streamed.",
-            "type": "boolean",
-            "writeOnly": true
+            "type": "boolean"
           },
           "system_instruction": {
             "description": "System instruction for the interaction.",
@@ -3082,23 +3178,13 @@
               "$ref": "#/components/schemas/Tool"
             }
           },
-          "updated": {
-            "description": "Required. Output only. The time at which the response was last updated in ISO 8601 format\n(YYYY-MM-DDThh:mm:ssZ).",
-            "type": "string",
-            "readOnly": true
-          },
           "webhook_config": {
             "description": "Optional. Webhook configuration for receiving notifications when the\ninteraction completes.",
             "$ref": "#/components/schemas/WebhookConfig"
           }
         },
         "required": [
-          "agent",
-          "created",
-          "id",
-          "status",
-          "steps",
-          "updated"
+          "agent"
         ],
         "x-speakeasy-exports": [
           {
@@ -3258,7 +3344,8 @@
             "group": "interactions"
           }
         ],
-        "x-speakeasy-model-namespace": "interactions"
+        "x-speakeasy-model-namespace": "interactions",
+        "x-speakeasy-unknown-values": "disallow"
       },
       "ArgumentsDelta": {
         "type": "object",
@@ -3537,6 +3624,11 @@
             "label": "code_execution",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.CodeExecution;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(new CodeExecution()))\n        .input(InteractionsInput.of(\"Calculate the first 10 Fibonacci numbers\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "code_execution",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    tool := gaos_interactions.NewTool(gaos_interactions.CodeExecution{})\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"Calculate the first 10 Fibonacci numbers\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -3747,7 +3839,8 @@
             "group": "interactions"
           }
         ],
-        "x-speakeasy-model-namespace": "interactions"
+        "x-speakeasy-model-namespace": "interactions",
+        "x-speakeasy-unknown-values": "disallow"
       },
       "ComputerUse": {
         "description": "A tool that can be used by the model to interact with the computer.",
@@ -3831,6 +3924,11 @@
             "label": "computer_use",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.ComputerUse;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-2.5-computer-use-preview-10-2025\")\n        .tools(List.of(new ComputerUse()))\n        .input(InteractionsInput.of(\"Find a flight to Tokyo\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "computer_use",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    tool := gaos_interactions.NewTool(gaos_interactions.ComputerUse{})\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-2.5-computer-use-preview-10-2025\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"Find a flight to Tokyo\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -3907,7 +4005,7 @@
         "type": "object",
         "properties": {
           "store": {
-            "description": "Optional. Whether the created voice is persisted and managed by Google.\n\n* When `true`, Google stores the voice and returns `Voice.id` (for example,\n  `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,\n  and `DeleteVoice` and referenced by ID in synthesis requests. Projects\n  are subject to a maximum active stored voice quota; exceeding the quota\n  returns `RESOURCE_EXHAUSTED`.\n* When `false` (default), the voice is not stored by Google and `Voice.key`\n  (for example, `voicekey_...`) is returned for client-side storage and\n  synthesis. Optional discovery metadata fields on `voice` are not\n  persisted or returned when `store` is `false`.\n* Required to be `true` when `voice.type` is `\"prompted\"`\n  (otherwise fails with `INVALID_ARGUMENT`).",
+            "description": "Optional. Whether the created voice is persisted and managed by Google.\n\n* When `true`, Google stores the voice and returns `Voice.id` (for example,\n  `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,\n  and `DeleteVoice` and referenced by ID in synthesis requests. Stored\n  voices expire after 1 year of inactivity; using a stored voice in speech\n  synthesis or as a `base_voice` in `CreateVoice` extends its\n  `expire_time`. Projects are subject to a maximum active stored voice\n  quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.\n* When `false` (default), the voice is not stored by Google and `Voice.key`\n  (for example, `voicekey_...`) is returned for client-side storage and\n  synthesis. Optional discovery metadata fields on `voice` are not\n  persisted or returned when `store` is `false`.\n* Required to be `true` when `voice.type` is `\"prompted\"`\n  (otherwise fails with `INVALID_ARGUMENT`).",
             "type": "boolean"
           },
           "voice": {
@@ -4089,7 +4187,8 @@
             "group": "interactions"
           }
         ],
-        "x-speakeasy-model-namespace": "interactions"
+        "x-speakeasy-model-namespace": "interactions",
+        "x-speakeasy-unknown-values": "disallow"
       },
       "DeleteVoiceResponse": {
         "description": "Response message for `VoicesService.DeleteVoice`.",
@@ -4192,7 +4291,8 @@
             "group": "interactions"
           }
         ],
-        "x-speakeasy-model-namespace": "interactions"
+        "x-speakeasy-model-namespace": "interactions",
+        "x-speakeasy-unknown-values": "disallow"
       },
       "EgressRule": {
         "description": "A single domain allowlist rule with optional header injection.",
@@ -4426,7 +4526,8 @@
           }
         ],
         "x-speakeasy-model-namespace": "interactions",
-        "x-speakeasy-name-override": "Environment"
+        "x-speakeasy-name-override": "Environment",
+        "x-speakeasy-unknown-values": "disallow"
       },
       "EnvironmentFile": {
         "description": "Metadata for a file or directory within an environment.",
@@ -4801,6 +4902,11 @@
             "label": "file_search",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.types.CreateFileSearchStoreConfig;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.FileSearch;\nimport com.google.genai.types.FileSearchStore;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\n\n// Create a file search store so we have a valid one to use.\nFileSearchStore store =\n    client.fileSearchStores.create(CreateFileSearchStoreConfig.builder().build());\nString storeName = store.name().orElseThrow();\n\nFileSearch tool = FileSearch.builder().fileSearchStoreNames(List.of(storeName)).build();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(tool))\n        .input(InteractionsInput.of(\"What documents are available?\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "file_search",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n\n    tool := gaos_interactions.NewTool(gaos_interactions.FileSearch{\n        FileSearchStoreNames: []string{store.Name},\n    })\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"What documents are available?\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -5038,6 +5144,11 @@
             "label": "function_calling",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.Function;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\nimport com.google.genai.gaos.models.interactions.Step;\n\nClient client = new Client();\nMap<String, Object> parameters =\n    Map.of(\n        \"type\", \"object\",\n        \"properties\",\n            Map.of(\n                \"location\",\n                Map.of(\n                    \"type\", \"string\",\n                    \"description\", \"The city and state, e.g. San Francisco, CA\")),\n        \"required\", List.of(\"location\"));\nFunction functionTool =\n    Function.builder()\n        .name(\"get_weather\")\n        .description(\"Get the current weather in a given location\")\n        .parameters(parameters)\n        .build();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(functionTool))\n        .input(InteractionsInput.of(\"What is the weather like in Boston?\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nList<Step> steps = interaction.steps().orElse(List.of());\nif (!steps.isEmpty()) {\n  System.out.println(steps.get(steps.size() - 1));\n}\n"
+          },
+          {
+            "label": "function_calling",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    function := gaos_interactions.Function{\n        Name:        genai.Ptr(\"get_weather\"),\n        Description: genai.Ptr(\"Get the current weather in a given location\"),\n        Parameters: map[string]any{\n            \"type\": \"object\",\n            \"properties\": map[string]any{\n                \"location\": map[string]any{\n                    \"type\":        \"string\",\n                    \"description\": \"The city and state, e.g. San Francisco, CA\",\n                },\n            },\n            \"required\": []string{\"location\"},\n        },\n    }\n\n    tool := gaos_interactions.NewTool(function)\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"What is the weather like in Boston, MA?\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil {\n        for _, step := range res.Interaction.Steps {\n            if step.FunctionCallStep != nil {\n                fmt.Println(\"Function Call:\", step.FunctionCallStep.Name)\n                fmt.Println(\"Arguments:\", step.FunctionCallStep.Arguments)\n            }\n        }\n    }\n}\n"
           }
         ]
       },
@@ -5216,6 +5327,12 @@
               "type": "string"
             }
           },
+          "temperature": {
+            "description": "Controls the randomness of the output.",
+            "type": "number",
+            "deprecated": true,
+            "format": "float"
+          },
           "thinking_level": {
             "description": "The level of thought tokens that the model should generate.",
             "$ref": "#/components/schemas/ThinkingLevel"
@@ -5253,6 +5370,12 @@
                 "x-speakeasy-model-namespace": "interactions"
               }
             ]
+          },
+          "top_p": {
+            "description": "The maximum cumulative probability of tokens to consider when sampling.",
+            "type": "number",
+            "deprecated": true,
+            "format": "float"
           },
           "transcription_config": {
             "description": "Optional. Configuration for speech recognition (transcription). If present, ASR is\nenabled.",
@@ -5368,6 +5491,11 @@
             "label": "google_maps",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.GoogleMaps;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\nGoogleMaps tool = GoogleMaps.builder().latitude(37.7749).longitude(-122.4194).build();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(tool))\n        .input(InteractionsInput.of(\"What is the best food near me?\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "google_maps",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    tool := gaos_interactions.NewTool(gaos_interactions.GoogleMaps{\n        Latitude:  genai.Ptr(37.7749),\n        Longitude: genai.Ptr(-122.4194),\n    })\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"What is the best food near me?\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -5635,6 +5763,11 @@
             "label": "google_search",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.GoogleSearch;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(new GoogleSearch()))\n        .input(InteractionsInput.of(\"Who is the current president of France?\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "google_search",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    tool := gaos_interactions.NewTool(gaos_interactions.GoogleSearch{})\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"Who is the current president of France?\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -6323,10 +6456,7 @@
               {
                 "$ref": "#/components/schemas/DynamicAgentConfig"
               }
-            ],
-            "discriminator": {
-              "propertyName": "type"
-            }
+            ]
           },
           "background": {
             "description": "Input only. Whether to run the model interaction in the background.",
@@ -7045,6 +7175,11 @@
             "label": "mcp_server",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\nimport com.google.genai.gaos.models.interactions.MCPServer;\n\nClient client = new Client();\nMCPServer mcpTool =\n    MCPServer.builder()\n        .name(\"weather_service\")\n        .url(\"https://gemini-api-demos.uc.r.appspot.com/mcp\")\n        .build();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(mcpTool))\n        .input(\n            InteractionsInput.of(\n                \"Today is 12-05-2025, what is the temperature today in London?\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "mcp_server",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"os\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    mcpServer := gaos_interactions.MCPServer{\n        Name: genai.Ptr(\"weather_service\"),\n        URL:  genai.Ptr(\"https://gemini-api-demos.uc.r.appspot.com/mcp\"),\n    }\n    tool := gaos_interactions.NewTool(mcpServer)\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"Today is 12-05-2025, what is the temperature today in London?\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -9316,7 +9451,7 @@
           },
           "interaction": {
             "description": "Required. The interaction request template to be executed.",
-            "$ref": "#/components/schemas/Interaction"
+            "$ref": "#/components/schemas/AgentInteraction"
           },
           "last_pause_time": {
             "description": "Output only. The time when the trigger was last paused.",
@@ -9416,14 +9551,7 @@
           },
           "interaction": {
             "description": "Required. The interaction request template to be executed.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/AgentInteraction"
-              },
-              {
-                "$ref": "#/components/schemas/ModelInteraction"
-              }
-            ]
+            "$ref": "#/components/schemas/AgentInteraction"
           },
           "max_consecutive_failures": {
             "description": "Optional. The maximum number of consecutive failures allowed before\nthe trigger is automatically paused (status becomes ERROR).",
@@ -9715,6 +9843,11 @@
             "label": "url_context",
             "lang": "java",
             "source": "import com.google.genai.Client;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.CreateModelInteraction;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\nimport com.google.genai.gaos.models.interactions.URLContext;\n\nClient client = new Client();\nCreateModelInteraction params =\n    CreateModelInteraction.builder()\n        .model(\"gemini-3.6-flash\")\n        .tools(List.of(new URLContext()))\n        .input(InteractionsInput.of(\"Summarize https://www.example.com\"))\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.outputText().orElse(\"\"));\n"
+          },
+          {
+            "label": "url_context",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    tool := gaos_interactions.NewTool(gaos_interactions.URLContext{})\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{\n        Model: gaos_interactions.Model(\"gemini-3.6-flash\"),\n        Input: genai.Ptr(gaos_interactions.NewInteractionsInput(\"Summarize https://www.example.com\")),\n        Tools: []gaos_interactions.Tool{tool},\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil && res.Interaction.OutputText != nil {\n        fmt.Println(*res.Interaction.OutputText)\n    }\n}\n"
           }
         ]
       },
@@ -10345,7 +10478,7 @@
             "type": "string"
           },
           "expire_time": {
-            "description": "Output only. The timestamp at which a custom stored voice (`store = true`)\nor replicated voice key (`store = false`) expires. Unset for prebuilt\ncatalog voices (`\"prebuilt\"`), which do not expire.",
+            "description": "Output only. The timestamp at which a custom stored voice (`store = true`)\nor replicated voice key (`store = false`) expires. For custom stored voices\n(`store = true`), this expiration time is extended when the voice is used\nfor speech synthesis or as a `base_voice` in `CreateVoice`. Unset for\nprebuilt catalog voices (`\"prebuilt\"`), which do not expire.",
             "type": "string",
             "format": "date-time",
             "readOnly": true

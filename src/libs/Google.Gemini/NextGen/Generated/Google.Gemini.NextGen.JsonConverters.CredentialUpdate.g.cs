@@ -177,19 +177,19 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EnvironmentVariableConfig!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnvironmentVariableConfig(), typeInfo);
             }
             else if (value.IsHttpBearerConfig)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.HttpBearerUpdateConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.HttpBearerUpdateConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.HttpBearerUpdateConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.HttpBearerConfig!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickHttpBearerConfig(), typeInfo);
             }
             else if (value.IsOAuth2Config)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.OAuth2UpdateConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.OAuth2UpdateConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.OAuth2UpdateConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.OAuth2Config!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOAuth2Config(), typeInfo);
             }
         }
     }
