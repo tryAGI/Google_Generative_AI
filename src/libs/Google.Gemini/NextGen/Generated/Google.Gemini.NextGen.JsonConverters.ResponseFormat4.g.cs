@@ -256,31 +256,31 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.AudioResponseFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.AudioResponseFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.AudioResponseFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AudioFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAudioFormat(), typeInfo);
             }
             else if (value.IsImageFormat)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.ImageResponseFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.ImageResponseFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ImageResponseFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ImageFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickImageFormat(), typeInfo);
             }
             else if (value.IsTextFormat)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.TextResponseFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.TextResponseFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.TextResponseFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TextFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTextFormat(), typeInfo);
             }
             else if (value.IsVideoFormat)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.VideoResponseFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.VideoResponseFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.VideoResponseFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VideoFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVideoFormat(), typeInfo);
             }
             else if (value.IsFormatVariant5)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(object), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<object?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(object).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FormatVariant5!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFormatVariant5(), typeInfo);
             }
         }
     }

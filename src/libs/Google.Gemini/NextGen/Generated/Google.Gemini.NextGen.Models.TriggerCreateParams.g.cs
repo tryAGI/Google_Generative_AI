@@ -27,12 +27,11 @@ namespace Google.Gemini.NextGen
         public int? ExecutionTimeoutSeconds { get; set; }
 
         /// <summary>
-        /// Required. The interaction request template to be executed.
+        /// Interaction for generating the completion using agents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("interaction")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.CreateAgentInteraction, global::Google.Gemini.NextGen.CreateModelInteraction>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.CreateAgentInteraction, global::Google.Gemini.NextGen.CreateModelInteraction> Interaction { get; set; }
+        public required global::Google.Gemini.NextGen.CreateAgentInteraction CreateAgentInteraction { get; set; }
 
         /// <summary>
         /// Optional. The maximum number of consecutive failures allowed before<br/>
@@ -65,8 +64,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="TriggerCreateParams" /> class.
         /// </summary>
-        /// <param name="interaction">
-        /// Required. The interaction request template to be executed.
+        /// <param name="createAgentInteraction">
+        /// Interaction for generating the completion using agents.
         /// </param>
         /// <param name="schedule">
         /// Required. The cron schedule on which the trigger should run.<br/>
@@ -92,7 +91,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TriggerCreateParams(
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.CreateAgentInteraction, global::Google.Gemini.NextGen.CreateModelInteraction> interaction,
+            global::Google.Gemini.NextGen.CreateAgentInteraction createAgentInteraction,
             string schedule,
             string timeZone,
             string? displayName,
@@ -103,7 +102,7 @@ namespace Google.Gemini.NextGen
             this.DisplayName = displayName;
             this.EnvironmentId = environmentId;
             this.ExecutionTimeoutSeconds = executionTimeoutSeconds;
-            this.Interaction = interaction;
+            this.CreateAgentInteraction = createAgentInteraction ?? throw new global::System.ArgumentNullException(nameof(createAgentInteraction));
             this.MaxConsecutiveFailures = maxConsecutiveFailures;
             this.Schedule = schedule ?? throw new global::System.ArgumentNullException(nameof(schedule));
             this.TimeZone = timeZone ?? throw new global::System.ArgumentNullException(nameof(timeZone));

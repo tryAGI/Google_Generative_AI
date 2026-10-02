@@ -93,7 +93,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.StaticMediaProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.StaticMediaProcessing?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.StaticMediaProcessing).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Static!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickStatic(), typeInfo);
             }
         }
     }

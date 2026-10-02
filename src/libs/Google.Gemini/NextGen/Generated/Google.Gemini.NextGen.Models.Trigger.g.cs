@@ -50,13 +50,11 @@ namespace Google.Gemini.NextGen
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The Interaction resource.<br/>
-        /// Example: {"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","object":"interaction","status":"completed","steps":[{"type":"model_output","content":[{"type":"text","text":"Hello! I\u0027m doing well, functioning as expected. Thank you for asking! How are you doing today?"}]}],"updated":"2025-12-04T15:01:45Z","usage":{"input_tokens_by_modality":[{"modality":"text","tokens":7}],"total_cached_tokens":0,"total_input_tokens":7,"total_output_tokens":23,"total_thought_tokens":49,"total_tokens":79,"total_tool_use_tokens":0}}
+        /// Interaction for generating the completion using agents.
         /// </summary>
-        /// <example>{"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","object":"interaction","status":"completed","steps":[{"type":"model_output","content":[{"type":"text","text":"Hello! I\u0027m doing well, functioning as expected. Thank you for asking! How are you doing today?"}]}],"updated":"2025-12-04T15:01:45Z","usage":{"input_tokens_by_modality":[{"modality":"text","tokens":7}],"total_cached_tokens":0,"total_input_tokens":7,"total_output_tokens":23,"total_thought_tokens":49,"total_tokens":79,"total_tool_use_tokens":0}}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("interaction")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.Interaction Interaction { get; set; }
+        public required global::Google.Gemini.NextGen.CreateAgentInteraction CreateAgentInteraction { get; set; }
 
         /// <summary>
         /// Output only. The time when the trigger was last paused.<br/>
@@ -139,9 +137,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="Trigger" /> class.
         /// </summary>
-        /// <param name="interaction">
-        /// The Interaction resource.<br/>
-        /// Example: {"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","object":"interaction","status":"completed","steps":[{"type":"model_output","content":[{"type":"text","text":"Hello! I\u0027m doing well, functioning as expected. Thank you for asking! How are you doing today?"}]}],"updated":"2025-12-04T15:01:45Z","usage":{"input_tokens_by_modality":[{"modality":"text","tokens":7}],"total_cached_tokens":0,"total_input_tokens":7,"total_output_tokens":23,"total_thought_tokens":49,"total_tokens":79,"total_tool_use_tokens":0}}
+        /// <param name="createAgentInteraction">
+        /// Interaction for generating the completion using agents.
         /// </param>
         /// <param name="schedule">
         /// Required. The cron schedule on which the trigger should run.<br/>
@@ -208,7 +205,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Trigger(
-            global::Google.Gemini.NextGen.Interaction interaction,
+            global::Google.Gemini.NextGen.CreateAgentInteraction createAgentInteraction,
             string schedule,
             string timeZone,
             int? consecutiveFailureCount,
@@ -232,7 +229,7 @@ namespace Google.Gemini.NextGen
             this.EnvironmentId = environmentId;
             this.ExecutionTimeoutSeconds = executionTimeoutSeconds;
             this.Id = id;
-            this.Interaction = interaction ?? throw new global::System.ArgumentNullException(nameof(interaction));
+            this.CreateAgentInteraction = createAgentInteraction ?? throw new global::System.ArgumentNullException(nameof(createAgentInteraction));
             this.LastPauseTime = lastPauseTime;
             this.LastResumeTime = lastResumeTime;
             this.LastRunTime = lastRunTime;

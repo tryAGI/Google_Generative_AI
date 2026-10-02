@@ -30,7 +30,7 @@ namespace Google.Gemini
             ref int? pageSize,
             ref string? pageToken,
             ref string environmentsId,
-            ref string filesId,
+            ref string? path,
             ref bool? recursive);
         partial void PrepareEnvironmentsFilesMediaDownloadRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -38,7 +38,7 @@ namespace Google.Gemini
             int? pageSize,
             string? pageToken,
             string environmentsId,
-            string filesId,
+            string? path,
             bool? recursive);
         partial void ProcessEnvironmentsFilesMediaDownloadResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -55,25 +55,25 @@ namespace Google.Gemini
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="environmentsId"></param>
-        /// <param name="filesId"></param>
+        /// <param name="path"></param>
         /// <param name="recursive"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.GetEnvironmentFilesResponse> EnvironmentsFilesMediaDownloadAsync(
             string environmentsId,
-            string filesId,
             int? pageSize = default,
             string? pageToken = default,
+            string? path = default,
             bool? recursive = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await EnvironmentsFilesMediaDownloadAsResponseAsync(
                 environmentsId: environmentsId,
-                filesId: filesId,
                 pageSize: pageSize,
                 pageToken: pageToken,
+                path: path,
                 recursive: recursive,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -87,16 +87,16 @@ namespace Google.Gemini
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="environmentsId"></param>
-        /// <param name="filesId"></param>
+        /// <param name="path"></param>
         /// <param name="recursive"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.GetEnvironmentFilesResponse>> EnvironmentsFilesMediaDownloadAsResponseAsync(
             string environmentsId,
-            string filesId,
             int? pageSize = default,
             string? pageToken = default,
+            string? path = default,
             bool? recursive = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -108,7 +108,7 @@ namespace Google.Gemini
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
                 environmentsId: ref environmentsId,
-                filesId: ref filesId,
+                path: ref path,
                 recursive: ref recursive);
 
 
@@ -135,7 +135,7 @@ namespace Google.Gemini
             {
 
                             var __pathBuilder = new global::Google.Gemini.PathBuilder(
-                                path: $"/environments/{environmentsId}/files/{filesId}",
+                                path: $"/environments/{environmentsId}/files",
                                 baseUri: HttpClient.BaseAddress);
                             foreach (var __authorization in __authorizations)
                             {
@@ -148,6 +148,7 @@ namespace Google.Gemini
                             __pathBuilder
                                 .AddOptionalParameter("page_size", pageSize?.ToString())
                                 .AddOptionalParameter("page_token", pageToken)
+                                .AddOptionalParameter("path", path)
                                 .AddOptionalParameter("recursive", recursive?.ToString().ToLowerInvariant())
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -176,7 +177,7 @@ namespace Google.Gemini
                     pageSize: pageSize,
                     pageToken: pageToken,
                     environmentsId: environmentsId,
-                    filesId: filesId,
+                    path: path,
                     recursive: recursive);
 
                 return __httpRequest;
@@ -196,7 +197,7 @@ namespace Google.Gemini
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "EnvironmentsFilesMediaDownload",
                                 methodName: "EnvironmentsFilesMediaDownloadAsync",
-                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                pathTemplate: "$\"/environments/{environmentsId}/files\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -230,7 +231,7 @@ namespace Google.Gemini
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "EnvironmentsFilesMediaDownload",
                                 methodName: "EnvironmentsFilesMediaDownloadAsync",
-                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                pathTemplate: "$\"/environments/{environmentsId}/files\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -271,7 +272,7 @@ namespace Google.Gemini
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "EnvironmentsFilesMediaDownload",
                                 methodName: "EnvironmentsFilesMediaDownloadAsync",
-                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                pathTemplate: "$\"/environments/{environmentsId}/files\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -319,7 +320,7 @@ namespace Google.Gemini
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "EnvironmentsFilesMediaDownload",
                                 methodName: "EnvironmentsFilesMediaDownloadAsync",
-                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                pathTemplate: "$\"/environments/{environmentsId}/files\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -341,7 +342,7 @@ namespace Google.Gemini
                             context: global::Google.Gemini.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "EnvironmentsFilesMediaDownload",
                                 methodName: "EnvironmentsFilesMediaDownloadAsync",
-                                pathTemplate: "$\"/environments/{environmentsId}/files/{filesId}\"",
+                                pathTemplate: "$\"/environments/{environmentsId}/files\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),

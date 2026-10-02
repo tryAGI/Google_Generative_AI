@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum PickAllowlist() => IsAllowlist
-            ? Allowlist!
+        public global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum PickAllowlist() => Allowlist is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Allowlist' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2 PickDisabled() => IsDisabled
-            ? Disabled!.Value
+        public global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2 PickDisabled() => Disabled is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Disabled' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAllowlist && allowlist != null)
+            if (Allowlist is { } __value0 && allowlist != null)
             {
-                return allowlist(Allowlist!);
+                return allowlist(__value0);
             }
-            else if (IsDisabled && disabled != null)
+            else if (Disabled is { } __value1 && disabled != null)
             {
-                return disabled(Disabled!);
+                return disabled(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAllowlist)
+            if (Allowlist is { } __value0)
             {
-                allowlist?.Invoke(Allowlist!);
+                allowlist?.Invoke(__value0);
             }
-            else if (IsDisabled)
+            else if (Disabled is { } __value1)
             {
-                disabled?.Invoke(Disabled!);
+                disabled?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsAllowlist)
+            if (Allowlist is { } __value0)
             {
-                allowlist?.Invoke(Allowlist!);
+                allowlist?.Invoke(__value0);
             }
-            else if (IsDisabled)
+            else if (Disabled is { } __value1)
             {
-                disabled?.Invoke(Disabled!);
+                disabled?.Invoke(__value1);
             }
         }
 

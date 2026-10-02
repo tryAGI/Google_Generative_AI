@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.EnvironmentVariableConfig PickEnvironmentVariableConfig() => IsEnvironmentVariableConfig
-            ? EnvironmentVariableConfig!
+        public global::Google.Gemini.NextGen.EnvironmentVariableConfig PickEnvironmentVariableConfig() => EnvironmentVariableConfig is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvironmentVariableConfig' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.HttpBearerConfig PickHttpBearerConfig() => IsHttpBearerConfig
-            ? HttpBearerConfig!
+        public global::Google.Gemini.NextGen.HttpBearerConfig PickHttpBearerConfig() => HttpBearerConfig is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'HttpBearerConfig' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OAuth2Config PickOAuth2Config() => IsOAuth2Config
-            ? OAuth2Config!
+        public global::Google.Gemini.NextGen.OAuth2Config PickOAuth2Config() => OAuth2Config is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'OAuth2Config' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsEnvironmentVariableConfig && environmentVariableConfig != null)
+            if (EnvironmentVariableConfig is { } __value0 && environmentVariableConfig != null)
             {
-                return environmentVariableConfig(EnvironmentVariableConfig!);
+                return environmentVariableConfig(__value0);
             }
-            else if (IsHttpBearerConfig && httpBearerConfig != null)
+            else if (HttpBearerConfig is { } __value1 && httpBearerConfig != null)
             {
-                return httpBearerConfig(HttpBearerConfig!);
+                return httpBearerConfig(__value1);
             }
-            else if (IsOAuth2Config && oAuth2Config != null)
+            else if (OAuth2Config is { } __value2 && oAuth2Config != null)
             {
-                return oAuth2Config(OAuth2Config!);
+                return oAuth2Config(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsEnvironmentVariableConfig)
+            if (EnvironmentVariableConfig is { } __value0)
             {
-                environmentVariableConfig?.Invoke(EnvironmentVariableConfig!);
+                environmentVariableConfig?.Invoke(__value0);
             }
-            else if (IsHttpBearerConfig)
+            else if (HttpBearerConfig is { } __value1)
             {
-                httpBearerConfig?.Invoke(HttpBearerConfig!);
+                httpBearerConfig?.Invoke(__value1);
             }
-            else if (IsOAuth2Config)
+            else if (OAuth2Config is { } __value2)
             {
-                oAuth2Config?.Invoke(OAuth2Config!);
+                oAuth2Config?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsEnvironmentVariableConfig)
+            if (EnvironmentVariableConfig is { } __value0)
             {
-                environmentVariableConfig?.Invoke(EnvironmentVariableConfig!);
+                environmentVariableConfig?.Invoke(__value0);
             }
-            else if (IsHttpBearerConfig)
+            else if (HttpBearerConfig is { } __value1)
             {
-                httpBearerConfig?.Invoke(HttpBearerConfig!);
+                httpBearerConfig?.Invoke(__value1);
             }
-            else if (IsOAuth2Config)
+            else if (OAuth2Config is { } __value2)
             {
-                oAuth2Config?.Invoke(OAuth2Config!);
+                oAuth2Config?.Invoke(__value2);
             }
         }
 

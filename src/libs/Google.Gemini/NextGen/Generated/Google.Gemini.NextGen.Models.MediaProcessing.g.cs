@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.StaticMediaProcessing PickStatic() => IsStatic
-            ? Static!
+        public global::Google.Gemini.NextGen.StaticMediaProcessing PickStatic() => Static is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Static' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsStatic && @static != null)
+            if (Static is { } __value0 && @static != null)
             {
-                return @static(Static!);
+                return @static(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsStatic)
+            if (Static is { } __value0)
             {
-                @static?.Invoke(Static!);
+                @static?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsStatic)
+            if (Static is { } __value0)
             {
-                @static?.Invoke(Static!);
+                @static?.Invoke(__value0);
             }
         }
 

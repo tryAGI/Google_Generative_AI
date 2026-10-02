@@ -42,8 +42,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.CodeExecution PickCodeExecution() => IsCodeExecution
-            ? CodeExecution!
+        public global::Google.Gemini.NextGen.CodeExecution PickCodeExecution() => CodeExecution is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecution' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Function PickFunction() => IsFunction
-            ? Function!
+        public global::Google.Gemini.NextGen.Function PickFunction() => Function is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Function' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GoogleSearch PickGoogleSearch() => IsGoogleSearch
-            ? GoogleSearch!
+        public global::Google.Gemini.NextGen.GoogleSearch PickGoogleSearch() => GoogleSearch is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearch' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MCPServer PickMCPServer() => IsMCPServer
-            ? MCPServer!
+        public global::Google.Gemini.NextGen.MCPServer PickMCPServer() => MCPServer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServer' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContext PickURLContext() => IsURLContext
-            ? URLContext!
+        public global::Google.Gemini.NextGen.URLContext PickURLContext() => URLContext is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContext' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -372,25 +372,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsCodeExecution && codeExecution != null)
+            if (CodeExecution is { } __value0 && codeExecution != null)
             {
-                return codeExecution(CodeExecution!);
+                return codeExecution(__value0);
             }
-            else if (IsFunction && function != null)
+            else if (Function is { } __value1 && function != null)
             {
-                return function(Function!);
+                return function(__value1);
             }
-            else if (IsGoogleSearch && googleSearch != null)
+            else if (GoogleSearch is { } __value2 && googleSearch != null)
             {
-                return googleSearch(GoogleSearch!);
+                return googleSearch(__value2);
             }
-            else if (IsMCPServer && mCPServer != null)
+            else if (MCPServer is { } __value3 && mCPServer != null)
             {
-                return mCPServer(MCPServer!);
+                return mCPServer(__value3);
             }
-            else if (IsURLContext && uRLContext != null)
+            else if (URLContext is { } __value4 && uRLContext != null)
             {
-                return uRLContext(URLContext!);
+                return uRLContext(__value4);
             }
 
             return default(TResult);
@@ -416,25 +416,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsCodeExecution)
+            if (CodeExecution is { } __value0)
             {
-                codeExecution?.Invoke(CodeExecution!);
+                codeExecution?.Invoke(__value0);
             }
-            else if (IsFunction)
+            else if (Function is { } __value1)
             {
-                function?.Invoke(Function!);
+                function?.Invoke(__value1);
             }
-            else if (IsGoogleSearch)
+            else if (GoogleSearch is { } __value2)
             {
-                googleSearch?.Invoke(GoogleSearch!);
+                googleSearch?.Invoke(__value2);
             }
-            else if (IsMCPServer)
+            else if (MCPServer is { } __value3)
             {
-                mCPServer?.Invoke(MCPServer!);
+                mCPServer?.Invoke(__value3);
             }
-            else if (IsURLContext)
+            else if (URLContext is { } __value4)
             {
-                uRLContext?.Invoke(URLContext!);
+                uRLContext?.Invoke(__value4);
             }
         }
 
@@ -454,25 +454,25 @@ namespace Google.Gemini.NextGen
                 Validate();
             }
 
-            if (IsCodeExecution)
+            if (CodeExecution is { } __value0)
             {
-                codeExecution?.Invoke(CodeExecution!);
+                codeExecution?.Invoke(__value0);
             }
-            else if (IsFunction)
+            else if (Function is { } __value1)
             {
-                function?.Invoke(Function!);
+                function?.Invoke(__value1);
             }
-            else if (IsGoogleSearch)
+            else if (GoogleSearch is { } __value2)
             {
-                googleSearch?.Invoke(GoogleSearch!);
+                googleSearch?.Invoke(__value2);
             }
-            else if (IsMCPServer)
+            else if (MCPServer is { } __value3)
             {
-                mCPServer?.Invoke(MCPServer!);
+                mCPServer?.Invoke(__value3);
             }
-            else if (IsURLContext)
+            else if (URLContext is { } __value4)
             {
-                uRLContext?.Invoke(URLContext!);
+                uRLContext?.Invoke(__value4);
             }
         }
 
