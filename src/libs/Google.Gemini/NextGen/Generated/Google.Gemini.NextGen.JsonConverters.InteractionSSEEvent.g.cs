@@ -45,6 +45,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("event_type")) __score1++;
             if (__jsonProps.Contains("interaction")) __score1++;
             if (__jsonProps.Contains("interaction.agent")) __score1++;
+            if (__jsonProps.Contains("interaction.continuation_token")) __score1++;
             if (__jsonProps.Contains("interaction.created")) __score1++;
             if (__jsonProps.Contains("interaction.id")) __score1++;
             if (__jsonProps.Contains("interaction.model")) __score1++;
@@ -59,6 +60,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("event_type")) __score2++;
             if (__jsonProps.Contains("interaction")) __score2++;
             if (__jsonProps.Contains("interaction.agent")) __score2++;
+            if (__jsonProps.Contains("interaction.continuation_token")) __score2++;
             if (__jsonProps.Contains("interaction.created")) __score2++;
             if (__jsonProps.Contains("interaction.id")) __score2++;
             if (__jsonProps.Contains("interaction.model")) __score2++;

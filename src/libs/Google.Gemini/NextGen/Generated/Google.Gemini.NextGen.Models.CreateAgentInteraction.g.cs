@@ -32,6 +32,14 @@ namespace Google.Gemini.NextGen
         public bool? Background { get; set; }
 
         /// <summary>
+        /// Opaque token to resume a long decode. Output: set when status is<br/>
+        /// INCOMPLETE and decoding can be resumed. Input: pass the latest token<br/>
+        /// back unchanged in CreateInteraction to continue decoding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
         /// The environment configuration for the interaction. Can be an object<br/>
         /// specifying remote environment sources or a string referencing an existing<br/>
         /// environment ID.
@@ -146,6 +154,11 @@ namespace Google.Gemini.NextGen
         /// <param name="background">
         /// Input only. Whether to run the model interaction in the background.
         /// </param>
+        /// <param name="continuationToken">
+        /// Opaque token to resume a long decode. Output: set when status is<br/>
+        /// INCOMPLETE and decoding can be resumed. Input: pass the latest token<br/>
+        /// back unchanged in CreateInteraction to continue decoding.
+        /// </param>
         /// <param name="environment">
         /// The environment configuration for the interaction. Can be an object<br/>
         /// specifying remote environment sources or a string referencing an existing<br/>
@@ -194,6 +207,7 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.AgentOption agent,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? agentConfig,
             bool? background,
+            byte[]? continuationToken,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,
             global::Google.Gemini.NextGen.InteractionsInput? input,
             global::System.Collections.Generic.Dictionary<string, string>? labels,
@@ -210,6 +224,7 @@ namespace Google.Gemini.NextGen
             this.Agent = agent;
             this.AgentConfig = agentConfig;
             this.Background = background;
+            this.ContinuationToken = continuationToken;
             this.Environment = environment;
             this.Input = input;
             this.Labels = labels;

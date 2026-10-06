@@ -17,6 +17,13 @@ namespace Google.Gemini.NextGen
         public string? Agent { get; set; }
 
         /// <summary>
+        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
         /// Output only. The time at which the response was created in ISO 8601 format.<br/>
         /// Included only in responses
         /// </summary>
@@ -93,6 +100,10 @@ namespace Google.Gemini.NextGen
         /// <param name="agent">
         /// The agent to interact with.
         /// </param>
+        /// <param name="continuationToken">
+        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="created">
         /// Output only. The time at which the response was created in ISO 8601 format.<br/>
         /// Included only in responses
@@ -130,6 +141,7 @@ namespace Google.Gemini.NextGen
 #endif
         public InteractionSseEventInteraction(
             string? agent,
+            byte[]? continuationToken,
             string? created,
             string? model,
             string? @object,
@@ -141,6 +153,7 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.InteractionSseEventInteractionStatus status = default!)
         {
             this.Agent = agent;
+            this.ContinuationToken = continuationToken;
             this.Created = created;
             this.Id = id;
             this.Model = model;
