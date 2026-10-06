@@ -6,7 +6,8 @@ namespace Google.Gemini.NextGen
     /// <summary>
     /// Signals that the Interaction completed. Sent when the Interaction receives<br/>
     /// Complete/Cancel or naturally terminates. No more input can be sent to the<br/>
-    /// Interaction after this.
+    /// Interaction after this.<br/>
+    /// Example: {"event_id":"evt_123","event_type":"interaction.completed","interaction":{"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","status":"completed","updated":"2025-12-04T15:01:45Z"}}
     /// </summary>
     public sealed partial class InteractionCompletedEvent
     {

@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A video content block.
+    /// A video content block.<br/>
+    /// Example: {"type":"video","uri":"https://www.youtube.com/watch?v=9hE5-98ZeCg"}
     /// </summary>
     public sealed partial class VideoContent
     {

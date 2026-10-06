@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Code execution result step.
+    /// Code execution result step.<br/>
+    /// Example: {"type":"code_execution_result","call_id":"code_call_71021","result":"55\n"}
     /// </summary>
     public sealed partial class CodeExecutionResultStep
     {

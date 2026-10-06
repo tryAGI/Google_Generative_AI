@@ -99,6 +99,26 @@
             "description": "Successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "list": {
+                    "summary": "List Agents",
+                    "value": {
+                      "agents": [
+                        {
+                          "description": "A helpful research assistant.",
+                          "base_agent": "antigravity-preview-05-2026",
+                          "id": "research-assistant-abc123",
+                          "system_instruction": "You are a helpful research assistant.",
+                          "tools": [
+                            {
+                              "type": "google_search"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
                 "schema": {
                   "$ref": "#/components/schemas/ListAgentsResponse"
                 }
@@ -165,6 +185,55 @@
             "description": "Successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "create": {
+                    "summary": "Create Agent",
+                    "value": {
+                      "description": "A helpful research assistant.",
+                      "base_agent": "antigravity-preview-05-2026",
+                      "base_environment": "remote",
+                      "id": "research-assistant-abc123",
+                      "system_instruction": "You are a helpful research assistant.",
+                      "tools": [
+                        {
+                          "type": "google_search"
+                        }
+                      ]
+                    }
+                  },
+                  "fork_from_env": {
+                    "summary": "Agent Forked from Environment",
+                    "value": {
+                      "base_agent": "antigravity-preview-05-2026",
+                      "base_environment": "env_abc123",
+                      "id": "my-data-analyst-abc123",
+                      "system_instruction": "You are a data analyst. Use the template at /workspace/template.py for all reports."
+                    }
+                  },
+                  "with_sources": {
+                    "summary": "Agent with Sources",
+                    "value": {
+                      "base_agent": "antigravity-preview-05-2026",
+                      "base_environment": {
+                        "type": "remote",
+                        "sources": [
+                          {
+                            "type": "inline",
+                            "content": "Always use matplotlib for charts. Include a summary table in every report.",
+                            "target": ".agents/AGENTS.md"
+                          },
+                          {
+                            "type": "repository",
+                            "source": "https://github.com/my-org/analysis-templates",
+                            "target": "/workspace/templates"
+                          }
+                        ]
+                      },
+                      "id": "data-analyst-abc123",
+                      "system_instruction": "You are a data analyst. Always include visualizations and export results as PDF."
+                    }
+                  }
+                },
                 "schema": {
                   "$ref": "#/components/schemas/Agent"
                 }
@@ -1865,6 +1934,30 @@
             "description": "Successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "cancel": {
+                    "summary": "Cancel Interaction",
+                    "value": {
+                      "agent": "deep-research-pro-preview-12-2025",
+                      "created": "2026-06-22T04:55:47Z",
+                      "id": "v1_ChdVc0E0YXJTYk1zYlV6N0lQcXRXVG1BYxIXVXNBNGFyU2JNc2JVejdJUHF0V1RtQWM",
+                      "object": "interaction",
+                      "status": "cancelled",
+                      "steps": [
+                        {
+                          "type": "user_input",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Research the history of the Google TPUs with a focus on 2025 specs."
+                            }
+                          ]
+                        }
+                      ],
+                      "updated": "2026-06-22T04:55:47Z"
+                    }
+                  }
+                },
                 "schema": {
                   "$ref": "#/components/schemas/Interaction"
                 }
@@ -3432,6 +3525,14 @@
         "required": [
           "type"
         ],
+        "example": {
+          "type": "audio",
+          "data": "BASE64_ENCODED_AUDIO",
+          "mime_type": "audio/wav"
+        },
+        "x-example-summaries": [
+          "Audio"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "AudioContent",
@@ -3589,6 +3690,13 @@
         "required": [
           "type"
         ],
+        "example": {
+          "type": "audio",
+          "sample_rate": 24000
+        },
+        "x-example-summaries": [
+          "Audio Output"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "AudioResponseFormat",
@@ -3707,6 +3815,17 @@
           "id",
           "type"
         ],
+        "example": {
+          "type": "code_execution_call",
+          "arguments": {
+            "code": "print(sum(range(1, 11)))",
+            "language": "python"
+          },
+          "id": "code_call_71021"
+        },
+        "x-example-summaries": [
+          "CodeExecutionCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "CodeExecutionCallStep",
@@ -3798,6 +3917,14 @@
           "call_id",
           "result",
           "type"
+        ],
+        "example": {
+          "type": "code_execution_result",
+          "call_id": "code_call_71021",
+          "result": "55\n"
+        },
+        "x-example-summaries": [
+          "CodeExecutionResultStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -4239,6 +4366,14 @@
         "required": [
           "type"
         ],
+        "example": {
+          "type": "document",
+          "data": "BASE64_ENCODED_DOCUMENT",
+          "mime_type": "application/pdf"
+        },
+        "x-example-summaries": [
+          "Document"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "DocumentContent",
@@ -4524,6 +4659,70 @@
         "required": [
           "type"
         ],
+        "examples": [
+          {
+            "type": "remote",
+            "sources": [
+              {
+                "type": "inline",
+                "content": "You are a data analyst. Always include visualizations and export results as PDF.",
+                "target": ".agents/AGENTS.md"
+              },
+              {
+                "type": "inline",
+                "content": "---\nname: slide-maker\ndescription: Create HTML slide decks\n---\n# Slide Maker\n\nWhen asked to create a presentation:\n1. Analyze the input data\n2. Create an HTML slide deck with reveal.js\n3. Save to /workspace/output/slides.html",
+                "target": ".agents/skills/slide-maker/SKILL.md"
+              }
+            ]
+          },
+          {
+            "type": "remote",
+            "sources": [
+              {
+                "type": "repository",
+                "source": "https://github.com/my-org/my-skills.git",
+                "target": ".agents/skills"
+              },
+              {
+                "type": "gcs",
+                "source": "gs://my-bucket/my-folder",
+                "target": "/workspace/data"
+              }
+            ]
+          },
+          {
+            "type": "remote",
+            "network": {
+              "allowlist": [
+                {
+                  "domain": "pypi.org"
+                },
+                {
+                  "domain": "*.github.com"
+                }
+              ]
+            }
+          },
+          {
+            "type": "remote",
+            "network": {
+              "allowlist": [
+                {
+                  "domain": "api.github.com",
+                  "transform": {
+                    "Authorization": "Bearer YOUR_GITHUB_TOKEN"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "x-example-summaries": [
+          "Inline Sources",
+          "External Sources",
+          "Network Allowlist",
+          "Proxy Credentials"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "Environment",
@@ -4595,6 +4794,21 @@
       },
       "EnvironmentNetworkEgressAllowlist": {
         "description": "Outbound networking configuration for the sandbox. Accepts an object with an 'allowlist' array to restrict traffic, or the string 'disabled' to turn off all network access. Omit entirely to allow all outbound traffic with no header injection.",
+        "example": {
+          "allowlist": [
+            {
+              "domain": "github.com",
+              "transform": [
+                {
+                  "Authorization": "Bearer your-token"
+                }
+              ]
+            },
+            {
+              "domain": "*.googleapis.com"
+            }
+          ]
+        },
         "oneOf": [
           {
             "title": "Allowlist",
@@ -4621,6 +4835,9 @@
               "All network egress is blocked."
             ]
           }
+        ],
+        "x-example-summaries": [
+          "Network Allowlist"
         ],
         "x-speakeasy-model-namespace": "interactions"
       },
@@ -4757,6 +4974,16 @@
         },
         "required": [
           "event_type"
+        ],
+        "example": {
+          "error": {
+            "code": "not_found",
+            "message": "Failed to get completed interaction: Result not found."
+          },
+          "event_type": "error"
+        },
+        "x-example-summaries": [
+          "Error Event"
         ],
         "x-speakeasy-exports": [
           {
@@ -4955,6 +5182,13 @@
           "id",
           "type"
         ],
+        "example": {
+          "type": "file_search_call",
+          "id": "file_call_88192"
+        },
+        "x-example-summaries": [
+          "FileSearchCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "FileSearchCallStep",
@@ -5014,6 +5248,13 @@
         "required": [
           "call_id",
           "type"
+        ],
+        "example": {
+          "type": "file_search_result",
+          "call_id": "file_call_88192"
+        },
+        "x-example-summaries": [
+          "FileSearchResultStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -5186,6 +5427,17 @@
           "name",
           "type"
         ],
+        "example": {
+          "name": "get_weather",
+          "type": "function_call",
+          "arguments": {
+            "location": "Boston, MA"
+          },
+          "id": "call_98231"
+        },
+        "x-example-summaries": [
+          "FunctionCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "FunctionCallStep",
@@ -5271,6 +5523,20 @@
           "call_id",
           "result",
           "type"
+        ],
+        "example": {
+          "name": "get_weather",
+          "type": "function_result",
+          "call_id": "call_98231",
+          "result": [
+            {
+              "type": "text",
+              "text": "{\"weather\":\"sunny\"}"
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "FunctionResultStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -5566,6 +5832,18 @@
           "id",
           "type"
         ],
+        "example": {
+          "type": "google_maps_call",
+          "arguments": {
+            "queries": [
+              "parks near San Francisco"
+            ]
+          },
+          "id": "maps_call_39201"
+        },
+        "x-example-summaries": [
+          "GoogleMapsCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "GoogleMapsCallStep",
@@ -5711,6 +5989,24 @@
           "result",
           "type"
         ],
+        "example": {
+          "type": "google_maps_result",
+          "call_id": "maps_call_39201",
+          "result": [
+            {
+              "places": [
+                {
+                  "url": "https://maps.google.com/?cid=12345",
+                  "name": "Golden Gate Park",
+                  "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M"
+                }
+              ]
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "GoogleMapsResultStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "GoogleMapsResultStep",
@@ -5853,6 +6149,18 @@
           "id",
           "type"
         ],
+        "example": {
+          "type": "google_search_call",
+          "arguments": {
+            "queries": [
+              "Who won the men's 100m in Paris 2024?"
+            ]
+          },
+          "id": "search_call_19201"
+        },
+        "x-example-summaries": [
+          "GoogleSearchCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "GoogleSearchCallStep",
@@ -5972,6 +6280,18 @@
           "call_id",
           "result",
           "type"
+        ],
+        "example": {
+          "type": "google_search_result",
+          "call_id": "search_call_19201",
+          "result": [
+            {
+              "search_suggestions": "<div class=\"container\">...</div>"
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "GoogleSearchResultStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -6270,6 +6590,14 @@
         "required": [
           "type"
         ],
+        "example": {
+          "type": "image",
+          "data": "BASE64_ENCODED_IMAGE",
+          "mime_type": "image/png"
+        },
+        "x-example-summaries": [
+          "Image"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "ImageContent",
@@ -6409,6 +6737,15 @@
         },
         "required": [
           "type"
+        ],
+        "example": {
+          "type": "image",
+          "aspect_ratio": "16:9",
+          "image_size": "1K",
+          "mime_type": "image/jpeg"
+        },
+        "x-example-summaries": [
+          "Image Output"
         ],
         "x-speakeasy-exports": [
           {
@@ -6718,6 +7055,20 @@
           "event_type",
           "interaction"
         ],
+        "example": {
+          "event_id": "evt_123",
+          "event_type": "interaction.completed",
+          "interaction": {
+            "created": "2025-12-04T15:01:45Z",
+            "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+            "model": "gemini-3.6-flash",
+            "status": "completed",
+            "updated": "2025-12-04T15:01:45Z"
+          }
+        },
+        "x-example-summaries": [
+          "Interaction Completed"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "InteractionCompletedEvent",
@@ -6745,6 +7096,20 @@
         "required": [
           "event_type",
           "interaction"
+        ],
+        "example": {
+          "event_id": "evt_123",
+          "event_type": "interaction.created",
+          "interaction": {
+            "created": "2025-12-04T15:01:45Z",
+            "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+            "model": "gemini-3.6-flash",
+            "status": "in_progress",
+            "updated": "2025-12-04T15:01:45Z"
+          }
+        },
+        "x-example-summaries": [
+          "Interaction Created"
         ],
         "x-speakeasy-exports": [
           {
@@ -6934,6 +7299,14 @@
           "event_type",
           "interaction_id",
           "status"
+        ],
+        "example": {
+          "event_type": "interaction.status_update",
+          "interaction_id": "v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM",
+          "status": "in_progress"
+        },
+        "x-example-summaries": [
+          "Interaction Status Update"
         ],
         "x-speakeasy-exports": [
           {
@@ -7261,6 +7634,19 @@
           "server_name",
           "type"
         ],
+        "example": {
+          "name": "calculate_tax",
+          "type": "mcp_server_tool_call",
+          "arguments": {
+            "income": 120000,
+            "state": "CA"
+          },
+          "id": "mcp_call_29012",
+          "server_name": "financial_mcp_server"
+        },
+        "x-example-summaries": [
+          "McpServerToolCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "MCPServerToolCallStep",
@@ -7348,6 +7734,18 @@
           "call_id",
           "result",
           "type"
+        ],
+        "example": {
+          "name": "calculate_tax",
+          "type": "mcp_server_tool_result",
+          "call_id": "mcp_call_29012",
+          "result": {
+            "tax_due": 32400
+          },
+          "server_name": "financial_mcp_server"
+        },
+        "x-example-summaries": [
+          "McpServerToolResultStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -7694,6 +8092,18 @@
         },
         "required": [
           "type"
+        ],
+        "example": {
+          "type": "model_output",
+          "content": [
+            {
+              "type": "text",
+              "text": "The capital of France is Paris."
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "ModelOutputStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -8907,6 +9317,17 @@
           "event_type",
           "index"
         ],
+        "example": {
+          "delta": {
+            "type": "text",
+            "text": "Hello"
+          },
+          "event_type": "step.delta",
+          "index": 0
+        },
+        "x-example-summaries": [
+          "Step Delta"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "StepDelta",
@@ -9032,6 +9453,16 @@
           "index",
           "step"
         ],
+        "example": {
+          "event_type": "step.start",
+          "index": 0,
+          "step": {
+            "type": "model_output"
+          }
+        },
+        "x-example-summaries": [
+          "Step Start"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "StepStart",
@@ -9066,6 +9497,13 @@
         "required": [
           "event_type",
           "index"
+        ],
+        "example": {
+          "event_type": "step.stop",
+          "index": 0
+        },
+        "x-example-summaries": [
+          "Step Stop"
         ],
         "x-speakeasy-exports": [
           {
@@ -9116,6 +9554,13 @@
         "required": [
           "text",
           "type"
+        ],
+        "example": {
+          "type": "text",
+          "text": "Hello, how are you?"
+        },
+        "x-example-summaries": [
+          "Text"
         ],
         "x-speakeasy-exports": [
           {
@@ -9170,6 +9615,31 @@
         },
         "required": [
           "type"
+        ],
+        "example": {
+          "type": "text",
+          "mime_type": "application/json",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "ingredients": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "recipe_name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ingredients",
+              "recipe_name"
+            ]
+          }
+        },
+        "x-example-summaries": [
+          "Text Output (JSON Schema)"
         ],
         "x-speakeasy-exports": [
           {
@@ -9267,6 +9737,19 @@
         "required": [
           "type"
         ],
+        "example": {
+          "type": "thought",
+          "signature": "thought_sig_abcd1234",
+          "summary": [
+            {
+              "type": "text",
+              "text": "The model is searching Google for the capital of France."
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "ThoughtStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "ThoughtStep",
@@ -9339,6 +9822,17 @@
             "$ref": "#/components/schemas/AllowedTools"
           }
         },
+        "example": {
+          "allowed_tools": {
+            "mode": "any",
+            "tools": [
+              "my_tool"
+            ]
+          }
+        },
+        "x-example-summaries": [
+          "Allowed Tools"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "ToolChoiceConfig",
@@ -9949,6 +10443,18 @@
           "id",
           "type"
         ],
+        "example": {
+          "type": "url_context_call",
+          "arguments": {
+            "urls": [
+              "https://www.example.com"
+            ]
+          },
+          "id": "url_call_10219"
+        },
+        "x-example-summaries": [
+          "UrlContextCallStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "URLContextCallStep",
@@ -10096,6 +10602,19 @@
           "result",
           "type"
         ],
+        "example": {
+          "type": "url_context_result",
+          "call_id": "url_call_10219",
+          "result": [
+            {
+              "url": "https://www.example.com",
+              "status": "success"
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "UrlContextResultStep"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "URLContextResultStep",
@@ -10201,6 +10720,18 @@
         },
         "required": [
           "type"
+        ],
+        "example": {
+          "type": "user_input",
+          "content": [
+            {
+              "type": "text",
+              "text": "What is the capital of France?"
+            }
+          ]
+        },
+        "x-example-summaries": [
+          "UserInputStep"
         ],
         "x-speakeasy-exports": [
           {
@@ -10357,6 +10888,13 @@
         "required": [
           "type"
         ],
+        "example": {
+          "type": "video",
+          "uri": "https://www.youtube.com/watch?v=9hE5-98ZeCg"
+        },
+        "x-example-summaries": [
+          "Video"
+        ],
         "x-speakeasy-exports": [
           {
             "name": "VideoContent",
@@ -10475,6 +11013,14 @@
         },
         "required": [
           "type"
+        ],
+        "example": {
+          "type": "video",
+          "aspect_ratio": "16:9",
+          "delivery": "inline"
+        },
+        "x-example-summaries": [
+          "Video Output"
         ],
         "x-speakeasy-exports": [
           {

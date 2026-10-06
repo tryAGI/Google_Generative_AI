@@ -10,7 +10,8 @@ namespace Google.Gemini.NextGen
     public readonly partial struct Step : global::System.IEquatable<Step>
     {
         /// <summary>
-        /// Code execution call step.
+        /// Code execution call step.<br/>
+        /// Example: {"type":"code_execution_call","arguments":{"code":"print(sum(range(1, 11)))","language":"python"},"id":"code_call_71021"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.CodeExecutionCallStep? CodeExecutionCall { get; init; }
@@ -47,7 +48,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecutionCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Code execution result step.
+        /// Code execution result step.<br/>
+        /// Example: {"type":"code_execution_result","call_id":"code_call_71021","result":"55\n"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.CodeExecutionResultStep? CodeExecutionResult { get; init; }
@@ -84,7 +86,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecutionResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// File Search call step.
+        /// File Search call step.<br/>
+        /// Example: {"type":"file_search_call","id":"file_call_88192"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FileSearchCallStep? FileSearchCall { get; init; }
@@ -121,7 +124,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileSearchCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// File Search result step.
+        /// File Search result step.<br/>
+        /// Example: {"type":"file_search_result","call_id":"file_call_88192"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FileSearchResultStep? FileSearchResult { get; init; }
@@ -158,7 +162,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileSearchResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// A function tool call step.
+        /// A function tool call step.<br/>
+        /// Example: {"name":"get_weather","type":"function_call","arguments":{"location":"Boston, MA"},"id":"call_98231"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FunctionCallStep? FunctionCall { get; init; }
@@ -195,7 +200,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Result of a function tool call.
+        /// Result of a function tool call.<br/>
+        /// Example: {"name":"get_weather","type":"function_result","call_id":"call_98231","result":[{"type":"text","text":"{\u0022weather\u0022:\u0022sunny\u0022}"}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FunctionResultStep? FunctionResult { get; init; }
@@ -232,7 +238,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Maps call step.
+        /// Google Maps call step.<br/>
+        /// Example: {"type":"google_maps_call","arguments":{"queries":["parks near San Francisco"]},"id":"maps_call_39201"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleMapsCallStep? GoogleMapsCall { get; init; }
@@ -269,7 +276,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleMapsCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Maps result step.
+        /// Google Maps result step.<br/>
+        /// Example: {"type":"google_maps_result","call_id":"maps_call_39201","result":[{"places":[{"url":"https://maps.google.com/?cid=12345","name":"Golden Gate Park","place_id":"ChIJIQBpAG2ahYAR9R7bNdTLg8M"}]}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleMapsResultStep? GoogleMapsResult { get; init; }
@@ -306,7 +314,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleMapsResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Search call step.
+        /// Google Search call step.<br/>
+        /// Example: {"type":"google_search_call","arguments":{"queries":["Who won the men\u0027s 100m in Paris 2024?"]},"id":"search_call_19201"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleSearchCallStep? GoogleSearchCall { get; init; }
@@ -343,7 +352,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearchCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Search result step.
+        /// Google Search result step.<br/>
+        /// Example: {"type":"google_search_result","call_id":"search_call_19201","result":[{"search_suggestions":"\u003Cdiv class=\u0022container\u0022\u003E...\u003C/div\u003E"}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleSearchResultStep? GoogleSearchResult { get; init; }
@@ -380,7 +390,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearchResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// MCPServer tool call step.
+        /// MCPServer tool call step.<br/>
+        /// Example: {"name":"calculate_tax","type":"mcp_server_tool_call","arguments":{"income":120000,"state":"CA"},"id":"mcp_call_29012","server_name":"financial_mcp_server"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.MCPServerToolCallStep? MCPServerToolCall { get; init; }
@@ -417,7 +428,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServerToolCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// MCPServer tool result step.
+        /// MCPServer tool result step.<br/>
+        /// Example: {"name":"calculate_tax","type":"mcp_server_tool_result","call_id":"mcp_call_29012","result":{"tax_due":32400},"server_name":"financial_mcp_server"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.MCPServerToolResultStep? MCPServerToolResult { get; init; }
@@ -454,7 +466,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServerToolResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Output generated by the model.
+        /// Output generated by the model.<br/>
+        /// Example: {"type":"model_output","content":[{"type":"text","text":"The capital of France is Paris."}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ModelOutputStep? ModelOutput { get; init; }
@@ -644,7 +657,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetrievalResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// A thought step.
+        /// A thought step.<br/>
+        /// Example: {"type":"thought","signature":"thought_sig_abcd1234","summary":[{"type":"text","text":"The model is searching Google for the capital of France."}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ThoughtStep? Thought { get; init; }
@@ -681,7 +695,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Thought' but the value was {ToString()}.");
 
         /// <summary>
-        /// URL context call step.
+        /// URL context call step.<br/>
+        /// Example: {"type":"url_context_call","arguments":{"urls":["https://www.example.com"]},"id":"url_call_10219"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.URLContextCallStep? URLContextCall { get; init; }
@@ -718,7 +733,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContextCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// URL context result step.
+        /// URL context result step.<br/>
+        /// Example: {"type":"url_context_result","call_id":"url_call_10219","result":[{"url":"https://www.example.com","status":"success"}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.URLContextResultStep? URLContextResult { get; init; }
@@ -755,7 +771,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContextResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Input provided by the user.
+        /// Input provided by the user.<br/>
+        /// Example: {"type":"user_input","content":[{"type":"text","text":"What is the capital of France?"}]}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.UserInputStep? UserInput { get; init; }

@@ -5,7 +5,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Outbound networking configuration for the sandbox. Accepts an object with an 'allowlist' array to restrict traffic, or the string 'disabled' to turn off all network access. Omit entirely to allow all outbound traffic with no header injection.
+    /// Outbound networking configuration for the sandbox. Accepts an object with an 'allowlist' array to restrict traffic, or the string 'disabled' to turn off all network access. Omit entirely to allow all outbound traffic with no header injection.<br/>
+    /// Example: {"allowlist":[{"domain":"github.com","transform":[{"Authorization":"Bearer your-token"}]},{"domain":"*.googleapis.com"}]}
     /// </summary>
     public readonly partial struct EnvironmentNetworkEgressAllowlist : global::System.IEquatable<EnvironmentNetworkEgressAllowlist>
     {

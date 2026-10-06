@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Server response confirming that a new interaction was created.
+    /// Server response confirming that a new interaction was created.<br/>
+    /// Example: {"event_id":"evt_123","event_type":"interaction.created","interaction":{"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","status":"in_progress","updated":"2025-12-04T15:01:45Z"}}
     /// </summary>
     public sealed partial class InteractionCreatedEvent
     {

@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Google Search result step.
+    /// Google Search result step.<br/>
+    /// Example: {"type":"google_search_result","call_id":"search_call_19201","result":[{"search_suggestions":"\u003Cdiv class=\u0022container\u0022\u003E...\u003C/div\u003E"}]}
     /// </summary>
     public sealed partial class GoogleSearchResultStep
     {

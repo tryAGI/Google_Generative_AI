@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Google Maps result step.
+    /// Google Maps result step.<br/>
+    /// Example: {"type":"google_maps_result","call_id":"maps_call_39201","result":[{"places":[{"url":"https://maps.google.com/?cid=12345","name":"Golden Gate Park","place_id":"ChIJIQBpAG2ahYAR9R7bNdTLg8M"}]}]}
     /// </summary>
     public sealed partial class GoogleMapsResultStep
     {

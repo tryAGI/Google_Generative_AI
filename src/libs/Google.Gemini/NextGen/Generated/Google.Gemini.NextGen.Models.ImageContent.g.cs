@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// An image content block.
+    /// An image content block.<br/>
+    /// Example: {"type":"image","data":"BASE64_ENCODED_IMAGE","mime_type":"image/png"}
     /// </summary>
     public sealed partial class ImageContent
     {

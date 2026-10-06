@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Code execution call step.
+    /// Code execution call step.<br/>
+    /// Example: {"type":"code_execution_call","arguments":{"code":"print(sum(range(1, 11)))","language":"python"},"id":"code_call_71021"}
     /// </summary>
     public sealed partial class CodeExecutionCallStep
     {

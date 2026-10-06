@@ -10,7 +10,8 @@ namespace Google.Gemini.NextGen
     public readonly partial struct ResponseFormat4 : global::System.IEquatable<ResponseFormat4>
     {
         /// <summary>
-        /// Configuration for audio output format.
+        /// Configuration for audio output format.<br/>
+        /// Example: {"type":"audio","sample_rate":24000}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.AudioResponseFormat? AudioFormat { get; init; }
@@ -47,7 +48,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'AudioFormat' but the value was {ToString()}.");
 
         /// <summary>
-        /// Configuration for image output format.
+        /// Configuration for image output format.<br/>
+        /// Example: {"type":"image","aspect_ratio":"16:9","image_size":"1K","mime_type":"image/jpeg"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ImageResponseFormat? ImageFormat { get; init; }
@@ -84,7 +86,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'ImageFormat' but the value was {ToString()}.");
 
         /// <summary>
-        /// Configuration for text output format.
+        /// Configuration for text output format.<br/>
+        /// Example: {"type":"text","mime_type":"application/json","schema":{"type":"object","properties":{"ingredients":{"type":"array","items":{"type":"string"}},"recipe_name":{"type":"string"}},"required":["ingredients","recipe_name"]}}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.TextResponseFormat? TextFormat { get; init; }
@@ -121,7 +124,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextFormat' but the value was {ToString()}.");
 
         /// <summary>
-        /// Configuration for video output format.
+        /// Configuration for video output format.<br/>
+        /// Example: {"type":"video","aspect_ratio":"16:9","delivery":"inline"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.VideoResponseFormat? VideoFormat { get; init; }

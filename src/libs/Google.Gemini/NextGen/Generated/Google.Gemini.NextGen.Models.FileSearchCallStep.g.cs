@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// File Search call step.
+    /// File Search call step.<br/>
+    /// Example: {"type":"file_search_call","id":"file_call_88192"}
     /// </summary>
     public sealed partial class FileSearchCallStep
     {

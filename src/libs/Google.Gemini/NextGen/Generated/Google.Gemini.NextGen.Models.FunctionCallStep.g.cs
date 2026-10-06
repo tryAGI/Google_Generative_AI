@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A function tool call step.
+    /// A function tool call step.<br/>
+    /// Example: {"name":"get_weather","type":"function_call","arguments":{"location":"Boston, MA"},"id":"call_98231"}
     /// </summary>
     public sealed partial class FunctionCallStep
     {
