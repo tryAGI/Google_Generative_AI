@@ -117,6 +117,16 @@ namespace Google.Gemini.NextGen
         public static Model GeminiFlashLiteLatest { get; } = new("gemini-flash-lite-latest");
 
         /// <summary>
+        /// Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+        /// </summary>
+        public static Model GeminiOmni11Flash { get; } = new("gemini-omni-1.1-flash");
+
+        /// <summary>
+        /// Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+        /// </summary>
+        public static Model GeminiOmniFlashPreview { get; } = new("gemini-omni-flash-preview");
+
+        /// <summary>
         /// Latest release of Gemini Pro
         /// </summary>
         public static Model GeminiProLatest { get; } = new("gemini-pro-latest");
@@ -152,6 +162,11 @@ namespace Google.Gemini.NextGen
         public static Model Lyria3ProPreview { get; } = new("lyria-3-pro-preview");
 
         /// <summary>
+        /// Our flagship music generation model, optimized for full-length songs with complex structural coherence.
+        /// </summary>
+        public static Model Lyria35 { get; } = new("lyria-3.5");
+
+        /// <summary>
         /// Gemini 3 Pro Image Preview
         /// </summary>
         public static Model NanoBananaProPreview { get; } = new("nano-banana-pro-preview");
@@ -183,6 +198,8 @@ namespace Google.Gemini.NextGen
                 "gemini-3.8-flash-tts" => Gemini38FlashTts,
                 "gemini-flash-latest" => GeminiFlashLatest,
                 "gemini-flash-lite-latest" => GeminiFlashLiteLatest,
+                "gemini-omni-1.1-flash" => GeminiOmni11Flash,
+                "gemini-omni-flash-preview" => GeminiOmniFlashPreview,
                 "gemini-pro-latest" => GeminiProLatest,
                 "gemini-robotics-er-1.6-preview" => GeminiRoboticsEr16Preview,
                 "gemini-robotics-er-2-preview" => GeminiRoboticsEr2Preview,
@@ -190,6 +207,7 @@ namespace Google.Gemini.NextGen
                 "gemma-4-31b-it" => Gemma431bIt,
                 "lyria-3-clip-preview" => Lyria3ClipPreview,
                 "lyria-3-pro-preview" => Lyria3ProPreview,
+                "lyria-3.5" => Lyria35,
                 "nano-banana-pro-preview" => NanoBananaProPreview,
                 _ => new Model(value),
             };
@@ -219,6 +237,8 @@ namespace Google.Gemini.NextGen
             "gemini-3.8-flash-tts" => true,
             "gemini-flash-latest" => true,
             "gemini-flash-lite-latest" => true,
+            "gemini-omni-1.1-flash" => true,
+            "gemini-omni-flash-preview" => true,
             "gemini-pro-latest" => true,
             "gemini-robotics-er-1.6-preview" => true,
             "gemini-robotics-er-2-preview" => true,
@@ -226,6 +246,7 @@ namespace Google.Gemini.NextGen
             "gemma-4-31b-it" => true,
             "lyria-3-clip-preview" => true,
             "lyria-3-pro-preview" => true,
+            "lyria-3.5" => true,
             "nano-banana-pro-preview" => true,
             _ => false,
         };
