@@ -10,7 +10,7 @@ namespace Google.Gemini.NextGen
     public readonly partial struct InteractionSSEEvent : global::System.IEquatable<InteractionSSEEvent>
     {
         /// <summary>
-        ///
+        /// Example: {"error":{"code":"not_found","message":"Failed to get completed interaction: Result not found."},"event_type":"error"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ErrorEvent? Error { get; init; }
@@ -49,7 +49,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Signals that the Interaction completed. Sent when the Interaction receives<br/>
         /// Complete/Cancel or naturally terminates. No more input can be sent to the<br/>
-        /// Interaction after this.
+        /// Interaction after this.<br/>
+        /// Example: {"event_id":"evt_123","event_type":"interaction.completed","interaction":{"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","status":"completed","updated":"2025-12-04T15:01:45Z"}}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.InteractionCompletedEvent? Completed { get; init; }
@@ -86,7 +87,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
 
         /// <summary>
-        /// Server response confirming that a new interaction was created.
+        /// Server response confirming that a new interaction was created.<br/>
+        /// Example: {"event_id":"evt_123","event_type":"interaction.created","interaction":{"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","status":"in_progress","updated":"2025-12-04T15:01:45Z"}}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.InteractionCreatedEvent? Created { get; init; }
@@ -123,7 +125,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Created' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Example: {"event_type":"interaction.status_update","interaction_id":"v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM","status":"in_progress"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.InteractionStatusUpdate? StatusUpdate { get; init; }
@@ -160,7 +162,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'StatusUpdate' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Example: {"delta":{"type":"text","text":"Hello"},"event_type":"step.delta","index":0}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.StepDelta? StepDelta { get; init; }
@@ -197,7 +199,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'StepDelta' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Example: {"event_type":"step.start","index":0,"step":{"type":"model_output"}}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.StepStart? StepStart { get; init; }
@@ -234,7 +236,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'StepStart' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Example: {"event_type":"step.stop","index":0}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.StepStop? StepStop { get; init; }

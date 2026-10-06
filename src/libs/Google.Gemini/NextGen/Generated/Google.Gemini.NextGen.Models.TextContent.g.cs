@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A text content block.
+    /// A text content block.<br/>
+    /// Example: {"type":"text","text":"Hello, how are you?"}
     /// </summary>
     public sealed partial class TextContent
     {

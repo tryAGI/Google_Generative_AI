@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A thought step.
+    /// A thought step.<br/>
+    /// Example: {"type":"thought","signature":"thought_sig_abcd1234","summary":[{"type":"text","text":"The model is searching Google for the capital of France."}]}
     /// </summary>
     public sealed partial class ThoughtStep
     {

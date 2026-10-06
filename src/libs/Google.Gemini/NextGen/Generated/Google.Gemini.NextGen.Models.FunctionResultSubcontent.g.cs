@@ -10,7 +10,8 @@ namespace Google.Gemini.NextGen
     public readonly partial struct FunctionResultSubcontent : global::System.IEquatable<FunctionResultSubcontent>
     {
         /// <summary>
-        /// An image content block.
+        /// An image content block.<br/>
+        /// Example: {"type":"image","data":"BASE64_ENCODED_IMAGE","mime_type":"image/png"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ImageContent? ImageContent { get; init; }
@@ -47,7 +48,8 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'ImageContent' but the value was {ToString()}.");
 
         /// <summary>
-        /// A text content block.
+        /// A text content block.<br/>
+        /// Example: {"type":"text","text":"Hello, how are you?"}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.TextContent? TextContent { get; init; }

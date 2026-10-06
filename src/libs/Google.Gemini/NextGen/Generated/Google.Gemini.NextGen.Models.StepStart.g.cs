@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    ///
+    /// Example: {"event_type":"step.start","index":0,"step":{"type":"model_output"}}
     /// </summary>
     public sealed partial class StepStart
     {

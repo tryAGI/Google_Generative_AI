@@ -2,6 +2,17 @@
   "Examples": [
     {
       "Order": 1,
+      "Title": "Creates a new Agent (Typed version for SDK).",
+      "Slug": "createagent",
+      "Description": "Creates a new Agent (Typed version for SDK).",
+      "Language": "http",
+      "Code": "### Creates a new Agent (Typed version for SDK).\n# @name CreateAgent\nPOST {{host}}/v1beta/agents\nx-goog-api-key: {{api_key}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022agent_config\u0022: {\n    \u0022max_total_tokens\u0022: \u0022string\u0022,\n    \u0022model\u0022: \u0022string\u0022,\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022base_agent\u0022: \u0022string\u0022,\n  \u0022base_environment\u0022: {\n    \u0022env\u0022: {},\n    \u0022environment_id\u0022: \u0022string\u0022,\n    \u0022network\u0022: {\n      \u0022allowlist\u0022: [\n        {\n          \u0022domain\u0022: \u0022github.com\u0022,\n          \u0022transform\u0022: [\n            {\n              \u0022Authorization\u0022: \u0022Bearer your-token\u0022\n            }\n          ]\n        },\n        {\n          \u0022domain\u0022: \u0022*.googleapis.com\u0022\n        }\n      ]\n    },\n    \u0022sources\u0022: [\n      {}\n    ],\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022description\u0022: \u0022string\u0022,\n  \u0022id\u0022: \u0022string\u0022,\n  \u0022system_instruction\u0022: \u0022string\u0022,\n  \u0022tools\u0022: [\n    {\n      \u0022type\u0022: \u0022string\u0022\n    }\n  ]\n}\n\n## Responses\n# default\n# Description: Successful operation\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "CreateAgent",
+      "Setup": null
+    },
+    {
+      "Order": 2,
       "Title": "Deletes an Agent.",
       "Slug": "deleteagent",
       "Description": "Deletes an Agent.",
@@ -12,7 +23,7 @@
       "Setup": null
     },
     {
-      "Order": 2,
+      "Order": 3,
       "Title": "Gets a specific Agent.",
       "Slug": "getagent",
       "Description": "Gets a specific Agent.",
@@ -23,7 +34,18 @@
       "Setup": null
     },
     {
-      "Order": 3,
+      "Order": 4,
+      "Title": "Lists all Agents.",
+      "Slug": "listagents",
+      "Description": "Lists all Agents.",
+      "Language": "csharp",
+      "Code": "using var client = new GeminiNextGenClient(apiKey);\nvar response = await client.Agents.ListAsync();",
+      "Format": "sdk",
+      "OperationId": "ListAgents",
+      "Setup": "This example assumes \u0060using Google.Gemini.NextGen;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 5,
       "Title": "Cancels an interaction by id. This only applies to background interactions\nthat are still running.",
       "Slug": "cancelinteractionbyid",
       "Description": "Cancels an interaction by id. This only applies to background interactions\nthat are still running.",
@@ -34,18 +56,18 @@
       "Setup": null
     },
     {
-      "Order": 4,
+      "Order": 6,
       "Title": "Creates a new interaction.",
       "Slug": "createinteraction",
       "Description": "Creates a new interaction.",
       "Language": "http",
-      "Code": "### Creates a new interaction.\n# @name CreateInteraction\nPOST {{host}}/v1beta/interactions\nx-goog-api-key: {{api_key}}\nContent-Type: application/json\nAccept: application/json, text/event-stream\n\n{\n  \u0022agent\u0022: \u0022deep-research-pro-preview-12-2025\u0022,\n  \u0022agent_config\u0022: {\n    \u0022max_total_tokens\u0022: \u0022string\u0022,\n    \u0022model\u0022: \u0022string\u0022,\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022background\u0022: true,\n  \u0022continuation_token\u0022: \u0022\u0022,\n  \u0022environment\u0022: {\n    \u0022env\u0022: {},\n    \u0022environment_id\u0022: \u0022string\u0022,\n    \u0022network\u0022: {\n      \u0022allowlist\u0022: []\n    },\n    \u0022sources\u0022: [\n      {}\n    ],\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022input\u0022: {\n    \u0022channels\u0022: 0,\n    \u0022data\u0022: \u0022\u0022,\n    \u0022mime_type\u0022: \u0022audio/wav\u0022,\n    \u0022sample_rate\u0022: 0,\n    \u0022type\u0022: \u0022string\u0022,\n    \u0022uri\u0022: \u0022string\u0022\n  },\n  \u0022labels\u0022: {},\n  \u0022previous_interaction_id\u0022: \u0022string\u0022,\n  \u0022response_format\u0022: {\n    \u0022bit_rate\u0022: 0,\n    \u0022delivery\u0022: \u0022inline\u0022,\n    \u0022mime_type\u0022: \u0022audio/mp3\u0022,\n    \u0022sample_rate\u0022: 0,\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022response_mime_type\u0022: \u0022string\u0022,\n  \u0022response_modalities\u0022: [\n    \u0022text\u0022\n  ],\n  \u0022safety_settings\u0022: [\n    {\n      \u0022method\u0022: \u0022severity\u0022,\n      \u0022threshold\u0022: \u0022block_low_and_above\u0022,\n      \u0022type\u0022: \u0022hate_speech\u0022\n    }\n  ],\n  \u0022service_tier\u0022: \u0022flex\u0022,\n  \u0022store\u0022: true,\n  \u0022stream\u0022: true,\n  \u0022system_instruction\u0022: \u0022string\u0022,\n  \u0022tools\u0022: [\n    {\n      \u0022type\u0022: \u0022string\u0022\n    }\n  ],\n  \u0022webhook_config\u0022: {\n    \u0022uris\u0022: [\n      \u0022string\u0022\n    ],\n    \u0022user_metadata\u0022: {}\n  }\n}\n\n## Responses\n# 200\n# Description: Successful operation\n# Content-Type: application/json, text/event-stream\n# 4XX\n# Description: Client Error\n# Content-Type: application/json\n# 5XX\n# Description: Server Error\n# Content-Type: application/json",
+      "Code": "### Creates a new interaction.\n# @name CreateInteraction\nPOST {{host}}/v1beta/interactions\nx-goog-api-key: {{api_key}}\nContent-Type: application/json\nAccept: application/json, text/event-stream\n\n{\n  \u0022agent\u0022: \u0022deep-research-pro-preview-12-2025\u0022,\n  \u0022agent_config\u0022: {\n    \u0022max_total_tokens\u0022: \u0022string\u0022,\n    \u0022model\u0022: \u0022string\u0022,\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022background\u0022: true,\n  \u0022continuation_token\u0022: \u0022\u0022,\n  \u0022environment\u0022: {\n    \u0022env\u0022: {},\n    \u0022environment_id\u0022: \u0022string\u0022,\n    \u0022network\u0022: {\n      \u0022allowlist\u0022: [\n        {\n          \u0022domain\u0022: \u0022github.com\u0022,\n          \u0022transform\u0022: [\n            {\n              \u0022Authorization\u0022: \u0022Bearer your-token\u0022\n            }\n          ]\n        },\n        {\n          \u0022domain\u0022: \u0022*.googleapis.com\u0022\n        }\n      ]\n    },\n    \u0022sources\u0022: [\n      {}\n    ],\n    \u0022type\u0022: \u0022string\u0022\n  },\n  \u0022input\u0022: {\n    \u0022type\u0022: \u0022audio\u0022,\n    \u0022data\u0022: \u0022BASE64_ENCODED_AUDIO\u0022,\n    \u0022mime_type\u0022: \u0022audio/wav\u0022\n  },\n  \u0022labels\u0022: {},\n  \u0022previous_interaction_id\u0022: \u0022string\u0022,\n  \u0022response_format\u0022: {\n    \u0022type\u0022: \u0022audio\u0022,\n    \u0022sample_rate\u0022: 24000\n  },\n  \u0022response_mime_type\u0022: \u0022string\u0022,\n  \u0022response_modalities\u0022: [\n    \u0022text\u0022\n  ],\n  \u0022safety_settings\u0022: [\n    {\n      \u0022method\u0022: \u0022severity\u0022,\n      \u0022threshold\u0022: \u0022block_low_and_above\u0022,\n      \u0022type\u0022: \u0022hate_speech\u0022\n    }\n  ],\n  \u0022service_tier\u0022: \u0022flex\u0022,\n  \u0022store\u0022: true,\n  \u0022stream\u0022: true,\n  \u0022system_instruction\u0022: \u0022string\u0022,\n  \u0022tools\u0022: [\n    {\n      \u0022type\u0022: \u0022string\u0022\n    }\n  ],\n  \u0022webhook_config\u0022: {\n    \u0022uris\u0022: [\n      \u0022string\u0022\n    ],\n    \u0022user_metadata\u0022: {}\n  }\n}\n\n## Responses\n# 200\n# Description: Successful operation\n# Content-Type: application/json, text/event-stream\n# 4XX\n# Description: Client Error\n# Content-Type: application/json\n# 5XX\n# Description: Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "CreateInteraction",
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 7,
       "Title": "Retrieves the full details of a single interaction based on its\n\u0060Interaction.id\u0060.",
       "Slug": "getinteractionbyid",
       "Description": "Retrieves the full details of a single interaction based on its\n\u0060Interaction.id\u0060.",

@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    ///
+    /// Example: {"event_type":"interaction.status_update","interaction_id":"v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM","status":"in_progress"}
     /// </summary>
     public sealed partial class InteractionStatusUpdate
     {

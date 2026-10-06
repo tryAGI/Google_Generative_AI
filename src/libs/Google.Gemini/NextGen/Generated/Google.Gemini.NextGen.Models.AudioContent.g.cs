@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// An audio content block.
+    /// An audio content block.<br/>
+    /// Example: {"type":"audio","data":"BASE64_ENCODED_AUDIO","mime_type":"audio/wav"}
     /// </summary>
     public sealed partial class AudioContent
     {

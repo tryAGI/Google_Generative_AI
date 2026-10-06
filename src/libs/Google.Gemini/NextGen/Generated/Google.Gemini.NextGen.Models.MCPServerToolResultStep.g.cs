@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// MCPServer tool result step.
+    /// MCPServer tool result step.<br/>
+    /// Example: {"name":"calculate_tax","type":"mcp_server_tool_result","call_id":"mcp_call_29012","result":{"tax_due":32400},"server_name":"financial_mcp_server"}
     /// </summary>
     public sealed partial class MCPServerToolResultStep
     {

@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    ///
+    /// Example: {"error":{"code":"not_found","message":"Failed to get completed interaction: Result not found."},"event_type":"error"}
     /// </summary>
     public sealed partial class ErrorEvent
     {

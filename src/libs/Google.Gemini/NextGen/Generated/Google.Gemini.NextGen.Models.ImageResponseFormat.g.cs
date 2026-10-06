@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Configuration for image output format.
+    /// Configuration for image output format.<br/>
+    /// Example: {"type":"image","aspect_ratio":"16:9","image_size":"1K","mime_type":"image/jpeg"}
     /// </summary>
     public sealed partial class ImageResponseFormat
     {

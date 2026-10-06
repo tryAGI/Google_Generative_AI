@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    ///
+    /// Example: {"delta":{"type":"text","text":"Hello"},"event_type":"step.delta","index":0}
     /// </summary>
     public sealed partial class StepDelta
     {

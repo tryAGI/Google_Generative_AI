@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Result of a function tool call.
+    /// Result of a function tool call.<br/>
+    /// Example: {"name":"get_weather","type":"function_result","call_id":"call_98231","result":[{"type":"text","text":"{\u0022weather\u0022:\u0022sunny\u0022}"}]}
     /// </summary>
     public sealed partial class FunctionResultStep
     {

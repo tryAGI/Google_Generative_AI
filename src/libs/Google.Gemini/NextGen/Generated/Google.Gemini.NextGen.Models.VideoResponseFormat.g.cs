@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Configuration for video output format.
+    /// Configuration for video output format.<br/>
+    /// Example: {"type":"video","aspect_ratio":"16:9","delivery":"inline"}
     /// </summary>
     public sealed partial class VideoResponseFormat
     {

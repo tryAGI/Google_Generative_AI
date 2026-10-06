@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A document content block.
+    /// A document content block.<br/>
+    /// Example: {"type":"document","data":"BASE64_ENCODED_DOCUMENT","mime_type":"application/pdf"}
     /// </summary>
     public sealed partial class DocumentContent
     {

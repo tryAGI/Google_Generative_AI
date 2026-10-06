@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// URL context call step.
+    /// URL context call step.<br/>
+    /// Example: {"type":"url_context_call","arguments":{"urls":["https://www.example.com"]},"id":"url_call_10219"}
     /// </summary>
     public sealed partial class URLContextCallStep
     {

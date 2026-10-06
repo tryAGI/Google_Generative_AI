@@ -4,7 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// The tool choice configuration containing allowed tools.
+    /// The tool choice configuration containing allowed tools.<br/>
+    /// Example: {"allowed_tools":{"mode":"any","tools":["my_tool"]}}
     /// </summary>
     public sealed partial class ToolChoiceConfig
     {
