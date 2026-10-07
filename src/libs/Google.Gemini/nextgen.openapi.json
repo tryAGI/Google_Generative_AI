@@ -2539,6 +2539,11 @@
             "label": "list",
             "lang": "javascript",
             "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst response = await ai.voices.list();\nfor (const voice of response.voices ?? []) {\n  console.log(voice.id, voice.display_name);\n}\n"
+          },
+          {
+            "label": "list",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    res, err := client.Voices.List(ctx, operations.ListVoicesRequest{})\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.ListVoicesResponse != nil {\n        for _, voice := range res.ListVoicesResponse.Voices {\n            if voice.ID != nil && voice.DisplayName != nil {\n                fmt.Println(*voice.ID, *voice.DisplayName)\n            }\n        }\n    }\n}\n"
           }
         ]
       },
@@ -2595,6 +2600,11 @@
             "label": "create",
             "lang": "javascript",
             "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst voice = await ai.voices.create({\n  store: true,\n  voice: {\n    type: 'prompted',\n    display_name: 'Warm Narrator',\n    language_code: 'en-US',\n    prompted: {\n      input: 'A warm, friendly narrator voice with a calm pace.',\n    },\n  },\n});\nconsole.log(voice.id);\n"
+          },
+          {
+            "label": "create",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_voices \"google.golang.org/genai/interactions/models/voices\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    req := operations.CreateVoiceRequest{\n        Body: gaos_voices.CreateVoiceRequest{\n            Store: genai.Ptr(true),\n            Voice: gaos_voices.VoiceInput{\n                Type:         gaos_voices.VoiceTypePrompted,\n                DisplayName:  genai.Ptr(\"Warm Narrator\"),\n                LanguageCode: genai.Ptr(\"en-US\"),\n                Prompted: &gaos_voices.PromptedVoice{\n                    Input: \"A warm, friendly narrator voice with a calm pace.\",\n                },\n            },\n        },\n    }\n\n    res, err := client.Voices.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Voice != nil && res.Voice.ID != nil {\n        fmt.Println(*res.Voice.ID)\n    }\n}\n"
           }
         ]
       }
@@ -2652,6 +2662,11 @@
             "label": "delete",
             "lang": "javascript",
             "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nawait ai.voices.delete('voice_abc123');\n"
+          },
+          {
+            "label": "delete",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    _, err = client.Voices.Delete(ctx, operations.DeleteVoiceRequest{\n        ID: \"voice_abc123\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n}\n"
           }
         ]
       },
@@ -2707,6 +2722,11 @@
             "label": "get",
             "lang": "javascript",
             "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst voice = await ai.voices.get('voice_abc123');\nconsole.log(voice.id, voice.display_name);\n"
+          },
+          {
+            "label": "get",
+            "lang": "go",
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    res, err := client.Voices.Get(ctx, operations.GetVoiceRequest{\n        ID: \"voice_abc123\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Voice != nil && res.Voice.ID != nil && res.Voice.DisplayName != nil {\n        fmt.Println(*res.Voice.ID, *res.Voice.DisplayName)\n    }\n}\n"
           }
         ]
       }
