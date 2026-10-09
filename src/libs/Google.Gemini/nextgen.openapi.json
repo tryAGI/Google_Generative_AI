@@ -4813,7 +4813,31 @@
         "x-speakeasy-model-namespace": "environments"
       },
       "EnvironmentNetworkEgressAllowlist": {
-        "description": "Outbound networking configuration for the sandbox. Accepts an object with an 'allowlist' array to restrict traffic, or the string 'disabled' to turn off all network access. Omit entirely to allow all outbound traffic with no header injection.",
+        "description": "Network egress configuration for the environment.",
+        "type": "object",
+        "properties": {
+          "allowlist": {
+            "description": "List of allowed domains and their configurations. Set to `\"disabled\"`\nto block all network egress.",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EgressRule"
+                }
+              },
+              {
+                "title": "Disabled",
+                "type": "string",
+                "enum": [
+                  "disabled"
+                ],
+                "x-google-enum-descriptions": [
+                  "All network egress is blocked."
+                ]
+              }
+            ]
+          }
+        },
         "example": {
           "allowlist": [
             {
@@ -4829,33 +4853,6 @@
             }
           ]
         },
-        "oneOf": [
-          {
-            "title": "Allowlist",
-            "description": "Outbound networking configuration for the sandbox. When specified, restricts which external domains the sandbox can reach. Omit entirely to allow all outbound traffic with no header injection.",
-            "type": "object",
-            "properties": {
-              "allowlist": {
-                "description": "List of allowed outbound domains. Only requests to listed domains are permitted. Use [{'domain': '*'}] to allow all domains while still injecting headers on specific ones.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EgressRule"
-                }
-              }
-            }
-          },
-          {
-            "title": "Disabled",
-            "description": "Turns all network off.",
-            "type": "string",
-            "enum": [
-              "disabled"
-            ],
-            "x-google-enum-descriptions": [
-              "All network egress is blocked."
-            ]
-          }
-        ],
         "x-example-summaries": [
           "Network Allowlist"
         ],
@@ -5478,10 +5475,16 @@
           "result": {
             "oneOf": [
               {
-                "title": "FunctionResultSubcontentList",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/FunctionResultSubContent"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ImageContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TextContent"
+                    }
+                  ]
                 }
               },
               {
@@ -5524,7 +5527,14 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/FunctionResultSubContent"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ImageContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TextContent"
+                    }
+                  ]
                 }
               },
               {
@@ -5565,18 +5575,6 @@
           }
         ],
         "x-speakeasy-model-namespace": "interactions"
-      },
-      "FunctionResultSubContent": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ImageContent"
-          },
-          {
-            "$ref": "#/components/schemas/TextContent"
-          }
-        ],
-        "x-speakeasy-model-namespace": "interactions",
-        "x-speakeasy-name-override": "FunctionResultSubcontent"
       },
       "GenerationConfig": {
         "description": "Configuration parameters for model interactions.",
@@ -7271,6 +7269,11 @@
       "InteractionStatusUpdate": {
         "type": "object",
         "properties": {
+          "continuation_token": {
+            "description": "An optional opaque continuation token used to resume decoding from the\nlatest checkpoint after a disconnected stream.",
+            "type": "string",
+            "format": "byte"
+          },
           "event_id": {
             "description": "The event_id token to be used to resume the interaction stream, from\nthis event.",
             "type": "string"
@@ -7313,6 +7316,10 @@
               "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
               "The interaction is queued, waiting for processing (e.g. waiting for\noff-peak capacity)."
             ]
+          },
+          "usage": {
+            "description": "Model usage statistics up to this checkpoint.",
+            "$ref": "#/components/schemas/Usage"
           }
         },
         "required": [
@@ -7685,10 +7692,16 @@
           "result": {
             "oneOf": [
               {
-                "title": "FunctionResultSubcontentList",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/FunctionResultSubContent"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ImageContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TextContent"
+                    }
+                  ]
                 }
               },
               {
@@ -7731,7 +7744,14 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/FunctionResultSubContent"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ImageContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TextContent"
+                    }
+                  ]
                 }
               },
               {
@@ -8017,22 +8037,22 @@
         "description": "The model that will complete your prompt.\\n\\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.",
         "type": "string",
         "enum": [
-          "gemini-2.5-flash",
-          "gemini-2.5-pro",
           "gemma-4-26b-a4b-it",
           "gemma-4-31b-it",
           "gemini-flash-latest",
           "gemini-flash-lite-latest",
           "gemini-pro-latest",
-          "gemini-2.5-flash-lite",
+          "gemini-3.5-flash-lite",
           "gemini-2.5-flash-image",
           "gemini-3-flash-preview",
           "gemini-3.1-pro-preview",
           "gemini-3.1-pro-preview-customtools",
           "gemini-3.1-flash-lite",
+          "gemini-3.1-flash-lite-image",
           "gemini-3-pro-image",
           "nano-banana-pro-preview",
           "gemini-3.1-flash-image",
+          "gemini-nano-banana-2.1",
           "gemini-3.1-flash-tts-preview",
           "gemini-3.5-flash",
           "gemini-3.6-flash",
@@ -8042,15 +8062,12 @@
           "gemini-3.8-flash-lite-tts",
           "lyria-3-clip-preview",
           "lyria-3-pro-preview",
-          "gemini-robotics-er-1.6-preview",
           "gemini-robotics-er-2-preview",
           "lyria-3.5",
           "gemini-omni-1.1-flash",
           "gemini-omni-flash-preview"
         ],
         "x-speakeasy-enum-descriptions": [
-          "Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.",
-          "Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.",
           "Gemma 4 26B A4B IT",
           "Gemma 4 31B IT",
           "Latest release of Gemini Flash",
@@ -8062,23 +8079,24 @@
           "Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.",
           "Gemini 3.1 Pro Preview optimized for custom tool usage",
           "Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.",
+          "Gemini 3.1 Flash Lite Image.",
           "Gemini 3 Pro Image",
           "Gemini 3 Pro Image Preview",
           "Gemini 3.1 Flash Image.",
+          "Gemini Nano Banana 2.1.",
           "Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.",
-          "Our most intelligent model for sustained frontier performance in agentic and coding tasks.",
-          "Our most intelligent model for sustained frontier performance in agentic and coding tasks.",
-          "Our most intelligent model for sustained frontier performance in agentic and coding tasks.",
-          "Our most intelligent model for sustained frontier performance in agentic and coding tasks.",
+          "Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.",
+          "Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.",
+          "Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.",
+          "Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.",
           "Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.",
           "Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.",
           "Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.",
           "Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.",
-          "Gemini Robotics-ER 1.6 Preview",
           "Gemini Robotics Embodied Reasoning 2 Preview",
           "Our flagship music generation model, optimized for full-length songs with complex structural coherence.",
           "Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.",
-          "Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control."
+          "Preview release of our multimodal model for conversational video generation, editing, and cinematic control."
         ],
         "x-speakeasy-enum-format": "union",
         "x-speakeasy-exports": [

@@ -2,7 +2,7 @@
 
 namespace Google.Gemini.NextGen
 {
-    public readonly partial struct EnvironmentNetworkEgressAllowlist
+    public sealed partial class EnvironmentNetworkEgressAllowlist
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace Google.Gemini.NextGen
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist),
-                jsonSerializerContext) as global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?;
+                jsonSerializerContext) as global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Google.Gemini.NextGen
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist;
         }
 
         /// <summary>

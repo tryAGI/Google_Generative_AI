@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class InteractionStatusUpdate
     {
         /// <summary>
+        /// An optional opaque continuation token used to resume decoding from the<br/>
+        /// latest checkpoint after a disconnected stream.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
         /// The event_id token to be used to resume the interaction stream, from<br/>
         /// this event.
         /// </summary>
@@ -38,6 +45,13 @@ namespace Google.Gemini.NextGen
         public required global::Google.Gemini.NextGen.InteractionStatusUpdateStatus Status { get; set; }
 
         /// <summary>
+        /// Statistics on the interaction request's token usage.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
+        public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,9 +63,17 @@ namespace Google.Gemini.NextGen
         /// <param name="eventType"></param>
         /// <param name="interactionId"></param>
         /// <param name="status"></param>
+        /// <param name="continuationToken">
+        /// An optional opaque continuation token used to resume decoding from the<br/>
+        /// latest checkpoint after a disconnected stream.
+        /// </param>
         /// <param name="eventId">
         /// The event_id token to be used to resume the interaction stream, from<br/>
         /// this event.
+        /// </param>
+        /// <param name="usage">
+        /// Statistics on the interaction request's token usage.<br/>
+        /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -60,12 +82,16 @@ namespace Google.Gemini.NextGen
             object eventType,
             string interactionId,
             global::Google.Gemini.NextGen.InteractionStatusUpdateStatus status,
-            string? eventId)
+            byte[]? continuationToken,
+            string? eventId,
+            global::Google.Gemini.NextGen.Usage? usage)
         {
+            this.ContinuationToken = continuationToken;
             this.EventId = eventId;
             this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.InteractionId = interactionId ?? throw new global::System.ArgumentNullException(nameof(interactionId));
             this.Status = status;
+            this.Usage = usage;
         }
 
         /// <summary>

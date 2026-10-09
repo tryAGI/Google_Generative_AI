@@ -71,7 +71,7 @@ namespace Google.Gemini.NextGen
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment2> CreateEnvironmentAsync(
             string? fromEnvironment = default,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network = default,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

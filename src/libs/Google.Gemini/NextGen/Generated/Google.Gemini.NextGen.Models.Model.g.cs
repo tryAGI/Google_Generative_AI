@@ -22,24 +22,9 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public string Value { get; }
         /// <summary>
-        /// Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-        /// </summary>
-        public static Model Gemini25Flash { get; } = new("gemini-2.5-flash");
-
-        /// <summary>
         /// Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
         /// </summary>
         public static Model Gemini25FlashImage { get; } = new("gemini-2.5-flash-image");
-
-        /// <summary>
-        /// Our smallest and most cost effective model, built for at scale usage.
-        /// </summary>
-        public static Model Gemini25FlashLite { get; } = new("gemini-2.5-flash-lite");
-
-        /// <summary>
-        /// Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-        /// </summary>
-        public static Model Gemini25Pro { get; } = new("gemini-2.5-pro");
 
         /// <summary>
         /// Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
@@ -62,6 +47,11 @@ namespace Google.Gemini.NextGen
         public static Model Gemini31FlashLite { get; } = new("gemini-3.1-flash-lite");
 
         /// <summary>
+        /// Gemini 3.1 Flash Lite Image.
+        /// </summary>
+        public static Model Gemini31FlashLiteImage { get; } = new("gemini-3.1-flash-lite-image");
+
+        /// <summary>
         /// Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
         /// </summary>
         public static Model Gemini31FlashTtsPreview { get; } = new("gemini-3.1-flash-tts-preview");
@@ -77,22 +67,27 @@ namespace Google.Gemini.NextGen
         public static Model Gemini31ProPreviewCustomtools { get; } = new("gemini-3.1-pro-preview-customtools");
 
         /// <summary>
-        /// Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+        /// Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
         /// </summary>
         public static Model Gemini35Flash { get; } = new("gemini-3.5-flash");
 
         /// <summary>
-        /// Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+        /// Our smallest and most cost effective model, built for at scale usage.
+        /// </summary>
+        public static Model Gemini35FlashLite { get; } = new("gemini-3.5-flash-lite");
+
+        /// <summary>
+        /// Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
         /// </summary>
         public static Model Gemini36Flash { get; } = new("gemini-3.6-flash");
 
         /// <summary>
-        /// Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+        /// Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
         /// </summary>
         public static Model Gemini37Flash { get; } = new("gemini-3.7-flash");
 
         /// <summary>
-        /// Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+        /// Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
         /// </summary>
         public static Model Gemini38Flash { get; } = new("gemini-3.8-flash");
 
@@ -117,12 +112,17 @@ namespace Google.Gemini.NextGen
         public static Model GeminiFlashLiteLatest { get; } = new("gemini-flash-lite-latest");
 
         /// <summary>
+        /// Gemini Nano Banana 2.1.
+        /// </summary>
+        public static Model GeminiNanoBanana21 { get; } = new("gemini-nano-banana-2.1");
+
+        /// <summary>
         /// Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
         /// </summary>
         public static Model GeminiOmni11Flash { get; } = new("gemini-omni-1.1-flash");
 
         /// <summary>
-        /// Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+        /// Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
         /// </summary>
         public static Model GeminiOmniFlashPreview { get; } = new("gemini-omni-flash-preview");
 
@@ -130,11 +130,6 @@ namespace Google.Gemini.NextGen
         /// Latest release of Gemini Pro
         /// </summary>
         public static Model GeminiProLatest { get; } = new("gemini-pro-latest");
-
-        /// <summary>
-        /// Gemini Robotics-ER 1.6 Preview
-        /// </summary>
-        public static Model GeminiRoboticsEr16Preview { get; } = new("gemini-robotics-er-1.6-preview");
 
         /// <summary>
         /// Gemini Robotics Embodied Reasoning 2 Preview
@@ -179,18 +174,17 @@ namespace Google.Gemini.NextGen
 
             return value switch
             {
-                "gemini-2.5-flash" => Gemini25Flash,
                 "gemini-2.5-flash-image" => Gemini25FlashImage,
-                "gemini-2.5-flash-lite" => Gemini25FlashLite,
-                "gemini-2.5-pro" => Gemini25Pro,
                 "gemini-3-flash-preview" => Gemini3FlashPreview,
                 "gemini-3-pro-image" => Gemini3ProImage,
                 "gemini-3.1-flash-image" => Gemini31FlashImage,
                 "gemini-3.1-flash-lite" => Gemini31FlashLite,
+                "gemini-3.1-flash-lite-image" => Gemini31FlashLiteImage,
                 "gemini-3.1-flash-tts-preview" => Gemini31FlashTtsPreview,
                 "gemini-3.1-pro-preview" => Gemini31ProPreview,
                 "gemini-3.1-pro-preview-customtools" => Gemini31ProPreviewCustomtools,
                 "gemini-3.5-flash" => Gemini35Flash,
+                "gemini-3.5-flash-lite" => Gemini35FlashLite,
                 "gemini-3.6-flash" => Gemini36Flash,
                 "gemini-3.7-flash" => Gemini37Flash,
                 "gemini-3.8-flash" => Gemini38Flash,
@@ -198,10 +192,10 @@ namespace Google.Gemini.NextGen
                 "gemini-3.8-flash-tts" => Gemini38FlashTts,
                 "gemini-flash-latest" => GeminiFlashLatest,
                 "gemini-flash-lite-latest" => GeminiFlashLiteLatest,
+                "gemini-nano-banana-2.1" => GeminiNanoBanana21,
                 "gemini-omni-1.1-flash" => GeminiOmni11Flash,
                 "gemini-omni-flash-preview" => GeminiOmniFlashPreview,
                 "gemini-pro-latest" => GeminiProLatest,
-                "gemini-robotics-er-1.6-preview" => GeminiRoboticsEr16Preview,
                 "gemini-robotics-er-2-preview" => GeminiRoboticsEr2Preview,
                 "gemma-4-26b-a4b-it" => Gemma426bA4bIt,
                 "gemma-4-31b-it" => Gemma431bIt,
@@ -218,18 +212,17 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public bool IsKnown => Value switch
         {
-            "gemini-2.5-flash" => true,
             "gemini-2.5-flash-image" => true,
-            "gemini-2.5-flash-lite" => true,
-            "gemini-2.5-pro" => true,
             "gemini-3-flash-preview" => true,
             "gemini-3-pro-image" => true,
             "gemini-3.1-flash-image" => true,
             "gemini-3.1-flash-lite" => true,
+            "gemini-3.1-flash-lite-image" => true,
             "gemini-3.1-flash-tts-preview" => true,
             "gemini-3.1-pro-preview" => true,
             "gemini-3.1-pro-preview-customtools" => true,
             "gemini-3.5-flash" => true,
+            "gemini-3.5-flash-lite" => true,
             "gemini-3.6-flash" => true,
             "gemini-3.7-flash" => true,
             "gemini-3.8-flash" => true,
@@ -237,10 +230,10 @@ namespace Google.Gemini.NextGen
             "gemini-3.8-flash-tts" => true,
             "gemini-flash-latest" => true,
             "gemini-flash-lite-latest" => true,
+            "gemini-nano-banana-2.1" => true,
             "gemini-omni-1.1-flash" => true,
             "gemini-omni-flash-preview" => true,
             "gemini-pro-latest" => true,
-            "gemini-robotics-er-1.6-preview" => true,
             "gemini-robotics-er-2-preview" => true,
             "gemma-4-26b-a4b-it" => true,
             "gemma-4-31b-it" => true,
