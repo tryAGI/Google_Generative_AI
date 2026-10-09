@@ -9,7 +9,7 @@ namespace Google.Gemini
     public sealed partial class EnvironmentNetworkEgressAllowlist
     {
         /// <summary>
-        /// List of allowed domains and their configurations.
+        /// List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("allowlist")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.EgressRule>? Allowlist { get; set; }
@@ -24,7 +24,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="EnvironmentNetworkEgressAllowlist" /> class.
         /// </summary>
         /// <param name="allowlist">
-        /// List of allowed domains and their configurations.
+        /// List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
