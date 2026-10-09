@@ -3,10 +3,10 @@
 namespace Google.Gemini.NextGen.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class EnvironmentNetworkEgressAllowlistEnum2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2?>
+    public sealed class EnvironmentNetworkEgressAllowlistAllowlistJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist>
     {
         /// <inheritdoc />
-        public override global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2? Read(
+        public override global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2Extensions.ToEnum(stringValue);
+                        return global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlistExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Google.Gemini.NextGen.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2)numValue;
+                    return (global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2?);
+                    return default(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace Google.Gemini.NextGen.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2? value,
+            global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlistExtensions.ToValueString(value));
         }
     }
 }

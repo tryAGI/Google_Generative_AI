@@ -26,8 +26,8 @@ namespace Google.Gemini.NextGen
         /// Network configuration for the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("network")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork2?>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? Network { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork2?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? Network { get; set; }
 
         /// <summary>
         ///
@@ -70,7 +70,7 @@ namespace Google.Gemini.NextGen
             object type,
             global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? env,
             string? environmentId,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? network,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? network,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources)
         {
             this.Env = env;

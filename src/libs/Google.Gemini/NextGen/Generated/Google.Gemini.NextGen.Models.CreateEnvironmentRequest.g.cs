@@ -20,8 +20,8 @@ namespace Google.Gemini.NextGen
         /// Network configuration for the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("network")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? Network { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? Network { get; set; }
 
         /// <summary>
         /// Sources to be mounted into the environment.
@@ -54,7 +54,7 @@ namespace Google.Gemini.NextGen
 #endif
         public CreateEnvironmentRequest(
             string? fromEnvironment,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources)
         {
             this.FromEnvironment = fromEnvironment;

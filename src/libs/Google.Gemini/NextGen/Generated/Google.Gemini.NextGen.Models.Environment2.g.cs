@@ -43,8 +43,8 @@ namespace Google.Gemini.NextGen
         /// Network configuration for the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("network")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork?>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork?>? Network { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>? Network { get; set; }
 
         /// <summary>
         /// Output only. The total size of the environment files in bytes, output only.<br/>
@@ -128,7 +128,7 @@ namespace Google.Gemini.NextGen
             string? created,
             string? fileCount,
             string? lastAccessed,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork?>? network,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>? network,
             string? sizeBytes,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources,
             global::Google.Gemini.NextGen.EnvironmentStatus? status,

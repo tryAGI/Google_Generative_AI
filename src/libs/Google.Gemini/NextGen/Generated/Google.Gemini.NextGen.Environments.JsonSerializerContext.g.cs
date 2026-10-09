@@ -16,8 +16,8 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CreateEnvironmentRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>), TypeInfoPropertyName = "OneOfEnvironmentNetworkEgressAllowlistCreateEnvironmentRequestNetwork2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist), TypeInfoPropertyName = "EnvironmentNetworkEgressAllowlist2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>), TypeInfoPropertyName = "OneOfEnvironmentNetworkEgressAllowlistCreateEnvironmentRequestNetwork2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork), TypeInfoPropertyName = "CreateEnvironmentRequestNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Source))]
@@ -26,28 +26,29 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Empty))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Environment2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork?>), TypeInfoPropertyName = "OneOfEnvironmentNetworkEgressAllowlistEnvironmentNetwork2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>), TypeInfoPropertyName = "OneOfEnvironmentNetworkEgressAllowlistEnvironmentNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetwork), TypeInfoPropertyName = "EnvironmentNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentStatus), TypeInfoPropertyName = "EnvironmentStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowlistEntry>, global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?>), TypeInfoPropertyName = "OneOfIListAllowlistEntryEnvironmentNetworkEgressAllowlistAllowlist2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowlistEntry>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2), TypeInfoPropertyName = "EnvironmentNetworkEgressAllowlistEnum22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist), TypeInfoPropertyName = "EnvironmentNetworkEgressAllowlistAllowlist2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ListEnvironmentsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Environment2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SourceType), TypeInfoPropertyName = "SourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>?), TypeInfoPropertyName = "NullableOneOfEnvironmentNetworkEgressAllowlistCreateEnvironmentRequestNetwork2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?), TypeInfoPropertyName = "NullableEnvironmentNetworkEgressAllowlist2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>?), TypeInfoPropertyName = "NullableOneOfEnvironmentNetworkEgressAllowlistCreateEnvironmentRequestNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?), TypeInfoPropertyName = "NullableCreateEnvironmentRequestNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>, global::System.Collections.Generic.Dictionary<string, string>>?), TypeInfoPropertyName = "NullableOneOfIListDictionaryStringStringDictionaryStringString2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork?>?), TypeInfoPropertyName = "NullableOneOfEnvironmentNetworkEgressAllowlistEnvironmentNetwork2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>?), TypeInfoPropertyName = "NullableOneOfEnvironmentNetworkEgressAllowlistEnvironmentNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetwork?), TypeInfoPropertyName = "NullableEnvironmentNetwork2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentStatus?), TypeInfoPropertyName = "NullableEnvironmentStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2?), TypeInfoPropertyName = "NullableEnvironmentNetworkEgressAllowlistEnum22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowlistEntry>, global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?>?), TypeInfoPropertyName = "NullableOneOfIListAllowlistEntryEnvironmentNetworkEgressAllowlistAllowlist2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?), TypeInfoPropertyName = "NullableEnvironmentNetworkEgressAllowlistAllowlist2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SourceType?), TypeInfoPropertyName = "NullableSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Source>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, string>>, global::System.Collections.Generic.Dictionary<string, string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, string>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.List<global::Google.Gemini.NextGen.AllowlistEntry>, global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.AllowlistEntry>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Environment2>))]
     internal sealed partial class EnvironmentsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -97,10 +98,10 @@ namespace Google.Gemini.NextGen
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.EnvironmentNetworkEgressAllowlistJsonConverter());
-            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>, global::System.Collections.Generic.Dictionary<string, string>>());
-            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist?, global::Google.Gemini.NextGen.EnvironmentNetwork?>());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowlistEntry>, global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -135,9 +136,9 @@ namespace Google.Gemini.NextGen
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentStatus?)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2)
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2?)
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.SourceType)
 
@@ -178,14 +179,14 @@ namespace Google.Gemini.NextGen
                     return new global::Google.Gemini.NextGen.JsonConverters.EnvironmentStatusNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2))
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist))
                 {
-                    return new global::Google.Gemini.NextGen.JsonConverters.EnvironmentNetworkEgressAllowlistEnum2JsonConverter();
+                    return new global::Google.Gemini.NextGen.JsonConverters.EnvironmentNetworkEgressAllowlistAllowlistJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistEnum2?))
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlistAllowlist?))
                 {
-                    return new global::Google.Gemini.NextGen.JsonConverters.EnvironmentNetworkEgressAllowlistEnum2NullableJsonConverter();
+                    return new global::Google.Gemini.NextGen.JsonConverters.EnvironmentNetworkEgressAllowlistAllowlistNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.SourceType))
