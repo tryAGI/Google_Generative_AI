@@ -21,16 +21,16 @@ namespace Google.Gemini
         public string? Title { get; set; }
 
         /// <summary>
-        /// The web page URI for attribution.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
-        public string? SourceUri { get; set; }
-
-        /// <summary>
         /// The image asset URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("imageUri")]
         public string? ImageUri { get; set; }
+
+        /// <summary>
+        /// The web page URI for attribution.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sourceUri")]
+        public string? SourceUri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,11 +47,11 @@ namespace Google.Gemini
         /// <param name="title">
         /// The title of the web page that the image is from.
         /// </param>
-        /// <param name="sourceUri">
-        /// The web page URI for attribution.
-        /// </param>
         /// <param name="imageUri">
         /// The image asset URL.
+        /// </param>
+        /// <param name="sourceUri">
+        /// The web page URI for attribution.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,13 +59,13 @@ namespace Google.Gemini
         public Image(
             string? domain,
             string? title,
-            string? sourceUri,
-            string? imageUri)
+            string? imageUri,
+            string? sourceUri)
         {
             this.Domain = domain;
             this.Title = title;
-            this.SourceUri = sourceUri;
             this.ImageUri = imageUri;
+            this.SourceUri = sourceUri;
         }
 
         /// <summary>
