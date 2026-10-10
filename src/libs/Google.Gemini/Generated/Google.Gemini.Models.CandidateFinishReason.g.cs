@@ -14,6 +14,10 @@ namespace Google.Gemini
         /// </summary>
         Blocklist,
         /// <summary>
+        /// Token generation was stopped because the response reached the per-request token limit, but generation is not yet complete. The model response can be continued via a subsequent request using the returned `continuation_token`.
+        /// </summary>
+        Continuation,
+        /// <summary>
         /// Request was filtered by an escalation rule.
         /// </summary>
         Escalation,
@@ -112,6 +116,7 @@ namespace Google.Gemini
             return value switch
             {
                 CandidateFinishReason.Blocklist => "BLOCKLIST",
+                CandidateFinishReason.Continuation => "CONTINUATION",
                 CandidateFinishReason.Escalation => "ESCALATION",
                 CandidateFinishReason.FinishReasonUnspecified => "FINISH_REASON_UNSPECIFIED",
                 CandidateFinishReason.ImageOther => "IMAGE_OTHER",
@@ -144,6 +149,7 @@ namespace Google.Gemini
             return value switch
             {
                 "BLOCKLIST" => CandidateFinishReason.Blocklist,
+                "CONTINUATION" => CandidateFinishReason.Continuation,
                 "ESCALATION" => CandidateFinishReason.Escalation,
                 "FINISH_REASON_UNSPECIFIED" => CandidateFinishReason.FinishReasonUnspecified,
                 "IMAGE_OTHER" => CandidateFinishReason.ImageOther,
