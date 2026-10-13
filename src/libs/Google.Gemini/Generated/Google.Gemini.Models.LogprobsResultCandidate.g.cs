@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class LogprobsResultCandidate
     {
         /// <summary>
+        /// The candidate’s token string value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("token")]
+        public string? Token { get; set; }
+
+        /// <summary>
         /// The candidate's log probability.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("logProbability")]
@@ -21,12 +27,6 @@ namespace Google.Gemini
         public int? TokenId { get; set; }
 
         /// <summary>
-        /// The candidate’s token string value.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("token")]
-        public string? Token { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="LogprobsResultCandidate" /> class.
         /// </summary>
+        /// <param name="token">
+        /// The candidate’s token string value.
+        /// </param>
         /// <param name="logProbability">
         /// The candidate's log probability.
         /// </param>
         /// <param name="tokenId">
         /// The candidate’s token id value.
         /// </param>
-        /// <param name="token">
-        /// The candidate’s token string value.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LogprobsResultCandidate(
+            string? token,
             float? logProbability,
-            int? tokenId,
-            string? token)
+            int? tokenId)
         {
+            this.Token = token;
             this.LogProbability = logProbability;
             this.TokenId = tokenId;
-            this.Token = token;
         }
 
         /// <summary>
