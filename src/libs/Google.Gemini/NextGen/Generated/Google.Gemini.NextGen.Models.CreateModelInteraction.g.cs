@@ -25,14 +25,6 @@ namespace Google.Gemini.NextGen
         public string? CachedContent { get; set; }
 
         /// <summary>
-        /// Opaque token to resume a long decode. Output: set when status is<br/>
-        /// INCOMPLETE and decoding can be resumed. Input: pass the latest token<br/>
-        /// back unchanged in CreateInteraction to continue decoding.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
-        public byte[]? ContinuationToken { get; set; }
-
-        /// <summary>
         /// Required. Output only. The time at which the response was created in ISO 8601 format<br/>
         /// (YYYY-MM-DDThh:mm:ssZ).<br/>
         /// Included only in responses
@@ -204,11 +196,6 @@ namespace Google.Gemini.NextGen
         /// Input only. Whether to run the model interaction in the background.<br/>
         /// Included only in requests
         /// </param>
-        /// <param name="continuationToken">
-        /// Opaque token to resume a long decode. Output: set when status is<br/>
-        /// INCOMPLETE and decoding can be resumed. Input: pass the latest token<br/>
-        /// back unchanged in CreateInteraction to continue decoding.
-        /// </param>
         /// <param name="environment">
         /// The environment configuration for the interaction. Can be an object<br/>
         /// specifying remote environment sources or a string referencing an existing<br/>
@@ -284,7 +271,6 @@ namespace Google.Gemini.NextGen
         public CreateModelInteraction(
             global::Google.Gemini.NextGen.Model model,
             bool? background,
-            byte[]? continuationToken,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,
             string? environmentId,
             global::Google.Gemini.NextGen.GenerationConfig? generationConfig,
@@ -305,7 +291,6 @@ namespace Google.Gemini.NextGen
             string updated = default!)
         {
             this.Background = background;
-            this.ContinuationToken = continuationToken;
             this.Created = created;
             this.Environment = environment;
             this.EnvironmentId = environmentId;

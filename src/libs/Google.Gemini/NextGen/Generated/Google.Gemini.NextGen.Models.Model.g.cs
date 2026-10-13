@@ -22,9 +22,24 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public string Value { get; }
         /// <summary>
+        /// Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
+        /// </summary>
+        public static Model Gemini25Flash { get; } = new("gemini-2.5-flash");
+
+        /// <summary>
         /// Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
         /// </summary>
         public static Model Gemini25FlashImage { get; } = new("gemini-2.5-flash-image");
+
+        /// <summary>
+        /// Our smallest and most cost effective model, built for at scale usage.
+        /// </summary>
+        public static Model Gemini25FlashLite { get; } = new("gemini-2.5-flash-lite");
+
+        /// <summary>
+        /// Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+        /// </summary>
+        public static Model Gemini25Pro { get; } = new("gemini-2.5-pro");
 
         /// <summary>
         /// Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
@@ -72,7 +87,7 @@ namespace Google.Gemini.NextGen
         public static Model Gemini35Flash { get; } = new("gemini-3.5-flash");
 
         /// <summary>
-        /// Our smallest and most cost effective model, built for at scale usage.
+        /// Gemini 3.5 Flash-Lite - Our fastest, most cost-effective 3.5 model for high-throughput execution.
         /// </summary>
         public static Model Gemini35FlashLite { get; } = new("gemini-3.5-flash-lite");
 
@@ -132,6 +147,11 @@ namespace Google.Gemini.NextGen
         public static Model GeminiProLatest { get; } = new("gemini-pro-latest");
 
         /// <summary>
+        /// Gemini Robotics-ER 1.6 Preview
+        /// </summary>
+        public static Model GeminiRoboticsEr16Preview { get; } = new("gemini-robotics-er-1.6-preview");
+
+        /// <summary>
         /// Gemini Robotics Embodied Reasoning 2 Preview
         /// </summary>
         public static Model GeminiRoboticsEr2Preview { get; } = new("gemini-robotics-er-2-preview");
@@ -174,7 +194,10 @@ namespace Google.Gemini.NextGen
 
             return value switch
             {
+                "gemini-2.5-flash" => Gemini25Flash,
                 "gemini-2.5-flash-image" => Gemini25FlashImage,
+                "gemini-2.5-flash-lite" => Gemini25FlashLite,
+                "gemini-2.5-pro" => Gemini25Pro,
                 "gemini-3-flash-preview" => Gemini3FlashPreview,
                 "gemini-3-pro-image" => Gemini3ProImage,
                 "gemini-3.1-flash-image" => Gemini31FlashImage,
@@ -196,6 +219,7 @@ namespace Google.Gemini.NextGen
                 "gemini-omni-1.1-flash" => GeminiOmni11Flash,
                 "gemini-omni-flash-preview" => GeminiOmniFlashPreview,
                 "gemini-pro-latest" => GeminiProLatest,
+                "gemini-robotics-er-1.6-preview" => GeminiRoboticsEr16Preview,
                 "gemini-robotics-er-2-preview" => GeminiRoboticsEr2Preview,
                 "gemma-4-26b-a4b-it" => Gemma426bA4bIt,
                 "gemma-4-31b-it" => Gemma431bIt,
@@ -212,7 +236,10 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public bool IsKnown => Value switch
         {
+            "gemini-2.5-flash" => true,
             "gemini-2.5-flash-image" => true,
+            "gemini-2.5-flash-lite" => true,
+            "gemini-2.5-pro" => true,
             "gemini-3-flash-preview" => true,
             "gemini-3-pro-image" => true,
             "gemini-3.1-flash-image" => true,
@@ -234,6 +261,7 @@ namespace Google.Gemini.NextGen
             "gemini-omni-1.1-flash" => true,
             "gemini-omni-flash-preview" => true,
             "gemini-pro-latest" => true,
+            "gemini-robotics-er-1.6-preview" => true,
             "gemini-robotics-er-2-preview" => true,
             "gemma-4-26b-a4b-it" => true,
             "gemma-4-31b-it" => true,
