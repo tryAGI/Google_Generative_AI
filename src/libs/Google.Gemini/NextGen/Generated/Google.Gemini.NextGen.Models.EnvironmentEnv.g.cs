@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    ///
+    /// Environment variables to set in the sandbox environment.
     /// </summary>
     public sealed partial class EnvironmentEnv
     {

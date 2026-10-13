@@ -12,8 +12,7 @@ namespace Google.Gemini.NextGen
         /// Environment variables to set in the sandbox environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("env")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>))]
-        public global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? Env { get; set; }
+        public object? Env { get; set; }
 
         /// <summary>
         /// Optional. The environment ID for the interaction. If specified, the request will<br/>
@@ -68,7 +67,7 @@ namespace Google.Gemini.NextGen
 #endif
         public Environment3(
             object type,
-            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? env,
+            object? env,
             string? environmentId,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? network,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources)
