@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class GroundingChunkCustomMetadata
     {
         /// <summary>
-        /// The key of the metadata.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string? Key { get; set; }
-
-        /// <summary>
         /// A list of string values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stringListValue")]
@@ -33,6 +27,12 @@ namespace Google.Gemini
         public float? NumericValue { get; set; }
 
         /// <summary>
+        /// The key of the metadata.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,9 +41,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingChunkCustomMetadata" /> class.
         /// </summary>
-        /// <param name="key">
-        /// The key of the metadata.
-        /// </param>
         /// <param name="stringListValue">
         /// A list of string values.
         /// </param>
@@ -53,19 +50,22 @@ namespace Google.Gemini
         /// <param name="numericValue">
         /// Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
         /// </param>
+        /// <param name="key">
+        /// The key of the metadata.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingChunkCustomMetadata(
-            string? key,
             global::Google.Gemini.GroundingChunkStringList? stringListValue,
             string? stringValue,
-            float? numericValue)
+            float? numericValue,
+            string? key)
         {
-            this.Key = key;
             this.StringListValue = stringListValue;
             this.StringValue = stringValue;
             this.NumericValue = numericValue;
+            this.Key = key;
         }
 
         /// <summary>
