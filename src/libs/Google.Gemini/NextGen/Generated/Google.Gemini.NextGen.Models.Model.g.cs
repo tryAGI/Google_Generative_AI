@@ -117,6 +117,11 @@ namespace Google.Gemini.NextGen
         public static Model Gemini38FlashTts { get; } = new("gemini-3.8-flash-tts");
 
         /// <summary>
+        /// Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.
+        /// </summary>
+        public static Model Gemini4Argon { get; } = new("gemini-4-argon");
+
+        /// <summary>
         /// Latest release of Gemini Flash
         /// </summary>
         public static Model GeminiFlashLatest { get; } = new("gemini-flash-latest");
@@ -213,6 +218,7 @@ namespace Google.Gemini.NextGen
                 "gemini-3.8-flash" => Gemini38Flash,
                 "gemini-3.8-flash-lite-tts" => Gemini38FlashLiteTts,
                 "gemini-3.8-flash-tts" => Gemini38FlashTts,
+                "gemini-4-argon" => Gemini4Argon,
                 "gemini-flash-latest" => GeminiFlashLatest,
                 "gemini-flash-lite-latest" => GeminiFlashLiteLatest,
                 "gemini-nano-banana-2.1" => GeminiNanoBanana21,
@@ -255,6 +261,7 @@ namespace Google.Gemini.NextGen
             "gemini-3.8-flash" => true,
             "gemini-3.8-flash-lite-tts" => true,
             "gemini-3.8-flash-tts" => true,
+            "gemini-4-argon" => true,
             "gemini-flash-latest" => true,
             "gemini-flash-lite-latest" => true,
             "gemini-nano-banana-2.1" => true,
