@@ -14,7 +14,7 @@ namespace Google.Gemini
         /// </summary>
         Blocklist,
         /// <summary>
-        /// Token generation was stopped because the response reached the per-request token limit, but generation is not yet complete. The model response can be continued via a subsequent request using the returned `continuation_token`.
+        /// Token generation was stopped because the response reached the per-request token limit, but generation is not yet complete. The model response can be continued via a subsequent request using the returned `continuation_token`. Note, the `max_output_tokens` is cumulative across continuation hops and must be monotonically increased or omitted.
         /// </summary>
         Continuation,
         /// <summary>
