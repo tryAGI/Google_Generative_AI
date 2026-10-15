@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
-        /// Required. URI.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileUri")]
-        public string? FileUri { get; set; }
-
-        /// <summary>
         /// Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalization_mode` is set to `REFERENCE_ONLY`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. URI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUri")]
+        public string? FileUri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// Optional. The IANA standard MIME type of the source data.
         /// </param>
-        /// <param name="fileUri">
-        /// Required. URI.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalization_mode` is set to `REFERENCE_ONLY`.
+        /// </param>
+        /// <param name="fileUri">
+        /// Required. URI.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileData(
             string? mimeType,
-            string? fileUri,
-            string? displayName)
+            string? displayName,
+            string? fileUri)
         {
             this.MimeType = mimeType;
-            this.FileUri = fileUri;
             this.DisplayName = displayName;
+            this.FileUri = fileUri;
         }
 
         /// <summary>
