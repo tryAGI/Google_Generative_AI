@@ -48,7 +48,7 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY" \<br/>
         ///   -H "Content-Type: application/json" \<br/>
         ///   -d '{<br/>
-        ///     "model": "gemini-3.6-flash",<br/>
+        ///     "model": "gemini-flash-latest",<br/>
         ///     "input": "Hello, how are you?"<br/>
         ///   }'
         /// </remarks>
