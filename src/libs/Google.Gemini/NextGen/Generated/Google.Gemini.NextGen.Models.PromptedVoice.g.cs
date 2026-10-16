@@ -11,6 +11,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class PromptedVoice
     {
         /// <summary>
+        /// Optional. The name or ID of an existing base voice to edit or remix.<br/>
+        /// Use the voice name for prebuilt voices (e.g., `Puck`) or the voice ID for<br/>
+        /// previously created voices (e.g., `voice_abc123`). This can be any<br/>
+        /// prompted or replicated voice that the user has access to.<br/>
+        /// When present, `input` describes relative alterations to make to the base<br/>
+        /// voice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_voice")]
+        public string? BaseVoice { get; set; }
+
+        /// <summary>
         /// Required. The natural-language prompt describing the desired voice, e.g.<br/>
         /// "A deep, booming male voice of a massive evil ogre in his middle years."
         /// </summary>
@@ -31,12 +42,22 @@ namespace Google.Gemini.NextGen
         /// Required. The natural-language prompt describing the desired voice, e.g.<br/>
         /// "A deep, booming male voice of a massive evil ogre in his middle years."
         /// </param>
+        /// <param name="baseVoice">
+        /// Optional. The name or ID of an existing base voice to edit or remix.<br/>
+        /// Use the voice name for prebuilt voices (e.g., `Puck`) or the voice ID for<br/>
+        /// previously created voices (e.g., `voice_abc123`). This can be any<br/>
+        /// prompted or replicated voice that the user has access to.<br/>
+        /// When present, `input` describes relative alterations to make to the base<br/>
+        /// voice.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PromptedVoice(
-            string input)
+            string input,
+            string? baseVoice)
         {
+            this.BaseVoice = baseVoice;
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
         }
 

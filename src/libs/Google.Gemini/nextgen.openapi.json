@@ -8528,6 +8528,10 @@
         "description": "Parameters for prompted voice generation.\nRequired in `CreateVoice` when `type` is `\"prompted\"`. Returned in\n`CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.",
         "type": "object",
         "properties": {
+          "base_voice": {
+            "description": "Optional. The name or ID of an existing base voice to edit or remix.\nUse the voice name for prebuilt voices (e.g., `Puck`) or the voice ID for\npreviously created voices (e.g., `voice_abc123`). This can be any\nprompted or replicated voice that the user has access to.\nWhen present, `input` describes relative alterations to make to the base\nvoice.",
+            "type": "string"
+          },
           "input": {
             "description": "Required. The natural-language prompt describing the desired voice, e.g.\n\"A deep, booming male voice of a massive evil ogre in his middle years.\"",
             "type": "string"
