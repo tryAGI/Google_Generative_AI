@@ -15,10 +15,11 @@ namespace Google.Gemini
         public string? Credential { get; set; }
 
         /// <summary>
-        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+        /// Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EgressRuleModeJsonConverter))]
+        public global::Google.Gemini.EgressRuleMode? Mode { get; set; }
 
         /// <summary>
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
@@ -27,11 +28,10 @@ namespace Google.Gemini
         public global::System.Collections.Generic.Dictionary<string, string>? Transform { get; set; }
 
         /// <summary>
-        /// Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EgressRuleModeJsonConverter))]
-        public global::Google.Gemini.EgressRuleMode? Mode { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,28 +45,28 @@ namespace Google.Gemini
         /// <param name="credential">
         /// Optional. Reference to a server-managed Credential resource by ID.
         /// </param>
-        /// <param name="domain">
-        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+        /// <param name="mode">
+        /// Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
         /// </param>
         /// <param name="transform">
         /// Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
         /// </param>
-        /// <param name="mode">
-        /// Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
+        /// <param name="domain">
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EgressRule(
             string? credential,
-            string? domain,
+            global::Google.Gemini.EgressRuleMode? mode,
             global::System.Collections.Generic.Dictionary<string, string>? transform,
-            global::Google.Gemini.EgressRuleMode? mode)
+            string? domain)
         {
             this.Credential = credential;
-            this.Domain = domain;
-            this.Transform = transform;
             this.Mode = mode;
+            this.Transform = transform;
+            this.Domain = domain;
         }
 
         /// <summary>
