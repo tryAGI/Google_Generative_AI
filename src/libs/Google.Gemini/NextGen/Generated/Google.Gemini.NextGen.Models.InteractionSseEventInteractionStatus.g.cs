@@ -12,6 +12,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        BudgetExceeded,
+        /// <summary>
+        ///
+        /// </summary>
         Cancelled,
         /// <summary>
         ///
@@ -32,6 +36,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        Queued,
+        /// <summary>
+        ///
+        /// </summary>
         RequiresAction,
     }
 
@@ -47,11 +55,13 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
+                InteractionSseEventInteractionStatus.BudgetExceeded => "budget_exceeded",
                 InteractionSseEventInteractionStatus.Cancelled => "cancelled",
                 InteractionSseEventInteractionStatus.Completed => "completed",
                 InteractionSseEventInteractionStatus.Failed => "failed",
                 InteractionSseEventInteractionStatus.InProgress => "in_progress",
                 InteractionSseEventInteractionStatus.Incomplete => "incomplete",
+                InteractionSseEventInteractionStatus.Queued => "queued",
                 InteractionSseEventInteractionStatus.RequiresAction => "requires_action",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -63,11 +73,13 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
+                "budget_exceeded" => InteractionSseEventInteractionStatus.BudgetExceeded,
                 "cancelled" => InteractionSseEventInteractionStatus.Cancelled,
                 "completed" => InteractionSseEventInteractionStatus.Completed,
                 "failed" => InteractionSseEventInteractionStatus.Failed,
                 "in_progress" => InteractionSseEventInteractionStatus.InProgress,
                 "incomplete" => InteractionSseEventInteractionStatus.Incomplete,
+                "queued" => InteractionSseEventInteractionStatus.Queued,
                 "requires_action" => InteractionSseEventInteractionStatus.RequiresAction,
                 _ => null,
             };
