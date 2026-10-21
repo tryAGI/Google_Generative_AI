@@ -7180,16 +7180,30 @@
               "completed",
               "failed",
               "cancelled",
-              "incomplete"
+              "incomplete",
+              "budget_exceeded",
+              "queued"
             ],
             "readOnly": true,
+            "x-google-enum-deprecated": [
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              true,
+              false
+            ],
             "x-google-enum-descriptions": [
               "The interaction is in progress.",
               "The interaction requires action/input from the user.",
               "The interaction is completed.",
               "The interaction failed.",
               "The interaction was cancelled.",
-              "The interaction is completed, but contains incomplete results (e.g. hitting max_tokens)."
+              "The interaction is completed, but contains incomplete results (e.g.\nhitting max_tokens).",
+              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
+              "The interaction is queued, waiting for processing (e.g. waiting for\noff-peak capacity)."
             ]
           },
           "steps": {
