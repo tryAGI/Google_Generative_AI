@@ -500,20 +500,20 @@ namespace Google.Gemini.NextGen
         /// <param name="agentConfig">
         /// Configuration parameters for the agent.
         /// </param>
-        /// <param name="baseAgent">
-        /// The base agent to extend.
-        /// </param>
         /// <param name="baseEnvironment">
         /// The environment configuration for the agent.
-        /// </param>
-        /// <param name="description">
-        /// Agent description for developers to quickly read and understand.
         /// </param>
         /// <param name="id">
         /// The unique identifier for the agent.
         /// </param>
+        /// <param name="baseAgent">
+        /// The base agent to extend.
+        /// </param>
         /// <param name="systemInstruction">
         /// System instruction for the agent.
+        /// </param>
+        /// <param name="description">
+        /// Agent description for developers to quickly read and understand.
         /// </param>
         /// <param name="tools">
         /// The tools available to the agent.
@@ -523,11 +523,11 @@ namespace Google.Gemini.NextGen
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Agent> CreateAsync(
             global::Google.Gemini.NextGen.AntigravityAgentConfig? agentConfig = default,
-            string? baseAgent = default,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? baseEnvironment = default,
-            string? description = default,
             string? id = default,
+            string? baseAgent = default,
             string? systemInstruction = default,
+            string? description = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AgentTool>? tools = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -535,11 +535,11 @@ namespace Google.Gemini.NextGen
             var __request = new global::Google.Gemini.NextGen.Agent
             {
                 AgentConfig = agentConfig,
-                BaseAgent = baseAgent,
                 BaseEnvironment = baseEnvironment,
-                Description = description,
                 Id = id,
+                BaseAgent = baseAgent,
                 SystemInstruction = systemInstruction,
+                Description = description,
                 Tools = tools,
             };
 

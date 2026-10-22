@@ -11,19 +11,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        public byte[]? Data { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentDeltaMimeTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.DocumentDeltaMimeType? MimeType { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
@@ -31,8 +18,21 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public byte[]? Data { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentDeltaMimeTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.DocumentDeltaMimeType? MimeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,21 +45,21 @@ namespace Google.Gemini.NextGen
         /// </summary>
         /// <param name="type"></param>
         /// <param name="data"></param>
-        /// <param name="mimeType"></param>
         /// <param name="uri"></param>
+        /// <param name="mimeType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DocumentDelta(
             object type,
             byte[]? data,
-            global::Google.Gemini.NextGen.DocumentDeltaMimeType? mimeType,
-            string? uri)
+            string? uri,
+            global::Google.Gemini.NextGen.DocumentDeltaMimeType? mimeType)
         {
-            this.Data = data;
-            this.MimeType = mimeType;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Data = data;
             this.Uri = uri;
+            this.MimeType = mimeType;
         }
 
         /// <summary>

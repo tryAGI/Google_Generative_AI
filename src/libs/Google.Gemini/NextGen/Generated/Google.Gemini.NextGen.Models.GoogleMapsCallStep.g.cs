@@ -10,12 +10,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class GoogleMapsCallStep
     {
         /// <summary>
-        /// The arguments to pass to the Google Maps tool.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
-        public global::Google.Gemini.NextGen.GoogleMapsCallArguments2? GoogleMapsCallArguments { get; set; }
-
-        /// <summary>
         /// Required. A unique ID for this specific tool call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -23,17 +17,23 @@ namespace Google.Gemini.NextGen
         public required string Id { get; set; }
 
         /// <summary>
-        /// A signature hash for backend validation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
-        public byte[]? Signature { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        /// The arguments to pass to the Google Maps tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
+        public global::Google.Gemini.NextGen.GoogleMapsCallArguments2? GoogleMapsCallArguments { get; set; }
+
+        /// <summary>
+        /// A signature hash for backend validation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
+        public byte[]? Signature { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,10 +63,10 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.GoogleMapsCallArguments2? googleMapsCallArguments,
             byte[]? signature)
         {
-            this.GoogleMapsCallArguments = googleMapsCallArguments;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Signature = signature;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.GoogleMapsCallArguments = googleMapsCallArguments;
+            this.Signature = signature;
         }
 
         /// <summary>

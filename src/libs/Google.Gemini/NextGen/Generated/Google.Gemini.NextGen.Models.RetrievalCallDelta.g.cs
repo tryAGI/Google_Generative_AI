@@ -17,6 +17,13 @@ namespace Google.Gemini.NextGen
         public required global::Google.Gemini.NextGen.RetrievalCallArguments RetrievalCallArguments { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// The type of retrieval tools.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrieval_type")]
@@ -28,13 +35,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
         public byte[]? Signature { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -65,9 +65,9 @@ namespace Google.Gemini.NextGen
             byte[]? signature)
         {
             this.RetrievalCallArguments = retrievalCallArguments ?? throw new global::System.ArgumentNullException(nameof(retrievalCallArguments));
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.RetrievalType = retrievalType;
             this.Signature = signature;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

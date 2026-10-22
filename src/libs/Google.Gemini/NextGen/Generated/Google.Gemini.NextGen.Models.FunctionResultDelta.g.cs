@@ -11,18 +11,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_error")]
-        public bool? IsError { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -36,6 +24,18 @@ namespace Google.Gemini.NextGen
         public required object Type { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_error")]
+        public bool? IsError { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,21 +46,21 @@ namespace Google.Gemini.NextGen
         /// </summary>
         /// <param name="result"></param>
         /// <param name="type"></param>
-        /// <param name="isError"></param>
         /// <param name="name"></param>
+        /// <param name="isError"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResultDelta(
             global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string> result,
             object type,
-            bool? isError,
-            string? name)
+            string? name,
+            bool? isError)
         {
-            this.IsError = isError;
-            this.Name = name;
             this.Result = result;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Name = name;
+            this.IsError = isError;
         }
 
         /// <summary>

@@ -10,19 +10,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class DocumentContent
     {
         /// <summary>
-        /// The document content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        public byte[]? Data { get; set; }
-
-        /// <summary>
-        /// The mime type of the document.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentContentMimeTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.DocumentContentMimeType? MimeType { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -30,10 +17,23 @@ namespace Google.Gemini.NextGen
         public required object Type { get; set; }
 
         /// <summary>
+        /// The document content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public byte[]? Data { get; set; }
+
+        /// <summary>
         /// The URI of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
+
+        /// <summary>
+        /// The mime type of the document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentContentMimeTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.DocumentContentMimeType? MimeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,11 +48,11 @@ namespace Google.Gemini.NextGen
         /// <param name="data">
         /// The document content.
         /// </param>
-        /// <param name="mimeType">
-        /// The mime type of the document.
-        /// </param>
         /// <param name="uri">
         /// The URI of the document.
+        /// </param>
+        /// <param name="mimeType">
+        /// The mime type of the document.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -60,13 +60,13 @@ namespace Google.Gemini.NextGen
         public DocumentContent(
             object type,
             byte[]? data,
-            global::Google.Gemini.NextGen.DocumentContentMimeType? mimeType,
-            string? uri)
+            string? uri,
+            global::Google.Gemini.NextGen.DocumentContentMimeType? mimeType)
         {
-            this.Data = data;
-            this.MimeType = mimeType;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Data = data;
             this.Uri = uri;
+            this.MimeType = mimeType;
         }
 
         /// <summary>

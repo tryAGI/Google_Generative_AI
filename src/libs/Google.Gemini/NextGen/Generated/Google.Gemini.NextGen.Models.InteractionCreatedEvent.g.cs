@@ -10,11 +10,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class InteractionCreatedEvent
     {
         /// <summary>
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
+        /// Partial interaction resource emitted by interaction lifecycle SSE events.<br/>
+        /// Streaming lifecycle payloads may omit fields that are only available on<br/>
+        /// full non-streaming Interaction responses.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
-        public string? EventId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("interaction")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Google.Gemini.NextGen.InteractionSseEventInteraction Interaction { get; set; }
 
         /// <summary>
         ///
@@ -24,13 +26,11 @@ namespace Google.Gemini.NextGen
         public required object EventType { get; set; }
 
         /// <summary>
-        /// Partial interaction resource emitted by interaction lifecycle SSE events.<br/>
-        /// Streaming lifecycle payloads may omit fields that are only available on<br/>
-        /// full non-streaming Interaction responses.
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("interaction")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.InteractionSseEventInteraction Interaction { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
+        public string? EventId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,12 +41,12 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="InteractionCreatedEvent" /> class.
         /// </summary>
-        /// <param name="eventType"></param>
         /// <param name="interaction">
         /// Partial interaction resource emitted by interaction lifecycle SSE events.<br/>
         /// Streaming lifecycle payloads may omit fields that are only available on<br/>
         /// full non-streaming Interaction responses.
         /// </param>
+        /// <param name="eventType"></param>
         /// <param name="eventId">
         /// The event_id token to be used to resume the interaction stream, from<br/>
         /// this event.
@@ -55,13 +55,13 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public InteractionCreatedEvent(
-            object eventType,
             global::Google.Gemini.NextGen.InteractionSseEventInteraction interaction,
+            object eventType,
             string? eventId)
         {
-            this.EventId = eventId;
-            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.Interaction = interaction ?? throw new global::System.ArgumentNullException(nameof(interaction));
+            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
+            this.EventId = eventId;
         }
 
         /// <summary>

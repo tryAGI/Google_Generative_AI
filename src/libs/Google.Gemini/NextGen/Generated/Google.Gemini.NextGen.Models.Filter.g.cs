@@ -9,12 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class Filter
     {
         /// <summary>
-        /// Optional. String for metadata filtering.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_filter")]
-        public string? MetadataFilter { get; set; }
-
-        /// <summary>
         /// Optional. Only returns contexts with vector distance smaller than the<br/>
         /// threshold.
         /// </summary>
@@ -29,6 +23,12 @@ namespace Google.Gemini.NextGen
         public double? VectorSimilarityThreshold { get; set; }
 
         /// <summary>
+        /// Optional. String for metadata filtering.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_filter")]
+        public string? MetadataFilter { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,9 +37,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="Filter" /> class.
         /// </summary>
-        /// <param name="metadataFilter">
-        /// Optional. String for metadata filtering.
-        /// </param>
         /// <param name="vectorDistanceThreshold">
         /// Optional. Only returns contexts with vector distance smaller than the<br/>
         /// threshold.
@@ -48,17 +45,20 @@ namespace Google.Gemini.NextGen
         /// Optional. Only returns contexts with vector similarity larger than the<br/>
         /// threshold.
         /// </param>
+        /// <param name="metadataFilter">
+        /// Optional. String for metadata filtering.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Filter(
-            string? metadataFilter,
             double? vectorDistanceThreshold,
-            double? vectorSimilarityThreshold)
+            double? vectorSimilarityThreshold,
+            string? metadataFilter)
         {
-            this.MetadataFilter = metadataFilter;
             this.VectorDistanceThreshold = vectorDistanceThreshold;
             this.VectorSimilarityThreshold = vectorSimilarityThreshold;
+            this.MetadataFilter = metadataFilter;
         }
 
         /// <summary>

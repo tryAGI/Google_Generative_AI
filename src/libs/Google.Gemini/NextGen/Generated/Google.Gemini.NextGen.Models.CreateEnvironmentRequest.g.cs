@@ -9,14 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class CreateEnvironmentRequest
     {
         /// <summary>
-        /// Optional. The source environment to copy/fork from.<br/>
-        /// Format: `environments/{environment_id}` or `{environment_id}`.<br/>
-        /// When specified, `sources` and `env` must be empty.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("from_environment")]
-        public string? FromEnvironment { get; set; }
-
-        /// <summary>
         /// Network configuration for the environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("network")]
@@ -30,6 +22,14 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? Sources { get; set; }
 
         /// <summary>
+        /// Optional. The source environment to copy/fork from.<br/>
+        /// Format: `environments/{environment_id}` or `{environment_id}`.<br/>
+        /// When specified, `sources` and `env` must be empty.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("from_environment")]
+        public string? FromEnvironment { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,28 +38,28 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateEnvironmentRequest" /> class.
         /// </summary>
-        /// <param name="fromEnvironment">
-        /// Optional. The source environment to copy/fork from.<br/>
-        /// Format: `environments/{environment_id}` or `{environment_id}`.<br/>
-        /// When specified, `sources` and `env` must be empty.
-        /// </param>
         /// <param name="network">
         /// Network configuration for the environment.
         /// </param>
         /// <param name="sources">
         /// Sources to be mounted into the environment.
         /// </param>
+        /// <param name="fromEnvironment">
+        /// Optional. The source environment to copy/fork from.<br/>
+        /// Format: `environments/{environment_id}` or `{environment_id}`.<br/>
+        /// When specified, `sources` and `env` must be empty.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateEnvironmentRequest(
-            string? fromEnvironment,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources)
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources,
+            string? fromEnvironment)
         {
-            this.FromEnvironment = fromEnvironment;
             this.Network = network;
             this.Sources = sources;
+            this.FromEnvironment = fromEnvironment;
         }
 
         /// <summary>

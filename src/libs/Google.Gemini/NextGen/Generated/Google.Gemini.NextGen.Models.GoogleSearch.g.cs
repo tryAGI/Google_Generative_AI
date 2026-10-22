@@ -9,17 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class GoogleSearch
     {
         /// <summary>
-        /// The types of search grounding to enable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("search_types")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchSearchType>? SearchTypes { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        /// The types of search grounding to enable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("search_types")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchSearchType>? SearchTypes { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,8 +41,8 @@ namespace Google.Gemini.NextGen
             object type,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchSearchType>? searchTypes)
         {
-            this.SearchTypes = searchTypes;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.SearchTypes = searchTypes;
         }
 
         /// <summary>

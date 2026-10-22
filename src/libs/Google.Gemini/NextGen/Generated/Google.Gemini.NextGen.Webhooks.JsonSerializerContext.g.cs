@@ -27,23 +27,23 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SigningSecret))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdate))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SigningSecret>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookState), TypeInfoPropertyName = "WebhookState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookSubscribedEvent), TypeInfoPropertyName = "WebhookSubscribedEvent2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdateState), TypeInfoPropertyName = "WebhookUpdateState2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SigningSecret>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookState), TypeInfoPropertyName = "WebhookState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent), TypeInfoPropertyName = "WebhookUpdateSubscribedEvent2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdateState), TypeInfoPropertyName = "WebhookUpdateState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.RotateSigningSecretRequestRevocationBehavior?), TypeInfoPropertyName = "NullableRotateSigningSecretRequestRevocationBehavior2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookState?), TypeInfoPropertyName = "NullableWebhookState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookSubscribedEvent?), TypeInfoPropertyName = "NullableWebhookSubscribedEvent2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdateState?), TypeInfoPropertyName = "NullableWebhookUpdateState2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookState?), TypeInfoPropertyName = "NullableWebhookState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent?), TypeInfoPropertyName = "NullableWebhookUpdateSubscribedEvent2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.WebhookUpdateState?), TypeInfoPropertyName = "NullableWebhookUpdateState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Webhook>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SigningSecret>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.WebhookSubscribedEvent>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SigningSecret>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>))]
     internal sealed partial class WebhooksSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -119,21 +119,21 @@ namespace Google.Gemini.NextGen
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.RotateSigningSecretRequestRevocationBehavior?)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState)
-
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState?)
-
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookSubscribedEvent)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookSubscribedEvent?)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState)
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState?)
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState?)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent?);
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent?)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -150,16 +150,6 @@ namespace Google.Gemini.NextGen
                     return new global::Google.Gemini.NextGen.JsonConverters.RotateSigningSecretRequestRevocationBehaviorNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState))
-                {
-                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookStateJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState?))
-                {
-                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookStateNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookSubscribedEvent))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.WebhookSubscribedEventJsonConverter();
@@ -170,14 +160,14 @@ namespace Google.Gemini.NextGen
                     return new global::Google.Gemini.NextGen.JsonConverters.WebhookSubscribedEventNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState))
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState))
                 {
-                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateStateJsonConverter();
+                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookStateJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState?))
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookState?))
                 {
-                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateStateNullableJsonConverter();
+                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookStateNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent))
@@ -188,6 +178,16 @@ namespace Google.Gemini.NextGen
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent?))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateSubscribedEventNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateStateJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.WebhookUpdateState?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateStateNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

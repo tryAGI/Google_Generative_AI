@@ -44,8 +44,8 @@ namespace Google.Gemini.NextGen
         /// <param name="name">
         /// Optional. The user-provided name of the webhook.
         /// </param>
-        /// <param name="state">
-        /// Optional. The state of the webhook.
+        /// <param name="uri">
+        /// Optional. The URI to which webhook events will be sent.
         /// </param>
         /// <param name="subscribedEvents">
         /// Optional. The events that the webhook is subscribed to.<br/>
@@ -58,8 +58,8 @@ namespace Google.Gemini.NextGen
         /// - interaction.failed<br/>
         /// - video.generated
         /// </param>
-        /// <param name="uri">
-        /// Optional. The URI to which webhook events will be sent.
+        /// <param name="state">
+        /// Optional. The state of the webhook.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -68,9 +68,9 @@ namespace Google.Gemini.NextGen
             string id,
             string? updateMask = default,
             string? name = default,
-            global::Google.Gemini.NextGen.WebhookUpdateState? state = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? subscribedEvents = default,
             string? uri = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? subscribedEvents = default,
+            global::Google.Gemini.NextGen.WebhookUpdateState? state = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

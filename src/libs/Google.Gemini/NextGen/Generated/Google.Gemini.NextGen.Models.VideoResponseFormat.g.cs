@@ -10,11 +10,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class VideoResponseFormat
     {
         /// <summary>
-        /// The aspect ratio for the video output.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.VideoResponseFormatAspectRatioJsonConverter))]
-        public global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? AspectRatio { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         /// The delivery mode for the video output.
@@ -24,12 +24,6 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.VideoResponseFormatDelivery? Delivery { get; set; }
 
         /// <summary>
-        /// The duration for the video output.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public string? Duration { get; set; }
-
-        /// <summary>
         /// The Cloud Storage URI to store the video output. Required for Vertex if<br/>
         /// delivery mode is URI.
         /// </summary>
@@ -37,18 +31,24 @@ namespace Google.Gemini.NextGen
         public string? GcsUri { get; set; }
 
         /// <summary>
+        /// The aspect ratio for the video output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratio")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.VideoResponseFormatAspectRatioJsonConverter))]
+        public global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? AspectRatio { get; set; }
+
+        /// <summary>
+        /// The duration for the video output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
+        public string? Duration { get; set; }
+
+        /// <summary>
         /// The video output resolution. Defaults to 720p.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.VideoResponseFormatResolutionJsonConverter))]
         public global::Google.Gemini.NextGen.VideoResponseFormatResolution? Resolution { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,18 +60,18 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="VideoResponseFormat" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="aspectRatio">
-        /// The aspect ratio for the video output.
-        /// </param>
         /// <param name="delivery">
         /// The delivery mode for the video output.
-        /// </param>
-        /// <param name="duration">
-        /// The duration for the video output.
         /// </param>
         /// <param name="gcsUri">
         /// The Cloud Storage URI to store the video output. Required for Vertex if<br/>
         /// delivery mode is URI.
+        /// </param>
+        /// <param name="aspectRatio">
+        /// The aspect ratio for the video output.
+        /// </param>
+        /// <param name="duration">
+        /// The duration for the video output.
         /// </param>
         /// <param name="resolution">
         /// The video output resolution. Defaults to 720p.
@@ -81,18 +81,18 @@ namespace Google.Gemini.NextGen
 #endif
         public VideoResponseFormat(
             object type,
-            global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? aspectRatio,
             global::Google.Gemini.NextGen.VideoResponseFormatDelivery? delivery,
-            string? duration,
             string? gcsUri,
+            global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? aspectRatio,
+            string? duration,
             global::Google.Gemini.NextGen.VideoResponseFormatResolution? resolution)
         {
-            this.AspectRatio = aspectRatio;
-            this.Delivery = delivery;
-            this.Duration = duration;
-            this.GcsUri = gcsUri;
-            this.Resolution = resolution;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Delivery = delivery;
+            this.GcsUri = gcsUri;
+            this.AspectRatio = aspectRatio;
+            this.Duration = duration;
+            this.Resolution = resolution;
         }
 
         /// <summary>

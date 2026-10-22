@@ -24,23 +24,11 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.AntigravityAgentConfig? AgentConfig { get; set; }
 
         /// <summary>
-        /// The base agent to extend.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("base_agent")]
-        public string? BaseAgent { get; set; }
-
-        /// <summary>
         /// The environment configuration for the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_environment")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.Environment3, string>))]
         public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? BaseEnvironment { get; set; }
-
-        /// <summary>
-        /// Agent description for developers to quickly read and understand.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
 
         /// <summary>
         /// The unique identifier for the agent.
@@ -49,10 +37,22 @@ namespace Google.Gemini.NextGen
         public string? Id { get; set; }
 
         /// <summary>
+        /// The base agent to extend.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_agent")]
+        public string? BaseAgent { get; set; }
+
+        /// <summary>
         /// System instruction for the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("system_instruction")]
         public string? SystemInstruction { get; set; }
+
+        /// <summary>
+        /// Agent description for developers to quickly read and understand.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
 
         /// <summary>
         /// The tools available to the agent.
@@ -72,20 +72,20 @@ namespace Google.Gemini.NextGen
         /// <param name="agentConfig">
         /// Configuration parameters for the agent.
         /// </param>
-        /// <param name="baseAgent">
-        /// The base agent to extend.
-        /// </param>
         /// <param name="baseEnvironment">
         /// The environment configuration for the agent.
-        /// </param>
-        /// <param name="description">
-        /// Agent description for developers to quickly read and understand.
         /// </param>
         /// <param name="id">
         /// The unique identifier for the agent.
         /// </param>
+        /// <param name="baseAgent">
+        /// The base agent to extend.
+        /// </param>
         /// <param name="systemInstruction">
         /// System instruction for the agent.
+        /// </param>
+        /// <param name="description">
+        /// Agent description for developers to quickly read and understand.
         /// </param>
         /// <param name="tools">
         /// The tools available to the agent.
@@ -95,19 +95,19 @@ namespace Google.Gemini.NextGen
 #endif
         public Agent(
             global::Google.Gemini.NextGen.AntigravityAgentConfig? agentConfig,
-            string? baseAgent,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? baseEnvironment,
-            string? description,
             string? id,
+            string? baseAgent,
             string? systemInstruction,
+            string? description,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AgentTool>? tools)
         {
             this.AgentConfig = agentConfig;
-            this.BaseAgent = baseAgent;
             this.BaseEnvironment = baseEnvironment;
-            this.Description = description;
             this.Id = id;
+            this.BaseAgent = baseAgent;
             this.SystemInstruction = systemInstruction;
+            this.Description = description;
             this.Tools = tools;
         }
 

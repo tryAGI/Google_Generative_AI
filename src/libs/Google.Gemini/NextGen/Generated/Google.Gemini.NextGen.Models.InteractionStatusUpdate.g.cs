@@ -9,27 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class InteractionStatusUpdate
     {
         /// <summary>
-        /// An optional opaque continuation token used to resume decoding from the<br/>
-        /// latest checkpoint after a disconnected stream.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
-        public byte[]? ContinuationToken { get; set; }
-
-        /// <summary>
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
-        public string? EventId { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object EventType { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("interaction_id")]
@@ -45,11 +24,32 @@ namespace Google.Gemini.NextGen
         public required global::Google.Gemini.NextGen.InteractionStatusUpdateStatus Status { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object EventType { get; set; }
+
+        /// <summary>
+        /// An optional opaque continuation token used to resume decoding from the<br/>
+        /// latest checkpoint after a disconnected stream.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
         /// Statistics on the interaction request's token usage.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
+
+        /// <summary>
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
+        public string? EventId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,38 +60,38 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="InteractionStatusUpdate" /> class.
         /// </summary>
-        /// <param name="eventType"></param>
         /// <param name="interactionId"></param>
         /// <param name="status"></param>
+        /// <param name="eventType"></param>
         /// <param name="continuationToken">
         /// An optional opaque continuation token used to resume decoding from the<br/>
         /// latest checkpoint after a disconnected stream.
-        /// </param>
-        /// <param name="eventId">
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
         /// </param>
         /// <param name="usage">
         /// Statistics on the interaction request's token usage.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="eventId">
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public InteractionStatusUpdate(
-            object eventType,
             string interactionId,
             global::Google.Gemini.NextGen.InteractionStatusUpdateStatus status,
+            object eventType,
             byte[]? continuationToken,
-            string? eventId,
-            global::Google.Gemini.NextGen.Usage? usage)
+            global::Google.Gemini.NextGen.Usage? usage,
+            string? eventId)
         {
-            this.ContinuationToken = continuationToken;
-            this.EventId = eventId;
-            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.InteractionId = interactionId ?? throw new global::System.ArgumentNullException(nameof(interactionId));
             this.Status = status;
+            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
+            this.ContinuationToken = continuationToken;
             this.Usage = usage;
+            this.EventId = eventId;
         }
 
         /// <summary>

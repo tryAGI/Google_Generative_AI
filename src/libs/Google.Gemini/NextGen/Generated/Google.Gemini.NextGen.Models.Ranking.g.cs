@@ -9,10 +9,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class Ranking
     {
         /// <summary>
-        /// Optional. The model name of the rank service.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
-        public string? ModelName { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("ranking_config")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object RankingConfig { get; set; }
 
         /// <summary>
         /// Config for Rank Service.
@@ -21,11 +22,10 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.RankService? RankService { get; set; }
 
         /// <summary>
-        ///
+        /// Optional. The model name of the rank service.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ranking_config")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object RankingConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
+        public string? ModelName { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,23 +37,23 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="Ranking" /> class.
         /// </summary>
         /// <param name="rankingConfig"></param>
-        /// <param name="modelName">
-        /// Optional. The model name of the rank service.
-        /// </param>
         /// <param name="rankService">
         /// Config for Rank Service.
+        /// </param>
+        /// <param name="modelName">
+        /// Optional. The model name of the rank service.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Ranking(
             object rankingConfig,
-            string? modelName,
-            global::Google.Gemini.NextGen.RankService? rankService)
+            global::Google.Gemini.NextGen.RankService? rankService,
+            string? modelName)
         {
-            this.ModelName = modelName;
-            this.RankService = rankService;
             this.RankingConfig = rankingConfig ?? throw new global::System.ArgumentNullException(nameof(rankingConfig));
+            this.RankService = rankService;
+            this.ModelName = modelName;
         }
 
         /// <summary>

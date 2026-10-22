@@ -11,6 +11,14 @@ namespace Google.Gemini.NextGen
     public sealed partial class PromptedVoice
     {
         /// <summary>
+        /// Required. The natural-language prompt describing the desired voice, e.g.<br/>
+        /// "A deep, booming male voice of a massive evil ogre in his middle years."
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Input { get; set; }
+
+        /// <summary>
         /// Optional. The name or ID of an existing base voice to edit or remix.<br/>
         /// Use the voice name for prebuilt voices (e.g., `Puck`) or the voice ID for<br/>
         /// previously created voices (e.g., `voice_abc123`). This can be any<br/>
@@ -20,14 +28,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_voice")]
         public string? BaseVoice { get; set; }
-
-        /// <summary>
-        /// Required. The natural-language prompt describing the desired voice, e.g.<br/>
-        /// "A deep, booming male voice of a massive evil ogre in his middle years."
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Input { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -57,8 +57,8 @@ namespace Google.Gemini.NextGen
             string input,
             string? baseVoice)
         {
-            this.BaseVoice = baseVoice;
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
+            this.BaseVoice = baseVoice;
         }
 
         /// <summary>

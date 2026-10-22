@@ -11,52 +11,12 @@ namespace Google.Gemini.NextGen
     public sealed partial class InteractionSseEventInteraction
     {
         /// <summary>
-        /// The agent to interact with.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
-        public string? Agent { get; set; }
-
-        /// <summary>
-        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
-        public byte[]? ContinuationToken { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the response was created in ISO 8601 format.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
-        public string? Created { get; set; }
-
-        /// <summary>
         /// Required. Output only. A unique identifier for the interaction completion.<br/>
         /// Included only in responses
         /// </summary>
         /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string Id { get; set; } = default!;
-
-        /// <summary>
-        /// The model that will complete your prompt.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
-
-        /// <summary>
-        /// Output only. The resource type.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        public string? Object { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ServiceTierJsonConverter))]
-        public global::Google.Gemini.NextGen.ServiceTier? ServiceTier { get; set; }
 
         /// <summary>
         /// Required. Output only. The status of the interaction.<br/>
@@ -68,11 +28,17 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.InteractionSseEventInteractionStatus Status { get; set; } = default!;
 
         /// <summary>
-        /// Output only. The steps that make up the interaction, if included in this event.<br/>
+        /// The model that will complete your prompt.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the response was created in ISO 8601 format.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("steps")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? Steps { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("created")]
+        public string? Created { get; set; }
 
         /// <summary>
         /// Output only. The time at which the response was last updated in ISO 8601 format.<br/>
@@ -89,6 +55,40 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ServiceTierJsonConverter))]
+        public global::Google.Gemini.NextGen.ServiceTier? ServiceTier { get; set; }
+
+        /// <summary>
+        /// Output only. The steps that make up the interaction, if included in this event.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("steps")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? Steps { get; set; }
+
+        /// <summary>
+        /// The agent to interact with.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
+        public string? Agent { get; set; }
+
+        /// <summary>
+        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
+        /// Output only. The resource type.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
+        public string? Object { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,27 +97,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="InteractionSseEventInteraction" /> class.
         /// </summary>
-        /// <param name="agent">
-        /// The agent to interact with.
-        /// </param>
-        /// <param name="continuationToken">
-        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="created">
-        /// Output only. The time at which the response was created in ISO 8601 format.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="model">
         /// The model that will complete your prompt.
         /// </param>
-        /// <param name="object">
-        /// Output only. The resource type.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="serviceTier"></param>
-        /// <param name="steps">
-        /// Output only. The steps that make up the interaction, if included in this event.<br/>
+        /// <param name="created">
+        /// Output only. The time at which the response was created in ISO 8601 format.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updated">
@@ -126,6 +110,22 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="usage">
         /// Statistics on the interaction request's token usage.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="serviceTier"></param>
+        /// <param name="steps">
+        /// Output only. The steps that make up the interaction, if included in this event.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="agent">
+        /// The agent to interact with.
+        /// </param>
+        /// <param name="continuationToken">
+        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="object">
+        /// Output only. The resource type.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
@@ -140,29 +140,29 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public InteractionSseEventInteraction(
-            string? agent,
-            byte[]? continuationToken,
-            string? created,
             string? model,
-            string? @object,
-            global::Google.Gemini.NextGen.ServiceTier? serviceTier,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? steps,
+            string? created,
             string? updated,
             global::Google.Gemini.NextGen.Usage? usage,
+            global::Google.Gemini.NextGen.ServiceTier? serviceTier,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? steps,
+            string? agent,
+            byte[]? continuationToken,
+            string? @object,
             string id = default!,
             global::Google.Gemini.NextGen.InteractionSseEventInteractionStatus status = default!)
         {
-            this.Agent = agent;
-            this.ContinuationToken = continuationToken;
-            this.Created = created;
             this.Id = id;
-            this.Model = model;
-            this.Object = @object;
-            this.ServiceTier = serviceTier;
             this.Status = status;
-            this.Steps = steps;
+            this.Model = model;
+            this.Created = created;
             this.Updated = updated;
             this.Usage = usage;
+            this.ServiceTier = serviceTier;
+            this.Steps = steps;
+            this.Agent = agent;
+            this.ContinuationToken = continuationToken;
+            this.Object = @object;
         }
 
         /// <summary>

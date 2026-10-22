@@ -11,10 +11,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class AntigravityAgentConfig
     {
         /// <summary>
-        /// Max total tokens for the agent run.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("max_total_tokens")]
-        public string? MaxTotalTokens { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         /// The model to use for agent reasoning.
@@ -23,11 +24,10 @@ namespace Google.Gemini.NextGen
         public string? Model { get; set; }
 
         /// <summary>
-        ///
+        /// Max total tokens for the agent run.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_total_tokens")]
+        public string? MaxTotalTokens { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,23 +39,23 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="AntigravityAgentConfig" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="maxTotalTokens">
-        /// Max total tokens for the agent run.
-        /// </param>
         /// <param name="model">
         /// The model to use for agent reasoning.
+        /// </param>
+        /// <param name="maxTotalTokens">
+        /// Max total tokens for the agent run.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AntigravityAgentConfig(
             object type,
-            string? maxTotalTokens,
-            string? model)
+            string? model,
+            string? maxTotalTokens)
         {
-            this.MaxTotalTokens = maxTotalTokens;
-            this.Model = model;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Model = model;
+            this.MaxTotalTokens = maxTotalTokens;
         }
 
         /// <summary>

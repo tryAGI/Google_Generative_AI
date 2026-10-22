@@ -11,16 +11,23 @@ namespace Google.Gemini.NextGen
     public sealed partial class AudioDelta
     {
         /// <summary>
-        /// The number of audio channels.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
-        public int? Channels { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public byte[]? Data { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         ///
@@ -43,17 +50,10 @@ namespace Google.Gemini.NextGen
         public int? SampleRate { get; set; }
 
         /// <summary>
-        ///
+        /// The number of audio channels.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("channels")]
+        public int? Channels { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -65,32 +65,32 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="AudioDelta" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="channels">
-        /// The number of audio channels.
-        /// </param>
         /// <param name="data"></param>
+        /// <param name="uri"></param>
         /// <param name="mimeType"></param>
         /// <param name="sampleRate">
         /// The sample rate of the audio.
         /// </param>
-        /// <param name="uri"></param>
+        /// <param name="channels">
+        /// The number of audio channels.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AudioDelta(
             object type,
-            int? channels,
             byte[]? data,
+            string? uri,
             global::Google.Gemini.NextGen.AudioDeltaMimeType? mimeType,
             int? sampleRate,
-            string? uri)
+            int? channels)
         {
-            this.Channels = channels;
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Data = data;
+            this.Uri = uri;
             this.MimeType = mimeType;
             this.SampleRate = sampleRate;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-            this.Uri = uri;
+            this.Channels = channels;
         }
 
         /// <summary>

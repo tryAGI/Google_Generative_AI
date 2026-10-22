@@ -41,15 +41,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public string? Type2 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? Type2 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? Type3 { get; set; }
+        public global::Google.Gemini.NextGen.Environment3? Type3 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Environment3? Type4 { get; set; }
+        public string? Type4 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -85,27 +85,27 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public bool? Type13 { get; set; }
+        public global::Google.Gemini.NextGen.InteractionsInput? Type13 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.InteractionsInput? Type14 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? Type14 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type15 { get; set; }
+        public global::Google.Gemini.NextGen.ResponseFormat4? Type15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? Type16 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>? Type16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ResponseFormat4? Type17 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>? Type18 { get; set; }
+        public global::Google.Gemini.NextGen.Tool? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -117,27 +117,27 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? Type21 { get; set; }
+        public global::Google.Gemini.NextGen.ServiceTier? Type21 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SafetySetting? Type22 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookConfig? Type22 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ServiceTier? Type23 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? Type23 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? Type24 { get; set; }
+        public global::Google.Gemini.NextGen.SafetySetting? Type24 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Tool? Type25 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type25 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookConfig? Type26 { get; set; }
+        public bool? Type26 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -209,11 +209,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public int? Type44 { get; set; }
+        public byte[]? Type44 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public byte[]? Type45 { get; set; }
+        public int? Type45 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -237,11 +237,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.AudioResponseFormatDelivery? Type51 { get; set; }
+        public global::Google.Gemini.NextGen.AudioResponseFormatMimeType? Type51 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.AudioResponseFormatMimeType? Type52 { get; set; }
+        public global::Google.Gemini.NextGen.AudioResponseFormatDelivery? Type52 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -293,15 +293,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>? Type65 { get; set; }
+        public global::Google.Gemini.NextGen.ComputerUseEnvironment? Type65 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie? Type66 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>? Type66 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ComputerUseEnvironment? Type67 { get; set; }
+        public global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie? Type67 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -369,7 +369,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.DateTime? Type84 { get; set; }
+        public global::Google.Gemini.NextGen.CredentialType? Type84 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -377,7 +377,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.CredentialType? Type86 { get; set; }
+        public global::System.DateTime? Type86 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -473,15 +473,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvVar, string>? Type110 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? Type110 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork2?>? Type111 { get; set; }
+        public global::Google.Gemini.NextGen.EnvironmentNetwork2? Type111 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.EnvironmentNetwork2? Type112 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvVar, string>? Type112 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -569,11 +569,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.FindRequestMode? Type134 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileContent>? Type134 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileContent>? Type135 { get; set; }
+        public global::Google.Gemini.NextGen.FindRequestMode? Type135 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -605,51 +605,51 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageConfig? Type143 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? Type143 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>>? Type144 { get; set; }
+        public global::Google.Gemini.NextGen.ToolChoiceConfig? Type144 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SpeakerConfig? Type145 { get; set; }
+        public global::Google.Gemini.NextGen.GenerationConfigToolChoice? Type145 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>? Type146 { get; set; }
+        public float? Type146 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SpeechConfig2? Type147 { get; set; }
+        public global::Google.Gemini.NextGen.ThinkingLevel? Type147 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public float? Type148 { get; set; }
+        public global::Google.Gemini.NextGen.ImageConfig? Type148 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ThinkingLevel? Type149 { get; set; }
+        public global::Google.Gemini.NextGen.VideoConfig? Type149 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? Type150 { get; set; }
+        public global::Google.Gemini.NextGen.TranscriptionConfig? Type150 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ToolChoiceConfig? Type151 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>>? Type151 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GenerationConfigToolChoice? Type152 { get; set; }
+        public global::Google.Gemini.NextGen.SpeakerConfig? Type152 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TranscriptionConfig? Type153 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>? Type153 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoConfig? Type154 { get; set; }
+        public global::Google.Gemini.NextGen.SpeechConfig2? Type154 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -817,11 +817,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageContentMimeType? Type196 { get; set; }
+        public global::Google.Gemini.NextGen.MediaResolution? Type196 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MediaResolution? Type197 { get; set; }
+        public global::Google.Gemini.NextGen.ImageContentMimeType? Type197 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -837,7 +837,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageResponseFormatAspectRatio? Type201 { get; set; }
+        public global::Google.Gemini.NextGen.ImageResponseFormatMimeType? Type201 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -845,11 +845,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageResponseFormatImageSize? Type203 { get; set; }
+        public global::Google.Gemini.NextGen.ImageResponseFormatAspectRatio? Type203 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ImageResponseFormatMimeType? Type204 { get; set; }
+        public global::Google.Gemini.NextGen.ImageResponseFormatImageSize? Type204 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -857,27 +857,27 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Error>? Type206 { get; set; }
+        public global::Google.Gemini.NextGen.InteractionStatus? Type206 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Model? Type207 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? Type207 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.InteractionStatus? Type208 { get; set; }
+        public global::Google.Gemini.NextGen.Step? Type208 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? Type209 { get; set; }
+        public global::Google.Gemini.NextGen.Model? Type209 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Step? Type210 { get; set; }
+        public global::Google.Gemini.NextGen.Usage? Type210 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.Usage? Type211 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Error>? Type211 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1173,11 +1173,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SafetySettingMethod? Type285 { get; set; }
+        public global::Google.Gemini.NextGen.SafetySettingThreshold? Type285 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.SafetySettingThreshold? Type286 { get; set; }
+        public global::Google.Gemini.NextGen.SafetySettingMethod? Type286 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1357,15 +1357,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoContentMimeType? Type331 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? Type331 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? Type332 { get; set; }
+        public global::Google.Gemini.NextGen.VideoContentProcessing? Type332 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoContentProcessing? Type333 { get; set; }
+        public global::Google.Gemini.NextGen.VideoContentMimeType? Type333 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1373,11 +1373,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? Type335 { get; set; }
+        public global::Google.Gemini.NextGen.VideoResponseFormatDelivery? Type335 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoResponseFormatDelivery? Type336 { get; set; }
+        public global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? Type336 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1389,31 +1389,31 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SigningSecret>? Type339 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent>? Type339 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookState? Type340 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookSubscribedEvent? Type340 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent>? Type341 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SigningSecret>? Type341 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookSubscribedEvent? Type342 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookState? Type342 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookUpdateState? Type343 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? Type343 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? Type344 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent? Type344 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent? Type345 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookUpdateState? Type345 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1470,15 +1470,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ResponseModality>? ListType3 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Tool>? ListType3 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SafetySetting>? ListType4 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ResponseModality>? ListType4 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Tool>? ListType5 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SafetySetting>? ListType5 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1582,11 +1582,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Error>? ListType31 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Step>? ListType31 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Step>? ListType32 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Error>? ListType32 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1654,11 +1654,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SigningSecret>? ListType49 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.WebhookSubscribedEvent>? ListType49 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.WebhookSubscribedEvent>? ListType50 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SigningSecret>? ListType50 { get; set; }
         /// <summary>
         ///
         /// </summary>

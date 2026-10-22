@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class CodeMenderAgentConfig
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// Request parameters specific to FIND sessions, used for discovering<br/>
         /// vulnerabilities in a codebase.
         /// </summary>
@@ -23,11 +30,11 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.FixRequest? FixRequest { get; set; }
 
         /// <summary>
-        /// The name of the model to use for the CodeMender agent. One<br/>
-        /// CodeMender session will only use one model.
+        /// Parameter for grouping multiple interactions that belong to<br/>
+        /// the same CodeMender session.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("session_id")]
+        public string? SessionId { get; set; }
 
         /// <summary>
         /// The configuration of CodeMender sessions.
@@ -36,18 +43,11 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.SessionConfig? SessionConfig { get; set; }
 
         /// <summary>
-        /// Parameter for grouping multiple interactions that belong to<br/>
-        /// the same CodeMender session.
+        /// The name of the model to use for the CodeMender agent. One<br/>
+        /// CodeMender session will only use one model.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("session_id")]
-        public string? SessionId { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -67,16 +67,16 @@ namespace Google.Gemini.NextGen
         /// Request parameters specific to FIX sessions, used for generating and<br/>
         /// validating security patches.
         /// </param>
-        /// <param name="model">
-        /// The name of the model to use for the CodeMender agent. One<br/>
-        /// CodeMender session will only use one model.
+        /// <param name="sessionId">
+        /// Parameter for grouping multiple interactions that belong to<br/>
+        /// the same CodeMender session.
         /// </param>
         /// <param name="sessionConfig">
         /// The configuration of CodeMender sessions.
         /// </param>
-        /// <param name="sessionId">
-        /// Parameter for grouping multiple interactions that belong to<br/>
-        /// the same CodeMender session.
+        /// <param name="model">
+        /// The name of the model to use for the CodeMender agent. One<br/>
+        /// CodeMender session will only use one model.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -85,16 +85,16 @@ namespace Google.Gemini.NextGen
             object type,
             global::Google.Gemini.NextGen.FindRequest? findRequest,
             global::Google.Gemini.NextGen.FixRequest? fixRequest,
-            string? model,
+            string? sessionId,
             global::Google.Gemini.NextGen.SessionConfig? sessionConfig,
-            string? sessionId)
+            string? model)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.FindRequest = findRequest;
             this.FixRequest = fixRequest;
-            this.Model = model;
-            this.SessionConfig = sessionConfig;
             this.SessionId = sessionId;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.SessionConfig = sessionConfig;
+            this.Model = model;
         }
 
         /// <summary>

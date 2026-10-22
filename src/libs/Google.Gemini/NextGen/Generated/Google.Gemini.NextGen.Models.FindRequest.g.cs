@@ -10,11 +10,10 @@ namespace Google.Gemini.NextGen
     public sealed partial class FindRequest
     {
         /// <summary>
-        /// Additional context or custom instructions provided by the user to guide<br/>
-        /// the vulnerability analysis.
+        /// A list of source files to provide as context for the scan.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("source_files")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileContent>? SourceFiles { get; set; }
 
         /// <summary>
         /// The identifier of a specific finding to verify. This is primarily used in<br/>
@@ -25,17 +24,18 @@ namespace Google.Gemini.NextGen
         public string? FindingId { get; set; }
 
         /// <summary>
+        /// Additional context or custom instructions provided by the user to guide<br/>
+        /// the vulnerability analysis.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// The mode of the find session.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.FindRequestModeJsonConverter))]
         public global::Google.Gemini.NextGen.FindRequestMode? Mode { get; set; }
-
-        /// <summary>
-        /// A list of source files to provide as context for the scan.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("source_files")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileContent>? SourceFiles { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -46,34 +46,34 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="FindRequest" /> class.
         /// </summary>
-        /// <param name="description">
-        /// Additional context or custom instructions provided by the user to guide<br/>
-        /// the vulnerability analysis.
+        /// <param name="sourceFiles">
+        /// A list of source files to provide as context for the scan.
         /// </param>
         /// <param name="findingId">
         /// The identifier of a specific finding to verify. This is primarily used in<br/>
         /// VERIFY mode to focus the agent's execution-based validation on a single<br/>
         /// vulnerability.
         /// </param>
+        /// <param name="description">
+        /// Additional context or custom instructions provided by the user to guide<br/>
+        /// the vulnerability analysis.
+        /// </param>
         /// <param name="mode">
         /// The mode of the find session.
-        /// </param>
-        /// <param name="sourceFiles">
-        /// A list of source files to provide as context for the scan.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FindRequest(
-            string? description,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileContent>? sourceFiles,
             string? findingId,
-            global::Google.Gemini.NextGen.FindRequestMode? mode,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileContent>? sourceFiles)
+            string? description,
+            global::Google.Gemini.NextGen.FindRequestMode? mode)
         {
-            this.Description = description;
-            this.FindingId = findingId;
-            this.Mode = mode;
             this.SourceFiles = sourceFiles;
+            this.FindingId = findingId;
+            this.Description = description;
+            this.Mode = mode;
         }
 
         /// <summary>

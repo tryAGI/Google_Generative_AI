@@ -9,10 +9,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class VerbatimTranscriptionMode
     {
         /// <summary>
-        /// Optional. Configures speaker diarization. Supported values: "speaker".
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("diarization_mode")]
-        public string? DiarizationMode { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         /// Optional. The granularity of timestamps to include in the transcription output.<br/>
@@ -22,11 +23,10 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<string>? TimestampGranularities { get; set; }
 
         /// <summary>
-        ///
+        /// Optional. Configures speaker diarization. Supported values: "speaker".
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("diarization_mode")]
+        public string? DiarizationMode { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,24 +38,24 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="VerbatimTranscriptionMode" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="diarizationMode">
-        /// Optional. Configures speaker diarization. Supported values: "speaker".
-        /// </param>
         /// <param name="timestampGranularities">
         /// Optional. The granularity of timestamps to include in the transcription output.<br/>
         /// Supported values: "word". If empty, no timestamps are generated.
+        /// </param>
+        /// <param name="diarizationMode">
+        /// Optional. Configures speaker diarization. Supported values: "speaker".
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public VerbatimTranscriptionMode(
             object type,
-            string? diarizationMode,
-            global::System.Collections.Generic.IList<string>? timestampGranularities)
+            global::System.Collections.Generic.IList<string>? timestampGranularities,
+            string? diarizationMode)
         {
-            this.DiarizationMode = diarizationMode;
-            this.TimestampGranularities = timestampGranularities;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.TimestampGranularities = timestampGranularities;
+            this.DiarizationMode = diarizationMode;
         }
 
         /// <summary>

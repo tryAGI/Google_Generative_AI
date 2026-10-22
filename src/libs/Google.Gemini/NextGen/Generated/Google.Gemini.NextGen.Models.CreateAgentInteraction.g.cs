@@ -26,42 +26,11 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? AgentConfig { get; set; }
 
         /// <summary>
-        /// Input only. Whether to run the model interaction in the background.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("background")]
-        public bool? Background { get; set; }
-
-        /// <summary>
-        /// The environment configuration for the interaction. Can be an object<br/>
-        /// specifying remote environment sources or a string referencing an existing<br/>
-        /// environment ID.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.Environment3, string>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? Environment { get; set; }
-
-        /// <summary>
         /// The input for the interaction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.InteractionsInputJsonConverter))]
         public global::Google.Gemini.NextGen.InteractionsInput? Input { get; set; }
-
-        /// <summary>
-        /// The labels with user-defined metadata for the request.<br/>
-        /// Label keys and values can be no longer than 63 characters<br/>
-        /// (Unicode codepoints) and can only contain lowercase letters, numeric<br/>
-        /// characters, underscores, and dashes. International characters are allowed.<br/>
-        /// Label values are optional. Label keys must start with a letter.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Labels { get; set; }
-
-        /// <summary>
-        /// The ID of the previous interaction, if any.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("previous_interaction_id")]
-        public string? PreviousInteractionId { get; set; }
 
         /// <summary>
         /// Enforces that the generated response is a JSON object that complies with<br/>
@@ -72,43 +41,13 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? ResponseFormat { get; set; }
 
         /// <summary>
-        /// The mime type of the response. This is required if response_format is set.
+        /// The environment configuration for the interaction. Can be an object<br/>
+        /// specifying remote environment sources or a string referencing an existing<br/>
+        /// environment ID.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response_mime_type")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? ResponseMimeType { get; set; }
-
-        /// <summary>
-        /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response_modalities")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseModality>? ResponseModalities { get; set; }
-
-        /// <summary>
-        /// Safety settings for the interaction.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("safety_settings")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? SafetySettings { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ServiceTierJsonConverter))]
-        public global::Google.Gemini.NextGen.ServiceTier? ServiceTier { get; set; }
-
-        /// <summary>
-        /// Input only. Whether to store the response and request for later retrieval.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("store")]
-        public bool? Store { get; set; }
-
-        /// <summary>
-        /// Input only. Whether the interaction will be streamed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
-        public bool? Stream { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.Environment3, string>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? Environment { get; set; }
 
         /// <summary>
         /// System instruction for the interaction.
@@ -123,10 +62,71 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? Tools { get; set; }
 
         /// <summary>
+        /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response_modalities")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseModality>? ResponseModalities { get; set; }
+
+        /// <summary>
+        /// The mime type of the response. This is required if response_format is set.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response_mime_type")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? ResponseMimeType { get; set; }
+
+        /// <summary>
+        /// The ID of the previous interaction, if any.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("previous_interaction_id")]
+        public string? PreviousInteractionId { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ServiceTierJsonConverter))]
+        public global::Google.Gemini.NextGen.ServiceTier? ServiceTier { get; set; }
+
+        /// <summary>
         /// Message for configuring webhook events for a request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_config")]
         public global::Google.Gemini.NextGen.WebhookConfig? WebhookConfig { get; set; }
+
+        /// <summary>
+        /// Safety settings for the interaction.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("safety_settings")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? SafetySettings { get; set; }
+
+        /// <summary>
+        /// The labels with user-defined metadata for the request.<br/>
+        /// Label keys and values can be no longer than 63 characters<br/>
+        /// (Unicode codepoints) and can only contain lowercase letters, numeric<br/>
+        /// characters, underscores, and dashes. International characters are allowed.<br/>
+        /// Label values are optional. Label keys must start with a letter.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Labels { get; set; }
+
+        /// <summary>
+        /// Input only. Whether the interaction will be streamed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
+        public bool? Stream { get; set; }
+
+        /// <summary>
+        /// Input only. Whether to store the response and request for later retrieval.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("store")]
+        public bool? Store { get; set; }
+
+        /// <summary>
+        /// Input only. Whether to run the model interaction in the background.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("background")]
+        public bool? Background { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -143,16 +143,33 @@ namespace Google.Gemini.NextGen
         /// <param name="agentConfig">
         /// Configuration parameters for the agent interaction.
         /// </param>
-        /// <param name="background">
-        /// Input only. Whether to run the model interaction in the background.
+        /// <param name="input">
+        /// The input for the interaction.
+        /// </param>
+        /// <param name="responseFormat">
+        /// Enforces that the generated response is a JSON object that complies with<br/>
+        /// the JSON schema specified in this field.
         /// </param>
         /// <param name="environment">
         /// The environment configuration for the interaction. Can be an object<br/>
         /// specifying remote environment sources or a string referencing an existing<br/>
         /// environment ID.
         /// </param>
-        /// <param name="input">
-        /// The input for the interaction.
+        /// <param name="systemInstruction">
+        /// System instruction for the interaction.
+        /// </param>
+        /// <param name="tools">
+        /// A list of tool declarations the model may call during interaction.
+        /// </param>
+        /// <param name="previousInteractionId">
+        /// The ID of the previous interaction, if any.
+        /// </param>
+        /// <param name="serviceTier"></param>
+        /// <param name="webhookConfig">
+        /// Message for configuring webhook events for a request.
+        /// </param>
+        /// <param name="safetySettings">
+        /// Safety settings for the interaction.
         /// </param>
         /// <param name="labels">
         /// The labels with user-defined metadata for the request.<br/>
@@ -161,31 +178,14 @@ namespace Google.Gemini.NextGen
         /// characters, underscores, and dashes. International characters are allowed.<br/>
         /// Label values are optional. Label keys must start with a letter.
         /// </param>
-        /// <param name="previousInteractionId">
-        /// The ID of the previous interaction, if any.
-        /// </param>
-        /// <param name="responseFormat">
-        /// Enforces that the generated response is a JSON object that complies with<br/>
-        /// the JSON schema specified in this field.
-        /// </param>
-        /// <param name="safetySettings">
-        /// Safety settings for the interaction.
-        /// </param>
-        /// <param name="serviceTier"></param>
-        /// <param name="store">
-        /// Input only. Whether to store the response and request for later retrieval.
-        /// </param>
         /// <param name="stream">
         /// Input only. Whether the interaction will be streamed.
         /// </param>
-        /// <param name="systemInstruction">
-        /// System instruction for the interaction.
+        /// <param name="store">
+        /// Input only. Whether to store the response and request for later retrieval.
         /// </param>
-        /// <param name="tools">
-        /// A list of tool declarations the model may call during interaction.
-        /// </param>
-        /// <param name="webhookConfig">
-        /// Message for configuring webhook events for a request.
+        /// <param name="background">
+        /// Input only. Whether to run the model interaction in the background.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -193,35 +193,35 @@ namespace Google.Gemini.NextGen
         public CreateAgentInteraction(
             global::Google.Gemini.NextGen.AgentOption agent,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? agentConfig,
-            bool? background,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,
             global::Google.Gemini.NextGen.InteractionsInput? input,
-            global::System.Collections.Generic.Dictionary<string, string>? labels,
-            string? previousInteractionId,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? responseFormat,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? safetySettings,
-            global::Google.Gemini.NextGen.ServiceTier? serviceTier,
-            bool? store,
-            bool? stream,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,
             string? systemInstruction,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? tools,
-            global::Google.Gemini.NextGen.WebhookConfig? webhookConfig)
+            string? previousInteractionId,
+            global::Google.Gemini.NextGen.ServiceTier? serviceTier,
+            global::Google.Gemini.NextGen.WebhookConfig? webhookConfig,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? safetySettings,
+            global::System.Collections.Generic.Dictionary<string, string>? labels,
+            bool? stream,
+            bool? store,
+            bool? background)
         {
             this.Agent = agent;
             this.AgentConfig = agentConfig;
-            this.Background = background;
-            this.Environment = environment;
             this.Input = input;
-            this.Labels = labels;
-            this.PreviousInteractionId = previousInteractionId;
             this.ResponseFormat = responseFormat;
-            this.SafetySettings = safetySettings;
-            this.ServiceTier = serviceTier;
-            this.Store = store;
-            this.Stream = stream;
+            this.Environment = environment;
             this.SystemInstruction = systemInstruction;
             this.Tools = tools;
+            this.PreviousInteractionId = previousInteractionId;
+            this.ServiceTier = serviceTier;
             this.WebhookConfig = webhookConfig;
+            this.SafetySettings = safetySettings;
+            this.Labels = labels;
+            this.Stream = stream;
+            this.Store = store;
+            this.Background = background;
         }
 
         /// <summary>

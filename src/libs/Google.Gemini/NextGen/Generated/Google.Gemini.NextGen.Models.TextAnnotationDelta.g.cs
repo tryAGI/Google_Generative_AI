@@ -9,17 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class TextAnnotationDelta
     {
         /// <summary>
-        /// Citation information for model-generated content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("annotations")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Annotation>? Annotations { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        /// Citation information for model-generated content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("annotations")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Annotation>? Annotations { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,8 +41,8 @@ namespace Google.Gemini.NextGen
             object type,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Annotation>? annotations)
         {
-            this.Annotations = annotations;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Annotations = annotations;
         }
 
         /// <summary>

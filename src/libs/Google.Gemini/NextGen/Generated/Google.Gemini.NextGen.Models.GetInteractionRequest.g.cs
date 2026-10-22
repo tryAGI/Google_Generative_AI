@@ -11,20 +11,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class GetInteractionRequest
     {
         /// <summary>
-        /// If true, includes the input in the response.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("include_input")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? IncludeInput { get; set; }
-
-        /// <summary>
-        /// If set, resumes the interaction stream from the chunk after the event<br/>
-        /// marked by the event id. Can only be used if `stream` is true.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("last_event_id")]
-        public string? LastEventId { get; set; }
-
-        /// <summary>
         /// Required. The name of the interaction to retrieve.<br/>
         /// Format: interactions/{interaction}
         /// </summary>
@@ -39,6 +25,20 @@ namespace Google.Gemini.NextGen
         public bool? Stream { get; set; }
 
         /// <summary>
+        /// If set, resumes the interaction stream from the chunk after the event<br/>
+        /// marked by the event id. Can only be used if `stream` is true.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_event_id")]
+        public string? LastEventId { get; set; }
+
+        /// <summary>
+        /// If true, includes the input in the response.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_input")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public bool? IncludeInput { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -51,24 +51,24 @@ namespace Google.Gemini.NextGen
         /// Required. The name of the interaction to retrieve.<br/>
         /// Format: interactions/{interaction}
         /// </param>
+        /// <param name="stream">
+        /// If true, streams the interaction events as Server-Sent Events.
+        /// </param>
         /// <param name="lastEventId">
         /// If set, resumes the interaction stream from the chunk after the event<br/>
         /// marked by the event id. Can only be used if `stream` is true.
-        /// </param>
-        /// <param name="stream">
-        /// If true, streams the interaction events as Server-Sent Events.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetInteractionRequest(
             string name,
-            string? lastEventId,
-            bool? stream)
+            bool? stream,
+            string? lastEventId)
         {
-            this.LastEventId = lastEventId;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Stream = stream;
+            this.LastEventId = lastEventId;
         }
 
         /// <summary>

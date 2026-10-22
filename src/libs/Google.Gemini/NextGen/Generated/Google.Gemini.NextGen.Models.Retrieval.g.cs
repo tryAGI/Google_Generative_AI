@@ -9,6 +9,25 @@ namespace Google.Gemini.NextGen
     public sealed partial class Retrieval
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
+        /// The types of file retrieval to enable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retrieval_types")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.RetrievalRetrievalType>? RetrievalTypes { get; set; }
+
+        /// <summary>
+        /// Used to specify configuration for VertexAISearch.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("vertex_ai_search_config")]
+        public global::Google.Gemini.NextGen.VertexAISearchConfig? VertexAiSearchConfig { get; set; }
+
+        /// <summary>
         /// Used to specify configuration for ExaAISearch.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("exa_ai_search_config")]
@@ -27,25 +46,6 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.RagStoreConfig? RagStoreConfig { get; set; }
 
         /// <summary>
-        /// The types of file retrieval to enable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrieval_types")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.RetrievalRetrievalType>? RetrievalTypes { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
-
-        /// <summary>
-        /// Used to specify configuration for VertexAISearch.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("vertex_ai_search_config")]
-        public global::Google.Gemini.NextGen.VertexAISearchConfig? VertexAiSearchConfig { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +55,12 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="Retrieval" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="retrievalTypes">
+        /// The types of file retrieval to enable.
+        /// </param>
+        /// <param name="vertexAiSearchConfig">
+        /// Used to specify configuration for VertexAISearch.
+        /// </param>
         /// <param name="exaAiSearchConfig">
         /// Used to specify configuration for ExaAISearch.
         /// </param>
@@ -64,29 +70,23 @@ namespace Google.Gemini.NextGen
         /// <param name="ragStoreConfig">
         /// Use to specify configuration for RAG Store.
         /// </param>
-        /// <param name="retrievalTypes">
-        /// The types of file retrieval to enable.
-        /// </param>
-        /// <param name="vertexAiSearchConfig">
-        /// Used to specify configuration for VertexAISearch.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Retrieval(
             object type,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.RetrievalRetrievalType>? retrievalTypes,
+            global::Google.Gemini.NextGen.VertexAISearchConfig? vertexAiSearchConfig,
             global::Google.Gemini.NextGen.ExaAISearchConfig? exaAiSearchConfig,
             global::Google.Gemini.NextGen.ParallelAISearchConfig? parallelAiSearchConfig,
-            global::Google.Gemini.NextGen.RagStoreConfig? ragStoreConfig,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.RetrievalRetrievalType>? retrievalTypes,
-            global::Google.Gemini.NextGen.VertexAISearchConfig? vertexAiSearchConfig)
+            global::Google.Gemini.NextGen.RagStoreConfig? ragStoreConfig)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.RetrievalTypes = retrievalTypes;
+            this.VertexAiSearchConfig = vertexAiSearchConfig;
             this.ExaAiSearchConfig = exaAiSearchConfig;
             this.ParallelAiSearchConfig = parallelAiSearchConfig;
             this.RagStoreConfig = ragStoreConfig;
-            this.RetrievalTypes = retrievalTypes;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-            this.VertexAiSearchConfig = vertexAiSearchConfig;
         }
 
         /// <summary>

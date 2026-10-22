@@ -9,17 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class CodeExecutionCallArguments
     {
         /// <summary>
-        /// The code to be executed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        public string? Code { get; set; }
-
-        /// <summary>
         /// Programming language of the `code`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.CodeExecutionCallArgumentsLanguageJsonConverter))]
         public global::Google.Gemini.NextGen.CodeExecutionCallArgumentsLanguage? Language { get; set; }
+
+        /// <summary>
+        /// The code to be executed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,21 +30,21 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeExecutionCallArguments" /> class.
         /// </summary>
-        /// <param name="code">
-        /// The code to be executed.
-        /// </param>
         /// <param name="language">
         /// Programming language of the `code`.
+        /// </param>
+        /// <param name="code">
+        /// The code to be executed.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CodeExecutionCallArguments(
-            string? code,
-            global::Google.Gemini.NextGen.CodeExecutionCallArgumentsLanguage? language)
+            global::Google.Gemini.NextGen.CodeExecutionCallArgumentsLanguage? language,
+            string? code)
         {
-            this.Code = code;
             this.Language = language;
+            this.Code = code;
         }
 
         /// <summary>

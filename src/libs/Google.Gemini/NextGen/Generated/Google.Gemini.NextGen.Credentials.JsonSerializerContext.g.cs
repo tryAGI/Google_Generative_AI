@@ -18,9 +18,9 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Credential))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialStatus), TypeInfoPropertyName = "CredentialStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialType), TypeInfoPropertyName = "CredentialType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialStatus), TypeInfoPropertyName = "CredentialStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialCreateParams), TypeInfoPropertyName = "CredentialCreateParams2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvironmentVariableConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.HttpBearerConfig))]
@@ -36,9 +36,9 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Credential>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialStatus?), TypeInfoPropertyName = "NullableCredentialStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialType?), TypeInfoPropertyName = "NullableCredentialType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialStatus?), TypeInfoPropertyName = "NullableCredentialStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialCreateParams?), TypeInfoPropertyName = "NullableCredentialCreateParams2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialUpdate?), TypeInfoPropertyName = "NullableCredentialUpdate2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>?), TypeInfoPropertyName = "NullableOneOfInjectionLocation3IListInjectionLocation32")]
@@ -121,13 +121,13 @@ namespace Google.Gemini.NextGen
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus)
-
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus?)
-
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialType)
+                    typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialType)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialType?)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus?)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation3)
 
@@ -138,16 +138,6 @@ namespace Google.Gemini.NextGen
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus))
-                {
-                    return new global::Google.Gemini.NextGen.JsonConverters.CredentialStatusJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus?))
-                {
-                    return new global::Google.Gemini.NextGen.JsonConverters.CredentialStatusNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialType))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.CredentialTypeJsonConverter();
@@ -156,6 +146,16 @@ namespace Google.Gemini.NextGen
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialType?))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.CredentialTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.CredentialStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.CredentialStatusNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation3))

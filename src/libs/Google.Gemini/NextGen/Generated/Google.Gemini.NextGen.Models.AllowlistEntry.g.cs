@@ -9,12 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class AllowlistEntry
     {
         /// <summary>
-        /// Optional. Reference to a server-managed Credential resource by ID.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("credential")]
-        public string? Credential { get; set; }
-
-        /// <summary>
         /// Domain to allow outbound requests to. Supports wildcards (e.g.<br/>
         /// '*.googleapis.com'). Use '*' to allow all domains.
         /// </summary>
@@ -30,6 +24,12 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>, global::System.Collections.Generic.Dictionary<string, string>>? Transform { get; set; }
 
         /// <summary>
+        /// Optional. Reference to a server-managed Credential resource by ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credential")]
+        public string? Credential { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -42,23 +42,23 @@ namespace Google.Gemini.NextGen
         /// Domain to allow outbound requests to. Supports wildcards (e.g.<br/>
         /// '*.googleapis.com'). Use '*' to allow all domains.
         /// </param>
-        /// <param name="credential">
-        /// Optional. Reference to a server-managed Credential resource by ID.
-        /// </param>
         /// <param name="transform">
         /// Headers to inject on all outbound requests matching this domain. Accepts a single dict or a list of dicts. The egress proxy injects these automatically.
+        /// </param>
+        /// <param name="credential">
+        /// Optional. Reference to a server-managed Credential resource by ID.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AllowlistEntry(
             string domain,
-            string? credential,
-            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>, global::System.Collections.Generic.Dictionary<string, string>>? transform)
+            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>, global::System.Collections.Generic.Dictionary<string, string>>? transform,
+            string? credential)
         {
-            this.Credential = credential;
             this.Domain = domain ?? throw new global::System.ArgumentNullException(nameof(domain));
             this.Transform = transform;
+            this.Credential = credential;
         }
 
         /// <summary>

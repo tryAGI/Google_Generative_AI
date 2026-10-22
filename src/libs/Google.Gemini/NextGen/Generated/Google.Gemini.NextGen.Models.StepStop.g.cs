@@ -9,11 +9,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class StepStop
     {
         /// <summary>
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
-        public string? EventId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Index { get; set; }
 
         /// <summary>
         ///
@@ -23,11 +23,11 @@ namespace Google.Gemini.NextGen
         public required object EventType { get; set; }
 
         /// <summary>
-        ///
+        /// Statistics on the interaction request's token usage.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Index { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
+        public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
 
         /// <summary>
         /// Statistics on the interaction request's token usage.<br/>
@@ -37,11 +37,11 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.Usage? StepUsage { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
-        public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
+        public string? EventId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,35 +52,35 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="StepStop" /> class.
         /// </summary>
-        /// <param name="eventType"></param>
         /// <param name="index"></param>
-        /// <param name="eventId">
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
+        /// <param name="eventType"></param>
+        /// <param name="usage">
+        /// Statistics on the interaction request's token usage.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="stepUsage">
         /// Statistics on the interaction request's token usage.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="usage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// <param name="eventId">
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StepStop(
-            object eventType,
             int index,
-            string? eventId,
+            object eventType,
+            global::Google.Gemini.NextGen.Usage? usage,
             global::Google.Gemini.NextGen.Usage? stepUsage,
-            global::Google.Gemini.NextGen.Usage? usage)
+            string? eventId)
         {
-            this.EventId = eventId;
-            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.Index = index;
-            this.StepUsage = stepUsage;
+            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.Usage = usage;
+            this.StepUsage = stepUsage;
+            this.EventId = eventId;
         }
 
         /// <summary>
