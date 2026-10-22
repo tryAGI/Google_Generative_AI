@@ -11,6 +11,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class RetrievalResultDelta
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// Whether the retrieval resulted in an error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_error")]
@@ -21,13 +28,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
         public byte[]? Signature { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,9 +53,9 @@ namespace Google.Gemini.NextGen
             bool? isError,
             byte[]? signature)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.IsError = isError;
             this.Signature = signature;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

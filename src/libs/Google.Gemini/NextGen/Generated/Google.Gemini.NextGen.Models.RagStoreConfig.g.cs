@@ -17,12 +17,6 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.RagResource>? RagResources { get; set; }
 
         /// <summary>
-        /// Specifies the context retrieval config.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("rag_retrieval_config")]
-        public global::Google.Gemini.NextGen.RagRetrievalConfig? RagRetrievalConfig { get; set; }
-
-        /// <summary>
         /// Optional. Number of top k results to return from the selected corpora.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("similarity_top_k")]
@@ -35,6 +29,12 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("vector_distance_threshold")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public double? VectorDistanceThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the context retrieval config.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rag_retrieval_config")]
+        public global::Google.Gemini.NextGen.RagRetrievalConfig? RagRetrievalConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -9,6 +9,12 @@ namespace Google.Gemini.NextGen
     public sealed partial class SpeechConfig2
     {
         /// <summary>
+        /// The voice of the speaker.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        public string? Voice { get; set; }
+
+        /// <summary>
         /// The language of the speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
@@ -21,12 +27,6 @@ namespace Google.Gemini.NextGen
         public string? Speaker { get; set; }
 
         /// <summary>
-        /// The voice of the speaker.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        public string? Voice { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="SpeechConfig2" /> class.
         /// </summary>
+        /// <param name="voice">
+        /// The voice of the speaker.
+        /// </param>
         /// <param name="language">
         /// The language of the speech.
         /// </param>
         /// <param name="speaker">
         /// The speaker's name, it should match the speaker name given in the prompt.
         /// </param>
-        /// <param name="voice">
-        /// The voice of the speaker.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpeechConfig2(
+            string? voice,
             string? language,
-            string? speaker,
-            string? voice)
+            string? speaker)
         {
+            this.Voice = voice;
             this.Language = language;
             this.Speaker = speaker;
-            this.Voice = voice;
         }
 
         /// <summary>

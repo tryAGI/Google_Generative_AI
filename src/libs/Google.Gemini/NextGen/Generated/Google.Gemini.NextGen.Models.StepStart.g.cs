@@ -9,20 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class StepStart
     {
         /// <summary>
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
-        public string? EventId { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object EventType { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("index")]
@@ -38,6 +24,20 @@ namespace Google.Gemini.NextGen
         public required global::Google.Gemini.NextGen.Step Step { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object EventType { get; set; }
+
+        /// <summary>
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
+        public string? EventId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,11 +46,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="StepStart" /> class.
         /// </summary>
-        /// <param name="eventType"></param>
         /// <param name="index"></param>
         /// <param name="step">
         /// A step in the interaction.
         /// </param>
+        /// <param name="eventType"></param>
         /// <param name="eventId">
         /// The event_id token to be used to resume the interaction stream, from<br/>
         /// this event.
@@ -59,15 +59,15 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StepStart(
-            object eventType,
             int index,
             global::Google.Gemini.NextGen.Step step,
+            object eventType,
             string? eventId)
         {
-            this.EventId = eventId;
-            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.Index = index;
             this.Step = step;
+            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
+            this.EventId = eventId;
         }
 
         /// <summary>

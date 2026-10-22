@@ -9,10 +9,10 @@ namespace Google.Gemini.NextGen
     public sealed partial class RagRetrievalConfig
     {
         /// <summary>
-        /// Config for filters.
+        /// Optional. The number of contexts to retrieve.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("filter")]
-        public global::Google.Gemini.NextGen.Filter? Filter { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_k")]
+        public int? TopK { get; set; }
 
         /// <summary>
         /// Config for Hybrid Search.
@@ -21,16 +21,16 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.HybridSearch? HybridSearch { get; set; }
 
         /// <summary>
+        /// Config for filters.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filter")]
+        public global::Google.Gemini.NextGen.Filter? Filter { get; set; }
+
+        /// <summary>
         /// Config for ranking and reranking.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ranking")]
         public global::Google.Gemini.NextGen.Ranking? Ranking { get; set; }
-
-        /// <summary>
-        /// Optional. The number of contexts to retrieve.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("top_k")]
-        public int? TopK { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,31 +41,31 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="RagRetrievalConfig" /> class.
         /// </summary>
-        /// <param name="filter">
-        /// Config for filters.
+        /// <param name="topK">
+        /// Optional. The number of contexts to retrieve.
         /// </param>
         /// <param name="hybridSearch">
         /// Config for Hybrid Search.
         /// </param>
+        /// <param name="filter">
+        /// Config for filters.
+        /// </param>
         /// <param name="ranking">
         /// Config for ranking and reranking.
-        /// </param>
-        /// <param name="topK">
-        /// Optional. The number of contexts to retrieve.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RagRetrievalConfig(
-            global::Google.Gemini.NextGen.Filter? filter,
+            int? topK,
             global::Google.Gemini.NextGen.HybridSearch? hybridSearch,
-            global::Google.Gemini.NextGen.Ranking? ranking,
-            int? topK)
+            global::Google.Gemini.NextGen.Filter? filter,
+            global::Google.Gemini.NextGen.Ranking? ranking)
         {
-            this.Filter = filter;
-            this.HybridSearch = hybridSearch;
-            this.Ranking = ranking;
             this.TopK = topK;
+            this.HybridSearch = hybridSearch;
+            this.Filter = filter;
+            this.Ranking = ranking;
         }
 
         /// <summary>

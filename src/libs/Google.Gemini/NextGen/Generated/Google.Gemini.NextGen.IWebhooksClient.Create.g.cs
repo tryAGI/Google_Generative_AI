@@ -31,8 +31,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Creates a new Webhook.
         /// </summary>
-        /// <param name="name">
-        /// Optional. The user-provided name of the webhook.
+        /// <param name="uri">
+        /// Required. The URI to which webhook events will be sent.
         /// </param>
         /// <param name="subscribedEvents">
         /// Required. The events that the webhook is subscribed to.<br/>
@@ -45,15 +45,15 @@ namespace Google.Gemini.NextGen
         /// - interaction.failed<br/>
         /// - video.generated
         /// </param>
-        /// <param name="uri">
-        /// Required. The URI to which webhook events will be sent.
+        /// <param name="name">
+        /// Optional. The user-provided name of the webhook.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Webhook> CreateAsync(
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent> subscribedEvents,
             string uri,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent> subscribedEvents,
             string? name = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

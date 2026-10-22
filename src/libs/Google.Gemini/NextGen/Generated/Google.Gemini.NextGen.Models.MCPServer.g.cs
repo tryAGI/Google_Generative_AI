@@ -9,24 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class MCPServer
     {
         /// <summary>
-        /// The allowed tools.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("allowed_tools")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? AllowedTools { get; set; }
-
-        /// <summary>
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
-
-        /// <summary>
-        /// The name of the MCPServer.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -41,6 +23,24 @@ namespace Google.Gemini.NextGen
         public string? Url { get; set; }
 
         /// <summary>
+        /// The name of the MCPServer.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
+
+        /// <summary>
+        /// The allowed tools.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowed_tools")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? AllowedTools { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,34 +50,34 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="MCPServer" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="allowedTools">
-        /// The allowed tools.
-        /// </param>
-        /// <param name="headers">
-        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// <param name="url">
+        /// The full URL for the MCPServer endpoint.<br/>
+        /// Example: "https://api.example.com/mcp"
         /// </param>
         /// <param name="name">
         /// The name of the MCPServer.
         /// </param>
-        /// <param name="url">
-        /// The full URL for the MCPServer endpoint.<br/>
-        /// Example: "https://api.example.com/mcp"
+        /// <param name="headers">
+        /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+        /// </param>
+        /// <param name="allowedTools">
+        /// The allowed tools.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public MCPServer(
             object type,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? allowedTools,
-            global::System.Collections.Generic.Dictionary<string, string>? headers,
+            string? url,
             string? name,
-            string? url)
+            global::System.Collections.Generic.Dictionary<string, string>? headers,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? allowedTools)
         {
-            this.AllowedTools = allowedTools;
-            this.Headers = headers;
-            this.Name = name;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Url = url;
+            this.Name = name;
+            this.Headers = headers;
+            this.AllowedTools = allowedTools;
         }
 
         /// <summary>

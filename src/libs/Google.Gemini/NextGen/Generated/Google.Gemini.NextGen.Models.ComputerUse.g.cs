@@ -9,17 +9,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class ComputerUse
     {
         /// <summary>
-        /// Optional. Disabled safety policies for computer use.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("disabled_safety_policies")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>? DisabledSafetyPolicies { get; set; }
-
-        /// <summary>
-        /// Whether enable the prompt injection detection check on computer-use<br/>
-        /// request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("enable_prompt_injection_detection")]
-        public bool? EnablePromptInjectionDetection { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         /// The environment being operated.
@@ -35,11 +29,17 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<string>? ExcludedPredefinedFunctions { get; set; }
 
         /// <summary>
-        ///
+        /// Whether enable the prompt injection detection check on computer-use<br/>
+        /// request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_prompt_injection_detection")]
+        public bool? EnablePromptInjectionDetection { get; set; }
+
+        /// <summary>
+        /// Optional. Disabled safety policies for computer use.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("disabled_safety_policies")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>? DisabledSafetyPolicies { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,34 +51,34 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="ComputerUse" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="disabledSafetyPolicies">
-        /// Optional. Disabled safety policies for computer use.
-        /// </param>
-        /// <param name="enablePromptInjectionDetection">
-        /// Whether enable the prompt injection detection check on computer-use<br/>
-        /// request.
-        /// </param>
         /// <param name="environment">
         /// The environment being operated.
         /// </param>
         /// <param name="excludedPredefinedFunctions">
         /// The list of predefined functions that are excluded from the model call.
         /// </param>
+        /// <param name="enablePromptInjectionDetection">
+        /// Whether enable the prompt injection detection check on computer-use<br/>
+        /// request.
+        /// </param>
+        /// <param name="disabledSafetyPolicies">
+        /// Optional. Disabled safety policies for computer use.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ComputerUse(
             object type,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies,
-            bool? enablePromptInjectionDetection,
             global::Google.Gemini.NextGen.ComputerUseEnvironment? environment,
-            global::System.Collections.Generic.IList<string>? excludedPredefinedFunctions)
+            global::System.Collections.Generic.IList<string>? excludedPredefinedFunctions,
+            bool? enablePromptInjectionDetection,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies)
         {
-            this.DisabledSafetyPolicies = disabledSafetyPolicies;
-            this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Environment = environment;
             this.ExcludedPredefinedFunctions = excludedPredefinedFunctions;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
+            this.DisabledSafetyPolicies = disabledSafetyPolicies;
         }
 
         /// <summary>

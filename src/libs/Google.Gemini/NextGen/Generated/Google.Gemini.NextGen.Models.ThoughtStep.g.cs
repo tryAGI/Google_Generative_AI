@@ -10,6 +10,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class ThoughtStep
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// A signature hash for backend validation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
@@ -20,13 +27,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ThoughtSummaryContent>? Summary { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,9 +52,9 @@ namespace Google.Gemini.NextGen
             byte[]? signature,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ThoughtSummaryContent>? summary)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Signature = signature;
             this.Summary = summary;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

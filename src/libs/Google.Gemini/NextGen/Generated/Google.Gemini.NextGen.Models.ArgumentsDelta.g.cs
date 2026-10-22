@@ -11,15 +11,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
-        public string? Arguments { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
+        public string? Arguments { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,8 +39,8 @@ namespace Google.Gemini.NextGen
             object type,
             string? arguments)
         {
-            this.Arguments = arguments;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Arguments = arguments;
         }
 
         /// <summary>

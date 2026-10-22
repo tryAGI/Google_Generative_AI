@@ -9,22 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class EnvironmentVariableUpdateConfig
     {
         /// <summary>
-        /// Optional. Locations where the environment variable can be injected in<br/>
-        /// outgoing HTTP requests.<br/>
-        /// Accepts either a single location (e.g. "header") or an array of locations.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("injection_location")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>? InjectionLocation { get; set; }
-
-        /// <summary>
-        /// Optional. List of domains allowed to receive this environment variable<br/>
-        /// value in HTTP requests.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("trusted_domains")]
-        public global::System.Collections.Generic.IList<string>? TrustedDomains { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -40,6 +24,22 @@ namespace Google.Gemini.NextGen
         public string? Value { get; set; }
 
         /// <summary>
+        /// Optional. List of domains allowed to receive this environment variable<br/>
+        /// value in HTTP requests.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trusted_domains")]
+        public global::System.Collections.Generic.IList<string>? TrustedDomains { get; set; }
+
+        /// <summary>
+        /// Optional. Locations where the environment variable can be injected in<br/>
+        /// outgoing HTTP requests.<br/>
+        /// Accepts either a single location (e.g. "header") or an array of locations.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("injection_location")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>? InjectionLocation { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,33 +49,33 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="EnvironmentVariableUpdateConfig" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="injectionLocation">
-        /// Optional. Locations where the environment variable can be injected in<br/>
-        /// outgoing HTTP requests.<br/>
-        /// Accepts either a single location (e.g. "header") or an array of locations.
+        /// <param name="value">
+        /// Optional. Input only. Secret value of the environment variable. Write-only; never<br/>
+        /// returned in responses.<br/>
+        /// Included only in requests
         /// </param>
         /// <param name="trustedDomains">
         /// Optional. List of domains allowed to receive this environment variable<br/>
         /// value in HTTP requests.
         /// </param>
-        /// <param name="value">
-        /// Optional. Input only. Secret value of the environment variable. Write-only; never<br/>
-        /// returned in responses.<br/>
-        /// Included only in requests
+        /// <param name="injectionLocation">
+        /// Optional. Locations where the environment variable can be injected in<br/>
+        /// outgoing HTTP requests.<br/>
+        /// Accepts either a single location (e.g. "header") or an array of locations.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentVariableUpdateConfig(
             object type,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>? injectionLocation,
+            string? value,
             global::System.Collections.Generic.IList<string>? trustedDomains,
-            string? value)
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>? injectionLocation)
         {
-            this.InjectionLocation = injectionLocation;
-            this.TrustedDomains = trustedDomains;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Value = value;
+            this.TrustedDomains = trustedDomains;
+            this.InjectionLocation = injectionLocation;
         }
 
         /// <summary>

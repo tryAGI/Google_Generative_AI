@@ -10,24 +10,23 @@ namespace Google.Gemini.NextGen
     public sealed partial class VideoContent
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// The video content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public byte[]? Data { get; set; }
 
         /// <summary>
-        /// The mime type of the video.
+        /// The URI of the video.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.VideoContentMimeTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.VideoContentMimeType? MimeType { get; set; }
-
-        /// <summary>
-        /// A user-defined name for this content block. Can be referenced by the model<br/>
-        /// in the final response.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// How the model processes this video for understanding.
@@ -44,17 +43,18 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.MediaResolution? Resolution { get; set; }
 
         /// <summary>
-        ///
+        /// A user-defined name for this content block. Can be referenced by the model<br/>
+        /// in the final response.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
-        /// The URI of the video.
+        /// The mime type of the video.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.VideoContentMimeTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.VideoContentMimeType? MimeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -69,19 +69,19 @@ namespace Google.Gemini.NextGen
         /// <param name="data">
         /// The video content.
         /// </param>
-        /// <param name="mimeType">
-        /// The mime type of the video.
-        /// </param>
-        /// <param name="name">
-        /// A user-defined name for this content block. Can be referenced by the model<br/>
-        /// in the final response.
+        /// <param name="uri">
+        /// The URI of the video.
         /// </param>
         /// <param name="processing">
         /// How the model processes this video for understanding.
         /// </param>
         /// <param name="resolution"></param>
-        /// <param name="uri">
-        /// The URI of the video.
+        /// <param name="name">
+        /// A user-defined name for this content block. Can be referenced by the model<br/>
+        /// in the final response.
+        /// </param>
+        /// <param name="mimeType">
+        /// The mime type of the video.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -89,19 +89,19 @@ namespace Google.Gemini.NextGen
         public VideoContent(
             object type,
             byte[]? data,
-            global::Google.Gemini.NextGen.VideoContentMimeType? mimeType,
-            string? name,
+            string? uri,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? processing,
             global::Google.Gemini.NextGen.MediaResolution? resolution,
-            string? uri)
+            string? name,
+            global::Google.Gemini.NextGen.VideoContentMimeType? mimeType)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Data = data;
-            this.MimeType = mimeType;
-            this.Name = name;
+            this.Uri = uri;
             this.Processing = processing;
             this.Resolution = resolution;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-            this.Uri = uri;
+            this.Name = name;
+            this.MimeType = mimeType;
         }
 
         /// <summary>

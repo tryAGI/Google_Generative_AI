@@ -11,26 +11,26 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("place_id")]
         public string? PlaceId { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("review_snippets")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ReviewSnippet>? ReviewSnippets { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("review_snippets")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ReviewSnippet>? ReviewSnippets { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,23 +41,23 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleMapsResultPlaces" /> class.
         /// </summary>
-        /// <param name="name"></param>
         /// <param name="placeId"></param>
-        /// <param name="reviewSnippets"></param>
+        /// <param name="name"></param>
         /// <param name="url"></param>
+        /// <param name="reviewSnippets"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleMapsResultPlaces(
-            string? name,
             string? placeId,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ReviewSnippet>? reviewSnippets,
-            string? url)
+            string? name,
+            string? url,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ReviewSnippet>? reviewSnippets)
         {
-            this.Name = name;
             this.PlaceId = placeId;
-            this.ReviewSnippets = reviewSnippets;
+            this.Name = name;
             this.Url = url;
+            this.ReviewSnippets = reviewSnippets;
         }
 
         /// <summary>

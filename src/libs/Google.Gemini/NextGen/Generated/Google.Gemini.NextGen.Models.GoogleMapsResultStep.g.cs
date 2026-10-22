@@ -10,6 +10,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class GoogleMapsResultStep
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("result")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleMapsResult2> Result { get; set; }
+
+        /// <summary>
         /// Required. ID to match the ID from the function call block.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
@@ -19,22 +26,15 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("result")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleMapsResult2> Result { get; set; }
+        public required object Type { get; set; }
 
         /// <summary>
         /// A signature hash for backend validation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
         public byte[]? Signature { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,10 +45,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleMapsResultStep" /> class.
         /// </summary>
+        /// <param name="result"></param>
         /// <param name="callId">
         /// Required. ID to match the ID from the function call block.
         /// </param>
-        /// <param name="result"></param>
         /// <param name="type"></param>
         /// <param name="signature">
         /// A signature hash for backend validation.
@@ -57,15 +57,15 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleMapsResultStep(
-            string callId,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleMapsResult2> result,
+            string callId,
             object type,
             byte[]? signature)
         {
-            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
-            this.Signature = signature;
+            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Signature = signature;
         }
 
         /// <summary>

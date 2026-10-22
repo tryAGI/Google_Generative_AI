@@ -9,6 +9,14 @@ namespace Google.Gemini.NextGen
     public sealed partial class CreateVoiceRequest
     {
         /// <summary>
+        /// A voice resource representing either a custom voice (created via<br/>
+        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Google.Gemini.NextGen.Voice Voice { get; set; }
+
+        /// <summary>
         /// Optional. Whether the created voice is persisted and managed by Google.<br/>
         /// * When `true`, Google stores the voice and returns `Voice.id` (for example,<br/>
         ///   `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,<br/>
@@ -26,14 +34,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("store")]
         public bool? Store { get; set; }
-
-        /// <summary>
-        /// A voice resource representing either a custom voice (created via<br/>
-        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.Voice Voice { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -71,8 +71,8 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.Voice voice,
             bool? store)
         {
-            this.Store = store;
             this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
+            this.Store = store;
         }
 
         /// <summary>

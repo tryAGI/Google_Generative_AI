@@ -9,6 +9,20 @@ namespace Google.Gemini.NextGen
     public sealed partial class HttpBearerUpdateConfig
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The static bearer token. Write-only; never returned in responses.<br/>
+        /// Included only in requests
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("token")]
+        public string? Token { get; set; }
+
+        /// <summary>
         /// Optional. Header name to inject the token into. Defaults to<br/>
         /// 'Authorization'.
         /// </summary>
@@ -23,20 +37,6 @@ namespace Google.Gemini.NextGen
         public string? Prefix { get; set; }
 
         /// <summary>
-        /// Optional. Input only. The static bearer token. Write-only; never returned in responses.<br/>
-        /// Included only in requests
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("token")]
-        public string? Token { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,6 +46,10 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="HttpBearerUpdateConfig" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="token">
+        /// Optional. Input only. The static bearer token. Write-only; never returned in responses.<br/>
+        /// Included only in requests
+        /// </param>
         /// <param name="headerName">
         /// Optional. Header name to inject the token into. Defaults to<br/>
         /// 'Authorization'.
@@ -54,23 +58,19 @@ namespace Google.Gemini.NextGen
         /// Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''<br/>
         /// for no prefix.
         /// </param>
-        /// <param name="token">
-        /// Optional. Input only. The static bearer token. Write-only; never returned in responses.<br/>
-        /// Included only in requests
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public HttpBearerUpdateConfig(
             object type,
+            string? token,
             string? headerName,
-            string? prefix,
-            string? token)
+            string? prefix)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Token = token;
             this.HeaderName = headerName;
             this.Prefix = prefix;
-            this.Token = token;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

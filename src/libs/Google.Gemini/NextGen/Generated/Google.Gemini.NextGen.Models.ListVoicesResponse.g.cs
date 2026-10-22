@@ -9,17 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class ListVoicesResponse
     {
         /// <summary>
+        /// The voices from the specified collection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voices")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Voice>? Voices { get; set; }
+
+        /// <summary>
         /// A token that can be sent as `page_token` to retrieve the next page.<br/>
         /// If empty, there are no subsequent pages.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page_token")]
         public string? NextPageToken { get; set; }
-
-        /// <summary>
-        /// The voices from the specified collection.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voices")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Voice>? Voices { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,22 +30,22 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="ListVoicesResponse" /> class.
         /// </summary>
+        /// <param name="voices">
+        /// The voices from the specified collection.
+        /// </param>
         /// <param name="nextPageToken">
         /// A token that can be sent as `page_token` to retrieve the next page.<br/>
         /// If empty, there are no subsequent pages.
-        /// </param>
-        /// <param name="voices">
-        /// The voices from the specified collection.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListVoicesResponse(
-            string? nextPageToken,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Voice>? voices)
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Voice>? voices,
+            string? nextPageToken)
         {
-            this.NextPageToken = nextPageToken;
             this.Voices = voices;
+            this.NextPageToken = nextPageToken;
         }
 
         /// <summary>

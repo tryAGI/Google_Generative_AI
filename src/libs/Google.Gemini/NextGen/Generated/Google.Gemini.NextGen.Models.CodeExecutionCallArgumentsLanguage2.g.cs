@@ -11,6 +11,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        Bash,
+        /// <summary>
+        ///
+        /// </summary>
         Python,
     }
 
@@ -26,6 +30,7 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
+                CodeExecutionCallArgumentsLanguage2.Bash => "bash",
                 CodeExecutionCallArgumentsLanguage2.Python => "python",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -37,6 +42,7 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
+                "bash" => CodeExecutionCallArgumentsLanguage2.Bash,
                 "python" => CodeExecutionCallArgumentsLanguage2.Python,
                 _ => null,
             };

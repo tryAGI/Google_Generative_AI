@@ -15,11 +15,10 @@ namespace Google.Gemini.NextGen
         public string? Name { get; set; }
 
         /// <summary>
-        /// Optional. The state of the webhook.
+        /// Optional. The URI to which webhook events will be sent.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateStateJsonConverter))]
-        public global::Google.Gemini.NextGen.WebhookUpdateState? State { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
+        public string? Uri { get; set; }
 
         /// <summary>
         /// Optional. The events that the webhook is subscribed to.<br/>
@@ -36,10 +35,11 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? SubscribedEvents { get; set; }
 
         /// <summary>
-        /// Optional. The URI to which webhook events will be sent.
+        /// Optional. The state of the webhook.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
-        public string? Uri { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.WebhookUpdateStateJsonConverter))]
+        public global::Google.Gemini.NextGen.WebhookUpdateState? State { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,8 +53,8 @@ namespace Google.Gemini.NextGen
         /// <param name="name">
         /// Optional. The user-provided name of the webhook.
         /// </param>
-        /// <param name="state">
-        /// Optional. The state of the webhook.
+        /// <param name="uri">
+        /// Optional. The URI to which webhook events will be sent.
         /// </param>
         /// <param name="subscribedEvents">
         /// Optional. The events that the webhook is subscribed to.<br/>
@@ -67,22 +67,22 @@ namespace Google.Gemini.NextGen
         /// - interaction.failed<br/>
         /// - video.generated
         /// </param>
-        /// <param name="uri">
-        /// Optional. The URI to which webhook events will be sent.
+        /// <param name="state">
+        /// Optional. The state of the webhook.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public WebhookUpdate(
             string? name,
-            global::Google.Gemini.NextGen.WebhookUpdateState? state,
+            string? uri,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? subscribedEvents,
-            string? uri)
+            global::Google.Gemini.NextGen.WebhookUpdateState? state)
         {
             this.Name = name;
-            this.State = state;
-            this.SubscribedEvents = subscribedEvents;
             this.Uri = uri;
+            this.SubscribedEvents = subscribedEvents;
+            this.State = state;
         }
 
         /// <summary>

@@ -69,6 +69,10 @@ namespace Google.Gemini.NextGen
         /// (`VOICE_TYPE_PROMPTED`) or from reference and consent audio recordings<br/>
         /// (`VOICE_TYPE_REPLICATED`).
         /// </summary>
+        /// <param name="voice">
+        /// A voice resource representing either a custom voice (created via<br/>
+        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
+        /// </param>
         /// <param name="store">
         /// Optional. Whether the created voice is persisted and managed by Google.<br/>
         /// * When `true`, Google stores the voice and returns `Voice.id` (for example,<br/>
@@ -84,10 +88,6 @@ namespace Google.Gemini.NextGen
         ///   persisted or returned when `store` is `false`.<br/>
         /// * Required to be `true` when `voice.type` is `"prompted"`<br/>
         ///   (otherwise fails with `INVALID_ARGUMENT`).
-        /// </param>
-        /// <param name="voice">
-        /// A voice resource representing either a custom voice (created via<br/>
-        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

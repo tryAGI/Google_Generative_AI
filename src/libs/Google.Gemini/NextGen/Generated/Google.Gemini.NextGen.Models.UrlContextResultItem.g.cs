@@ -9,17 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class UrlContextResultItem
     {
         /// <summary>
+        /// The URL that was fetched.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
         /// The status of the URL retrieval.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.UrlContextResultItemStatusJsonConverter))]
         public global::Google.Gemini.NextGen.UrlContextResultItemStatus? Status { get; set; }
-
-        /// <summary>
-        /// The URL that was fetched.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,21 +30,21 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="UrlContextResultItem" /> class.
         /// </summary>
-        /// <param name="status">
-        /// The status of the URL retrieval.
-        /// </param>
         /// <param name="url">
         /// The URL that was fetched.
+        /// </param>
+        /// <param name="status">
+        /// The status of the URL retrieval.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UrlContextResultItem(
-            global::Google.Gemini.NextGen.UrlContextResultItemStatus? status,
-            string? url)
+            string? url,
+            global::Google.Gemini.NextGen.UrlContextResultItemStatus? status)
         {
-            this.Status = status;
             this.Url = url;
+            this.Status = status;
         }
 
         /// <summary>

@@ -10,11 +10,25 @@ namespace Google.Gemini.NextGen
     public sealed partial class GoogleSearchResultStep
     {
         /// <summary>
+        /// Required. The results of the Google Search.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("result")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult2> Result { get; set; }
+
+        /// <summary>
         /// Required. ID to match the ID from the function call block.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CallId { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
 
         /// <summary>
         /// Whether the Google Search resulted in an error.
@@ -23,24 +37,10 @@ namespace Google.Gemini.NextGen
         public bool? IsError { get; set; }
 
         /// <summary>
-        /// Required. The results of the Google Search.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("result")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult2> Result { get; set; }
-
-        /// <summary>
         /// A signature hash for backend validation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
         public byte[]? Signature { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,11 +51,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleSearchResultStep" /> class.
         /// </summary>
-        /// <param name="callId">
-        /// Required. ID to match the ID from the function call block.
-        /// </param>
         /// <param name="result">
         /// Required. The results of the Google Search.
+        /// </param>
+        /// <param name="callId">
+        /// Required. ID to match the ID from the function call block.
         /// </param>
         /// <param name="type"></param>
         /// <param name="isError">
@@ -68,17 +68,17 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleSearchResultStep(
-            string callId,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult2> result,
+            string callId,
             object type,
             bool? isError,
             byte[]? signature)
         {
-            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
-            this.IsError = isError;
             this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
-            this.Signature = signature;
+            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.IsError = isError;
+            this.Signature = signature;
         }
 
         /// <summary>

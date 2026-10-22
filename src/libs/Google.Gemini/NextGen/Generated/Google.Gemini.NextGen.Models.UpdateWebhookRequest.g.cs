@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class UpdateWebhookRequest
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webhook")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Google.Gemini.NextGen.WebhookUpdate Webhook { get; set; }
+
+        /// <summary>
         /// Required. The ID of the webhook to update.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -22,13 +29,6 @@ namespace Google.Gemini.NextGen
         public string? UpdateMask { get; set; }
 
         /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("webhook")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.WebhookUpdate Webhook { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,10 +37,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateWebhookRequest" /> class.
         /// </summary>
+        /// <param name="webhook"></param>
         /// <param name="id">
         /// Required. The ID of the webhook to update.
         /// </param>
-        /// <param name="webhook"></param>
         /// <param name="updateMask">
         /// Optional. The list of fields to update.
         /// </param>
@@ -48,13 +48,13 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateWebhookRequest(
-            string id,
             global::Google.Gemini.NextGen.WebhookUpdate webhook,
+            string id,
             string? updateMask)
         {
+            this.Webhook = webhook ?? throw new global::System.ArgumentNullException(nameof(webhook));
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.UpdateMask = updateMask;
-            this.Webhook = webhook ?? throw new global::System.ArgumentNullException(nameof(webhook));
         }
 
         /// <summary>

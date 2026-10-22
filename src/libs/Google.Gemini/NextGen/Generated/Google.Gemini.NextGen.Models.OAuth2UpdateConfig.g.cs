@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class OAuth2UpdateConfig
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// Optional. OAuth2 client ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("client_id")]
@@ -29,23 +36,16 @@ namespace Google.Gemini.NextGen
         public string? RefreshToken { get; set; }
 
         /// <summary>
-        /// Optional. List of OAuth2 scopes.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("scopes")]
-        public global::System.Collections.Generic.IList<string>? Scopes { get; set; }
-
-        /// <summary>
         /// Optional. OAuth2 token endpoint URL for refreshing access tokens.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("token_url")]
         public string? TokenUrl { get; set; }
 
         /// <summary>
-        ///
+        /// Optional. List of OAuth2 scopes.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("scopes")]
+        public global::System.Collections.Generic.IList<string>? Scopes { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,11 +68,11 @@ namespace Google.Gemini.NextGen
         /// Optional. Input only. OAuth2 refresh token. Write-only; never returned in responses.<br/>
         /// Included only in requests
         /// </param>
-        /// <param name="scopes">
-        /// Optional. List of OAuth2 scopes.
-        /// </param>
         /// <param name="tokenUrl">
         /// Optional. OAuth2 token endpoint URL for refreshing access tokens.
+        /// </param>
+        /// <param name="scopes">
+        /// Optional. List of OAuth2 scopes.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -82,15 +82,15 @@ namespace Google.Gemini.NextGen
             string? clientId,
             string? clientSecret,
             string? refreshToken,
-            global::System.Collections.Generic.IList<string>? scopes,
-            string? tokenUrl)
+            string? tokenUrl,
+            global::System.Collections.Generic.IList<string>? scopes)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
             this.RefreshToken = refreshToken;
-            this.Scopes = scopes;
             this.TokenUrl = tokenUrl;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Scopes = scopes;
         }
 
         /// <summary>

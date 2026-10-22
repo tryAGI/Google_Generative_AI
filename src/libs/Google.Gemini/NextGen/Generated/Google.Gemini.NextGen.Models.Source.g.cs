@@ -9,16 +9,11 @@ namespace Google.Gemini.NextGen
     public sealed partial class Source
     {
         /// <summary>
-        /// The inline content if `type` is `INLINE`.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
-
-        /// <summary>
-        /// Optional encoding for inline content (e.g. `base64`).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
-        public string? Encoding { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.SourceTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.SourceType? Type { get; set; }
 
         /// <summary>
         /// The source of the environment.<br/>
@@ -35,11 +30,16 @@ namespace Google.Gemini.NextGen
         public string? Target { get; set; }
 
         /// <summary>
-        ///
+        /// The inline content if `type` is `INLINE`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.SourceTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.SourceType? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
+
+        /// <summary>
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
+        public string? Encoding { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -50,12 +50,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="Source" /> class.
         /// </summary>
-        /// <param name="content">
-        /// The inline content if `type` is `INLINE`.
-        /// </param>
-        /// <param name="encoding">
-        /// Optional encoding for inline content (e.g. `base64`).
-        /// </param>
+        /// <param name="type"></param>
         /// <param name="source1">
         /// The source of the environment.<br/>
         /// For Cloud Storage, this is the Cloud Storage path.<br/>
@@ -64,22 +59,27 @@ namespace Google.Gemini.NextGen
         /// <param name="target">
         /// Where the source should appear in the environment.
         /// </param>
-        /// <param name="type"></param>
+        /// <param name="content">
+        /// The inline content if `type` is `INLINE`.
+        /// </param>
+        /// <param name="encoding">
+        /// Optional encoding for inline content (e.g. `base64`).
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Source(
-            string? content,
-            string? encoding,
+            global::Google.Gemini.NextGen.SourceType? type,
             string? source1,
             string? target,
-            global::Google.Gemini.NextGen.SourceType? type)
+            string? content,
+            string? encoding)
         {
-            this.Content = content;
-            this.Encoding = encoding;
+            this.Type = type;
             this.Source1 = source1;
             this.Target = target;
-            this.Type = type;
+            this.Content = content;
+            this.Encoding = encoding;
         }
 
         /// <summary>

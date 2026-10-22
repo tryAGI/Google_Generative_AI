@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class ErrorEvent
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object EventType { get; set; }
+
+        /// <summary>
         /// Error message from an interaction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
@@ -20,13 +27,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
         public string? EventId { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object EventType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,9 +53,9 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.Error? error,
             string? eventId)
         {
+            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.Error = error;
             this.EventId = eventId;
-            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
         }
 
         /// <summary>

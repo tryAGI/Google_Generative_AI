@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class GoogleMaps
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// Whether to return a widget context token in the tool call result of the<br/>
         /// response.
         /// </summary>
@@ -26,13 +33,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("longitude")]
         public double? Longitude { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,10 +63,10 @@ namespace Google.Gemini.NextGen
             double? latitude,
             double? longitude)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.EnableWidget = enableWidget;
             this.Latitude = latitude;
             this.Longitude = longitude;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

@@ -10,6 +10,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class TextResponseFormat
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// The MIME type of the text output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
@@ -18,17 +25,16 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// The JSON schema that the output should conform to. Only applicable when<br/>
-        /// mime_type is application/json.
+        /// mime_type is application/json.<br/>
+        /// Supports a subset of JSON Schema. `minLength`, `maxLength`,<br/>
+        /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,<br/>
+        /// `minContains`, and `maxContains` are ignored and not enforced; validate<br/>
+        /// these in your application. `minItems` and `maxItems` are enforced. Schemas<br/>
+        /// that are too complex to enforce (for example, large `maxItems` on nested<br/>
+        /// arrays) return a 400 INVALID_ARGUMENT error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schema")]
         public object? Schema { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,7 +51,13 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="schema">
         /// The JSON schema that the output should conform to. Only applicable when<br/>
-        /// mime_type is application/json.
+        /// mime_type is application/json.<br/>
+        /// Supports a subset of JSON Schema. `minLength`, `maxLength`,<br/>
+        /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,<br/>
+        /// `minContains`, and `maxContains` are ignored and not enforced; validate<br/>
+        /// these in your application. `minItems` and `maxItems` are enforced. Schemas<br/>
+        /// that are too complex to enforce (for example, large `maxItems` on nested<br/>
+        /// arrays) return a 400 INVALID_ARGUMENT error.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -55,9 +67,9 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.TextResponseFormatMimeType? mimeType,
             object? schema)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.MimeType = mimeType;
             this.Schema = schema;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

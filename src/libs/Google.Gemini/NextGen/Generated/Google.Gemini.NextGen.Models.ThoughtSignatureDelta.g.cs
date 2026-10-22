@@ -9,17 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class ThoughtSignatureDelta
     {
         /// <summary>
-        /// Signature to match the backend source to be part of the generation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
-        public byte[]? Signature { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        /// Signature to match the backend source to be part of the generation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
+        public byte[]? Signature { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,8 +41,8 @@ namespace Google.Gemini.NextGen
             object type,
             byte[]? signature)
         {
-            this.Signature = signature;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Signature = signature;
         }
 
         /// <summary>

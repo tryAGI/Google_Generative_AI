@@ -11,21 +11,9 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_error")]
-        public bool? IsError { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult> Result { get; set; }
-
-        /// <summary>
-        /// A signature hash for backend validation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
-        public byte[]? Signature { get; set; }
 
         /// <summary>
         ///
@@ -33,6 +21,18 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_error")]
+        public bool? IsError { get; set; }
+
+        /// <summary>
+        /// A signature hash for backend validation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
+        public byte[]? Signature { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -58,10 +58,10 @@ namespace Google.Gemini.NextGen
             bool? isError,
             byte[]? signature)
         {
-            this.IsError = isError;
             this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
-            this.Signature = signature;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.IsError = isError;
+            this.Signature = signature;
         }
 
         /// <summary>

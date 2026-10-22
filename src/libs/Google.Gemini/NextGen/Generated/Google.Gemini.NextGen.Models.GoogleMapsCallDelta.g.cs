@@ -9,6 +9,13 @@ namespace Google.Gemini.NextGen
     public sealed partial class GoogleMapsCallDelta
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// The arguments to pass to the Google Maps tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
@@ -19,13 +26,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
         public byte[]? Signature { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,9 +51,9 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.GoogleMapsCallArguments? arguments,
             byte[]? signature)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Arguments = arguments;
             this.Signature = signature;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

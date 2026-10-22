@@ -481,26 +481,26 @@ namespace Google.Gemini.NextGen
         /// Updates a trigger.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="displayName">
-        /// Optional. The display name of the trigger.
-        /// </param>
         /// <param name="status">
         /// Optional. The status of the trigger.
+        /// </param>
+        /// <param name="displayName">
+        /// Optional. The display name of the trigger.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Trigger> UpdateAsync(
             string id,
-            string? displayName = default,
             global::Google.Gemini.NextGen.TriggerUpdateStatus? status = default,
+            string? displayName = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.NextGen.TriggerUpdate
             {
-                DisplayName = displayName,
                 Status = status,
+                DisplayName = displayName,
             };
 
             return await UpdateAsync(

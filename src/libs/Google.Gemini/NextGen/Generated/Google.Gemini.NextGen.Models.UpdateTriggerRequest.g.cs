@@ -9,18 +9,18 @@ namespace Google.Gemini.NextGen
     public sealed partial class UpdateTriggerRequest
     {
         /// <summary>
-        /// Required. The ID of the trigger to update.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
-
-        /// <summary>
         /// Represents the fields of a Trigger that can be updated.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("trigger")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Google.Gemini.NextGen.TriggerUpdate Trigger { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the trigger to update.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
 
         /// <summary>
         /// Optional. The update mask applies to the resource.
@@ -37,11 +37,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateTriggerRequest" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Required. The ID of the trigger to update.
-        /// </param>
         /// <param name="trigger">
         /// Represents the fields of a Trigger that can be updated.
+        /// </param>
+        /// <param name="id">
+        /// Required. The ID of the trigger to update.
         /// </param>
         /// <param name="updateMask">
         /// Optional. The update mask applies to the resource.
@@ -50,12 +50,12 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateTriggerRequest(
-            string id,
             global::Google.Gemini.NextGen.TriggerUpdate trigger,
+            string id,
             string? updateMask)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Trigger = trigger ?? throw new global::System.ArgumentNullException(nameof(trigger));
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.UpdateMask = updateMask;
         }
 

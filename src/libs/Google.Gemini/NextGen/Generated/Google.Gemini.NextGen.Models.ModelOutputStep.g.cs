@@ -12,6 +12,13 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>? Content { get; set; }
 
@@ -25,13 +32,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         public global::Google.Gemini.NextGen.Status? Error { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,9 +60,9 @@ namespace Google.Gemini.NextGen
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>? content,
             global::Google.Gemini.NextGen.Status? error)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Content = content;
             this.Error = error;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

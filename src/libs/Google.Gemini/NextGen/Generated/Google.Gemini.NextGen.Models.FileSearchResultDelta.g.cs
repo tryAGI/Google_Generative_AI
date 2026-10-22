@@ -16,17 +16,17 @@ namespace Google.Gemini.NextGen
         public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.FileSearchResult> Result { get; set; }
 
         /// <summary>
-        /// A signature hash for backend validation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
-        public byte[]? Signature { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        /// A signature hash for backend validation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("signature")]
+        public byte[]? Signature { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,8 +51,8 @@ namespace Google.Gemini.NextGen
             byte[]? signature)
         {
             this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
-            this.Signature = signature;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Signature = signature;
         }
 
         /// <summary>

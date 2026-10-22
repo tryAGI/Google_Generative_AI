@@ -11,17 +11,17 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Index { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("delta")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.StepDeltaDataJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Google.Gemini.NextGen.StepDeltaData Delta { get; set; }
-
-        /// <summary>
-        /// The event_id token to be used to resume the interaction stream, from<br/>
-        /// this event.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
-        public string? EventId { get; set; }
 
         /// <summary>
         ///
@@ -31,11 +31,11 @@ namespace Google.Gemini.NextGen
         public required object EventType { get; set; }
 
         /// <summary>
-        ///
+        /// The event_id token to be used to resume the interaction stream, from<br/>
+        /// this event.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Index { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_id")]
+        public string? EventId { get; set; }
 
         /// <summary>
         /// Optional metadata accompanying ANY streamed event.
@@ -52,9 +52,9 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="StepDelta" /> class.
         /// </summary>
+        /// <param name="index"></param>
         /// <param name="delta"></param>
         /// <param name="eventType"></param>
-        /// <param name="index"></param>
         /// <param name="eventId">
         /// The event_id token to be used to resume the interaction stream, from<br/>
         /// this event.
@@ -66,16 +66,16 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StepDelta(
+            int index,
             global::Google.Gemini.NextGen.StepDeltaData delta,
             object eventType,
-            int index,
             string? eventId,
             global::Google.Gemini.NextGen.StepDeltaMetadata? metadata)
         {
-            this.Delta = delta;
-            this.EventId = eventId;
-            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
             this.Index = index;
+            this.Delta = delta;
+            this.EventType = eventType ?? throw new global::System.ArgumentNullException(nameof(eventType));
+            this.EventId = eventId;
             this.Metadata = metadata;
         }
 

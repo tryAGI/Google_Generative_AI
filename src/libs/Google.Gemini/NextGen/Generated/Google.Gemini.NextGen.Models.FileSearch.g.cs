@@ -9,16 +9,17 @@ namespace Google.Gemini.NextGen
     public sealed partial class FileSearch
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
         /// The file search store names to search.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file_search_store_names")]
         public global::System.Collections.Generic.IList<string>? FileSearchStoreNames { get; set; }
-
-        /// <summary>
-        /// Metadata filter to apply to the semantic retrieval documents and chunks.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_filter")]
-        public string? MetadataFilter { get; set; }
 
         /// <summary>
         /// The number of semantic retrieval chunks to retrieve.
@@ -27,11 +28,10 @@ namespace Google.Gemini.NextGen
         public int? TopK { get; set; }
 
         /// <summary>
-        ///
+        /// Metadata filter to apply to the semantic retrieval documents and chunks.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_filter")]
+        public string? MetadataFilter { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -46,11 +46,11 @@ namespace Google.Gemini.NextGen
         /// <param name="fileSearchStoreNames">
         /// The file search store names to search.
         /// </param>
-        /// <param name="metadataFilter">
-        /// Metadata filter to apply to the semantic retrieval documents and chunks.
-        /// </param>
         /// <param name="topK">
         /// The number of semantic retrieval chunks to retrieve.
+        /// </param>
+        /// <param name="metadataFilter">
+        /// Metadata filter to apply to the semantic retrieval documents and chunks.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -58,13 +58,13 @@ namespace Google.Gemini.NextGen
         public FileSearch(
             object type,
             global::System.Collections.Generic.IList<string>? fileSearchStoreNames,
-            string? metadataFilter,
-            int? topK)
+            int? topK,
+            string? metadataFilter)
         {
-            this.FileSearchStoreNames = fileSearchStoreNames;
-            this.MetadataFilter = metadataFilter;
-            this.TopK = topK;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.FileSearchStoreNames = fileSearchStoreNames;
+            this.TopK = topK;
+            this.MetadataFilter = metadataFilter;
         }
 
         /// <summary>

@@ -10,19 +10,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class MCPServerToolResultStep
     {
         /// <summary>
-        /// Required. ID to match the ID from the function call block.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string CallId { get; set; }
-
-        /// <summary>
-        /// Name of the tool which is called for this specific tool call.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// Required. The output from the MCP server call. Can be simple text or rich content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
@@ -31,10 +18,11 @@ namespace Google.Gemini.NextGen
         public required global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string> Result { get; set; }
 
         /// <summary>
-        /// The name of the used MCP server.
+        /// Required. ID to match the ID from the function call block.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("server_name")]
-        public string? ServerName { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string CallId { get; set; }
 
         /// <summary>
         ///
@@ -42,6 +30,18 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Type { get; set; }
+
+        /// <summary>
+        /// Name of the tool which is called for this specific tool call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The name of the used MCP server.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("server_name")]
+        public string? ServerName { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,11 +52,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="MCPServerToolResultStep" /> class.
         /// </summary>
-        /// <param name="callId">
-        /// Required. ID to match the ID from the function call block.
-        /// </param>
         /// <param name="result">
         /// Required. The output from the MCP server call. Can be simple text or rich content.
+        /// </param>
+        /// <param name="callId">
+        /// Required. ID to match the ID from the function call block.
         /// </param>
         /// <param name="type"></param>
         /// <param name="name">
@@ -69,17 +69,17 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public MCPServerToolResultStep(
-            string callId,
             global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string> result,
+            string callId,
             object type,
             string? name,
             string? serverName)
         {
-            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
-            this.Name = name;
             this.Result = result;
-            this.ServerName = serverName;
+            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Name = name;
+            this.ServerName = serverName;
         }
 
         /// <summary>

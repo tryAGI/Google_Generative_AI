@@ -9,6 +9,20 @@ namespace Google.Gemini.NextGen
     public sealed partial class StaticMediaProcessing
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Type { get; set; }
+
+        /// <summary>
+        /// Optional. Segment start time. Specified as a decimal number of seconds followed<br/>
+        /// by an 's' suffix, e.g., "10.5s". Must be non-negative.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_offset")]
+        public string? StartOffset { get; set; }
+
+        /// <summary>
         /// Optional. Segment end time. Specified as a decimal number of seconds followed<br/>
         /// by an 's' suffix, e.g., "30s". Must be non-negative and greater than<br/>
         /// `start_offset` if `start_offset` is set.
@@ -23,20 +37,6 @@ namespace Google.Gemini.NextGen
         public double? Fps { get; set; }
 
         /// <summary>
-        /// Optional. Segment start time. Specified as a decimal number of seconds followed<br/>
-        /// by an 's' suffix, e.g., "10.5s". Must be non-negative.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("start_offset")]
-        public string? StartOffset { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Type { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,6 +46,10 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="StaticMediaProcessing" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="startOffset">
+        /// Optional. Segment start time. Specified as a decimal number of seconds followed<br/>
+        /// by an 's' suffix, e.g., "10.5s". Must be non-negative.
+        /// </param>
         /// <param name="endOffset">
         /// Optional. Segment end time. Specified as a decimal number of seconds followed<br/>
         /// by an 's' suffix, e.g., "30s". Must be non-negative and greater than<br/>
@@ -54,23 +58,19 @@ namespace Google.Gemini.NextGen
         /// <param name="fps">
         /// Optional. Video frame-rate sampling density.
         /// </param>
-        /// <param name="startOffset">
-        /// Optional. Segment start time. Specified as a decimal number of seconds followed<br/>
-        /// by an 's' suffix, e.g., "10.5s". Must be non-negative.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StaticMediaProcessing(
             object type,
+            string? startOffset,
             string? endOffset,
-            double? fps,
-            string? startOffset)
+            double? fps)
         {
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.StartOffset = startOffset;
             this.EndOffset = endOffset;
             this.Fps = fps;
-            this.StartOffset = startOffset;
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>
