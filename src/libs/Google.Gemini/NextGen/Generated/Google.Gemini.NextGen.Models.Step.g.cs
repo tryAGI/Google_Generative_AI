@@ -10,8 +10,7 @@ namespace Google.Gemini.NextGen
     public readonly partial struct Step : global::System.IEquatable<Step>
     {
         /// <summary>
-        /// Code execution call step.<br/>
-        /// Example: {"type":"code_execution_call","arguments":{"code":"print(sum(range(1, 11)))","language":"python"},"id":"code_call_71021"}
+        /// Code execution call step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.CodeExecutionCallStep? CodeExecutionCall { get; init; }
@@ -48,8 +47,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecutionCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Code execution result step.<br/>
-        /// Example: {"type":"code_execution_result","call_id":"code_call_71021","result":"55\n"}
+        /// Code execution result step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.CodeExecutionResultStep? CodeExecutionResult { get; init; }
@@ -86,8 +84,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'CodeExecutionResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// File Search call step.<br/>
-        /// Example: {"type":"file_search_call","id":"file_call_88192"}
+        /// File Search call step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FileSearchCallStep? FileSearchCall { get; init; }
@@ -124,8 +121,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileSearchCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// File Search result step.<br/>
-        /// Example: {"type":"file_search_result","call_id":"file_call_88192"}
+        /// File Search result step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FileSearchResultStep? FileSearchResult { get; init; }
@@ -162,8 +158,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileSearchResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// A function tool call step.<br/>
-        /// Example: {"name":"get_weather","type":"function_call","arguments":{"location":"Boston, MA"},"id":"call_98231"}
+        /// A function tool call step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FunctionCallStep? FunctionCall { get; init; }
@@ -200,8 +195,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Result of a function tool call.<br/>
-        /// Example: {"name":"get_weather","type":"function_result","call_id":"call_98231","result":[{"type":"text","text":"{\u0022weather\u0022:\u0022sunny\u0022}"}]}
+        /// Result of a function tool call.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.FunctionResultStep? FunctionResult { get; init; }
@@ -238,8 +232,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Maps call step.<br/>
-        /// Example: {"type":"google_maps_call","arguments":{"queries":["parks near San Francisco"]},"id":"maps_call_39201"}
+        /// Google Maps call step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleMapsCallStep? GoogleMapsCall { get; init; }
@@ -276,8 +269,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleMapsCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Maps result step.<br/>
-        /// Example: {"type":"google_maps_result","call_id":"maps_call_39201","result":[{"places":[{"url":"https://maps.google.com/?cid=12345","name":"Golden Gate Park","place_id":"ChIJIQBpAG2ahYAR9R7bNdTLg8M"}]}]}
+        /// Google Maps result step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleMapsResultStep? GoogleMapsResult { get; init; }
@@ -314,8 +306,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleMapsResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Search call step.<br/>
-        /// Example: {"type":"google_search_call","arguments":{"queries":["Who won the men\u0027s 100m in Paris 2024?"]},"id":"search_call_19201"}
+        /// Google Search call step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleSearchCallStep? GoogleSearchCall { get; init; }
@@ -352,8 +343,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearchCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// Google Search result step.<br/>
-        /// Example: {"type":"google_search_result","call_id":"search_call_19201","result":[{"search_suggestions":"\u003Cdiv class=\u0022container\u0022\u003E...\u003C/div\u003E"}]}
+        /// Google Search result step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.GoogleSearchResultStep? GoogleSearchResult { get; init; }
@@ -390,84 +380,81 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'GoogleSearchResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// MCPServer tool call step.<br/>
-        /// Example: {"name":"calculate_tax","type":"mcp_server_tool_call","arguments":{"income":120000,"state":"CA"},"id":"mcp_call_29012","server_name":"financial_mcp_server"}
+        /// MCPServer tool call step.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Google.Gemini.NextGen.MCPServerToolCallStep? MCPServerToolCall { get; init; }
+        public global::Google.Gemini.NextGen.McpServerToolCallStep? McpServerToolCall { get; init; }
 #else
-        public global::Google.Gemini.NextGen.MCPServerToolCallStep? MCPServerToolCall { get; }
+        public global::Google.Gemini.NextGen.McpServerToolCallStep? McpServerToolCall { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MCPServerToolCall))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(McpServerToolCall))]
 #endif
-        public bool IsMCPServerToolCall => MCPServerToolCall != null;
+        public bool IsMcpServerToolCall => McpServerToolCall != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickMCPServerToolCall(
+        public bool TryPickMcpServerToolCall(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Google.Gemini.NextGen.MCPServerToolCallStep? value)
+            out global::Google.Gemini.NextGen.McpServerToolCallStep? value)
         {
-            value = MCPServerToolCall;
-            return IsMCPServerToolCall;
+            value = McpServerToolCall;
+            return IsMcpServerToolCall;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MCPServerToolCallStep PickMCPServerToolCall() => MCPServerToolCall is { } value
+        public global::Google.Gemini.NextGen.McpServerToolCallStep PickMcpServerToolCall() => McpServerToolCall is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServerToolCall' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'McpServerToolCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// MCPServer tool result step.<br/>
-        /// Example: {"name":"calculate_tax","type":"mcp_server_tool_result","call_id":"mcp_call_29012","result":{"tax_due":32400},"server_name":"financial_mcp_server"}
+        /// MCPServer tool result step.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Google.Gemini.NextGen.MCPServerToolResultStep? MCPServerToolResult { get; init; }
+        public global::Google.Gemini.NextGen.McpServerToolResultStep? McpServerToolResult { get; init; }
 #else
-        public global::Google.Gemini.NextGen.MCPServerToolResultStep? MCPServerToolResult { get; }
+        public global::Google.Gemini.NextGen.McpServerToolResultStep? McpServerToolResult { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MCPServerToolResult))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(McpServerToolResult))]
 #endif
-        public bool IsMCPServerToolResult => MCPServerToolResult != null;
+        public bool IsMcpServerToolResult => McpServerToolResult != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickMCPServerToolResult(
+        public bool TryPickMcpServerToolResult(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Google.Gemini.NextGen.MCPServerToolResultStep? value)
+            out global::Google.Gemini.NextGen.McpServerToolResultStep? value)
         {
-            value = MCPServerToolResult;
-            return IsMCPServerToolResult;
+            value = McpServerToolResult;
+            return IsMcpServerToolResult;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MCPServerToolResultStep PickMCPServerToolResult() => MCPServerToolResult is { } value
+        public global::Google.Gemini.NextGen.McpServerToolResultStep PickMcpServerToolResult() => McpServerToolResult is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServerToolResult' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'McpServerToolResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Output generated by the model.<br/>
-        /// Example: {"type":"model_output","content":[{"type":"text","text":"The capital of France is Paris."}]}
+        /// Output generated by the model.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ModelOutputStep? ModelOutput { get; init; }
@@ -579,86 +566,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'ProcessingResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Retrieval call step.<br/>
-        /// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,<br/>
-        /// etc. RetrievalType decides which tool is used.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Google.Gemini.NextGen.RetrievalCallStep? RetrievalCall { get; init; }
-#else
-        public global::Google.Gemini.NextGen.RetrievalCallStep? RetrievalCall { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetrievalCall))]
-#endif
-        public bool IsRetrievalCall => RetrievalCall != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickRetrievalCall(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Google.Gemini.NextGen.RetrievalCallStep? value)
-        {
-            value = RetrievalCall;
-            return IsRetrievalCall;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Google.Gemini.NextGen.RetrievalCallStep PickRetrievalCall() => RetrievalCall is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'RetrievalCall' but the value was {ToString()}.");
-
-        /// <summary>
-        /// Vertex Retrieval result step.<br/>
-        /// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,<br/>
-        /// etc.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Google.Gemini.NextGen.RetrievalResultStep? RetrievalResult { get; init; }
-#else
-        public global::Google.Gemini.NextGen.RetrievalResultStep? RetrievalResult { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetrievalResult))]
-#endif
-        public bool IsRetrievalResult => RetrievalResult != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickRetrievalResult(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Google.Gemini.NextGen.RetrievalResultStep? value)
-        {
-            value = RetrievalResult;
-            return IsRetrievalResult;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Google.Gemini.NextGen.RetrievalResultStep PickRetrievalResult() => RetrievalResult is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'RetrievalResult' but the value was {ToString()}.");
-
-        /// <summary>
-        /// A thought step.<br/>
-        /// Example: {"type":"thought","signature":"thought_sig_abcd1234","summary":[{"type":"text","text":"The model is searching Google for the capital of France."}]}
+        /// A thought step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ThoughtStep? Thought { get; init; }
@@ -695,8 +603,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Thought' but the value was {ToString()}.");
 
         /// <summary>
-        /// URL context call step.<br/>
-        /// Example: {"type":"url_context_call","arguments":{"urls":["https://www.example.com"]},"id":"url_call_10219"}
+        /// URL context call step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.URLContextCallStep? URLContextCall { get; init; }
@@ -733,8 +640,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContextCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// URL context result step.<br/>
-        /// Example: {"type":"url_context_result","call_id":"url_call_10219","result":[{"url":"https://www.example.com","status":"success"}]}
+        /// URL context result step.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.URLContextResultStep? URLContextResult { get; init; }
@@ -771,8 +677,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'URLContextResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// Input provided by the user.<br/>
-        /// Example: {"type":"user_input","content":[{"type":"text","text":"What is the capital of France?"}]}
+        /// Input provided by the user.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.UserInputStep? UserInput { get; init; }
@@ -1040,48 +945,48 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Step(global::Google.Gemini.NextGen.MCPServerToolCallStep value) => new Step((global::Google.Gemini.NextGen.MCPServerToolCallStep?)value);
+        public static implicit operator Step(global::Google.Gemini.NextGen.McpServerToolCallStep value) => new Step((global::Google.Gemini.NextGen.McpServerToolCallStep?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Google.Gemini.NextGen.MCPServerToolCallStep?(Step @this) => @this.MCPServerToolCall;
+        public static implicit operator global::Google.Gemini.NextGen.McpServerToolCallStep?(Step @this) => @this.McpServerToolCall;
 
         /// <summary>
         ///
         /// </summary>
-        public Step(global::Google.Gemini.NextGen.MCPServerToolCallStep? value)
+        public Step(global::Google.Gemini.NextGen.McpServerToolCallStep? value)
         {
-            MCPServerToolCall = value;
+            McpServerToolCall = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static Step FromMCPServerToolCall(global::Google.Gemini.NextGen.MCPServerToolCallStep? value) => new Step(value);
+        public static Step FromMcpServerToolCall(global::Google.Gemini.NextGen.McpServerToolCallStep? value) => new Step(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Step(global::Google.Gemini.NextGen.MCPServerToolResultStep value) => new Step((global::Google.Gemini.NextGen.MCPServerToolResultStep?)value);
+        public static implicit operator Step(global::Google.Gemini.NextGen.McpServerToolResultStep value) => new Step((global::Google.Gemini.NextGen.McpServerToolResultStep?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Google.Gemini.NextGen.MCPServerToolResultStep?(Step @this) => @this.MCPServerToolResult;
+        public static implicit operator global::Google.Gemini.NextGen.McpServerToolResultStep?(Step @this) => @this.McpServerToolResult;
 
         /// <summary>
         ///
         /// </summary>
-        public Step(global::Google.Gemini.NextGen.MCPServerToolResultStep? value)
+        public Step(global::Google.Gemini.NextGen.McpServerToolResultStep? value)
         {
-            MCPServerToolResult = value;
+            McpServerToolResult = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static Step FromMCPServerToolResult(global::Google.Gemini.NextGen.MCPServerToolResultStep? value) => new Step(value);
+        public static Step FromMcpServerToolResult(global::Google.Gemini.NextGen.McpServerToolResultStep? value) => new Step(value);
 
         /// <summary>
         ///
@@ -1151,52 +1056,6 @@ namespace Google.Gemini.NextGen
         ///
         /// </summary>
         public static Step FromProcessingResult(global::Google.Gemini.NextGen.ProcessingResultStep? value) => new Step(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Step(global::Google.Gemini.NextGen.RetrievalCallStep value) => new Step((global::Google.Gemini.NextGen.RetrievalCallStep?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Google.Gemini.NextGen.RetrievalCallStep?(Step @this) => @this.RetrievalCall;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Step(global::Google.Gemini.NextGen.RetrievalCallStep? value)
-        {
-            RetrievalCall = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Step FromRetrievalCall(global::Google.Gemini.NextGen.RetrievalCallStep? value) => new Step(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Step(global::Google.Gemini.NextGen.RetrievalResultStep value) => new Step((global::Google.Gemini.NextGen.RetrievalResultStep?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Google.Gemini.NextGen.RetrievalResultStep?(Step @this) => @this.RetrievalResult;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Step(global::Google.Gemini.NextGen.RetrievalResultStep? value)
-        {
-            RetrievalResult = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Step FromRetrievalResult(global::Google.Gemini.NextGen.RetrievalResultStep? value) => new Step(value);
 
         /// <summary>
         ///
@@ -1304,13 +1163,11 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.GoogleMapsResultStep? googleMapsResult,
             global::Google.Gemini.NextGen.GoogleSearchCallStep? googleSearchCall,
             global::Google.Gemini.NextGen.GoogleSearchResultStep? googleSearchResult,
-            global::Google.Gemini.NextGen.MCPServerToolCallStep? mCPServerToolCall,
-            global::Google.Gemini.NextGen.MCPServerToolResultStep? mCPServerToolResult,
+            global::Google.Gemini.NextGen.McpServerToolCallStep? mcpServerToolCall,
+            global::Google.Gemini.NextGen.McpServerToolResultStep? mcpServerToolResult,
             global::Google.Gemini.NextGen.ModelOutputStep? modelOutput,
             global::Google.Gemini.NextGen.ProcessingCallStep? processingCall,
             global::Google.Gemini.NextGen.ProcessingResultStep? processingResult,
-            global::Google.Gemini.NextGen.RetrievalCallStep? retrievalCall,
-            global::Google.Gemini.NextGen.RetrievalResultStep? retrievalResult,
             global::Google.Gemini.NextGen.ThoughtStep? thought,
             global::Google.Gemini.NextGen.URLContextCallStep? uRLContextCall,
             global::Google.Gemini.NextGen.URLContextResultStep? uRLContextResult,
@@ -1327,13 +1184,11 @@ namespace Google.Gemini.NextGen
             GoogleMapsResult = googleMapsResult;
             GoogleSearchCall = googleSearchCall;
             GoogleSearchResult = googleSearchResult;
-            MCPServerToolCall = mCPServerToolCall;
-            MCPServerToolResult = mCPServerToolResult;
+            McpServerToolCall = mcpServerToolCall;
+            McpServerToolResult = mcpServerToolResult;
             ModelOutput = modelOutput;
             ProcessingCall = processingCall;
             ProcessingResult = processingResult;
-            RetrievalCall = retrievalCall;
-            RetrievalResult = retrievalResult;
             Thought = thought;
             URLContextCall = uRLContextCall;
             URLContextResult = uRLContextResult;
@@ -1348,13 +1203,11 @@ namespace Google.Gemini.NextGen
             URLContextResult as object ??
             URLContextCall as object ??
             Thought as object ??
-            RetrievalResult as object ??
-            RetrievalCall as object ??
             ProcessingResult as object ??
             ProcessingCall as object ??
             ModelOutput as object ??
-            MCPServerToolResult as object ??
-            MCPServerToolCall as object ??
+            McpServerToolResult as object ??
+            McpServerToolCall as object ??
             GoogleSearchResult as object ??
             GoogleSearchCall as object ??
             GoogleMapsResult as object ??
@@ -1381,13 +1234,11 @@ namespace Google.Gemini.NextGen
             GoogleMapsResult?.ToString() ??
             GoogleSearchCall?.ToString() ??
             GoogleSearchResult?.ToString() ??
-            MCPServerToolCall?.ToString() ??
-            MCPServerToolResult?.ToString() ??
+            McpServerToolCall?.ToString() ??
+            McpServerToolResult?.ToString() ??
             ModelOutput?.ToString() ??
             ProcessingCall?.ToString() ??
             ProcessingResult?.ToString() ??
-            RetrievalCall?.ToString() ??
-            RetrievalResult?.ToString() ??
             Thought?.ToString() ??
             URLContextCall?.ToString() ??
             URLContextResult?.ToString() ??
@@ -1399,7 +1250,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public bool Validate()
         {
-            return IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMCPServerToolCall && !IsMCPServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsRetrievalCall && !IsRetrievalResult && !IsThought && !IsURLContextCall && !IsURLContextResult && IsUserInput;
+            return IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && IsThought && !IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && IsURLContextCall && !IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && IsURLContextResult && !IsUserInput || !IsCodeExecutionCall && !IsCodeExecutionResult && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionCall && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsModelOutput && !IsProcessingCall && !IsProcessingResult && !IsThought && !IsURLContextCall && !IsURLContextResult && IsUserInput;
         }
 
         /// <summary>
@@ -1416,13 +1267,11 @@ namespace Google.Gemini.NextGen
             global::System.Func<global::Google.Gemini.NextGen.GoogleMapsResultStep, TResult>? googleMapsResult = null,
             global::System.Func<global::Google.Gemini.NextGen.GoogleSearchCallStep, TResult>? googleSearchCall = null,
             global::System.Func<global::Google.Gemini.NextGen.GoogleSearchResultStep, TResult>? googleSearchResult = null,
-            global::System.Func<global::Google.Gemini.NextGen.MCPServerToolCallStep, TResult>? mCPServerToolCall = null,
-            global::System.Func<global::Google.Gemini.NextGen.MCPServerToolResultStep, TResult>? mCPServerToolResult = null,
+            global::System.Func<global::Google.Gemini.NextGen.McpServerToolCallStep, TResult>? mcpServerToolCall = null,
+            global::System.Func<global::Google.Gemini.NextGen.McpServerToolResultStep, TResult>? mcpServerToolResult = null,
             global::System.Func<global::Google.Gemini.NextGen.ModelOutputStep, TResult>? modelOutput = null,
             global::System.Func<global::Google.Gemini.NextGen.ProcessingCallStep, TResult>? processingCall = null,
             global::System.Func<global::Google.Gemini.NextGen.ProcessingResultStep, TResult>? processingResult = null,
-            global::System.Func<global::Google.Gemini.NextGen.RetrievalCallStep, TResult>? retrievalCall = null,
-            global::System.Func<global::Google.Gemini.NextGen.RetrievalResultStep, TResult>? retrievalResult = null,
             global::System.Func<global::Google.Gemini.NextGen.ThoughtStep, TResult>? thought = null,
             global::System.Func<global::Google.Gemini.NextGen.URLContextCallStep, TResult>? uRLContextCall = null,
             global::System.Func<global::Google.Gemini.NextGen.URLContextResultStep, TResult>? uRLContextResult = null,
@@ -1474,13 +1323,13 @@ namespace Google.Gemini.NextGen
             {
                 return googleSearchResult(__value9);
             }
-            else if (MCPServerToolCall is { } __value10 && mCPServerToolCall != null)
+            else if (McpServerToolCall is { } __value10 && mcpServerToolCall != null)
             {
-                return mCPServerToolCall(__value10);
+                return mcpServerToolCall(__value10);
             }
-            else if (MCPServerToolResult is { } __value11 && mCPServerToolResult != null)
+            else if (McpServerToolResult is { } __value11 && mcpServerToolResult != null)
             {
-                return mCPServerToolResult(__value11);
+                return mcpServerToolResult(__value11);
             }
             else if (ModelOutput is { } __value12 && modelOutput != null)
             {
@@ -1494,29 +1343,21 @@ namespace Google.Gemini.NextGen
             {
                 return processingResult(__value14);
             }
-            else if (RetrievalCall is { } __value15 && retrievalCall != null)
+            else if (Thought is { } __value15 && thought != null)
             {
-                return retrievalCall(__value15);
+                return thought(__value15);
             }
-            else if (RetrievalResult is { } __value16 && retrievalResult != null)
+            else if (URLContextCall is { } __value16 && uRLContextCall != null)
             {
-                return retrievalResult(__value16);
+                return uRLContextCall(__value16);
             }
-            else if (Thought is { } __value17 && thought != null)
+            else if (URLContextResult is { } __value17 && uRLContextResult != null)
             {
-                return thought(__value17);
+                return uRLContextResult(__value17);
             }
-            else if (URLContextCall is { } __value18 && uRLContextCall != null)
+            else if (UserInput is { } __value18 && userInput != null)
             {
-                return uRLContextCall(__value18);
-            }
-            else if (URLContextResult is { } __value19 && uRLContextResult != null)
-            {
-                return uRLContextResult(__value19);
-            }
-            else if (UserInput is { } __value20 && userInput != null)
-            {
-                return userInput(__value20);
+                return userInput(__value18);
             }
 
             return default(TResult);
@@ -1546,19 +1387,15 @@ namespace Google.Gemini.NextGen
 
             global::System.Action<global::Google.Gemini.NextGen.GoogleSearchResultStep>? googleSearchResult = null,
 
-            global::System.Action<global::Google.Gemini.NextGen.MCPServerToolCallStep>? mCPServerToolCall = null,
+            global::System.Action<global::Google.Gemini.NextGen.McpServerToolCallStep>? mcpServerToolCall = null,
 
-            global::System.Action<global::Google.Gemini.NextGen.MCPServerToolResultStep>? mCPServerToolResult = null,
+            global::System.Action<global::Google.Gemini.NextGen.McpServerToolResultStep>? mcpServerToolResult = null,
 
             global::System.Action<global::Google.Gemini.NextGen.ModelOutputStep>? modelOutput = null,
 
             global::System.Action<global::Google.Gemini.NextGen.ProcessingCallStep>? processingCall = null,
 
             global::System.Action<global::Google.Gemini.NextGen.ProcessingResultStep>? processingResult = null,
-
-            global::System.Action<global::Google.Gemini.NextGen.RetrievalCallStep>? retrievalCall = null,
-
-            global::System.Action<global::Google.Gemini.NextGen.RetrievalResultStep>? retrievalResult = null,
 
             global::System.Action<global::Google.Gemini.NextGen.ThoughtStep>? thought = null,
 
@@ -1614,13 +1451,13 @@ namespace Google.Gemini.NextGen
             {
                 googleSearchResult?.Invoke(__value9);
             }
-            else if (MCPServerToolCall is { } __value10)
+            else if (McpServerToolCall is { } __value10)
             {
-                mCPServerToolCall?.Invoke(__value10);
+                mcpServerToolCall?.Invoke(__value10);
             }
-            else if (MCPServerToolResult is { } __value11)
+            else if (McpServerToolResult is { } __value11)
             {
-                mCPServerToolResult?.Invoke(__value11);
+                mcpServerToolResult?.Invoke(__value11);
             }
             else if (ModelOutput is { } __value12)
             {
@@ -1634,29 +1471,21 @@ namespace Google.Gemini.NextGen
             {
                 processingResult?.Invoke(__value14);
             }
-            else if (RetrievalCall is { } __value15)
+            else if (Thought is { } __value15)
             {
-                retrievalCall?.Invoke(__value15);
+                thought?.Invoke(__value15);
             }
-            else if (RetrievalResult is { } __value16)
+            else if (URLContextCall is { } __value16)
             {
-                retrievalResult?.Invoke(__value16);
+                uRLContextCall?.Invoke(__value16);
             }
-            else if (Thought is { } __value17)
+            else if (URLContextResult is { } __value17)
             {
-                thought?.Invoke(__value17);
+                uRLContextResult?.Invoke(__value17);
             }
-            else if (URLContextCall is { } __value18)
+            else if (UserInput is { } __value18)
             {
-                uRLContextCall?.Invoke(__value18);
-            }
-            else if (URLContextResult is { } __value19)
-            {
-                uRLContextResult?.Invoke(__value19);
-            }
-            else if (UserInput is { } __value20)
-            {
-                userInput?.Invoke(__value20);
+                userInput?.Invoke(__value18);
             }
         }
 
@@ -1674,13 +1503,11 @@ namespace Google.Gemini.NextGen
             global::System.Action<global::Google.Gemini.NextGen.GoogleMapsResultStep>? googleMapsResult = null,
             global::System.Action<global::Google.Gemini.NextGen.GoogleSearchCallStep>? googleSearchCall = null,
             global::System.Action<global::Google.Gemini.NextGen.GoogleSearchResultStep>? googleSearchResult = null,
-            global::System.Action<global::Google.Gemini.NextGen.MCPServerToolCallStep>? mCPServerToolCall = null,
-            global::System.Action<global::Google.Gemini.NextGen.MCPServerToolResultStep>? mCPServerToolResult = null,
+            global::System.Action<global::Google.Gemini.NextGen.McpServerToolCallStep>? mcpServerToolCall = null,
+            global::System.Action<global::Google.Gemini.NextGen.McpServerToolResultStep>? mcpServerToolResult = null,
             global::System.Action<global::Google.Gemini.NextGen.ModelOutputStep>? modelOutput = null,
             global::System.Action<global::Google.Gemini.NextGen.ProcessingCallStep>? processingCall = null,
             global::System.Action<global::Google.Gemini.NextGen.ProcessingResultStep>? processingResult = null,
-            global::System.Action<global::Google.Gemini.NextGen.RetrievalCallStep>? retrievalCall = null,
-            global::System.Action<global::Google.Gemini.NextGen.RetrievalResultStep>? retrievalResult = null,
             global::System.Action<global::Google.Gemini.NextGen.ThoughtStep>? thought = null,
             global::System.Action<global::Google.Gemini.NextGen.URLContextCallStep>? uRLContextCall = null,
             global::System.Action<global::Google.Gemini.NextGen.URLContextResultStep>? uRLContextResult = null,
@@ -1732,13 +1559,13 @@ namespace Google.Gemini.NextGen
             {
                 googleSearchResult?.Invoke(__value9);
             }
-            else if (MCPServerToolCall is { } __value10)
+            else if (McpServerToolCall is { } __value10)
             {
-                mCPServerToolCall?.Invoke(__value10);
+                mcpServerToolCall?.Invoke(__value10);
             }
-            else if (MCPServerToolResult is { } __value11)
+            else if (McpServerToolResult is { } __value11)
             {
-                mCPServerToolResult?.Invoke(__value11);
+                mcpServerToolResult?.Invoke(__value11);
             }
             else if (ModelOutput is { } __value12)
             {
@@ -1752,29 +1579,21 @@ namespace Google.Gemini.NextGen
             {
                 processingResult?.Invoke(__value14);
             }
-            else if (RetrievalCall is { } __value15)
+            else if (Thought is { } __value15)
             {
-                retrievalCall?.Invoke(__value15);
+                thought?.Invoke(__value15);
             }
-            else if (RetrievalResult is { } __value16)
+            else if (URLContextCall is { } __value16)
             {
-                retrievalResult?.Invoke(__value16);
+                uRLContextCall?.Invoke(__value16);
             }
-            else if (Thought is { } __value17)
+            else if (URLContextResult is { } __value17)
             {
-                thought?.Invoke(__value17);
+                uRLContextResult?.Invoke(__value17);
             }
-            else if (URLContextCall is { } __value18)
+            else if (UserInput is { } __value18)
             {
-                uRLContextCall?.Invoke(__value18);
-            }
-            else if (URLContextResult is { } __value19)
-            {
-                uRLContextResult?.Invoke(__value19);
-            }
-            else if (UserInput is { } __value20)
-            {
-                userInput?.Invoke(__value20);
+                userInput?.Invoke(__value18);
             }
         }
 
@@ -1805,20 +1624,16 @@ namespace Google.Gemini.NextGen
                 typeof(global::Google.Gemini.NextGen.GoogleSearchCallStep),
                 GoogleSearchResult,
                 typeof(global::Google.Gemini.NextGen.GoogleSearchResultStep),
-                MCPServerToolCall,
-                typeof(global::Google.Gemini.NextGen.MCPServerToolCallStep),
-                MCPServerToolResult,
-                typeof(global::Google.Gemini.NextGen.MCPServerToolResultStep),
+                McpServerToolCall,
+                typeof(global::Google.Gemini.NextGen.McpServerToolCallStep),
+                McpServerToolResult,
+                typeof(global::Google.Gemini.NextGen.McpServerToolResultStep),
                 ModelOutput,
                 typeof(global::Google.Gemini.NextGen.ModelOutputStep),
                 ProcessingCall,
                 typeof(global::Google.Gemini.NextGen.ProcessingCallStep),
                 ProcessingResult,
                 typeof(global::Google.Gemini.NextGen.ProcessingResultStep),
-                RetrievalCall,
-                typeof(global::Google.Gemini.NextGen.RetrievalCallStep),
-                RetrievalResult,
-                typeof(global::Google.Gemini.NextGen.RetrievalResultStep),
                 Thought,
                 typeof(global::Google.Gemini.NextGen.ThoughtStep),
                 URLContextCall,
@@ -1853,13 +1668,11 @@ namespace Google.Gemini.NextGen
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.GoogleMapsResultStep?>.Default.Equals(GoogleMapsResult, other.GoogleMapsResult) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.GoogleSearchCallStep?>.Default.Equals(GoogleSearchCall, other.GoogleSearchCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.GoogleSearchResultStep?>.Default.Equals(GoogleSearchResult, other.GoogleSearchResult) &&
-                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.MCPServerToolCallStep?>.Default.Equals(MCPServerToolCall, other.MCPServerToolCall) &&
-                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.MCPServerToolResultStep?>.Default.Equals(MCPServerToolResult, other.MCPServerToolResult) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.McpServerToolCallStep?>.Default.Equals(McpServerToolCall, other.McpServerToolCall) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.McpServerToolResultStep?>.Default.Equals(McpServerToolResult, other.McpServerToolResult) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ModelOutputStep?>.Default.Equals(ModelOutput, other.ModelOutput) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ProcessingCallStep?>.Default.Equals(ProcessingCall, other.ProcessingCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ProcessingResultStep?>.Default.Equals(ProcessingResult, other.ProcessingResult) &&
-                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.RetrievalCallStep?>.Default.Equals(RetrievalCall, other.RetrievalCall) &&
-                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.RetrievalResultStep?>.Default.Equals(RetrievalResult, other.RetrievalResult) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ThoughtStep?>.Default.Equals(Thought, other.Thought) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.URLContextCallStep?>.Default.Equals(URLContextCall, other.URLContextCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.URLContextResultStep?>.Default.Equals(URLContextResult, other.URLContextResult) &&

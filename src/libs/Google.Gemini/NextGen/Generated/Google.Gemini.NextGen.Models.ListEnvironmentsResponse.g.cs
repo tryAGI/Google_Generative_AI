@@ -12,7 +12,7 @@ namespace Google.Gemini.NextGen
         /// Environments belonging to the provided project.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environments")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Environment2>? Environments { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Environment3>? Environments { get; set; }
 
         /// <summary>
         /// Pagination token.
@@ -39,7 +39,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListEnvironmentsResponse(
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Environment2>? environments,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Environment3>? environments,
             string? nextPageToken)
         {
             this.Environments = environments;

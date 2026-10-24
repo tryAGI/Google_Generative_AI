@@ -11,10 +11,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        Deferred,
-        /// <summary>
-        ///
-        /// </summary>
         Flex,
         /// <summary>
         ///
@@ -38,7 +34,6 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
-                ServiceTier.Deferred => "deferred",
                 ServiceTier.Flex => "flex",
                 ServiceTier.Priority => "priority",
                 ServiceTier.Standard => "standard",
@@ -52,7 +47,6 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
-                "deferred" => ServiceTier.Deferred,
                 "flex" => ServiceTier.Flex,
                 "priority" => ServiceTier.Priority,
                 "standard" => ServiceTier.Standard,

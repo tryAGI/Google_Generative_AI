@@ -27,13 +27,11 @@ namespace Google.Gemini.NextGen
             };
         partial void PrepareRotateSigningSecretArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string id,
-            global::Google.Gemini.NextGen.RotateSigningSecretRequest request);
+            ref string id);
         partial void PrepareRotateSigningSecretRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string id,
-            global::Google.Gemini.NextGen.RotateSigningSecretRequest request);
+            string id);
         partial void ProcessRotateSigningSecretResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,21 +45,16 @@ namespace Google.Gemini.NextGen
         /// Generates a new signing secret for a Webhook.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse> RotateSigningSecretAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.RotateSigningSecretResponse> RotateSigningSecretAsync(
             string id,
-
-            global::Google.Gemini.NextGen.RotateSigningSecretRequest request,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await RotateSigningSecretAsResponseAsync(
                 id: id,
-
-                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -72,25 +65,19 @@ namespace Google.Gemini.NextGen
         /// Generates a new signing secret for a Webhook.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse>> RotateSigningSecretAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.RotateSigningSecretResponse>> RotateSigningSecretAsResponseAsync(
             string id,
-
-            global::Google.Gemini.NextGen.RotateSigningSecretRequest request,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareRotateSigningSecretArguments(
                 httpClient: HttpClient,
-                id: ref id,
-                request: request);
+                id: ref id);
 
 
             var __authorizations = global::Google.Gemini.NextGen.EndPointSecurityResolver.ResolveAuthorizations(
@@ -147,12 +134,6 @@ namespace Google.Gemini.NextGen
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -164,8 +145,7 @@ namespace Google.Gemini.NextGen
                 PrepareRotateSigningSecretRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id,
-                    request: request);
+                    id: id);
 
                 return __httpRequest;
             }
@@ -349,19 +329,19 @@ namespace Google.Gemini.NextGen
                             {
                                 string? __content_default = null;
                                 global::System.Exception? __exception_default = null;
-                                global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse? __value_default = null;
+                                global::Google.Gemini.NextGen.RotateSigningSecretResponse? __value_default = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_default = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_default = global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse.FromJson(__content_default, JsonSerializerContext);
+                                        __value_default = global::Google.Gemini.NextGen.RotateSigningSecretResponse.FromJson(__content_default, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_default = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_default = global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse.FromJson(__content_default, JsonSerializerContext);
+                                        __value_default = global::Google.Gemini.NextGen.RotateSigningSecretResponse.FromJson(__content_default, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -370,7 +350,7 @@ namespace Google.Gemini.NextGen
                                 }
 
 
-                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse>.Create(
+                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.RotateSigningSecretResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_default ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_default,
@@ -403,9 +383,9 @@ namespace Google.Gemini.NextGen
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Google.Gemini.NextGen.RotateSigningSecretResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse>(
+                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.RotateSigningSecretResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Google.Gemini.NextGen.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -435,9 +415,9 @@ namespace Google.Gemini.NextGen
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Google.Gemini.NextGen.RotateSigningSecretResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse>(
+                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.RotateSigningSecretResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Google.Gemini.NextGen.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -476,33 +456,6 @@ namespace Google.Gemini.NextGen
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Generates a new signing secret for a Webhook.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="revocationBehavior">
-        /// Optional. The revocation behavior for previous signing secrets.
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.WebhookRotateSigningSecretResponse> RotateSigningSecretAsync(
-            string id,
-            global::Google.Gemini.NextGen.RotateSigningSecretRequestRevocationBehavior? revocationBehavior = default,
-            global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Google.Gemini.NextGen.RotateSigningSecretRequest
-            {
-                RevocationBehavior = revocationBehavior,
-            };
-
-            return await RotateSigningSecretAsync(
-                id: id,
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

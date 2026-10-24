@@ -68,17 +68,17 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public EnvironmentsInternalClient EnvironmentsInternal { get; }
-
-        /// <summary>
-        ///
-        /// </summary>
         public InteractionsClient Interactions { get; }
 
         /// <summary>
         ///
         /// </summary>
         public TriggersClient Triggers { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TriggersExecutionsClient TriggersExecutions { get; }
 
         /// <summary>
         ///

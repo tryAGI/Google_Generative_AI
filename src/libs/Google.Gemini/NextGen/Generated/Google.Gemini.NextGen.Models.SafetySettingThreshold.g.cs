@@ -20,10 +20,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        BlockNone,
-        /// <summary>
-        ///
-        /// </summary>
         BlockOnlyHigh,
         /// <summary>
         ///
@@ -45,7 +41,6 @@ namespace Google.Gemini.NextGen
             {
                 SafetySettingThreshold.BlockLowAndAbove => "block_low_and_above",
                 SafetySettingThreshold.BlockMediumAndAbove => "block_medium_and_above",
-                SafetySettingThreshold.BlockNone => "block_none",
                 SafetySettingThreshold.BlockOnlyHigh => "block_only_high",
                 SafetySettingThreshold.Off => "off",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -60,7 +55,6 @@ namespace Google.Gemini.NextGen
             {
                 "block_low_and_above" => SafetySettingThreshold.BlockLowAndAbove,
                 "block_medium_and_above" => SafetySettingThreshold.BlockMediumAndAbove,
-                "block_none" => SafetySettingThreshold.BlockNone,
                 "block_only_high" => SafetySettingThreshold.BlockOnlyHigh,
                 "off" => SafetySettingThreshold.Off,
                 _ => null,

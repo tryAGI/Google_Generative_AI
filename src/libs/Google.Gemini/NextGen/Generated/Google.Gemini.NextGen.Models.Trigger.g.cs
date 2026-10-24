@@ -9,14 +9,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class Trigger
     {
         /// <summary>
-        /// Required. Output only. Identifier. The ID of the trigger.<br/>
-        /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; } = default!;
-
-        /// <summary>
         /// Required. The cron schedule on which the trigger should run.<br/>
         /// Standard cron format.
         /// </summary>
@@ -32,11 +24,19 @@ namespace Google.Gemini.NextGen
         public required string TimeZone { get; set; }
 
         /// <summary>
-        /// Interaction for generating the completion using agents.
+        /// Parameters for creating agent interactions
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("interaction")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Google.Gemini.NextGen.CreateAgentInteraction CreateAgentInteraction { get; set; }
+
+        /// <summary>
+        /// Required. Output only. Identifier. The ID of the trigger.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// Optional. The display name of the trigger.
@@ -145,7 +145,7 @@ namespace Google.Gemini.NextGen
         /// Required. Time zone in which the schedule should be interpreted.
         /// </param>
         /// <param name="createAgentInteraction">
-        /// Interaction for generating the completion using agents.
+        /// Parameters for creating agent interactions
         /// </param>
         /// <param name="displayName">
         /// Optional. The display name of the trigger.
@@ -223,10 +223,10 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.TriggerStatus? status,
             string id = default!)
         {
-            this.Id = id;
             this.Schedule = schedule ?? throw new global::System.ArgumentNullException(nameof(schedule));
             this.TimeZone = timeZone ?? throw new global::System.ArgumentNullException(nameof(timeZone));
             this.CreateAgentInteraction = createAgentInteraction ?? throw new global::System.ArgumentNullException(nameof(createAgentInteraction));
+            this.Id = id;
             this.DisplayName = displayName;
             this.EnvironmentId = environmentId;
             this.MaxConsecutiveFailures = maxConsecutiveFailures;

@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Example: {"event_type":"interaction.status_update","interaction_id":"v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM","status":"in_progress"}
+    ///
     /// </summary>
     public sealed partial class InteractionStatusUpdate
     {
@@ -38,8 +38,7 @@ namespace Google.Gemini.NextGen
         public byte[]? ContinuationToken { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
@@ -68,8 +67,7 @@ namespace Google.Gemini.NextGen
         /// latest checkpoint after a disconnected stream.
         /// </param>
         /// <param name="usage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </param>
         /// <param name="eventId">
         /// The event_id token to be used to resume the interaction stream, from<br/>

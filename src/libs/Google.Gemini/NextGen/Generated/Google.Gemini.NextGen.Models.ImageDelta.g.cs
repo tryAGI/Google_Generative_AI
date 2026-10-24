@@ -18,6 +18,13 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ImageDeltaMimeTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.ImageDeltaMimeType? MimeType { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public byte[]? Data { get; set; }
 
@@ -26,13 +33,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ImageDeltaMimeTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.ImageDeltaMimeType? MimeType { get; set; }
 
         /// <summary>
         ///
@@ -51,24 +51,24 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="ImageDelta" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="mimeType"></param>
         /// <param name="data"></param>
         /// <param name="uri"></param>
-        /// <param name="mimeType"></param>
         /// <param name="resolution"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ImageDelta(
             object type,
+            global::Google.Gemini.NextGen.ImageDeltaMimeType? mimeType,
             byte[]? data,
             string? uri,
-            global::Google.Gemini.NextGen.ImageDeltaMimeType? mimeType,
             global::Google.Gemini.NextGen.MediaResolution? resolution)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.MimeType = mimeType;
             this.Data = data;
             this.Uri = uri;
-            this.MimeType = mimeType;
             this.Resolution = resolution;
         }
 

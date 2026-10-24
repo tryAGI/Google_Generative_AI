@@ -18,6 +18,13 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentDeltaMimeTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.DocumentDeltaMimeType? MimeType { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public byte[]? Data { get; set; }
 
@@ -26,13 +33,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentDeltaMimeTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.DocumentDeltaMimeType? MimeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,22 +44,22 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="DocumentDelta" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="mimeType"></param>
         /// <param name="data"></param>
         /// <param name="uri"></param>
-        /// <param name="mimeType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DocumentDelta(
             object type,
+            global::Google.Gemini.NextGen.DocumentDeltaMimeType? mimeType,
             byte[]? data,
-            string? uri,
-            global::Google.Gemini.NextGen.DocumentDeltaMimeType? mimeType)
+            string? uri)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.MimeType = mimeType;
             this.Data = data;
             this.Uri = uri;
-            this.MimeType = mimeType;
         }
 
         /// <summary>

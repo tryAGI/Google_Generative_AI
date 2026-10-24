@@ -18,19 +18,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class Agent
     {
         /// <summary>
-        /// Configuration parameters for the agent.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent_config")]
-        public global::Google.Gemini.NextGen.AntigravityAgentConfig? AgentConfig { get; set; }
-
-        /// <summary>
-        /// The environment configuration for the agent.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("base_environment")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.Environment3, string>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? BaseEnvironment { get; set; }
-
-        /// <summary>
         /// The unique identifier for the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -55,6 +42,19 @@ namespace Google.Gemini.NextGen
         public string? Description { get; set; }
 
         /// <summary>
+        /// Configuration parameters for the agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_config")]
+        public global::Google.Gemini.NextGen.AntigravityAgentConfig? AgentConfig { get; set; }
+
+        /// <summary>
+        /// The environment configuration for the agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_environment")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentConfig, string>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentConfig, string>? BaseEnvironment { get; set; }
+
+        /// <summary>
         /// The tools available to the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
@@ -69,12 +69,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="Agent" /> class.
         /// </summary>
-        /// <param name="agentConfig">
-        /// Configuration parameters for the agent.
-        /// </param>
-        /// <param name="baseEnvironment">
-        /// The environment configuration for the agent.
-        /// </param>
         /// <param name="id">
         /// The unique identifier for the agent.
         /// </param>
@@ -87,6 +81,12 @@ namespace Google.Gemini.NextGen
         /// <param name="description">
         /// Agent description for developers to quickly read and understand.
         /// </param>
+        /// <param name="agentConfig">
+        /// Configuration parameters for the agent.
+        /// </param>
+        /// <param name="baseEnvironment">
+        /// The environment configuration for the agent.
+        /// </param>
         /// <param name="tools">
         /// The tools available to the agent.
         /// </param>
@@ -94,20 +94,20 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Agent(
-            global::Google.Gemini.NextGen.AntigravityAgentConfig? agentConfig,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? baseEnvironment,
             string? id,
             string? baseAgent,
             string? systemInstruction,
             string? description,
+            global::Google.Gemini.NextGen.AntigravityAgentConfig? agentConfig,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentConfig, string>? baseEnvironment,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AgentTool>? tools)
         {
-            this.AgentConfig = agentConfig;
-            this.BaseEnvironment = baseEnvironment;
             this.Id = id;
             this.BaseAgent = baseAgent;
             this.SystemInstruction = systemInstruction;
             this.Description = description;
+            this.AgentConfig = agentConfig;
+            this.BaseEnvironment = baseEnvironment;
             this.Tools = tools;
         }
 

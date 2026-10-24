@@ -20,10 +20,6 @@ namespace Google.Gemini.NextGen
         ///
         /// </summary>
         Repository,
-        /// <summary>
-        ///
-        /// </summary>
-        SkillRegistry,
     }
 
     /// <summary>
@@ -41,7 +37,6 @@ namespace Google.Gemini.NextGen
                 SourceType.Gcs => "gcs",
                 SourceType.Inline => "inline",
                 SourceType.Repository => "repository",
-                SourceType.SkillRegistry => "skill_registry",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -55,7 +50,6 @@ namespace Google.Gemini.NextGen
                 "gcs" => SourceType.Gcs,
                 "inline" => SourceType.Inline,
                 "repository" => SourceType.Repository,
-                "skill_registry" => SourceType.SkillRegistry,
                 _ => null,
             };
         }

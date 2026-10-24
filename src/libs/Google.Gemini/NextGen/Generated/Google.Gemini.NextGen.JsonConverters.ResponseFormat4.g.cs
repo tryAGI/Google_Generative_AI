@@ -47,7 +47,6 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("aspect_ratio")) __score3++;
             if (__jsonProps.Contains("delivery")) __score3++;
             if (__jsonProps.Contains("duration")) __score3++;
-            if (__jsonProps.Contains("gcs_uri")) __score3++;
             if (__jsonProps.Contains("resolution")) __score3++;
             if (__jsonProps.Contains("type")) __score3++;
             var __score4 = 0;

@@ -9,6 +9,14 @@ namespace Google.Gemini.NextGen
     public sealed partial class RotateSigningSecretRequest
     {
         /// <summary>
+        /// Required. The ID of the webhook for which to generate a signing secret.<br/>
+        /// Format: `{webhook_id}`
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
+
+        /// <summary>
         /// Optional. The revocation behavior for previous signing secrets.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("revocation_behavior")]
@@ -24,6 +32,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateSigningSecretRequest" /> class.
         /// </summary>
+        /// <param name="id">
+        /// Required. The ID of the webhook for which to generate a signing secret.<br/>
+        /// Format: `{webhook_id}`
+        /// </param>
         /// <param name="revocationBehavior">
         /// Optional. The revocation behavior for previous signing secrets.
         /// </param>
@@ -31,8 +43,10 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RotateSigningSecretRequest(
+            string id,
             global::Google.Gemini.NextGen.RotateSigningSecretRequestRevocationBehavior? revocationBehavior)
         {
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.RevocationBehavior = revocationBehavior;
         }
 

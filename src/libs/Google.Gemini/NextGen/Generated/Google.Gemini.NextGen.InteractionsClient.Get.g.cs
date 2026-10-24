@@ -27,15 +27,15 @@ namespace Google.Gemini.NextGen
             };
         partial void PrepareGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref bool? includeInput,
-            ref string interactionsId,
+            ref string apiVersion,
+            ref string id,
             ref string? lastEventId,
             ref bool? stream);
         partial void PrepareGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            bool? includeInput,
-            string interactionsId,
+            string apiVersion,
+            string id,
             string? lastEventId,
             bool? stream);
         partial void ProcessGetResponse(
@@ -48,13 +48,15 @@ namespace Google.Gemini.NextGen
             ref string content);
 
         /// <summary>
-        /// Retrieves the full details of a single interaction based on its<br/>
-        /// `Interaction.id`.
+        /// Retrieving an interaction<br/>
+        /// Retrieves the full details of a single interaction based on its `Interaction.id`.
         /// </summary>
-        /// <param name="includeInput"></param>
-        /// <param name="interactionsId"></param>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="lastEventId"></param>
-        /// <param name="stream"></param>
+        /// <param name="stream">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
@@ -64,16 +66,16 @@ namespace Google.Gemini.NextGen
         ///   -H "Api-Revision: 2026-05-20"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Interaction> GetAsync(
-            string interactionsId,
-            bool? includeInput = default,
+            string apiVersion,
+            string id,
             string? lastEventId = default,
             bool? stream = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetAsResponseAsync(
-                interactionsId: interactionsId,
-                includeInput: includeInput,
+                apiVersion: apiVersion,
+                id: id,
                 lastEventId: lastEventId,
                 stream: stream,
                 requestOptions: requestOptions,
@@ -83,13 +85,15 @@ namespace Google.Gemini.NextGen
             return __response.Body;
         }
         /// <summary>
-        /// Retrieves the full details of a single interaction based on its<br/>
-        /// `Interaction.id`.
+        /// Retrieving an interaction<br/>
+        /// Retrieves the full details of a single interaction based on its `Interaction.id`.
         /// </summary>
-        /// <param name="includeInput"></param>
-        /// <param name="interactionsId"></param>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="lastEventId"></param>
-        /// <param name="stream"></param>
+        /// <param name="stream">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
@@ -99,8 +103,8 @@ namespace Google.Gemini.NextGen
         ///   -H "Api-Revision: 2026-05-20"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Interaction>> GetAsResponseAsync(
-            string interactionsId,
-            bool? includeInput = default,
+            string apiVersion,
+            string id,
             string? lastEventId = default,
             bool? stream = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
@@ -110,8 +114,8 @@ namespace Google.Gemini.NextGen
                 client: HttpClient);
             PrepareGetArguments(
                 httpClient: HttpClient,
-                includeInput: ref includeInput,
-                interactionsId: ref interactionsId,
+                apiVersion: ref apiVersion,
+                id: ref id,
                 lastEventId: ref lastEventId,
                 stream: ref stream);
 
@@ -139,10 +143,9 @@ namespace Google.Gemini.NextGen
             {
 
                             var __pathBuilder = new global::Google.Gemini.NextGen.PathBuilder(
-                                path: $"/v1beta/interactions/{interactionsId}",
+                                path: $"/v1beta/interactions/{id}",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddOptionalParameter("include_input", includeInput?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("last_event_id", lastEventId)
                                 .AddOptionalParameter("stream", stream?.ToString().ToLowerInvariant())
                                 ;
@@ -190,8 +193,8 @@ namespace Google.Gemini.NextGen
                 PrepareGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    includeInput: includeInput,
-                    interactionsId: interactionsId,
+                    apiVersion: apiVersion,
+                    id: id,
                     lastEventId: lastEventId,
                     stream: stream);
 
@@ -212,7 +215,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Get",
                                 methodName: "GetAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -246,7 +249,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Get",
                                 methodName: "GetAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -287,7 +290,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Get",
                                 methodName: "GetAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -335,7 +338,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Get",
                                 methodName: "GetAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -357,7 +360,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Get",
                                 methodName: "GetAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -372,7 +375,7 @@ namespace Google.Gemini.NextGen
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Client Error
+                            // Error getting interaction
                             if ((int)__response.StatusCode >= 400 && (int)__response.StatusCode <= 499)
                             {
                                 string? __content_4XX = null;
@@ -409,7 +412,7 @@ namespace Google.Gemini.NextGen
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Server Error
+                            // Error getting interaction
                             if ((int)__response.StatusCode >= 500 && (int)__response.StatusCode <= 599)
                             {
                                 string? __content_5XX = null;

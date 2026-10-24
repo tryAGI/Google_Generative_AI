@@ -27,11 +27,13 @@ namespace Google.Gemini.NextGen
             };
         partial void PrepareCancelArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string interactionsId);
+            ref string apiVersion,
+            ref string id);
         partial void PrepareCancelRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string interactionsId);
+            string apiVersion,
+            string id);
         partial void ProcessCancelResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -42,10 +44,11 @@ namespace Google.Gemini.NextGen
             ref string content);
 
         /// <summary>
-        /// Cancels an interaction by id. This only applies to background interactions<br/>
-        /// that are still running.
+        /// Canceling an interaction<br/>
+        /// Cancels an interaction by id. This only applies to background interactions that are still running.
         /// </summary>
-        /// <param name="interactionsId"></param>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
@@ -54,12 +57,14 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Interaction> CancelAsync(
-            string interactionsId,
+            string apiVersion,
+            string id,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await CancelAsResponseAsync(
-                interactionsId: interactionsId,
+                apiVersion: apiVersion,
+                id: id,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -67,10 +72,11 @@ namespace Google.Gemini.NextGen
             return __response.Body;
         }
         /// <summary>
-        /// Cancels an interaction by id. This only applies to background interactions<br/>
-        /// that are still running.
+        /// Canceling an interaction<br/>
+        /// Cancels an interaction by id. This only applies to background interactions that are still running.
         /// </summary>
-        /// <param name="interactionsId"></param>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
@@ -79,7 +85,8 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Interaction>> CancelAsResponseAsync(
-            string interactionsId,
+            string apiVersion,
+            string id,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -87,7 +94,8 @@ namespace Google.Gemini.NextGen
                 client: HttpClient);
             PrepareCancelArguments(
                 httpClient: HttpClient,
-                interactionsId: ref interactionsId);
+                apiVersion: ref apiVersion,
+                id: ref id);
 
 
             var __authorizations = global::Google.Gemini.NextGen.EndPointSecurityResolver.ResolveAuthorizations(
@@ -113,7 +121,7 @@ namespace Google.Gemini.NextGen
             {
 
                             var __pathBuilder = new global::Google.Gemini.NextGen.PathBuilder(
-                                path: $"/v1beta/interactions/{interactionsId}/cancel",
+                                path: $"/v1beta/interactions/{id}/cancel",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -155,7 +163,8 @@ namespace Google.Gemini.NextGen
                 PrepareCancelRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    interactionsId: interactionsId);
+                    apiVersion: apiVersion,
+                    id: id);
 
                 return __httpRequest;
             }
@@ -174,7 +183,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Cancel",
                                 methodName: "CancelAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}/cancel\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}/cancel\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -208,7 +217,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Cancel",
                                 methodName: "CancelAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}/cancel\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}/cancel\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -249,7 +258,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Cancel",
                                 methodName: "CancelAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}/cancel\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}/cancel\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -297,7 +306,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Cancel",
                                 methodName: "CancelAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}/cancel\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}/cancel\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -319,7 +328,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Cancel",
                                 methodName: "CancelAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}/cancel\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}/cancel\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -334,7 +343,7 @@ namespace Google.Gemini.NextGen
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Client Error
+                            // Error cancelling interaction
                             if ((int)__response.StatusCode >= 400 && (int)__response.StatusCode <= 499)
                             {
                                 string? __content_4XX = null;
@@ -371,7 +380,7 @@ namespace Google.Gemini.NextGen
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Server Error
+                            // Error cancelling interaction
                             if ((int)__response.StatusCode >= 500 && (int)__response.StatusCode <= 599)
                             {
                                 string? __content_5XX = null;

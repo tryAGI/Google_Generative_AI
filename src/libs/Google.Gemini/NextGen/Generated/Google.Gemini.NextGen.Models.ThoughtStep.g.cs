@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A thought step.<br/>
-    /// Example: {"type":"thought","signature":"thought_sig_abcd1234","summary":[{"type":"text","text":"The model is searching Google for the capital of France."}]}
+    /// A thought step.
     /// </summary>
     public sealed partial class ThoughtStep
     {
@@ -26,7 +25,7 @@ namespace Google.Gemini.NextGen
         /// A summary of the thought.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ThoughtSummaryContent>? Summary { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>? Summary { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -50,7 +49,7 @@ namespace Google.Gemini.NextGen
         public ThoughtStep(
             object type,
             byte[]? signature,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ThoughtSummaryContent>? summary)
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>? summary)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Signature = signature;

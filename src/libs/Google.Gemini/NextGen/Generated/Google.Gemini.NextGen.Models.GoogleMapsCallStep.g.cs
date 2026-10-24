@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Google Maps call step.<br/>
-    /// Example: {"type":"google_maps_call","arguments":{"queries":["parks near San Francisco"]},"id":"maps_call_39201"}
+    /// Google Maps call step.
     /// </summary>
     public sealed partial class GoogleMapsCallStep
     {
