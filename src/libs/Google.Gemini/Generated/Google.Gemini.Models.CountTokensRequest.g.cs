@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class CountTokensRequest
     {
         /// <summary>
-        /// Request to generate a completion from the model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("generateContentRequest")]
-        public global::Google.Gemini.GenerateContentRequest? GenerateContentRequest { get; set; }
-
-        /// <summary>
         /// Optional. The input given to the model as a prompt. This field is ignored when `generate_content_request` is set.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
+
+        /// <summary>
+        /// Request to generate a completion from the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generateContentRequest")]
+        public global::Google.Gemini.GenerateContentRequest? GenerateContentRequest { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="CountTokensRequest" /> class.
         /// </summary>
-        /// <param name="generateContentRequest">
-        /// Request to generate a completion from the model.
-        /// </param>
         /// <param name="contents">
         /// Optional. The input given to the model as a prompt. This field is ignored when `generate_content_request` is set.
+        /// </param>
+        /// <param name="generateContentRequest">
+        /// Request to generate a completion from the model.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CountTokensRequest(
-            global::Google.Gemini.GenerateContentRequest? generateContentRequest,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents)
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
+            global::Google.Gemini.GenerateContentRequest? generateContentRequest)
         {
-            this.GenerateContentRequest = generateContentRequest;
             this.Contents = contents;
+            this.GenerateContentRequest = generateContentRequest;
         }
 
         /// <summary>

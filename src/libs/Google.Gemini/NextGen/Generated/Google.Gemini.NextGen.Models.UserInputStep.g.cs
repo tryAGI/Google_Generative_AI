@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Input provided by the user.<br/>
-    /// Example: {"type":"user_input","content":[{"type":"text","text":"What is the capital of France?"}]}
+    /// Input provided by the user.
     /// </summary>
     public sealed partial class UserInputStep
     {

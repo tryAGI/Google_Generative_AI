@@ -13,7 +13,7 @@ namespace Google.Gemini
         /// </summary>
         HarmCategoryCivicIntegrity,
         /// <summary>
-        /// **PaLM** - Dangerous content that promotes, facilitates, or encourages harmful acts.
+        /// **PaLM** - Dangerous content that promotes, facilitates, or encourages harmful acts. DEPRECATED: PaLM-only category, not supported by Gemini models.
         /// </summary>
         HarmCategoryDangerous,
         /// <summary>
@@ -21,7 +21,7 @@ namespace Google.Gemini
         /// </summary>
         HarmCategoryDangerousContent,
         /// <summary>
-        /// **PaLM** - Negative or harmful comments targeting identity and/or protected attribute.
+        /// **PaLM** - Negative or harmful comments targeting identity and/or protected attribute. DEPRECATED: PaLM-only category, not supported by Gemini models.
         /// </summary>
         HarmCategoryDerogatory,
         /// <summary>
@@ -37,11 +37,11 @@ namespace Google.Gemini
         /// </summary>
         HarmCategoryJailbreak,
         /// <summary>
-        /// **PaLM** - Promotes unchecked medical advice.
+        /// **PaLM** - Promotes unchecked medical advice. DEPRECATED: PaLM-only category, not supported by Gemini models.
         /// </summary>
         HarmCategoryMedical,
         /// <summary>
-        /// **PaLM** - Contains references to sexual acts or other lewd content.
+        /// **PaLM** - Contains references to sexual acts or other lewd content. DEPRECATED: PaLM-only category, not supported by Gemini models.
         /// </summary>
         HarmCategorySexual,
         /// <summary>
@@ -49,7 +49,7 @@ namespace Google.Gemini
         /// </summary>
         HarmCategorySexuallyExplicit,
         /// <summary>
-        /// **PaLM** - Content that is rude, disrespectful, or profane.
+        /// **PaLM** - Content that is rude, disrespectful, or profane. DEPRECATED: PaLM-only category, not supported by Gemini models.
         /// </summary>
         HarmCategoryToxicity,
         /// <summary>
@@ -57,7 +57,7 @@ namespace Google.Gemini
         /// </summary>
         HarmCategoryUnspecified,
         /// <summary>
-        /// **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore.
+        /// **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore. DEPRECATED: PaLM-only category, not supported by Gemini models.
         /// </summary>
         HarmCategoryViolence,
     }

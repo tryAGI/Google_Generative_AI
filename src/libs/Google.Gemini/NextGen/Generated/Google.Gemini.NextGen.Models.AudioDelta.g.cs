@@ -20,6 +20,13 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.AudioDeltaMimeTypeJsonConverter))]
+        public global::Google.Gemini.NextGen.AudioDeltaMimeType? MimeType { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public byte[]? Data { get; set; }
 
@@ -28,13 +35,6 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         public string? Uri { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.AudioDeltaMimeTypeJsonConverter))]
-        public global::Google.Gemini.NextGen.AudioDeltaMimeType? MimeType { get; set; }
 
         /// <summary>
         /// Deprecated. Use sample_rate instead. The value is ignored.
@@ -65,9 +65,9 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="AudioDelta" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="mimeType"></param>
         /// <param name="data"></param>
         /// <param name="uri"></param>
-        /// <param name="mimeType"></param>
         /// <param name="sampleRate">
         /// The sample rate of the audio.
         /// </param>
@@ -79,16 +79,16 @@ namespace Google.Gemini.NextGen
 #endif
         public AudioDelta(
             object type,
+            global::Google.Gemini.NextGen.AudioDeltaMimeType? mimeType,
             byte[]? data,
             string? uri,
-            global::Google.Gemini.NextGen.AudioDeltaMimeType? mimeType,
             int? sampleRate,
             int? channels)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.MimeType = mimeType;
             this.Data = data;
             this.Uri = uri;
-            this.MimeType = mimeType;
             this.SampleRate = sampleRate;
             this.Channels = channels;
         }

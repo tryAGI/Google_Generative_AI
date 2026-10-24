@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class ReviewSnippet
     {
         /// <summary>
-        /// The ID of the review snippet.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("reviewId")]
-        public string? ReviewId { get; set; }
-
-        /// <summary>
         /// Title of the review.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public string? GoogleMapsUri { get; set; }
 
         /// <summary>
+        /// The ID of the review snippet.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reviewId")]
+        public string? ReviewId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ReviewSnippet" /> class.
         /// </summary>
-        /// <param name="reviewId">
-        /// The ID of the review snippet.
-        /// </param>
         /// <param name="title">
         /// Title of the review.
         /// </param>
         /// <param name="googleMapsUri">
         /// A link that corresponds to the user review on Google Maps.
         /// </param>
+        /// <param name="reviewId">
+        /// The ID of the review snippet.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ReviewSnippet(
-            string? reviewId,
             string? title,
-            string? googleMapsUri)
+            string? googleMapsUri,
+            string? reviewId)
         {
-            this.ReviewId = reviewId;
             this.Title = title;
             this.GoogleMapsUri = googleMapsUri;
+            this.ReviewId = reviewId;
         }
 
         /// <summary>

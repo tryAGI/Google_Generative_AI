@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Statistics on the interaction request's token usage.<br/>
-    /// Included only in responses
+    /// Statistics on the interaction request's token usage.
     /// </summary>
     public sealed partial class Usage
     {

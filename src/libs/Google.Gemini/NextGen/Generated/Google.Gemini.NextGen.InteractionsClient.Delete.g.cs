@@ -27,18 +27,25 @@ namespace Google.Gemini.NextGen
             };
         partial void PrepareDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string apiVersion,
+            ref string id,
             ref string interactionsId);
         partial void PrepareDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string apiVersion,
+            string id,
             string interactionsId);
         partial void ProcessDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
+        /// Deleting an interaction<br/>
         /// Deletes the interaction by id.
         /// </summary>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="interactionsId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -48,19 +55,26 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task DeleteAsync(
+            string apiVersion,
+            string id,
             string interactionsId,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             await DeleteAsResponseAsync(
+                apiVersion: apiVersion,
+                id: id,
                 interactionsId: interactionsId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
         }
         /// <summary>
+        /// Deleting an interaction<br/>
         /// Deletes the interaction by id.
         /// </summary>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="interactionsId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -70,6 +84,8 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse> DeleteAsResponseAsync(
+            string apiVersion,
+            string id,
             string interactionsId,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -78,6 +94,8 @@ namespace Google.Gemini.NextGen
                 client: HttpClient);
             PrepareDeleteArguments(
                 httpClient: HttpClient,
+                apiVersion: ref apiVersion,
+                id: ref id,
                 interactionsId: ref interactionsId);
 
 
@@ -104,7 +122,7 @@ namespace Google.Gemini.NextGen
             {
 
                             var __pathBuilder = new global::Google.Gemini.NextGen.PathBuilder(
-                                path: $"/v1beta/interactions/{interactionsId}",
+                                path: $"/v1beta/interactions/{id}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -146,6 +164,8 @@ namespace Google.Gemini.NextGen
                 PrepareDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    apiVersion: apiVersion,
+                    id: id,
                     interactionsId: interactionsId);
 
                 return __httpRequest;
@@ -165,7 +185,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Delete",
                                 methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -199,7 +219,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Delete",
                                 methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -240,7 +260,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Delete",
                                 methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -288,7 +308,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Delete",
                                 methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -310,7 +330,7 @@ namespace Google.Gemini.NextGen
                             context: global::Google.Gemini.NextGen.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "Delete",
                                 methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v1beta/interactions/{interactionsId}\"",
+                                pathTemplate: "$\"/v1beta/interactions/{id}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -325,7 +345,7 @@ namespace Google.Gemini.NextGen
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Client Error
+                            // Error deleting interaction
                             if ((int)__response.StatusCode >= 400 && (int)__response.StatusCode <= 499)
                             {
                                 string? __content_4XX = null;
@@ -362,7 +382,7 @@ namespace Google.Gemini.NextGen
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Server Error
+                            // Error deleting interaction
                             if ((int)__response.StatusCode >= 500 && (int)__response.StatusCode <= 599)
                             {
                                 string? __content_5XX = null;

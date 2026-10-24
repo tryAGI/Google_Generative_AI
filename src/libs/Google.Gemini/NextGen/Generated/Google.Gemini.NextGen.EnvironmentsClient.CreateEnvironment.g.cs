@@ -60,7 +60,7 @@ namespace Google.Gemini.NextGen
         ///     }]<br/>
         ///   }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment2> CreateEnvironmentAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment3> CreateEnvironmentAsync(
 
             global::Google.Gemini.NextGen.CreateEnvironmentRequest request,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
@@ -94,7 +94,7 @@ namespace Google.Gemini.NextGen
         ///     }]<br/>
         ///   }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>> CreateEnvironmentAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>> CreateEnvironmentAsResponseAsync(
 
             global::Google.Gemini.NextGen.CreateEnvironmentRequest request,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
@@ -364,19 +364,19 @@ namespace Google.Gemini.NextGen
                             {
                                 string? __content_default = null;
                                 global::System.Exception? __exception_default = null;
-                                global::Google.Gemini.NextGen.Environment2? __value_default = null;
+                                global::Google.Gemini.NextGen.Environment3? __value_default = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_default = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_default = global::Google.Gemini.NextGen.Environment2.FromJson(__content_default, JsonSerializerContext);
+                                        __value_default = global::Google.Gemini.NextGen.Environment3.FromJson(__content_default, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_default = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_default = global::Google.Gemini.NextGen.Environment2.FromJson(__content_default, JsonSerializerContext);
+                                        __value_default = global::Google.Gemini.NextGen.Environment3.FromJson(__content_default, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -385,7 +385,7 @@ namespace Google.Gemini.NextGen
                                 }
 
 
-                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.Environment2>.Create(
+                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.Environment3>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_default ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_default,
@@ -418,9 +418,9 @@ namespace Google.Gemini.NextGen
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Google.Gemini.NextGen.Environment2.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Google.Gemini.NextGen.Environment3.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>(
+                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Google.Gemini.NextGen.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -450,9 +450,9 @@ namespace Google.Gemini.NextGen
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Google.Gemini.NextGen.Environment2.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Google.Gemini.NextGen.Environment3.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>(
+                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Google.Gemini.NextGen.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -509,7 +509,7 @@ namespace Google.Gemini.NextGen
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment2> CreateEnvironmentAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment3> CreateEnvironmentAsync(
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources = default,
             string? fromEnvironment = default,

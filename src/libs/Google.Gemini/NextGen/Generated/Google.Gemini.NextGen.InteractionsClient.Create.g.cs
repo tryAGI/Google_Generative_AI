@@ -42,6 +42,7 @@ namespace Google.Gemini.NextGen
             ref string content);
 
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="request"></param>
@@ -73,6 +74,7 @@ namespace Google.Gemini.NextGen
             return __response.Body;
         }
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="request"></param>
@@ -355,7 +357,7 @@ namespace Google.Gemini.NextGen
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Client Error
+                            // Error creating interaction
                             if ((int)__response.StatusCode >= 400 && (int)__response.StatusCode <= 499)
                             {
                                 string? __content_4XX = null;
@@ -392,7 +394,7 @@ namespace Google.Gemini.NextGen
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Server Error
+                            // Error creating interaction
                             if ((int)__response.StatusCode >= 500 && (int)__response.StatusCode <= 599)
                             {
                                 string? __content_5XX = null;
@@ -526,6 +528,7 @@ namespace Google.Gemini.NextGen
             }
         }
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

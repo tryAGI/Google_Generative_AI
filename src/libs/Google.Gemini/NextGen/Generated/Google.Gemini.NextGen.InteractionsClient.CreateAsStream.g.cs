@@ -37,6 +37,7 @@ namespace Google.Gemini.NextGen
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="request"></param>
@@ -387,6 +388,7 @@ namespace Google.Gemini.NextGen
             }
         }
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

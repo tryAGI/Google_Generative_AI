@@ -10,8 +10,7 @@ namespace Google.Gemini.NextGen
     public readonly partial struct Content : global::System.IEquatable<Content>
     {
         /// <summary>
-        /// An audio content block.<br/>
-        /// Example: {"type":"audio","data":"BASE64_ENCODED_AUDIO","mime_type":"audio/wav"}
+        /// An audio content block.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.AudioContent? Audio { get; init; }
@@ -48,8 +47,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
 
         /// <summary>
-        /// A document content block.<br/>
-        /// Example: {"type":"document","data":"BASE64_ENCODED_DOCUMENT","mime_type":"application/pdf"}
+        /// A document content block.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.DocumentContent? Document { get; init; }
@@ -86,8 +84,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Document' but the value was {ToString()}.");
 
         /// <summary>
-        /// An image content block.<br/>
-        /// Example: {"type":"image","data":"BASE64_ENCODED_IMAGE","mime_type":"image/png"}
+        /// An image content block.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.ImageContent? Image { get; init; }
@@ -124,8 +121,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
-        /// A text content block.<br/>
-        /// Example: {"type":"text","text":"Hello, how are you?"}
+        /// A text content block.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.TextContent? Text { get; init; }
@@ -162,8 +158,7 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
 
         /// <summary>
-        /// A video content block.<br/>
-        /// Example: {"type":"video","uri":"https://www.youtube.com/watch?v=9hE5-98ZeCg"}
+        /// A video content block.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.VideoContent? Video { get; init; }

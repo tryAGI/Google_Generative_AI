@@ -115,43 +115,33 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("signature")) __score16++;
             if (__jsonProps.Contains("type")) __score16++;
             var __score17 = 0;
-            if (__jsonProps.Contains("arguments")) __score17++;
-            if (__jsonProps.Contains("arguments.queries")) __score17++;
-            if (__jsonProps.Contains("retrieval_type")) __score17++;
-            if (__jsonProps.Contains("signature")) __score17++;
+            if (__jsonProps.Contains("annotations")) __score17++;
             if (__jsonProps.Contains("type")) __score17++;
             var __score18 = 0;
-            if (__jsonProps.Contains("is_error")) __score18++;
-            if (__jsonProps.Contains("signature")) __score18++;
+            if (__jsonProps.Contains("text")) __score18++;
             if (__jsonProps.Contains("type")) __score18++;
             var __score19 = 0;
-            if (__jsonProps.Contains("annotations")) __score19++;
+            if (__jsonProps.Contains("signature")) __score19++;
             if (__jsonProps.Contains("type")) __score19++;
             var __score20 = 0;
-            if (__jsonProps.Contains("text")) __score20++;
+            if (__jsonProps.Contains("content")) __score20++;
             if (__jsonProps.Contains("type")) __score20++;
             var __score21 = 0;
+            if (__jsonProps.Contains("arguments")) __score21++;
+            if (__jsonProps.Contains("arguments.urls")) __score21++;
             if (__jsonProps.Contains("signature")) __score21++;
             if (__jsonProps.Contains("type")) __score21++;
             var __score22 = 0;
-            if (__jsonProps.Contains("content")) __score22++;
+            if (__jsonProps.Contains("is_error")) __score22++;
+            if (__jsonProps.Contains("result")) __score22++;
+            if (__jsonProps.Contains("signature")) __score22++;
             if (__jsonProps.Contains("type")) __score22++;
             var __score23 = 0;
-            if (__jsonProps.Contains("arguments")) __score23++;
-            if (__jsonProps.Contains("arguments.urls")) __score23++;
-            if (__jsonProps.Contains("signature")) __score23++;
+            if (__jsonProps.Contains("data")) __score23++;
+            if (__jsonProps.Contains("mime_type")) __score23++;
+            if (__jsonProps.Contains("resolution")) __score23++;
             if (__jsonProps.Contains("type")) __score23++;
-            var __score24 = 0;
-            if (__jsonProps.Contains("is_error")) __score24++;
-            if (__jsonProps.Contains("result")) __score24++;
-            if (__jsonProps.Contains("signature")) __score24++;
-            if (__jsonProps.Contains("type")) __score24++;
-            var __score25 = 0;
-            if (__jsonProps.Contains("data")) __score25++;
-            if (__jsonProps.Contains("mime_type")) __score25++;
-            if (__jsonProps.Contains("resolution")) __score25++;
-            if (__jsonProps.Contains("type")) __score25++;
-            if (__jsonProps.Contains("uri")) __score25++;
+            if (__jsonProps.Contains("uri")) __score23++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -178,8 +168,6 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__score21 > __bestScore) { __bestScore = __score21; __bestIndex = 21; }
             if (__score22 > __bestScore) { __bestScore = __score22; __bestIndex = 22; }
             if (__score23 > __bestScore) { __bestScore = __score23; __bestIndex = 23; }
-            if (__score24 > __bestScore) { __bestScore = __score24; __bestIndex = 24; }
-            if (__score25 > __bestScore) { __bestScore = __score25; __bestIndex = 25; }
 
             global::Google.Gemini.NextGen.ArgumentsDelta? arguments = default;
             global::Google.Gemini.NextGen.AudioDelta? audio = default;
@@ -194,12 +182,10 @@ namespace Google.Gemini.NextGen.JsonConverters
             global::Google.Gemini.NextGen.GoogleSearchCallDelta? googleSearchCall = default;
             global::Google.Gemini.NextGen.GoogleSearchResultDelta? googleSearchResult = default;
             global::Google.Gemini.NextGen.ImageDelta? image = default;
-            global::Google.Gemini.NextGen.MCPServerToolCallDelta? mCPServerToolCall = default;
-            global::Google.Gemini.NextGen.MCPServerToolResultDelta? mCPServerToolResult = default;
+            global::Google.Gemini.NextGen.McpServerToolCallDelta? mcpServerToolCall = default;
+            global::Google.Gemini.NextGen.McpServerToolResultDelta? mcpServerToolResult = default;
             global::Google.Gemini.NextGen.ProcessingCallDelta? processingCall = default;
             global::Google.Gemini.NextGen.ProcessingResultDelta? processingResult = default;
-            global::Google.Gemini.NextGen.RetrievalCallDelta? retrievalCall = default;
-            global::Google.Gemini.NextGen.RetrievalResultDelta? retrievalResult = default;
             global::Google.Gemini.NextGen.TextAnnotationDelta? textAnnotation = default;
             global::Google.Gemini.NextGen.TextDelta? text = default;
             global::Google.Gemini.NextGen.ThoughtSignatureDelta? thoughtSignature = default;
@@ -460,9 +446,9 @@ namespace Google.Gemini.NextGen.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServerToolCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServerToolCallDelta> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServerToolCallDelta).Name}");
-                        mCPServerToolCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServerToolCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServerToolCallDelta> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServerToolCallDelta).Name}");
+                        mcpServerToolCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -479,9 +465,9 @@ namespace Google.Gemini.NextGen.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServerToolResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServerToolResultDelta> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServerToolResultDelta).Name}");
-                        mCPServerToolResult = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServerToolResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServerToolResultDelta> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServerToolResultDelta).Name}");
+                        mcpServerToolResult = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -536,44 +522,6 @@ namespace Google.Gemini.NextGen.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.RetrievalCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.RetrievalCallDelta> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.RetrievalCallDelta).Name}");
-                        retrievalCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
-                    {
-                        // Legacy enum converters signal an incompatible JSON token with this exception.
-                    }
-                }
-                else if (__bestIndex == 18)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.RetrievalResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.RetrievalResultDelta> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.RetrievalResultDelta).Name}");
-                        retrievalResult = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
-                    {
-                        // Legacy enum converters signal an incompatible JSON token with this exception.
-                    }
-                }
-                else if (__bestIndex == 19)
-                {
-                    try
-                    {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.TextAnnotationDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.TextAnnotationDelta> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.TextAnnotationDelta).Name}");
                         textAnnotation = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -589,7 +537,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 20)
+                else if (__bestIndex == 18)
                 {
                     try
                     {
@@ -608,7 +556,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 21)
+                else if (__bestIndex == 19)
                 {
                     try
                     {
@@ -627,7 +575,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 22)
+                else if (__bestIndex == 20)
                 {
                     try
                     {
@@ -646,7 +594,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 23)
+                else if (__bestIndex == 21)
                 {
                     try
                     {
@@ -665,7 +613,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 24)
+                else if (__bestIndex == 22)
                 {
                     try
                     {
@@ -684,7 +632,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 25)
+                else if (__bestIndex == 23)
                 {
                     try
                     {
@@ -705,7 +653,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -726,7 +674,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -747,7 +695,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -768,7 +716,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -789,7 +737,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -810,7 +758,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -831,7 +779,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -852,7 +800,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -873,7 +821,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -894,7 +842,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -915,7 +863,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -936,7 +884,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -957,7 +905,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -978,14 +926,14 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
 
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServerToolCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServerToolCallDelta> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServerToolCallDelta).Name}");
-                    mCPServerToolCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServerToolCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServerToolCallDelta> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServerToolCallDelta).Name}");
+                    mcpServerToolCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -999,14 +947,14 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
 
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServerToolResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServerToolResultDelta> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServerToolResultDelta).Name}");
-                    mCPServerToolResult = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServerToolResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServerToolResultDelta> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServerToolResultDelta).Name}");
+                    mcpServerToolResult = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -1020,7 +968,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1041,7 +989,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1062,49 +1010,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
-            {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.RetrievalCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.RetrievalCallDelta> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.RetrievalCallDelta).Name}");
-                    retrievalCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
-                {
-                    // Legacy enum converters signal an incompatible JSON token with this exception.
-                }
-            }
-
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
-            {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.RetrievalResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.RetrievalResultDelta> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.RetrievalResultDelta).Name}");
-                    retrievalResult = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
-                {
-                    // Legacy enum converters signal an incompatible JSON token with this exception.
-                }
-            }
-
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1125,7 +1031,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1146,7 +1052,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1167,7 +1073,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1188,7 +1094,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1209,7 +1115,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1230,7 +1136,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mCPServerToolCall == null && mCPServerToolResult == null && processingCall == null && processingResult == null && retrievalCall == null && retrievalResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
+            if (arguments == null && audio == null && codeExecutionCall == null && codeExecutionResult == null && document == null && fileSearchCall == null && fileSearchResult == null && functionResult == null && googleMapsCall == null && googleMapsResult == null && googleSearchCall == null && googleSearchResult == null && image == null && mcpServerToolCall == null && mcpServerToolResult == null && processingCall == null && processingResult == null && textAnnotation == null && text == null && thoughtSignature == null && thoughtSummary == null && uRLContextCall == null && uRLContextResult == null && video == null)
             {
                 try
                 {
@@ -1278,17 +1184,13 @@ namespace Google.Gemini.NextGen.JsonConverters
 
                 image,
 
-                mCPServerToolCall,
+                mcpServerToolCall,
 
-                mCPServerToolResult,
+                mcpServerToolResult,
 
                 processingCall,
 
                 processingResult,
-
-                retrievalCall,
-
-                retrievalResult,
 
                 textAnnotation,
 
@@ -1395,17 +1297,17 @@ namespace Google.Gemini.NextGen.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ImageDelta).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickImage(), typeInfo);
             }
-            else if (value.IsMCPServerToolCall)
+            else if (value.IsMcpServerToolCall)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServerToolCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServerToolCallDelta?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServerToolCallDelta).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMCPServerToolCall(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServerToolCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServerToolCallDelta?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServerToolCallDelta).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMcpServerToolCall(), typeInfo);
             }
-            else if (value.IsMCPServerToolResult)
+            else if (value.IsMcpServerToolResult)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServerToolResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServerToolResultDelta?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServerToolResultDelta).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMCPServerToolResult(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServerToolResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServerToolResultDelta?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServerToolResultDelta).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMcpServerToolResult(), typeInfo);
             }
             else if (value.IsProcessingCall)
             {
@@ -1418,18 +1320,6 @@ namespace Google.Gemini.NextGen.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.ProcessingResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.ProcessingResultDelta?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ProcessingResultDelta).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProcessingResult(), typeInfo);
-            }
-            else if (value.IsRetrievalCall)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.RetrievalCallDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.RetrievalCallDelta?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.RetrievalCallDelta).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRetrievalCall(), typeInfo);
-            }
-            else if (value.IsRetrievalResult)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.RetrievalResultDelta), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.RetrievalResultDelta?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.RetrievalResultDelta).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRetrievalResult(), typeInfo);
             }
             else if (value.IsTextAnnotation)
             {

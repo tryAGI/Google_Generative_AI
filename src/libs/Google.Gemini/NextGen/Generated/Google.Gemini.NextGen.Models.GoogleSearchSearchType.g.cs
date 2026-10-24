@@ -11,10 +11,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        EnterpriseWebSearch,
-        /// <summary>
-        ///
-        /// </summary>
         ImageSearch,
         /// <summary>
         ///
@@ -34,7 +30,6 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
-                GoogleSearchSearchType.EnterpriseWebSearch => "enterprise_web_search",
                 GoogleSearchSearchType.ImageSearch => "image_search",
                 GoogleSearchSearchType.WebSearch => "web_search",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -47,7 +42,6 @@ namespace Google.Gemini.NextGen
         {
             return value switch
             {
-                "enterprise_web_search" => GoogleSearchSearchType.EnterpriseWebSearch,
                 "image_search" => GoogleSearchSearchType.ImageSearch,
                 "web_search" => GoogleSearchSearchType.WebSearch,
                 _ => null,

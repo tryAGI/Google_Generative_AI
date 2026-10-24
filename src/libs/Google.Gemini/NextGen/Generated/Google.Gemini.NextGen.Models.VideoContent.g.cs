@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A video content block.<br/>
-    /// Example: {"type":"video","uri":"https://www.youtube.com/watch?v=9hE5-98ZeCg"}
+    /// A video content block.
     /// </summary>
     public sealed partial class VideoContent
     {
@@ -29,18 +28,18 @@ namespace Google.Gemini.NextGen
         public string? Uri { get; set; }
 
         /// <summary>
-        /// How the model processes this video for understanding.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("processing")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? Processing { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.MediaResolutionJsonConverter))]
         public global::Google.Gemini.NextGen.MediaResolution? Resolution { get; set; }
+
+        /// <summary>
+        /// How the model processes this video for understanding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("processing")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? Processing { get; set; }
 
         /// <summary>
         /// A user-defined name for this content block. Can be referenced by the model<br/>
@@ -72,10 +71,10 @@ namespace Google.Gemini.NextGen
         /// <param name="uri">
         /// The URI of the video.
         /// </param>
+        /// <param name="resolution"></param>
         /// <param name="processing">
         /// How the model processes this video for understanding.
         /// </param>
-        /// <param name="resolution"></param>
         /// <param name="name">
         /// A user-defined name for this content block. Can be referenced by the model<br/>
         /// in the final response.
@@ -90,16 +89,16 @@ namespace Google.Gemini.NextGen
             object type,
             byte[]? data,
             string? uri,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? processing,
             global::Google.Gemini.NextGen.MediaResolution? resolution,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? processing,
             string? name,
             global::Google.Gemini.NextGen.VideoContentMimeType? mimeType)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Data = data;
             this.Uri = uri;
-            this.Processing = processing;
             this.Resolution = resolution;
+            this.Processing = processing;
             this.Name = name;
             this.MimeType = mimeType;
         }

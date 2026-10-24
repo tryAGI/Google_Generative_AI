@@ -52,7 +52,7 @@ namespace Google.Gemini.NextGen
         /// curl -X GET https://generativelanguage.googleapis.com/v1beta/environments/env_abc123 \<br/>
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment2> GetEnvironmentAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment3> GetEnvironmentAsync(
             string id,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -76,7 +76,7 @@ namespace Google.Gemini.NextGen
         /// curl -X GET https://generativelanguage.googleapis.com/v1beta/environments/env_abc123 \<br/>
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>> GetEnvironmentAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>> GetEnvironmentAsResponseAsync(
             string id,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -337,19 +337,19 @@ namespace Google.Gemini.NextGen
                             {
                                 string? __content_default = null;
                                 global::System.Exception? __exception_default = null;
-                                global::Google.Gemini.NextGen.Environment2? __value_default = null;
+                                global::Google.Gemini.NextGen.Environment3? __value_default = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_default = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_default = global::Google.Gemini.NextGen.Environment2.FromJson(__content_default, JsonSerializerContext);
+                                        __value_default = global::Google.Gemini.NextGen.Environment3.FromJson(__content_default, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_default = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_default = global::Google.Gemini.NextGen.Environment2.FromJson(__content_default, JsonSerializerContext);
+                                        __value_default = global::Google.Gemini.NextGen.Environment3.FromJson(__content_default, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -358,7 +358,7 @@ namespace Google.Gemini.NextGen
                                 }
 
 
-                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.Environment2>.Create(
+                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.Environment3>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_default ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_default,
@@ -391,9 +391,9 @@ namespace Google.Gemini.NextGen
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Google.Gemini.NextGen.Environment2.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Google.Gemini.NextGen.Environment3.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>(
+                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Google.Gemini.NextGen.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -423,9 +423,9 @@ namespace Google.Gemini.NextGen
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Google.Gemini.NextGen.Environment2.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Google.Gemini.NextGen.Environment3.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>(
+                                    return new global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Google.Gemini.NextGen.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

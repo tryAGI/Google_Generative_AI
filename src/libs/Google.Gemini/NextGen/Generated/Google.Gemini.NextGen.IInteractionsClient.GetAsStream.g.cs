@@ -5,13 +5,15 @@ namespace Google.Gemini.NextGen
     public partial interface IInteractionsClient
     {
         /// <summary>
-        /// Retrieves the full details of a single interaction based on its<br/>
-        /// `Interaction.id`.
+        /// Retrieving an interaction<br/>
+        /// Retrieves the full details of a single interaction based on its `Interaction.id`.
         /// </summary>
-        /// <param name="includeInput"></param>
-        /// <param name="interactionsId"></param>
+        /// <param name="apiVersion"></param>
+        /// <param name="id"></param>
         /// <param name="lastEventId"></param>
-        /// <param name="stream"></param>
+        /// <param name="stream">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.NextGen.ApiException"></exception>
@@ -21,8 +23,8 @@ namespace Google.Gemini.NextGen
         ///   -H "Api-Revision: 2026-05-20"
         /// </remarks>
         global::System.Collections.Generic.IAsyncEnumerable<global::Google.Gemini.NextGen.InteractionSSEStreamEvent> GetAsStreamAsync(
-            string interactionsId,
-            bool? includeInput = default,
+            string apiVersion,
+            string id,
             string? lastEventId = default,
             bool? stream = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,

@@ -5,6 +5,7 @@ namespace Google.Gemini.NextGen
     public partial interface IInteractionsClient
     {
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="request"></param>
@@ -26,6 +27,7 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Creating an interaction<br/>
         /// Creates a new interaction.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

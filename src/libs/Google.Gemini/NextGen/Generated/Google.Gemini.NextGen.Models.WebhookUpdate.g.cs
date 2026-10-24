@@ -32,7 +32,7 @@ namespace Google.Gemini.NextGen
         /// - video.generated
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscribed_events")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? SubscribedEvents { get; set; }
+        public global::System.Collections.Generic.IList<string>? SubscribedEvents { get; set; }
 
         /// <summary>
         /// Optional. The state of the webhook.
@@ -76,7 +76,7 @@ namespace Google.Gemini.NextGen
         public WebhookUpdate(
             string? name,
             string? uri,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookUpdateSubscribedEvent>? subscribedEvents,
+            global::System.Collections.Generic.IList<string>? subscribedEvents,
             global::Google.Gemini.NextGen.WebhookUpdateState? state)
         {
             this.Name = name;

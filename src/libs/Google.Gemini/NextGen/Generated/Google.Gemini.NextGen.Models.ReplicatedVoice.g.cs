@@ -6,8 +6,7 @@ namespace Google.Gemini.NextGen
     /// <summary>
     /// Input only. Parameters for replicated voice generation.<br/>
     /// Required on input when `type` is `"replicated"`. Not returned in<br/>
-    /// responses.<br/>
-    /// Included only in requests
+    /// responses.
     /// </summary>
     public sealed partial class ReplicatedVoice
     {

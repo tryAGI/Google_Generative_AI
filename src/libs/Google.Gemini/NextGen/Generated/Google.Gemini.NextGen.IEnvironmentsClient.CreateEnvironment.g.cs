@@ -23,7 +23,7 @@ namespace Google.Gemini.NextGen
         ///     }]<br/>
         ///   }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment2> CreateEnvironmentAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment3> CreateEnvironmentAsync(
 
             global::Google.Gemini.NextGen.CreateEnvironmentRequest request,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
@@ -47,7 +47,7 @@ namespace Google.Gemini.NextGen
         ///     }]<br/>
         ///   }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment2>> CreateEnvironmentAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.Environment3>> CreateEnvironmentAsResponseAsync(
 
             global::Google.Gemini.NextGen.CreateEnvironmentRequest request,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
@@ -69,7 +69,7 @@ namespace Google.Gemini.NextGen
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment2> CreateEnvironmentAsync(
+        global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment3> CreateEnvironmentAsync(
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources = default,
             string? fromEnvironment = default,

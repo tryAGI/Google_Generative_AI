@@ -56,7 +56,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             global::Google.Gemini.NextGen.CodeExecution? codeExecution = default;
             global::Google.Gemini.NextGen.Function? function = default;
             global::Google.Gemini.NextGen.GoogleSearch? googleSearch = default;
-            global::Google.Gemini.NextGen.MCPServer? mCPServer = default;
+            global::Google.Gemini.NextGen.McpServer? mcpServer = default;
             global::Google.Gemini.NextGen.URLContext? uRLContext = default;
             if (__bestIndex >= 0)
             {
@@ -121,9 +121,9 @@ namespace Google.Gemini.NextGen.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServer> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServer).Name}");
-                        mCPServer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServer> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServer).Name}");
+                        mcpServer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -157,7 +157,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && function == null && googleSearch == null && mCPServer == null && uRLContext == null)
+            if (codeExecution == null && function == null && googleSearch == null && mcpServer == null && uRLContext == null)
             {
                 try
                 {
@@ -178,7 +178,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && function == null && googleSearch == null && mCPServer == null && uRLContext == null)
+            if (codeExecution == null && function == null && googleSearch == null && mcpServer == null && uRLContext == null)
             {
                 try
                 {
@@ -199,7 +199,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && function == null && googleSearch == null && mCPServer == null && uRLContext == null)
+            if (codeExecution == null && function == null && googleSearch == null && mcpServer == null && uRLContext == null)
             {
                 try
                 {
@@ -220,14 +220,14 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && function == null && googleSearch == null && mCPServer == null && uRLContext == null)
+            if (codeExecution == null && function == null && googleSearch == null && mcpServer == null && uRLContext == null)
             {
                 try
                 {
 
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServer> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServer).Name}");
-                    mCPServer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServer> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServer).Name}");
+                    mcpServer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -241,7 +241,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && function == null && googleSearch == null && mCPServer == null && uRLContext == null)
+            if (codeExecution == null && function == null && googleSearch == null && mcpServer == null && uRLContext == null)
             {
                 try
                 {
@@ -269,7 +269,7 @@ namespace Google.Gemini.NextGen.JsonConverters
 
                 googleSearch,
 
-                mCPServer,
+                mcpServer,
 
                 uRLContext
                 );
@@ -304,11 +304,11 @@ namespace Google.Gemini.NextGen.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.GoogleSearch).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGoogleSearch(), typeInfo);
             }
-            else if (value.IsMCPServer)
+            else if (value.IsMcpServer)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.MCPServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.MCPServer?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.MCPServer).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMCPServer(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServer?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServer).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMcpServer(), typeInfo);
             }
             else if (value.IsURLContext)
             {

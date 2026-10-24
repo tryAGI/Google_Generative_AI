@@ -68,30 +68,6 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.GenerationConfig? GenerationConfig { get; set; }
 
         /// <summary>
-        /// The input for the interaction.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.InteractionsInputJsonConverter))]
-        public global::Google.Gemini.NextGen.InteractionsInput? Input { get; set; }
-
-        /// <summary>
-        /// Enforces that the generated response is a JSON object that complies with<br/>
-        /// the JSON schema specified in this field.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response_format")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? ResponseFormat { get; set; }
-
-        /// <summary>
-        /// The environment configuration for the interaction. Can be an object<br/>
-        /// specifying remote environment sources or a string referencing an existing<br/>
-        /// environment ID.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.Environment3, string>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? Environment { get; set; }
-
-        /// <summary>
         /// System instruction for the interaction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("system_instruction")]
@@ -104,8 +80,14 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? Tools { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// The input for the interaction.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.InteractionsInputJsonConverter))]
+        public global::Google.Gemini.NextGen.InteractionsInput? Input { get; set; }
+
+        /// <summary>
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
@@ -116,6 +98,14 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("response_modalities")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseModality>? ResponseModalities { get; set; }
+
+        /// <summary>
+        /// Enforces that the generated response is a JSON object that complies with<br/>
+        /// the JSON schema specified in this field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response_format")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? ResponseFormat { get; set; }
 
         /// <summary>
         /// The mime type of the response. This is required if response_format is set.
@@ -129,6 +119,15 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous_interaction_id")]
         public string? PreviousInteractionId { get; set; }
+
+        /// <summary>
+        /// The environment configuration for the interaction. Can be an object<br/>
+        /// specifying remote environment sources or a string referencing an existing<br/>
+        /// environment ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentConfig, string>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentConfig, string>? Environment { get; set; }
 
         /// <summary>
         /// Output only. The environment ID for the interaction. Only populated if environment<br/>
@@ -206,15 +205,14 @@ namespace Google.Gemini.NextGen
         /// Configuration parameters for the agent interaction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent_config")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? AgentConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? AgentConfig { get; set; }
 
         /// <summary>
-        /// The name of the cached content used as context to serve the prediction. Note: only used in explicit caching, where users can have control over caching (e.g. what content to cache) and enjoy guaranteed cost savings. Format: cachedContents/{cachedContent}
+        /// Max total tokens for the agent run.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("cached_content")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? CachedContent { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_total_tokens")]
+        public string? MaxTotalTokens { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -231,30 +229,29 @@ namespace Google.Gemini.NextGen
         /// <param name="generationConfig">
         /// Configuration parameters for model interactions.
         /// </param>
-        /// <param name="input">
-        /// The input for the interaction.
-        /// </param>
-        /// <param name="responseFormat">
-        /// Enforces that the generated response is a JSON object that complies with<br/>
-        /// the JSON schema specified in this field.
-        /// </param>
-        /// <param name="environment">
-        /// The environment configuration for the interaction. Can be an object<br/>
-        /// specifying remote environment sources or a string referencing an existing<br/>
-        /// environment ID.
-        /// </param>
         /// <param name="systemInstruction">
         /// System instruction for the interaction.
         /// </param>
         /// <param name="tools">
         /// A list of tool declarations the model may call during interaction.
         /// </param>
+        /// <param name="input">
+        /// The input for the interaction.
+        /// </param>
         /// <param name="usage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
+        /// </param>
+        /// <param name="responseFormat">
+        /// Enforces that the generated response is a JSON object that complies with<br/>
+        /// the JSON schema specified in this field.
         /// </param>
         /// <param name="previousInteractionId">
         /// The ID of the previous interaction, if any.
+        /// </param>
+        /// <param name="environment">
+        /// The environment configuration for the interaction. Can be an object<br/>
+        /// specifying remote environment sources or a string referencing an existing<br/>
+        /// environment ID.
         /// </param>
         /// <param name="environmentId">
         /// Output only. The environment ID for the interaction. Only populated if environment<br/>
@@ -297,6 +294,9 @@ namespace Google.Gemini.NextGen
         /// <param name="agentConfig">
         /// Configuration parameters for the agent interaction.
         /// </param>
+        /// <param name="maxTotalTokens">
+        /// Max total tokens for the agent run.
+        /// </param>
         /// <param name="id">
         /// Required. Output only. A unique identifier for the interaction completion.<br/>
         /// Included only in responses
@@ -325,13 +325,13 @@ namespace Google.Gemini.NextGen
         public Interaction(
             global::Google.Gemini.NextGen.Model? model,
             global::Google.Gemini.NextGen.GenerationConfig? generationConfig,
-            global::Google.Gemini.NextGen.InteractionsInput? input,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? responseFormat,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.Environment3, string>? environment,
             string? systemInstruction,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? tools,
+            global::Google.Gemini.NextGen.InteractionsInput? input,
             global::Google.Gemini.NextGen.Usage? usage,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? responseFormat,
             string? previousInteractionId,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentConfig, string>? environment,
             string? environmentId,
             global::Google.Gemini.NextGen.ServiceTier? serviceTier,
             global::Google.Gemini.NextGen.WebhookConfig? webhookConfig,
@@ -342,7 +342,8 @@ namespace Google.Gemini.NextGen
             bool? store,
             bool? background,
             global::Google.Gemini.NextGen.AgentOption? agent,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.CodeMenderAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? agentConfig,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>? agentConfig,
+            string? maxTotalTokens,
             string id = default!,
             global::Google.Gemini.NextGen.InteractionStatus status = default!,
             string created = default!,
@@ -356,13 +357,13 @@ namespace Google.Gemini.NextGen
             this.Steps = steps;
             this.Model = model;
             this.GenerationConfig = generationConfig;
-            this.Input = input;
-            this.ResponseFormat = responseFormat;
-            this.Environment = environment;
             this.SystemInstruction = systemInstruction;
             this.Tools = tools;
+            this.Input = input;
             this.Usage = usage;
+            this.ResponseFormat = responseFormat;
             this.PreviousInteractionId = previousInteractionId;
+            this.Environment = environment;
             this.EnvironmentId = environmentId;
             this.ServiceTier = serviceTier;
             this.WebhookConfig = webhookConfig;
@@ -374,6 +375,7 @@ namespace Google.Gemini.NextGen
             this.Background = background;
             this.Agent = agent;
             this.AgentConfig = agentConfig;
+            this.MaxTotalTokens = maxTotalTokens;
         }
 
         /// <summary>

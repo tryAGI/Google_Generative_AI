@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Configuration for audio output format.<br/>
-    /// Example: {"type":"audio","sample_rate":24000}
+    /// Configuration for audio output format.
     /// </summary>
     public sealed partial class AudioResponseFormat
     {
