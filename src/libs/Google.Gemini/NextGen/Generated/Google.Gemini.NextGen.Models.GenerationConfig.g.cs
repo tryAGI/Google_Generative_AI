@@ -11,13 +11,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class GenerationConfig
     {
         /// <summary>
-        /// The tool choice configuration.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? ToolChoice { get; set; }
-
-        /// <summary>
         /// Controls the randomness of the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
@@ -42,6 +35,13 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stop_sequences")]
         public global::System.Collections.Generic.IList<string>? StopSequences { get; set; }
+
+        /// <summary>
+        /// The tool choice configuration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? ToolChoice { get; set; }
 
         /// <summary>
         ///
@@ -83,11 +83,11 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.TranscriptionConfig? TranscriptionConfig { get; set; }
 
         /// <summary>
-        /// Optional. Speech and multi-speaker configuration.
+        /// Speech and multi-speaker configuration.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("speech_config")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>>? SpeechConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("structured_speech_config")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig>>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig>>? StructuredSpeechConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -98,14 +98,14 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerationConfig" /> class.
         /// </summary>
-        /// <param name="toolChoice">
-        /// The tool choice configuration.
-        /// </param>
         /// <param name="seed">
         /// Seed used in decoding for reproducibility.
         /// </param>
         /// <param name="stopSequences">
         /// A list of character sequences that will stop output interaction.
+        /// </param>
+        /// <param name="toolChoice">
+        /// The tool choice configuration.
         /// </param>
         /// <param name="thinkingLevel"></param>
         /// <param name="thinkingSummaries"></param>
@@ -118,32 +118,32 @@ namespace Google.Gemini.NextGen
         /// <param name="transcriptionConfig">
         /// Configuration for speech recognition (transcription).
         /// </param>
-        /// <param name="speechConfig">
-        /// Optional. Speech and multi-speaker configuration.
+        /// <param name="structuredSpeechConfig">
+        /// Speech and multi-speaker configuration.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerationConfig(
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? toolChoice,
             int? seed,
             global::System.Collections.Generic.IList<string>? stopSequences,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ToolChoiceConfig, global::Google.Gemini.NextGen.GenerationConfigToolChoice?>? toolChoice,
             global::Google.Gemini.NextGen.ThinkingLevel? thinkingLevel,
             global::Google.Gemini.NextGen.ThinkingSummaries? thinkingSummaries,
             int? maxOutputTokens,
             global::Google.Gemini.NextGen.VideoConfig? videoConfig,
             global::Google.Gemini.NextGen.TranscriptionConfig? transcriptionConfig,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>>? speechConfig)
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.SpeakerConfig, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig>>? structuredSpeechConfig)
         {
-            this.ToolChoice = toolChoice;
             this.Seed = seed;
             this.StopSequences = stopSequences;
+            this.ToolChoice = toolChoice;
             this.ThinkingLevel = thinkingLevel;
             this.ThinkingSummaries = thinkingSummaries;
             this.MaxOutputTokens = maxOutputTokens;
             this.VideoConfig = videoConfig;
             this.TranscriptionConfig = transcriptionConfig;
-            this.SpeechConfig = speechConfig;
+            this.StructuredSpeechConfig = structuredSpeechConfig;
         }
 
         /// <summary>

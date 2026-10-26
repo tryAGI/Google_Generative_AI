@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Configuration for video output format.<br/>
-    /// Example: {"type":"video","aspect_ratio":"16:9","delivery":"inline"}
+    /// Configuration for video output format.
     /// </summary>
     public sealed partial class VideoResponseFormat
     {
@@ -22,13 +21,6 @@ namespace Google.Gemini.NextGen
         [global::System.Text.Json.Serialization.JsonPropertyName("delivery")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.VideoResponseFormatDeliveryJsonConverter))]
         public global::Google.Gemini.NextGen.VideoResponseFormatDelivery? Delivery { get; set; }
-
-        /// <summary>
-        /// The Cloud Storage URI to store the video output. Required for Vertex if<br/>
-        /// delivery mode is URI.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("gcs_uri")]
-        public string? GcsUri { get; set; }
 
         /// <summary>
         /// The aspect ratio for the video output.
@@ -63,10 +55,6 @@ namespace Google.Gemini.NextGen
         /// <param name="delivery">
         /// The delivery mode for the video output.
         /// </param>
-        /// <param name="gcsUri">
-        /// The Cloud Storage URI to store the video output. Required for Vertex if<br/>
-        /// delivery mode is URI.
-        /// </param>
         /// <param name="aspectRatio">
         /// The aspect ratio for the video output.
         /// </param>
@@ -82,14 +70,12 @@ namespace Google.Gemini.NextGen
         public VideoResponseFormat(
             object type,
             global::Google.Gemini.NextGen.VideoResponseFormatDelivery? delivery,
-            string? gcsUri,
             global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? aspectRatio,
             string? duration,
             global::Google.Gemini.NextGen.VideoResponseFormatResolution? resolution)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Delivery = delivery;
-            this.GcsUri = gcsUri;
             this.AspectRatio = aspectRatio;
             this.Duration = duration;
             this.Resolution = resolution;

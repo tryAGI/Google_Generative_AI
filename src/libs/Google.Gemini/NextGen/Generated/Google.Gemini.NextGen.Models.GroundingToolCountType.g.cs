@@ -16,10 +16,6 @@ namespace Google.Gemini.NextGen
         ///
         /// </summary>
         GoogleSearch,
-        /// <summary>
-        ///
-        /// </summary>
-        Retrieval,
     }
 
     /// <summary>
@@ -36,7 +32,6 @@ namespace Google.Gemini.NextGen
             {
                 GroundingToolCountType.GoogleMaps => "google_maps",
                 GroundingToolCountType.GoogleSearch => "google_search",
-                GroundingToolCountType.Retrieval => "retrieval",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -49,7 +44,6 @@ namespace Google.Gemini.NextGen
             {
                 "google_maps" => GroundingToolCountType.GoogleMaps,
                 "google_search" => GroundingToolCountType.GoogleSearch,
-                "retrieval" => GroundingToolCountType.Retrieval,
                 _ => null,
             };
         }

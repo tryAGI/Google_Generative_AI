@@ -39,12 +39,6 @@ namespace Google.Gemini.NextGen
         public bool? CollaborativePlanning { get; set; }
 
         /// <summary>
-        /// Enables bigquery tool for the Deep Research agent.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("enable_bigquery_tool")]
-        public bool? EnableBigqueryTool { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -64,9 +58,6 @@ namespace Google.Gemini.NextGen
         /// The agent will then proceed only if the user confirms the plan in the next<br/>
         /// turn.
         /// </param>
-        /// <param name="enableBigqueryTool">
-        /// Enables bigquery tool for the Deep Research agent.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -74,14 +65,12 @@ namespace Google.Gemini.NextGen
             object type,
             global::Google.Gemini.NextGen.ThinkingSummaries? thinkingSummaries,
             global::Google.Gemini.NextGen.DeepResearchAgentConfigVisualization? visualization,
-            bool? collaborativePlanning,
-            bool? enableBigqueryTool)
+            bool? collaborativePlanning)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.ThinkingSummaries = thinkingSummaries;
             this.Visualization = visualization;
             this.CollaborativePlanning = collaborativePlanning;
-            this.EnableBigqueryTool = enableBigqueryTool;
         }
 
         /// <summary>

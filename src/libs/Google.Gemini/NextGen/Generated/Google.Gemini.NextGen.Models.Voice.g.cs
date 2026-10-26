@@ -56,8 +56,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Input only. Parameters for replicated voice generation.<br/>
         /// Required on input when `type` is `"replicated"`. Not returned in<br/>
-        /// responses.<br/>
-        /// Included only in requests
+        /// responses.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("replicated")]
         public global::Google.Gemini.NextGen.ReplicatedVoice? Replicated { get; set; }
@@ -142,8 +141,7 @@ namespace Google.Gemini.NextGen
         public string? Description { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
@@ -194,8 +192,7 @@ namespace Google.Gemini.NextGen
         /// <param name="replicated">
         /// Input only. Parameters for replicated voice generation.<br/>
         /// Required on input when `type` is `"replicated"`. Not returned in<br/>
-        /// responses.<br/>
-        /// Included only in requests
+        /// responses.
         /// </param>
         /// <param name="expireTime">
         /// Output only. The timestamp at which a custom stored voice (`store = true`)<br/>
@@ -241,8 +238,7 @@ namespace Google.Gemini.NextGen
         /// Optional. Descriptive summary of vocal timbre, personality, and tone.
         /// </param>
         /// <param name="usage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </param>
         /// <param name="sampleAudio">
         /// Audio payload used for voice creation.

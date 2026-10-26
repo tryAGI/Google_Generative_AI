@@ -124,38 +124,38 @@ namespace Google.Gemini.NextGen
         /// A MCPServer is a server that can be called by the model to perform actions.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Google.Gemini.NextGen.MCPServer? MCPServer { get; init; }
+        public global::Google.Gemini.NextGen.McpServer? McpServer { get; init; }
 #else
-        public global::Google.Gemini.NextGen.MCPServer? MCPServer { get; }
+        public global::Google.Gemini.NextGen.McpServer? McpServer { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MCPServer))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(McpServer))]
 #endif
-        public bool IsMCPServer => MCPServer != null;
+        public bool IsMcpServer => McpServer != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickMCPServer(
+        public bool TryPickMcpServer(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Google.Gemini.NextGen.MCPServer? value)
+            out global::Google.Gemini.NextGen.McpServer? value)
         {
-            value = MCPServer;
-            return IsMCPServer;
+            value = McpServer;
+            return IsMcpServer;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.MCPServer PickMCPServer() => MCPServer is { } value
+        public global::Google.Gemini.NextGen.McpServer PickMcpServer() => McpServer is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'MCPServer' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'McpServer' but the value was {ToString()}.");
 
         /// <summary>
         /// A tool that can be used by the model to fetch URL context.
@@ -265,25 +265,25 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator AgentTool(global::Google.Gemini.NextGen.MCPServer value) => new AgentTool((global::Google.Gemini.NextGen.MCPServer?)value);
+        public static implicit operator AgentTool(global::Google.Gemini.NextGen.McpServer value) => new AgentTool((global::Google.Gemini.NextGen.McpServer?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Google.Gemini.NextGen.MCPServer?(AgentTool @this) => @this.MCPServer;
+        public static implicit operator global::Google.Gemini.NextGen.McpServer?(AgentTool @this) => @this.McpServer;
 
         /// <summary>
         ///
         /// </summary>
-        public AgentTool(global::Google.Gemini.NextGen.MCPServer? value)
+        public AgentTool(global::Google.Gemini.NextGen.McpServer? value)
         {
-            MCPServer = value;
+            McpServer = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static AgentTool FromMCPServer(global::Google.Gemini.NextGen.MCPServer? value) => new AgentTool(value);
+        public static AgentTool FromMcpServer(global::Google.Gemini.NextGen.McpServer? value) => new AgentTool(value);
 
         /// <summary>
         ///
@@ -315,14 +315,14 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.CodeExecution? codeExecution,
             global::Google.Gemini.NextGen.Function? function,
             global::Google.Gemini.NextGen.GoogleSearch? googleSearch,
-            global::Google.Gemini.NextGen.MCPServer? mCPServer,
+            global::Google.Gemini.NextGen.McpServer? mcpServer,
             global::Google.Gemini.NextGen.URLContext? uRLContext
             )
         {
             CodeExecution = codeExecution;
             Function = function;
             GoogleSearch = googleSearch;
-            MCPServer = mCPServer;
+            McpServer = mcpServer;
             URLContext = uRLContext;
         }
 
@@ -331,7 +331,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public object? Object =>
             URLContext as object ??
-            MCPServer as object ??
+            McpServer as object ??
             GoogleSearch as object ??
             Function as object ??
             CodeExecution as object
@@ -344,7 +344,7 @@ namespace Google.Gemini.NextGen
             CodeExecution?.ToString() ??
             Function?.ToString() ??
             GoogleSearch?.ToString() ??
-            MCPServer?.ToString() ??
+            McpServer?.ToString() ??
             URLContext?.ToString()
             ;
 
@@ -353,7 +353,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public bool Validate()
         {
-            return IsCodeExecution && !IsFunction && !IsGoogleSearch && !IsMCPServer && !IsURLContext || !IsCodeExecution && IsFunction && !IsGoogleSearch && !IsMCPServer && !IsURLContext || !IsCodeExecution && !IsFunction && IsGoogleSearch && !IsMCPServer && !IsURLContext || !IsCodeExecution && !IsFunction && !IsGoogleSearch && IsMCPServer && !IsURLContext || !IsCodeExecution && !IsFunction && !IsGoogleSearch && !IsMCPServer && IsURLContext;
+            return IsCodeExecution && !IsFunction && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && IsFunction && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsFunction && IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsFunction && !IsGoogleSearch && IsMcpServer && !IsURLContext || !IsCodeExecution && !IsFunction && !IsGoogleSearch && !IsMcpServer && IsURLContext;
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Google.Gemini.NextGen
             global::System.Func<global::Google.Gemini.NextGen.CodeExecution, TResult>? codeExecution = null,
             global::System.Func<global::Google.Gemini.NextGen.Function, TResult>? function = null,
             global::System.Func<global::Google.Gemini.NextGen.GoogleSearch, TResult>? googleSearch = null,
-            global::System.Func<global::Google.Gemini.NextGen.MCPServer, TResult>? mCPServer = null,
+            global::System.Func<global::Google.Gemini.NextGen.McpServer, TResult>? mcpServer = null,
             global::System.Func<global::Google.Gemini.NextGen.URLContext, TResult>? uRLContext = null,
             bool validate = true)
         {
@@ -384,9 +384,9 @@ namespace Google.Gemini.NextGen
             {
                 return googleSearch(__value2);
             }
-            else if (MCPServer is { } __value3 && mCPServer != null)
+            else if (McpServer is { } __value3 && mcpServer != null)
             {
-                return mCPServer(__value3);
+                return mcpServer(__value3);
             }
             else if (URLContext is { } __value4 && uRLContext != null)
             {
@@ -406,7 +406,7 @@ namespace Google.Gemini.NextGen
 
             global::System.Action<global::Google.Gemini.NextGen.GoogleSearch>? googleSearch = null,
 
-            global::System.Action<global::Google.Gemini.NextGen.MCPServer>? mCPServer = null,
+            global::System.Action<global::Google.Gemini.NextGen.McpServer>? mcpServer = null,
 
             global::System.Action<global::Google.Gemini.NextGen.URLContext>? uRLContext = null,
             bool validate = true)
@@ -428,9 +428,9 @@ namespace Google.Gemini.NextGen
             {
                 googleSearch?.Invoke(__value2);
             }
-            else if (MCPServer is { } __value3)
+            else if (McpServer is { } __value3)
             {
-                mCPServer?.Invoke(__value3);
+                mcpServer?.Invoke(__value3);
             }
             else if (URLContext is { } __value4)
             {
@@ -445,7 +445,7 @@ namespace Google.Gemini.NextGen
             global::System.Action<global::Google.Gemini.NextGen.CodeExecution>? codeExecution = null,
             global::System.Action<global::Google.Gemini.NextGen.Function>? function = null,
             global::System.Action<global::Google.Gemini.NextGen.GoogleSearch>? googleSearch = null,
-            global::System.Action<global::Google.Gemini.NextGen.MCPServer>? mCPServer = null,
+            global::System.Action<global::Google.Gemini.NextGen.McpServer>? mcpServer = null,
             global::System.Action<global::Google.Gemini.NextGen.URLContext>? uRLContext = null,
             bool validate = true)
         {
@@ -466,9 +466,9 @@ namespace Google.Gemini.NextGen
             {
                 googleSearch?.Invoke(__value2);
             }
-            else if (MCPServer is { } __value3)
+            else if (McpServer is { } __value3)
             {
-                mCPServer?.Invoke(__value3);
+                mcpServer?.Invoke(__value3);
             }
             else if (URLContext is { } __value4)
             {
@@ -489,8 +489,8 @@ namespace Google.Gemini.NextGen
                 typeof(global::Google.Gemini.NextGen.Function),
                 GoogleSearch,
                 typeof(global::Google.Gemini.NextGen.GoogleSearch),
-                MCPServer,
-                typeof(global::Google.Gemini.NextGen.MCPServer),
+                McpServer,
+                typeof(global::Google.Gemini.NextGen.McpServer),
                 URLContext,
                 typeof(global::Google.Gemini.NextGen.URLContext),
             };
@@ -512,7 +512,7 @@ namespace Google.Gemini.NextGen
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.CodeExecution?>.Default.Equals(CodeExecution, other.CodeExecution) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.Function?>.Default.Equals(Function, other.Function) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.GoogleSearch?>.Default.Equals(GoogleSearch, other.GoogleSearch) &&
-                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.MCPServer?>.Default.Equals(MCPServer, other.MCPServer) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.McpServer?>.Default.Equals(McpServer, other.McpServer) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.URLContext?>.Default.Equals(URLContext, other.URLContext)
                 ;
         }

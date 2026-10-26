@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Configuration for text output format.<br/>
-    /// Example: {"type":"text","mime_type":"application/json","schema":{"type":"object","properties":{"ingredients":{"type":"array","items":{"type":"string"}},"recipe_name":{"type":"string"}},"required":["ingredients","recipe_name"]}}
+    /// Configuration for text output format.
     /// </summary>
     public sealed partial class TextResponseFormat
     {

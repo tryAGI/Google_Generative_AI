@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Example: {"event_type":"step.stop","index":0}
+    ///
     /// </summary>
     public sealed partial class StepStop
     {
@@ -23,15 +23,13 @@ namespace Google.Gemini.NextGen
         public required object EventType { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("step_usage")]
         public global::Google.Gemini.NextGen.Usage? StepUsage { get; set; }
@@ -55,12 +53,10 @@ namespace Google.Gemini.NextGen
         /// <param name="index"></param>
         /// <param name="eventType"></param>
         /// <param name="usage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </param>
         /// <param name="stepUsage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </param>
         /// <param name="eventId">
         /// The event_id token to be used to resume the interaction stream, from<br/>

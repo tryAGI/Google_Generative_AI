@@ -1,0 +1,378 @@
+#pragma warning disable CS0618 // Type or member is obsolete
+
+#nullable enable
+
+namespace Google.Gemini.NextGen
+{
+    /// <summary>
+    /// Represents the fields of a Credential that can be updated.
+    /// </summary>
+    public readonly partial struct CredentialUpdateParams : global::System.IEquatable<CredentialUpdateParams>
+    {
+        /// <summary>
+        /// Configuration for updating environment variable credentials.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig? EnvironmentVariableConfig { get; init; }
+#else
+        public global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig? EnvironmentVariableConfig { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvironmentVariableConfig))]
+#endif
+        public bool IsEnvironmentVariableConfig => EnvironmentVariableConfig != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickEnvironmentVariableConfig(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig? value)
+        {
+            value = EnvironmentVariableConfig;
+            return IsEnvironmentVariableConfig;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig PickEnvironmentVariableConfig() => EnvironmentVariableConfig is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EnvironmentVariableConfig' but the value was {ToString()}.");
+
+        /// <summary>
+        /// Configuration for updating HTTP Bearer token credentials.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Google.Gemini.NextGen.HttpBearerUpdateConfig? HttpBearerConfig { get; init; }
+#else
+        public global::Google.Gemini.NextGen.HttpBearerUpdateConfig? HttpBearerConfig { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(HttpBearerConfig))]
+#endif
+        public bool IsHttpBearerConfig => HttpBearerConfig != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickHttpBearerConfig(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Google.Gemini.NextGen.HttpBearerUpdateConfig? value)
+        {
+            value = HttpBearerConfig;
+            return IsHttpBearerConfig;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.HttpBearerUpdateConfig PickHttpBearerConfig() => HttpBearerConfig is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'HttpBearerConfig' but the value was {ToString()}.");
+
+        /// <summary>
+        /// Configuration for updating OAuth2 credentials.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Google.Gemini.NextGen.OAuth2UpdateConfig? OAuth2Config { get; init; }
+#else
+        public global::Google.Gemini.NextGen.OAuth2UpdateConfig? OAuth2Config { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(OAuth2Config))]
+#endif
+        public bool IsOAuth2Config => OAuth2Config != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickOAuth2Config(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Google.Gemini.NextGen.OAuth2UpdateConfig? value)
+        {
+            value = OAuth2Config;
+            return IsOAuth2Config;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.OAuth2UpdateConfig PickOAuth2Config() => OAuth2Config is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'OAuth2Config' but the value was {ToString()}.");
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CredentialUpdateParams(global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig value) => new CredentialUpdateParams((global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig?(CredentialUpdateParams @this) => @this.EnvironmentVariableConfig;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CredentialUpdateParams(global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig? value)
+        {
+            EnvironmentVariableConfig = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CredentialUpdateParams FromEnvironmentVariableConfig(global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig? value) => new CredentialUpdateParams(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CredentialUpdateParams(global::Google.Gemini.NextGen.HttpBearerUpdateConfig value) => new CredentialUpdateParams((global::Google.Gemini.NextGen.HttpBearerUpdateConfig?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Google.Gemini.NextGen.HttpBearerUpdateConfig?(CredentialUpdateParams @this) => @this.HttpBearerConfig;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CredentialUpdateParams(global::Google.Gemini.NextGen.HttpBearerUpdateConfig? value)
+        {
+            HttpBearerConfig = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CredentialUpdateParams FromHttpBearerConfig(global::Google.Gemini.NextGen.HttpBearerUpdateConfig? value) => new CredentialUpdateParams(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CredentialUpdateParams(global::Google.Gemini.NextGen.OAuth2UpdateConfig value) => new CredentialUpdateParams((global::Google.Gemini.NextGen.OAuth2UpdateConfig?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Google.Gemini.NextGen.OAuth2UpdateConfig?(CredentialUpdateParams @this) => @this.OAuth2Config;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CredentialUpdateParams(global::Google.Gemini.NextGen.OAuth2UpdateConfig? value)
+        {
+            OAuth2Config = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CredentialUpdateParams FromOAuth2Config(global::Google.Gemini.NextGen.OAuth2UpdateConfig? value) => new CredentialUpdateParams(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CredentialUpdateParams(
+            global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig? environmentVariableConfig,
+            global::Google.Gemini.NextGen.HttpBearerUpdateConfig? httpBearerConfig,
+            global::Google.Gemini.NextGen.OAuth2UpdateConfig? oAuth2Config
+            )
+        {
+            EnvironmentVariableConfig = environmentVariableConfig;
+            HttpBearerConfig = httpBearerConfig;
+            OAuth2Config = oAuth2Config;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public object? Object =>
+            OAuth2Config as object ??
+            HttpBearerConfig as object ??
+            EnvironmentVariableConfig as object
+            ;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override string? ToString() =>
+            EnvironmentVariableConfig?.ToString() ??
+            HttpBearerConfig?.ToString() ??
+            OAuth2Config?.ToString()
+            ;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Validate()
+        {
+            return IsEnvironmentVariableConfig && !IsHttpBearerConfig && !IsOAuth2Config || !IsEnvironmentVariableConfig && IsHttpBearerConfig && !IsOAuth2Config || !IsEnvironmentVariableConfig && !IsHttpBearerConfig && IsOAuth2Config;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig, TResult>? environmentVariableConfig = null,
+            global::System.Func<global::Google.Gemini.NextGen.HttpBearerUpdateConfig, TResult>? httpBearerConfig = null,
+            global::System.Func<global::Google.Gemini.NextGen.OAuth2UpdateConfig, TResult>? oAuth2Config = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (EnvironmentVariableConfig is { } __value0 && environmentVariableConfig != null)
+            {
+                return environmentVariableConfig(__value0);
+            }
+            else if (HttpBearerConfig is { } __value1 && httpBearerConfig != null)
+            {
+                return httpBearerConfig(__value1);
+            }
+            else if (OAuth2Config is { } __value2 && oAuth2Config != null)
+            {
+                return oAuth2Config(__value2);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Match(
+            global::System.Action<global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig>? environmentVariableConfig = null,
+
+            global::System.Action<global::Google.Gemini.NextGen.HttpBearerUpdateConfig>? httpBearerConfig = null,
+
+            global::System.Action<global::Google.Gemini.NextGen.OAuth2UpdateConfig>? oAuth2Config = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (EnvironmentVariableConfig is { } __value0)
+            {
+                environmentVariableConfig?.Invoke(__value0);
+            }
+            else if (HttpBearerConfig is { } __value1)
+            {
+                httpBearerConfig?.Invoke(__value1);
+            }
+            else if (OAuth2Config is { } __value2)
+            {
+                oAuth2Config?.Invoke(__value2);
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig>? environmentVariableConfig = null,
+            global::System.Action<global::Google.Gemini.NextGen.HttpBearerUpdateConfig>? httpBearerConfig = null,
+            global::System.Action<global::Google.Gemini.NextGen.OAuth2UpdateConfig>? oAuth2Config = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (EnvironmentVariableConfig is { } __value0)
+            {
+                environmentVariableConfig?.Invoke(__value0);
+            }
+            else if (HttpBearerConfig is { } __value1)
+            {
+                httpBearerConfig?.Invoke(__value1);
+            }
+            else if (OAuth2Config is { } __value2)
+            {
+                oAuth2Config?.Invoke(__value2);
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override int GetHashCode()
+        {
+            var fields = new object?[]
+            {
+                EnvironmentVariableConfig,
+                typeof(global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig),
+                HttpBearerConfig,
+                typeof(global::Google.Gemini.NextGen.HttpBearerUpdateConfig),
+                OAuth2Config,
+                typeof(global::Google.Gemini.NextGen.OAuth2UpdateConfig),
+            };
+            const int offset = unchecked((int)2166136261);
+            const int prime = 16777619;
+            static int HashCodeAggregator(int hashCode, object? value) => value == null
+                ? (hashCode ^ 0) * prime
+                : (hashCode ^ value.GetHashCode()) * prime;
+
+            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Equals(CredentialUpdateParams other)
+        {
+            return
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.EnvironmentVariableUpdateConfig?>.Default.Equals(EnvironmentVariableConfig, other.EnvironmentVariableConfig) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.HttpBearerUpdateConfig?>.Default.Equals(HttpBearerConfig, other.HttpBearerConfig) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.OAuth2UpdateConfig?>.Default.Equals(OAuth2Config, other.OAuth2Config)
+                ;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static bool operator ==(CredentialUpdateParams obj1, CredentialUpdateParams obj2)
+        {
+            return global::System.Collections.Generic.EqualityComparer<CredentialUpdateParams>.Default.Equals(obj1, obj2);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static bool operator !=(CredentialUpdateParams obj1, CredentialUpdateParams obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is CredentialUpdateParams o && Equals(o);
+        }
+    }
+}

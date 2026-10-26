@@ -4,8 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Google Search call step.<br/>
-    /// Example: {"type":"google_search_call","arguments":{"queries":["Who won the men\u0027s 100m in Paris 2024?"]},"id":"search_call_19201"}
+    /// Google Search call step.
     /// </summary>
     public sealed partial class GoogleSearchCallStep
     {

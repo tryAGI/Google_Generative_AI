@@ -11,13 +11,6 @@ namespace Google.Gemini.NextGen
     public sealed partial class TranscriptionConfig
     {
         /// <summary>
-        /// Discriminated transcription mode options or enum.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>? Mode { get; set; }
-
-        /// <summary>
         /// Optional. BCP-47 language codes providing hints about the languages present in the<br/>
         /// audio. If omitted or empty, defaults to automatic language detection.
         /// </summary>
@@ -30,6 +23,13 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_vocabulary")]
         public global::System.Collections.Generic.IList<string>? CustomVocabulary { get; set; }
+
+        /// <summary>
+        /// Discriminated transcription mode options or enum.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>? Mode { get; set; }
 
         /// <summary>
         /// Optional. The granularity of timestamps to include in the transcription output.<br/>
@@ -54,13 +54,6 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<string>? AdaptationPhrases { get; set; }
 
         /// <summary>
-        /// Deprecated: use language_codes. BCP-47 language codes providing hints about the languages present in the audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("language_hints")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? LanguageHints { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -69,9 +62,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptionConfig" /> class.
         /// </summary>
-        /// <param name="mode">
-        /// Discriminated transcription mode options or enum.
-        /// </param>
         /// <param name="languageCodes">
         /// Optional. BCP-47 language codes providing hints about the languages present in the<br/>
         /// audio. If omitted or empty, defaults to automatic language detection.
@@ -80,17 +70,20 @@ namespace Google.Gemini.NextGen
         /// Optional. A list of custom vocabulary phrases to bias the speech recognition model<br/>
         /// toward recognizing specific terms.
         /// </param>
+        /// <param name="mode">
+        /// Discriminated transcription mode options or enum.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptionConfig(
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>? mode,
             global::System.Collections.Generic.IList<string>? languageCodes,
-            global::System.Collections.Generic.IList<string>? customVocabulary)
+            global::System.Collections.Generic.IList<string>? customVocabulary,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>? mode)
         {
-            this.Mode = mode;
             this.LanguageCodes = languageCodes;
             this.CustomVocabulary = customVocabulary;
+            this.Mode = mode;
         }
 
         /// <summary>

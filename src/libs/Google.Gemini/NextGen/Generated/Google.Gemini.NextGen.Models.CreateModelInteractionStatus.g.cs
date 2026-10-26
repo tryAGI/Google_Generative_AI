@@ -36,10 +36,6 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        Queued,
-        /// <summary>
-        ///
-        /// </summary>
         RequiresAction,
     }
 
@@ -61,7 +57,6 @@ namespace Google.Gemini.NextGen
                 CreateModelInteractionStatus.Failed => "failed",
                 CreateModelInteractionStatus.InProgress => "in_progress",
                 CreateModelInteractionStatus.Incomplete => "incomplete",
-                CreateModelInteractionStatus.Queued => "queued",
                 CreateModelInteractionStatus.RequiresAction => "requires_action",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -79,7 +74,6 @@ namespace Google.Gemini.NextGen
                 "failed" => CreateModelInteractionStatus.Failed,
                 "in_progress" => CreateModelInteractionStatus.InProgress,
                 "incomplete" => CreateModelInteractionStatus.Incomplete,
-                "queued" => CreateModelInteractionStatus.Queued,
                 "requires_action" => CreateModelInteractionStatus.RequiresAction,
                 _ => null,
             };

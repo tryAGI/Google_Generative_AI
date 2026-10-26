@@ -28,7 +28,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscribed_events")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent> SubscribedEvents { get; set; }
+        public required global::System.Collections.Generic.IList<string> SubscribedEvents { get; set; }
 
         /// <summary>
         /// Optional. The user-provided name of the webhook.
@@ -134,7 +134,7 @@ namespace Google.Gemini.NextGen
 #endif
         public Webhook(
             string uri,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.WebhookSubscribedEvent> subscribedEvents,
+            global::System.Collections.Generic.IList<string> subscribedEvents,
             string? name,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,

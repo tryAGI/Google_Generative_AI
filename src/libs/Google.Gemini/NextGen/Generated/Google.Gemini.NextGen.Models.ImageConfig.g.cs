@@ -16,18 +16,16 @@ namespace Google.Gemini.NextGen
         /// reference images provided.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ImageConfigAspectRatioJsonConverter))]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.NextGen.ImageConfigAspectRatio? AspectRatio { get; set; }
+        public string? AspectRatio { get; set; }
 
         /// <summary>
         /// Specifies the size of generated images. Supported values are `1K`, `2K`,<br/>
         /// `4K`. If not specified, the model will use default value `1K`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image_size")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ImageConfigImageSizeJsonConverter))]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Google.Gemini.NextGen.ImageConfigImageSize? ImageSize { get; set; }
+        public string? ImageSize { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,8 +50,8 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ImageConfig(
-            global::Google.Gemini.NextGen.ImageConfigAspectRatio? aspectRatio,
-            global::Google.Gemini.NextGen.ImageConfigImageSize? imageSize)
+            string? aspectRatio,
+            string? imageSize)
         {
             this.AspectRatio = aspectRatio;
             this.ImageSize = imageSize;

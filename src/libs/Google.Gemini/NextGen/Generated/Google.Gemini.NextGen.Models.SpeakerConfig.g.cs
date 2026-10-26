@@ -12,7 +12,7 @@ namespace Google.Gemini.NextGen
         /// Individual speaker configurations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>? Speakers { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig>? Speakers { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,7 +30,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpeakerConfig(
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig2>? speakers)
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpeechConfig>? speakers)
         {
             this.Speakers = speakers;
         }

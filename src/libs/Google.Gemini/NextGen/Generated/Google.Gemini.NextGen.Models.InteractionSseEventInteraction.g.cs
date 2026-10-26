@@ -48,8 +48,7 @@ namespace Google.Gemini.NextGen
         public string? Updated { get; set; }
 
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Google.Gemini.NextGen.Usage? Usage { get; set; }
@@ -75,8 +74,10 @@ namespace Google.Gemini.NextGen
         public string? Agent { get; set; }
 
         /// <summary>
-        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
-        /// Included only in responses
+        /// Opaque token to resume a long decode.<br/>
+        /// Output: set when status is INCOMPLETE and decoding can be resumed.<br/>
+        /// Input: pass the latest token back unchanged in CreateInteraction to<br/>
+        /// continue decoding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
         public byte[]? ContinuationToken { get; set; }
@@ -109,8 +110,7 @@ namespace Google.Gemini.NextGen
         /// Included only in responses
         /// </param>
         /// <param name="usage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </param>
         /// <param name="serviceTier"></param>
         /// <param name="steps">
@@ -121,8 +121,10 @@ namespace Google.Gemini.NextGen
         /// The agent to interact with.
         /// </param>
         /// <param name="continuationToken">
-        /// Output only. Opaque token to resume a long decode when status is incomplete.<br/>
-        /// Included only in responses
+        /// Opaque token to resume a long decode.<br/>
+        /// Output: set when status is INCOMPLETE and decoding can be resumed.<br/>
+        /// Input: pass the latest token back unchanged in CreateInteraction to<br/>
+        /// continue decoding.
         /// </param>
         /// <param name="object">
         /// Output only. The resource type.<br/>

@@ -9,8 +9,7 @@ namespace Google.Gemini.NextGen
     public sealed partial class StepDeltaMetadata
     {
         /// <summary>
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_usage")]
         public global::Google.Gemini.NextGen.Usage? TotalUsage { get; set; }
@@ -25,8 +24,7 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="StepDeltaMetadata" /> class.
         /// </summary>
         /// <param name="totalUsage">
-        /// Statistics on the interaction request's token usage.<br/>
-        /// Included only in responses
+        /// Statistics on the interaction request's token usage.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
