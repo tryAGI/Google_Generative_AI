@@ -75,7 +75,7 @@ public partial class Tests
         }));
         using var client = new NextGen.GeminiNextGenClient("test-key", transport);
 
-        var created = await client.Voices.CreateAsync(new NextGen.CreateVoiceRequest
+        var created = await client.Voices.CreateVoiceAsync(new NextGen.CreateVoiceRequest
         {
             Store = true,
             Voice = new NextGen.Voice
@@ -84,9 +84,9 @@ public partial class Tests
                 Prompted = new NextGen.PromptedVoice { Input = "A warm narrator" },
             },
         });
-        var listed = await client.Voices.ListAsync(type: ["prompted"], pageSize: 20);
-        var fetched = await client.Voices.GetAsync("voice_abc");
-        await client.Voices.DeleteAsync("voice_abc");
+        var listed = await client.Voices.ListVoicesAsync(type: ["prompted"], pageSize: 20);
+        var fetched = await client.Voices.GetVoiceAsync("voice_abc");
+        await client.Voices.DeleteVoiceAsync("voice_abc");
 
         Assert.AreEqual("voice_abc", created.Id);
         Assert.AreEqual("voice_abc", listed.Voices?.Single().Id);
@@ -137,7 +137,7 @@ public partial class Tests
         }));
         using var client = new NextGen.GeminiNextGenClient("test-key", transport);
 
-        var voice = await client.Voices.CreateAsync(new NextGen.CreateVoiceRequest
+        var voice = await client.Voices.CreateVoiceAsync(new NextGen.CreateVoiceRequest
         {
             Store = false,
             Voice = new NextGen.Voice
