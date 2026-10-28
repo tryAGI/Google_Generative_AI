@@ -9,7 +9,7 @@ namespace Google.Gemini
     public sealed partial class ThinkingConfig
     {
         /// <summary>
-        /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
+        /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://aistudio.google.com/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thinkingLevel")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ThinkingConfigThinkingLevelJsonConverter))]
@@ -37,7 +37,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="ThinkingConfig" /> class.
         /// </summary>
         /// <param name="thinkingLevel">
-        /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
+        /// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://aistudio.google.com/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
         /// </param>
         /// <param name="includeThoughts">
         /// Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.

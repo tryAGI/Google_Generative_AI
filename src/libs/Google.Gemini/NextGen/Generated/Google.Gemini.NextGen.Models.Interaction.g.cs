@@ -174,6 +174,14 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Error>? Errors { get; set; }
 
         /// <summary>
+        /// Opaque token to resume a long decode. Output: set when status is<br/>
+        /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest<br/>
+        /// token back unchanged in CreateInteraction to continue decoding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
         /// Input only. Whether the interaction will be streamed.<br/>
         /// Included only in requests
         /// </summary>
@@ -276,6 +284,11 @@ namespace Google.Gemini.NextGen
         /// Output only. Diagnostic faults / platform errors recorded on the interaction.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="continuationToken">
+        /// Opaque token to resume a long decode. Output: set when status is<br/>
+        /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest<br/>
+        /// token back unchanged in CreateInteraction to continue decoding.
+        /// </param>
         /// <param name="stream">
         /// Input only. Whether the interaction will be streamed.<br/>
         /// Included only in requests
@@ -338,6 +351,7 @@ namespace Google.Gemini.NextGen
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? safetySettings,
             global::System.Collections.Generic.Dictionary<string, string>? labels,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Error>? errors,
+            byte[]? continuationToken,
             bool? stream,
             bool? store,
             bool? background,
@@ -370,6 +384,7 @@ namespace Google.Gemini.NextGen
             this.SafetySettings = safetySettings;
             this.Labels = labels;
             this.Errors = errors;
+            this.ContinuationToken = continuationToken;
             this.Stream = stream;
             this.Store = store;
             this.Background = background;

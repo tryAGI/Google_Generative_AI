@@ -37,6 +37,10 @@ namespace Google.Gemini.NextGen
         ///
         /// </summary>
         RequiresAction,
+        /// <summary>
+        ///
+        /// </summary>
+        RequiresContinuation,
     }
 
     /// <summary>
@@ -58,6 +62,7 @@ namespace Google.Gemini.NextGen
                 CreateModelInteractionStatus.InProgress => "in_progress",
                 CreateModelInteractionStatus.Incomplete => "incomplete",
                 CreateModelInteractionStatus.RequiresAction => "requires_action",
+                CreateModelInteractionStatus.RequiresContinuation => "requires_continuation",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -75,6 +80,7 @@ namespace Google.Gemini.NextGen
                 "in_progress" => CreateModelInteractionStatus.InProgress,
                 "incomplete" => CreateModelInteractionStatus.Incomplete,
                 "requires_action" => CreateModelInteractionStatus.RequiresAction,
+                "requires_continuation" => CreateModelInteractionStatus.RequiresContinuation,
                 _ => null,
             };
         }

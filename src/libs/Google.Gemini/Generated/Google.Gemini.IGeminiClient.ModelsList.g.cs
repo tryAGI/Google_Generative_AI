@@ -5,7 +5,7 @@ namespace Google.Gemini
     public partial interface IGeminiClient
     {
         /// <summary>
-        /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini) available through the Gemini API.
+        /// Lists the [`Model`s](https://aistudio.google.com/docs/models) available through the Gemini API.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
@@ -18,7 +18,7 @@ namespace Google.Gemini
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini) available through the Gemini API.
+        /// Lists the [`Model`s](https://aistudio.google.com/docs/models) available through the Gemini API.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>

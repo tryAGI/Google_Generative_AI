@@ -9,40 +9,10 @@ namespace Google.Gemini
     public sealed partial class GenerateContentRequest
     {
         /// <summary>
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
+        /// Optional. The name of the content [cached](https://aistudio.google.com/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolConfig")]
-        public global::Google.Gemini.ToolConfig? ToolConfig { get; set; }
-
-        /// <summary>
-        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("safetySettings")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? SafetySettings { get; set; }
-
-        /// <summary>
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
-
-        /// <summary>
-        /// Optional. Labels with user-defined metadata for the request. Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed. Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Labels { get; set; }
-
-        /// <summary>
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
-        public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
-
-        /// <summary>
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
-        public global::Google.Gemini.Content? SystemInstruction { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("cachedContent")]
+        public string? CachedContent { get; set; }
 
         /// <summary>
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
@@ -51,10 +21,40 @@ namespace Google.Gemini
         public bool? Store { get; set; }
 
         /// <summary>
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
+        public global::Google.Gemini.GenerationConfig? GenerationConfig { get; set; }
+
+        /// <summary>
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
+
+        /// <summary>
+        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://aistudio.google.com/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://aistudio.google.com/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("safetySettings")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? SafetySettings { get; set; }
+
+        /// <summary>
+        /// Optional. Labels with user-defined metadata for the request. Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed. Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Labels { get; set; }
+
+        /// <summary>
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://aistudio.google.com/docs/text-generation#multi-turn-conversations), this is a repeated field that contains the conversation history and the latest request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contents")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.Content>? Contents { get; set; }
+
+        /// <summary>
+        /// Optional. An opaque continuation token used to resume generation from a previous `GenerateContent` or `StreamGenerateContent` response that stopped with `finish_reason` set to `CONTINUATION`. Note that `contents` is mandatory and must identically replicate the prompt and conversation history from the initial request when continuation token is provided in a request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuationToken")]
+        public byte[]? ContinuationToken { get; set; }
 
         /// <summary>
         /// Optional. The service tier of the request.
@@ -64,22 +64,22 @@ namespace Google.Gemini
         public global::Google.Gemini.GenerateContentRequestServiceTier? ServiceTier { get; set; }
 
         /// <summary>
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("cachedContent")]
-        public string? CachedContent { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("systemInstruction")]
+        public global::Google.Gemini.Content? SystemInstruction { get; set; }
 
         /// <summary>
-        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
+        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://aistudio.google.com/docs/function-calling) and the [Code execution](https://aistudio.google.com/docs/code-execution) guides to learn more.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? Tools { get; set; }
 
         /// <summary>
-        /// Optional. An opaque continuation token used to resume generation from a previous `GenerateContent` or `StreamGenerateContent` response that stopped with `finish_reason` set to `CONTINUATION`. Note that `contents` is mandatory and must identically replicate the prompt and conversation history from the initial request when continuation token is provided in a request.
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("continuationToken")]
-        public byte[]? ContinuationToken { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolConfig")]
+        public global::Google.Gemini.ToolConfig? ToolConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -90,71 +90,71 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateContentRequest" /> class.
         /// </summary>
-        /// <param name="toolConfig">
-        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
-        /// </param>
-        /// <param name="safetySettings">
-        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-        /// </param>
-        /// <param name="contents">
-        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
-        /// </param>
-        /// <param name="labels">
-        /// Optional. Labels with user-defined metadata for the request. Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed. Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
-        /// </param>
-        /// <param name="generationConfig">
-        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
-        /// </param>
-        /// <param name="systemInstruction">
-        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// <param name="cachedContent">
+        /// Optional. The name of the content [cached](https://aistudio.google.com/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
         /// </param>
         /// <param name="store">
         /// Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
         /// </param>
+        /// <param name="generationConfig">
+        /// Configuration options for model generation and outputs. Not all parameters are configurable for every model.
+        /// </param>
         /// <param name="model">
         /// Required. The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+        /// </param>
+        /// <param name="safetySettings">
+        /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content. This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safety_settings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://aistudio.google.com/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://aistudio.google.com/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+        /// </param>
+        /// <param name="labels">
+        /// Optional. Labels with user-defined metadata for the request. Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed. Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+        /// </param>
+        /// <param name="contents">
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://aistudio.google.com/docs/text-generation#multi-turn-conversations), this is a repeated field that contains the conversation history and the latest request.
+        /// </param>
+        /// <param name="continuationToken">
+        /// Optional. An opaque continuation token used to resume generation from a previous `GenerateContent` or `StreamGenerateContent` response that stopped with `finish_reason` set to `CONTINUATION`. Note that `contents` is mandatory and must identically replicate the prompt and conversation history from the initial request when continuation token is provided in a request.
         /// </param>
         /// <param name="serviceTier">
         /// Optional. The service tier of the request.
         /// </param>
-        /// <param name="cachedContent">
-        /// Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+        /// <param name="systemInstruction">
+        /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </param>
         /// <param name="tools">
-        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) and the [Code execution](https://ai.google.dev/gemini-api/docs/code-execution) guides to learn more.
+        /// Optional. A list of `Tools` the `Model` may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `code_execution`. Refer to the [Function calling](https://aistudio.google.com/docs/function-calling) and the [Code execution](https://aistudio.google.com/docs/code-execution) guides to learn more.
         /// </param>
-        /// <param name="continuationToken">
-        /// Optional. An opaque continuation token used to resume generation from a previous `GenerateContent` or `StreamGenerateContent` response that stopped with `finish_reason` set to `CONTINUATION`. Note that `contents` is mandatory and must identically replicate the prompt and conversation history from the initial request when continuation token is provided in a request.
+        /// <param name="toolConfig">
+        /// The Tool configuration containing parameters for specifying `Tool` use in the request.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateContentRequest(
-            global::Google.Gemini.ToolConfig? toolConfig,
-            global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
-            global::System.Collections.Generic.Dictionary<string, string>? labels,
-            global::Google.Gemini.GenerationConfig? generationConfig,
-            global::Google.Gemini.Content? systemInstruction,
-            bool? store,
-            string? model,
-            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier,
             string? cachedContent,
+            bool? store,
+            global::Google.Gemini.GenerationConfig? generationConfig,
+            string? model,
+            global::System.Collections.Generic.IList<global::Google.Gemini.SafetySetting>? safetySettings,
+            global::System.Collections.Generic.Dictionary<string, string>? labels,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Content>? contents,
+            byte[]? continuationToken,
+            global::Google.Gemini.GenerateContentRequestServiceTier? serviceTier,
+            global::Google.Gemini.Content? systemInstruction,
             global::System.Collections.Generic.IList<global::Google.Gemini.Tool>? tools,
-            byte[]? continuationToken)
+            global::Google.Gemini.ToolConfig? toolConfig)
         {
-            this.ToolConfig = toolConfig;
-            this.SafetySettings = safetySettings;
-            this.Contents = contents;
-            this.Labels = labels;
-            this.GenerationConfig = generationConfig;
-            this.SystemInstruction = systemInstruction;
-            this.Store = store;
-            this.Model = model;
-            this.ServiceTier = serviceTier;
             this.CachedContent = cachedContent;
-            this.Tools = tools;
+            this.Store = store;
+            this.GenerationConfig = generationConfig;
+            this.Model = model;
+            this.SafetySettings = safetySettings;
+            this.Labels = labels;
+            this.Contents = contents;
             this.ContinuationToken = continuationToken;
+            this.ServiceTier = serviceTier;
+            this.SystemInstruction = systemInstruction;
+            this.Tools = tools;
+            this.ToolConfig = toolConfig;
         }
 
         /// <summary>

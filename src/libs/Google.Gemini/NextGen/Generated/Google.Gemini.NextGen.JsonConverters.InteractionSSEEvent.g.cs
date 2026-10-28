@@ -79,6 +79,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("usage")) __score3++;
             if (__jsonProps.Contains("usage.cached_tokens_by_modality")) __score3++;
             if (__jsonProps.Contains("usage.grounding_tool_count")) __score3++;
+            if (__jsonProps.Contains("usage.initial_input_tokens")) __score3++;
             if (__jsonProps.Contains("usage.input_tokens_by_modality")) __score3++;
             if (__jsonProps.Contains("usage.output_tokens_by_modality")) __score3++;
             if (__jsonProps.Contains("usage.tool_use_tokens_by_modality")) __score3++;
@@ -107,6 +108,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("step_usage")) __score6++;
             if (__jsonProps.Contains("step_usage.cached_tokens_by_modality")) __score6++;
             if (__jsonProps.Contains("step_usage.grounding_tool_count")) __score6++;
+            if (__jsonProps.Contains("step_usage.initial_input_tokens")) __score6++;
             if (__jsonProps.Contains("step_usage.input_tokens_by_modality")) __score6++;
             if (__jsonProps.Contains("step_usage.output_tokens_by_modality")) __score6++;
             if (__jsonProps.Contains("step_usage.tool_use_tokens_by_modality")) __score6++;
@@ -119,6 +121,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("usage")) __score6++;
             if (__jsonProps.Contains("usage.cached_tokens_by_modality")) __score6++;
             if (__jsonProps.Contains("usage.grounding_tool_count")) __score6++;
+            if (__jsonProps.Contains("usage.initial_input_tokens")) __score6++;
             if (__jsonProps.Contains("usage.input_tokens_by_modality")) __score6++;
             if (__jsonProps.Contains("usage.output_tokens_by_modality")) __score6++;
             if (__jsonProps.Contains("usage.tool_use_tokens_by_modality")) __score6++;

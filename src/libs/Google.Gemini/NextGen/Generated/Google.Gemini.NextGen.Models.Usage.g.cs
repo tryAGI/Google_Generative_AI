@@ -15,6 +15,12 @@ namespace Google.Gemini.NextGen
         public int? TotalInputTokens { get; set; }
 
         /// <summary>
+        /// Number of input tokens used in the first turn of this interaction.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initial_input_tokens")]
+        public int? InitialInputTokens { get; set; }
+
+        /// <summary>
         /// A breakdown of input token usage by modality.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_tokens_by_modality")]
@@ -87,6 +93,9 @@ namespace Google.Gemini.NextGen
         /// <param name="totalInputTokens">
         /// Number of tokens in the prompt (context).
         /// </param>
+        /// <param name="initialInputTokens">
+        /// Number of input tokens used in the first turn of this interaction.
+        /// </param>
         /// <param name="inputTokensByModality">
         /// A breakdown of input token usage by modality.
         /// </param>
@@ -123,6 +132,7 @@ namespace Google.Gemini.NextGen
 #endif
         public Usage(
             int? totalInputTokens,
+            int? initialInputTokens,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ModalityTokens>? inputTokensByModality,
             int? totalCachedTokens,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ModalityTokens>? cachedTokensByModality,
@@ -135,6 +145,7 @@ namespace Google.Gemini.NextGen
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GroundingToolCount>? groundingToolCount)
         {
             this.TotalInputTokens = totalInputTokens;
+            this.InitialInputTokens = initialInputTokens;
             this.InputTokensByModality = inputTokensByModality;
             this.TotalCachedTokens = totalCachedTokens;
             this.CachedTokensByModality = cachedTokensByModality;

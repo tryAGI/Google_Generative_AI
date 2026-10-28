@@ -3706,7 +3706,8 @@
               "failed",
               "cancelled",
               "incomplete",
-              "budget_exceeded"
+              "budget_exceeded",
+              "requires_continuation"
             ],
             "readOnly": true,
             "x-google-enum-deprecated": [
@@ -3716,7 +3717,8 @@
               false,
               false,
               false,
-              true
+              true,
+              false
             ],
             "x-google-enum-descriptions": [
               "The interaction is in progress.",
@@ -3725,7 +3727,8 @@
               "The interaction failed.",
               "The interaction was cancelled.",
               "The interaction is completed, but contains incomplete results (e.g.\nhitting max_tokens).",
-              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11)."
+              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
+              "The interaction requires at least one more request for it to be\ncompleted. The next request should set the continuation_token to the one\nreturned by this request."
             ]
           },
           "created": {
@@ -3818,6 +3821,12 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "continuation_token": {
+            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged in CreateInteraction to continue decoding.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
           },
           "stream": {
             "description": "Input only. Whether the interaction will be streamed.",
@@ -3907,7 +3916,8 @@
               "failed",
               "cancelled",
               "incomplete",
-              "budget_exceeded"
+              "budget_exceeded",
+              "requires_continuation"
             ],
             "readOnly": true,
             "x-google-enum-deprecated": [
@@ -3917,7 +3927,8 @@
               false,
               false,
               false,
-              true
+              true,
+              false
             ],
             "x-google-enum-descriptions": [
               "The interaction is in progress.",
@@ -3926,7 +3937,8 @@
               "The interaction failed.",
               "The interaction was cancelled.",
               "The interaction is completed, but contains incomplete results (e.g.\nhitting max_tokens).",
-              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11)."
+              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
+              "The interaction requires at least one more request for it to be\ncompleted. The next request should set the continuation_token to the one\nreturned by this request."
             ]
           },
           "created": {
@@ -4019,6 +4031,12 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "continuation_token": {
+            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged in CreateInteraction to continue decoding.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
           },
           "stream": {
             "description": "Input only. Whether the interaction will be streamed.",
@@ -6259,7 +6277,8 @@
               "failed",
               "cancelled",
               "incomplete",
-              "budget_exceeded"
+              "budget_exceeded",
+              "requires_continuation"
             ],
             "readOnly": true,
             "x-google-enum-deprecated": [
@@ -6269,7 +6288,8 @@
               false,
               false,
               false,
-              true
+              true,
+              false
             ],
             "x-google-enum-descriptions": [
               "The interaction is in progress.",
@@ -6278,7 +6298,8 @@
               "The interaction failed.",
               "The interaction was cancelled.",
               "The interaction is completed, but contains incomplete results (e.g.\nhitting max_tokens).",
-              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11)."
+              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
+              "The interaction requires at least one more request for it to be\ncompleted. The next request should set the continuation_token to the one\nreturned by this request."
             ]
           },
           "created": {
@@ -6404,6 +6425,12 @@
               "$ref": "#/components/schemas/Error"
             },
             "readOnly": true
+          },
+          "continuation_token": {
+            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged in CreateInteraction to continue decoding.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
           },
           "stream": {
             "description": "Input only. Whether the interaction will be streamed.",
@@ -6687,15 +6714,15 @@
             },
             "readOnly": true
           },
-          "agent": {
-            "description": "The agent to interact with.",
-            "type": "string"
-          },
           "continuation_token": {
             "description": "Opaque token to resume a long decode.\nOutput: set when status is INCOMPLETE and decoding can be resumed.\nInput: pass the latest token back unchanged in CreateInteraction to\ncontinue decoding.",
             "type": "string",
             "format": "byte",
             "x-speakeasy-base64-input-mode": "file"
+          },
+          "agent": {
+            "description": "The agent to interact with.",
+            "type": "string"
           },
           "object": {
             "description": "Output only. The resource type.",
@@ -6737,7 +6764,8 @@
               "failed",
               "cancelled",
               "incomplete",
-              "budget_exceeded"
+              "budget_exceeded",
+              "requires_continuation"
             ],
             "x-google-enum-deprecated": [
               false,
@@ -6746,7 +6774,8 @@
               false,
               false,
               false,
-              true
+              true,
+              false
             ],
             "x-google-enum-descriptions": [
               "The interaction is in progress.",
@@ -6755,7 +6784,8 @@
               "The interaction failed.",
               "The interaction was cancelled.",
               "The interaction is completed, but contains incomplete results (e.g.\nhitting max_tokens).",
-              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11)."
+              "Deprecated: Token and execution budget exhaustion returns INCOMPLETE\n(11).",
+              "The interaction requires at least one more request for it to be\ncompleted. The next request should set the continuation_token to the one\nreturned by this request."
             ]
           },
           "event_type": {
@@ -9203,6 +9233,11 @@
         "properties": {
           "total_input_tokens": {
             "description": "Number of tokens in the prompt (context).",
+            "type": "integer",
+            "format": "int32"
+          },
+          "initial_input_tokens": {
+            "description": "Number of input tokens used in the first turn of this interaction.",
             "type": "integer",
             "format": "int32"
           },
