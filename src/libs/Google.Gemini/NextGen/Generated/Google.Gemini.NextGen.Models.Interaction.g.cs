@@ -55,7 +55,7 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step> Steps { get; set; } = default!;
 
         /// <summary>
-        /// The model that will complete your prompt.\n\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.
+        /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ModelJsonConverter))]
@@ -224,7 +224,7 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="Interaction" /> class.
         /// </summary>
         /// <param name="model">
-        /// The model that will complete your prompt.\n\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.
+        /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
         /// </param>
         /// <param name="generationConfig">
         /// Configuration parameters for model interactions.

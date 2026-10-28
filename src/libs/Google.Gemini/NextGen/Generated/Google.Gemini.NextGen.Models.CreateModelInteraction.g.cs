@@ -11,7 +11,7 @@ namespace Google.Gemini.NextGen
     public sealed partial class CreateModelInteraction
     {
         /// <summary>
-        /// The model that will complete your prompt.\n\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.
+        /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.ModelJsonConverter))]
@@ -180,7 +180,7 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="CreateModelInteraction" /> class.
         /// </summary>
         /// <param name="model">
-        /// The model that will complete your prompt.\n\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.
+        /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
         /// </param>
         /// <param name="input">
         /// The input for the interaction.

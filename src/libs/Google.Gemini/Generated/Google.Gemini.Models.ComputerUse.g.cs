@@ -9,17 +9,17 @@ namespace Google.Gemini
     public sealed partial class ComputerUse
     {
         /// <summary>
-        /// Optional. Disabled safety policies for computer use.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("disabledSafetyPolicies")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? DisabledSafetyPolicies { get; set; }
-
-        /// <summary>
         /// Required. The environment being operated.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environment")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.ComputerUseEnvironmentJsonConverter))]
         public global::Google.Gemini.ComputerUseEnvironment? Environment { get; set; }
+
+        /// <summary>
+        /// Optional. Disabled safety policies for computer use.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("disabledSafetyPolicies")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? DisabledSafetyPolicies { get; set; }
 
         /// <summary>
         /// Optional. Whether enable the prompt injection detection check on computer-use request.
@@ -42,11 +42,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ComputerUse" /> class.
         /// </summary>
-        /// <param name="disabledSafetyPolicies">
-        /// Optional. Disabled safety policies for computer use.
-        /// </param>
         /// <param name="environment">
         /// Required. The environment being operated.
+        /// </param>
+        /// <param name="disabledSafetyPolicies">
+        /// Optional. Disabled safety policies for computer use.
         /// </param>
         /// <param name="enablePromptInjectionDetection">
         /// Optional. Whether enable the prompt injection detection check on computer-use request.
@@ -58,13 +58,13 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ComputerUse(
-            global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies,
             global::Google.Gemini.ComputerUseEnvironment? environment,
+            global::System.Collections.Generic.IList<global::Google.Gemini.ComputerUseDisabledSafetyPolicie>? disabledSafetyPolicies,
             bool? enablePromptInjectionDetection,
             global::System.Collections.Generic.IList<string>? excludedPredefinedFunctions)
         {
-            this.DisabledSafetyPolicies = disabledSafetyPolicies;
             this.Environment = environment;
+            this.DisabledSafetyPolicies = disabledSafetyPolicies;
             this.EnablePromptInjectionDetection = enablePromptInjectionDetection;
             this.ExcludedPredefinedFunctions = excludedPredefinedFunctions;
         }

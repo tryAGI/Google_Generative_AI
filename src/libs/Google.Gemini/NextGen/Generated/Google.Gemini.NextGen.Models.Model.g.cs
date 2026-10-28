@@ -5,7 +5,7 @@ namespace Google.Gemini.NextGen
 {
 
     /// <summary>
-    /// The model that will complete your prompt.\n\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.
+    /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
     /// </summary>
     public readonly partial struct Model : global::System.IEquatable<Model>
     {
