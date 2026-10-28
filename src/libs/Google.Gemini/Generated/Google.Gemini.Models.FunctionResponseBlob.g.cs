@@ -9,6 +9,12 @@ namespace Google.Gemini
     public sealed partial class FunctionResponseBlob
     {
         /// <summary>
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
         /// Raw bytes for media formats.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -29,6 +35,9 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponseBlob" /> class.
         /// </summary>
+        /// <param name="displayName">
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+        /// </param>
         /// <param name="data">
         /// Raw bytes for media formats.
         /// </param>
@@ -39,9 +48,11 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponseBlob(
+            string? displayName,
             byte[]? data,
             string? mimeType)
         {
+            this.DisplayName = displayName;
             this.Data = data;
             this.MimeType = mimeType;
         }

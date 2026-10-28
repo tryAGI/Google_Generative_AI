@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? EndOffset { get; set; }
 
         /// <summary>
-        /// Required. Transcript of the word.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("word")]
-        public string? Word { get; set; }
-
-        /// <summary>
         /// Optional. Start offset in time of the word relative to the start of the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startOffset")]
         public string? StartOffset { get; set; }
+
+        /// <summary>
+        /// Required. Transcript of the word.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("word")]
+        public string? Word { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="endOffset">
         /// Optional. End offset in time of the word relative to the start of the audio.
         /// </param>
-        /// <param name="word">
-        /// Required. Transcript of the word.
-        /// </param>
         /// <param name="startOffset">
         /// Optional. Start offset in time of the word relative to the start of the audio.
+        /// </param>
+        /// <param name="word">
+        /// Required. Transcript of the word.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public WordInfo(
             string? endOffset,
-            string? word,
-            string? startOffset)
+            string? startOffset,
+            string? word)
         {
             this.EndOffset = endOffset;
-            this.Word = word;
             this.StartOffset = startOffset;
+            this.Word = word;
         }
 
         /// <summary>

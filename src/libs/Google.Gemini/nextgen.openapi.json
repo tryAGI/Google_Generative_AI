@@ -7236,7 +7236,7 @@
       },
       "ModelOption": {
         "title": "Model",
-        "description": "The model that will complete your prompt.\\n\\nSee [models](https://ai.google.dev/gemini-api/docs/models) for additional details.",
+        "description": "The model that will complete your prompt.\\n\\nSee [models](https://aistudio.google.com/docs/models) for additional details.",
         "type": "string",
         "enum": [
           "gemma-4-26b-a4b-it",

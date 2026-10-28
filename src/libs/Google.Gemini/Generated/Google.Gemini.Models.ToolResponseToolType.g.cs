@@ -25,6 +25,10 @@ namespace Google.Gemini
         /// </summary>
         GoogleSearchWeb,
         /// <summary>
+        /// Media processing tool types (e.g. video, audio, etc.), maps to invisible tools used for multimodal understanding like GOOGLE_UNDERSTANDING_VIDEO.
+        /// </summary>
+        MediaProcessing,
+        /// <summary>
         /// Unspecified tool type.
         /// </summary>
         ToolTypeUnspecified,
@@ -50,6 +54,7 @@ namespace Google.Gemini
                 ToolResponseToolType.GoogleMaps => "GOOGLE_MAPS",
                 ToolResponseToolType.GoogleSearchImage => "GOOGLE_SEARCH_IMAGE",
                 ToolResponseToolType.GoogleSearchWeb => "GOOGLE_SEARCH_WEB",
+                ToolResponseToolType.MediaProcessing => "MEDIA_PROCESSING",
                 ToolResponseToolType.ToolTypeUnspecified => "TOOL_TYPE_UNSPECIFIED",
                 ToolResponseToolType.UrlContext => "URL_CONTEXT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -66,6 +71,7 @@ namespace Google.Gemini
                 "GOOGLE_MAPS" => ToolResponseToolType.GoogleMaps,
                 "GOOGLE_SEARCH_IMAGE" => ToolResponseToolType.GoogleSearchImage,
                 "GOOGLE_SEARCH_WEB" => ToolResponseToolType.GoogleSearchWeb,
+                "MEDIA_PROCESSING" => ToolResponseToolType.MediaProcessing,
                 "TOOL_TYPE_UNSPECIFIED" => ToolResponseToolType.ToolTypeUnspecified,
                 "URL_CONTEXT" => ToolResponseToolType.UrlContext,
                 _ => null,
