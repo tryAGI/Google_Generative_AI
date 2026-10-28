@@ -68,12 +68,6 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? Steps { get; set; }
 
         /// <summary>
-        /// The agent to interact with.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
-        public string? Agent { get; set; }
-
-        /// <summary>
         /// Opaque token to resume a long decode.<br/>
         /// Output: set when status is INCOMPLETE and decoding can be resumed.<br/>
         /// Input: pass the latest token back unchanged in CreateInteraction to<br/>
@@ -81,6 +75,12 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
         public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
+        /// The agent to interact with.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
+        public string? Agent { get; set; }
 
         /// <summary>
         /// Output only. The resource type.<br/>
@@ -117,14 +117,14 @@ namespace Google.Gemini.NextGen
         /// Output only. The steps that make up the interaction, if included in this event.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="agent">
-        /// The agent to interact with.
-        /// </param>
         /// <param name="continuationToken">
         /// Opaque token to resume a long decode.<br/>
         /// Output: set when status is INCOMPLETE and decoding can be resumed.<br/>
         /// Input: pass the latest token back unchanged in CreateInteraction to<br/>
         /// continue decoding.
+        /// </param>
+        /// <param name="agent">
+        /// The agent to interact with.
         /// </param>
         /// <param name="object">
         /// Output only. The resource type.<br/>
@@ -148,8 +148,8 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.Usage? usage,
             global::Google.Gemini.NextGen.ServiceTier? serviceTier,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Step>? steps,
-            string? agent,
             byte[]? continuationToken,
+            string? agent,
             string? @object,
             string id = default!,
             global::Google.Gemini.NextGen.InteractionSseEventInteractionStatus status = default!)
@@ -162,8 +162,8 @@ namespace Google.Gemini.NextGen
             this.Usage = usage;
             this.ServiceTier = serviceTier;
             this.Steps = steps;
-            this.Agent = agent;
             this.ContinuationToken = continuationToken;
+            this.Agent = agent;
             this.Object = @object;
         }
 

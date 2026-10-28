@@ -150,6 +150,14 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.Dictionary<string, string>? Labels { get; set; }
 
         /// <summary>
+        /// Opaque token to resume a long decode. Output: set when status is<br/>
+        /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest<br/>
+        /// token back unchanged in CreateInteraction to continue decoding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
+        public byte[]? ContinuationToken { get; set; }
+
+        /// <summary>
         /// Input only. Whether the interaction will be streamed.<br/>
         /// Included only in requests
         /// </summary>
@@ -243,6 +251,11 @@ namespace Google.Gemini.NextGen
         /// characters, underscores, and dashes. International characters are allowed.<br/>
         /// Label values are optional. Label keys must start with a letter.
         /// </param>
+        /// <param name="continuationToken">
+        /// Opaque token to resume a long decode. Output: set when status is<br/>
+        /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest<br/>
+        /// token back unchanged in CreateInteraction to continue decoding.
+        /// </param>
         /// <param name="stream">
         /// Input only. Whether the interaction will be streamed.<br/>
         /// Included only in requests
@@ -276,6 +289,7 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.WebhookConfig? webhookConfig,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SafetySetting>? safetySettings,
             global::System.Collections.Generic.Dictionary<string, string>? labels,
+            byte[]? continuationToken,
             bool? stream,
             bool? store,
             bool? background)
@@ -297,6 +311,7 @@ namespace Google.Gemini.NextGen
             this.WebhookConfig = webhookConfig;
             this.SafetySettings = safetySettings;
             this.Labels = labels;
+            this.ContinuationToken = continuationToken;
             this.Stream = stream;
             this.Store = store;
             this.Background = background;

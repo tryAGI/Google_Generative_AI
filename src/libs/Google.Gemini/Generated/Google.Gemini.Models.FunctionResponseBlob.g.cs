@@ -15,7 +15,7 @@ namespace Google.Gemini
         public byte[]? Data { get; set; }
 
         /// <summary>
-        /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats).
+        /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://aistudio.google.com/docs/file-input-methods#supported-content-types).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
         public string? MimeType { get; set; }
@@ -39,7 +39,7 @@ namespace Google.Gemini
         /// Raw bytes for media formats.
         /// </param>
         /// <param name="mimeType">
-        /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats).
+        /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://aistudio.google.com/docs/file-input-methods#supported-content-types).
         /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.

@@ -44,7 +44,7 @@ namespace Google.Gemini
             ref string content);
 
         /// <summary>
-        /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini) available through the Gemini API.
+        /// Lists the [`Model`s](https://aistudio.google.com/docs/models) available through the Gemini API.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
@@ -67,7 +67,7 @@ namespace Google.Gemini
             return __response.Body;
         }
         /// <summary>
-        /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini) available through the Gemini API.
+        /// Lists the [`Model`s](https://aistudio.google.com/docs/models) available through the Gemini API.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
