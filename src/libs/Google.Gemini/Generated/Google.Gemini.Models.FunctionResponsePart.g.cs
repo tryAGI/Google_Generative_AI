@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class FunctionResponsePart
     {
         /// <summary>
-        /// URI based data for function response.
+        /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileData")]
-        public global::Google.Gemini.FunctionResponseFileData? FileData { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("inlineData")]
+        public global::Google.Gemini.FunctionResponseBlob? InlineData { get; set; }
 
         /// <summary>
         /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
@@ -22,10 +22,10 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionResponsePartMediaProcessing? MediaProcessing { get; set; }
 
         /// <summary>
-        /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
+        /// URI based data for function response.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inlineData")]
-        public global::Google.Gemini.FunctionResponseBlob? InlineData { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileData")]
+        public global::Google.Gemini.FunctionResponseFileData? FileData { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -36,26 +36,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponsePart" /> class.
         /// </summary>
-        /// <param name="fileData">
-        /// URI based data for function response.
+        /// <param name="inlineData">
+        /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
         /// </param>
         /// <param name="mediaProcessing">
         /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
         /// </param>
-        /// <param name="inlineData">
-        /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
+        /// <param name="fileData">
+        /// URI based data for function response.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponsePart(
-            global::Google.Gemini.FunctionResponseFileData? fileData,
+            global::Google.Gemini.FunctionResponseBlob? inlineData,
             global::Google.Gemini.FunctionResponsePartMediaProcessing? mediaProcessing,
-            global::Google.Gemini.FunctionResponseBlob? inlineData)
+            global::Google.Gemini.FunctionResponseFileData? fileData)
         {
-            this.FileData = fileData;
-            this.MediaProcessing = mediaProcessing;
             this.InlineData = inlineData;
+            this.MediaProcessing = mediaProcessing;
+            this.FileData = fileData;
         }
 
         /// <summary>
