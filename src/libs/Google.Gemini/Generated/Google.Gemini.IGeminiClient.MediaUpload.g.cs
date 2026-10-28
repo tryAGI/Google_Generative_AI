@@ -32,7 +32,7 @@ namespace Google.Gemini
         /// Creates a `File`.
         /// </summary>
         /// <param name="file">
-        /// A file uploaded to the API. Next ID: 15
+        /// A file uploaded to the API.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

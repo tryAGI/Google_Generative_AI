@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class WordInfo
     {
         /// <summary>
-        /// Optional. End offset in time of the word relative to the start of the audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endOffset")]
-        public string? EndOffset { get; set; }
-
-        /// <summary>
         /// Optional. Start offset in time of the word relative to the start of the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startOffset")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public string? Word { get; set; }
 
         /// <summary>
+        /// Optional. End offset in time of the word relative to the start of the audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endOffset")]
+        public string? EndOffset { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="WordInfo" /> class.
         /// </summary>
-        /// <param name="endOffset">
-        /// Optional. End offset in time of the word relative to the start of the audio.
-        /// </param>
         /// <param name="startOffset">
         /// Optional. Start offset in time of the word relative to the start of the audio.
         /// </param>
         /// <param name="word">
         /// Required. Transcript of the word.
         /// </param>
+        /// <param name="endOffset">
+        /// Optional. End offset in time of the word relative to the start of the audio.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public WordInfo(
-            string? endOffset,
             string? startOffset,
-            string? word)
+            string? word,
+            string? endOffset)
         {
-            this.EndOffset = endOffset;
             this.StartOffset = startOffset;
             this.Word = word;
+            this.EndOffset = endOffset;
         }
 
         /// <summary>

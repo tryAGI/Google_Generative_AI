@@ -9,7 +9,7 @@ namespace Google.Gemini
     public sealed partial class CreateFileResponse
     {
         /// <summary>
-        /// A file uploaded to the API. Next ID: 15
+        /// A file uploaded to the API.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
         public global::Google.Gemini.File? File { get; set; }
@@ -24,7 +24,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="CreateFileResponse" /> class.
         /// </summary>
         /// <param name="file">
-        /// A file uploaded to the API. Next ID: 15
+        /// A file uploaded to the API.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

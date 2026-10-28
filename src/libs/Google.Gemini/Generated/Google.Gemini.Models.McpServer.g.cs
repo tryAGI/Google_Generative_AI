@@ -4,12 +4,12 @@
 namespace Google.Gemini
 {
     /// <summary>
-    /// A MCPServer is a server that can be called by the model to perform actions. It is a server that implements the MCP protocol. Next ID: 7
+    /// A MCPServer is a server that can be called by the model to perform actions. It is a server that implements the MCP protocol.
     /// </summary>
     public sealed partial class McpServer
     {
         /// <summary>
-        /// A transport that can stream HTTP requests and responses. Next ID: 6
+        /// A transport that can stream HTTP requests and responses.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("streamableHttpTransport")]
         public global::Google.Gemini.StreamableHttpTransport? StreamableHttpTransport { get; set; }
@@ -30,7 +30,7 @@ namespace Google.Gemini
         /// Initializes a new instance of the <see cref="McpServer" /> class.
         /// </summary>
         /// <param name="streamableHttpTransport">
-        /// A transport that can stream HTTP requests and responses. Next ID: 6
+        /// A transport that can stream HTTP requests and responses.
         /// </param>
         /// <param name="name">
         /// The name of the MCPServer.

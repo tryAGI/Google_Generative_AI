@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class FunctionResponseBlob
     {
         /// <summary>
-        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
-
-        /// <summary>
         /// Raw bytes for media formats.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponseBlob" /> class.
         /// </summary>
-        /// <param name="displayName">
-        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
-        /// </param>
         /// <param name="data">
         /// Raw bytes for media formats.
         /// </param>
         /// <param name="mimeType">
         /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats).
         /// </param>
+        /// <param name="displayName">
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponseBlob(
-            string? displayName,
             byte[]? data,
-            string? mimeType)
+            string? mimeType,
+            string? displayName)
         {
-            this.DisplayName = displayName;
             this.Data = data;
             this.MimeType = mimeType;
+            this.DisplayName = displayName;
         }
 
         /// <summary>
