@@ -1090,7 +1090,7 @@
                   "deep_research": {
                     "summary": "Deep Research",
                     "value": {
-                      "agent": "deep-research-pro-preview-12-2025",
+                      "agent": "deep-research-preview-04-2026",
                       "created": "2025-11-26T12:22:47Z",
                       "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
                       "object": "interaction",
@@ -1391,7 +1391,7 @@
           {
             "label": "deep_research",
             "lang": "sh",
-            "source": "curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \\\n  -H \"x-goog-api-key: $GEMINI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"agent\": \"deep-research-pro-preview-12-2025\",\n    \"input\": \"Find a cure to cancer\",\n    \"background\": true\n  }'\n"
+            "source": "curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \\\n  -H \"x-goog-api-key: $GEMINI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"agent\": \"deep-research-preview-04-2026\",\n    \"input\": \"Find a cure to cancer\",\n    \"background\": true\n  }'\n"
           },
           {
             "label": "antigravity",
@@ -1436,7 +1436,7 @@
           {
             "label": "deep_research",
             "lang": "python",
-            "source": "from google import genai\n\nclient = genai.Client()\ninteraction = client.interactions.create(\n    agent=\"deep-research-pro-preview-12-2025\",\n    input=\"find a cure to cancer\",\n    background=True,\n)\nprint(interaction.status)\n"
+            "source": "from google import genai\n\nclient = genai.Client()\ninteraction = client.interactions.create(\n    agent=\"deep-research-preview-04-2026\",\n    input=\"find a cure to cancer\",\n    background=True,\n)\nprint(interaction.status)\n"
           },
           {
             "label": "antigravity",
@@ -1481,7 +1481,7 @@
           {
             "label": "deep_research",
             "lang": "javascript",
-            "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst interaction = await ai.interactions.create({\n  agent: 'deep-research-pro-preview-12-2025',\n  input: 'find a cure to cancer',\n  background: true,\n});\nconsole.log(interaction.status);\n"
+            "source": "import {GoogleGenAI} from '@google/genai';\n\nconst ai = new GoogleGenAI({});\nconst interaction = await ai.interactions.create({\n  agent: 'deep-research-preview-04-2026',\n  input: 'find a cure to cancer',\n  background: true,\n});\nconsole.log(interaction.status);\n"
           },
           {
             "label": "antigravity",
@@ -1526,7 +1526,7 @@
           {
             "label": "deep_research",
             "lang": "java",
-            "source": "import com.google.genai.gaos.models.interactions.AgentOption;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteraction;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionStatus;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\nCreateAgentInteraction params =\n    CreateAgentInteraction.builder()\n        .agent(AgentOption.of(\"deep-research-pro-preview-12-2025\"))\n        .input(InteractionsInput.of(\"find a cure to cancer\"))\n        .background(true)\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.status().map(InteractionStatus::value).orElse(\"\"));\n"
+            "source": "import com.google.genai.gaos.models.interactions.AgentOption;\nimport com.google.genai.Client;\nimport com.google.genai.gaos.models.interactions.CreateAgentInteraction;\nimport com.google.genai.gaos.models.operations.CreateInteractionRequestBody;\nimport com.google.genai.gaos.models.operations.CreateInteractionResponse;\nimport com.google.genai.gaos.models.interactions.Interaction;\nimport com.google.genai.gaos.models.interactions.InteractionStatus;\nimport com.google.genai.gaos.models.interactions.InteractionsInput;\n\nClient client = new Client();\nCreateAgentInteraction params =\n    CreateAgentInteraction.builder()\n        .agent(AgentOption.of(\"deep-research-preview-04-2026\"))\n        .input(InteractionsInput.of(\"find a cure to cancer\"))\n        .background(true)\n        .build();\nCreateInteractionResponse response =\n    client.interactions.create(CreateInteractionRequestBody.of(params));\nInteraction interaction =\n    response.interaction().orElseThrow(() -> new RuntimeException(\"No interaction returned\"));\nSystem.out.println(interaction.status().map(InteractionStatus::value).orElse(\"\"));\n"
           },
           {
             "label": "antigravity",
@@ -1571,7 +1571,7 @@
           {
             "label": "deep_research",
             "lang": "go",
-            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:      gaos_interactions.AgentOption(\"deep-research-pro-preview-12-2025\"),\n        Input:      genai.Ptr(gaos_interactions.NewInteractionsInput(\"find a cure to cancer\")),\n        Background: genai.Ptr(true),\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil {\n        fmt.Println(res.Interaction.Status)\n    }\n}\n"
+            "source": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"log\"\n    \"google.golang.org/genai\"\n    gaos_interactions \"google.golang.org/genai/interactions/models/interactions\"\n    \"google.golang.org/genai/interactions/models/operations\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    client, err := genai.NewClient(ctx, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{\n        Agent:      gaos_interactions.AgentOption(\"deep-research-preview-04-2026\"),\n        Input:      genai.Ptr(gaos_interactions.NewInteractionsInput(\"find a cure to cancer\")),\n        Background: genai.Ptr(true),\n    })\n\n    req := operations.CreateInteractionRequest{\n        Body: body,\n    }\n\n    res, err := client.Interactions.Create(ctx, req)\n    if err != nil {\n        log.Fatal(err)\n    }\n\n    if res.Interaction != nil {\n        fmt.Println(res.Interaction.Status)\n    }\n}\n"
           },
           {
             "label": "antigravity",
@@ -2965,13 +2965,11 @@
         "description": "The agent to interact with.",
         "type": "string",
         "enum": [
-          "deep-research-pro-preview-12-2025",
           "deep-research-preview-04-2026",
           "deep-research-max-preview-04-2026",
           "antigravity-preview-05-2026"
         ],
         "x-speakeasy-enum-descriptions": [
-          "Gemini Deep Research Agent",
           "Gemini Deep Research Agent",
           "Gemini Deep Research Max Agent",
           "Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use."

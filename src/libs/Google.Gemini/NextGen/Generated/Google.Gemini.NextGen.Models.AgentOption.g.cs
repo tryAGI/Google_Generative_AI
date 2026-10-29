@@ -35,11 +35,6 @@ namespace Google.Gemini.NextGen
         /// Gemini Deep Research Agent
         /// </summary>
         public static AgentOption DeepResearchPreview042026 { get; } = new("deep-research-preview-04-2026");
-
-        /// <summary>
-        /// Gemini Deep Research Agent
-        /// </summary>
-        public static AgentOption DeepResearchProPreview122025 { get; } = new("deep-research-pro-preview-12-2025");
         /// <summary>
         ///
         /// </summary>
@@ -52,7 +47,6 @@ namespace Google.Gemini.NextGen
                 "antigravity-preview-05-2026" => AntigravityPreview052026,
                 "deep-research-max-preview-04-2026" => DeepResearchMaxPreview042026,
                 "deep-research-preview-04-2026" => DeepResearchPreview042026,
-                "deep-research-pro-preview-12-2025" => DeepResearchProPreview122025,
                 _ => new AgentOption(value),
             };
         }
@@ -65,7 +59,6 @@ namespace Google.Gemini.NextGen
             "antigravity-preview-05-2026" => true,
             "deep-research-max-preview-04-2026" => true,
             "deep-research-preview-04-2026" => true,
-            "deep-research-pro-preview-12-2025" => true,
             _ => false,
         };
 
