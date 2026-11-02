@@ -15,13 +15,6 @@ namespace Google.Gemini
         public global::Google.Gemini.Dataset? TrainingData { get; set; }
 
         /// <summary>
-        /// Output only. Metrics collected during tuning.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("snapshots")]
-        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Snapshots { get; set; }
-
-        /// <summary>
         /// Output only. The timestamp when tuning this model completed.<br/>
         /// Included only in responses
         /// </summary>
@@ -42,6 +35,13 @@ namespace Google.Gemini
         public global::Google.Gemini.Hyperparameters? Hyperparameters { get; set; }
 
         /// <summary>
+        /// Output only. Metrics collected during tuning.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("snapshots")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? Snapshots { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,10 +52,6 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="trainingData">
         /// Dataset for training or validation.
-        /// </param>
-        /// <param name="snapshots">
-        /// Output only. Metrics collected during tuning.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="completeTime">
         /// Output only. The timestamp when tuning this model completed.<br/>
@@ -68,21 +64,25 @@ namespace Google.Gemini
         /// <param name="hyperparameters">
         /// Hyperparameters controlling the tuning process. Read more at https://aistudio.google.com/docs/model-tuning
         /// </param>
+        /// <param name="snapshots">
+        /// Output only. Metrics collected during tuning.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TuningTask(
             global::Google.Gemini.Dataset? trainingData,
-            global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? snapshots,
             string? completeTime,
             string? startTime,
-            global::Google.Gemini.Hyperparameters? hyperparameters)
+            global::Google.Gemini.Hyperparameters? hyperparameters,
+            global::System.Collections.Generic.IList<global::Google.Gemini.TuningSnapshot>? snapshots)
         {
             this.TrainingData = trainingData;
-            this.Snapshots = snapshots;
             this.CompleteTime = completeTime;
             this.StartTime = startTime;
             this.Hyperparameters = hyperparameters;
+            this.Snapshots = snapshots;
         }
 
         /// <summary>
