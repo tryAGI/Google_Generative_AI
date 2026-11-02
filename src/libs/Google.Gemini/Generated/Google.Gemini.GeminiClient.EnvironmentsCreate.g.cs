@@ -425,11 +425,11 @@ namespace Google.Gemini
         /// <summary>
         /// Creates an environment.
         /// </summary>
-        /// <param name="sources">
-        /// Sources to be mounted into the environment.
-        /// </param>
         /// <param name="networkAllowlist">
         /// Network egress configuration for the environment.
+        /// </param>
+        /// <param name="sources">
+        /// Sources to be mounted into the environment.
         /// </param>
         /// <param name="networkMode">
         /// Network egress mode.
@@ -441,8 +441,8 @@ namespace Google.Gemini
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Environment> EnvironmentsCreateAsync(
-            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
             global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
             global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode = default,
             string? fromEnvironment = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -450,8 +450,8 @@ namespace Google.Gemini
         {
             var __request = new global::Google.Gemini.CreateEnvironmentRequest
             {
-                Sources = sources,
                 NetworkAllowlist = networkAllowlist,
+                Sources = sources,
                 NetworkMode = networkMode,
                 FromEnvironment = fromEnvironment,
             };

@@ -16,16 +16,16 @@ namespace Google.Gemini
         public global::Google.Gemini.RealtimeInputConfigActivityHandling? ActivityHandling { get; set; }
 
         /// <summary>
-        /// Optional. Configures interim transcript timestamps.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("interimTranscriptTimestampEnabled")]
-        public bool? InterimTranscriptTimestampEnabled { get; set; }
-
-        /// <summary>
         /// Configures automatic detection of activity.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("automaticActivityDetection")]
         public global::Google.Gemini.AutomaticActivityDetection? AutomaticActivityDetection { get; set; }
+
+        /// <summary>
+        /// Optional. Configures interim transcript timestamps.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("interimTranscriptTimestampEnabled")]
+        public bool? InterimTranscriptTimestampEnabled { get; set; }
 
         /// <summary>
         /// Optional. Defines which input is included in the user's turn.
@@ -46,11 +46,11 @@ namespace Google.Gemini
         /// <param name="activityHandling">
         /// Optional. Defines what effect activity has.
         /// </param>
-        /// <param name="interimTranscriptTimestampEnabled">
-        /// Optional. Configures interim transcript timestamps.
-        /// </param>
         /// <param name="automaticActivityDetection">
         /// Configures automatic detection of activity.
+        /// </param>
+        /// <param name="interimTranscriptTimestampEnabled">
+        /// Optional. Configures interim transcript timestamps.
         /// </param>
         /// <param name="turnCoverage">
         /// Optional. Defines which input is included in the user's turn.
@@ -60,13 +60,13 @@ namespace Google.Gemini
 #endif
         public RealtimeInputConfig(
             global::Google.Gemini.RealtimeInputConfigActivityHandling? activityHandling,
-            bool? interimTranscriptTimestampEnabled,
             global::Google.Gemini.AutomaticActivityDetection? automaticActivityDetection,
+            bool? interimTranscriptTimestampEnabled,
             global::Google.Gemini.RealtimeInputConfigTurnCoverage? turnCoverage)
         {
             this.ActivityHandling = activityHandling;
-            this.InterimTranscriptTimestampEnabled = interimTranscriptTimestampEnabled;
             this.AutomaticActivityDetection = automaticActivityDetection;
+            this.InterimTranscriptTimestampEnabled = interimTranscriptTimestampEnabled;
             this.TurnCoverage = turnCoverage;
         }
 
