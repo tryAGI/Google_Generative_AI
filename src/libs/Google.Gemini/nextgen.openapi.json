@@ -4238,11 +4238,31 @@
             "type": "string",
             "enum": [
               "application/pdf",
-              "text/csv"
+              "text/csv",
+              "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+              "application/vnd.ms-powerpoint",
+              "application/vnd.oasis.opendocument.presentation",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "application/msword",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+              "application/vnd.oasis.opendocument.text",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "application/vnd.ms-excel",
+              "application/vnd.oasis.opendocument.spreadsheet"
             ],
             "x-google-enum-descriptions": [
               "PDF document format",
-              "CSV document format"
+              "CSV document format",
+              "PPTX presentation format",
+              "PPT presentation format",
+              "ODP presentation format",
+              "DOCX document format",
+              "DOC document format",
+              "DOTX document template format",
+              "ODT document format",
+              "XLSX spreadsheet format",
+              "XLS spreadsheet format",
+              "ODS spreadsheet format"
             ]
           }
         },
@@ -4273,11 +4293,31 @@
             "type": "string",
             "enum": [
               "application/pdf",
-              "text/csv"
+              "text/csv",
+              "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+              "application/vnd.ms-powerpoint",
+              "application/vnd.oasis.opendocument.presentation",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "application/msword",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+              "application/vnd.oasis.opendocument.text",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "application/vnd.ms-excel",
+              "application/vnd.oasis.opendocument.spreadsheet"
             ],
             "x-google-enum-descriptions": [
               "PDF document format",
-              "CSV document format"
+              "CSV document format",
+              "PPTX presentation format",
+              "PPT presentation format",
+              "ODP presentation format",
+              "DOCX document format",
+              "DOC document format",
+              "DOTX document template format",
+              "ODT document format",
+              "XLSX spreadsheet format",
+              "XLS spreadsheet format",
+              "ODS spreadsheet format"
             ]
           },
           "data": {
