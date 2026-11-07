@@ -301,6 +301,8 @@ namespace Google.Gemini.NextGen
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentConfig, string>),
 
+            typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>, string>),
+
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AntigravityAgentConfig, global::Google.Gemini.NextGen.DeepResearchAgentConfig, global::Google.Gemini.NextGen.DynamicAgentConfig>),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>),
@@ -406,11 +408,13 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CodeExecutionResultDelta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CodeExecutionResultStep))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>, string>), TypeInfoPropertyName = "OneOfIListContentString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Content), TypeInfoPropertyName = "Content2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ComputerUse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ComputerUseEnvironment), TypeInfoPropertyName = "ComputerUseEnvironment2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie), TypeInfoPropertyName = "ComputerUseDisabledSafetyPolicie2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Content), TypeInfoPropertyName = "Content2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ImageContent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.TextContent))]
@@ -581,7 +585,6 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InteractionSseEventInteractionStatus), TypeInfoPropertyName = "InteractionSseEventInteractionStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InteractionSSEStreamEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InteractionStatusUpdateStatus), TypeInfoPropertyName = "InteractionStatusUpdateStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ListAgentsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Agent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ListCredentialsResponse))]
@@ -686,6 +689,8 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CancelInteractionByIdResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.AgentTool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Content>, string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Content>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ComputerUseDisabledSafetyPolicie>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Tool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ResponseModality>))]
@@ -713,7 +718,6 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.GoogleSearchResult2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Step>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Error>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Content>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Agent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Credential>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Environment3>))]
