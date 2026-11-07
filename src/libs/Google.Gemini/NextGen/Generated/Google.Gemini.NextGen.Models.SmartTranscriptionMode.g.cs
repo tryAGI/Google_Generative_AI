@@ -16,6 +16,14 @@ namespace Google.Gemini.NextGen
         public required object Type { get; set; }
 
         /// <summary>
+        /// The source text to be edited or rewritten via voice instructions.<br/>
+        /// When provided, the model performs voice-driven editing and outputs the<br/>
+        /// finalized replacement text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("source_text")]
+        public string? SourceText { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -25,13 +33,20 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="SmartTranscriptionMode" /> class.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="sourceText">
+        /// The source text to be edited or rewritten via voice instructions.<br/>
+        /// When provided, the model performs voice-driven editing and outputs the<br/>
+        /// finalized replacement text.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SmartTranscriptionMode(
-            object type)
+            object type,
+            string? sourceText)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.SourceText = sourceText;
         }
 
         /// <summary>

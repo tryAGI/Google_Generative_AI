@@ -9,11 +9,12 @@ namespace Google.Gemini.NextGen
     public sealed partial class CodeExecutionResultStep
     {
         /// <summary>
-        /// Required. The output of the code execution.
+        /// The output of the code execution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Result { get; set; }
+        public required global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>, string> Result { get; set; }
 
         /// <summary>
         /// Required. ID to match the ID from the function call block.
@@ -51,7 +52,7 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="CodeExecutionResultStep" /> class.
         /// </summary>
         /// <param name="result">
-        /// Required. The output of the code execution.
+        /// The output of the code execution.
         /// </param>
         /// <param name="callId">
         /// Required. ID to match the ID from the function call block.
@@ -67,13 +68,13 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CodeExecutionResultStep(
-            string result,
+            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>, string> result,
             string callId,
             object type,
             bool? isError,
             byte[]? signature)
         {
-            this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
+            this.Result = result;
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.IsError = isError;
