@@ -15,18 +15,18 @@ namespace Google.Gemini
         public global::Google.Gemini.Status? Error { get; set; }
 
         /// <summary>
-        /// MIME type of the generatedFile.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        public string? MimeType { get; set; }
-
-        /// <summary>
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.GeneratedFileStateJsonConverter))]
         public global::Google.Gemini.GeneratedFileState? State { get; set; }
+
+        /// <summary>
+        /// MIME type of the generatedFile.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
+        public string? MimeType { get; set; }
 
         /// <summary>
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
@@ -46,12 +46,12 @@ namespace Google.Gemini
         /// <param name="error">
         /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </param>
-        /// <param name="mimeType">
-        /// MIME type of the generatedFile.
-        /// </param>
         /// <param name="state">
         /// Output only. The state of the GeneratedFile.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="mimeType">
+        /// MIME type of the generatedFile.
         /// </param>
         /// <param name="name">
         /// Identifier. The name of the generated file. Example: `generatedFiles/abc-123`
@@ -61,13 +61,13 @@ namespace Google.Gemini
 #endif
         public GeneratedFile(
             global::Google.Gemini.Status? error,
-            string? mimeType,
             global::Google.Gemini.GeneratedFileState? state,
+            string? mimeType,
             string? name)
         {
             this.Error = error;
-            this.MimeType = mimeType;
             this.State = state;
+            this.MimeType = mimeType;
             this.Name = name;
         }
 
