@@ -27,11 +27,13 @@ namespace Google.Gemini
             };
         partial void PrepareEnvironmentsListArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Google.Gemini.EnvironmentsListMode? mode,
             ref int? pageSize,
             ref string? pageToken);
         partial void PrepareEnvironmentsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Google.Gemini.EnvironmentsListMode? mode,
             int? pageSize,
             string? pageToken);
         partial void ProcessEnvironmentsListResponse(
@@ -46,18 +48,21 @@ namespace Google.Gemini
         /// <summary>
         /// Lists environments.
         /// </summary>
+        /// <param name="mode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.ListEnvironmentsResponse> EnvironmentsListAsync(
+            global::Google.Gemini.EnvironmentsListMode? mode = default,
             int? pageSize = default,
             string? pageToken = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await EnvironmentsListAsResponseAsync(
+                mode: mode,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 requestOptions: requestOptions,
@@ -69,12 +74,14 @@ namespace Google.Gemini
         /// <summary>
         /// Lists environments.
         /// </summary>
+        /// <param name="mode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Google.Gemini.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.AutoSDKHttpResponse<global::Google.Gemini.ListEnvironmentsResponse>> EnvironmentsListAsResponseAsync(
+            global::Google.Gemini.EnvironmentsListMode? mode = default,
             int? pageSize = default,
             string? pageToken = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
@@ -84,6 +91,7 @@ namespace Google.Gemini
                 client: HttpClient);
             PrepareEnvironmentsListArguments(
                 httpClient: HttpClient,
+                mode: ref mode,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
@@ -122,6 +130,7 @@ namespace Google.Gemini
                                 }
                             }
                             __pathBuilder
+                                .AddOptionalParameter("mode", mode?.ToValueString())
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                                 .AddOptionalParameter("pageToken", pageToken)
                                 ;
@@ -148,6 +157,7 @@ namespace Google.Gemini
                 PrepareEnvironmentsListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    mode: mode,
                     pageSize: pageSize,
                     pageToken: pageToken);
 
