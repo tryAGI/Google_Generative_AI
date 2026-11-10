@@ -16,16 +16,16 @@ namespace Google.Gemini
         public global::Google.Gemini.ToolCallToolType? ToolType { get; set; }
 
         /// <summary>
-        /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("args")]
-        public object? Args { get; set; }
-
-        /// <summary>
         /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
+
+        /// <summary>
+        /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("args")]
+        public object? Args { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool that was called.
@@ -45,11 +45,11 @@ namespace Google.Gemini
         /// <param name="toolType">
         /// Required. The type of tool that was called.
         /// </param>
-        /// <param name="args">
-        /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
-        /// </param>
         /// <param name="id">
         /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
+        /// </param>
+        /// <param name="args">
+        /// Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
         /// </param>
         /// <param name="toolName">
         /// Optional. The name of the tool that was called.
@@ -59,13 +59,13 @@ namespace Google.Gemini
 #endif
         public ToolCall(
             global::Google.Gemini.ToolCallToolType? toolType,
-            object? args,
             string? id,
+            object? args,
             string? toolName)
         {
             this.ToolType = toolType;
-            this.Args = args;
             this.Id = id;
+            this.Args = args;
             this.ToolName = toolName;
         }
 
