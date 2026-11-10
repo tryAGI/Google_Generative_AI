@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class WordInfo
     {
         /// <summary>
-        /// Optional. End offset in time of the word relative to the start of the audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endOffset")]
-        public string? EndOffset { get; set; }
-
-        /// <summary>
         /// Required. Transcript of the word.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word")]
         public string? Word { get; set; }
+
+        /// <summary>
+        /// Optional. End offset in time of the word relative to the start of the audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endOffset")]
+        public string? EndOffset { get; set; }
 
         /// <summary>
         /// Optional. Start offset in time of the word relative to the start of the audio.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="WordInfo" /> class.
         /// </summary>
-        /// <param name="endOffset">
-        /// Optional. End offset in time of the word relative to the start of the audio.
-        /// </param>
         /// <param name="word">
         /// Required. Transcript of the word.
+        /// </param>
+        /// <param name="endOffset">
+        /// Optional. End offset in time of the word relative to the start of the audio.
         /// </param>
         /// <param name="startOffset">
         /// Optional. Start offset in time of the word relative to the start of the audio.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public WordInfo(
-            string? endOffset,
             string? word,
+            string? endOffset,
             string? startOffset)
         {
-            this.EndOffset = endOffset;
             this.Word = word;
+            this.EndOffset = endOffset;
             this.StartOffset = startOffset;
         }
 

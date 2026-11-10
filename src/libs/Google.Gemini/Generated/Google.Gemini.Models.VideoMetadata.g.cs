@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class VideoMetadata
     {
         /// <summary>
-        /// Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fps")]
-        public double? Fps { get; set; }
-
-        /// <summary>
         /// Optional. The end offset of the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endOffset")]
         public string? EndOffset { get; set; }
+
+        /// <summary>
+        /// Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fps")]
+        public double? Fps { get; set; }
 
         /// <summary>
         /// Optional. The start offset of the video.
@@ -35,11 +35,11 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="VideoMetadata" /> class.
         /// </summary>
-        /// <param name="fps">
-        /// Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
-        /// </param>
         /// <param name="endOffset">
         /// Optional. The end offset of the video.
+        /// </param>
+        /// <param name="fps">
+        /// Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
         /// </param>
         /// <param name="startOffset">
         /// Optional. The start offset of the video.
@@ -48,12 +48,12 @@ namespace Google.Gemini
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public VideoMetadata(
-            double? fps,
             string? endOffset,
+            double? fps,
             string? startOffset)
         {
-            this.Fps = fps;
             this.EndOffset = endOffset;
+            this.Fps = fps;
             this.StartOffset = startOffset;
         }
 

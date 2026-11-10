@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class RealtimeInputConfig
     {
         /// <summary>
-        /// Optional. Configures interim transcript timestamps.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("interimTranscriptTimestampEnabled")]
-        public bool? InterimTranscriptTimestampEnabled { get; set; }
-
-        /// <summary>
         /// Optional. Defines what effect activity has.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("activityHandling")]
@@ -35,6 +29,12 @@ namespace Google.Gemini
         public global::Google.Gemini.AutomaticActivityDetection? AutomaticActivityDetection { get; set; }
 
         /// <summary>
+        /// Optional. Configures interim transcript timestamps.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("interimTranscriptTimestampEnabled")]
+        public bool? InterimTranscriptTimestampEnabled { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,9 +43,6 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="RealtimeInputConfig" /> class.
         /// </summary>
-        /// <param name="interimTranscriptTimestampEnabled">
-        /// Optional. Configures interim transcript timestamps.
-        /// </param>
         /// <param name="activityHandling">
         /// Optional. Defines what effect activity has.
         /// </param>
@@ -55,19 +52,22 @@ namespace Google.Gemini
         /// <param name="automaticActivityDetection">
         /// Configures automatic detection of activity.
         /// </param>
+        /// <param name="interimTranscriptTimestampEnabled">
+        /// Optional. Configures interim transcript timestamps.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RealtimeInputConfig(
-            bool? interimTranscriptTimestampEnabled,
             global::Google.Gemini.RealtimeInputConfigActivityHandling? activityHandling,
             global::Google.Gemini.RealtimeInputConfigTurnCoverage? turnCoverage,
-            global::Google.Gemini.AutomaticActivityDetection? automaticActivityDetection)
+            global::Google.Gemini.AutomaticActivityDetection? automaticActivityDetection,
+            bool? interimTranscriptTimestampEnabled)
         {
-            this.InterimTranscriptTimestampEnabled = interimTranscriptTimestampEnabled;
             this.ActivityHandling = activityHandling;
             this.TurnCoverage = turnCoverage;
             this.AutomaticActivityDetection = automaticActivityDetection;
+            this.InterimTranscriptTimestampEnabled = interimTranscriptTimestampEnabled;
         }
 
         /// <summary>
