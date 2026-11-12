@@ -28,6 +28,10 @@ namespace Google.Gemini
         /// Default value.
         /// </summary>
         ThinkingLevelUnspecified,
+        /// <summary>
+        /// XHigh thinking level.
+        /// </summary>
+        Xhigh,
     }
 
     /// <summary>
@@ -47,6 +51,7 @@ namespace Google.Gemini
                 ThinkingConfigThinkingLevel.Medium => "MEDIUM",
                 ThinkingConfigThinkingLevel.Minimal => "MINIMAL",
                 ThinkingConfigThinkingLevel.ThinkingLevelUnspecified => "THINKING_LEVEL_UNSPECIFIED",
+                ThinkingConfigThinkingLevel.Xhigh => "XHIGH",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,6 +67,7 @@ namespace Google.Gemini
                 "MEDIUM" => ThinkingConfigThinkingLevel.Medium,
                 "MINIMAL" => ThinkingConfigThinkingLevel.Minimal,
                 "THINKING_LEVEL_UNSPECIFIED" => ThinkingConfigThinkingLevel.ThinkingLevelUnspecified,
+                "XHIGH" => ThinkingConfigThinkingLevel.Xhigh,
                 _ => null,
             };
         }
