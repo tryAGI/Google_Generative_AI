@@ -7,7 +7,7 @@ namespace Google.Gemini.NextGen
 {
     /// <summary>
     /// The Interaction resource.<br/>
-    /// Example: {"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.6-flash","object":"interaction","status":"completed","steps":[{"type":"model_output","content":[{"type":"text","text":"Hello! I\u0027m doing well, functioning as expected. Thank you for asking! How are you doing today?"}]}],"updated":"2025-12-04T15:01:45Z","usage":{"input_tokens_by_modality":[{"modality":"text","tokens":7}],"total_cached_tokens":0,"total_input_tokens":7,"total_output_tokens":23,"total_thought_tokens":49,"total_tokens":79,"total_tool_use_tokens":0}}
+    /// Example: {"created":"2025-12-04T15:01:45Z","id":"v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg","model":"gemini-3.8-flash","object":"interaction","status":"completed","steps":[{"type":"model_output","content":[{"type":"text","text":"Hello! I\u0027m doing well, functioning as expected. Thank you for asking! How are you doing today?"}]}],"updated":"2025-12-04T15:01:45Z","usage":{"input_tokens_by_modality":[{"modality":"text","tokens":7}],"total_cached_tokens":0,"total_input_tokens":7,"total_output_tokens":23,"total_thought_tokens":49,"total_tokens":79,"total_tool_use_tokens":0}}
     /// </summary>
     public sealed partial class Interaction
     {
@@ -104,8 +104,8 @@ namespace Google.Gemini.NextGen
         /// the JSON schema specified in this field.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_format")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? ResponseFormat { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ResponseFormat?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat>>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat>>? ResponseFormat { get; set; }
 
         /// <summary>
         /// The mime type of the response. This is required if response_format is set.
@@ -342,7 +342,7 @@ namespace Google.Gemini.NextGen
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? tools,
             global::Google.Gemini.NextGen.InteractionsInput? input,
             global::Google.Gemini.NextGen.Usage? usage,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat4?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat4>>? responseFormat,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat>>? responseFormat,
             string? previousInteractionId,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentConfig, string>? environment,
             string? environmentId,

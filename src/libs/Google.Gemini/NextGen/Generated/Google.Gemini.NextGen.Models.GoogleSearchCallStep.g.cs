@@ -13,7 +13,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.GoogleSearchCallArguments2 GoogleSearchCallArguments { get; set; }
+        public required global::Google.Gemini.NextGen.GoogleSearchCallArguments GoogleSearchCallArguments { get; set; }
 
         /// <summary>
         /// Required. A unique ID for this specific tool call.
@@ -68,7 +68,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleSearchCallStep(
-            global::Google.Gemini.NextGen.GoogleSearchCallArguments2 googleSearchCallArguments,
+            global::Google.Gemini.NextGen.GoogleSearchCallArguments googleSearchCallArguments,
             string id,
             object type,
             global::Google.Gemini.NextGen.GoogleSearchCallStepSearchType? searchType,

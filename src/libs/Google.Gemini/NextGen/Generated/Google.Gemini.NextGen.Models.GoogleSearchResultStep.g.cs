@@ -13,7 +13,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult2> Result { get; set; }
+        public required global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult> Result { get; set; }
 
         /// <summary>
         /// Required. ID to match the ID from the function call block.
@@ -67,7 +67,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GoogleSearchResultStep(
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult2> result,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GoogleSearchResult> result,
             string callId,
             object type,
             bool? isError,

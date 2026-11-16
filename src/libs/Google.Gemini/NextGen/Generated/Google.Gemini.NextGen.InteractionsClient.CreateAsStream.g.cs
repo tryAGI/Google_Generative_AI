@@ -320,6 +320,80 @@ namespace Google.Gemini.NextGen
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            // Error creating interaction
+                            if ((int)__response.StatusCode >= 400 && (int)__response.StatusCode <= 499)
+                            {
+                                string? __content_4XX = null;
+                                global::System.Exception? __exception_4XX = null;
+                                global::Google.Gemini.NextGen.CreateInteractionResponse? __value_4XX = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_4XX = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_4XX = global::Google.Gemini.NextGen.CreateInteractionResponse.FromJson(__content_4XX, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_4XX = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_4XX = global::Google.Gemini.NextGen.CreateInteractionResponse.FromJson(__content_4XX, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_4XX = __ex;
+                                }
+
+
+                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.CreateInteractionResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_4XX ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_4XX,
+                                    responseBody: __content_4XX,
+                                    responseObject: __value_4XX,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Error creating interaction
+                            if ((int)__response.StatusCode >= 500 && (int)__response.StatusCode <= 599)
+                            {
+                                string? __content_5XX = null;
+                                global::System.Exception? __exception_5XX = null;
+                                global::Google.Gemini.NextGen.CreateInteractionResponse? __value_5XX = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_5XX = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_5XX = global::Google.Gemini.NextGen.CreateInteractionResponse.FromJson(__content_5XX, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_5XX = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_5XX = global::Google.Gemini.NextGen.CreateInteractionResponse.FromJson(__content_5XX, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_5XX = __ex;
+                                }
+
+
+                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.CreateInteractionResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_5XX ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_5XX,
+                                    responseBody: __content_5XX,
+                                    responseObject: __value_5XX,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
 
                             try
                             {

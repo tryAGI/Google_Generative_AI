@@ -58,6 +58,11 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        public DecisionsClient Decisions { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public EnvironmentsClient Environments { get; }
 
         /// <summary>

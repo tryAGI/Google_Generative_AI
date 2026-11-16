@@ -27,6 +27,11 @@ namespace Google.Gemini.NextGen
         public static AgentOption AntigravityPreview052026 { get; } = new("antigravity-preview-05-2026");
 
         /// <summary>
+        /// Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+        /// </summary>
+        public static AgentOption AntigravityPreview092026 { get; } = new("antigravity-preview-09-2026");
+
+        /// <summary>
         /// Gemini Deep Research Max Agent
         /// </summary>
         public static AgentOption DeepResearchMaxPreview042026 { get; } = new("deep-research-max-preview-04-2026");
@@ -45,6 +50,7 @@ namespace Google.Gemini.NextGen
             return value switch
             {
                 "antigravity-preview-05-2026" => AntigravityPreview052026,
+                "antigravity-preview-09-2026" => AntigravityPreview092026,
                 "deep-research-max-preview-04-2026" => DeepResearchMaxPreview042026,
                 "deep-research-preview-04-2026" => DeepResearchPreview042026,
                 _ => new AgentOption(value),
@@ -57,6 +63,7 @@ namespace Google.Gemini.NextGen
         public bool IsKnown => Value switch
         {
             "antigravity-preview-05-2026" => true,
+            "antigravity-preview-09-2026" => true,
             "deep-research-max-preview-04-2026" => true,
             "deep-research-preview-04-2026" => true,
             _ => false,

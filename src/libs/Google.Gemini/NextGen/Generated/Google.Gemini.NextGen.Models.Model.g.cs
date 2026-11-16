@@ -92,6 +92,11 @@ namespace Google.Gemini.NextGen
         public static Model Gemini35FlashLite { get; } = new("gemini-3.5-flash-lite");
 
         /// <summary>
+        /// Gemini 3.5 Transcribe - Low-latency speech-to-text model with utterance-based language detection, speaker diarization, word-level timestamps, and custom vocabulary biasing.
+        /// </summary>
+        public static Model Gemini35Transcribe { get; } = new("gemini-3.5-transcribe");
+
+        /// <summary>
         /// Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
         /// </summary>
         public static Model Gemini36Flash { get; } = new("gemini-3.6-flash");
@@ -117,6 +122,21 @@ namespace Google.Gemini.NextGen
         public static Model Gemini38FlashTts { get; } = new("gemini-3.8-flash-tts");
 
         /// <summary>
+        /// Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.
+        /// </summary>
+        public static Model Gemini4Argon { get; } = new("gemini-4-argon");
+
+        /// <summary>
+        /// Gemini 4 Carbon - Our most capable reasoning model, built for sustained agentic coding, multimodal knowledge work, scientific discovery, and cybersecurity defense.
+        /// </summary>
+        public static Model Gemini4Carbon { get; } = new("gemini-4-carbon");
+
+        /// <summary>
+        /// Gemini 4 Hydrogen - A model with frontier-level intelligence, built for fast, dependable execution across coding, agentic workflows, and multimodal knowledge work.
+        /// </summary>
+        public static Model Gemini4Hydrogen { get; } = new("gemini-4-hydrogen");
+
+        /// <summary>
         /// Latest release of Gemini Flash
         /// </summary>
         public static Model GeminiFlashLatest { get; } = new("gemini-flash-latest");
@@ -135,6 +155,11 @@ namespace Google.Gemini.NextGen
         /// Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
         /// </summary>
         public static Model GeminiOmni11Flash { get; } = new("gemini-omni-1.1-flash");
+
+        /// <summary>
+        /// Gemini Omni 1.2 Flash - Our latest multimodal model for fast, conversational video generation, editing, and cinematic control.
+        /// </summary>
+        public static Model GeminiOmni12Flash { get; } = new("gemini-omni-1.2-flash");
 
         /// <summary>
         /// Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
@@ -208,15 +233,20 @@ namespace Google.Gemini.NextGen
                 "gemini-3.1-pro-preview-customtools" => Gemini31ProPreviewCustomtools,
                 "gemini-3.5-flash" => Gemini35Flash,
                 "gemini-3.5-flash-lite" => Gemini35FlashLite,
+                "gemini-3.5-transcribe" => Gemini35Transcribe,
                 "gemini-3.6-flash" => Gemini36Flash,
                 "gemini-3.7-flash" => Gemini37Flash,
                 "gemini-3.8-flash" => Gemini38Flash,
                 "gemini-3.8-flash-lite-tts" => Gemini38FlashLiteTts,
                 "gemini-3.8-flash-tts" => Gemini38FlashTts,
+                "gemini-4-argon" => Gemini4Argon,
+                "gemini-4-carbon" => Gemini4Carbon,
+                "gemini-4-hydrogen" => Gemini4Hydrogen,
                 "gemini-flash-latest" => GeminiFlashLatest,
                 "gemini-flash-lite-latest" => GeminiFlashLiteLatest,
                 "gemini-nano-banana-2.1" => GeminiNanoBanana21,
                 "gemini-omni-1.1-flash" => GeminiOmni11Flash,
+                "gemini-omni-1.2-flash" => GeminiOmni12Flash,
                 "gemini-omni-flash-preview" => GeminiOmniFlashPreview,
                 "gemini-pro-latest" => GeminiProLatest,
                 "gemini-robotics-er-1.6-preview" => GeminiRoboticsEr16Preview,
@@ -250,15 +280,20 @@ namespace Google.Gemini.NextGen
             "gemini-3.1-pro-preview-customtools" => true,
             "gemini-3.5-flash" => true,
             "gemini-3.5-flash-lite" => true,
+            "gemini-3.5-transcribe" => true,
             "gemini-3.6-flash" => true,
             "gemini-3.7-flash" => true,
             "gemini-3.8-flash" => true,
             "gemini-3.8-flash-lite-tts" => true,
             "gemini-3.8-flash-tts" => true,
+            "gemini-4-argon" => true,
+            "gemini-4-carbon" => true,
+            "gemini-4-hydrogen" => true,
             "gemini-flash-latest" => true,
             "gemini-flash-lite-latest" => true,
             "gemini-nano-banana-2.1" => true,
             "gemini-omni-1.1-flash" => true,
+            "gemini-omni-1.2-flash" => true,
             "gemini-omni-flash-preview" => true,
             "gemini-pro-latest" => true,
             "gemini-robotics-er-1.6-preview" => true,

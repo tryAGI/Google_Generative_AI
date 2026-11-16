@@ -31,9 +31,9 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.HttpBearerUpdateConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OAuth2UpdateConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Empty))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>), TypeInfoPropertyName = "OneOfInjectionLocation3IListInjectionLocation32")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InjectionLocation3), TypeInfoPropertyName = "InjectionLocation32")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>), TypeInfoPropertyName = "OneOfInjectionLocationIListInjectionLocation2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InjectionLocation), TypeInfoPropertyName = "InjectionLocation2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ListCredentialsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Credential>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
@@ -42,11 +42,11 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialCreateParams?), TypeInfoPropertyName = "NullableCredentialCreateParams2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.CredentialUpdateParams?), TypeInfoPropertyName = "NullableCredentialUpdateParams2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>?), TypeInfoPropertyName = "NullableOneOfInjectionLocation3IListInjectionLocation32")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InjectionLocation3?), TypeInfoPropertyName = "NullableInjectionLocation32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>?), TypeInfoPropertyName = "NullableOneOfInjectionLocationIListInjectionLocation2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.InjectionLocation?), TypeInfoPropertyName = "NullableInjectionLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.List<global::Google.Gemini.NextGen.InjectionLocation3>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.InjectionLocation3>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.List<global::Google.Gemini.NextGen.InjectionLocation>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.InjectionLocation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Credential>))]
     internal sealed partial class CredentialsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -97,8 +97,8 @@ namespace Google.Gemini.NextGen
         {
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.CredentialCreateParamsJsonConverter());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.CredentialUpdateParamsJsonConverter());
-            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>());
-            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -129,9 +129,9 @@ namespace Google.Gemini.NextGen
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.CredentialStatus?)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation3)
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation)
 
-                    || typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation3?);
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -158,14 +158,14 @@ namespace Google.Gemini.NextGen
                     return new global::Google.Gemini.NextGen.JsonConverters.CredentialStatusNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation3))
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation))
                 {
-                    return new global::Google.Gemini.NextGen.JsonConverters.InjectionLocation3JsonConverter();
+                    return new global::Google.Gemini.NextGen.JsonConverters.InjectionLocationJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation3?))
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.InjectionLocation?))
                 {
-                    return new global::Google.Gemini.NextGen.JsonConverters.InjectionLocation3NullableJsonConverter();
+                    return new global::Google.Gemini.NextGen.JsonConverters.InjectionLocationNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

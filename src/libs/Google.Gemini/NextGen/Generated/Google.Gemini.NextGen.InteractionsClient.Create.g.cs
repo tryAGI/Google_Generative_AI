@@ -399,19 +399,19 @@ namespace Google.Gemini.NextGen
                             {
                                 string? __content_5XX = null;
                                 global::System.Exception? __exception_5XX = null;
-                                global::Google.Gemini.NextGen.CreateInteractionResponse2? __value_5XX = null;
+                                global::Google.Gemini.NextGen.CreateInteractionResponse? __value_5XX = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_5XX = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_5XX = global::Google.Gemini.NextGen.CreateInteractionResponse2.FromJson(__content_5XX, JsonSerializerContext);
+                                        __value_5XX = global::Google.Gemini.NextGen.CreateInteractionResponse.FromJson(__content_5XX, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_5XX = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_5XX = global::Google.Gemini.NextGen.CreateInteractionResponse2.FromJson(__content_5XX, JsonSerializerContext);
+                                        __value_5XX = global::Google.Gemini.NextGen.CreateInteractionResponse.FromJson(__content_5XX, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -420,7 +420,7 @@ namespace Google.Gemini.NextGen
                                 }
 
 
-                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.CreateInteractionResponse2>.Create(
+                                throw global::Google.Gemini.NextGen.ApiException<global::Google.Gemini.NextGen.CreateInteractionResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_5XX ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_5XX,

@@ -36,8 +36,8 @@ namespace Google.Gemini.NextGen
         /// Accepts either a single location (e.g. "header") or an array of locations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("injection_location")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>))]
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>? InjectionLocation { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>? InjectionLocation { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -70,7 +70,7 @@ namespace Google.Gemini.NextGen
             object type,
             string? value,
             global::System.Collections.Generic.IList<string>? trustedDomains,
-            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation3?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation3>>? injectionLocation)
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.InjectionLocation?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.InjectionLocation>>? injectionLocation)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Value = value;

@@ -18,7 +18,7 @@ namespace Google.Gemini.NextGen
         ///   -H "Content-Type: application/json" \<br/>
         ///   -d '{<br/>
         ///     "id": "research-assistant-abc123",<br/>
-        ///     "base_agent": "antigravity-preview-05-2026",<br/>
+        ///     "base_agent": "antigravity-preview-09-2026",<br/>
         ///     "description": "A helpful research assistant.",<br/>
         ///     "system_instruction": "You are a helpful research assistant.",<br/>
         ///     "base_environment": "remote",<br/>
@@ -45,7 +45,7 @@ namespace Google.Gemini.NextGen
         ///   -H "Content-Type: application/json" \<br/>
         ///   -d '{<br/>
         ///     "id": "research-assistant-abc123",<br/>
-        ///     "base_agent": "antigravity-preview-05-2026",<br/>
+        ///     "base_agent": "antigravity-preview-09-2026",<br/>
         ///     "description": "A helpful research assistant.",<br/>
         ///     "system_instruction": "You are a helpful research assistant.",<br/>
         ///     "base_environment": "remote",<br/>

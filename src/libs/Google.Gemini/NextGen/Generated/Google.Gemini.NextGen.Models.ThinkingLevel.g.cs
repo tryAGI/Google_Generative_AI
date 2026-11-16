@@ -24,6 +24,10 @@ namespace Google.Gemini.NextGen
         ///
         /// </summary>
         Minimal,
+        /// <summary>
+        ///
+        /// </summary>
+        Xhigh,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace Google.Gemini.NextGen
                 ThinkingLevel.Low => "low",
                 ThinkingLevel.Medium => "medium",
                 ThinkingLevel.Minimal => "minimal",
+                ThinkingLevel.Xhigh => "xhigh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace Google.Gemini.NextGen
                 "low" => ThinkingLevel.Low,
                 "medium" => ThinkingLevel.Medium,
                 "minimal" => ThinkingLevel.Minimal,
+                "xhigh" => ThinkingLevel.Xhigh,
                 _ => null,
             };
         }

@@ -43,6 +43,21 @@ namespace Google.Gemini.NextGen
         public global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? Env { get; set; }
 
         /// <summary>
+        /// The compute lifecycle mode for this environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.EnvironmentConfigModeJsonConverter))]
+        public global::Google.Gemini.NextGen.EnvironmentConfigMode? Mode { get; set; }
+
+        /// <summary>
+        /// Optional. Arbitrary customer-defined JSON configuration passed through<br/>
+        /// to the self-hosted environment poller. Only supported when `mode` is<br/>
+        /// `SELF_HOSTED`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_config")]
+        public object? CustomConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,6 +78,14 @@ namespace Google.Gemini.NextGen
         /// <param name="env">
         /// Environment variables to set in the sandbox environment.
         /// </param>
+        /// <param name="mode">
+        /// The compute lifecycle mode for this environment.
+        /// </param>
+        /// <param name="customConfig">
+        /// Optional. Arbitrary customer-defined JSON configuration passed through<br/>
+        /// to the self-hosted environment poller. Only supported when `mode` is<br/>
+        /// `SELF_HOSTED`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -71,13 +94,17 @@ namespace Google.Gemini.NextGen
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentConfigNetwork?>? network,
             string? environmentId,
-            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? env)
+            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? env,
+            global::Google.Gemini.NextGen.EnvironmentConfigMode? mode,
+            object? customConfig)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Sources = sources;
             this.Network = network;
             this.EnvironmentId = environmentId;
             this.Env = env;
+            this.Mode = mode;
+            this.CustomConfig = customConfig;
         }
 
         /// <summary>

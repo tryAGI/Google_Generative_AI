@@ -13,7 +13,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.CodeExecutionCallArguments2 CodeExecutionCallArguments { get; set; }
+        public required global::Google.Gemini.NextGen.CodeExecutionCallArguments CodeExecutionCallArguments { get; set; }
 
         /// <summary>
         /// Required. A unique ID for this specific tool call.
@@ -58,7 +58,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CodeExecutionCallStep(
-            global::Google.Gemini.NextGen.CodeExecutionCallArguments2 codeExecutionCallArguments,
+            global::Google.Gemini.NextGen.CodeExecutionCallArguments codeExecutionCallArguments,
             string id,
             object type,
             byte[]? signature)
