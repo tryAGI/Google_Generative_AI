@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class GroundingAttribution
     {
         /// <summary>
-        /// Identifier for the source contributing to this attribution.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sourceId")]
-        public global::Google.Gemini.AttributionSourceId? SourceId { get; set; }
-
-        /// <summary>
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public global::Google.Gemini.Content? Content { get; set; }
+
+        /// <summary>
+        /// Identifier for the source contributing to this attribution.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sourceId")]
+        public global::Google.Gemini.AttributionSourceId? SourceId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="GroundingAttribution" /> class.
         /// </summary>
-        /// <param name="sourceId">
-        /// Identifier for the source contributing to this attribution.
-        /// </param>
         /// <param name="content">
         /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+        /// </param>
+        /// <param name="sourceId">
+        /// Identifier for the source contributing to this attribution.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GroundingAttribution(
-            global::Google.Gemini.AttributionSourceId? sourceId,
-            global::Google.Gemini.Content? content)
+            global::Google.Gemini.Content? content,
+            global::Google.Gemini.AttributionSourceId? sourceId)
         {
-            this.SourceId = sourceId;
             this.Content = content;
+            this.SourceId = sourceId;
         }
 
         /// <summary>
