@@ -22,12 +22,35 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? Sources { get; set; }
 
         /// <summary>
+        /// The compute lifecycle mode for this environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.CreateEnvironmentRequestModeJsonConverter))]
+        public global::Google.Gemini.NextGen.CreateEnvironmentRequestMode? Mode { get; set; }
+
+        /// <summary>
+        /// Optional. Arbitrary customer-defined JSON configuration passed through<br/>
+        /// to the self-hosted environment poller. Only supported when `mode` is<br/>
+        /// `SELF_HOSTED`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_config")]
+        public object? CustomConfig { get; set; }
+
+        /// <summary>
         /// Optional. The source environment to copy/fork from.<br/>
         /// Format: `environments/{environment_id}` or `{environment_id}`.<br/>
         /// When specified, `sources` and `env` must be empty.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("from_environment")]
         public string? FromEnvironment { get; set; }
+
+        /// <summary>
+        /// Optional. System instruction applied to interactions running in this<br/>
+        /// environment. Only supported for `SELF_HOSTED` environments, where it is<br/>
+        /// recommended.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("system_instruction")]
+        public string? SystemInstruction { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,10 +67,23 @@ namespace Google.Gemini.NextGen
         /// <param name="sources">
         /// Sources to be mounted into the environment.
         /// </param>
+        /// <param name="mode">
+        /// The compute lifecycle mode for this environment.
+        /// </param>
+        /// <param name="customConfig">
+        /// Optional. Arbitrary customer-defined JSON configuration passed through<br/>
+        /// to the self-hosted environment poller. Only supported when `mode` is<br/>
+        /// `SELF_HOSTED`.
+        /// </param>
         /// <param name="fromEnvironment">
         /// Optional. The source environment to copy/fork from.<br/>
         /// Format: `environments/{environment_id}` or `{environment_id}`.<br/>
         /// When specified, `sources` and `env` must be empty.
+        /// </param>
+        /// <param name="systemInstruction">
+        /// Optional. System instruction applied to interactions running in this<br/>
+        /// environment. Only supported for `SELF_HOSTED` environments, where it is<br/>
+        /// recommended.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -55,11 +91,17 @@ namespace Google.Gemini.NextGen
         public CreateEnvironmentRequest(
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources,
-            string? fromEnvironment)
+            global::Google.Gemini.NextGen.CreateEnvironmentRequestMode? mode,
+            object? customConfig,
+            string? fromEnvironment,
+            string? systemInstruction)
         {
             this.Network = network;
             this.Sources = sources;
+            this.Mode = mode;
+            this.CustomConfig = customConfig;
             this.FromEnvironment = fromEnvironment;
+            this.SystemInstruction = systemInstruction;
         }
 
         /// <summary>

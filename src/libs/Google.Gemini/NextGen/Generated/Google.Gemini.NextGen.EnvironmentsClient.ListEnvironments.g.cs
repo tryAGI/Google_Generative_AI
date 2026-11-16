@@ -27,11 +27,13 @@ namespace Google.Gemini.NextGen
             };
         partial void PrepareListEnvironmentsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Google.Gemini.NextGen.ListEnvironmentsMode? mode,
             ref int? pageSize,
             ref string? pageToken);
         partial void PrepareListEnvironmentsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Google.Gemini.NextGen.ListEnvironmentsMode? mode,
             int? pageSize,
             string? pageToken);
         partial void ProcessListEnvironmentsResponse(
@@ -46,6 +48,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Lists environments.
         /// </summary>
+        /// <param name="mode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -56,12 +59,14 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.ListEnvironmentsResponse> ListEnvironmentsAsync(
+            global::Google.Gemini.NextGen.ListEnvironmentsMode? mode = default,
             int? pageSize = default,
             string? pageToken = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ListEnvironmentsAsResponseAsync(
+                mode: mode,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 requestOptions: requestOptions,
@@ -73,6 +78,7 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Lists environments.
         /// </summary>
+        /// <param name="mode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -83,6 +89,7 @@ namespace Google.Gemini.NextGen
         ///   -H "x-goog-api-key: $GEMINI_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.AutoSDKHttpResponse<global::Google.Gemini.NextGen.ListEnvironmentsResponse>> ListEnvironmentsAsResponseAsync(
+            global::Google.Gemini.NextGen.ListEnvironmentsMode? mode = default,
             int? pageSize = default,
             string? pageToken = default,
             global::Google.Gemini.NextGen.AutoSDKRequestOptions? requestOptions = default,
@@ -92,6 +99,7 @@ namespace Google.Gemini.NextGen
                 client: HttpClient);
             PrepareListEnvironmentsArguments(
                 httpClient: HttpClient,
+                mode: ref mode,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
@@ -122,6 +130,7 @@ namespace Google.Gemini.NextGen
                                 path: "/v1beta/environments",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("mode", mode?.ToValueString())
                                 .AddOptionalParameter("page_size", pageSize?.ToString())
                                 .AddOptionalParameter("page_token", pageToken)
                                 ;
@@ -165,6 +174,7 @@ namespace Google.Gemini.NextGen
                 PrepareListEnvironmentsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    mode: mode,
                     pageSize: pageSize,
                     pageToken: pageToken);
 

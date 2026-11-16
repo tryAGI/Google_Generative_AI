@@ -20,7 +20,7 @@ namespace Google.Gemini.NextGen
         ///     "schedule": "0 9 * * *",<br/>
         ///     "time_zone": "America/New_York",<br/>
         ///     "interaction": {<br/>
-        ///       "agent": "antigravity-preview-05-2026",<br/>
+        ///       "agent": "antigravity-preview-09-2026",<br/>
         ///       "input": "Summarize top news stories.",<br/>
         ///       "environment": "remote"<br/>
         ///     }<br/>
@@ -47,7 +47,7 @@ namespace Google.Gemini.NextGen
         ///     "schedule": "0 9 * * *",<br/>
         ///     "time_zone": "America/New_York",<br/>
         ///     "interaction": {<br/>
-        ///       "agent": "antigravity-preview-05-2026",<br/>
+        ///       "agent": "antigravity-preview-09-2026",<br/>
         ///       "input": "Summarize top news stories.",<br/>
         ///       "environment": "remote"<br/>
         ///     }<br/>

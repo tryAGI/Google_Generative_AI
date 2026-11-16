@@ -26,7 +26,7 @@ namespace Google.Gemini.NextGen
         /// The arguments to pass to the Google Maps tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
-        public global::Google.Gemini.NextGen.GoogleMapsCallArguments2? GoogleMapsCallArguments { get; set; }
+        public global::Google.Gemini.NextGen.GoogleMapsCallArguments? GoogleMapsCallArguments { get; set; }
 
         /// <summary>
         /// A signature hash for backend validation.
@@ -59,7 +59,7 @@ namespace Google.Gemini.NextGen
         public GoogleMapsCallStep(
             string id,
             object type,
-            global::Google.Gemini.NextGen.GoogleMapsCallArguments2? googleMapsCallArguments,
+            global::Google.Gemini.NextGen.GoogleMapsCallArguments? googleMapsCallArguments,
             byte[]? signature)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
