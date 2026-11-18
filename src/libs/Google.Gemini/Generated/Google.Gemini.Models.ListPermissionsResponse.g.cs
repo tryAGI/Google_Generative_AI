@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class ListPermissionsResponse
     {
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no more pages.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("nextPageToken")]
-        public string? NextPageToken { get; set; }
-
-        /// <summary>
         /// Returned permissions.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permissions")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.Permission>? Permissions { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no more pages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nextPageToken")]
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="ListPermissionsResponse" /> class.
         /// </summary>
-        /// <param name="nextPageToken">
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no more pages.
-        /// </param>
         /// <param name="permissions">
         /// Returned permissions.
+        /// </param>
+        /// <param name="nextPageToken">
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no more pages.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListPermissionsResponse(
-            string? nextPageToken,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Permission>? permissions)
+            global::System.Collections.Generic.IList<global::Google.Gemini.Permission>? permissions,
+            string? nextPageToken)
         {
-            this.NextPageToken = nextPageToken;
             this.Permissions = permissions;
+            this.NextPageToken = nextPageToken;
         }
 
         /// <summary>

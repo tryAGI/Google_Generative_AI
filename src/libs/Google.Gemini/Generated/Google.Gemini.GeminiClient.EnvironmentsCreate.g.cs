@@ -360,7 +360,7 @@ namespace Google.Gemini
                                 {
                                     throw global::Google.Gemini.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -405,7 +405,7 @@ namespace Google.Gemini
 
                                     throw global::Google.Gemini.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -428,47 +428,47 @@ namespace Google.Gemini
         /// <param name="systemInstruction">
         /// Optional. System instruction applied to interactions running in this environment. Only supported for `SELF_HOSTED` environments, where it is recommended.
         /// </param>
+        /// <param name="mode">
+        /// The compute lifecycle mode for this environment.
+        /// </param>
         /// <param name="fromEnvironment">
         /// Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
-        /// </param>
-        /// <param name="sources">
-        /// Sources to be mounted into the environment.
-        /// </param>
-        /// <param name="networkMode">
-        /// Network egress mode.
-        /// </param>
-        /// <param name="networkAllowlist">
-        /// Network egress configuration for the environment.
         /// </param>
         /// <param name="customConfig">
         /// Optional. Arbitrary customer-defined JSON configuration passed through to the self-hosted environment poller. Only supported when `mode` is `SELF_HOSTED`.
         /// </param>
-        /// <param name="mode">
-        /// The compute lifecycle mode for this environment.
+        /// <param name="networkAllowlist">
+        /// Network egress configuration for the environment.
+        /// </param>
+        /// <param name="networkMode">
+        /// Network egress mode.
+        /// </param>
+        /// <param name="sources">
+        /// Sources to be mounted into the environment.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Google.Gemini.Environment> EnvironmentsCreateAsync(
             string? systemInstruction = default,
-            string? fromEnvironment = default,
-            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
-            global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode = default,
-            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
-            object? customConfig = default,
             global::Google.Gemini.CreateEnvironmentRequestMode? mode = default,
+            string? fromEnvironment = default,
+            object? customConfig = default,
+            global::Google.Gemini.EnvironmentNetworkEgressAllowlist? networkAllowlist = default,
+            global::Google.Gemini.CreateEnvironmentRequestNetworkMode? networkMode = default,
+            global::System.Collections.Generic.IList<global::Google.Gemini.Source>? sources = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Google.Gemini.CreateEnvironmentRequest
             {
                 SystemInstruction = systemInstruction,
-                FromEnvironment = fromEnvironment,
-                Sources = sources,
-                NetworkMode = networkMode,
-                NetworkAllowlist = networkAllowlist,
-                CustomConfig = customConfig,
                 Mode = mode,
+                FromEnvironment = fromEnvironment,
+                CustomConfig = customConfig,
+                NetworkAllowlist = networkAllowlist,
+                NetworkMode = networkMode,
+                Sources = sources,
             };
 
             return await EnvironmentsCreateAsync(
