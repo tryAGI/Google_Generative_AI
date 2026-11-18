@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
-        /// Raw bytes for media formats.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        public byte[]? Data { get; set; }
-
-        /// <summary>
         /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs, and to reference the blob from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Raw bytes for media formats.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public byte[]? Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://aistudio.google.com/docs/file-input-methods#supported-content-types).
         /// </param>
-        /// <param name="data">
-        /// Raw bytes for media formats.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs, and to reference the blob from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
+        /// </param>
+        /// <param name="data">
+        /// Raw bytes for media formats.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponseBlob(
             string? mimeType,
-            byte[]? data,
-            string? displayName)
+            string? displayName,
+            byte[]? data)
         {
             this.MimeType = mimeType;
-            this.Data = data;
             this.DisplayName = displayName;
+            this.Data = data;
         }
 
         /// <summary>
