@@ -28,6 +28,20 @@ namespace Google.Gemini.NextGen
         public string? Uri { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.MediaResolutionJsonConverter))]
+        public global::Google.Gemini.NextGen.MediaResolution? Resolution { get; set; }
+
+        /// <summary>
+        /// How the model processes this document for understanding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("processing")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>? Processing { get; set; }
+
+        /// <summary>
         /// The mime type of the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
@@ -50,6 +64,10 @@ namespace Google.Gemini.NextGen
         /// <param name="uri">
         /// The URI of the document.
         /// </param>
+        /// <param name="resolution"></param>
+        /// <param name="processing">
+        /// How the model processes this document for understanding.
+        /// </param>
         /// <param name="mimeType">
         /// The mime type of the document.
         /// </param>
@@ -60,11 +78,15 @@ namespace Google.Gemini.NextGen
             object type,
             byte[]? data,
             string? uri,
+            global::Google.Gemini.NextGen.MediaResolution? resolution,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>? processing,
             global::Google.Gemini.NextGen.DocumentContentMimeType? mimeType)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Data = data;
             this.Uri = uri;
+            this.Resolution = resolution;
+            this.Processing = processing;
             this.MimeType = mimeType;
         }
 

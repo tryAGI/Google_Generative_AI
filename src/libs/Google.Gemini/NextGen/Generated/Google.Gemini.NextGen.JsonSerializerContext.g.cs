@@ -19,6 +19,10 @@ namespace Google.Gemini.NextGen
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.AllowedToolsModeNullableJsonConverter),
 
+            typeof(global::Google.Gemini.NextGen.JsonConverters.AudioContentProcessingJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.AudioContentProcessingNullableJsonConverter),
+
             typeof(global::Google.Gemini.NextGen.JsonConverters.AudioContentMimeTypeJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.AudioContentMimeTypeNullableJsonConverter),
@@ -78,6 +82,10 @@ namespace Google.Gemini.NextGen
             typeof(global::Google.Gemini.NextGen.JsonConverters.DeepResearchAgentConfigVisualizationJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.DeepResearchAgentConfigVisualizationNullableJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentContentProcessingJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentContentProcessingNullableJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentContentMimeTypeJsonConverter),
 
@@ -183,6 +191,10 @@ namespace Google.Gemini.NextGen
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.ModelNullableJsonConverter),
 
+            typeof(global::Google.Gemini.NextGen.JsonConverters.PageProcessingOptionsContentLayerJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.PageProcessingOptionsContentLayerNullableJsonConverter),
+
             typeof(global::Google.Gemini.NextGen.JsonConverters.PitchJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.PitchNullableJsonConverter),
@@ -214,6 +226,14 @@ namespace Google.Gemini.NextGen
             typeof(global::Google.Gemini.NextGen.JsonConverters.SourceTypeJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.SourceTypeNullableJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.SpreadsheetProcessingOptionsContentLayerJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.SpreadsheetProcessingOptionsContentLayerNullableJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.StaticMediaProcessingContentLayerJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.StaticMediaProcessingContentLayerNullableJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.TextResponseFormatMimeTypeJsonConverter),
 
@@ -297,6 +317,8 @@ namespace Google.Gemini.NextGen
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.AnswerJsonConverter),
 
+            typeof(global::Google.Gemini.NextGen.JsonConverters.AudioMediaProcessingJsonConverter),
+
             typeof(global::Google.Gemini.NextGen.JsonConverters.ContentJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.CredentialCreateParamsJsonConverter),
@@ -306,6 +328,8 @@ namespace Google.Gemini.NextGen
             typeof(global::Google.Gemini.NextGen.JsonConverters.DecisionInputContentJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.DecisionInstructionContentJsonConverter),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.DocumentMediaProcessingJsonConverter),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.InteractionSSEEventJsonConverter),
 
@@ -329,6 +353,8 @@ namespace Google.Gemini.NextGen
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentConfig, string>),
 
+            typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>),
+
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.DecisionInstructionContent?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.DecisionInstructionContent>, string>),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Content>, string>),
@@ -346,6 +372,8 @@ namespace Google.Gemini.NextGen
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ResponseFormat?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat>>),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentConfig, string>),
+
+            typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>),
 
             typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.EnvironmentNetwork?>),
 
@@ -432,10 +460,14 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>), TypeInfoPropertyName = "OneOfAudioMediaProcessingAudioContentProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioMediaProcessing), TypeInfoPropertyName = "AudioMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContentProcessing), TypeInfoPropertyName = "AudioContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContentMimeType), TypeInfoPropertyName = "AudioContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioDelta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioDeltaMimeType), TypeInfoPropertyName = "AudioDeltaMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioStaticMediaProcessing))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioResponseFormat))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioResponseFormatMimeType), TypeInfoPropertyName = "AudioResponseFormatMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioResponseFormatDelivery), TypeInfoPropertyName = "AudioResponseFormatDelivery2")]
@@ -526,9 +558,16 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ThinkingSummaries), TypeInfoPropertyName = "ThinkingSummaries2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DeepResearchAgentConfigVisualization), TypeInfoPropertyName = "DeepResearchAgentConfigVisualization2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DeleteVoiceResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaResolution), TypeInfoPropertyName = "MediaResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>), TypeInfoPropertyName = "OneOfDocumentMediaProcessingDocumentContentProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentMediaProcessing), TypeInfoPropertyName = "DocumentMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContentProcessing), TypeInfoPropertyName = "DocumentContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContentMimeType), TypeInfoPropertyName = "DocumentContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentDelta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentDeltaMimeType), TypeInfoPropertyName = "DocumentDeltaMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentStaticMediaProcessing))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PageProcessingOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EgressRule))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Empty))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.EnvVar))]
@@ -614,7 +653,6 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.HarmCategory), TypeInfoPropertyName = "HarmCategory2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.HttpBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaResolution), TypeInfoPropertyName = "MediaResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ImageContentMimeType), TypeInfoPropertyName = "ImageContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ImageDelta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ImageDeltaMimeType), TypeInfoPropertyName = "ImageDeltaMimeType2")]
@@ -665,6 +703,8 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ModalityTokens))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ModelOutputStep))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.NoulQuestion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer), TypeInfoPropertyName = "PageProcessingOptionsContentLayer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PingWebhookRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PingWebhookResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Pitch), TypeInfoPropertyName = "Pitch2")]
@@ -687,6 +727,10 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SigningSecret))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SmartTranscriptionMode))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SourceType), TypeInfoPropertyName = "SourceType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer), TypeInfoPropertyName = "SpreadsheetProcessingOptionsContentLayer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer), TypeInfoPropertyName = "StaticMediaProcessingContentLayer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ThoughtStep))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.URLContextCallStep))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.URLContextResultStep))]
@@ -783,6 +827,9 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Voice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Webhook>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.AllowedTools>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Annotation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.URLContextResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ModalityTokens>))]

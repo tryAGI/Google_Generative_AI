@@ -31,12 +31,15 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("channels")) __score0++;
             if (__jsonProps.Contains("data")) __score0++;
             if (__jsonProps.Contains("mime_type")) __score0++;
+            if (__jsonProps.Contains("processing")) __score0++;
             if (__jsonProps.Contains("sample_rate")) __score0++;
             if (__jsonProps.Contains("type")) __score0++;
             if (__jsonProps.Contains("uri")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("data")) __score1++;
             if (__jsonProps.Contains("mime_type")) __score1++;
+            if (__jsonProps.Contains("processing")) __score1++;
+            if (__jsonProps.Contains("resolution")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
             if (__jsonProps.Contains("uri")) __score1++;
             var __score2 = 0;
