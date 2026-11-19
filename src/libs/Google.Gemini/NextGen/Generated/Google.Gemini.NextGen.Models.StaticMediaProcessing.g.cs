@@ -37,6 +37,12 @@ namespace Google.Gemini.NextGen
         public double? Fps { get; set; }
 
         /// <summary>
+        /// Optional. Content layers to extract from the video.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content_layers")]
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer>? ContentLayers { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -58,6 +64,9 @@ namespace Google.Gemini.NextGen
         /// <param name="fps">
         /// Optional. Video frame-rate sampling density.
         /// </param>
+        /// <param name="contentLayers">
+        /// Optional. Content layers to extract from the video.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -65,12 +74,14 @@ namespace Google.Gemini.NextGen
             object type,
             string? startOffset,
             string? endOffset,
-            double? fps)
+            double? fps,
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer>? contentLayers)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.StartOffset = startOffset;
             this.EndOffset = endOffset;
             this.Fps = fps;
+            this.ContentLayers = contentLayers;
         }
 
         /// <summary>

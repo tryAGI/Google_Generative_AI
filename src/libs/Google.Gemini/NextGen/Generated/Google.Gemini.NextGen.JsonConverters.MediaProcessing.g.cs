@@ -28,6 +28,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             }
 
             var __score0 = 0;
+            if (__jsonProps.Contains("content_layers")) __score0++;
             if (__jsonProps.Contains("end_offset")) __score0++;
             if (__jsonProps.Contains("fps")) __score0++;
             if (__jsonProps.Contains("start_offset")) __score0++;

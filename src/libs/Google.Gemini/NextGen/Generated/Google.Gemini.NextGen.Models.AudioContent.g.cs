@@ -40,6 +40,13 @@ namespace Google.Gemini.NextGen
         public int? SampleRate { get; set; }
 
         /// <summary>
+        /// How the model processes this audio for understanding.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("processing")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>))]
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>? Processing { get; set; }
+
+        /// <summary>
         /// The mime type of the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mime_type")]
@@ -68,6 +75,9 @@ namespace Google.Gemini.NextGen
         /// <param name="sampleRate">
         /// The sample rate of the audio.
         /// </param>
+        /// <param name="processing">
+        /// How the model processes this audio for understanding.
+        /// </param>
         /// <param name="mimeType">
         /// The mime type of the audio.
         /// </param>
@@ -80,6 +90,7 @@ namespace Google.Gemini.NextGen
             string? uri,
             int? channels,
             int? sampleRate,
+            global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>? processing,
             global::Google.Gemini.NextGen.AudioContentMimeType? mimeType)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
@@ -87,6 +98,7 @@ namespace Google.Gemini.NextGen
             this.Uri = uri;
             this.Channels = channels;
             this.SampleRate = sampleRate;
+            this.Processing = processing;
             this.MimeType = mimeType;
         }
 

@@ -30,7 +30,11 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>), TypeInfoPropertyName = "OneOfAudioMediaProcessingAudioContentProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioMediaProcessing), TypeInfoPropertyName = "AudioMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContentProcessing), TypeInfoPropertyName = "AudioContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContentMimeType), TypeInfoPropertyName = "AudioContentMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioStaticMediaProcessing))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ChoiceQuestion))]
@@ -55,19 +59,31 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.NoulCriteria))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DecisionInstructionContentDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DecisionInstructionContentDiscriminatorType), TypeInfoPropertyName = "DecisionInstructionContentDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaResolution), TypeInfoPropertyName = "MediaResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>), TypeInfoPropertyName = "OneOfDocumentMediaProcessingDocumentContentProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentMediaProcessing), TypeInfoPropertyName = "DocumentMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContentProcessing), TypeInfoPropertyName = "DocumentContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContentMimeType), TypeInfoPropertyName = "DocumentContentMimeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentStaticMediaProcessing))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PageProcessingOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ReviewSnippet>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ReviewSnippet))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.GroundingToolCount))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.GroundingToolCountType), TypeInfoPropertyName = "GroundingToolCountType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaResolution), TypeInfoPropertyName = "MediaResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ImageContentMimeType), TypeInfoPropertyName = "ImageContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaProcessing), TypeInfoPropertyName = "MediaProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.StaticMediaProcessing))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ModalityTokens))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.NoulQuestion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer), TypeInfoPropertyName = "PageProcessingOptionsContentLayer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PromptFeedbackBlockReason), TypeInfoPropertyName = "PromptFeedbackBlockReason2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ScoreQuestion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer), TypeInfoPropertyName = "SpreadsheetProcessingOptionsContentLayer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer), TypeInfoPropertyName = "StaticMediaProcessingContentLayer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Annotation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ModalityTokens>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GroundingToolCount>))]
@@ -77,6 +93,9 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Annotation?), TypeInfoPropertyName = "NullableAnnotation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Answer?), TypeInfoPropertyName = "NullableAnswer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>?), TypeInfoPropertyName = "NullableOneOfAudioMediaProcessingAudioContentProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioMediaProcessing?), TypeInfoPropertyName = "NullableAudioMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContentProcessing?), TypeInfoPropertyName = "NullableAudioContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.AudioContentMimeType?), TypeInfoPropertyName = "NullableAudioContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DecisionInstructionContent?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.DecisionInstructionContent>, string>?), TypeInfoPropertyName = "NullableOneOfDecisionInstructionContentIListDecisionInstructionContentString2")]
@@ -86,12 +105,18 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DecisionInputContent?), TypeInfoPropertyName = "NullableDecisionInputContent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.Question?), TypeInfoPropertyName = "NullableQuestion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DecisionInstructionContentDiscriminatorType?), TypeInfoPropertyName = "NullableDecisionInstructionContentDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaResolution?), TypeInfoPropertyName = "NullableMediaResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>?), TypeInfoPropertyName = "NullableOneOfDocumentMediaProcessingDocumentContentProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentMediaProcessing?), TypeInfoPropertyName = "NullableDocumentMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContentProcessing?), TypeInfoPropertyName = "NullableDocumentContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.DocumentContentMimeType?), TypeInfoPropertyName = "NullableDocumentContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.GroundingToolCountType?), TypeInfoPropertyName = "NullableGroundingToolCountType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaResolution?), TypeInfoPropertyName = "NullableMediaResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.ImageContentMimeType?), TypeInfoPropertyName = "NullableImageContentMimeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.MediaProcessing?), TypeInfoPropertyName = "NullableMediaProcessing2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer?), TypeInfoPropertyName = "NullablePageProcessingOptionsContentLayer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.PromptFeedbackBlockReason?), TypeInfoPropertyName = "NullablePromptFeedbackBlockReason2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer?), TypeInfoPropertyName = "NullableSpreadsheetProcessingOptionsContentLayer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer?), TypeInfoPropertyName = "NullableStaticMediaProcessingContentLayer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>?), TypeInfoPropertyName = "NullableOneOfMediaProcessingVideoContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.VideoContentProcessing?), TypeInfoPropertyName = "NullableVideoContentProcessing2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.VideoContentMimeType?), TypeInfoPropertyName = "NullableVideoContentMimeType2")]
@@ -101,6 +126,9 @@ namespace Google.Gemini.NextGen
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.DecisionInputContent?, global::System.Collections.Generic.List<global::Google.Gemini.NextGen.DecisionInputContent>, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.DecisionInputContent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ReviewSnippet>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Annotation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ModalityTokens>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Google.Gemini.NextGen.GroundingToolCount>))]
@@ -153,12 +181,16 @@ namespace Google.Gemini.NextGen
         {
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.AnnotationJsonConverter());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.AnswerJsonConverter());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.AudioMediaProcessingJsonConverter());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.DecisionInputContentJsonConverter());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.DecisionInstructionContentJsonConverter());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.DocumentMediaProcessingJsonConverter());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.MediaProcessingJsonConverter());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.QuestionJsonConverter());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.AudioMediaProcessing?, global::Google.Gemini.NextGen.AudioContentProcessing?>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.DecisionInstructionContent?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.DecisionInstructionContent>, string>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.DecisionInputContent?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.DecisionInputContent>, string>());
+            options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.DocumentMediaProcessing?, global::Google.Gemini.NextGen.DocumentContentProcessing?>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>());
             options.Converters.Add(new global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string>());
@@ -192,13 +224,21 @@ namespace Google.Gemini.NextGen
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentMimeType)
+                    typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentProcessing)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentProcessing?)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentMimeType)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentMimeType?)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.DecisionInstructionContentDiscriminatorType)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.DecisionInstructionContentDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.DocumentContentProcessing)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.DocumentContentProcessing?)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.DocumentContentMimeType)
 
@@ -216,6 +256,10 @@ namespace Google.Gemini.NextGen
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.MediaResolution?)
 
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer?)
+
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.PromptFeedbackBlockReason)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.PromptFeedbackBlockReason?)
@@ -223,6 +267,14 @@ namespace Google.Gemini.NextGen
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.ResponseModality)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.ResponseModality?)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer?)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer)
+
+                    || typeToConvert == typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer?)
 
                     || typeToConvert == typeof(global::Google.Gemini.NextGen.VideoContentProcessing)
 
@@ -237,6 +289,16 @@ namespace Google.Gemini.NextGen
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentProcessing))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.AudioContentProcessingJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentProcessing?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.AudioContentProcessingNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.AudioContentMimeType))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.AudioContentMimeTypeJsonConverter();
@@ -255,6 +317,16 @@ namespace Google.Gemini.NextGen
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.DecisionInstructionContentDiscriminatorType?))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.DecisionInstructionContentDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.DocumentContentProcessing))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.DocumentContentProcessingJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.DocumentContentProcessing?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.DocumentContentProcessingNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.DocumentContentMimeType))
@@ -297,6 +369,16 @@ namespace Google.Gemini.NextGen
                     return new global::Google.Gemini.NextGen.JsonConverters.MediaResolutionNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.PageProcessingOptionsContentLayerJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.PageProcessingOptionsContentLayer?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.PageProcessingOptionsContentLayerNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.PromptFeedbackBlockReason))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.PromptFeedbackBlockReasonJsonConverter();
@@ -315,6 +397,26 @@ namespace Google.Gemini.NextGen
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.ResponseModality?))
                 {
                     return new global::Google.Gemini.NextGen.JsonConverters.ResponseModalityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.SpreadsheetProcessingOptionsContentLayerJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.SpreadsheetProcessingOptionsContentLayer?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.SpreadsheetProcessingOptionsContentLayerNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.StaticMediaProcessingContentLayerJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Google.Gemini.NextGen.StaticMediaProcessingContentLayer?))
+                {
+                    return new global::Google.Gemini.NextGen.JsonConverters.StaticMediaProcessingContentLayerNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Google.Gemini.NextGen.VideoContentProcessing))
