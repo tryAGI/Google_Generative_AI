@@ -9,11 +9,11 @@ namespace Google.Gemini
     public sealed partial class Document
     {
         /// <summary>
-        /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// Output only. The Timestamp of when the `Document` was created.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
-        public string? SizeBytes { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public string? CreateTime { get; set; }
 
         /// <summary>
         /// Output only. The Timestamp of when the `Document` was last updated.<br/>
@@ -56,11 +56,11 @@ namespace Google.Gemini
         public string? Name { get; set; }
 
         /// <summary>
-        /// Output only. The Timestamp of when the `Document` was created.<br/>
+        /// Output only. The size of raw bytes ingested into the Document.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public string? CreateTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("sizeBytes")]
+        public string? SizeBytes { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -71,8 +71,8 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="Document" /> class.
         /// </summary>
-        /// <param name="sizeBytes">
-        /// Output only. The size of raw bytes ingested into the Document.<br/>
+        /// <param name="createTime">
+        /// Output only. The Timestamp of when the `Document` was created.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
@@ -96,31 +96,31 @@ namespace Google.Gemini
         /// <param name="name">
         /// Immutable. Identifier. The `Document` resource name. The ID (name excluding the "fileSearchStores/*/documents/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be derived from `display_name` along with a 12 character random suffix. Example: `fileSearchStores/{file_search_store_id}/documents/my-awesome-doc-123a456b789c`
         /// </param>
-        /// <param name="createTime">
-        /// Output only. The Timestamp of when the `Document` was created.<br/>
+        /// <param name="sizeBytes">
+        /// Output only. The size of raw bytes ingested into the Document.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Document(
-            string? sizeBytes,
+            string? createTime,
             string? updateTime,
             global::System.Collections.Generic.IList<global::Google.Gemini.CustomMetadata>? customMetadata,
             string? mimeType,
             string? displayName,
             global::Google.Gemini.DocumentState? state,
             string? name,
-            string? createTime)
+            string? sizeBytes)
         {
-            this.SizeBytes = sizeBytes;
+            this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.CustomMetadata = customMetadata;
             this.MimeType = mimeType;
             this.DisplayName = displayName;
             this.State = state;
             this.Name = name;
-            this.CreateTime = createTime;
+            this.SizeBytes = sizeBytes;
         }
 
         /// <summary>

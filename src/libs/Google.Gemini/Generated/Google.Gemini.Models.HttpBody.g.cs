@@ -15,16 +15,16 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<object>? Extensions { get; set; }
 
         /// <summary>
-        /// The HTTP Content-Type header value specifying the content type of the body.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contentType")]
-        public string? ContentType { get; set; }
-
-        /// <summary>
         /// The HTTP request/response body as raw binary.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public byte[]? Data { get; set; }
+
+        /// <summary>
+        /// The HTTP Content-Type header value specifying the content type of the body.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contentType")]
+        public string? ContentType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="extensions">
         /// Application specific response metadata. Must be set in the first response for streaming APIs.
         /// </param>
-        /// <param name="contentType">
-        /// The HTTP Content-Type header value specifying the content type of the body.
-        /// </param>
         /// <param name="data">
         /// The HTTP request/response body as raw binary.
+        /// </param>
+        /// <param name="contentType">
+        /// The HTTP Content-Type header value specifying the content type of the body.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public HttpBody(
             global::System.Collections.Generic.IList<object>? extensions,
-            string? contentType,
-            byte[]? data)
+            byte[]? data,
+            string? contentType)
         {
             this.Extensions = extensions;
-            this.ContentType = contentType;
             this.Data = data;
+            this.ContentType = contentType;
         }
 
         /// <summary>
