@@ -15,16 +15,16 @@ namespace Google.Gemini
         public string? MimeType { get; set; }
 
         /// <summary>
-        /// Required. URI.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileUri")]
-        public string? FileUri { get; set; }
-
-        /// <summary>
         /// Optional. Display name of the file. Used to provide a label or filename to distinguish file data, and to reference the file from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. URI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUri")]
+        public string? FileUri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,23 +38,23 @@ namespace Google.Gemini
         /// <param name="mimeType">
         /// The IANA standard MIME type of the source data. If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Multimodal function responses](https://aistudio.google.com/docs/function-calling#multimodal) and [Supported file formats](https://aistudio.google.com/docs/file-input-methods#supported-content-types).
         /// </param>
-        /// <param name="fileUri">
-        /// Required. URI.
-        /// </param>
         /// <param name="displayName">
         /// Optional. Display name of the file. Used to provide a label or filename to distinguish file data, and to reference the file from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
+        /// </param>
+        /// <param name="fileUri">
+        /// Required. URI.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponseFileData(
             string? mimeType,
-            string? fileUri,
-            string? displayName)
+            string? displayName,
+            string? fileUri)
         {
             this.MimeType = mimeType;
-            this.FileUri = fileUri;
             this.DisplayName = displayName;
+            this.FileUri = fileUri;
         }
 
         /// <summary>
