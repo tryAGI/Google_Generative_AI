@@ -9,10 +9,10 @@ namespace Google.Gemini
     public sealed partial class FunctionResponsePart
     {
         /// <summary>
-        /// Media resolution for tokenization.
+        /// Metadata describes the input video content. Set this in `Part.video_metadata` or `FunctionResponsePart.video_metadata` when `inline_data` or `file_data` contains video to configure static video preprocessing (such as time clipping, frame rate, maximum frame count, or extracted content layers).
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mediaResolution")]
-        public global::Google.Gemini.V1mainMediaResolution? MediaResolution { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
+        public global::Google.Gemini.VideoMetadata? VideoMetadata { get; set; }
 
         /// <summary>
         /// URI based data for function response.
@@ -21,29 +21,10 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionResponseFileData? FileData { get; set; }
 
         /// <summary>
-        /// Metadata describes the input audio content. Set this in `Part.audio_metadata` or `FunctionResponsePart.audio_metadata` when `inline_data` or `file_data` contains audio to configure static audio preprocessing.
+        /// Metadata describes the input document content. Set this in `Part.document_metadata` or `FunctionResponsePart.document_metadata` when `inline_data` or `file_data` contains a document to configure static document preprocessing.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioMetadata")]
-        public global::Google.Gemini.AudioMetadata? AudioMetadata { get; set; }
-
-        /// <summary>
-        /// Metadata describes the input video content. Set this in `Part.video_metadata` or `FunctionResponsePart.video_metadata` when `inline_data` or `file_data` contains video to configure static video preprocessing (such as time clipping, frame rate, maximum frame count, or extracted content layers).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("videoMetadata")]
-        public global::Google.Gemini.VideoMetadata? VideoMetadata { get; set; }
-
-        /// <summary>
-        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mediaProcessing")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponsePartMediaProcessingJsonConverter))]
-        public global::Google.Gemini.FunctionResponsePartMediaProcessing? MediaProcessing { get; set; }
-
-        /// <summary>
-        /// Metadata describes the input spreadsheet content. Set this in `Part.spreadsheet_metadata` or `FunctionResponsePart.spreadsheet_metadata` when `inline_data` or `file_data` contains a spreadsheet to configure static spreadsheet preprocessing.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("spreadsheetMetadata")]
-        public global::Google.Gemini.SpreadsheetMetadata? SpreadsheetMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("documentMetadata")]
+        public global::Google.Gemini.DocumentMetadata? DocumentMetadata { get; set; }
 
         /// <summary>
         /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
@@ -52,10 +33,29 @@ namespace Google.Gemini
         public global::Google.Gemini.FunctionResponseBlob? InlineData { get; set; }
 
         /// <summary>
-        /// Metadata describes the input document content. Set this in `Part.document_metadata` or `FunctionResponsePart.document_metadata` when `inline_data` or `file_data` contains a document to configure static document preprocessing.
+        /// Metadata describes the input audio content. Set this in `Part.audio_metadata` or `FunctionResponsePart.audio_metadata` when `inline_data` or `file_data` contains audio to configure static audio preprocessing.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("documentMetadata")]
-        public global::Google.Gemini.DocumentMetadata? DocumentMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("audioMetadata")]
+        public global::Google.Gemini.AudioMetadata? AudioMetadata { get; set; }
+
+        /// <summary>
+        /// Media resolution for tokenization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediaResolution")]
+        public global::Google.Gemini.V1mainMediaResolution? MediaResolution { get; set; }
+
+        /// <summary>
+        /// Metadata describes the input spreadsheet content. Set this in `Part.spreadsheet_metadata` or `FunctionResponsePart.spreadsheet_metadata` when `inline_data` or `file_data` contains a spreadsheet to configure static spreadsheet preprocessing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spreadsheetMetadata")]
+        public global::Google.Gemini.SpreadsheetMetadata? SpreadsheetMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediaProcessing")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.FunctionResponsePartMediaProcessingJsonConverter))]
+        public global::Google.Gemini.FunctionResponsePartMediaProcessing? MediaProcessing { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -66,51 +66,51 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionResponsePart" /> class.
         /// </summary>
-        /// <param name="mediaResolution">
-        /// Media resolution for tokenization.
+        /// <param name="videoMetadata">
+        /// Metadata describes the input video content. Set this in `Part.video_metadata` or `FunctionResponsePart.video_metadata` when `inline_data` or `file_data` contains video to configure static video preprocessing (such as time clipping, frame rate, maximum frame count, or extracted content layers).
         /// </param>
         /// <param name="fileData">
         /// URI based data for function response.
         /// </param>
-        /// <param name="audioMetadata">
-        /// Metadata describes the input audio content. Set this in `Part.audio_metadata` or `FunctionResponsePart.audio_metadata` when `inline_data` or `file_data` contains audio to configure static audio preprocessing.
-        /// </param>
-        /// <param name="videoMetadata">
-        /// Metadata describes the input video content. Set this in `Part.video_metadata` or `FunctionResponsePart.video_metadata` when `inline_data` or `file_data` contains video to configure static video preprocessing (such as time clipping, frame rate, maximum frame count, or extracted content layers).
-        /// </param>
-        /// <param name="mediaProcessing">
-        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
-        /// </param>
-        /// <param name="spreadsheetMetadata">
-        /// Metadata describes the input spreadsheet content. Set this in `Part.spreadsheet_metadata` or `FunctionResponsePart.spreadsheet_metadata` when `inline_data` or `file_data` contains a spreadsheet to configure static spreadsheet preprocessing.
+        /// <param name="documentMetadata">
+        /// Metadata describes the input document content. Set this in `Part.document_metadata` or `FunctionResponsePart.document_metadata` when `inline_data` or `file_data` contains a document to configure static document preprocessing.
         /// </param>
         /// <param name="inlineData">
         /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
         /// </param>
-        /// <param name="documentMetadata">
-        /// Metadata describes the input document content. Set this in `Part.document_metadata` or `FunctionResponsePart.document_metadata` when `inline_data` or `file_data` contains a document to configure static document preprocessing.
+        /// <param name="audioMetadata">
+        /// Metadata describes the input audio content. Set this in `Part.audio_metadata` or `FunctionResponsePart.audio_metadata` when `inline_data` or `file_data` contains audio to configure static audio preprocessing.
+        /// </param>
+        /// <param name="mediaResolution">
+        /// Media resolution for tokenization.
+        /// </param>
+        /// <param name="spreadsheetMetadata">
+        /// Metadata describes the input spreadsheet content. Set this in `Part.spreadsheet_metadata` or `FunctionResponsePart.spreadsheet_metadata` when `inline_data` or `file_data` contains a spreadsheet to configure static spreadsheet preprocessing.
+        /// </param>
+        /// <param name="mediaProcessing">
+        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResponsePart(
-            global::Google.Gemini.V1mainMediaResolution? mediaResolution,
-            global::Google.Gemini.FunctionResponseFileData? fileData,
-            global::Google.Gemini.AudioMetadata? audioMetadata,
             global::Google.Gemini.VideoMetadata? videoMetadata,
-            global::Google.Gemini.FunctionResponsePartMediaProcessing? mediaProcessing,
-            global::Google.Gemini.SpreadsheetMetadata? spreadsheetMetadata,
+            global::Google.Gemini.FunctionResponseFileData? fileData,
+            global::Google.Gemini.DocumentMetadata? documentMetadata,
             global::Google.Gemini.FunctionResponseBlob? inlineData,
-            global::Google.Gemini.DocumentMetadata? documentMetadata)
+            global::Google.Gemini.AudioMetadata? audioMetadata,
+            global::Google.Gemini.V1mainMediaResolution? mediaResolution,
+            global::Google.Gemini.SpreadsheetMetadata? spreadsheetMetadata,
+            global::Google.Gemini.FunctionResponsePartMediaProcessing? mediaProcessing)
         {
-            this.MediaResolution = mediaResolution;
-            this.FileData = fileData;
-            this.AudioMetadata = audioMetadata;
             this.VideoMetadata = videoMetadata;
-            this.MediaProcessing = mediaProcessing;
-            this.SpreadsheetMetadata = spreadsheetMetadata;
-            this.InlineData = inlineData;
+            this.FileData = fileData;
             this.DocumentMetadata = documentMetadata;
+            this.InlineData = inlineData;
+            this.AudioMetadata = audioMetadata;
+            this.MediaResolution = mediaResolution;
+            this.SpreadsheetMetadata = spreadsheetMetadata;
+            this.MediaProcessing = mediaProcessing;
         }
 
         /// <summary>

@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class HttpBody
     {
         /// <summary>
-        /// Application specific response metadata. Must be set in the first response for streaming APIs.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("extensions")]
-        public global::System.Collections.Generic.IList<object>? Extensions { get; set; }
-
-        /// <summary>
         /// The HTTP request/response body as raw binary.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public string? ContentType { get; set; }
 
         /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("extensions")]
+        public global::System.Collections.Generic.IList<object>? Extensions { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpBody" /> class.
         /// </summary>
-        /// <param name="extensions">
-        /// Application specific response metadata. Must be set in the first response for streaming APIs.
-        /// </param>
         /// <param name="data">
         /// The HTTP request/response body as raw binary.
         /// </param>
         /// <param name="contentType">
         /// The HTTP Content-Type header value specifying the content type of the body.
         /// </param>
+        /// <param name="extensions">
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public HttpBody(
-            global::System.Collections.Generic.IList<object>? extensions,
             byte[]? data,
-            string? contentType)
+            string? contentType,
+            global::System.Collections.Generic.IList<object>? extensions)
         {
-            this.Extensions = extensions;
             this.Data = data;
             this.ContentType = contentType;
+            this.Extensions = extensions;
         }
 
         /// <summary>

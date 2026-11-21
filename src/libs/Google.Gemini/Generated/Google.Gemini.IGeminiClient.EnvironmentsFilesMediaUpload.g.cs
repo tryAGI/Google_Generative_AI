@@ -41,11 +41,11 @@ namespace Google.Gemini
         /// </summary>
         /// <param name="environmentsId"></param>
         /// <param name="filesId"></param>
-        /// <param name="overwrite">
-        /// Optional. Whether to overwrite the destination file if it already exists.
-        /// </param>
         /// <param name="extract">
         /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
+        /// </param>
+        /// <param name="overwrite">
+        /// Optional. Whether to overwrite the destination file if it already exists.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -53,8 +53,8 @@ namespace Google.Gemini
         global::System.Threading.Tasks.Task<global::Google.Gemini.UploadEnvironmentFileResponse> EnvironmentsFilesMediaUploadAsync(
             string environmentsId,
             string filesId,
-            bool? overwrite = default,
             bool? extract = default,
+            bool? overwrite = default,
             global::Google.Gemini.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class UploadEnvironmentFileRequest
     {
         /// <summary>
-        /// Optional. Whether to overwrite the destination file if it already exists.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("overwrite")]
-        public bool? Overwrite { get; set; }
-
-        /// <summary>
         /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("extract")]
         public bool? Extract { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to overwrite the destination file if it already exists.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("overwrite")]
+        public bool? Overwrite { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadEnvironmentFileRequest" /> class.
         /// </summary>
-        /// <param name="overwrite">
-        /// Optional. Whether to overwrite the destination file if it already exists.
-        /// </param>
         /// <param name="extract">
         /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
+        /// </param>
+        /// <param name="overwrite">
+        /// Optional. Whether to overwrite the destination file if it already exists.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadEnvironmentFileRequest(
-            bool? overwrite,
-            bool? extract)
+            bool? extract,
+            bool? overwrite)
         {
-            this.Overwrite = overwrite;
             this.Extract = extract;
+            this.Overwrite = overwrite;
         }
 
         /// <summary>

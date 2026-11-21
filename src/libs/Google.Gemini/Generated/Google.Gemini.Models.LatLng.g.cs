@@ -9,16 +9,16 @@ namespace Google.Gemini
     public sealed partial class LatLng
     {
         /// <summary>
-        /// The latitude in degrees. It must be in the range [-90.0, +90.0].
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("latitude")]
-        public double? Latitude { get; set; }
-
-        /// <summary>
         /// The longitude in degrees. It must be in the range [-180.0, +180.0].
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("longitude")]
         public double? Longitude { get; set; }
+
+        /// <summary>
+        /// The latitude in degrees. It must be in the range [-90.0, +90.0].
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("latitude")]
+        public double? Latitude { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +29,21 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="LatLng" /> class.
         /// </summary>
-        /// <param name="latitude">
-        /// The latitude in degrees. It must be in the range [-90.0, +90.0].
-        /// </param>
         /// <param name="longitude">
         /// The longitude in degrees. It must be in the range [-180.0, +180.0].
+        /// </param>
+        /// <param name="latitude">
+        /// The latitude in degrees. It must be in the range [-90.0, +90.0].
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LatLng(
-            double? latitude,
-            double? longitude)
+            double? longitude,
+            double? latitude)
         {
-            this.Latitude = latitude;
             this.Longitude = longitude;
+            this.Latitude = latitude;
         }
 
         /// <summary>
