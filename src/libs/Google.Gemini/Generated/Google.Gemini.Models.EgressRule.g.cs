@@ -21,17 +21,17 @@ namespace Google.Gemini
         public string? Credential { get; set; }
 
         /// <summary>
-        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string? Domain { get; set; }
-
-        /// <summary>
         /// Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.JsonConverters.EgressRuleModeJsonConverter))]
         public global::Google.Gemini.EgressRuleMode? Mode { get; set; }
+
+        /// <summary>
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
+        public string? Domain { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,11 +48,11 @@ namespace Google.Gemini
         /// <param name="credential">
         /// Optional. Reference to a server-managed Credential resource by ID.
         /// </param>
-        /// <param name="domain">
-        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
-        /// </param>
         /// <param name="mode">
         /// Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
+        /// </param>
+        /// <param name="domain">
+        /// Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -60,13 +60,13 @@ namespace Google.Gemini
         public EgressRule(
             global::System.Collections.Generic.Dictionary<string, string>? transform,
             string? credential,
-            string? domain,
-            global::Google.Gemini.EgressRuleMode? mode)
+            global::Google.Gemini.EgressRuleMode? mode,
+            string? domain)
         {
             this.Transform = transform;
             this.Credential = credential;
-            this.Domain = domain;
             this.Mode = mode;
+            this.Domain = domain;
         }
 
         /// <summary>

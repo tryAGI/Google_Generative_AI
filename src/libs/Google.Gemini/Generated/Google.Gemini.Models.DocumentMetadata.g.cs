@@ -9,12 +9,6 @@ namespace Google.Gemini
     public sealed partial class DocumentMetadata
     {
         /// <summary>
-        /// Optional. 1-indexed inclusive start page.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startPage")]
-        public int? StartPage { get; set; }
-
-        /// <summary>
         /// Optional. 1-indexed inclusive end page.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endPage")]
@@ -27,6 +21,12 @@ namespace Google.Gemini
         public global::System.Collections.Generic.IList<global::Google.Gemini.DocumentMetadataContentLayer>? ContentLayers { get; set; }
 
         /// <summary>
+        /// Optional. 1-indexed inclusive start page.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startPage")]
+        public int? StartPage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,26 +35,26 @@ namespace Google.Gemini
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentMetadata" /> class.
         /// </summary>
-        /// <param name="startPage">
-        /// Optional. 1-indexed inclusive start page.
-        /// </param>
         /// <param name="endPage">
         /// Optional. 1-indexed inclusive end page.
         /// </param>
         /// <param name="contentLayers">
         /// Optional. Content layers to return. If empty, defaults to [PAGE_IMAGE] when DocumentMetadata is set. When DocumentMetadata is not set, default document processing is used (for example, page images for PDFs).
         /// </param>
+        /// <param name="startPage">
+        /// Optional. 1-indexed inclusive start page.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DocumentMetadata(
-            int? startPage,
             int? endPage,
-            global::System.Collections.Generic.IList<global::Google.Gemini.DocumentMetadataContentLayer>? contentLayers)
+            global::System.Collections.Generic.IList<global::Google.Gemini.DocumentMetadataContentLayer>? contentLayers,
+            int? startPage)
         {
-            this.StartPage = startPage;
             this.EndPage = endPage;
             this.ContentLayers = contentLayers;
+            this.StartPage = startPage;
         }
 
         /// <summary>
