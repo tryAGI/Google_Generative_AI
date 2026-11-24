@@ -269,6 +269,45 @@ namespace Google.Gemini.NextGen
             : throw new global::System.InvalidOperationException($"Expected union variant 'McpServer' but the value was {ToString()}.");
 
         /// <summary>
+        /// A tool that allows the model to dynamically search for and load tools into<br/>
+        /// the model’s context on demand. This allows clients to avoid loading all tool<br/>
+        /// definitions up front and may help reduce overall token usage and cost.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Google.Gemini.NextGen.ToolSearch? Search { get; init; }
+#else
+        public global::Google.Gemini.NextGen.ToolSearch? Search { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Search))]
+#endif
+        public bool IsSearch => Search != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickSearch(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Google.Gemini.NextGen.ToolSearch? value)
+        {
+            value = Search;
+            return IsSearch;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.ToolSearch PickSearch() => Search is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Search' but the value was {ToString()}.");
+
+        /// <summary>
         /// A tool that can be used by the model to fetch URL context.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -468,6 +507,29 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator Tool(global::Google.Gemini.NextGen.ToolSearch value) => new Tool((global::Google.Gemini.NextGen.ToolSearch?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Google.Gemini.NextGen.ToolSearch?(Tool @this) => @this.Search;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Tool(global::Google.Gemini.NextGen.ToolSearch? value)
+        {
+            Search = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Tool FromSearch(global::Google.Gemini.NextGen.ToolSearch? value) => new Tool(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator Tool(global::Google.Gemini.NextGen.URLContext value) => new Tool((global::Google.Gemini.NextGen.URLContext?)value);
 
         /// <summary>
@@ -499,6 +561,7 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.GoogleMaps? googleMaps,
             global::Google.Gemini.NextGen.GoogleSearch? googleSearch,
             global::Google.Gemini.NextGen.McpServer? mcpServer,
+            global::Google.Gemini.NextGen.ToolSearch? search,
             global::Google.Gemini.NextGen.URLContext? uRLContext
             )
         {
@@ -509,6 +572,7 @@ namespace Google.Gemini.NextGen
             GoogleMaps = googleMaps;
             GoogleSearch = googleSearch;
             McpServer = mcpServer;
+            Search = search;
             URLContext = uRLContext;
         }
 
@@ -517,6 +581,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public object? Object =>
             URLContext as object ??
+            Search as object ??
             McpServer as object ??
             GoogleSearch as object ??
             GoogleMaps as object ??
@@ -537,6 +602,7 @@ namespace Google.Gemini.NextGen
             GoogleMaps?.ToString() ??
             GoogleSearch?.ToString() ??
             McpServer?.ToString() ??
+            Search?.ToString() ??
             URLContext?.ToString()
             ;
 
@@ -545,7 +611,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public bool Validate()
         {
-            return IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsComputerUse && IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && IsGoogleSearch && !IsMcpServer && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && IsMcpServer && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && IsURLContext;
+            return IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && IsGoogleSearch && !IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && IsMcpServer && !IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && IsSearch && !IsURLContext || !IsCodeExecution && !IsComputerUse && !IsFileSearch && !IsFunction && !IsGoogleMaps && !IsGoogleSearch && !IsMcpServer && !IsSearch && IsURLContext;
         }
 
         /// <summary>
@@ -559,6 +625,7 @@ namespace Google.Gemini.NextGen
             global::System.Func<global::Google.Gemini.NextGen.GoogleMaps, TResult>? googleMaps = null,
             global::System.Func<global::Google.Gemini.NextGen.GoogleSearch, TResult>? googleSearch = null,
             global::System.Func<global::Google.Gemini.NextGen.McpServer, TResult>? mcpServer = null,
+            global::System.Func<global::Google.Gemini.NextGen.ToolSearch, TResult>? search = null,
             global::System.Func<global::Google.Gemini.NextGen.URLContext, TResult>? uRLContext = null,
             bool validate = true)
         {
@@ -595,9 +662,13 @@ namespace Google.Gemini.NextGen
             {
                 return mcpServer(__value6);
             }
-            else if (URLContext is { } __value7 && uRLContext != null)
+            else if (Search is { } __value7 && search != null)
             {
-                return uRLContext(__value7);
+                return search(__value7);
+            }
+            else if (URLContext is { } __value8 && uRLContext != null)
+            {
+                return uRLContext(__value8);
             }
 
             return default(TResult);
@@ -621,6 +692,8 @@ namespace Google.Gemini.NextGen
 
             global::System.Action<global::Google.Gemini.NextGen.McpServer>? mcpServer = null,
 
+            global::System.Action<global::Google.Gemini.NextGen.ToolSearch>? search = null,
+
             global::System.Action<global::Google.Gemini.NextGen.URLContext>? uRLContext = null,
             bool validate = true)
         {
@@ -657,9 +730,13 @@ namespace Google.Gemini.NextGen
             {
                 mcpServer?.Invoke(__value6);
             }
-            else if (URLContext is { } __value7)
+            else if (Search is { } __value7)
             {
-                uRLContext?.Invoke(__value7);
+                search?.Invoke(__value7);
+            }
+            else if (URLContext is { } __value8)
+            {
+                uRLContext?.Invoke(__value8);
             }
         }
 
@@ -674,6 +751,7 @@ namespace Google.Gemini.NextGen
             global::System.Action<global::Google.Gemini.NextGen.GoogleMaps>? googleMaps = null,
             global::System.Action<global::Google.Gemini.NextGen.GoogleSearch>? googleSearch = null,
             global::System.Action<global::Google.Gemini.NextGen.McpServer>? mcpServer = null,
+            global::System.Action<global::Google.Gemini.NextGen.ToolSearch>? search = null,
             global::System.Action<global::Google.Gemini.NextGen.URLContext>? uRLContext = null,
             bool validate = true)
         {
@@ -710,9 +788,13 @@ namespace Google.Gemini.NextGen
             {
                 mcpServer?.Invoke(__value6);
             }
-            else if (URLContext is { } __value7)
+            else if (Search is { } __value7)
             {
-                uRLContext?.Invoke(__value7);
+                search?.Invoke(__value7);
+            }
+            else if (URLContext is { } __value8)
+            {
+                uRLContext?.Invoke(__value8);
             }
         }
 
@@ -737,6 +819,8 @@ namespace Google.Gemini.NextGen
                 typeof(global::Google.Gemini.NextGen.GoogleSearch),
                 McpServer,
                 typeof(global::Google.Gemini.NextGen.McpServer),
+                Search,
+                typeof(global::Google.Gemini.NextGen.ToolSearch),
                 URLContext,
                 typeof(global::Google.Gemini.NextGen.URLContext),
             };
@@ -762,6 +846,7 @@ namespace Google.Gemini.NextGen
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.GoogleMaps?>.Default.Equals(GoogleMaps, other.GoogleMaps) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.GoogleSearch?>.Default.Equals(GoogleSearch, other.GoogleSearch) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.McpServer?>.Default.Equals(McpServer, other.McpServer) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ToolSearch?>.Default.Equals(Search, other.Search) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.URLContext?>.Default.Equals(URLContext, other.URLContext)
                 ;
         }

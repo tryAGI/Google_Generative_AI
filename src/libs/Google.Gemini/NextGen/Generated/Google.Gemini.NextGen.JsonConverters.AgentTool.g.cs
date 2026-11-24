@@ -30,15 +30,18 @@ namespace Google.Gemini.NextGen.JsonConverters
             var __score0 = 0;
             if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;
+            if (__jsonProps.Contains("defer_loading")) __score1++;
             if (__jsonProps.Contains("description")) __score1++;
             if (__jsonProps.Contains("name")) __score1++;
             if (__jsonProps.Contains("parameters")) __score1++;
+            if (__jsonProps.Contains("short_description")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
             if (__jsonProps.Contains("search_types")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;
             var __score3 = 0;
             if (__jsonProps.Contains("allowed_tools")) __score3++;
+            if (__jsonProps.Contains("defer_loading")) __score3++;
             if (__jsonProps.Contains("headers")) __score3++;
             if (__jsonProps.Contains("name")) __score3++;
             if (__jsonProps.Contains("type")) __score3++;

@@ -790,6 +790,80 @@ namespace Google.Gemini.NextGen
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Google.Gemini.NextGen.ToolSearchCallDelta? ToolSearchCall { get; init; }
+#else
+        public global::Google.Gemini.NextGen.ToolSearchCallDelta? ToolSearchCall { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolSearchCall))]
+#endif
+        public bool IsToolSearchCall => ToolSearchCall != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickToolSearchCall(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Google.Gemini.NextGen.ToolSearchCallDelta? value)
+        {
+            value = ToolSearchCall;
+            return IsToolSearchCall;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.ToolSearchCallDelta PickToolSearchCall() => ToolSearchCall is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolSearchCall' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Google.Gemini.NextGen.ToolSearchResultDelta? ToolSearchResult { get; init; }
+#else
+        public global::Google.Gemini.NextGen.ToolSearchResultDelta? ToolSearchResult { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolSearchResult))]
+#endif
+        public bool IsToolSearchResult => ToolSearchResult != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickToolSearchResult(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Google.Gemini.NextGen.ToolSearchResultDelta? value)
+        {
+            value = ToolSearchResult;
+            return IsToolSearchResult;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.ToolSearchResultDelta PickToolSearchResult() => ToolSearchResult is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolSearchResult' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Google.Gemini.NextGen.URLContextCallDelta? URLContextCall { get; init; }
 #else
         public global::Google.Gemini.NextGen.URLContextCallDelta? URLContextCall { get; }
@@ -1382,6 +1456,52 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator StepDeltaData(global::Google.Gemini.NextGen.ToolSearchCallDelta value) => new StepDeltaData((global::Google.Gemini.NextGen.ToolSearchCallDelta?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Google.Gemini.NextGen.ToolSearchCallDelta?(StepDeltaData @this) => @this.ToolSearchCall;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public StepDeltaData(global::Google.Gemini.NextGen.ToolSearchCallDelta? value)
+        {
+            ToolSearchCall = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static StepDeltaData FromToolSearchCall(global::Google.Gemini.NextGen.ToolSearchCallDelta? value) => new StepDeltaData(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator StepDeltaData(global::Google.Gemini.NextGen.ToolSearchResultDelta value) => new StepDeltaData((global::Google.Gemini.NextGen.ToolSearchResultDelta?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Google.Gemini.NextGen.ToolSearchResultDelta?(StepDeltaData @this) => @this.ToolSearchResult;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public StepDeltaData(global::Google.Gemini.NextGen.ToolSearchResultDelta? value)
+        {
+            ToolSearchResult = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static StepDeltaData FromToolSearchResult(global::Google.Gemini.NextGen.ToolSearchResultDelta? value) => new StepDeltaData(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator StepDeltaData(global::Google.Gemini.NextGen.URLContextCallDelta value) => new StepDeltaData((global::Google.Gemini.NextGen.URLContextCallDelta?)value);
 
         /// <summary>
@@ -1473,6 +1593,8 @@ namespace Google.Gemini.NextGen
             global::Google.Gemini.NextGen.TextDelta? text,
             global::Google.Gemini.NextGen.ThoughtSignatureDelta? thoughtSignature,
             global::Google.Gemini.NextGen.ThoughtSummaryDelta? thoughtSummary,
+            global::Google.Gemini.NextGen.ToolSearchCallDelta? toolSearchCall,
+            global::Google.Gemini.NextGen.ToolSearchResultDelta? toolSearchResult,
             global::Google.Gemini.NextGen.URLContextCallDelta? uRLContextCall,
             global::Google.Gemini.NextGen.URLContextResultDelta? uRLContextResult,
             global::Google.Gemini.NextGen.VideoDelta? video
@@ -1499,6 +1621,8 @@ namespace Google.Gemini.NextGen
             Text = text;
             ThoughtSignature = thoughtSignature;
             ThoughtSummary = thoughtSummary;
+            ToolSearchCall = toolSearchCall;
+            ToolSearchResult = toolSearchResult;
             URLContextCall = uRLContextCall;
             URLContextResult = uRLContextResult;
             Video = video;
@@ -1511,6 +1635,8 @@ namespace Google.Gemini.NextGen
             Video as object ??
             URLContextResult as object ??
             URLContextCall as object ??
+            ToolSearchResult as object ??
+            ToolSearchCall as object ??
             ThoughtSummary as object ??
             ThoughtSignature as object ??
             Text as object ??
@@ -1559,6 +1685,8 @@ namespace Google.Gemini.NextGen
             Text?.ToString() ??
             ThoughtSignature?.ToString() ??
             ThoughtSummary?.ToString() ??
+            ToolSearchCall?.ToString() ??
+            ToolSearchResult?.ToString() ??
             URLContextCall?.ToString() ??
             URLContextResult?.ToString() ??
             Video?.ToString()
@@ -1569,7 +1697,7 @@ namespace Google.Gemini.NextGen
         /// </summary>
         public bool Validate()
         {
-            return IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsURLContextCall && !IsURLContextResult && IsVideo;
+            return IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && IsURLContextCall && !IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && IsURLContextResult && !IsVideo || !IsArguments && !IsAudio && !IsCodeExecutionCall && !IsCodeExecutionResult && !IsDocument && !IsFileSearchCall && !IsFileSearchResult && !IsFunctionResult && !IsGoogleMapsCall && !IsGoogleMapsResult && !IsGoogleSearchCall && !IsGoogleSearchResult && !IsImage && !IsMcpServerToolCall && !IsMcpServerToolResult && !IsProcessingCall && !IsProcessingResult && !IsTextAnnotation && !IsText && !IsThoughtSignature && !IsThoughtSummary && !IsToolSearchCall && !IsToolSearchResult && !IsURLContextCall && !IsURLContextResult && IsVideo;
         }
 
         /// <summary>
@@ -1597,6 +1725,8 @@ namespace Google.Gemini.NextGen
             global::System.Func<global::Google.Gemini.NextGen.TextDelta, TResult>? text = null,
             global::System.Func<global::Google.Gemini.NextGen.ThoughtSignatureDelta, TResult>? thoughtSignature = null,
             global::System.Func<global::Google.Gemini.NextGen.ThoughtSummaryDelta, TResult>? thoughtSummary = null,
+            global::System.Func<global::Google.Gemini.NextGen.ToolSearchCallDelta, TResult>? toolSearchCall = null,
+            global::System.Func<global::Google.Gemini.NextGen.ToolSearchResultDelta, TResult>? toolSearchResult = null,
             global::System.Func<global::Google.Gemini.NextGen.URLContextCallDelta, TResult>? uRLContextCall = null,
             global::System.Func<global::Google.Gemini.NextGen.URLContextResultDelta, TResult>? uRLContextResult = null,
             global::System.Func<global::Google.Gemini.NextGen.VideoDelta, TResult>? video = null,
@@ -1691,17 +1821,25 @@ namespace Google.Gemini.NextGen
             {
                 return thoughtSummary(__value20);
             }
-            else if (URLContextCall is { } __value21 && uRLContextCall != null)
+            else if (ToolSearchCall is { } __value21 && toolSearchCall != null)
             {
-                return uRLContextCall(__value21);
+                return toolSearchCall(__value21);
             }
-            else if (URLContextResult is { } __value22 && uRLContextResult != null)
+            else if (ToolSearchResult is { } __value22 && toolSearchResult != null)
             {
-                return uRLContextResult(__value22);
+                return toolSearchResult(__value22);
             }
-            else if (Video is { } __value23 && video != null)
+            else if (URLContextCall is { } __value23 && uRLContextCall != null)
             {
-                return video(__value23);
+                return uRLContextCall(__value23);
+            }
+            else if (URLContextResult is { } __value24 && uRLContextResult != null)
+            {
+                return uRLContextResult(__value24);
+            }
+            else if (Video is { } __value25 && video != null)
+            {
+                return video(__value25);
             }
 
             return default(TResult);
@@ -1753,6 +1891,10 @@ namespace Google.Gemini.NextGen
 
             global::System.Action<global::Google.Gemini.NextGen.ThoughtSummaryDelta>? thoughtSummary = null,
 
+            global::System.Action<global::Google.Gemini.NextGen.ToolSearchCallDelta>? toolSearchCall = null,
+
+            global::System.Action<global::Google.Gemini.NextGen.ToolSearchResultDelta>? toolSearchResult = null,
+
             global::System.Action<global::Google.Gemini.NextGen.URLContextCallDelta>? uRLContextCall = null,
 
             global::System.Action<global::Google.Gemini.NextGen.URLContextResultDelta>? uRLContextResult = null,
@@ -1849,17 +1991,25 @@ namespace Google.Gemini.NextGen
             {
                 thoughtSummary?.Invoke(__value20);
             }
-            else if (URLContextCall is { } __value21)
+            else if (ToolSearchCall is { } __value21)
             {
-                uRLContextCall?.Invoke(__value21);
+                toolSearchCall?.Invoke(__value21);
             }
-            else if (URLContextResult is { } __value22)
+            else if (ToolSearchResult is { } __value22)
             {
-                uRLContextResult?.Invoke(__value22);
+                toolSearchResult?.Invoke(__value22);
             }
-            else if (Video is { } __value23)
+            else if (URLContextCall is { } __value23)
             {
-                video?.Invoke(__value23);
+                uRLContextCall?.Invoke(__value23);
+            }
+            else if (URLContextResult is { } __value24)
+            {
+                uRLContextResult?.Invoke(__value24);
+            }
+            else if (Video is { } __value25)
+            {
+                video?.Invoke(__value25);
             }
         }
 
@@ -1888,6 +2038,8 @@ namespace Google.Gemini.NextGen
             global::System.Action<global::Google.Gemini.NextGen.TextDelta>? text = null,
             global::System.Action<global::Google.Gemini.NextGen.ThoughtSignatureDelta>? thoughtSignature = null,
             global::System.Action<global::Google.Gemini.NextGen.ThoughtSummaryDelta>? thoughtSummary = null,
+            global::System.Action<global::Google.Gemini.NextGen.ToolSearchCallDelta>? toolSearchCall = null,
+            global::System.Action<global::Google.Gemini.NextGen.ToolSearchResultDelta>? toolSearchResult = null,
             global::System.Action<global::Google.Gemini.NextGen.URLContextCallDelta>? uRLContextCall = null,
             global::System.Action<global::Google.Gemini.NextGen.URLContextResultDelta>? uRLContextResult = null,
             global::System.Action<global::Google.Gemini.NextGen.VideoDelta>? video = null,
@@ -1982,17 +2134,25 @@ namespace Google.Gemini.NextGen
             {
                 thoughtSummary?.Invoke(__value20);
             }
-            else if (URLContextCall is { } __value21)
+            else if (ToolSearchCall is { } __value21)
             {
-                uRLContextCall?.Invoke(__value21);
+                toolSearchCall?.Invoke(__value21);
             }
-            else if (URLContextResult is { } __value22)
+            else if (ToolSearchResult is { } __value22)
             {
-                uRLContextResult?.Invoke(__value22);
+                toolSearchResult?.Invoke(__value22);
             }
-            else if (Video is { } __value23)
+            else if (URLContextCall is { } __value23)
             {
-                video?.Invoke(__value23);
+                uRLContextCall?.Invoke(__value23);
+            }
+            else if (URLContextResult is { } __value24)
+            {
+                uRLContextResult?.Invoke(__value24);
+            }
+            else if (Video is { } __value25)
+            {
+                video?.Invoke(__value25);
             }
         }
 
@@ -2045,6 +2205,10 @@ namespace Google.Gemini.NextGen
                 typeof(global::Google.Gemini.NextGen.ThoughtSignatureDelta),
                 ThoughtSummary,
                 typeof(global::Google.Gemini.NextGen.ThoughtSummaryDelta),
+                ToolSearchCall,
+                typeof(global::Google.Gemini.NextGen.ToolSearchCallDelta),
+                ToolSearchResult,
+                typeof(global::Google.Gemini.NextGen.ToolSearchResultDelta),
                 URLContextCall,
                 typeof(global::Google.Gemini.NextGen.URLContextCallDelta),
                 URLContextResult,
@@ -2088,6 +2252,8 @@ namespace Google.Gemini.NextGen
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.TextDelta?>.Default.Equals(Text, other.Text) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ThoughtSignatureDelta?>.Default.Equals(ThoughtSignature, other.ThoughtSignature) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ThoughtSummaryDelta?>.Default.Equals(ThoughtSummary, other.ThoughtSummary) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ToolSearchCallDelta?>.Default.Equals(ToolSearchCall, other.ToolSearchCall) &&
+                global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.ToolSearchResultDelta?>.Default.Equals(ToolSearchResult, other.ToolSearchResult) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.URLContextCallDelta?>.Default.Equals(URLContextCall, other.URLContextCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.URLContextResultDelta?>.Default.Equals(URLContextResult, other.URLContextResult) &&
                 global::System.Collections.Generic.EqualityComparer<global::Google.Gemini.NextGen.VideoDelta?>.Default.Equals(Video, other.Video)

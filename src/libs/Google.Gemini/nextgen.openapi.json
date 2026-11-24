@@ -4536,9 +4536,6 @@
             "description": "The name of the `Model` used for generating the interaction.",
             "$ref": "#/components/schemas/ModelOption"
           },
-          "input": {
-            "$ref": "#/components/schemas/InteractionsInput"
-          },
           "generation_config": {
             "description": "Input only. Configuration parameters for the model interaction.",
             "$ref": "#/components/schemas/GenerationConfig",
@@ -4604,6 +4601,9 @@
             "items": {
               "$ref": "#/components/schemas/Tool"
             }
+          },
+          "input": {
+            "$ref": "#/components/schemas/InteractionsInput"
           },
           "response_modalities": {
             "description": "The requested modalities of the response (TEXT, IMAGE, AUDIO).",
@@ -4698,7 +4698,6 @@
           }
         },
         "required": [
-          "input",
           "model"
         ],
         "x-speakeasy-model-namespace": "interactions",
@@ -5872,6 +5871,14 @@
           },
           "parameters": {
             "description": "The JSON Schema for the function's parameters.\n\nSupports a subset of JSON Schema. `minLength`, `maxLength`,\n`minProperties`, `maxProperties`, `uniqueItems`, `contains`,\n`minContains`, and `maxContains` are ignored and not enforced."
+          },
+          "defer_loading": {
+            "description": "If true, the function's loading is deferred.",
+            "type": "boolean"
+          },
+          "short_description": {
+            "description": "A brief description of the function, shown to the model as a\nshort summary of functions with `defer_loading` set to true.",
+            "type": "string"
           }
         },
         "required": [
@@ -7797,6 +7804,10 @@
             "items": {
               "$ref": "#/components/schemas/AllowedTools"
             }
+          },
+          "defer_loading": {
+            "description": "If true, loading of tools on this MCP server is deferred.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -9157,6 +9168,12 @@
             "$ref": "#/components/schemas/ThoughtStep"
           },
           {
+            "$ref": "#/components/schemas/ToolSearchCallStep"
+          },
+          {
+            "$ref": "#/components/schemas/ToolSearchResultStep"
+          },
+          {
             "$ref": "#/components/schemas/UrlContextCallStep"
           },
           {
@@ -9276,6 +9293,12 @@
           },
           {
             "$ref": "#/components/schemas/ThoughtSummaryDelta"
+          },
+          {
+            "$ref": "#/components/schemas/ToolSearchCallDelta"
+          },
+          {
+            "$ref": "#/components/schemas/ToolSearchResultDelta"
           },
           {
             "$ref": "#/components/schemas/UrlContextCallDelta"
@@ -9656,6 +9679,9 @@
             "$ref": "#/components/schemas/McpServer"
           },
           {
+            "$ref": "#/components/schemas/ToolSearch"
+          },
+          {
             "$ref": "#/components/schemas/UrlContext"
           }
         ],
@@ -9678,6 +9704,160 @@
             ]
           }
         },
+        "x-speakeasy-model-namespace": "interactions"
+      },
+      "ToolSearch": {
+        "description": "A tool that allows the model to dynamically search for and load tools into\nthe model’s context on demand. This allows clients to avoid loading all tool\ndefinitions up front and may help reduce overall token usage and cost.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "tool_search"
+          },
+          "name": {
+            "description": "The name of the function. To be set only for client-side execution.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the function. To be set only for client-side execution.",
+            "type": "string"
+          },
+          "parameters": {
+            "description": "The JSON Schema for the function's parameters. To be set only for\nclient-side execution."
+          },
+          "execution": {
+            "description": "The execution mode of the tool search.",
+            "type": "string",
+            "enum": [
+              "server",
+              "client"
+            ],
+            "x-google-enum-descriptions": [
+              "Server-side execution mode. Default.",
+              "Client-side execution mode."
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "x-speakeasy-model-namespace": "interactions"
+      },
+      "ToolSearchCallDelta": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "tool_search_call"
+          },
+          "arguments": {
+            "$ref": "#/components/schemas/ToolSearchCallStepArguments"
+          },
+          "signature": {
+            "description": "A signature hash for backend validation.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "x-speakeasy-model-namespace": "interactions"
+      },
+      "ToolSearchCallStep": {
+        "description": "Tool search call step.",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "description": "Required. The arguments for tool search.",
+            "$ref": "#/components/schemas/ToolSearchCallStepArguments"
+          },
+          "id": {
+            "description": "Required. A unique ID for this specific tool call.",
+            "type": "string"
+          },
+          "type": {
+            "const": "tool_search_call"
+          },
+          "signature": {
+            "description": "A signature hash for backend validation.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
+          }
+        },
+        "required": [
+          "arguments",
+          "id",
+          "type"
+        ],
+        "x-speakeasy-model-namespace": "interactions"
+      },
+      "ToolSearchCallStepArguments": {
+        "type": "object",
+        "properties": {
+          "function_names": {
+            "description": "List of function names to load explicitly.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "x-speakeasy-model-namespace": "interactions"
+      },
+      "ToolSearchResultDelta": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "tool_search_result"
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Function"
+            }
+          },
+          "signature": {
+            "description": "A signature hash for backend validation.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "x-speakeasy-model-namespace": "interactions"
+      },
+      "ToolSearchResultStep": {
+        "description": "Tool search result step.",
+        "type": "object",
+        "properties": {
+          "call_id": {
+            "description": "Required. ID to match the ID from the function call block.",
+            "type": "string"
+          },
+          "type": {
+            "const": "tool_search_result"
+          },
+          "result": {
+            "description": "The retrieved function definitions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Function"
+            }
+          },
+          "signature": {
+            "description": "A signature hash for backend validation.",
+            "type": "string",
+            "format": "byte",
+            "x-speakeasy-base64-input-mode": "file"
+          }
+        },
+        "required": [
+          "call_id",
+          "type"
+        ],
         "x-speakeasy-model-namespace": "interactions"
       },
       "TranscriptionConfig": {

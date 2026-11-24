@@ -41,9 +41,11 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("top_k")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;
             var __score3 = 0;
+            if (__jsonProps.Contains("defer_loading")) __score3++;
             if (__jsonProps.Contains("description")) __score3++;
             if (__jsonProps.Contains("name")) __score3++;
             if (__jsonProps.Contains("parameters")) __score3++;
+            if (__jsonProps.Contains("short_description")) __score3++;
             if (__jsonProps.Contains("type")) __score3++;
             var __score4 = 0;
             if (__jsonProps.Contains("enable_widget")) __score4++;
@@ -55,12 +57,19 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__jsonProps.Contains("type")) __score5++;
             var __score6 = 0;
             if (__jsonProps.Contains("allowed_tools")) __score6++;
+            if (__jsonProps.Contains("defer_loading")) __score6++;
             if (__jsonProps.Contains("headers")) __score6++;
             if (__jsonProps.Contains("name")) __score6++;
             if (__jsonProps.Contains("type")) __score6++;
             if (__jsonProps.Contains("url")) __score6++;
             var __score7 = 0;
+            if (__jsonProps.Contains("description")) __score7++;
+            if (__jsonProps.Contains("execution")) __score7++;
+            if (__jsonProps.Contains("name")) __score7++;
+            if (__jsonProps.Contains("parameters")) __score7++;
             if (__jsonProps.Contains("type")) __score7++;
+            var __score8 = 0;
+            if (__jsonProps.Contains("type")) __score8++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -71,6 +80,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             if (__score5 > __bestScore) { __bestScore = __score5; __bestIndex = 5; }
             if (__score6 > __bestScore) { __bestScore = __score6; __bestIndex = 6; }
             if (__score7 > __bestScore) { __bestScore = __score7; __bestIndex = 7; }
+            if (__score8 > __bestScore) { __bestScore = __score8; __bestIndex = 8; }
 
             global::Google.Gemini.NextGen.CodeExecution? codeExecution = default;
             global::Google.Gemini.NextGen.ComputerUse? computerUse = default;
@@ -79,6 +89,7 @@ namespace Google.Gemini.NextGen.JsonConverters
             global::Google.Gemini.NextGen.GoogleMaps? googleMaps = default;
             global::Google.Gemini.NextGen.GoogleSearch? googleSearch = default;
             global::Google.Gemini.NextGen.McpServer? mcpServer = default;
+            global::Google.Gemini.NextGen.ToolSearch? search = default;
             global::Google.Gemini.NextGen.URLContext? uRLContext = default;
             if (__bestIndex >= 0)
             {
@@ -219,6 +230,25 @@ namespace Google.Gemini.NextGen.JsonConverters
                 {
                     try
                     {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.ToolSearch), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.ToolSearch> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ToolSearch).Name}");
+                        search = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                    {
+                        // Legacy enum converters signal an incompatible JSON token with this exception.
+                    }
+                }
+                else if (__bestIndex == 8)
+                {
+                    try
+                    {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.URLContext), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.URLContext> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.URLContext).Name}");
                         uRLContext = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -236,7 +266,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -257,7 +287,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -278,7 +308,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -299,7 +329,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -320,7 +350,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -341,7 +371,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -362,7 +392,7 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -383,7 +413,28 @@ namespace Google.Gemini.NextGen.JsonConverters
                 }
             }
 
-            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && uRLContext == null)
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.ToolSearch), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.ToolSearch> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ToolSearch).Name}");
+                    search = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                {
+                    // Legacy enum converters signal an incompatible JSON token with this exception.
+                }
+            }
+
+            if (codeExecution == null && computerUse == null && fileSearch == null && function == null && googleMaps == null && googleSearch == null && mcpServer == null && search == null && uRLContext == null)
             {
                 try
                 {
@@ -418,6 +469,8 @@ namespace Google.Gemini.NextGen.JsonConverters
                 googleSearch,
 
                 mcpServer,
+
+                search,
 
                 uRLContext
                 );
@@ -475,6 +528,12 @@ namespace Google.Gemini.NextGen.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.McpServer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.McpServer?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.McpServer).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMcpServer(), typeInfo);
+            }
+            else if (value.IsSearch)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Google.Gemini.NextGen.ToolSearch), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Google.Gemini.NextGen.ToolSearch?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Google.Gemini.NextGen.ToolSearch).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSearch(), typeInfo);
             }
             else if (value.IsURLContext)
             {
