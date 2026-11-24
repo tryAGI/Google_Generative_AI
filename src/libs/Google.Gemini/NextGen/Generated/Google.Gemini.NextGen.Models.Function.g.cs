@@ -37,6 +37,19 @@ namespace Google.Gemini.NextGen
         public object? Parameters { get; set; }
 
         /// <summary>
+        /// If true, the function's loading is deferred.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("defer_loading")]
+        public bool? DeferLoading { get; set; }
+
+        /// <summary>
+        /// A brief description of the function, shown to the model as a<br/>
+        /// short summary of functions with `defer_loading` set to true.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("short_description")]
+        public string? ShortDescription { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -58,6 +71,13 @@ namespace Google.Gemini.NextGen
         /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,<br/>
         /// `minContains`, and `maxContains` are ignored and not enforced.
         /// </param>
+        /// <param name="deferLoading">
+        /// If true, the function's loading is deferred.
+        /// </param>
+        /// <param name="shortDescription">
+        /// A brief description of the function, shown to the model as a<br/>
+        /// short summary of functions with `defer_loading` set to true.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -65,12 +85,16 @@ namespace Google.Gemini.NextGen
             object type,
             string? name,
             string? description,
-            object? parameters)
+            object? parameters,
+            bool? deferLoading,
+            string? shortDescription)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Name = name;
             this.Description = description;
             this.Parameters = parameters;
+            this.DeferLoading = deferLoading;
+            this.ShortDescription = shortDescription;
         }
 
         /// <summary>

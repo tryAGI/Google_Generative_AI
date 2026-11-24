@@ -41,6 +41,12 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? AllowedTools { get; set; }
 
         /// <summary>
+        /// If true, loading of tools on this MCP server is deferred.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("defer_loading")]
+        public bool? DeferLoading { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,6 +69,9 @@ namespace Google.Gemini.NextGen
         /// <param name="allowedTools">
         /// The allowed tools.
         /// </param>
+        /// <param name="deferLoading">
+        /// If true, loading of tools on this MCP server is deferred.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -71,13 +80,15 @@ namespace Google.Gemini.NextGen
             string? name,
             string? url,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
-            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? allowedTools)
+            global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.AllowedTools>? allowedTools,
+            bool? deferLoading)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Name = name;
             this.Url = url;
             this.Headers = headers;
             this.AllowedTools = allowedTools;
+            this.DeferLoading = deferLoading;
         }
 
         /// <summary>

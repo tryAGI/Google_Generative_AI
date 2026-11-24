@@ -1226,215 +1226,247 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextCallStep? Type297 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearchCallStep? Type297 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextResultStep? Type298 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearchResultStep? Type298 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.UserInputStep? Type299 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextCallStep? Type299 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.StepDeltaData? Type300 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextResultStep? Type300 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.StepDeltaMetadata? Type301 { get; set; }
+        public global::Google.Gemini.NextGen.UserInputStep? Type301 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextAnnotationDelta? Type302 { get; set; }
+        public global::Google.Gemini.NextGen.StepDeltaData? Type302 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextDelta? Type303 { get; set; }
+        public global::Google.Gemini.NextGen.StepDeltaMetadata? Type303 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ThoughtSignatureDelta? Type304 { get; set; }
+        public global::Google.Gemini.NextGen.TextAnnotationDelta? Type304 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ThoughtSummaryDelta? Type305 { get; set; }
+        public global::Google.Gemini.NextGen.TextDelta? Type305 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextCallDelta? Type306 { get; set; }
+        public global::Google.Gemini.NextGen.ThoughtSignatureDelta? Type306 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextResultDelta? Type307 { get; set; }
+        public global::Google.Gemini.NextGen.ThoughtSummaryDelta? Type307 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoDelta? Type308 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearchCallDelta? Type308 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Annotation>? Type309 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearchResultDelta? Type309 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TextResponseFormatMimeType? Type310 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextCallDelta? Type310 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ThoughtSummaryContent? Type311 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextResultDelta? Type311 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>? Type312 { get; set; }
+        public global::Google.Gemini.NextGen.VideoDelta? Type312 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TranscriptionMode? Type313 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Annotation>? Type313 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TranscriptionConfigMode? Type314 { get; set; }
+        public global::Google.Gemini.NextGen.TextResponseFormatMimeType? Type314 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VerbatimTranscriptionMode? Type315 { get; set; }
+        public global::Google.Gemini.NextGen.ThoughtSummaryContent? Type315 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TriggerStatus? Type316 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearch? Type316 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TriggerExecutionStatus? Type317 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearchExecution? Type317 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TriggerUpdate? Type318 { get; set; }
+        public global::Google.Gemini.NextGen.ToolSearchCallStepArguments? Type318 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.TriggerUpdateStatus? Type319 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Function>? Type319 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.UpdateTriggerRequest? Type320 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.TranscriptionMode?, global::Google.Gemini.NextGen.TranscriptionConfigMode?>? Type320 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.UpdateWebhookRequest? Type321 { get; set; }
+        public global::Google.Gemini.NextGen.TranscriptionMode? Type321 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookUpdate? Type322 { get; set; }
+        public global::Google.Gemini.NextGen.TranscriptionConfigMode? Type322 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.UploadEnvironmentFileRequest? Type323 { get; set; }
+        public global::Google.Gemini.NextGen.VerbatimTranscriptionMode? Type323 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.UploadEnvironmentFileResponse? Type324 { get; set; }
+        public global::Google.Gemini.NextGen.TriggerStatus? Type324 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextCallArguments? Type325 { get; set; }
+        public global::Google.Gemini.NextGen.TriggerExecutionStatus? Type325 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextResult? Type326 { get; set; }
+        public global::Google.Gemini.NextGen.TriggerUpdate? Type326 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.URLContextResultStatus? Type327 { get; set; }
+        public global::Google.Gemini.NextGen.TriggerUpdateStatus? Type327 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.URLContextResult>? Type328 { get; set; }
+        public global::Google.Gemini.NextGen.UpdateTriggerRequest? Type328 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ModalityTokens>? Type329 { get; set; }
+        public global::Google.Gemini.NextGen.UpdateWebhookRequest? Type329 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GroundingToolCount>? Type330 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookUpdate? Type330 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoConfigTask? Type331 { get; set; }
+        public global::Google.Gemini.NextGen.UploadEnvironmentFileRequest? Type331 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? Type332 { get; set; }
+        public global::Google.Gemini.NextGen.UploadEnvironmentFileResponse? Type332 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoContentProcessing? Type333 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextCallArguments? Type333 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoContentMimeType? Type334 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextResult? Type334 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoDeltaMimeType? Type335 { get; set; }
+        public global::Google.Gemini.NextGen.URLContextResultStatus? Type335 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoResponseFormatDelivery? Type336 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.URLContextResult>? Type336 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? Type337 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ModalityTokens>? Type337 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VideoResponseFormatResolution? Type338 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.GroundingToolCount>? Type338 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.VoiceType? Type339 { get; set; }
+        public global::Google.Gemini.NextGen.VideoConfigTask? Type339 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SigningSecret>? Type340 { get; set; }
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.MediaProcessing?, global::Google.Gemini.NextGen.VideoContentProcessing?>? Type340 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookState? Type341 { get; set; }
+        public global::Google.Gemini.NextGen.VideoContentProcessing? Type341 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.WebhookUpdateState? Type342 { get; set; }
+        public global::Google.Gemini.NextGen.VideoContentMimeType? Type342 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.CreateAgentInteraction, global::Google.Gemini.NextGen.CreateModelInteraction>? Type343 { get; set; }
+        public global::Google.Gemini.NextGen.VideoDeltaMimeType? Type343 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public long? Type344 { get; set; }
+        public global::Google.Gemini.NextGen.VideoResponseFormatDelivery? Type344 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.ListEnvironmentsMode? Type345 { get; set; }
+        public global::Google.Gemini.NextGen.VideoResponseFormatAspectRatio? Type345 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.CreateInteractionResponse? Type346 { get; set; }
+        public global::Google.Gemini.NextGen.VideoResponseFormatResolution? Type346 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.DeleteInteractionResponse? Type347 { get; set; }
+        public global::Google.Gemini.NextGen.VoiceType? Type347 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.GetInteractionByIdResponse? Type348 { get; set; }
+        public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.SigningSecret>? Type348 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Google.Gemini.NextGen.CancelInteractionByIdResponse? Type349 { get; set; }
+        public global::Google.Gemini.NextGen.WebhookState? Type349 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.WebhookUpdateState? Type350 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.CreateAgentInteraction, global::Google.Gemini.NextGen.CreateModelInteraction>? Type351 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public long? Type352 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.ListEnvironmentsMode? Type353 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.CreateInteractionResponse? Type354 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.DeleteInteractionResponse? Type355 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.GetInteractionByIdResponse? Type356 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Google.Gemini.NextGen.CancelInteractionByIdResponse? Type357 { get; set; }
 
         /// <summary>
         ///
@@ -1627,18 +1659,22 @@ namespace Google.Gemini.NextGen
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.URLContextResult>? ListType47 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.Function>? ListType47 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ModalityTokens>? ListType48 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.URLContextResult>? ListType48 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.GroundingToolCount>? ListType49 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.ModalityTokens>? ListType49 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SigningSecret>? ListType50 { get; set; }
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.GroundingToolCount>? ListType50 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Google.Gemini.NextGen.SigningSecret>? ListType51 { get; set; }
     }
 }

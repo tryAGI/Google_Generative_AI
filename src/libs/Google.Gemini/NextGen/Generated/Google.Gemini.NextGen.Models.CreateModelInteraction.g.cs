@@ -19,14 +19,6 @@ namespace Google.Gemini.NextGen
         public required global::Google.Gemini.NextGen.Model Model { get; set; }
 
         /// <summary>
-        /// The input for the interaction.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.InteractionsInputJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.InteractionsInput Input { get; set; }
-
-        /// <summary>
         /// Configuration parameters for model interactions.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generation_config")]
@@ -74,6 +66,13 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? Tools { get; set; }
+
+        /// <summary>
+        /// The input for the interaction.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.InteractionsInputJsonConverter))]
+        public global::Google.Gemini.NextGen.InteractionsInput? Input { get; set; }
 
         /// <summary>
         /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
@@ -190,9 +189,6 @@ namespace Google.Gemini.NextGen
         /// <param name="model">
         /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
         /// </param>
-        /// <param name="input">
-        /// The input for the interaction.
-        /// </param>
         /// <param name="generationConfig">
         /// Configuration parameters for model interactions.
         /// </param>
@@ -219,6 +215,9 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="tools">
         /// A list of tool declarations the model may call during interaction.
+        /// </param>
+        /// <param name="input">
+        /// The input for the interaction.
         /// </param>
         /// <param name="responseFormat">
         /// Enforces that the generated response is a JSON object that complies with<br/>
@@ -273,7 +272,6 @@ namespace Google.Gemini.NextGen
 #endif
         public CreateModelInteraction(
             global::Google.Gemini.NextGen.Model model,
-            global::Google.Gemini.NextGen.InteractionsInput input,
             global::Google.Gemini.NextGen.GenerationConfig? generationConfig,
             string? id,
             global::Google.Gemini.NextGen.CreateModelInteractionStatus? status,
@@ -281,6 +279,7 @@ namespace Google.Gemini.NextGen
             string? updated,
             string? systemInstruction,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Tool>? tools,
+            global::Google.Gemini.NextGen.InteractionsInput? input,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ResponseFormat?, global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.ResponseFormat>>? responseFormat,
             string? previousInteractionId,
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentConfig, string>? environment,
@@ -295,7 +294,6 @@ namespace Google.Gemini.NextGen
             bool? background)
         {
             this.Model = model;
-            this.Input = input;
             this.GenerationConfig = generationConfig;
             this.Id = id;
             this.Status = status;
@@ -303,6 +301,7 @@ namespace Google.Gemini.NextGen
             this.Updated = updated;
             this.SystemInstruction = systemInstruction;
             this.Tools = tools;
+            this.Input = input;
             this.ResponseFormat = responseFormat;
             this.PreviousInteractionId = previousInteractionId;
             this.Environment = environment;
