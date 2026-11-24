@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Request message for WebhookService.UpdateWebhook.
+    /// Request for updating a webhook.
     /// </summary>
     public sealed partial class UpdateWebhookRequest
     {

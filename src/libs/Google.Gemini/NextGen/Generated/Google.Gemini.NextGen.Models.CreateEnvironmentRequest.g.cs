@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Request for `CreateEnvironment`.
+    /// Request for creating an environment.
     /// </summary>
     public sealed partial class CreateEnvironmentRequest
     {
@@ -20,6 +20,13 @@ namespace Google.Gemini.NextGen
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sources")]
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? Sources { get; set; }
+
+        /// <summary>
+        /// Environment variables to set in the sandbox environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("env")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>))]
+        public global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? Env { get; set; }
 
         /// <summary>
         /// The compute lifecycle mode for this environment.
@@ -67,6 +74,9 @@ namespace Google.Gemini.NextGen
         /// <param name="sources">
         /// Sources to be mounted into the environment.
         /// </param>
+        /// <param name="env">
+        /// Environment variables to set in the sandbox environment.
+        /// </param>
         /// <param name="mode">
         /// The compute lifecycle mode for this environment.
         /// </param>
@@ -91,6 +101,7 @@ namespace Google.Gemini.NextGen
         public CreateEnvironmentRequest(
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources,
+            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? env,
             global::Google.Gemini.NextGen.CreateEnvironmentRequestMode? mode,
             object? customConfig,
             string? fromEnvironment,
@@ -98,6 +109,7 @@ namespace Google.Gemini.NextGen
         {
             this.Network = network;
             this.Sources = sources;
+            this.Env = env;
             this.Mode = mode;
             this.CustomConfig = customConfig;
             this.FromEnvironment = fromEnvironment;

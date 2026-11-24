@@ -61,6 +61,9 @@ namespace Google.Gemini.NextGen
         /// <param name="sources">
         /// Sources to be mounted into the environment.
         /// </param>
+        /// <param name="env">
+        /// Environment variables to set in the sandbox environment.
+        /// </param>
         /// <param name="mode">
         /// The compute lifecycle mode for this environment.
         /// </param>
@@ -85,6 +88,7 @@ namespace Google.Gemini.NextGen
         global::System.Threading.Tasks.Task<global::Google.Gemini.NextGen.Environment> CreateEnvironmentAsync(
             global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.EnvironmentNetworkEgressAllowlist, global::Google.Gemini.NextGen.CreateEnvironmentRequestNetwork?>? network = default,
             global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Source>? sources = default,
+            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.Dictionary<string, global::Google.Gemini.NextGen.EnvVar>, string>? env = default,
             global::Google.Gemini.NextGen.CreateEnvironmentRequestMode? mode = default,
             object? customConfig = default,
             string? fromEnvironment = default,

@@ -4,8 +4,8 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// A voice resource representing either a custom voice (created via<br/>
-    /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
+    /// A voice resource representing either a custom voice that you create or a<br/>
+    /// prebuilt system voice (returned when listing voices).
     /// </summary>
     public sealed partial class Voice
     {
@@ -21,12 +21,12 @@ namespace Google.Gemini.NextGen
         /// Output only. The unique identifier of the voice.<br/>
         /// * For Google-managed custom voices (`store = true`), this is a generated ID<br/>
         ///   with prefix `voice_` (for example, `voice_abc123def456`). Pass<br/>
-        ///   `voices/{id}` as the `name` in `GetVoice` and `DeleteVoice`, and pass<br/>
+        ///   `voices/{id}` as the `name` when getting or deleting the voice, and pass<br/>
         ///   `{id}` directly to `SpeechConfig.voice_config.voice` (or<br/>
         ///   `SpeechConfig.voice`) during speech synthesis.<br/>
-        /// * For prebuilt catalog voices (`"prebuilt"` returned by `ListVoices`), this<br/>
-        ///   is the speaker name (for example, `Puck` or `Charon`).<br/>
-        /// * Unset when `CreateVoice` is called with `store = false`.<br/>
+        /// * For prebuilt catalog voices (`"prebuilt"` returned when listing voices),<br/>
+        ///   this is the speaker name (for example, `Puck` or `Charon`).<br/>
+        /// * Unset when the voice is created with `store = false`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -34,9 +34,9 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// Optional. The model used to design or replicate the voice.<br/>
-        /// If omitted in `CreateVoice`, defaults to the latest supported voice design<br/>
-        /// model. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses<br/>
-        /// for custom voices (`"prompted"` and `"replicated"`); unset for `"prebuilt"`<br/>
+        /// If omitted when creating a voice, defaults to the latest supported voice<br/>
+        /// design model. Returned when creating, getting, or listing custom voices<br/>
+        /// (`"prompted"` and `"replicated"`); unset for `"prebuilt"`<br/>
         /// voices. Created voices can be synthesized across any supported TTS<br/>
         /// synthesis model.
         /// </summary>
@@ -45,9 +45,10 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// Output only. The client-managed voice replication key (with prefix<br/>
-        /// `voicekey_`). Returned only by `CreateVoice` when `type` is `"replicated"`<br/>
-        /// and `store` is `false`. Pass this key to `SpeechConfig.voice_config.voice`<br/>
-        /// (or `SpeechConfig.voice`) during speech synthesis.<br/>
+        /// `voicekey_`). Returned only when creating a voice with `type`<br/>
+        /// `"replicated"` and `store` `false`. Pass this key to<br/>
+        /// `SpeechConfig.voice_config.voice` (or `SpeechConfig.voice`) during speech<br/>
+        /// synthesis.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("key")]
@@ -65,8 +66,8 @@ namespace Google.Gemini.NextGen
         /// Output only. The timestamp at which a custom stored voice (`store = true`)<br/>
         /// or replicated voice key (`store = false`) expires. For custom stored voices<br/>
         /// (`store = true`), this expiration time is extended when the voice is used<br/>
-        /// for speech synthesis or as a `base_voice` in `CreateVoice`. Unset for<br/>
-        /// prebuilt catalog voices (`"prebuilt"`), which do not expire.<br/>
+        /// for speech synthesis or as a `base_voice` when creating another voice.<br/>
+        /// Unset for prebuilt catalog voices (`"prebuilt"`), which do not expire.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expire_time")]
@@ -81,8 +82,8 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// Parameters for prompted voice generation.<br/>
-        /// Required in `CreateVoice` when `type` is `"prompted"`. Returned in<br/>
-        /// `CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.
+        /// Required when creating a voice with `type` `"prompted"`. Returned when<br/>
+        /// creating, getting, or listing prompted voices.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompted")]
         public global::Google.Gemini.NextGen.PromptedVoice? Prompted { get; set; }
@@ -166,27 +167,28 @@ namespace Google.Gemini.NextGen
         /// Output only. The unique identifier of the voice.<br/>
         /// * For Google-managed custom voices (`store = true`), this is a generated ID<br/>
         ///   with prefix `voice_` (for example, `voice_abc123def456`). Pass<br/>
-        ///   `voices/{id}` as the `name` in `GetVoice` and `DeleteVoice`, and pass<br/>
+        ///   `voices/{id}` as the `name` when getting or deleting the voice, and pass<br/>
         ///   `{id}` directly to `SpeechConfig.voice_config.voice` (or<br/>
         ///   `SpeechConfig.voice`) during speech synthesis.<br/>
-        /// * For prebuilt catalog voices (`"prebuilt"` returned by `ListVoices`), this<br/>
-        ///   is the speaker name (for example, `Puck` or `Charon`).<br/>
-        /// * Unset when `CreateVoice` is called with `store = false`.<br/>
+        /// * For prebuilt catalog voices (`"prebuilt"` returned when listing voices),<br/>
+        ///   this is the speaker name (for example, `Puck` or `Charon`).<br/>
+        /// * Unset when the voice is created with `store = false`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="model">
         /// Optional. The model used to design or replicate the voice.<br/>
-        /// If omitted in `CreateVoice`, defaults to the latest supported voice design<br/>
-        /// model. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses<br/>
-        /// for custom voices (`"prompted"` and `"replicated"`); unset for `"prebuilt"`<br/>
+        /// If omitted when creating a voice, defaults to the latest supported voice<br/>
+        /// design model. Returned when creating, getting, or listing custom voices<br/>
+        /// (`"prompted"` and `"replicated"`); unset for `"prebuilt"`<br/>
         /// voices. Created voices can be synthesized across any supported TTS<br/>
         /// synthesis model.
         /// </param>
         /// <param name="key">
         /// Output only. The client-managed voice replication key (with prefix<br/>
-        /// `voicekey_`). Returned only by `CreateVoice` when `type` is `"replicated"`<br/>
-        /// and `store` is `false`. Pass this key to `SpeechConfig.voice_config.voice`<br/>
-        /// (or `SpeechConfig.voice`) during speech synthesis.<br/>
+        /// `voicekey_`). Returned only when creating a voice with `type`<br/>
+        /// `"replicated"` and `store` `false`. Pass this key to<br/>
+        /// `SpeechConfig.voice_config.voice` (or `SpeechConfig.voice`) during speech<br/>
+        /// synthesis.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="replicated">
@@ -198,8 +200,8 @@ namespace Google.Gemini.NextGen
         /// Output only. The timestamp at which a custom stored voice (`store = true`)<br/>
         /// or replicated voice key (`store = false`) expires. For custom stored voices<br/>
         /// (`store = true`), this expiration time is extended when the voice is used<br/>
-        /// for speech synthesis or as a `base_voice` in `CreateVoice`. Unset for<br/>
-        /// prebuilt catalog voices (`"prebuilt"`), which do not expire.<br/>
+        /// for speech synthesis or as a `base_voice` when creating another voice.<br/>
+        /// Unset for prebuilt catalog voices (`"prebuilt"`), which do not expire.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="displayName">
@@ -208,8 +210,8 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="prompted">
         /// Parameters for prompted voice generation.<br/>
-        /// Required in `CreateVoice` when `type` is `"prompted"`. Returned in<br/>
-        /// `CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.
+        /// Required when creating a voice with `type` `"prompted"`. Returned when<br/>
+        /// creating, getting, or listing prompted voices.
         /// </param>
         /// <param name="languageCode">
         /// Optional. Primary BCP-47 language tag (e.g. "en-US", "fr-FR").

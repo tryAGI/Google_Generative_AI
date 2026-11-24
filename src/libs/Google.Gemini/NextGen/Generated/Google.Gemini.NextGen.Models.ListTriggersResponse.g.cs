@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response message for TriggerService.ListTriggers.
+    /// Response for listing triggers.
     /// </summary>
     public sealed partial class ListTriggersResponse
     {
@@ -15,8 +15,8 @@ namespace Google.Gemini.NextGen
         public global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.Trigger>? Triggers { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous `ListTriggers` call.<br/>
-        /// Provide this to retrieve the subsequent page.
+        /// A token to retrieve the next page of triggers. Pass it as `page_token` in<br/>
+        /// the next request. If empty, there are no more pages.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page_token")]
         public string? NextPageToken { get; set; }
@@ -34,8 +34,8 @@ namespace Google.Gemini.NextGen
         /// The list of triggers.
         /// </param>
         /// <param name="nextPageToken">
-        /// A page token, received from a previous `ListTriggers` call.<br/>
-        /// Provide this to retrieve the subsequent page.
+        /// A token to retrieve the next page of triggers. Pass it as `page_token` in<br/>
+        /// the next request. If empty, there are no more pages.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

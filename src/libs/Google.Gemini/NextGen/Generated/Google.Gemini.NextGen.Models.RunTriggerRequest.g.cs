@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Request message for TriggerService.RunTrigger.
+    /// Request for running a trigger.
     /// </summary>
     public sealed partial class RunTriggerRequest
     {

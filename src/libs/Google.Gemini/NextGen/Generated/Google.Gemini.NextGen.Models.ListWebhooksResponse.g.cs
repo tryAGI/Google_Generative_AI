@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response message for WebhookService.ListWebhooks.
+    /// Response for listing webhooks.
     /// </summary>
     public sealed partial class ListWebhooksResponse
     {

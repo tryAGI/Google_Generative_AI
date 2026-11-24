@@ -137,6 +137,11 @@ namespace Google.Gemini.NextGen
         public static Model Gemini4Hydrogen { get; } = new("gemini-4-hydrogen");
 
         /// <summary>
+        /// Gemini 4 Neon - Frontier-level intelligence with fast end-to-end task completion across complex software engineering, analytical, and science workflows.
+        /// </summary>
+        public static Model Gemini4Neon { get; } = new("gemini-4-neon");
+
+        /// <summary>
         /// Latest release of Gemini Flash
         /// </summary>
         public static Model GeminiFlashLatest { get; } = new("gemini-flash-latest");
@@ -242,6 +247,7 @@ namespace Google.Gemini.NextGen
                 "gemini-4-argon" => Gemini4Argon,
                 "gemini-4-carbon" => Gemini4Carbon,
                 "gemini-4-hydrogen" => Gemini4Hydrogen,
+                "gemini-4-neon" => Gemini4Neon,
                 "gemini-flash-latest" => GeminiFlashLatest,
                 "gemini-flash-lite-latest" => GeminiFlashLiteLatest,
                 "gemini-nano-banana-2.1" => GeminiNanoBanana21,
@@ -289,6 +295,7 @@ namespace Google.Gemini.NextGen
             "gemini-4-argon" => true,
             "gemini-4-carbon" => true,
             "gemini-4-hydrogen" => true,
+            "gemini-4-neon" => true,
             "gemini-flash-latest" => true,
             "gemini-flash-lite-latest" => true,
             "gemini-nano-banana-2.1" => true,

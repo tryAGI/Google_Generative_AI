@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response message for `VoicesService.ListVoices`.
+    /// Response for listing voices.
     /// </summary>
     public sealed partial class ListVoicesResponse
     {

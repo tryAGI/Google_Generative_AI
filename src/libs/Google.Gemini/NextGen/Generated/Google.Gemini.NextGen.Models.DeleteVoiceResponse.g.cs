@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response message for `VoicesService.DeleteVoice`.
+    /// Response for deleting a voice.
     /// </summary>
     public sealed partial class DeleteVoiceResponse
     {

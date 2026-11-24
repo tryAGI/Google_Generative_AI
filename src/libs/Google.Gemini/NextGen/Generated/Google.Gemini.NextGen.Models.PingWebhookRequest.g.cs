@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Request message for WebhookService.PingWebhook.
+    /// Request for pinging a webhook.
     /// </summary>
     public sealed partial class PingWebhookRequest
     {

@@ -5,8 +5,8 @@ namespace Google.Gemini.NextGen
 {
     /// <summary>
     /// Parameters for prompted voice generation.<br/>
-    /// Required in `CreateVoice` when `type` is `"prompted"`. Returned in<br/>
-    /// `CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.
+    /// Required when creating a voice with `type` `"prompted"`. Returned when<br/>
+    /// creating, getting, or listing prompted voices.
     /// </summary>
     public sealed partial class PromptedVoice
     {

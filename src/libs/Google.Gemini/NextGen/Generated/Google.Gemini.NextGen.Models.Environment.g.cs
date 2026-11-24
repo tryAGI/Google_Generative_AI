@@ -94,9 +94,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Output only. Secret token generated upon environment creation for self_hosted<br/>
         /// environments. Used by the self-hosted sandbox daemon to authenticate<br/>
-        /// polling and streaming requests. Only returned in the CreateEnvironment<br/>
-        /// response; omitted from subsequent GetEnvironment and ListEnvironments<br/>
-        /// calls.<br/>
+        /// polling and streaming requests. Only returned when the environment is<br/>
+        /// created; omitted when getting or listing environments later.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environment_key")]
@@ -156,9 +155,8 @@ namespace Google.Gemini.NextGen
         /// <param name="environmentKey">
         /// Output only. Secret token generated upon environment creation for self_hosted<br/>
         /// environments. Used by the self-hosted sandbox daemon to authenticate<br/>
-        /// polling and streaming requests. Only returned in the CreateEnvironment<br/>
-        /// response; omitted from subsequent GetEnvironment and ListEnvironments<br/>
-        /// calls.<br/>
+        /// polling and streaming requests. Only returned when the environment is<br/>
+        /// created; omitted when getting or listing environments later.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
