@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response for `GetEnvironmentFiles`.
+    /// Response for getting an environment's files.
     /// </summary>
     public sealed partial class GetEnvironmentFilesResponse
     {

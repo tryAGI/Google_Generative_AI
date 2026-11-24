@@ -176,7 +176,8 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Opaque token to resume a long decode. Output: set when status is<br/>
         /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest<br/>
-        /// token back unchanged in CreateInteraction to continue decoding.
+        /// token back unchanged when creating the next interaction to continue<br/>
+        /// decoding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("continuation_token")]
         public byte[]? ContinuationToken { get; set; }
@@ -287,7 +288,8 @@ namespace Google.Gemini.NextGen
         /// <param name="continuationToken">
         /// Opaque token to resume a long decode. Output: set when status is<br/>
         /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest<br/>
-        /// token back unchanged in CreateInteraction to continue decoding.
+        /// token back unchanged when creating the next interaction to continue<br/>
+        /// decoding.
         /// </param>
         /// <param name="stream">
         /// Input only. Whether the interaction will be streamed.<br/>

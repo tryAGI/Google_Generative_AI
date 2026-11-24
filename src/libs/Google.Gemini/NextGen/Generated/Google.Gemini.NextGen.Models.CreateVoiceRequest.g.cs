@@ -4,13 +4,13 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Request message for `VoicesService.CreateVoice`.
+    /// Request for creating a voice.
     /// </summary>
     public sealed partial class CreateVoiceRequest
     {
         /// <summary>
-        /// A voice resource representing either a custom voice (created via<br/>
-        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
+        /// A voice resource representing either a custom voice that you create or a<br/>
+        /// prebuilt system voice (returned when listing voices).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -19,10 +19,10 @@ namespace Google.Gemini.NextGen
         /// <summary>
         /// Optional. Whether the created voice is persisted and managed by Google.<br/>
         /// * When `true`, Google stores the voice and returns `Voice.id` (for example,<br/>
-        ///   `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,<br/>
-        ///   and `DeleteVoice` and referenced by ID in synthesis requests. Stored<br/>
-        ///   voices expire after 1 year of inactivity; using a stored voice in speech<br/>
-        ///   synthesis or as a `base_voice` in `CreateVoice` extends its<br/>
+        ///   `voice_abc123def456`), which you can get, list, and delete, and<br/>
+        ///   reference by ID in synthesis requests. Stored voices expire after 1<br/>
+        ///   year of inactivity; using a stored voice in speech synthesis or as a<br/>
+        ///   `base_voice` when creating another voice extends its<br/>
         ///   `expire_time`. Projects are subject to a maximum active stored voice<br/>
         ///   quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.<br/>
         /// * When `false` (default), the voice is not stored by Google and `Voice.key`<br/>
@@ -45,16 +45,16 @@ namespace Google.Gemini.NextGen
         /// Initializes a new instance of the <see cref="CreateVoiceRequest" /> class.
         /// </summary>
         /// <param name="voice">
-        /// A voice resource representing either a custom voice (created via<br/>
-        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
+        /// A voice resource representing either a custom voice that you create or a<br/>
+        /// prebuilt system voice (returned when listing voices).
         /// </param>
         /// <param name="store">
         /// Optional. Whether the created voice is persisted and managed by Google.<br/>
         /// * When `true`, Google stores the voice and returns `Voice.id` (for example,<br/>
-        ///   `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,<br/>
-        ///   and `DeleteVoice` and referenced by ID in synthesis requests. Stored<br/>
-        ///   voices expire after 1 year of inactivity; using a stored voice in speech<br/>
-        ///   synthesis or as a `base_voice` in `CreateVoice` extends its<br/>
+        ///   `voice_abc123def456`), which you can get, list, and delete, and<br/>
+        ///   reference by ID in synthesis requests. Stored voices expire after 1<br/>
+        ///   year of inactivity; using a stored voice in speech synthesis or as a<br/>
+        ///   `base_voice` when creating another voice extends its<br/>
         ///   `expire_time`. Projects are subject to a maximum active stored voice<br/>
         ///   quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.<br/>
         /// * When `false` (default), the voice is not stored by Google and `Voice.key`<br/>

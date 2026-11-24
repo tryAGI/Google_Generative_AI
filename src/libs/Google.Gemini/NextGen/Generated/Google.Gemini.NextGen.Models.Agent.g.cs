@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// An agent definition for the CreateAgent API.<br/>
+    /// An agent definition, used when creating an agent.<br/>
     /// This message is the target for annotation-parser-based JSON parsing.<br/>
     /// New format:<br/>
     ///   {<br/>

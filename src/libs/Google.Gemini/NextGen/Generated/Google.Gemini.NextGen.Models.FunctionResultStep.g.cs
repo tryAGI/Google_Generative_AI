@@ -12,9 +12,9 @@ namespace Google.Gemini.NextGen
         /// Required. The result of the tool call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Google.Gemini.NextGen.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioContent, global::Google.Gemini.NextGen.DocumentContent, global::Google.Gemini.NextGen.Function, global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent, global::Google.Gemini.NextGen.VideoContent>>, object, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string> Result { get; set; }
+        public required global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioContent, global::Google.Gemini.NextGen.DocumentContent, global::Google.Gemini.NextGen.Function, global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent, global::Google.Gemini.NextGen.VideoContent>>, object, string> Result { get; set; }
 
         /// <summary>
         /// Required. ID to match the ID from the function call block.
@@ -68,7 +68,7 @@ namespace Google.Gemini.NextGen
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionResultStep(
-            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent>>, object, string> result,
+            global::Google.Gemini.NextGen.OneOf<global::System.Collections.Generic.IList<global::Google.Gemini.NextGen.OneOf<global::Google.Gemini.NextGen.AudioContent, global::Google.Gemini.NextGen.DocumentContent, global::Google.Gemini.NextGen.Function, global::Google.Gemini.NextGen.ImageContent, global::Google.Gemini.NextGen.TextContent, global::Google.Gemini.NextGen.VideoContent>>, object, string> result,
             string callId,
             object type,
             string? name,

@@ -30,7 +30,9 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// Optional. The environment ID for the interaction. If specified, the request will<br/>
-        /// update the existing environment instead of creating a new one.
+        /// update the existing environment instead of creating a new one;<br/>
+        /// creation-only fields (`env` and `sources`) cannot be updated when resuming<br/>
+        /// an existing environment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environment_id")]
         public string? EnvironmentId { get; set; }
@@ -73,7 +75,9 @@ namespace Google.Gemini.NextGen
         /// </param>
         /// <param name="environmentId">
         /// Optional. The environment ID for the interaction. If specified, the request will<br/>
-        /// update the existing environment instead of creating a new one.
+        /// update the existing environment instead of creating a new one;<br/>
+        /// creation-only fields (`env` and `sources`) cannot be updated when resuming<br/>
+        /// an existing environment.
         /// </param>
         /// <param name="env">
         /// Environment variables to set in the sandbox environment.

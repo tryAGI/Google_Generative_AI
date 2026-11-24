@@ -43,8 +43,8 @@ namespace Google.Gemini.NextGen
 
         /// <summary>
         /// Gets a custom stored voice (`store = true`) by resource name.<br/>
-        /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via<br/>
-        /// `GetVoice`; use `ListVoices` instead.
+        /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) can't be retrieved this<br/>
+        /// way; list voices instead.
         /// </summary>
         /// <param name="voicesId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,8 +69,8 @@ namespace Google.Gemini.NextGen
         }
         /// <summary>
         /// Gets a custom stored voice (`store = true`) by resource name.<br/>
-        /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via<br/>
-        /// `GetVoice`; use `ListVoices` instead.
+        /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) can't be retrieved this<br/>
+        /// way; list voices instead.
         /// </summary>
         /// <param name="voicesId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

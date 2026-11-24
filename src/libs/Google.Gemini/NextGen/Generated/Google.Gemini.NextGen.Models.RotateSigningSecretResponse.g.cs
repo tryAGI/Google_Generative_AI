@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response message for WebhookService.RotateSigningSecret.
+    /// Response for rotating a webhook's signing secret.
     /// </summary>
     public sealed partial class RotateSigningSecretResponse
     {

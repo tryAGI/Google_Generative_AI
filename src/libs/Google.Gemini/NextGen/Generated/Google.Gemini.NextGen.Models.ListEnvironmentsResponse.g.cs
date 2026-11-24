@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Response for `ListEnvironments`.
+    /// Response for listing environments.
     /// </summary>
     public sealed partial class ListEnvironmentsResponse
     {

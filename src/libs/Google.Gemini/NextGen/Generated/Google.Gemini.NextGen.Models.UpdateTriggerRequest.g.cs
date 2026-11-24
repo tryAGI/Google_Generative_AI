@@ -4,7 +4,7 @@
 namespace Google.Gemini.NextGen
 {
     /// <summary>
-    /// Request message for TriggerService.UpdateTrigger.
+    /// Request for updating a trigger.
     /// </summary>
     public sealed partial class UpdateTriggerRequest
     {

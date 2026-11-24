@@ -2394,7 +2394,7 @@
           {
             "name": "page_token",
             "in": "query",
-            "description": "Optional. A page token from a previous ListTriggers call.",
+            "description": "Optional. A page token from a previous call to list triggers.",
             "schema": {
               "type": "string"
             }
@@ -2598,7 +2598,7 @@
           {
             "name": "page_token",
             "in": "query",
-            "description": "A page token from a previous ListTriggerExecutions call.",
+            "description": "A page token from a previous call to list trigger executions.",
             "schema": {
               "type": "string"
             }
@@ -2721,7 +2721,7 @@
           {
             "name": "page_token",
             "in": "query",
-            "description": "Optional. A page token received from a previous `ListVoices` call. Provide\nthis to retrieve the subsequent page.\n\nWhen paginating, all filter query parameters (`language_code`,\n`region_code`, `accent`, `persona`, `context`, `gender`, `pitch`, `type`,\nand `search`) must match the call that returned this token; otherwise the\nrequest fails with `INVALID_ARGUMENT`. `page_size` may change between\npages.",
+            "description": "Optional. A page token received from a previous call to list voices.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all filter query parameters (`language_code`,\n`region_code`, `accent`, `persona`, `context`, `gender`, `pitch`, `type`,\nand `search`) must match the call that returned this token; otherwise the\nrequest fails with `INVALID_ARGUMENT`. `page_size` may change between\npages.",
             "schema": {
               "type": "string"
             }
@@ -2926,7 +2926,7 @@
       },
       "get": {
         "operationId": "GetVoice",
-        "description": "Gets a custom stored voice (`store = true`) by resource name.\nPrebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via\n`GetVoice`; use `ListVoices` instead.",
+        "description": "Gets a custom stored voice (`store = true`) by resource name.\nPrebuilt catalog voices (`VOICE_TYPE_PREBUILT`) can't be retrieved this\nway; list voices instead.",
         "parameters": [
           {
             "name": "voicesId",
@@ -2994,7 +2994,7 @@
           {
             "name": "page_token",
             "in": "query",
-            "description": "Optional. A page token, received from a previous `ListWebhooks` call.\nProvide this to retrieve the subsequent page.",
+            "description": "Optional. A page token, received from a previous call to list webhooks.\nProvide this to retrieve the subsequent page.",
             "schema": {
               "type": "string"
             }
@@ -3316,7 +3316,7 @@
     },
     "schemas": {
       "Agent": {
-        "description": "An agent definition for the CreateAgent API.\nThis message is the target for annotation-parser-based JSON parsing.\nNew format:\n  {\n    \"id\": \"customer-sentinel\",\n    \"base_agent\": \"\",\n    \"system_instruction\": \"...\",\n    \"base_environment\": { \"type\": \"remote\", \"sources\": [...] },\n    \"tools\": [ {\"type\": \"code_execution\"} ]\n  }",
+        "description": "An agent definition, used when creating an agent.\nThis message is the target for annotation-parser-based JSON parsing.\nNew format:\n  {\n    \"id\": \"customer-sentinel\",\n    \"base_agent\": \"\",\n    \"system_instruction\": \"...\",\n    \"base_environment\": { \"type\": \"remote\", \"sources\": [...] },\n    \"tools\": [ {\"type\": \"code_execution\"} ]\n  }",
         "type": "object",
         "properties": {
           "id": {
@@ -4378,7 +4378,7 @@
             }
           },
           "continuation_token": {
-            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged in CreateInteraction to continue decoding.",
+            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged when creating the next interaction to continue\ndecoding.",
             "type": "string",
             "format": "byte",
             "x-speakeasy-base64-input-mode": "file"
@@ -4472,7 +4472,7 @@
         "x-speakeasy-model-namespace": "decisions"
       },
       "CreateEnvironmentRequest": {
-        "description": "Request for `CreateEnvironment`.",
+        "description": "Request for creating an environment.",
         "type": "object",
         "properties": {
           "network": {
@@ -4498,6 +4498,20 @@
             "items": {
               "$ref": "#/components/schemas/Source"
             }
+          },
+          "env": {
+            "description": "Environment variables to set in the sandbox environment.",
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/EnvVar"
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "mode": {
             "description": "The compute lifecycle mode for this environment.",
@@ -4676,7 +4690,7 @@
             }
           },
           "continuation_token": {
-            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged in CreateInteraction to continue decoding.",
+            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged when creating the next interaction to continue\ndecoding.",
             "type": "string",
             "format": "byte",
             "x-speakeasy-base64-input-mode": "file"
@@ -4704,7 +4718,7 @@
         "x-speakeasy-name-override": "CreateModelInteraction"
       },
       "CreateVoiceRequest": {
-        "description": "Request message for `VoicesService.CreateVoice`.",
+        "description": "Request for creating a voice.",
         "type": "object",
         "properties": {
           "voice": {
@@ -4712,7 +4726,7 @@
             "$ref": "#/components/schemas/Voice"
           },
           "store": {
-            "description": "Optional. Whether the created voice is persisted and managed by Google.\n\n* When `true`, Google stores the voice and returns `Voice.id` (for example,\n  `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,\n  and `DeleteVoice` and referenced by ID in synthesis requests. Stored\n  voices expire after 1 year of inactivity; using a stored voice in speech\n  synthesis or as a `base_voice` in `CreateVoice` extends its\n  `expire_time`. Projects are subject to a maximum active stored voice\n  quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.\n* When `false` (default), the voice is not stored by Google and `Voice.key`\n  (for example, `voicekey_...`) is returned for client-side storage and\n  synthesis. Optional discovery metadata fields on `voice` are not\n  persisted or returned when `store` is `false`.\n* Required to be `true` when `voice.type` is `\"prompted\"`\n  (otherwise fails with `INVALID_ARGUMENT`).",
+            "description": "Optional. Whether the created voice is persisted and managed by Google.\n\n* When `true`, Google stores the voice and returns `Voice.id` (for example,\n  `voice_abc123def456`), which you can get, list, and delete, and\n  reference by ID in synthesis requests. Stored voices expire after 1\n  year of inactivity; using a stored voice in speech synthesis or as a\n  `base_voice` when creating another voice extends its\n  `expire_time`. Projects are subject to a maximum active stored voice\n  quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.\n* When `false` (default), the voice is not stored by Google and `Voice.key`\n  (for example, `voicekey_...`) is returned for client-side storage and\n  synthesis. Optional discovery metadata fields on `voice` are not\n  persisted or returned when `store` is `false`.\n* Required to be `true` when `voice.type` is `\"prompted\"`\n  (otherwise fails with `INVALID_ARGUMENT`).",
             "type": "boolean"
           }
         },
@@ -4722,7 +4736,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "CreateWebhookRequest": {
-        "description": "Request message for WebhookService.CreateWebhook.",
+        "description": "Request for creating a webhook.",
         "type": "object",
         "properties": {
           "webhook": {
@@ -4906,7 +4920,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "DeleteVoiceResponse": {
-        "description": "Response message for `VoicesService.DeleteVoice`.",
+        "description": "Response for deleting a voice.",
         "type": "object",
         "x-speakeasy-model-namespace": "interactions"
       },
@@ -5234,7 +5248,7 @@
             }
           },
           "environment_key": {
-            "description": "Output only. Secret token generated upon environment creation for self_hosted\nenvironments. Used by the self-hosted sandbox daemon to authenticate\npolling and streaming requests. Only returned in the CreateEnvironment\nresponse; omitted from subsequent GetEnvironment and ListEnvironments\ncalls.",
+            "description": "Output only. Secret token generated upon environment creation for self_hosted\nenvironments. Used by the self-hosted sandbox daemon to authenticate\npolling and streaming requests. Only returned when the environment is\ncreated; omitted when getting or listing environments later.",
             "type": "string",
             "readOnly": true
           }
@@ -5275,7 +5289,7 @@
             ]
           },
           "environment_id": {
-            "description": "Optional. The environment ID for the interaction. If specified, the request will\nupdate the existing environment instead of creating a new one.",
+            "description": "Optional. The environment ID for the interaction. If specified, the request will\nupdate the existing environment instead of creating a new one;\ncreation-only fields (`env` and `sources`) cannot be updated when resuming\nan existing environment.",
             "type": "string"
           },
           "env": {
@@ -5969,10 +5983,22 @@
                 "items": {
                   "oneOf": [
                     {
+                      "$ref": "#/components/schemas/AudioContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DocumentContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Function"
+                    },
+                    {
                       "$ref": "#/components/schemas/ImageContent"
                     },
                     {
                       "$ref": "#/components/schemas/TextContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/VideoContent"
                     }
                   ]
                 }
@@ -6013,10 +6039,22 @@
                 "items": {
                   "oneOf": [
                     {
+                      "$ref": "#/components/schemas/AudioContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DocumentContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Function"
+                    },
+                    {
                       "$ref": "#/components/schemas/ImageContent"
                     },
                     {
                       "$ref": "#/components/schemas/TextContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/VideoContent"
                     }
                   ]
                 }
@@ -6166,7 +6204,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "GetEnvironmentFilesResponse": {
-        "description": "Response for `GetEnvironmentFiles`.",
+        "description": "Response for getting an environment's files.",
         "type": "object",
         "properties": {
           "files": {
@@ -7262,7 +7300,7 @@
             "readOnly": true
           },
           "continuation_token": {
-            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged in CreateInteraction to continue decoding.",
+            "description": "Opaque token to resume a long decode. Output: set when status is\nREQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest\ntoken back unchanged when creating the next interaction to continue\ndecoding.",
             "type": "string",
             "format": "byte",
             "x-speakeasy-base64-input-mode": "file"
@@ -7518,7 +7556,7 @@
             "readOnly": true
           },
           "continuation_token": {
-            "description": "Opaque token to resume a long decode.\nOutput: set when status is INCOMPLETE and decoding can be resumed.\nInput: pass the latest token back unchanged in CreateInteraction to\ncontinue decoding.",
+            "description": "Opaque token to resume a long decode.\nOutput: set when status is INCOMPLETE and decoding can be resumed.\nInput: pass the latest token back unchanged when creating the next\ninteraction to continue decoding.",
             "type": "string",
             "format": "byte",
             "x-speakeasy-base64-input-mode": "file"
@@ -7687,7 +7725,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "ListEnvironmentsResponse": {
-        "description": "Response for `ListEnvironments`.",
+        "description": "Response for listing environments.",
         "type": "object",
         "properties": {
           "environments": {
@@ -7705,7 +7743,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "ListTriggerExecutionsResponse": {
-        "description": "Response message for TriggerService.ListTriggerExecutions.",
+        "description": "Response for listing trigger executions.",
         "type": "object",
         "properties": {
           "trigger_executions": {
@@ -7716,14 +7754,14 @@
             }
           },
           "next_page_token": {
-            "description": "A page token, received from a previous `ListTriggerExecutions` call.\nProvide this to retrieve the subsequent page.",
+            "description": "A token to retrieve the next page of trigger executions. Pass it as\n`page_token` in the next request. If empty, there are no more pages.",
             "type": "string"
           }
         },
         "x-speakeasy-model-namespace": "interactions"
       },
       "ListTriggersResponse": {
-        "description": "Response message for TriggerService.ListTriggers.",
+        "description": "Response for listing triggers.",
         "type": "object",
         "properties": {
           "triggers": {
@@ -7734,14 +7772,14 @@
             }
           },
           "next_page_token": {
-            "description": "A page token, received from a previous `ListTriggers` call.\nProvide this to retrieve the subsequent page.",
+            "description": "A token to retrieve the next page of triggers. Pass it as `page_token` in\nthe next request. If empty, there are no more pages.",
             "type": "string"
           }
         },
         "x-speakeasy-model-namespace": "interactions"
       },
       "ListVoicesResponse": {
-        "description": "Response message for `VoicesService.ListVoices`.",
+        "description": "Response for listing voices.",
         "type": "object",
         "properties": {
           "voices": {
@@ -7759,7 +7797,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "ListWebhooksResponse": {
-        "description": "Response message for WebhookService.ListWebhooks.",
+        "description": "Response for listing webhooks.",
         "type": "object",
         "properties": {
           "webhooks": {
@@ -7932,10 +7970,22 @@
                 "items": {
                   "oneOf": [
                     {
+                      "$ref": "#/components/schemas/AudioContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DocumentContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Function"
+                    },
+                    {
                       "$ref": "#/components/schemas/ImageContent"
                     },
                     {
                       "$ref": "#/components/schemas/TextContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/VideoContent"
                     }
                   ]
                 }
@@ -7976,10 +8026,22 @@
                 "items": {
                   "oneOf": [
                     {
+                      "$ref": "#/components/schemas/AudioContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DocumentContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Function"
+                    },
+                    {
                       "$ref": "#/components/schemas/ImageContent"
                     },
                     {
                       "$ref": "#/components/schemas/TextContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/VideoContent"
                     }
                   ]
                 }
@@ -8103,6 +8165,7 @@
           "gemini-4-argon",
           "gemini-4-carbon",
           "gemini-4-hydrogen",
+          "gemini-4-neon",
           "gemini-3.8-flash-tts",
           "gemini-3.8-flash-lite-tts",
           "gemini-3.5-transcribe",
@@ -8143,6 +8206,7 @@
           "Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.",
           "Gemini 4 Carbon - Our most capable reasoning model, built for sustained agentic coding, multimodal knowledge work, scientific discovery, and cybersecurity defense.",
           "Gemini 4 Hydrogen - A model with frontier-level intelligence, built for fast, dependable execution across coding, agentic workflows, and multimodal knowledge work.",
+          "Gemini 4 Neon - Frontier-level intelligence with fast end-to-end task completion across complex software engineering, analytical, and science workflows.",
           "Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.",
           "Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.",
           "Gemini 3.5 Transcribe - Low-latency speech-to-text model with utterance-based language detection, speaker diarization, word-level timestamps, and custom vocabulary biasing.",
@@ -8384,7 +8448,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "PingWebhookRequest": {
-        "description": "Request message for WebhookService.PingWebhook.",
+        "description": "Request for pinging a webhook.",
         "type": "object",
         "properties": {
           "id": {
@@ -8398,7 +8462,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "PingWebhookResponse": {
-        "description": "Response message for WebhookService.PingWebhook.",
+        "description": "Response for pinging a webhook.",
         "type": "object",
         "x-speakeasy-model-namespace": "interactions"
       },
@@ -8599,7 +8663,7 @@
         "x-speakeasy-model-namespace": "decisions"
       },
       "PromptedVoice": {
-        "description": "Parameters for prompted voice generation.\nRequired in `CreateVoice` when `type` is `\"prompted\"`. Returned in\n`CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.",
+        "description": "Parameters for prompted voice generation.\nRequired when creating a voice with `type` `\"prompted\"`. Returned when\ncreating, getting, or listing prompted voices.",
         "type": "object",
         "properties": {
           "input": {
@@ -8710,7 +8774,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "RotateSigningSecretRequest": {
-        "description": "Request message for WebhookService.RotateSigningSecret.",
+        "description": "Request for rotating a webhook's signing secret.",
         "type": "object",
         "properties": {
           "id": {
@@ -8736,7 +8800,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "RotateSigningSecretResponse": {
-        "description": "Response message for WebhookService.RotateSigningSecret.",
+        "description": "Response for rotating a webhook's signing secret.",
         "type": "object",
         "properties": {
           "secret": {
@@ -8748,7 +8812,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "RunTriggerRequest": {
-        "description": "Request message for TriggerService.RunTrigger.",
+        "description": "Request for running a trigger.",
         "type": "object",
         "properties": {
           "id": {
@@ -8984,6 +9048,20 @@
             "items": {
               "$ref": "#/components/schemas/SpeechConfig"
             }
+          },
+          "text_normalization": {
+            "description": "Controls text normalization before speech synthesis.",
+            "type": "string",
+            "enum": [
+              "auto",
+              "enabled",
+              "disabled"
+            ],
+            "x-google-enum-descriptions": [
+              "Automatically determines whether to apply text normalization based on\nthe model and speech mode.",
+              "Enables text normalization for numbers, currencies, dates, and units.",
+              "Disables text normalization for pre-normalized or phonetic inputs."
+            ]
           }
         },
         "x-speakeasy-model-namespace": "interactions"
@@ -10145,7 +10223,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "UpdateTriggerRequest": {
-        "description": "Request message for TriggerService.UpdateTrigger.",
+        "description": "Request for updating a trigger.",
         "type": "object",
         "properties": {
           "trigger": {
@@ -10170,7 +10248,7 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "UpdateWebhookRequest": {
-        "description": "Request message for WebhookService.UpdateWebhook.",
+        "description": "Request for updating a webhook.",
         "type": "object",
         "properties": {
           "webhook": {
@@ -10865,24 +10943,24 @@
         "x-speakeasy-model-namespace": "interactions"
       },
       "Voice": {
-        "description": "A voice resource representing either a custom voice (created via\n`CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).",
+        "description": "A voice resource representing either a custom voice that you create or a\nprebuilt system voice (returned when listing voices).",
         "type": "object",
         "properties": {
           "type": {
-            "description": "Required. The type of the voice. In `CreateVoice`, must be `\"replicated\"`\nor `\"prompted\"`. In `ListVoices` responses, may also be `\"prebuilt\"`.",
+            "description": "Required. The type of the voice. When creating a voice, must be\n`\"replicated\"` or `\"prompted\"`. When listing voices, may also be\n`\"prebuilt\"`.",
             "$ref": "#/components/schemas/VoiceType"
           },
           "id": {
-            "description": "Output only. The unique identifier of the voice.\n\n* For Google-managed custom voices (`store = true`), this is a generated ID\n  with prefix `voice_` (for example, `voice_abc123def456`). Pass\n  `voices/{id}` as the `name` in `GetVoice` and `DeleteVoice`, and pass\n  `{id}` directly to `SpeechConfig.voice_config.voice` (or\n  `SpeechConfig.voice`) during speech synthesis.\n* For prebuilt catalog voices (`\"prebuilt\"` returned by `ListVoices`), this\n  is the speaker name (for example, `Puck` or `Charon`).\n* Unset when `CreateVoice` is called with `store = false`.",
+            "description": "Output only. The unique identifier of the voice.\n\n* For Google-managed custom voices (`store = true`), this is a generated ID\n  with prefix `voice_` (for example, `voice_abc123def456`). Pass\n  `voices/{id}` as the `name` when getting or deleting the voice, and pass\n  `{id}` directly to `SpeechConfig.voice_config.voice` (or\n  `SpeechConfig.voice`) during speech synthesis.\n* For prebuilt catalog voices (`\"prebuilt\"` returned when listing voices),\n  this is the speaker name (for example, `Puck` or `Charon`).\n* Unset when the voice is created with `store = false`.",
             "type": "string",
             "readOnly": true
           },
           "model": {
-            "description": "Optional. The model used to design or replicate the voice.\nIf omitted in `CreateVoice`, defaults to the latest supported voice design\nmodel. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses\nfor custom voices (`\"prompted\"` and `\"replicated\"`); unset for `\"prebuilt\"`\nvoices. Created voices can be synthesized across any supported TTS\nsynthesis model.",
+            "description": "Optional. The model used to design or replicate the voice.\nIf omitted when creating a voice, defaults to the latest supported voice\ndesign model. Returned when creating, getting, or listing custom voices\n(`\"prompted\"` and `\"replicated\"`); unset for `\"prebuilt\"`\nvoices. Created voices can be synthesized across any supported TTS\nsynthesis model.",
             "type": "string"
           },
           "key": {
-            "description": "Output only. The client-managed voice replication key (with prefix\n`voicekey_`). Returned only by `CreateVoice` when `type` is `\"replicated\"`\nand `store` is `false`. Pass this key to `SpeechConfig.voice_config.voice`\n(or `SpeechConfig.voice`) during speech synthesis.",
+            "description": "Output only. The client-managed voice replication key (with prefix\n`voicekey_`). Returned only when creating a voice with `type`\n`\"replicated\"` and `store` `false`. Pass this key to\n`SpeechConfig.voice_config.voice` (or `SpeechConfig.voice`) during speech\nsynthesis.",
             "type": "string",
             "readOnly": true
           },
@@ -10892,7 +10970,7 @@
             "writeOnly": true
           },
           "expire_time": {
-            "description": "Output only. The timestamp at which a custom stored voice (`store = true`)\nor replicated voice key (`store = false`) expires. For custom stored voices\n(`store = true`), this expiration time is extended when the voice is used\nfor speech synthesis or as a `base_voice` in `CreateVoice`. Unset for\nprebuilt catalog voices (`\"prebuilt\"`), which do not expire.",
+            "description": "Output only. The timestamp at which a custom stored voice (`store = true`)\nor replicated voice key (`store = false`) expires. For custom stored voices\n(`store = true`), this expiration time is extended when the voice is used\nfor speech synthesis or as a `base_voice` when creating another voice.\nUnset for prebuilt catalog voices (`\"prebuilt\"`), which do not expire.",
             "type": "string",
             "format": "date-time",
             "readOnly": true
@@ -10902,7 +10980,7 @@
             "type": "string"
           },
           "prompted": {
-            "description": "Parameters for prompted voice generation.\nRequired in `CreateVoice` when `type` is `\"prompted\"`. Returned in\n`CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.",
+            "description": "Parameters for prompted voice generation.\nRequired when creating a voice with `type` `\"prompted\"`. Returned when\ncreating, getting, or listing prompted voices.",
             "$ref": "#/components/schemas/PromptedVoice"
           },
           "language_code": {
@@ -10938,12 +11016,12 @@
             "type": "string"
           },
           "usage": {
-            "description": "Output only. Token usage statistics for the voice creation request.\nPopulated only in the response of `CreateVoice` when `type` is\n`\"prompted\"`; unset for `\"replicated\"` and in `GetVoice` and `ListVoices`\nresponses.",
+            "description": "Output only. Token usage statistics for the voice creation request.\nPopulated only in the response when creating a voice with `type`\n`\"prompted\"`; unset for `\"replicated\"` and when getting or listing voices.",
             "$ref": "#/components/schemas/Usage",
             "readOnly": true
           },
           "sample_audio": {
-            "description": "Output only. Sample audio (synthesizer prompt audio) generated for a\nprompted voice.\nPopulated only in `CreateVoice` and `GetVoice` responses when `type` is\n`\"prompted\"`; unset in `ListVoices` responses and for `\"replicated\"` or\n`\"prebuilt\"` voices.",
+            "description": "Output only. Sample audio (synthesizer prompt audio) generated for a\nprompted voice.\nPopulated only when creating or getting a voice with `type` `\"prompted\"`;\nunset when listing voices and for `\"replicated\"` or `\"prebuilt\"` voices.",
             "$ref": "#/components/schemas/AudioData",
             "readOnly": true
           }
@@ -10963,7 +11041,7 @@
         "x-google-enum-descriptions": [
           "A custom voice replicated from a reference audio sample and speaker consent\nrecording.",
           "A custom voice generated from a natural-language text prompt (optionally\nediting or remixing a `base_voice`).",
-          "A built-in system voice from Google's voice catalog (e.g., `Puck`,\n`Charon`). Returned in responses; cannot be specified as the type in\n`CreateVoice`."
+          "A built-in system voice from Google's voice catalog (e.g., `Puck`,\n`Charon`). Returned in responses; cannot be specified as the type when\ncreating a voice."
         ],
         "x-speakeasy-model-namespace": "interactions"
       },
